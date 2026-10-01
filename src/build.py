@@ -101,6 +101,24 @@ if cur:
           ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),
           '| without a key:', sum(1 for i in flat if not Q[i]['answer']))
 
+# the update log (updates.json, newest first): what changed and when. An entry that brought questions names
+# its exam sets ("sets": set ids, or "types": exam types) and/or single questions ("questions": short ids);
+# the build stores the set ids, any single question ids, and the question count.
+updates = json.load(open('updates.json', encoding='utf8'))
+assert len({u['id'] for u in updates}) == len(updates), 'update ids must be unique'
+assert [u['date'] for u in updates] == sorted((u['date'] for u in updates), reverse=True), 'updates must be newest first'
+src_ids = {s['id'] for s in bank['sources']}
+log = []
+for u in updates:
+    sets = list(u.get('sets', [])) + [s['id'] for s in bank['sources'] if s['type'] in u.get('types', [])]
+    assert all(s in src_ids for s in sets), f"unknown exam set in update {u['id']}"
+    single = [shortids[s] for s in u.get('questions', [])]
+    n = sum(1 for q in bank['questions'] if q['source'] in set(sets)) + sum(1 for i in single if Q[i]['source'] not in set(sets))
+    log.append({k: v for k, v in {'id': u['id'], 'date': u['date'], 'title': u['title'], 'items': u.get('items', []),
+                                  'sets': sets, 'q': single, 'n': n}.items() if v or k in ('n', 'items')})
+bank['updates'] = log
+print('update log:', len(log), 'entries |', ', '.join(f"{u['id']} +{u['n']}" for u in log if u['n']))
+
 payload = json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 tpl = open('template.html', encoding='utf8').read()
 assert '__BANK_JSON__' in tpl and '/*__CSS__*/' in tpl

@@ -49,6 +49,17 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
+## Update log
+
+- `src/updates.json`, newest first: `id`, `date`, `title`, `items` (short sentences in plain words), and for
+  question uploads the exam sets they brought (`sets`: set ids, or `types`: exam types) and/or single questions
+  (`questions`: short ids). The build counts the questions per entry.
+- Every time new MCQs go into `bank.json`, add an entry at the top: today's date, a title naming the exam
+  (e.g. "Cardio midterm 2026–2027"), the new set ids, and a line on where they come from. New features get
+  an entry too. Returning visitors then see "+N new" on the question count at the top of the homepage until they
+  open the log; the log has a button to practise an entry's questions (up to 300).
+- First-time visitors start with nothing marked new (`S.seenUpdate` is set to the newest entry).
+
 ## Data notes
 
 - Question fields: `id`, `topic`, `source` (exam set), `n`, `stem`, `options` (HTML), `answer` (option indices),
@@ -66,6 +77,6 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node quest.js; node screenshots.js   # screenshots land in src/tests/shots/
+node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

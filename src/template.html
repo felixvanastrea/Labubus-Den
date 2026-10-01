@@ -76,6 +76,7 @@
   const BANK_ORDER = new Map(BANK.questions.map((q, i) => [q.id, i]));
   const SRC_ORDER = new Map(BANK.sources.map((s, i) => [s.id, i]));
   const REPS = BANK.repeats || [];
+  const UPDATES = BANK.updates || [];   // the update log, newest first
   const repOf = q => (q && q.rep !== undefined && q.rep !== null) ? REPS[q.rep] : null;
   // versions of a repeated question, leaving out word-for-word copies
   const versions = r => r.q.filter(id => !Q.get(id).dupOf);
@@ -123,7 +124,7 @@
   const ARCH_IN = 'M10 124V60A54 54 0 0 1 50 7.85A54 54 0 0 1 90 60V124';
 
   // ---------- state ----------
-  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
+  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
   let storageOK = false;
   function load() {
     try {
@@ -157,7 +158,10 @@
     if (S.topicId && !TOPIC.has(S.topicId)) S.topicId = null;
     if ((S.view === 'quiz' || S.view === 'done') && !S.session) S.view = 'home';
     if (S.view === 'topic' && !S.topicId) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats'].includes(S.view)) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates'].includes(S.view)) S.view = 'home';
+    if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
+    // a first visit starts with nothing new: everything in the log is new to them anyway
+    if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
     if (S.view === 'repeats' && !REPS.length) S.view = 'home';
     if (typeof S.q !== 'string') S.q = '';
     if (S.aspect !== 'all' && !(S.aspect in ASPECT)) S.aspect = null;
@@ -245,6 +249,7 @@
     const inQuiz = S.view === 'quiz' || S.view === 'done';
     let restore = false;
     if (sess && inQuiz && sess.from === 'repeats') { S.view = 'repeats'; restore = true; }
+    else if (sess && inQuiz && sess.from === 'updates') { S.view = 'updates'; restore = true; }
     else if (sess && inQuiz && (sess.from === 'search' || sess.from === 'quest')) { S.view = 'home'; restore = true; }
     else if (sess && sess.topic !== '*' && inQuiz) { S.topicId = sess.topic; S.view = 'topic'; }
     else S.view = 'home';
@@ -363,6 +368,7 @@
     else if (S.view === 'done' && S.session) renderDone();
     else if (S.view === 'topic' && S.topicId) renderTopic();
     else if (S.view === 'repeats') renderRepeats();
+    else if (S.view === 'updates') renderUpdates();
     else renderHome();
     const nstrip = app.querySelector('.bar ~ main .strip');
     if (nstrip) {
@@ -658,8 +664,9 @@
             <button type="button" data-act="goto-modules">Modules</button>
             <button type="button" data-act="repeats">Most repeated</button>
             <button type="button" data-act="focus-search">Search</button>
+            <button type="button" data-act="updates">Updates</button>
           </div>
-          <span class="navstat mono num">${fmtN(BANK.questions.length)} questions</span>
+          <button class="navstat mono num" type="button" data-act="updates" title="Update log">${fmtN(BANK.questions.length)} questions${newPill()}</button>
         </nav>
         <div class="hero">
           ${astrolabeSVG()}
@@ -755,6 +762,7 @@
     return `<footer class="foot">
       <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
+      <p><button class="foot-btn" type="button" data-act="updates">Update log</button></p>
       <p>Made by the Labubu</p>
     </footer>`;
   }
@@ -1244,6 +1252,81 @@
     let asp = S.aspect === 'all' ? null : (S.aspect || res.implied);
     if (asp && !cnt[asp]) asp = null;
     return `“${(S.q || '').trim()}”${asp ? ' · ' + (ASPECT[asp] || '') : ''}`;
+  }
+
+  // ---------- update log ----------
+  // What changed and when (updates.json). Entries that brought questions list their exam sets; the question count
+  // at the top of the homepage shows how many are new since you last opened the log.
+  const UPD_QS = new Map();
+  function updateQs(u) {
+    if (!UPD_QS.has(u.id)) {
+      const sets = new Set(u.sets || []), single = new Set(u.q || []);
+      UPD_QS.set(u.id, BANK.questions.filter(q => sets.has(q.source) || single.has(q.id)));
+    }
+    return UPD_QS.get(u.id);
+  }
+  function unseenUpdates() {
+    const i = UPDATES.findIndex(u => u.id === S.seenUpdate);
+    return i > 0 ? UPDATES.slice(0, i) : [];
+  }
+  function newPill() {
+    const fresh = unseenUpdates();
+    if (!fresh.length) return '';
+    const n = fresh.reduce((a, u) => a + (u.n || 0), 0);
+    return `<span class="new-pill">${n ? `+${fmtN(n)} new` : 'New'}</span>`;
+  }
+  let freshIds = new Set();
+  function openUpdates() {
+    if (!UPDATES.length) return;
+    freshIds = new Set(unseenUpdates().map(u => u.id));   // highlighted this time, then they count as seen
+    S.seenUpdate = UPDATES[0].id;
+    S.view = 'updates'; confirmReset = false; save(); render(true, null, 'nav');
+  }
+  function practiceUpdate(id) {
+    const u = UPDATES.find(x => x.id === id); if (!u) return;
+    const qs = updateQs(u); if (!qs.length) return;
+    const mods = new Set(qs.map(q => q.topic));
+    startList(qs.map(q => q.id), -1, { topic: mods.size === 1 ? qs[0].topic : '*', title: `New · ${u.title}`, from: 'updates' });
+  }
+  const SET_WORDS = { Midterms: ['midterm', 'midterms'], Mock: ['mock exam', 'mock exams'], Finals: ['final', 'finals'], 'Second session': ['second session', 'second sessions'], Collected: ['set of collected questions', 'sets of collected questions'] };
+  function updDate(iso) { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); }
+  function renderUpdates() {
+    let lastDate = '';
+    const rows = UPDATES.map(u => {
+      const qs = updateQs(u), date = updDate(u.date), fresh = freshIds.has(u.id);
+      const showDate = u.date !== lastDate; lastDate = u.date;
+      const sets = (u.sets || []).map(id => SRC.get(id)).filter(Boolean);
+      let where = '';
+      if (sets.length && sets.length <= 6) {
+        where = `<ul class="le-sets">${sets.map(s => `<li><span>${esc(s.label)}</span><span class="le-mod">${esc((TOPIC.get(s.topic) || { name: '' }).name)} · ${fmtN(questionsFor('all', s.topic, s.id).length)} Qs</span></li>`).join('')}</ul>`;
+      } else if (sets.length) {
+        const per = TYPES.map(ty => [ty, sets.filter(s => s.type === ty).length]).filter(([, n]) => n);
+        where = `<p class="le-mix">${per.map(([ty, n]) => { const w = SET_WORDS[ty] || [ty, ty]; return `${n} ${esc(n === 1 ? w[0] : w[1])}`; }).join(' · ')}</p>`;
+      }
+      return `<li class="log-entry${fresh ? ' is-new' : ''}">
+        <div class="le-date">${showDate ? `<span class="le-day num">${date.getDate()}</span><span class="le-month">${esc(date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))}</span>` : ''}</div>
+        <div class="le-body">
+          <p class="le-kind">${qs.length ? `+${fmtN(qs.length)} questions` : 'New on the site'}${fresh ? ' · <b>new since your last visit</b>' : ''}</p>
+          <h2 class="le-title">${esc(u.title)}</h2>
+          ${u.items && u.items.length ? `<ul class="le-items">${u.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : ''}
+          ${where}
+          ${qs.length && qs.length <= 300 ? `<div class="le-actions"><button class="btn" type="button" data-upd="${esc(u.id)}">Practice ${qs.length === 1 ? 'it' : `these ${fmtN(qs.length)}`} ${ICON.next}</button></div>` : ''}
+        </div>
+      </li>`;
+    }).join('');
+    app.innerHTML = `
+      ${barHTML('home', 'Home', 'Update log')}
+      <main class="wrap narrow stage">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">What’s new in Labubu’s Den</p>
+            <h1 class="h1">Update log</h1>
+            <p class="ph-lead">New questions and new features, newest first. When new questions come in, they show up here with their date and where they come from.</p>
+          </div>
+        </header>
+        <ol class="log">${rows}</ol>
+        ${footHTML()}
+      </main>`;
   }
 
   // ---------- most repeated ----------
@@ -1836,6 +1919,7 @@
     if (t.dataset.repmod) { S.repMod = t.dataset.repmod; save(); render(false); return; }
     if (t.dataset.cluster !== undefined) { practiceCluster(+t.dataset.cluster, +t.dataset.rank || 1); return; }
     if (t.dataset.qtopic !== undefined) { startQuest(+t.dataset.qtopic, false, 'go'); return; }
+    if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
     switch (t.dataset.act) {
       case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
       case 'goto-modules': {
@@ -1855,6 +1939,7 @@
       case 'practice-top': practiceTop(+t.dataset.n || 25); break;
       case 'practice-repeated': practiceRepeated(S.topicId); break;
       case 'quest-go': questGo(); break;
+      case 'updates': openUpdates(); break;
       case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;
       case 'back': goBack(); break;
