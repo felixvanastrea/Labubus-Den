@@ -1,0 +1,1525 @@
+<title>EFM3 MCQ Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<script>
+/* pick the skin before anything paints, so the page never flashes the wrong one */
+(function () {
+  var skin = 'gothic';
+  try { var v = localStorage.getItem('efm3-mcq-skin'); if (v === 'classic' || v === 'gothic') skin = v; } catch (e) {}
+  document.documentElement.setAttribute('data-skin', skin);
+})();
+</script>
+<style>/*__CSS__*/</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-window" cx="50%" cy="34%" r="78%">
+      <stop offset="0" style="stop-color: var(--plate-2)"/>
+      <stop offset="1" style="stop-color: var(--deep)"/>
+    </radialGradient>
+    <radialGradient id="g-halo">
+      <stop offset="0" style="stop-color: var(--ink); stop-opacity: .5"/>
+      <stop offset="1" style="stop-color: var(--ink); stop-opacity: 0"/>
+    </radialGradient>
+  </defs>
+</svg>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="paper" aria-hidden="true"></div>
+<div id="app"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="theme-sheet" id="theme-sheet" hidden>
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h">
+    <div class="sheet-head">
+      <h2 id="sheet-h">Theme</h2>
+      <button class="sheet-x" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg></button>
+    </div>
+    <p class="sheet-note">Changes how the whole site looks. Your answers stay as they are.</p>
+    <div class="theme-list" id="theme-list"></div>
+    <div class="intro-row" id="intro-row"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb-bar">
+    <span id="lb-tip">Tap the figure to see it full size</span>
+    <button class="btn" id="lb-close" type="button">Close</button>
+  </div>
+  <div class="lb-body" id="lb-body"><img id="lb-img" alt="Figure from the notes, enlarged"></div>
+</div>
+
+<script type="application/json" id="bank">__BANK_JSON__</script>
+<script>
+(() => {
+  const BANK = JSON.parse(document.getElementById('bank').textContent);
+  const Q = new Map(BANK.questions.map(q => [q.id, q]));
+  const SRC = new Map(BANK.sources.map(s => [s.id, s]));
+  const TOPIC = new Map(BANK.topics.map(t => [t.id, t]));
+  const CASE = new Map((BANK.cases || []).map(c => [c.id, c]));
+  const TYPES = BANK.types;
+  const TYPE_GROUP = { Midterms: 'Midterms', Mock: 'Mock exams', Finals: 'Finals', 'Second session': 'Second session', Collected: 'Collected questions' };
+  const LETTERS = 'ABCDEFGH';
+  const KEY_ORDER = ['official', 'proposed', 'claude', 'none'];
+  const KEY_SHORT = { official: 'Official', proposed: 'Proposed', claude: 'Claude', none: 'No key' };
+  const KEY_LONG = { official: 'Official answer', proposed: 'Proposed answer', claude: "Claude's suggested answer", none: 'No answer key' };
+  const KEY_LEGEND = {
+    official: 'Official answer key',
+    proposed: 'Proposed answers, green in the doc. Not official, so double-check.',
+    claude: "Nothing was highlighted in the doc, so these are Claude's suggested answers, each with a short reason. Check them against your course.",
+    none: "Nothing was highlighted in the doc, so these can't be graded yet"
+  };
+  const STORE_KEY = 'efm3-mcq-bank-v1';
+  const ICON = {
+    check: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
+    cross: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>',
+    back: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5L6.5 10l5.5 5.5"/></svg>',
+    next: '<svg class="fwd" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5l5.5 5.5L8 15.5"/></svg>',
+    shuffle: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h3.2c1.4 0 2.6.7 3.4 1.8l1.8 2.4c.8 1.1 2 1.8 3.4 1.8H17M3 14h3.2c1.4 0 2.6-.7 3.4-1.8M14.5 3.5L17 6l-2.5 2.5M14.5 11.5L17 14l-2.5 2.5M11.4 7.8c.8-1.1 2-1.8 3.4-1.8H17"/></svg>',
+    search: '<svg class="s-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.8 12.8l4.4 4.4"/></svg>',
+    repeat: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9V8a3 3 0 013-3h9.5M13.5 2.5L16 5l-2.5 2.5M16.5 11v1a3 3 0 01-3 3H4M6.5 17.5L4 15l2.5-2.5"/></svg>',
+    theme: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 3a7 7 0 010 14z" fill="currentColor" stroke="none"/></svg>',
+    tick: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>'
+  };
+  // ---------- skins ----------
+  // Each skin is a stylesheet scoped under html[data-skin] plus its own home page; every other screen is shared.
+  // To add one: a css/<id>.css file, an entry here, and a home function in HOME.
+  const SKINS = [
+    { id: 'gothic', name: 'Gothic', note: 'Night sky, old paper and constellations. Always dark.',
+      pv: '<svg viewBox="0 0 120 76" aria-hidden="true"><rect width="120" height="76" fill="#1b1a18"/><g fill="#ece3d1"><circle cx="12" cy="10" r=".7" opacity=".6"/><circle cx="30" cy="22" r=".5" opacity=".5"/><circle cx="96" cy="14" r=".8" opacity=".7"/><circle cx="108" cy="40" r=".5" opacity=".5"/><circle cx="18" cy="52" r=".6" opacity=".5"/><circle cx="84" cy="64" r=".5" opacity=".4"/><circle cx="50" cy="8" r=".5" opacity=".5"/></g><path d="M44 76V44a16 16 0 0132 0v32" fill="#0e0d0c" stroke="#5a5348" stroke-width=".8"/><g stroke="#c6bdac" stroke-width=".5" opacity=".8"><path d="M54 40l6 8 6-6 4 10M60 48l-2 12"/></g><g fill="#ece3d1"><circle cx="54" cy="40" r="1.3"/><circle cx="60" cy="48" r="1"/><circle cx="66" cy="42" r=".9"/><circle cx="70" cy="52" r="1"/><circle cx="58" cy="60" r=".9"/></g><path d="M100 20l-14 7" stroke="#ece3d1" stroke-width=".7" stroke-linecap="round" opacity=".7"/><text x="8" y="70" fill="#ece3d1" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="13">EFM3</text></svg>' },
+    { id: 'classic', name: 'Classic', note: 'The original answer-sheet look. Follows your light or dark mode.',
+      pv: '<svg viewBox="0 0 120 76" aria-hidden="true"><rect width="120" height="76" fill="#f3f5f8"/><path d="M60 0h60v76H76z" fill="#0d1118"/><rect x="10" y="10" width="100" height="58" rx="5" fill="#fff" stroke="#dce1e9"/><rect x="18" y="18" width="46" height="7" rx="1.5" fill="#151a23"/><rect x="18" y="30" width="70" height="3" rx="1.5" fill="#c4cbd7"/><g stroke-width="1.4"><circle cx="24" cy="50" r="5" fill="none" stroke="#c4cbd7"/><circle cx="38" cy="50" r="5" fill="#2447c5" stroke="#2447c5"/><circle cx="52" cy="50" r="5" fill="none" stroke="#c4cbd7"/><circle cx="66" cy="50" r="5" fill="#2447c5" stroke="#2447c5"/></g><rect x="78" y="46" width="24" height="8" rx="4" fill="#e1f3e8"/></svg>' }
+  ];
+  const SKIN_KEY = 'efm3-mcq-skin';
+  const INTRO_KEY = 'efm3-mcq-intro';
+  let skin = SKINS.some(s => s.id === document.documentElement.dataset.skin) ? document.documentElement.dataset.skin : 'gothic';
+  document.documentElement.dataset.skin = skin;
+  const skinName = () => (SKINS.find(s => s.id === skin) || SKINS[0]).name;
+  function introOn() { try { return localStorage.getItem(INTRO_KEY) !== 'off'; } catch (e) { return true; } }
+  const CASE_OF = q => (q.case && CASE.has(q.case)) ? CASE.get(q.case) : null;
+  const TOPIC_SHORT = t => t.name.split(/\s+/)[0];
+  const BANK_ORDER = new Map(BANK.questions.map((q, i) => [q.id, i]));
+  const SRC_ORDER = new Map(BANK.sources.map((s, i) => [s.id, i]));
+  const REPS = BANK.repeats || [];
+  const repOf = q => (q && q.rep !== undefined && q.rep !== null) ? REPS[q.rep] : null;
+  // versions of a repeated question, leaving out word-for-word copies
+  const versions = r => r.q.filter(id => !Q.get(id).dupOf);
+  // the version shown for a repeated question: the first one in exam order (usually the latest finals)
+  const repQ = r => Q.get(versions(r)[0] || r.q[0]);
+  function moduleRepeated(topicId) {
+    const out = [];
+    for (const r of REPS) if (Q.get(r.q[0]).topic === topicId) out.push(...versions(r));
+    return out;
+  }
+  const ASPECT = BANK.aspects || {};
+  const ASPECT_SHORT = { C: 'Signs & symptoms', X: 'Diagnosis', T: 'Treatment', E: 'Causes & risk factors', K: 'Complications', V: 'Prevention', P: 'Mechanisms', G: 'General' };
+  const ASPECT_ORDER = ['C', 'X', 'T', 'E', 'K', 'V', 'P', 'G'];
+  const reduceMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  // Each module's constellation, drawn inside a pointed-arch window (viewBox 100 x 124).
+  // p: stars (the first is the brightest), e: lines between stars.
+  const ART = {
+    'respiratory-system-diseases': { // trachea, bronchi and the two lungs
+      p: [[50, 24], [50, 46], [39, 54], [29, 64], [24, 82], [41, 74], [61, 54], [71, 64], [76, 82], [59, 74], [21, 100], [37, 99], [79, 100], [63, 99]],
+      e: [[0, 1], [1, 2], [2, 3], [3, 4], [2, 5], [1, 6], [6, 7], [7, 8], [6, 9], [4, 10], [10, 11], [11, 5], [8, 12], [12, 13], [13, 9]]
+    },
+    'cardio-vascular-system-disease': { // a heart
+      p: [[50, 97], [50, 46], [40, 34], [27, 36], [20, 50], [24, 66], [36, 82], [64, 82], [76, 66], [80, 50], [73, 36], [60, 34]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0], [0, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 1]]
+    },
+    'digestive-system-disease': { // oesophagus, stomach, duodenum
+      p: [[73, 60], [44, 21], [46, 40], [52, 52], [64, 50], [75, 75], [67, 89], [53, 95], [41, 90], [37, 80], [46, 73], [29, 98], [27, 110]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 0], [0, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 3], [8, 11], [11, 12]]
+    },
+    'dermatology': { // an open hand
+      p: [[48, 30], [36, 106], [62, 106], [33, 84], [66, 84], [22, 70], [17, 56], [38, 70], [34, 40], [48, 67], [57, 68], [61, 37], [65, 73], [73, 50]],
+      e: [[1, 2], [1, 3], [2, 4], [3, 5], [5, 6], [3, 7], [7, 8], [7, 9], [9, 0], [9, 10], [10, 11], [10, 12], [12, 13], [12, 4]]
+    },
+    'endocrinology': { // the thyroid, a butterfly
+      p: [[50, 26], [43, 40], [33, 51], [29, 68], [34, 84], [44, 80], [47, 63], [57, 40], [67, 51], [71, 68], [66, 84], [56, 80], [53, 63]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 1], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 7], [6, 12]]
+    },
+    'technical-communication': { // a speech bubble
+      p: [[50, 64], [26, 44], [74, 44], [82, 54], [82, 72], [74, 82], [48, 82], [34, 96], [36, 82], [26, 82], [18, 72], [18, 54], [38, 64], [62, 64]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 1]]
+    }
+  };
+  const ARCH_OUT = 'M6 124V60A58 58 0 0 1 50 3.72A58 58 0 0 1 94 60V124';
+  const ARCH_IN = 'M10 124V60A54 54 0 0 1 50 7.85A54 54 0 0 1 90 60V124';
+
+  // ---------- state ----------
+  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
+  let storageOK = false;
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      storageOK = true;
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === 'object') S = Object.assign(S, saved);
+      }
+    } catch (e) { storageOK = false; }
+    sanitize();
+  }
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); storageOK = true; } catch (e) { storageOK = false; }
+  }
+  function sanitize() {
+    if (!S.answers || typeof S.answers !== 'object') S.answers = {};
+    for (const id of Object.keys(S.answers)) if (!Q.has(id)) delete S.answers[id];
+    if (S.session) {
+      const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
+      S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
+      S.session.order = (S.session.order || S.session.qids).filter(id => Q.has(id));
+      if (S.session.set && !SRC.has(S.session.set)) S.session.set = null;
+      if (!S.session.qids.length) S.session = null;
+      else S.session.idx = Math.min(Math.max(0, S.session.idx | 0), S.session.qids.length - 1);
+    }
+    if (S.type !== 'all' && !TYPES.includes(S.type)) S.type = 'all';
+    if (S.topicId && !TOPIC.has(S.topicId)) S.topicId = null;
+    if ((S.view === 'quiz' || S.view === 'done') && !S.session) S.view = 'home';
+    if (S.view === 'topic' && !S.topicId) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats'].includes(S.view)) S.view = 'home';
+    if (S.view === 'repeats' && !REPS.length) S.view = 'home';
+    if (typeof S.q !== 'string') S.q = '';
+    if (S.aspect !== 'all' && !(S.aspect in ASPECT)) S.aspect = null;
+    if (S.repMod !== 'all' && !TOPIC.has(S.repMod)) S.repMod = 'all';
+    if (typeof S.scrollBack !== 'number') S.scrollBack = 0;
+  }
+
+  // ---------- helpers ----------
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const keyOf = q => q.key || 'none';
+  const letters = arr => arr.map(i => LETTERS[i]).join(', ');
+  const fmtN = n => n.toLocaleString('en-US');
+  const typeOf = q => (SRC.get(q.source) || {}).type;
+  function questionsFor(type, topicId, setId) {
+    return BANK.questions.filter(q => (!setId || q.source === setId) && (type === 'all' || typeOf(q) === type) && (topicId === '*' || q.topic === topicId));
+  }
+  function result(q) {
+    const a = S.answers[q.id];
+    if (!q.answer.length) return 'nokey';
+    if (!a || !a.checked) return a && a.sel && a.sel.length ? 'draft' : 'todo';
+    return a.correct ? 'right' : 'wrong';
+  }
+  function isCorrect(q, sel) {
+    const s = [...sel].sort((x, y) => x - y), k = [...q.answer].sort((x, y) => x - y);
+    return s.length === k.length && s.every((v, i) => v === k[i]);
+  }
+  function stats(qs) {
+    let right = 0, wrong = 0, keyed = 0;
+    for (const q of qs) {
+      const r = result(q);
+      if (r !== 'nokey') keyed++;
+      if (r === 'right') right++;
+      if (r === 'wrong') wrong++;
+    }
+    return { total: qs.length, keyed, right, wrong, left: keyed - right - wrong, nokey: qs.length - keyed };
+  }
+  function keyMix(qs) {
+    const c = {};
+    for (const q of qs) c[keyOf(q)] = (c[keyOf(q)] || 0) + 1;
+    return KEY_ORDER.filter(k => c[k]).map(k => [k, c[k]]);
+  }
+  function setLabel(q) { const s = SRC.get(q.source); return s ? s.label : ''; }
+  function sessionTitle(sess) {
+    const base = sess.topic === '*' ? 'All modules' : (TOPIC.get(sess.topic) || {}).name || 'Questions';
+    const parts = [base];
+    if (sess.title) parts.splice(0, 1, sess.title);
+    else if (sess.set && SRC.has(sess.set)) parts.push(SRC.get(sess.set).label);
+    else if (sess.type !== 'all') parts.push(TYPE_GROUP[sess.type] || sess.type);
+    if (sess.mode === 'mistakes') parts.push('mistakes');
+    return parts.join(' · ');
+  }
+  function shuffled(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }
+  function stripTags(h) { const d = document.createElement('div'); d.innerHTML = h; return d.textContent; }
+
+  // ---------- actions ----------
+  function startSession(topicId, setId) {
+    const qs = questionsFor(setId ? 'all' : S.type, topicId, setId);
+    if (!qs.length) return;
+    const qids = qs.map(q => q.id);
+    const idx = qs.findIndex(q => ['todo', 'draft'].includes(result(q)));
+    S.session = { topic: topicId, type: setId ? 'all' : S.type, set: setId || null, mode: 'all', qids, order: qids.slice(), shuffle: false, idx: Math.max(0, idx) };
+    S.view = idx === -1 ? 'done' : 'quiz';
+    save(); render(true, null, 'nav');
+  }
+  function openTopic(topicId) { S.topicId = topicId; S.view = 'topic'; confirmReset = false; save(); render(true, null, 'nav'); }
+  function retryMistakes() {
+    const sess = S.session; if (!sess) return;
+    const wrong = sess.order.filter(id => result(Q.get(id)) === 'wrong');
+    if (!wrong.length) return;
+    wrong.forEach(id => delete S.answers[id]);
+    S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0 });
+    S.view = 'quiz'; save(); render(true, null, 'nav');
+  }
+  function restartSession() {
+    const sess = S.session; if (!sess) return;
+    sess.order.forEach(id => delete S.answers[id]);
+    sess.idx = 0; S.view = 'quiz'; save(); render(true, null, 'nav');
+  }
+  function goBack() {
+    const sess = S.session;
+    const inQuiz = S.view === 'quiz' || S.view === 'done';
+    let restore = false;
+    if (sess && inQuiz && sess.from === 'repeats') { S.view = 'repeats'; restore = true; }
+    else if (sess && inQuiz && sess.from === 'search') { S.view = 'home'; restore = true; }
+    else if (sess && sess.topic !== '*' && inQuiz) { S.topicId = sess.topic; S.view = 'topic'; }
+    else S.view = 'home';
+    save();
+    render(true, null, 'back', () => { if (restore && S.scrollBack) window.scrollTo(0, S.scrollBack); });
+  }
+  // practice an explicit list of questions (search results, repeated questions)
+  // idx === -1: start at the first question not answered yet
+  function startList(qids, idx, meta) {
+    if (!qids.length) return;
+    if (idx === -1) idx = Math.max(0, qids.findIndex(id => ['todo', 'draft'].includes(result(Q.get(id)))));
+    S.scrollBack = window.scrollY;
+    S.session = Object.assign({ topic: '*', type: 'all', set: null, mode: 'all', shuffle: false }, meta, { qids: qids.slice(), order: qids.slice(), idx: Math.min(Math.max(0, idx | 0), qids.length - 1) });
+    S.view = 'quiz'; save(); render(true, null, 'nav');
+  }
+  function openRepeats() { S.view = 'repeats'; confirmReset = false; save(); render(true, null, 'nav'); }
+  function goHome() { S.view = 'home'; confirmReset = false; save(); render(true, null, 'back'); }
+  function resume() { if (S.session) { S.view = 'quiz'; save(); render(true, null, 'nav'); } }
+  function curQ() { return Q.get(S.session.qids[S.session.idx]); }
+  // picking an answer updates the page in place, so the selection animates instead of the whole card redrawing
+  function toggle(i) {
+    const q = curQ(); if (!q || i >= q.options.length) return;
+    const a = S.answers[q.id] || (S.answers[q.id] = { sel: [], checked: false });
+    if (a.checked) return;
+    const k = a.sel.indexOf(i);
+    if (k === -1) a.sel.push(i); else a.sel.splice(k, 1);
+    a.sel.sort((x, y) => x - y);
+    save();
+    const btn = app.querySelector(`.opt[data-opt="${i}"]`);
+    if (!btn) { render(false); return; }
+    btn.setAttribute('aria-pressed', String(a.sel.includes(i)));
+    const prim = app.querySelector('[data-act="primary"]');
+    if (prim && q.answer.length) prim.disabled = !a.sel.length;
+    const cell = app.querySelector('.strip .cell.cur');
+    if (cell) cell.classList.toggle('draft', a.sel.length > 0);
+  }
+  let justChecked = false;
+  function check() {
+    const q = curQ(); const a = S.answers[q.id];
+    if (!q.answer.length || !a || !a.sel.length || a.checked) return;
+    a.checked = true; a.correct = isCorrect(q, a.sel);
+    save();
+    justChecked = true;
+    render(false, 'verdict');
+    justChecked = false;
+  }
+  function tryAgain() { const q = curQ(); delete S.answers[q.id]; save(); render(false); }
+  function go(delta) {
+    const sess = S.session; const n = sess.idx + delta;
+    if (n < 0) return;
+    if (n >= sess.qids.length) { S.view = 'done'; save(); render(true, null, 'nav'); return; }
+    sess.idx = n; save(); render(true, null, delta > 0 ? 'next' : 'prev');
+  }
+  function jump(i) {
+    const from = S.view === 'quiz' ? S.session.idx : -1;
+    S.session.idx = i; S.view = 'quiz'; save();
+    render(true, null, from === -1 ? 'nav' : (i >= from ? 'next' : 'prev'));
+  }
+  function toggleShuffle() {
+    const sess = S.session; const cur = sess.qids[sess.idx];
+    sess.shuffle = !sess.shuffle;
+    if (sess.shuffle) { sess.qids = shuffled(sess.order); sess.idx = 0; }
+    else { sess.qids = sess.order.slice(); sess.idx = Math.max(0, sess.qids.indexOf(cur)); }
+    save(); render(true, null, 'next');
+  }
+  function primaryAction() {
+    const q = curQ(); const a = S.answers[q.id];
+    if (!q.answer.length || (a && a.checked)) go(1);
+    else if (a && a.sel.length) check();
+  }
+
+  // ---------- rendering ----------
+  const app = document.getElementById('app');
+  let confirmReset = false;
+  let lastKey = null;
+  function screenKey() {
+    if (S.view === 'quiz' && S.session) return 'quiz:' + S.session.idx + ':' + S.session.qids[S.session.idx];
+    if (S.view === 'done') return 'done';
+    if (S.view === 'topic') return 'topic:' + S.topicId;
+    return S.view;
+  }
+  // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
+  function render(scrollTop, focusWhat, vt, after) {
+    const key = screenKey();
+    const changed = lastKey !== null && key !== lastKey;
+    lastKey = key;
+    const run = () => { paint(scrollTop, focusWhat); if (after) after(); };
+    const animate = changed && vt && !reduceMotion();
+    if (animate && document.startViewTransition) {
+      const root = document.documentElement;
+      root.dataset.vt = vt;
+      try {
+        const t = document.startViewTransition(run);
+        const quiet = () => {};
+        if (t.ready) t.ready.catch(quiet);
+        if (t.updateCallbackDone) t.updateCallbackDone.catch(quiet);
+        t.finished.catch(quiet).finally(() => { if (root.dataset.vt === vt) delete root.dataset.vt; });
+        return;
+      } catch (e) { delete root.dataset.vt; }
+    }
+    run();
+    if (animate) {
+      app.classList.remove('enter-nav', 'enter-back', 'enter-next', 'enter-prev');
+      void app.offsetWidth;
+      app.classList.add('enter-' + vt);
+      clearTimeout(render.t);
+      render.t = setTimeout(() => app.classList.remove('enter-' + vt), 700);
+    }
+  }
+  function paint(scrollTop, focusWhat) {
+    const strip = app.querySelector('.strip');
+    const keepScroll = !scrollTop && strip ? strip.scrollLeft : null;
+    document.body.dataset.view = S.view;
+    if (S.view === 'quiz' && S.session) renderQuiz(focusWhat);
+    else if (S.view === 'done' && S.session) renderDone();
+    else if (S.view === 'topic' && S.topicId) renderTopic();
+    else if (S.view === 'repeats') renderRepeats();
+    else (HOME[skin] || homeGothic)();
+    const nstrip = app.querySelector('.bar ~ main .strip');
+    if (nstrip) {
+      if (keepScroll !== null) nstrip.scrollLeft = keepScroll;
+      const cur = nstrip.querySelector('.cur');
+      if (cur) {
+        const l = cur.offsetLeft - nstrip.offsetLeft, r = l + cur.offsetWidth;
+        if (l < nstrip.scrollLeft || r > nstrip.scrollLeft + nstrip.clientWidth) nstrip.scrollLeft = l - nstrip.clientWidth / 2 + cur.offsetWidth / 2;
+      }
+    }
+    if (scrollTop) window.scrollTo(0, 0);
+  }
+
+  function typeTabs() {
+    const scope = S.view === 'topic' ? S.topicId : '*';
+    const tabs = ['all', ...TYPES].map(t => [t, questionsFor(t, scope).length]).filter(([t, n]) => n || t === 'all' || t === S.type);
+    return `<div class="seg" role="tablist" aria-label="Exam type">
+      ${tabs.map(([t, n]) => `<button type="button" role="tab" aria-selected="${S.type === t}" data-type="${esc(t)}">${t === 'all' ? 'All exams' : esc(t)} <span class="n">${fmtN(n)}</span></button>`).join('')}
+    </div>`;
+  }
+  function barLine(st) {
+    const pct = v => st.keyed ? (100 * v / st.keyed).toFixed(2) : 0;
+    return `<span class="bar-line" aria-hidden="true"><i class="r" style="width:${pct(st.right)}%"></i><i class="w" style="width:${pct(st.wrong)}%"></i></span>`;
+  }
+  function metaLine(st) {
+    if (!st.keyed) return 'No answers in the doc yet';
+    if (st.right + st.wrong === 0) return `${fmtN(st.keyed)} to answer`;
+    return `${fmtN(st.right)} right · ${fmtN(st.wrong)} wrong · ${fmtN(st.left)} left`;
+  }
+  function chipsFor(qs) {
+    const mix = keyMix(qs);
+    return mix.map(([k, n]) => `<span class="key ${k}">${KEY_SHORT[k]}${mix.length > 1 ? ` <span class="n">${fmtN(n)}</span>` : ''}</span>`).join('');
+  }
+  function barHTML(backAct, backLabel, title, right) {
+    return `<div class="bar"><div class="wrap">
+      <button class="btn quiet back" type="button" data-act="${backAct}" aria-label="${backLabel ? 'Back to ' + esc(backLabel) : 'Back'}">${ICON.back}${backLabel ? `<span class="bl">${esc(backLabel)}</span>` : ''}</button>
+      <div class="bar-title">${esc(title)}</div>
+      ${right || ''}
+    </div></div>`;
+  }
+
+  // ---------- constellations in arched windows ----------
+  function mulberry(a) {
+    return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  }
+  function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  const inArch = (x, y) => y >= 60 ? (x > 13 && x < 87) : (Math.hypot(x - 64, y - 60) < 51 && Math.hypot(x - 36, y - 60) < 51);
+  // stars light up as the module's questions are answered correctly
+  function windowSVG(topicId, st) {
+    const art = ART[topicId]; if (!art) return '';
+    const rnd = mulberry(hashStr(topicId));
+    let field = '';
+    for (let i = 0; i < 26; i++) {
+      const x = 12 + rnd() * 76, y = 12 + rnd() * 108, r = .22 + rnd() * .42;
+      if (inArch(x, y)) field += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}"/>`;
+    }
+    const f = st && st.keyed ? st.right / st.keyed : 0;
+    const lit = 1 + Math.round(f * (art.p.length - 1));
+    const lines = art.e.map(([a, b], k) => { const [x1, y1] = art.p[a], [x2, y2] = art.p[b]; return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" pathLength="1" style="--d:${k}"/>`; }).join('');
+    const stars = art.p.map(([x, y], k) => {
+      const r = k === 0 ? 2.2 : 1.05 + ((k * 7) % 5) * .17;
+      const on = k < lit;
+      return (on ? `<circle class="halo" cx="${x}" cy="${y}" r="${(r * 4.2).toFixed(1)}"/>` : '') + `<circle class="st${on ? ' lit' : ''}" cx="${x}" cy="${y}" r="${r.toFixed(2)}"/>`;
+    }).join('');
+    return `<svg class="window" viewBox="0 0 100 124" aria-hidden="true" focusable="false">
+      <path class="glass" d="${ARCH_OUT}Z"/>
+      <g class="field">${field}</g>
+      <g class="lines">${lines}</g>
+      <g class="stars">${stars}</g>
+      <path class="frame" d="${ARCH_OUT}"/><path class="frame in" d="${ARCH_IN}"/><path class="sill" d="M6 124H94"/>
+    </svg>`;
+  }
+  function astrolabeSVG() {
+    let ticks = '';
+    for (let d = 0; d < 360; d += 5) {
+      const a = d * Math.PI / 180, r2 = d % 30 === 0 ? 88 : d % 15 === 0 ? 91 : 93.5;
+      ticks += `<line x1="${(Math.cos(a) * 97).toFixed(2)}" y1="${(Math.sin(a) * 97).toFixed(2)}" x2="${(Math.cos(a) * r2).toFixed(2)}" y2="${(Math.sin(a) * r2).toFixed(2)}"/>`;
+    }
+    const ring = BANK.topics.map(t => TOPIC_SHORT(t).toUpperCase()).join('  ✦  ') + '  ✦  EFM3 · SEMESTER 5 · 2025–2026  ✦  ';
+    const rnd = mulberry(5);
+    let dots = '';
+    for (let i = 0; i < 16; i++) { const a = rnd() * 6.283, r = 10 + rnd() * 44; dots += `<circle class="dot" cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" r="${(.5 + rnd() * .9).toFixed(2)}"/>`; }
+    return `<div class="astro" aria-hidden="true"><svg viewBox="-100 -100 200 200" focusable="false">
+      <g class="a-outer">
+        <circle r="98"/><circle r="86"/><circle r="72"/>
+        ${ticks}
+        <path id="astro-ring" d="M0,-79a79,79 0 1,1 0,158a79,79 0 1,1 0,-158" fill="none" stroke="none"/>
+        <text class="ring-text"><textPath href="#astro-ring" textLength="492" lengthAdjust="spacing">${esc(ring)}</textPath></text>
+      </g>
+      <g class="a-inner">
+        <circle r="56" class="dash"/><circle r="30"/>
+        <ellipse rx="56" ry="21" transform="rotate(-23.4)"/>
+        <line x1="-72" y1="0" x2="72" y2="0"/><line x1="0" y1="-72" x2="0" y2="72"/>
+        ${dots}<circle class="dot" r="2.2"/>
+      </g>
+    </svg></div>`;
+  }
+
+  // ---------- home ----------
+  const themeBtn = from => `<button class="theme-btn" type="button" data-act="theme" data-from="${from}" aria-haspopup="dialog">${ICON.theme}<span>Theme</span></button>`;
+
+  // Gothic home: a masthead with the pixel title over a turning astrolabe, search across the Milky Way, arched windows
+  function homeGothic() {
+    const allQs = questionsFor(S.type, '*');
+    const all = stats(allQs);
+    const sess = S.session;
+    const cta = sess
+      ? `<p class="cta-note">Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question ${sess.idx + 1} of ${sess.qids.length}</p>
+         <button class="btn primary" type="button" data-act="resume">Continue ${ICON.next}</button>`
+      : `<p class="cta-note">${fmtN(REPS.length)} questions came up in more than one exam.</p>
+         <button class="btn primary" type="button" data-act="repeats">Start with those ${ICON.next}</button>`;
+    const cards = BANK.topics.map((t, i) => archCard(t, i)).join('');
+    app.innerHTML = `
+      <header class="masthead wrap stage">
+        <nav class="topnav" aria-label="Site">
+          <button class="logo" type="button" data-act="top" aria-label="EFM3 MCQ Bank, back to top"><span class="star" aria-hidden="true">✶</span>EFM3</button>
+          <div class="navlinks">
+            <button type="button" data-act="goto-modules">Modules</button>
+            <button type="button" data-act="repeats">Most repeated</button>
+            <button type="button" data-act="focus-search">Search</button>
+          </div>
+          <div class="nav-end">${themeBtn('top')}</div>
+        </nav>
+        <div class="hero">
+          ${astrolabeSVG()}
+          <p class="caption rise-in" style="--d:0">An archive of past EFM3 exam questions, sorted by module and by exam.</p>
+          <ul class="meta mono rise-in" style="--d:1">
+            <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
+          </ul>
+          <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">EFM3<br>MCQ Bank</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
+          <div class="hero-cta rise-in" style="--d:3">${cta}</div>
+        </div>
+      </header>
+      <section class="intro wrap" aria-label="About this bank">
+        <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
+        <div class="i-body rise-in" style="--d:4">
+          <p class="lede">Every question here comes straight from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
+          <p class="credit">Made by <b>the Labubu</b></p>
+        </div>
+      </section>
+      <section class="skyband" aria-label="Search the questions">
+        <canvas id="milky" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <div class="search" role="search">
+            ${ICON.search}
+            <label class="sr-label" for="q">Search questions by topic</label>
+            <input id="q" type="search" value="${esc(S.q || '')}" placeholder="Search a topic, e.g. acute bronchitis" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+            <button class="s-clear" type="button" data-act="clear-search" aria-label="Clear search"${S.q ? '' : ' hidden'}>${ICON.cross}</button>
+          </div>
+        </div>
+      </section>
+      <p class="sr-label" role="status" id="search-status"></p>
+      <div class="wrap" id="search-results"></div>
+      <div id="home-body" class="stage">
+        <section class="section wrap" id="modules" aria-labelledby="mod-h">
+          <div class="sec-head"><h2 class="h2" id="mod-h">Modules</h2>${typeTabs()}</div>
+          <p class="sec-note">Pick a module, tick every answer you think is right, then check it.</p>
+          <div class="arcade">${cards}</div>
+          <div class="allrow plate">
+            <div class="al-main">
+              <p class="al-title"><span class="h3">All modules</span><span class="al-count num">${fmtN(allQs.length)} questions</span></p>
+              ${barLine(all)}
+              <p class="al-meta">${metaLine(all)}</p>
+              <div class="keys">${chipsFor(allQs)}</div>
+            </div>
+            <div class="al-actions">${resetHTML('all')}<button class="btn primary" type="button" data-start="*">Practice all ${ICON.next}</button></div>
+          </div>
+        </section>
+        ${featureHTML()}
+        ${legendHTML('section wrap legend')}
+      </div>
+      <div class="wrap">${footHTML()}</div>`;
+    updateSearch();
+    paintHome();
+  }
+  function archCard(t, i) {
+    const qs = questionsFor(S.type, t.id);
+    if (!qs.length) return '';
+    const st = stats(qs);
+    const nsets = BANK.sources.filter(s => s.topic === t.id && (S.type === 'all' || s.type === S.type)).length;
+    return `<button type="button" class="arch" data-topic="${esc(t.id)}" style="--k:${i}">
+      ${windowSVG(t.id, stats(questionsFor('all', t.id)))}
+      <span class="a-name">${esc(t.name)}</span>
+      <span class="a-sub"><span class="num">${fmtN(qs.length)}</span> questions · ${nsets} ${nsets === 1 ? 'set' : 'sets'}</span>
+      ${barLine(st)}
+      <span class="a-meta">${metaLine(st)}</span>
+    </button>`;
+  }
+  function featureHTML() {
+    if (!REPS.length) return '';
+    return `<section class="section wrap" aria-labelledby="rep-h">
+      <div class="feature plate">
+        <div class="f-text">
+          <p class="eyebrow">High yield</p>
+          <h2 class="h2" id="rep-h">Most repeated</h2>
+          <p class="f-lead">${fmtN(REPS.length)} questions came up in two or more exam sets, word for word or reworded.</p>
+          <p class="f-body">They're ranked by how many sets they appear in, and every question in the bank shows how many times it was asked.</p>
+          <div><button class="btn primary" type="button" data-act="repeats">Open the list ${ICON.next}</button></div>
+        </div>
+        <div class="f-art" aria-hidden="true"><canvas id="vortex"></canvas><div class="f-num"><b class="num">${REPS.length}</b><span>asked again</span></div></div>
+      </div>
+    </section>`;
+  }
+
+  // Classic home: the original answer-sheet index of modules
+  function homeClassic() {
+    const allQs = questionsFor(S.type, '*');
+    const all = stats(allQs);
+    const line = st => st.keyed ? barLine(st) : '';
+    const rows = [`<li><button type="button" class="topic all" data-start="*">
+      <span class="t-name">All modules</span><span class="t-count">${fmtN(allQs.length)} Qs</span>
+      <span class="t-row">${line(all)}<span class="t-meta">${metaLine(all)}</span></span>
+      <span class="t-keys">${chipsFor(allQs)}</span></button></li>`];
+    for (const t of BANK.topics) {
+      const qs = questionsFor(S.type, t.id);
+      if (!qs.length) continue;
+      const st = stats(qs);
+      const nsets = BANK.sources.filter(s => s.topic === t.id && (S.type === 'all' || s.type === S.type)).length;
+      rows.push(`<li><button type="button" class="topic" data-topic="${esc(t.id)}">
+        <span class="t-name">${esc(t.name)}</span><span class="t-count">${fmtN(qs.length)} Qs</span>
+        <span class="t-sub">${nsets} ${nsets === 1 ? 'set' : 'sets'}</span>
+        <span class="t-row">${line(st)}<span class="t-meta">${metaLine(st)}</span></span>
+        <span class="t-keys">${chipsFor(qs)}</span></button></li>`);
+    }
+    const sess = S.session;
+    const resumeHTML = sess ? `<div class="resume"><p>Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question <span class="mono">${sess.idx + 1}/${sess.qids.length}</span></p>
+      <button class="btn primary" data-act="resume" type="button">Continue ${ICON.next}</button></div>` : '';
+    const overall = all.right + all.wrong
+      ? `<span class="overall"><b>${fmtN(all.right)}</b> right, <b>${fmtN(all.wrong)}</b> wrong out of <b>${fmtN(all.keyed)}</b></span>`
+      : `<span class="overall"><b>${fmtN(all.total)}</b> questions in <b>${BANK.topics.filter(t => questionsFor(S.type, t.id).length).length}</b> modules</span>`;
+    const hot = REPS.length ? `<nav class="index hot" aria-label="Most repeated questions"><ul><li><button type="button" class="topic hot" data-act="repeats">
+      <span class="t-name">${ICON.repeat} Most repeated questions</span><span class="t-count">${fmtN(REPS.length)} Qs</span>
+      <span class="t-sub">Asked again in 2 or more exam sets, word for word or reworded. Short on time? Start here.</span>
+    </button></li></ul></nav>` : '';
+    app.innerHTML = `
+      <div class="wrap stage">
+        <header class="masthead">
+          <div class="topline">
+            <div class="brand">
+              <span class="sheetmark" aria-hidden="true"><i>A</i><i class="on">B</i><i>C</i><i class="on">D</i></span>
+              <h1>EFM3 MCQ Bank</h1>
+            </div>
+            ${themeBtn('top')}
+          </div>
+          <div class="intro">
+            <p>Every question here comes <strong>straight from past EFM3 exams</strong> (midterms, mocks, finals and second sessions) and from the professors' question sets.</p>
+            <p>The answers were <strong>checked against several sources</strong>, and each question shows where its answer comes from. Pick a module, tick every answer you think is right, then check it.</p>
+            <p class="credit">Made by <b>the Labubu</b></p>
+          </div>
+        </header>
+        <div class="search" role="search">
+          ${ICON.search}
+          <label class="sr-label" for="q">Search questions by topic</label>
+          <input id="q" type="search" value="${esc(S.q || '')}" placeholder="Search a topic, e.g. acute bronchitis" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+          <button class="s-clear" type="button" data-act="clear-search" aria-label="Clear search"${S.q ? '' : ' hidden'}>${ICON.cross}</button>
+        </div>
+        <p class="sr-label" role="status" id="search-status"></p>
+        <div id="search-results"></div>
+        <div id="home-body">
+          <div class="controls">${typeTabs()}</div>
+          <div class="statrow">${overall}${resetHTML('all')}</div>
+          ${resumeHTML}
+          ${hot}
+          <nav class="index" aria-label="Modules"><ul>${rows.join('')}</ul></nav>
+          ${legendHTML('legend')}
+        </div>
+        ${footHTML()}
+      </div>`;
+    updateSearch();
+  }
+  const HOME = { gothic: homeGothic, classic: homeClassic };
+
+  function legendHTML(cls) {
+    return `<section class="${cls}" aria-labelledby="legend-h">
+      <h2 class="h3" id="legend-h">Where the answers come from</h2>
+      <ul>${keyMix(BANK.questions).map(([k]) => `<li><span class="key ${k}">${KEY_SHORT[k]}</span><span>${esc(KEY_LEGEND[k])}</span></li>`).join('')}</ul>
+    </section>`;
+  }
+  function footHTML() {
+    return `<footer class="foot">
+      <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
+      <p><button class="theme-link" type="button" data-act="theme" data-from="foot" aria-haspopup="dialog">Theme: ${esc(skinName())}</button></p>
+      <p>Made by the Labubu</p>
+    </footer>`;
+  }
+  // scope: 'all' or a module id
+  function resetHTML(scope) {
+    const ids = scope === 'all' ? Object.keys(S.answers) : Object.keys(S.answers).filter(id => (Q.get(id) || {}).topic === scope);
+    if (!ids.length) return '';
+    if (confirmReset === scope) {
+      const what = scope === 'all' ? 'every answer saved on this device' : `your ${fmtN(ids.length)} saved ${ids.length === 1 ? 'answer' : 'answers'} in this module`;
+      return `<span class="confirm" role="alert">Erase ${what}? <button class="btn danger" type="button" data-act="reset-yes">Erase</button><button class="btn quiet" type="button" data-act="reset-no">Cancel</button></span>`;
+    }
+    return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : 'Reset this module'}</button>`;
+  }
+  function doReset(scope) {
+    if (scope === 'all') { S.answers = {}; S.session = null; }
+    else {
+      for (const id of Object.keys(S.answers)) if ((Q.get(id) || {}).topic === scope) delete S.answers[id];
+      if (S.session && (S.session.topic === scope || S.session.qids.some(id => (Q.get(id) || {}).topic === scope))) S.session = null;
+    }
+    confirmReset = false; save(); render(false);
+  }
+
+  // ---------- module page ----------
+  function renderTopic() {
+    const t = TOPIC.get(S.topicId);
+    const qs = questionsFor(S.type, t.id);
+    const st = stats(qs);
+    const repIds = moduleRepeated(t.id);
+    const nsets = BANK.sources.filter(s => s.topic === t.id).length;
+    const groups = [];
+    for (const ty of TYPES) {
+      if (S.type !== 'all' && S.type !== ty) continue;
+      const rows = BANK.sources.filter(s => s.topic === t.id && s.type === ty).map(s => {
+        const sq = questionsFor('all', t.id, s.id);
+        if (!sq.length) return '';
+        const ss = stats(sq);
+        return `<li><button type="button" class="entry" data-set="${esc(s.id)}">
+          <span class="e-main"><span class="e-name">${esc(s.label)}</span>${barLine(ss)}<span class="e-meta mono">${metaLine(ss)}</span><span class="keys">${chipsFor(sq)}</span></span>
+          <span class="e-side"><span class="e-count mono num">${fmtN(sq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
+        </button></li>`;
+      }).join('');
+      if (rows) groups.push(`<section class="group"><h2>${esc(TYPE_GROUP[ty] || ty)}</h2><ul class="ledger">${rows}</ul></section>`);
+    }
+    app.innerHTML = `
+      ${barHTML('home', 'Modules', t.name)}
+      <main class="wrap stage">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow mono">Module · ${nsets} exam ${nsets === 1 ? 'set' : 'sets'}</p>
+            <h1 class="h1">${esc(t.name)}</h1>
+            <p class="ph-stats mono">${fmtN(qs.length)} questions · ${metaLine(st)}</p>
+            <div class="row">
+              <button class="btn primary" type="button" data-start="${esc(t.id)}">Practice all ${fmtN(qs.length)} ${ICON.next}</button>
+              ${repIds.length ? `<button class="btn" type="button" data-act="practice-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repIds.length)}</span></button>` : ''}
+              ${resetHTML(t.id)}
+            </div>
+          </div>
+          <div class="ph-art">${windowSVG(t.id, stats(questionsFor('all', t.id)))}</div>
+        </header>
+        <div class="controls">${typeTabs()}</div>
+        ${groups.join('') || '<p class="empty">No questions of this exam type in this module.</p>'}
+        ${footHTML()}
+      </main>`;
+  }
+
+  // ---------- quiz ----------
+  function caseHTML(q) {
+    if (!q.case || !CASE.has(q.case)) return '';
+    const c = CASE.get(q.case);
+    if (q.caseOpen) return `<div class="case"><div class="case-h">Case</div><div class="case-b">${c.html}</div></div>`;
+    return `<details class="case"><summary>Show the case</summary><div class="case-b">${c.html}</div></details>`;
+  }
+  function renderQuiz(focusWhat) {
+    const sess = S.session;
+    const q = curQ();
+    const a = S.answers[q.id] || { sel: [], checked: false };
+    const hasKey = q.answer.length > 0;
+    const checked = hasKey && a.checked;
+    const k = keyOf(q);
+    const cells = sess.qids.map((id, i) => {
+      const r = result(Q.get(id));
+      const cls = ['cell', r === 'todo' ? '' : r, i === sess.idx ? 'cur' : ''].join(' ');
+      const label = { right: 'right', wrong: 'wrong', nokey: 'no answer key', draft: 'started', todo: 'not answered' }[r];
+      return `<button type="button" class="${cls}" data-jump="${i}" aria-label="Question ${i + 1}, ${label}"${i === sess.idx ? ' aria-current="true"' : ''}>${i + 1}</button>`;
+    }).join('');
+    const opts = q.options.map((html, i) => {
+      const picked = a.sel.includes(i);
+      const inKey = q.answer.includes(i);
+      let cls = 'opt', bub = LETTERS[i], tag = '';
+      if (checked) {
+        if (picked && inKey) { cls += ' is-hit'; bub = ICON.check; tag = 'Your pick'; }
+        else if (picked && !inKey) { cls += ' is-miss'; bub = ICON.cross; tag = 'Your pick'; }
+        else if (!picked && inKey) { cls += ' is-missed'; tag = 'Missed'; }
+        else cls += ' is-rest';
+      }
+      if (tag) cls += ' has-tag';
+      const pressed = checked ? '' : ` aria-pressed="${picked}"`;
+      const aria = checked ? ` aria-label="${LETTERS[i]}. ${esc(stripTags(html))}. ${inKey ? 'Correct answer' : 'Not in the answer'}${picked ? ', you picked it' : ''}"` : '';
+      return `<button type="button" class="${cls}" data-opt="${i}" style="--i:${i}"${pressed}${aria}${checked ? ' aria-disabled="true"' : ''}>
+        <span class="bub">${bub}</span><span class="otext">${html}</span><span class="otag">${tag}</span></button>`;
+    }).join('');
+    let verdict = '';
+    if (!hasKey) {
+      verdict = `<div class="verdict nokey" id="verdict" tabindex="-1"><span class="v-main">No answer key</span><span class="v-sub">Nothing is highlighted for this one in the doc, so it can't be graded yet.</span></div>`;
+    } else if (checked) {
+      const overlap = a.sel.filter(i => q.answer.includes(i)).length;
+      const main = a.correct ? `${ICON.check} Correct` : (overlap ? `${ICON.cross} Partly right` : `${ICON.cross} Wrong`);
+      verdict = `<div class="verdict ${a.correct ? 'right' : 'wrong'}" id="verdict" tabindex="-1" role="status">
+        <span class="v-main">${main}</span><span class="v-sub">${KEY_LONG[k]}: <b>${letters(q.answer)}</b></span><span class="spacer"></span>
+        <button class="btn quiet" type="button" data-act="again">Try again</button></div>`;
+    }
+    const ex = (checked || !hasKey) ? explainHTML(q) : '';
+    const primaryLabel = (!hasKey || checked) ? (sess.idx === sess.qids.length - 1 ? `Finish ${ICON.next}` : `Next ${ICON.next}`) : 'Check answer';
+    const primaryDisabled = hasKey && !checked && !a.sel.length;
+    const topicName = sess.topic === '*' ? `<span>${esc((TOPIC.get(q.topic) || {}).name || '')}</span>` : '';
+    const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
+    const rep = repOf(q);
+    const others = rep ? [...new Set(rep.q.map(id => Q.get(id).source))].filter(s => s !== q.source && SRC.has(s)).sort((x, y) => SRC_ORDER.get(x) - SRC_ORDER.get(y)) : [];
+    const alsoIn = others.length ? `<div class="alsoin"><span>Also in</span>${others.map(s => `<span class="pill">${esc(SRC.get(s).label)}</span>`).join('')}</div>` : '';
+    const right = `<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
+      ${sess.qids.length > 2 ? `<button class="btn quiet toggle" type="button" data-act="shuffle" aria-pressed="${!!sess.shuffle}" title="Shuffle question order">${ICON.shuffle}<span class="sr-label">Shuffle</span></button>` : ''}`;
+    app.innerHTML = `
+      ${barHTML('back', '', sessionTitle(sess), right)}
+      <main class="wrap narrow stage">
+        <nav class="strip" aria-label="Questions">${cells}</nav>
+        <article class="qcard plate" aria-labelledby="stem">
+          <div class="qmeta">
+            <span class="qn" title="Question number in this exam set">Q${esc(q.n)}</span>${topicName}<span>${esc(setLabel(q))}${q.chapter ? ' · ' + esc(q.chapter) : ''}</span>
+            ${repBadge(rep)}
+            <span class="key ${k}">${KEY_LONG[k]}</span>
+            ${q.flag ? `<span class="key flag" title="This question's text is highlighted red in the doc, with no legend">Marked red in the doc</span>` : ''}
+          </div>
+          ${alsoIn}
+          ${caseHTML(q)}
+          <h2 class="stem" id="stem">${q.stem}</h2>
+          ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
+          ${checked ? '' : `<p class="hint mono">Select all that apply</p>`}
+          <div class="opts${checked ? ' checked' : ''}${justChecked ? ' reveal' : ''}" role="group" aria-labelledby="stem">${opts}</div>
+          ${verdict}
+          ${ex}
+        </article>
+        <div class="actions">
+          <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
+          <span class="grow"></span>
+          <button class="btn primary" type="button" data-act="primary" ${primaryDisabled ? 'disabled' : ''}>${primaryLabel}</button>
+        </div>
+        <p class="kbd-hint mono">Keys: A–E to pick, Enter to check or go on, ← → to move</p>
+      </main>`;
+    if (focusWhat === 'verdict') {
+      const v = document.getElementById('verdict');
+      if (v) { v.focus({ preventScroll: true }); v.scrollIntoView({ block: 'nearest', behavior: reduceMotion() ? 'auto' : 'smooth' }); }
+    }
+  }
+  function noteHTML(c) {
+    const anchor = c.by === 'claude'
+      ? `<p class="anchor by-claude">Claude's reasoning, not from the doc</p>`
+      : (c.anchor ? `<p class="anchor">On “${esc(c.anchor)}”</p>` : '');
+    if (stripTags(c.html).length > 360) {
+      return `<div class="note long${c.by === 'claude' ? ' claude' : ''}">${anchor}<div class="clamp">${c.html}</div><button type="button" class="more" data-more aria-expanded="false">Show more</button></div>`;
+    }
+    return `<div class="note${c.by === 'claude' ? ' claude' : ''}">${anchor}${c.html}</div>`;
+  }
+  function explainHTML(q) {
+    const blocks = [];
+    const mine = (q.qNotes || []).filter(c => c.by === 'claude');
+    const docQ = (q.qNotes || []).filter(c => c.by !== 'claude');
+    if (mine.length) blocks.push(`<div class="ex-block">${mine.map(noteHTML).join('')}</div>`);
+    if (q.twinOf) blocks.push(`<div class="ex-block"><div class="note twin"><p>Nothing was highlighted on this copy, so the answer comes from the same question in ${esc(q.twinOf)}.</p></div></div>`);
+    const on = q.optNotes || {};
+    Object.keys(on).map(Number).sort((x, y) => x - y).forEach(i => {
+      const inKey = q.answer.includes(i);
+      blocks.push(`<div class="ex-block"><div class="ex-head"><span class="bub${inKey ? ' k' : ''}">${LETTERS[i]}</span><span>${q.options[i]}</span></div>${on[i].map(noteHTML).join('')}</div>`);
+    });
+    if (docQ.length) blocks.push(`<div class="ex-block"><div class="ex-head plain">On the question</div>${docQ.map(noteHTML).join('')}</div>`);
+    if (q.notes && q.notes.length) {
+      const inner = q.notes.map(n => n.src
+        ? `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure from the notes"></button></figure>`
+        : `<p>${n.html}</p>`).join('');
+      blocks.push(`<div class="ex-block"><div class="ex-head plain">Notes</div><div class="docnotes">${inner}</div></div>`);
+    }
+    if (!blocks.length) return '';
+    return `<section class="ex" aria-label="Notes and explanations"><h3>Notes &amp; explanations</h3>${blocks.join('')}</section>`;
+  }
+  function renderDone() {
+    const sess = S.session;
+    const qs = sess.order.map(id => Q.get(id));
+    const st = stats(qs);
+    const answered = st.right + st.wrong;
+    const pct = answered ? Math.round(100 * st.right / answered) : 0;
+    app.innerHTML = `
+      ${barHTML('back', '', sessionTitle(sess))}
+      <main class="wrap narrow stage">
+        <section class="done">
+          <p class="eyebrow mono">${esc(sessionTitle(sess))}</p>
+          ${st.keyed ? `<p class="score"><b class="num">${fmtN(st.right)}</b><span class="mono">/ ${fmtN(st.keyed)} right</span></p>` : `<p class="score"><span class="mono">No answer key for these yet</span></p>`}
+          <p class="d-meta">${st.keyed ? `${fmtN(answered)} checked${answered ? `, ${pct}% right` : ''}${st.left ? `, ${fmtN(st.left)} skipped` : ''}${st.nokey ? `, ${fmtN(st.nokey)} without an answer key` : ''}.` : `The doc has no highlighted answers for these ${st.total} questions.`}</p>
+          <div class="d-actions">
+            ${st.wrong ? `<button class="btn primary" type="button" data-act="mistakes">Retry the ${fmtN(st.wrong)} you got wrong</button>` : ''}
+            <button class="btn" type="button" data-act="review">Review questions</button>
+            <button class="btn" type="button" data-act="restart">Start over</button>
+            <button class="btn quiet" type="button" data-act="back">Back</button>
+          </div>
+          <nav class="strip" aria-label="Questions">${sess.qids.map((id, i) => {
+            const r = result(Q.get(id));
+            return `<button type="button" class="cell ${r === 'todo' ? '' : r}" data-jump="${i}" aria-label="Question ${i + 1}">${i + 1}</button>`;
+          }).join('')}</nav>
+        </section>
+      </main>`;
+  }
+
+  // ---------- topic search: synonyms, French terms, abbreviations, typos ----------
+  const STOPW = new Set('a an the of in on at to for with and or by about is are what which how its de la le les des du en et un une au aux sur par pour dans d l'.split(' '));
+  const ASPECT_WORDS = [
+    ['T', /^(treat|treated|treating|treatment|treatments|therapy|therapies|therapeutic|management|manage|managing|drug|drugs|medication|medications|surgery|surgical|traitement|therapeutique|antibiotic|antibiotics)$/],
+    ['C', /^(sign|signs|symptom|symptoms|symptomatology|clinical|clinic|clinique|presentation|feature|features|manifestation|manifestations|signes|symptomes)$/],
+    ['E', /^(cause|causes|etiology|etiologies|aetiology|etiologie|etiologies|risk|risks|factor|factors|facteurs|facteur)$/],
+    ['K', /^(complication|complications|prognosis|prognostic|evolution|outcome|outcomes)$/],
+    ['X', /^(diagnosis|diagnostic|diagnose|diagnoses|test|tests|investigation|investigations|imaging|workup|criteria|lab|labs|laboratory|paraclinical|examens)$/],
+    ['P', /^(definition|define|pathophysiology|physiopathology|physiopathologie|mechanism|mechanisms)$/],
+    ['V', /^(prevention|prevent|screening|prophylaxis|vaccine|vaccines|vaccination|depistage)$/]
+  ];
+  const fold = s => String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    .replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/g, ' ').replace(/['’`]/g, '').replace(/[^a-z0-9+]+/g, ' ').trim();
+  const words = s => { const f = fold(s); return f ? f.split(' ') : []; };
+  function stemW(t) {
+    if (t.length > 4 && t.endsWith('ies')) return t.slice(0, -3) + 'y';
+    if (t.length > 3 && t.endsWith('s') && !/(ss|us|is)$/.test(t)) return t.slice(0, -1);
+    return t;
+  }
+  // optimal string alignment distance, gives up above max
+  function osa(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    let p2 = null, p1 = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i]; let low = i;
+      for (let j = 1; j <= b.length; j++) {
+        let v = Math.min(p1[j] + 1, cur[j - 1] + 1, p1[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, p2[j - 2] + 1);
+        cur[j] = v; if (v < low) low = v;
+      }
+      if (low > max) return max + 1;
+      p2 = p1; p1 = cur;
+    }
+    return p1[b.length];
+  }
+  function tokEq(q, t, fuzzy, prefix) {
+    if (q === t) return true;
+    if (prefix && q.length >= 3 && t.startsWith(q)) return true;
+    if (!fuzzy) return false;
+    const L = Math.max(q.length, t.length);
+    const max = L >= 8 ? 2 : L >= 5 ? 1 : 0;
+    if (!max) return false;
+    if (prefix && q.length >= 5 && t.length > q.length && osa(q, t.slice(0, q.length), 1) <= 1) return true;
+    return osa(q, t, max) <= max;
+  }
+  // how well the query words match one synonym (both already stemmed)
+  function scoreTerm(qt, tt) {
+    const nq = qt.length, nt = tt.length;
+    if (nq === nt && qt.every((x, i) => x === tt[i])) return 100;
+    for (let i = 0; i + nt <= nq; i++) if (tt.every((x, j) => x === qt[i + j])) return 82 + Math.min(nt, 5);
+    // the query names the end of a longer term: "tuberculosis" in "cutaneous tuberculosis" (a kind of it) scores 75
+    for (let i = 0; i + nq <= nt; i++) if (qt.every((x, j) => tokEq(x, tt[i + j], false, j === nq - 1))) return i + nq === nt ? (nt - nq === 1 ? 75 : 73) : 72;
+    if (nq === nt && qt.every((x, i) => tokEq(x, tt[i], true, i === nq - 1))) return 64;
+    for (let i = 0; i + nt <= nq; i++) if (tt.every((x, j) => tokEq(qt[i + j], x, true, false))) return 60;
+    for (let i = 0; i + nq <= nt; i++) if (qt.every((x, j) => tokEq(x, tt[i + j], true, j === nq - 1))) return i + nq === nt ? 56 : 53;
+    return 0;
+  }
+  const CONCEPT_BY_ID = new Map((BANK.concepts || []).map(c => [c.id, c]));
+  let CIDX = null;
+  function conceptIndex() {
+    if (CIDX) return CIDX;
+    const kids = new Map();
+    for (const c of BANK.concepts || []) if (c.p) { if (!kids.has(c.p)) kids.set(c.p, []); kids.get(c.p).push(c.id); }
+    CIDX = { kids, list: (BANK.concepts || []).map(c => {
+      const seen = new Set(), terms = [];
+      for (const t of [c.n.replace(/\(.*?\)/g, ' '), ...(c.s || [])]) {
+        const tt = words(t).filter(w => !STOPW.has(w)).map(stemW);
+        const k = tt.join(' ');
+        if (tt.length && !seen.has(k)) { seen.add(k); terms.push(tt); }
+      }
+      return { c, terms, ab: new Set((c.ab || []).map(fold).filter(Boolean)) };
+    }) };
+    return CIDX;
+  }
+  function matchConcepts(core) {
+    const qt = core.map(stemW);
+    const scored = [];
+    for (const e of conceptIndex().list) {
+      let best = 0;
+      e.terms.forEach((tt, k) => {
+        let s = scoreTerm(qt, tt);
+        if (s === 75 && k > 3) s = 73;   // "narrower topic" only when it's one of the topic's main names
+        if (s > best) best = s;
+      });
+      if (e.ab.size) {
+        if (core.length === 1 && e.ab.has(core[0])) best = Math.max(best, 96);
+        else if (core.some(w => e.ab.has(w))) best = Math.max(best, 84);
+      }
+      if (best) scored.push([e.c, best]);
+    }
+    if (!scored.length) return [];
+    const top = Math.max(...scored.map(x => x[1]));
+    const narrower = scored.filter(([, s]) => s === 75);          // "cutaneous tuberculosis" for "tuberculosis"
+    const exact = scored.filter(([, s]) => s === 100 || s === 96);   // the whole query is a name or an abbreviation
+    const typo = scored.filter(([, s]) => s === 64);                // the whole query, misspelled
+    const part = scored.filter(([, s]) => s >= 82 && s < 96);      // a topic name inside a longer query
+    let keep;
+    if (exact.length) keep = exact.concat(narrower);
+    else if (typo.length) keep = typo.concat(narrower);
+    else if (part.length) keep = part.concat(narrower);
+    else if (top >= 72) keep = scored.filter(([, s]) => s >= 72);
+    else keep = scored.filter(([, s]) => s >= top - 4);
+    return keep.sort((a, b) => b[1] - a[1]).map(([c]) => c);
+  }
+  function withChildren(concepts) {
+    const kids = conceptIndex().kids, out = new Set(), stack = concepts.map(c => c.id);
+    while (stack.length) { const id = stack.pop(); if (out.has(id)) continue; out.add(id); (kids.get(id) || []).forEach(k => stack.push(k)); }
+    return out;
+  }
+  const QTEXT = new Map();
+  function qText(q) {
+    let t = QTEXT.get(q.id);
+    if (t === undefined) {
+      const c = CASE_OF(q);
+      t = ' ' + words(q.stem + ' ' + q.options.join(' ') + ' ' + (c ? c.html : '')).map(stemW).join(' ') + ' ';
+      QTEXT.set(q.id, t);
+    }
+    return t;
+  }
+  const TOPIC_IDX = new Map(BANK.topics.map((t, i) => [t.id, i]));
+  const topicOrder = id => TOPIC_IDX.has(id) ? TOPIC_IDX.get(id) : 99;
+  const byRank = (a, b) => (topicOrder(a.topic) - topicOrder(b.topic)) || (((repOf(b) || {}).s || 0) - ((repOf(a) || {}).s || 0)) || (BANK_ORDER.get(a.id) - BANK_ORDER.get(b.id));
+  let searchCache = { key: null, res: null };
+  function runSearch(raw) {
+    if (searchCache.key === raw) return searchCache.res;
+    const all = words(raw);
+    const implied = new Set(), core = [];
+    for (const w of all) {
+      const hit = ASPECT_WORDS.find(([, rx]) => rx.test(w));
+      if (hit) implied.add(hit[0]); else if (!STOPW.has(w)) core.push(w);
+    }
+    const concepts = core.length ? matchConcepts(core) : [];
+    const ids = withChildren(concepts);
+    const hits = ids.size ? BANK.questions.filter(q => (q.c || []).some(c => ids.has(c))).sort(byRank) : [];
+    const inHits = new Set(hits.map(q => q.id));
+    const kwWords = (core.length ? core : all.filter(w => !STOPW.has(w))).map(stemW).filter(w => w.length >= 2);
+    // short words must match a whole word ("ep" should not pull in "epigastric"), longer ones can be the start of a word
+    const kwHas = (t, w) => t.includes(' ' + w + (w.length < 4 ? ' ' : ''));
+    const kw = kwWords.length ? BANK.questions.filter(q => !inHits.has(q.id) && kwWords.every(w => kwHas(qText(q), w))).sort(byRank) : [];
+    const res = { concepts, hits, kw, implied: implied.size === 1 ? [...implied][0] : null, words: implied.size ? core.join(' ') : raw.trim() };
+    searchCache = { key: raw, res };
+    return res;
+  }
+
+  let kwAll = false;
+  let lastLists = { h: [], k: [] };
+  const EXAMPLES = ['acute bronchitis', 'BPCO', 'IDM', 'hydatid cyst', 'Graves', 'scabies', 'aortic stenosis', 'GERD'];
+  function plainQ(q) {
+    const stem = stripTags(q.stem).trim();
+    const c = CASE_OF(q);
+    if (c && stem.length < 70) {
+      const ct = stripTags(c.html).replace(/\s+/g, ' ').trim();
+      return `${esc(stem)} <span class="e-case">(${esc(ct.length > 150 ? ct.slice(0, 150).replace(/\s+\S*$/, '') + '…' : ct)})</span>`;
+    }
+    return esc(stem);
+  }
+  // generic stems ("Acute bronchitis:") say little on their own, so show the first options too
+  function optsPreview(q) {
+    if (CASE_OF(q) || stripTags(q.stem).trim().length >= 80) return '';
+    const txt = q.options.slice(0, 3).map(o => stripTags(o).replace(/\s+/g, ' ').trim()).filter(Boolean).join(' · ');
+    return txt ? `<span class="e-opts">${esc(txt)}</span>` : '';
+  }
+  function repBadge(r) {
+    return r ? `<span class="rep" title="Asked in ${r.s} different exam sets">Asked ${r.s}×</span>` : '';
+  }
+  function statusTag(q) {
+    const r = result(q);
+    return r === 'right' ? `<span class="st right">Right</span>` : r === 'wrong' ? `<span class="st wrong">Wrong</span>` : '';
+  }
+  function resRow(q, list, i) {
+    return `<li><button type="button" class="entry" data-res="${list}:${i}">
+      <span class="e-main"><span class="e-stem">${plainQ(q)}</span>${optsPreview(q)}
+      <span class="e-meta mono"><span>${esc(setLabel(q))}</span><span class="num">Q${esc(q.n)}</span>${repBadge(repOf(q))}${statusTag(q)}</span></span>
+      <span class="e-side"><span class="e-go">${ICON.next}</span></span>
+    </button></li>`;
+  }
+  function groupedRows(qs, list, limit) {
+    const shown = limit ? qs.slice(0, limit) : qs;
+    const out = [];
+    let i = 0;
+    while (i < shown.length) {
+      const t = shown[i].topic; let j = i;
+      while (j < shown.length && shown[j].topic === t) j++;
+      const total = qs.filter(q => q.topic === t).length;
+      out.push(`<section class="group"><h2>${esc((TOPIC.get(t) || {}).name || '')} <span class="n num">${fmtN(total)}</span></h2>
+        <ul class="ledger">${shown.slice(i, j).map((q, k) => resRow(q, list, i + k)).join('')}</ul></section>`);
+      i = j;
+    }
+    return out.join('');
+  }
+  function setStatus(t) { const s = document.getElementById('search-status'); if (s) s.textContent = t; }
+  function searchIdleHTML() {
+    return `<div class="s-idle">
+      <p>Search by topic, not just by word: <i>acute bronchitis</i> finds every related question, even the ones that never say it. French terms and abbreviations work too (BPCO, IDM, RGO), and so do typos. Add <i>treatment</i> or <i>signs</i> to narrow it down.</p>
+      <div class="examples">${EXAMPLES.map(x => `<button type="button" data-example="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+    </div>`;
+  }
+  function searchResultsHTML(raw) {
+    const res = runSearch(raw);
+    const count = qs => { const c = {}; for (const q of qs) c[q.a] = (c[q.a] || 0) + 1; return c; };
+    const base = res.hits.length ? res.hits : res.kw;
+    const cnt = count(base);
+    let asp = S.aspect === 'all' ? null : (S.aspect || res.implied);
+    if (asp && !cnt[asp]) asp = null;
+    const hits = asp ? res.hits.filter(q => q.a === asp) : res.hits;
+    const kw = asp ? res.kw.filter(q => q.a === asp) : res.kw;
+    lastLists = { h: hits.map(q => q.id), k: kw.map(q => q.id) };
+    const quoted = `“${esc(res.words || raw.trim())}”`;
+    if (!res.hits.length && !res.kw.length) {
+      setStatus('No questions found');
+      return `<div class="sr-head"><p class="sr-msg">Nothing matches ${quoted}. Try another spelling, the French name, or a broader topic.</p></div>`;
+    }
+    const matched = new Set(res.concepts.map(c => c.id));
+    const ancestorIn = c => { let p = c.p; while (p) { if (matched.has(p)) return true; p = (CONCEPT_BY_ID.get(p) || {}).p; } return false; };
+    const named = res.concepts.filter(c => !ancestorIn(c));
+    const mods = new Set(named.map(c => c.m));
+    const topics = named.map(c => `<span class="tchip">${esc(c.n)}${mods.size > 1 ? `<small>${esc(TOPIC_SHORT(TOPIC.get(c.m) || { name: '' }))}</small>` : ''}</span>`).join('');
+    const chips = Object.keys(cnt).length > 1 ? `<div class="seg" role="group" aria-label="Filter by what the question asks">
+      <button type="button" data-aspect="all" aria-pressed="${!asp}">All <span class="n">${fmtN(base.length)}</span></button>
+      ${ASPECT_ORDER.filter(a => cnt[a]).map(a => `<button type="button" data-aspect="${a}" aria-pressed="${asp === a}" title="${esc(ASPECT[a] || '')}">${esc(ASPECT_SHORT[a] || a)} <span class="n">${fmtN(cnt[a])}</span></button>`).join('')}
+    </div>` : '';
+    const main = hits.length ? hits : kw;
+    const nrep = main.filter(q => repOf(q)).length;
+    const head = res.hits.length
+      ? `<div class="sr-topics"><p class="sr-count mono"><b class="num">${fmtN(hits.length)}</b> ${hits.length === 1 ? 'question' : 'questions'} on</p>${topics}</div>`
+      : `<p class="sr-msg">No topic called ${quoted}, but <b>${fmtN(kw.length)}</b> ${kw.length === 1 ? 'question mentions' : 'questions mention'} it.</p>`;
+    setStatus(`${fmtN(main.length)} questions found`);
+    let body = '';
+    if (hits.length) {
+      body += groupedRows(hits, 'h');
+      if (kw.length) {
+        const lim = kwAll ? 0 : 30;
+        body += `<section class="group"><h2>Also mentioning ${quoted} <span class="n num">${fmtN(kw.length)}</span></h2>
+          <ul class="ledger">${(lim ? kw.slice(0, lim) : kw).map((q, i) => resRow(q, 'k', i)).join('')}</ul>
+          ${lim && kw.length > lim ? `<div class="more-row"><button type="button" class="btn" data-act="kw-more">Show all ${fmtN(kw.length)}</button></div>` : ''}</section>`;
+      }
+    } else {
+      const lim = kwAll ? 0 : 60;
+      body += groupedRows(kw, 'k', lim);
+      if (lim && kw.length > lim) body += `<div class="more-row"><button type="button" class="btn" data-act="kw-more">Show all ${fmtN(kw.length)}</button></div>`;
+    }
+    return `<div class="sr-head">${head}${chips}
+      <div class="sr-actions"><button class="btn primary" type="button" data-act="practice-search">Practice ${main.length === 1 ? 'it' : `these ${fmtN(main.length)}`} ${ICON.next}</button>
+      ${nrep ? `<span class="t-meta mono">${fmtN(nrep)} of them came up in more than one set</span>` : ''}</div>
+    </div>${body}`;
+  }
+  function updateSearch() {
+    const box = document.getElementById('search-results'), body = document.getElementById('home-body');
+    if (!box || !body) return;
+    const clear = app.querySelector('.s-clear');
+    if (clear) clear.hidden = !S.q;
+    const raw = S.q || '';
+    if (fold(raw).replace(/\s/g, '').length < 2) {
+      body.hidden = false;
+      box.innerHTML = raw.trim() ? '' : searchIdleHTML();
+      setStatus('');
+      return;
+    }
+    body.hidden = true;
+    box.innerHTML = searchResultsHTML(raw);
+  }
+  function searchTitle() {
+    const res = runSearch(S.q || '');
+    const cnt = {}; for (const q of (res.hits.length ? res.hits : res.kw)) cnt[q.a] = 1;
+    let asp = S.aspect === 'all' ? null : (S.aspect || res.implied);
+    if (asp && !cnt[asp]) asp = null;
+    return `“${(S.q || '').trim()}”${asp ? ' · ' + (ASPECT[asp] || '') : ''}`;
+  }
+
+  // ---------- most repeated ----------
+  function renderRepeats() {
+    const mod = S.repMod && TOPIC.has(S.repMod) ? S.repMod : 'all';
+    const per = new Map();
+    for (const r of REPS) { const m = Q.get(r.q[0]).topic; per.set(m, (per.get(m) || 0) + 1); }
+    const list = [];
+    REPS.forEach((r, i) => { if (mod === 'all' || Q.get(r.q[0]).topic === mod) list.push(i); });
+    const chips = [['all', 'All', REPS.length], ...BANK.topics.filter(t => per.get(t.id)).map(t => [t.id, TOPIC_SHORT(t), per.get(t.id)])]
+      .map(([id, name, n]) => `<button type="button" role="tab" aria-selected="${mod === id}" data-repmod="${esc(id)}">${esc(name)} <span class="n">${fmtN(n)}</span></button>`).join('');
+    const rows = list.map((i, k) => {
+      const r = REPS[i], rq = repQ(r), vs = versions(r);
+      const st = stats(vs.map(id => Q.get(id)));
+      const prog = st.right + st.wrong ? `<span class="st ${st.wrong ? 'wrong' : 'right'}">${fmtN(st.right)}/${fmtN(st.keyed)} right</span>` : '';
+      return `<li><button type="button" class="entry ranked" data-cluster="${i}" data-rank="${k + 1}">
+        <span class="rank num">${k + 1}</span>
+        <span class="e-main"><span class="e-stem">${plainQ(rq)}</span>${optsPreview(rq)}
+        <span class="e-meta mono">${repBadge(r)}<span>${fmtN(vs.length)} ${vs.length === 1 ? 'version' : 'versions'}</span>${mod === 'all' ? `<span>${esc(TOPIC.get(rq.topic).name)}</span>` : ''}${prog}</span></span>
+        <span class="e-side"><span class="e-go">${ICON.next}</span></span>
+      </button></li>`;
+    }).join('');
+    const top = Math.min(25, list.length);
+    app.innerHTML = `
+      ${barHTML('home', 'Modules', 'Most repeated')}
+      <main class="wrap stage">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow mono">Asked in two or more exam sets</p>
+            <h1 class="h1">Most repeated</h1>
+            <p class="ph-lead">Each of these came up in at least two different exam sets, word for word or reworded. The more sets, the higher it ranks. Tap one to practice all its versions.</p>
+            <div class="row"><button class="btn primary" type="button" data-act="practice-top" data-n="${top}">${list.length > top ? `Practice the top ${top}` : `Practice all ${fmtN(list.length)}`} ${ICON.next}</button></div>
+          </div>
+        </header>
+        <div class="controls"><div class="seg" role="tablist" aria-label="Module">${chips}</div></div>
+        <div class="group"><ul class="ledger">${rows}</ul></div>
+        ${footHTML()}
+      </main>`;
+  }
+  function practiceCluster(i, rank) {
+    const r = REPS[i]; if (!r) return;
+    const vs = versions(r);
+    startList(vs, -1, { topic: Q.get(vs[0]).topic, title: `Most repeated #${rank}`, from: 'repeats' });
+  }
+  function practiceTop(n) {
+    const mod = S.repMod && TOPIC.has(S.repMod) ? S.repMod : 'all';
+    const ids = REPS.filter(r => mod === 'all' || Q.get(r.q[0]).topic === mod).slice(0, n).map(r => repQ(r).id);
+    startList(ids, -1, { topic: mod === 'all' ? '*' : mod, title: `Most repeated · top ${ids.length}`, from: 'repeats' });
+  }
+  function practiceRepeated(topicId) {
+    const t = TOPIC.get(topicId); if (!t) return;
+    startList(moduleRepeated(topicId), -1, { topic: topicId, title: `${t.name} · repeated`, from: 'topic' });
+  }
+
+  // ---------- drawings: the sky behind everything, the Milky Way, the spiral, the pixel title ----------
+  const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  function rgbOf(hex) {
+    const m = /^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i.exec(hex || '');
+    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [236, 227, 209];
+  }
+  function gauss(rnd) { let u = 0, v = 0; while (!u) u = rnd(); while (!v) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function fitCanvas(c, w, h) {
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.width = Math.max(1, Math.round(w * dpr)); c.height = Math.max(1, Math.round(h * dpr));
+    const ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); return ctx;
+  }
+  function drawMilky() {
+    const c = document.getElementById('milky'); if (!c || !c.getContext) return;
+    const w = c.clientWidth, h = c.clientHeight; if (!w || !h) return;
+    const ctx = fitCanvas(c, w, h), ink = rgbOf(cssVar('--ink')), rnd = mulberry(7);
+    ctx.fillStyle = `rgb(${ink})`;
+    const n = Math.round(w * (w < 640 ? 2.8 : 3.6));
+    for (let i = 0; i < n; i++) {
+      const x = rnd() * w, u = x / w;
+      const cy = h * (.5 + .13 * Math.sin(u * Math.PI * 1.3 + .6) + .05 * Math.sin(u * Math.PI * 5.1));
+      const spread = h * (.1 + .06 * Math.sin(u * Math.PI * 3.3 + 1.1) + .025 * Math.sin(u * 17));
+      const g = gauss(rnd), y = cy + g * spread;
+      const rift = cy + spread * .3 * Math.sin(u * Math.PI * 2.2);
+      if (Math.abs(y - rift) < spread * .16 && rnd() < .72) continue;
+      ctx.globalAlpha = Math.max(0, .95 - Math.abs(g) * .3) * (.22 + rnd() * .78);
+      const s = rnd() < .9 ? .9 : 1.6;
+      ctx.fillRect(x, y, s, s);
+    }
+    for (let i = 0, m = Math.round(w / 26); i < m; i++) {
+      const x = rnd() * w, y = rnd() * h, r = .7 + rnd() ** 3 * 2.8;
+      ctx.globalAlpha = .25 + rnd() * .6;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+      if (r > 2.1) {
+        const gr = ctx.createRadialGradient(x, y, 0, x, y, r * 5);
+        gr.addColorStop(0, `rgba(${ink},.28)`); gr.addColorStop(1, `rgba(${ink},0)`);
+        ctx.fillStyle = gr; ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(x, y, r * 5, 0, 6.2832); ctx.fill();
+        ctx.fillStyle = `rgb(${ink})`;
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function drawVortex() {
+    const c = document.getElementById('vortex'); if (!c || !c.getContext) return;
+    const s = c.clientWidth; if (!s) return;
+    const ctx = fitCanvas(c, s, s), ink = rgbOf(cssVar('--ink')), rnd = mulberry(11);
+    const cx = s / 2, cy = s / 2, R = s * .48;
+    ctx.fillStyle = `rgb(${ink})`;
+    for (let i = 0, n = Math.round(s * 7.5); i < n; i++) {
+      const arm = i % 3, t = .16 + .84 * Math.pow(rnd(), .75);
+      const ang = arm * (2 * Math.PI / 3) + t * 5.4 + gauss(rnd) * .26 * (1.15 - t);
+      const rad = t * R + gauss(rnd) * 3.5;
+      ctx.globalAlpha = (1.05 - t * .75) * (.18 + rnd() * .62);
+      const d = rnd() < .92 ? .9 : 1.7;
+      ctx.fillRect(cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad, d, d);
+    }
+    ctx.globalAlpha = 1;
+  }
+  // the title is set in the display face, then rendered at a low resolution and scaled up: a bitmap serif.
+  // On first view it resolves from coarse to fine pixels, like a pattern coming into focus.
+  let titleShown = false;
+  function drawTitle(animate) {
+    const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
+    const box = c.parentElement, W = box.clientWidth; if (!W) return;
+    const ink = rgbOf(cssVar('--ink'));
+    const lines = ['EFM3', 'MCQ BANK'];
+    const fin = W < 520 ? 3 : W < 900 ? 4 : 5;
+    const family = '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif';
+    const draw = block => {
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+      ctx.font = `italic 400 100px ${family}`;
+      const widest = Math.max(...lines.map(l => ctx.measureText(l).width)) || 1;
+      const sizeCss = Math.min(W * .95 / widest * 100, 240);
+      const s = sizeCss / block;
+      const lowW = Math.max(1, Math.floor(W / block));
+      const lineH = s * .84;
+      const lowH = Math.max(1, Math.ceil(lineH * (lines.length - 1) + s * 1.0));
+      c.width = lowW; c.height = lowH;
+      ctx.font = `italic 400 ${s}px ${family}`;
+      ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
+      lines.forEach((l, i) => ctx.fillText(l, s * .03, s * .78 + i * lineH));
+      const img = ctx.getImageData(0, 0, lowW, lowH), d = img.data;
+      for (let i = 0; i < d.length; i += 4) { const on = d[i + 3] > 105; d[i] = ink[0]; d[i + 1] = ink[1]; d[i + 2] = ink[2]; d[i + 3] = on ? 255 : 0; }
+      ctx.putImageData(img, 0, 0);
+      c.style.width = lowW * block + 'px'; c.style.height = lowH * block + 'px';
+    };
+    box.classList.add('pixel-ready');
+    if (!animate || reduceMotion()) { draw(fin); return; }
+    const steps = [24, 16, 11, 8, 6].filter(b => b > fin).concat(fin);
+    let k = 0;
+    const tick = () => { if (!c.isConnected) return; draw(steps[k]); k++; if (k < steps.length) setTimeout(tick, 90); };
+    tick();
+  }
+  function paintTitle() {
+    const face = 'italic 400 40px "Instrument Serif"';
+    const animate = !titleShown;
+    titleShown = true;
+    if (!document.fonts || document.fonts.check(face)) { drawTitle(animate); return; }
+    let done = false;
+    const once = () => { if (done) return; done = true; drawTitle(animate); };
+    document.fonts.load(face).then(once, once);
+    setTimeout(once, 1300);
+    document.fonts.ready.then(() => { if (done) drawTitle(false); });
+  }
+  function paintHome() { paintTitle(); drawMilky(); drawVortex(); }
+
+  const sky = (() => {
+    const c = document.getElementById('sky');
+    if (!c || !c.getContext) return { start() {}, resize() {} };
+    let ctx = null, W = 0, H = 0, stars = [], raf = 0, last = 0, chain = null, nextChain = 4, INK = [236, 227, 209];
+    const rnd = mulberry(3);
+    for (let i = 0; i < 320; i++) stars.push({ x: rnd(), y: rnd() * 1.5, r: .35 + rnd() ** 2.2 * 1.3, a: .12 + rnd() * .5, s: .4 + rnd() * 1.4, p: rnd() * 6.283 });
+    let count = 0;
+    function resize() { W = window.innerWidth; H = window.innerHeight; ctx = fitCanvas(c, W, H); count = Math.round(Math.min(stars.length, W * H / 6200)); chain = null; }
+    const pos = st => {
+      const span = H * 1.5, off = reduceMotion() ? 0 : (window.scrollY * .05) % span;
+      let y = st.y * H - off; if (y < -4) y += span;
+      return [st.x * W, y];
+    };
+    function pickChain(t) {
+      const vis = [];
+      for (let i = 0; i < count; i++) { const s = stars[i]; if (s.r < .7) continue; const [x, y] = pos(s); if (y > 50 && y < H - 50 && x > 30 && x < W - 30) vis.push(s); }
+      if (vis.length < 6) return null;
+      const pts = [vis[Math.floor(Math.random() * vis.length)]];
+      const want = 3 + Math.floor(Math.random() * 3);
+      while (pts.length <= want) {
+        const [cx, cy] = pos(pts[pts.length - 1]);
+        let best = null, bd = 1e9;
+        for (const s of vis) { if (pts.includes(s)) continue; const [x, y] = pos(s); const d = Math.hypot(x - cx, y - cy); if (d > 36 && d < 200 && d < bd) { bd = d; best = s; } }
+        if (!best) break;
+        pts.push(best);
+      }
+      return pts.length >= 3 ? { pts, t0: t } : null;
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = `rgb(${INK})`;
+      for (let i = 0; i < count; i++) {
+        const s = stars[i], [x, y] = pos(s);
+        if (y < -4 || y > H + 4) continue;
+        ctx.globalAlpha = s.a * (.62 + .38 * Math.sin(t * s.s + s.p));
+        if (s.r > 1) { ctx.beginPath(); ctx.arc(x, y, s.r, 0, 6.2832); ctx.fill(); }
+        else ctx.fillRect(x, y, s.r * 1.5, s.r * 1.5);
+      }
+      // now and then a constellation draws itself between nearby stars, holds, and dissolves
+      if (!chain && t > nextChain) { chain = pickChain(t); nextChain = t + 8 + Math.random() * 7; }
+      if (chain) {
+        const age = t - chain.t0, grow = 2.4, hold = 3.4, fade = 2;
+        if (age > grow + hold + fade) chain = null;
+        else {
+          const alpha = age < grow + hold ? .3 : .3 * (1 - (age - grow - hold) / fade);
+          const segs = chain.pts.length - 1, prog = Math.min(1, age / grow) * segs;
+          ctx.globalAlpha = alpha; ctx.strokeStyle = `rgb(${INK})`; ctx.lineWidth = .7; ctx.beginPath();
+          for (let k = 0; k < segs; k++) {
+            const f = Math.max(0, Math.min(1, prog - k)); if (f <= 0) break;
+            const [ax, ay] = pos(chain.pts[k]), [bx, by] = pos(chain.pts[k + 1]);
+            ctx.moveTo(ax, ay); ctx.lineTo(ax + (bx - ax) * f, ay + (by - ay) * f);
+          }
+          ctx.stroke();
+          ctx.globalAlpha = Math.min(1, alpha * 2.6);
+          for (const s of chain.pts) { const [x, y] = pos(s); ctx.beginPath(); ctx.arc(x, y, s.r + .7, 0, 6.2832); ctx.fill(); }
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+    function loop(now) { raf = requestAnimationFrame(loop); if (now - last < 40) return; last = now; draw(now / 1000); }
+    function start() {
+      INK = rgbOf(cssVar('--ink'));
+      resize();
+      if (reduceMotion()) { draw(0); return; }
+      raf = requestAnimationFrame(loop);
+      document.addEventListener('visibilitychange', () => {
+        cancelAnimationFrame(raf);
+        if (!document.hidden) { last = 0; raf = requestAnimationFrame(loop); }
+      });
+    }
+    return { start, resize: () => { resize(); if (reduceMotion()) draw(0); } };
+  })();
+
+  // ---------- events ----------
+  const smooth = () => (reduceMotion() ? 'auto' : 'smooth');
+  function clearSearch(focus) {
+    S.q = ''; S.aspect = null; kwAll = false; save(); updateSearch();
+    const inp = document.getElementById('q');
+    if (inp) { inp.value = ''; if (focus) inp.focus(); }
+  }
+  app.addEventListener('click', e => {
+    const t = e.target.closest('button');
+    if (!t || !app.contains(t)) return;
+    if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; save(); render(false); return; }
+    if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
+    if (t.dataset.start) { startSession(t.dataset.start, null); return; }
+    if (t.dataset.set) { startSession(S.topicId, t.dataset.set); return; }
+    if (t.dataset.opt !== undefined) { toggle(+t.dataset.opt); return; }
+    if (t.dataset.jump !== undefined) { jump(+t.dataset.jump); return; }
+    if (t.dataset.zoom) { openLightbox(t.dataset.zoom); return; }
+    if (t.hasAttribute('data-more')) {
+      const n = t.closest('.note'); const open = n.classList.toggle('open');
+      t.textContent = open ? 'Show less' : 'Show more'; t.setAttribute('aria-expanded', String(open)); return;
+    }
+    if (t.dataset.example) {
+      S.q = t.dataset.example; S.aspect = null; kwAll = false;
+      const inp = document.getElementById('q'); if (inp) inp.value = S.q;
+      save(); updateSearch(); return;
+    }
+    if (t.dataset.aspect) { S.aspect = t.dataset.aspect; save(); updateSearch(); return; }
+    if (t.dataset.res) {
+      const [list, i] = t.dataset.res.split(':');
+      startList(lastLists[list] || [], +i, { title: searchTitle(), from: 'search' }); return;
+    }
+    if (t.dataset.repmod) { S.repMod = t.dataset.repmod; save(); render(false); return; }
+    if (t.dataset.cluster !== undefined) { practiceCluster(+t.dataset.cluster, +t.dataset.rank || 1); return; }
+    switch (t.dataset.act) {
+      case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
+      case 'goto-modules': {
+        if (S.q) clearSearch(false);
+        const m = document.getElementById('modules'); if (m) m.scrollIntoView({ behavior: smooth(), block: 'start' });
+        break;
+      }
+      case 'focus-search': {
+        const inp = document.getElementById('q');
+        if (inp) { inp.closest('.skyband').scrollIntoView({ behavior: smooth(), block: 'center' }); inp.focus({ preventScroll: true }); }
+        break;
+      }
+      case 'repeats': openRepeats(); break;
+      case 'clear-search': clearSearch(true); break;
+      case 'practice-search': startList(lastLists.h.length ? lastLists.h : lastLists.k, 0, { title: searchTitle(), from: 'search' }); break;
+      case 'kw-more': kwAll = true; updateSearch(); break;
+      case 'practice-top': practiceTop(+t.dataset.n || 25); break;
+      case 'practice-repeated': practiceRepeated(S.topicId); break;
+      case 'home': goHome(); break;
+      case 'back': goBack(); break;
+      case 'resume': resume(); break;
+      case 'primary': primaryAction(); break;
+      case 'prev': go(-1); break;
+      case 'again': tryAgain(); break;
+      case 'shuffle': toggleShuffle(); break;
+      case 'mistakes': retryMistakes(); break;
+      case 'restart': restartSession(); break;
+      case 'review': jump(0); break;
+      case 'reset': confirmReset = t.dataset.scope || 'all'; render(false); break;
+      case 'reset-no': confirmReset = false; render(false); break;
+      case 'reset-yes': doReset(confirmReset || 'all'); break;
+    }
+  });
+
+  let saveTimer = null;
+  app.addEventListener('input', e => {
+    if (e.target.id !== 'q') return;
+    S.q = e.target.value; S.aspect = null; kwAll = false;
+    updateSearch();
+    clearTimeout(saveTimer); saveTimer = setTimeout(save, 400);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.hidden) { if (e.key === 'Escape') closeLightbox(); return; }
+    const inSearch = e.target && e.target.id === 'q';
+    if (inSearch) {
+      if (e.key === 'Escape' && S.q) { e.preventDefault(); S.q = ''; S.aspect = null; e.target.value = ''; save(); updateSearch(); }
+      else if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
+      return;
+    }
+    if (S.view === 'home' && e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const inp = document.getElementById('q');
+      if (inp && !(e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))) { e.preventDefault(); inp.focus(); }
+      return;
+    }
+    if (S.view !== 'quiz' || !S.session || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target && e.target.closest && e.target.closest('summary')) return;
+    const key = e.key.toLowerCase();
+    const q = curQ();
+    let idx = -1;
+    if (key.length === 1) idx = 'abcdefgh'.indexOf(key) !== -1 ? 'abcdefgh'.indexOf(key) : '12345678'.indexOf(key);
+    if (idx !== -1 && idx < q.options.length) { e.preventDefault(); toggle(idx); return; }
+    if (key === 'enter') {
+      const ae = document.activeElement;
+      if (ae && ae.tagName === 'BUTTON' && !ae.closest('.opts') && ae.dataset.act !== 'primary') return;
+      e.preventDefault(); primaryAction(); return;
+    }
+    if (key === 'arrowright') { e.preventDefault(); go(1); }
+    if (key === 'arrowleft') { e.preventDefault(); go(-1); }
+  });
+
+  let resizeT = null, lastW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      sky.resize();
+      if (S.view === 'home' && window.innerWidth !== lastW) { drawTitle(false); drawMilky(); drawVortex(); }
+      lastW = window.innerWidth;
+    }, 160);
+  });
+
+  // ---------- lightbox ----------
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  let lbReturn = null;
+  function openLightbox(src) {
+    lbReturn = document.activeElement;
+    lbImg.src = src; lb.classList.remove('actual'); lb.hidden = false;
+    document.getElementById('lb-close').focus();
+  }
+  function closeLightbox() {
+    lb.hidden = true; lbImg.removeAttribute('src');
+    if (lbReturn && lbReturn.focus) lbReturn.focus({ preventScroll: true });
+  }
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lbImg.addEventListener('click', e => { e.stopPropagation(); lb.classList.toggle('actual'); });
+  document.getElementById('lb-body').addEventListener('click', e => { if (e.target.id === 'lb-body') closeLightbox(); });
+
+  // ---------- boot ----------
+  function start(data) {
+    load();
+    if (data && data.S && !storageOK) { S = Object.assign(S, data.S); sanitize(); }
+    if (S.view === 'home') { S.q = ''; S.aspect = null; }   // a fresh visit opens on the modules, not an old search
+    app.classList.add('first');
+    render(false);
+    setTimeout(() => app.classList.remove('first'), 1800);
+    sky.start();
+  }
+  const hot = window.claude && window.claude.hot;
+  if (hot && typeof hot.snapshot === 'function') { try { hot.snapshot(() => ({ S })); } catch (e) {} }
+  if (hot && typeof hot.ready === 'function') hot.ready(start); else start((hot && hot.data) || {});
+})();
+</script>

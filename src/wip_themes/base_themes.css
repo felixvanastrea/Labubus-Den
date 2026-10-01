@@ -1,0 +1,227 @@
+/* Shared by every skin: all colour and type tokens, page transitions, the theme sheet's frame, motion rules.
+   Each skin's own stylesheet (classic.css, gothic.css) is scoped under :root[data-skin="…"] at build time,
+   so a skin only ever styles itself. The classic skin follows the viewer's light or dark mode;
+   the gothic skin is dark on purpose and pins its own palette. */
+:root {
+  /* classic, light */
+  --paper: #f3f5f8;
+  --sheet: #ffffff;
+  --ink: #151a23;
+  --ink-2: #545e70;
+  --ink-3: #858ea0;
+  --rule: #dce1e9;
+  --rule-strong: #c4cbd7;
+  --pen: #2447c5;
+  --pen-ink: #ffffff;
+  --pen-soft: #e8edfd;
+  --right: #16794c;
+  --right-ink: #ffffff;
+  --right-soft: #e1f3e8;
+  --wrong: #c2362c;
+  --wrong-ink: #ffffff;
+  --wrong-soft: #fce7e5;
+  --hl-official: #d9d2e9;
+  --hl-official-ink: #3b2869;
+  --hl-proposed: #d9ead3;
+  --hl-proposed-ink: #2b5822;
+  --hl-flag: #f4cccc;
+  --hl-flag-ink: #7c2220;
+  --hl-none: #e7e9ee;
+  --hl-none-ink: #4c5566;
+  --hl-claude: #fdf0a6;
+  --hl-claude-ink: #5f4c00;
+  --shadow: 0 1px 2px rgba(20, 28, 45, .06), 0 8px 24px -12px rgba(20, 28, 45, .18);
+  --shadow-lg: 0 2px 6px rgba(20, 28, 45, .08), 0 34px 80px -24px rgba(20, 28, 45, .42);
+  --scrim: rgba(10, 13, 20, .95);
+  --veil: rgba(21, 26, 35, .36);
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --fs-xs: .8125rem;
+  --fs-sm: .9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: clamp(2.1rem, 7vw, 2.9rem);
+  --r: 12px;
+  --r-sm: 8px;
+
+  /* gothic: charcoal paper, bone ink, two old inks for right and wrong */
+  --night: #1b1a18;
+  --deep: #0e0d0c;
+  --plate: #211f1c;
+  --plate-2: #2a2723;
+  --ink-hi: #fff8ea;
+  --hair: #38342e;
+  --hair-2: #5a5348;
+  --glass: rgba(24, 23, 21, .76);
+  --right-wash: rgba(159, 198, 168, .1);
+  --wrong-wash: rgba(229, 145, 119, .1);
+  --sel-wash: rgba(236, 227, 209, .06);
+  --glow-soft: rgba(236, 227, 209, .09);
+  --glow-mid: rgba(236, 227, 209, .3);
+  --title-glow: rgba(236, 227, 209, .22);
+  --mottle-1: rgba(92, 74, 50, .2);
+  --mottle-2: rgba(46, 52, 70, .16);
+  --shade: rgba(0, 0, 0, .5);
+  --k-official: #bdaae3;
+  --k-proposed: #adc99e;
+  --k-claude: #ddbd73;
+  --k-none: #a39b8d;
+  --k-official-line: rgba(189, 170, 227, .42);
+  --k-proposed-line: rgba(173, 201, 158, .42);
+  --k-claude-line: rgba(221, 189, 115, .45);
+  --k-none-line: rgba(163, 155, 141, .45);
+  --k-flag-line: rgba(229, 145, 119, .45);
+  --fig-bg: #f3eee3;
+  /* an italic display serif, an old-style book face for everything you read, a mono for small data labels */
+  --f-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --f-read: "EB Garamond", "Iowan Old Style", Garamond, "Palatino Linotype", Georgia, serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-label: .78rem;
+  --t-read: 1.1875rem;
+  --t-stem: clamp(1.35rem, 3.6vw, 1.6rem);
+  --t-h2: clamp(2.3rem, 6vw, 3.5rem);
+  --t-h1: clamp(2.5rem, 7.5vw, 4.5rem);
+
+  /* motion, shared */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --spring: linear(0, .006, .025 2.8%, .101 6.1%, .539 18.9%, .721 25.3%, .849 31.5%, .937 38.1%, .968 41.8%, .991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001 85.9%, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1118; --sheet: #151a24; --ink: #e9ecf2; --ink-2: #a5aec0; --ink-3: #737d93;
+    --rule: #262e3f; --rule-strong: #364056; --pen: #86a0ff; --pen-ink: #0a1022; --pen-soft: #1c2546;
+    --right: #4fc78e; --right-ink: #06140d; --right-soft: #10301f; --wrong: #ff7d70; --wrong-ink: #1d0605; --wrong-soft: #3a1613;
+    --hl-official: #3a3155; --hl-official-ink: #ddd3fa;
+    --hl-proposed: #263f28; --hl-proposed-ink: #d1eac8; --hl-flag: #4d2525; --hl-flag-ink: #f7c7c2;
+    --hl-none: #252c3a; --hl-none-ink: #b3bccd; --hl-claude: #443c14; --hl-claude-ink: #f5e79c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px -14px rgba(0, 0, 0, .7);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, .4), 0 34px 80px -24px rgba(0, 0, 0, .8);
+    --scrim: rgba(4, 6, 10, .96);
+    --veil: rgba(2, 4, 8, .6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1118; --sheet: #151a24; --ink: #e9ecf2; --ink-2: #a5aec0; --ink-3: #737d93;
+  --rule: #262e3f; --rule-strong: #364056; --pen: #86a0ff; --pen-ink: #0a1022; --pen-soft: #1c2546;
+  --right: #4fc78e; --right-ink: #06140d; --right-soft: #10301f; --wrong: #ff7d70; --wrong-ink: #1d0605; --wrong-soft: #3a1613;
+  --hl-official: #3a3155; --hl-official-ink: #ddd3fa;
+  --hl-proposed: #263f28; --hl-proposed-ink: #d1eac8; --hl-flag: #4d2525; --hl-flag-ink: #f7c7c2;
+  --hl-none: #252c3a; --hl-none-ink: #b3bccd; --hl-claude: #443c14; --hl-claude-ink: #f5e79c;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px -14px rgba(0, 0, 0, .7);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, .4), 0 34px 80px -24px rgba(0, 0, 0, .8);
+  --scrim: rgba(4, 6, 10, .96);
+  --veil: rgba(2, 4, 8, .6);
+  color-scheme: dark;
+}
+/* the gothic skin keeps its own dark palette whatever the viewer's mode (this block comes last so it wins) */
+:root[data-skin="gothic"] {
+  color-scheme: dark;
+  --ink: #ece3d1;
+  --ink-2: #c6bdac;
+  --ink-3: #9a9284;
+  --right: #9fc6a8;
+  --wrong: #e59177;
+  --scrim: rgba(9, 8, 7, .95);
+  --veil: rgba(9, 8, 7, .62);
+  --r: 3px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { overflow-x: hidden; }
+@supports (overflow: clip) { html { overflow-x: clip; } }
+.sr-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#app { position: relative; z-index: 2; min-height: 100vh; }
+/* the night sky, paper mottle and grain belong to the gothic skin, which turns them back on */
+#sky, .paper, .grain { display: none; }
+
+/* ---------- theme sheet: the frame (each skin paints it) ---------- */
+.theme-sheet { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 16px; }
+.theme-sheet .scrim { position: absolute; inset: 0; background: var(--veil); animation: fadein .3s var(--ease) both; }
+.theme-sheet .sheet {
+  position: relative; width: min(31rem, 100%); max-height: calc(100vh - 32px); overflow: auto; overscroll-behavior: contain;
+  display: grid; gap: 16px; animation: sheet-in .55s var(--spring) both;
+}
+.theme-sheet.closing .scrim { animation: fadeout .2s ease both; }
+.theme-sheet.closing .sheet { animation: sheet-out .2s ease both; }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sheet-head h2 { margin: 0; }
+.sheet-x { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; cursor: pointer; }
+.sheet-x svg { width: 16px; height: 16px; }
+.sheet-note { margin: -6px 0 0; }
+.theme-list { display: grid; gap: 10px; }
+.theme-opt {
+  width: 100%; display: grid; grid-template-columns: 7.25rem minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  padding: 10px 14px 10px 10px; text-align: left; cursor: pointer;
+}
+.theme-opt:active { transform: scale(.985); }
+.theme-opt .pv { display: block; width: 100%; aspect-ratio: 120 / 76; overflow: hidden; }
+.theme-opt .pv svg { display: block; width: 100%; height: 100%; }
+.theme-opt .to-text { display: grid; gap: 3px; min-width: 0; }
+.to-check { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; }
+.to-check svg { width: 14px; height: 14px; opacity: 0; transition: opacity .25s var(--ease); }
+.theme-opt[aria-pressed="true"] .to-check svg { opacity: 1; }
+@media (max-width: 560px) {
+  .theme-sheet { place-items: end stretch; padding: 0; }
+  .theme-sheet .sheet {
+    width: 100%; max-height: 88vh; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important; animation-name: sheet-up;
+  }
+  .theme-sheet.closing .sheet { animation: sheet-down .26s cubic-bezier(.4, 0, 1, 1) both; }
+  .theme-opt { grid-template-columns: 5.75rem minmax(0, 1fr) auto; gap: 12px; }
+}
+
+/* ---------- screen changes ---------- */
+.qcard { view-transition-name: qcard; }
+/* where the browser has no view transitions */
+#app.enter-nav .stage, #app.enter-back .stage { animation: enter .55s var(--ease) both; }
+#app.enter-next .qcard { animation: card-in-r .5s var(--ease) both; }
+#app.enter-prev .qcard { animation: card-in-l .5s var(--ease) both; }
+/* with view transitions (Chrome, Edge, Safari 18) */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .42s; animation-timing-function: var(--ease); }
+html[data-vt="nav"]::view-transition-old(root), html[data-vt="back"]::view-transition-old(root) { animation-name: vt-out; }
+html[data-vt="nav"]::view-transition-new(root) { animation-name: vt-in-fwd; }
+html[data-vt="back"]::view-transition-new(root) { animation-name: vt-in-back; }
+::view-transition-group(qcard) { animation-duration: .5s; animation-timing-function: var(--ease); }
+html[data-vt="next"]::view-transition-old(qcard) { animation: vt-card-out-l .34s var(--ease) both; }
+html[data-vt="next"]::view-transition-new(qcard) { animation: card-in-r .5s var(--ease) both; }
+html[data-vt="prev"]::view-transition-old(qcard) { animation: vt-card-out-r .34s var(--ease) both; }
+html[data-vt="prev"]::view-transition-new(qcard) { animation: card-in-l .5s var(--ease) both; }
+html[data-vt="nav"]::view-transition-new(qcard) { animation: rise .55s var(--ease) both; }
+::view-transition-old(sky), ::view-transition-old(grain) { display: none; }
+::view-transition-new(sky), ::view-transition-new(grain) { animation: none; }
+/* switching skins: the whole page dissolves into the other one */
+html[data-vt="skin"] #sky, html[data-vt="skin"] .grain, html[data-vt="skin"] .qcard { view-transition-name: none !important; }
+html[data-vt="skin"]::view-transition-old(root) { animation: skin-out .5s cubic-bezier(.4, 0, .2, 1) both; }
+html[data-vt="skin"]::view-transition-new(root) { animation: skin-in .8s var(--ease) both; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fill { from { transform: scaleX(0); } }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { 0% { transform: scale(.78); } 100% { transform: scale(1); } }
+@keyframes reveal { from { opacity: .35; transform: translateY(5px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } }
+@keyframes fadein { from { opacity: 0; } }
+@keyframes fadeout { to { opacity: 0; } }
+@keyframes zoomin { from { opacity: 0; transform: scale(.96); } }
+@keyframes enter { from { opacity: 0; transform: translateY(14px) scale(.995); filter: blur(5px); } }
+@keyframes card-in-r { from { opacity: 0; transform: translateX(44px); filter: blur(4px); } }
+@keyframes card-in-l { from { opacity: 0; transform: translateX(-44px); filter: blur(4px); } }
+@keyframes vt-out { to { opacity: 0; transform: scale(.985); filter: blur(4px); } }
+@keyframes vt-in-fwd { from { opacity: 0; transform: translateY(16px) scale(1.008); filter: blur(5px); } }
+@keyframes vt-in-back { from { opacity: 0; transform: translateY(-12px) scale(.992); filter: blur(5px); } }
+@keyframes vt-card-out-l { to { opacity: 0; transform: translateX(-46px); filter: blur(5px); } }
+@keyframes vt-card-out-r { to { opacity: 0; transform: translateX(46px); filter: blur(5px); } }
+@keyframes skin-out { to { opacity: 0; transform: scale(1.015); filter: blur(10px); } }
+@keyframes skin-in { from { opacity: 0; transform: scale(.985); filter: blur(12px); } }
+@keyframes sheet-in { from { opacity: 0; transform: translateY(18px) scale(.965); } }
+@keyframes sheet-up { from { transform: translateY(100%); } }
+@keyframes sheet-out { to { opacity: 0; transform: translateY(10px) scale(.98); } }
+@keyframes sheet-down { to { transform: translateY(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

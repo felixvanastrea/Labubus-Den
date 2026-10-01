@@ -1,0 +1,3138 @@
+[
+ {
+  "id": "cardiac-diseases",
+  "name": "CARDIAC DISEASES",
+  "legend": [
+   "Official answers in bold and highlighted in purple"
+  ],
+  "questions": [
+   {
+    "id": "67447bd0bb",
+    "n": 1,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following findings is (are) most consistent with mitral stenosis?",
+    "options": [
+     "Is not caused by mitral valve prolapse.",
+     "Pansystolic murmur heard at the mitral area.",
+     "Diastolic thrill in the apex.",
+     "Can be caused by cordage rupture."
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "ae79c292ba",
+    "n": 2,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following findings is (are) the true answer(s) in mitral stenosis?",
+    "options": [
+     "2–4 cm<sup>2</sup> is the normal mitral valve area.",
+     "Dysphonia can be a symptom.",
+     "Is severe if the valve area is less than 1,5 cm<sup>2</sup>.",
+     "The most common etiology is degenerative."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "949c043fe3",
+    "n": 3,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What are the most likely signs to be associated with severe mitral stenosis?",
+    "options": [
+     "Syncope.",
+     "Angina pectoris.",
+     "Hemoptysis.",
+     "Dysphagia."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "fa9b8fc5b8",
+    "n": 4,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is (are) the complication(s) of severe mitral stenosis?",
+    "options": [
+     "Right Heart Failure.",
+     "Stroke.",
+     "Pulmonary embolism.",
+     "Left ventricle dysfunction."
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "official"
+   },
+   {
+    "id": "4e98084cdc",
+    "n": 5,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "When percutaneous mitral ballon valvotomy in mitral stenosis (MS) is indicated?",
+    "options": [
+     "In mild mitral stenosis before pregnancy.",
+     "In severe MS and moderate mitral regurgitation.",
+     "In severe MS with Left atrial thrombus.",
+     "Favorable mitral morphology and MS area 1.5 cm<sup>2</sup>."
+    ],
+    "answer": [
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "7933471128",
+    "n": 6,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Among these statements regarding aortic stenosis, which of them is (are) true?",
+    "options": [
+     "A decrescendo diastolic murmur at the upper sternal border is a hallmark finding.",
+     "Angina pectoris during aortic stenosis is always linked to coronary artery disease.",
+     "Symptomatic and severe aortic stenosis can lead to sudden death.",
+     "Severe aortic stenosis can be treated by optimal medical treatment only."
+    ],
+    "answer": [
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "970c1717bf",
+    "n": 7,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What is (are) the classic finding(s) associated with aortic stenosis?",
+    "options": [
+     "Systolic and diastolic continuous murmur in the sternal left border.",
+     "Crescendo-decrescendo ejection murmur.",
+     "Systolic thrill in the apex.",
+     "Bounding pulses."
+    ],
+    "answer": [
+     1
+    ],
+    "key": "official"
+   },
+   {
+    "id": "0842cec8c1",
+    "n": 8,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What is (are) the pathophysiological consequence(s) of aortic stenosis?",
+    "options": [
+     "Left ventricle hypertrophy.",
+     "Left ventricle enlargement.",
+     "Left atrial dilation.",
+     "Aortic regurgitation."
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "8ff4ed25c3",
+    "n": 9,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which statement(s) concerning aortic stenosis work out (are) true?",
+    "options": [
+     "The ECG shows the right ventricle hypertrophy.",
+     "Chest x-ray is crucial for assessing aortic stenosis severity.",
+     "Angio-coronarography shows always an underlined coronary artery disease.",
+     "Echocardiography is the best tool to appreciate aortic stenosis severity."
+    ],
+    "answer": [
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "2592a3cd09",
+    "n": 10,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Among these statements regarding aortic stenosis, which of them is (are) exact?",
+    "options": [
+     "Left ventricle enlargement is the initial pathophysiological mechanism.",
+     "Can be secondary to aortic dissection.",
+     "Severe aortic stenosis if valve area is between 1 and 1,5 cm<sup>2</sup> and aortic jet velocity at 3–4 m/s.",
+     "The primary treatment of symptomatic and severe aortic stenosis is valve replacement."
+    ],
+    "answer": [
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "cc07536090",
+    "n": 11,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "A patient with infective endocarditis is at risk for developing which of the following complications?",
+    "options": [
+     "Deep venous thrombosis.",
+     "Renal infarction.",
+     "Spleen abscess.",
+     "Cerebral atherosclerotic aneurysm."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "3547075758",
+    "n": 12,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What are the right statements regarding right-sided infective endocarditis?",
+    "options": [
+     "Less common than left-sided infective endocarditis.",
+     "Is most often due to IV drug abuse.",
+     "Can cause septic coronary embolism.",
+     "The most involved bacteria are Streptococci."
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "official"
+   },
+   {
+    "id": "b8f4a243ef",
+    "n": 13,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is (are) correct about infective endocarditis?",
+    "options": [
+     "Diagnosis is definite in presence of 1 major and 2 minor criteria.",
+     "Can be prevented by antibio-prophylaxis before dental procedure in a prosthetic valve holder.",
+     "Initial blood culture must be done 48 hours after antibiotics.",
+     "Once diagnosed, urgent oral antibiotics is required."
+    ],
+    "answer": [
+     1
+    ],
+    "key": "official"
+   },
+   {
+    "id": "8caafc2680",
+    "n": 14,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "In which cases infective endocarditis must be suspected?",
+    "options": [
+     "Fever + tonsillitis.",
+     "Angina pectoris.",
+     "Fever + cardiac murmur.",
+     "Fever + hemiplegia in a young patient."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "de56c539a1",
+    "n": 15,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of these cardiopathies is the most at risk of infective endocarditis?",
+    "options": [
+     "Mitral stenosis.",
+     "Mechanical prosthesis.",
+     "Atrial septal defect.",
+     "Coronary bypass graft."
+    ],
+    "answer": [
+     1
+    ],
+    "key": "official"
+   },
+   {
+    "id": "2c5cb4f4b4",
+    "n": 16,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is (are) NOT (a) major Jones criterion (criteria) for diagnosing acute rheumatic fever?",
+    "options": [
+     "Subcutaneous nodules.",
+     "Previous rheumatic fever.",
+     "Migratory polyarthralgia.",
+     "Chorea."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "official"
+   },
+   {
+    "id": "4f84138dbc",
+    "n": 17,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What is the classic pattern of arthritis in acute rheumatic fever?",
+    "options": [
+     "Migratory polyarthritis of the large joints.",
+     "Chronic symmetrical polyarthritis.",
+     "Asymmetric migratory polyarthritis in small joints.",
+     "Persistent polyarthritis."
+    ],
+    "answer": [
+     0
+    ],
+    "key": "official"
+   },
+   {
+    "id": "669eae9649",
+    "n": 18,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What are the true propositions regarding skin involvement during acute rheumatic fever?",
+    "options": [
+     "Erythema is itchy and permanent.",
+     "Erythema is seen over the extensor of surface bones.",
+     "Subcutaneous nodules are painful.",
+     "They occur in 5 to 10%."
+    ],
+    "answer": [
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "109223952b",
+    "n": 19,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is (are) correct regarding acute rheumatic fever (ARF)?",
+    "options": [
+     "Latency period between streptococcal infection and onset of ARF is 2–4 days.",
+     "Primary prevention aims to cure the initial streptococcal infection.",
+     "Pericarditis results from direct bacterial invasion.",
+     "The most affected valve is the mitral valve."
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "official"
+   },
+   {
+    "id": "b2f2497f48",
+    "n": 20,
+    "topic": "cardiac-diseases",
+    "source": "mid-s5-2526",
+    "stem": "What is (are) accurate propositions (s) regarding secondary prophylaxis in acute rheumatic fever (ARF)?",
+    "options": [
+     "Prevention of recurrent attacks of ARF.",
+     "Based on a weekly benzathin penicillin G injection.",
+     "Surgical repair of the damaged heart valve.",
+     "Prevent the first episode of rheumatic fever."
+    ],
+    "answer": [
+     0
+    ],
+    "key": "official"
+   }
+  ]
+ },
+ {
+  "id": "respiratory-disease",
+  "name": "RESPIRATORY DISEASE",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Chica’s proposed answers highlighted in orange",
+   "Proposed answers highlighted in green"
+  ],
+  "questions": [
+   {
+    "id": "afd19ce70e",
+    "n": 1,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "The mortality risk factors of pneumonia are:",
+    "options": [
+     "Intense chills.",
+     "Hospitalization within the past year.",
+     "Fever.",
+     "Congestive heart failure."
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "d44ed5579d",
+    "n": 2,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Viral pneumonias:",
+    "options": [
+     "Are often serious.",
+     "Occur especially in winter.",
+     "Manifested by an interstitial syndrome on chest x-ray.",
+     "Can never lead to a pandemic."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "2959ccae1c",
+    "n": 3,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Poor prognostic factors for nosocomial infection are:",
+    "options": [
+     "Delay in antibiotic therapy.",
+     "Young age.",
+     "The presence of comorbidities.",
+     "Isolation of a Streptococcus."
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "aef45a8f11",
+    "n": 4,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Lung abscess:",
+    "options": [
+     "May appear as spherical intra- parenchymal cavity with an Air-fluid level within the cavity.",
+     "Has an insidious onset over 2 to 3 weeks.",
+     "Is most often caused by a virus.",
+     "Is a collection of pus within the pleura."
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "68a22d8e37",
+    "n": 5,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Amoebic abscess:",
+    "options": [
+     "Is often located at the lower region of the left lung.",
+     "Manifested by hydatid vomic.",
+     "Regresses after metronidazole-based treatment.",
+     "Is often secondary to intestinal amoebiasis."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "652cbf45f5",
+    "n": 6,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Therapeutic management of acute lobar pneumonia is based on:",
+    "options": [
+     "Anti-parasitic treatment.",
+     "Probabilistic antibiotic therapy.",
+     "Bronchial drainage physiotherapy.",
+     "Smoking cessation."
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "cc35016b3e",
+    "n": 7,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Aspiration pneumonia:",
+    "options": [
+     "Is generally insidious.",
+     "Is located in the upper lobe of the lung.",
+     "Rarely progresses to an abscess.",
+     "May be accompanied by foul-smelling breath."
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "a00088f675",
+    "n": 8,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "During nosocomial pneumonia:",
+    "options": [
+     "It can occur one month after discharge from the hospital.",
+     "The source of bacteria can be endogenous.",
+     "The progression rarely leads to death.",
+     "Its prevention is based on hand washing."
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "41bd548bf2",
+    "n": 9,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "The criteria for the CRB 65 score are:",
+    "options": [
+     "Age &gt;65 years.",
+     "Polypnea &gt;30 c/min.",
+     "Fever.",
+     "Blood Pressure &gt;140/80mmHg."
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "01376f3cfb",
+    "n": 10,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "During Acute bronchitis:",
+    "options": [
+     "Viruses are most often responsible.",
+     "Chest X-ray is necessary for diagnosis.",
+     "Chest examination is normal.",
+     "Chest CT scan confirms the diagnosis."
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "ff7f4dedcd",
+    "n": 11,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "The germs involved in atypical pneumonia are:",
+    "options": [
+     "Mycoplasma pneumonia.",
+     "Hoemophilus Influenza.",
+     "Streptococcus Pneumonia.",
+     "Chlamydia psittacci."
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "7044989217",
+    "n": 12,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Risk factors for nosocomial infections include:",
+    "options": [
+     "Persistence of cough reflex.",
+     "Hemoglobin level &lt;10g/dl.",
+     "Smoking.",
+     "Age &lt;70 years."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "915a9086b2",
+    "n": 13,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "During Myxovirus Influenza pneumonia:",
+    "options": [
+     "It can be complicated by pulmonary fibrosis.",
+     "The onset is gradual.",
+     "Bronchial superinfection is exceptional.",
+     "The fever decreases in two phases."
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "d28d82e23c",
+    "n": 14,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Atypical pneumonia:",
+    "options": [
+     "Is due to Pneumococcus.",
+     "May be accompanied by myalgia.",
+     "Is often accompanied by leukopenia.",
+     "Is accompanied by nasolabial herpes."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "6e70bab198",
+    "n": 15,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "During acute lobar pneumonia (Typical pneumonia) :",
+    "options": [
+     "Chest x-ray shows alveolar opacity.",
+     "Mycoplasma pneumonia is the most common germ.",
+     "The onset is sudden.",
+     "Fever is rare."
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "564c6494ef",
+    "n": 16,
+    "topic": "respiratory-disease",
+    "source": "mid-s5-2526",
+    "stem": "Acute bronchitis:",
+    "options": [
+     "Is a chronic inflammation of the bronchial mucosa.",
+     "Can complicate chronic bronchitis.",
+     "Is accompanied by lung parenchyma damage.",
+     "Is the most common acute lower respiratory tract infection (ALRTI)."
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "proposed"
+   }
+  ]
+ },
+ {
+  "id": "digestive-pathology",
+  "name": "DIGESTIVE PATHOLOGY",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Chica’s proposed answers highlighted in orange"
+  ],
+  "questions": [
+   {
+    "id": "092b4f22aa",
+    "n": 1,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following statements are correct regarding digestive parasitosis?",
+    "options": [
+     "Heavy Ascaris infestation may lead to intestinal obstruction.",
+     "Giardia lamblia trophozoites adhere to the duodenojejunal mucosa and cause malabsorption.",
+     "Giardiasis causes hematochezia and mucosal ulceration.",
+     "Ascaris infection is transmitted through skin penetration by larvae."
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "chica",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "Ascaris",
+       "html": "<p>Helminth (Metazoa) &gt; Nematode (or roundworms or eelworms) - a cylindrical, unsegmented body covered by a protective, non-living cuticle; internally, they have a complete digestive system (mouth to anus) and a pseudocoelom, which is a body cavity that is not fully lined by mesoderm.</p>"
+      },
+      {
+       "anchor": "Ascaris infestation",
+       "html": "<p>Ascariasis</p>"
+      },
+      {
+       "anchor": "obstruction",
+       "html": "<p>Complications of ascariasis include intestinal obstruction, malnutrition, hepatobiliary involvement, pancreatitis, and other manifestations.</p><p>- Intestinal obstruction – In the setting of heavy Ascaris infection, adult worms can obstruct the bowel lumen, leading to acute intestinal obstruction.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/ascariasis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/ascariasis</a></p>"
+      }
+     ],
+     "1": [
+      {
+       "anchor": "Giardia lamblia",
+       "html": "<p>Protozoa (flagellated)</p>"
+      },
+      {
+       "anchor": "Giardia lamblia",
+       "html": "<p>Giardia lamblia causes giardiasis (lambliasis)</p>"
+      },
+      {
+       "anchor": "Giardia lamblia",
+       "html": "<p>Exists in 2 forms:</p><p>- Trophozoite: mobile, attaches to duodenojejunal mucosa;</p><p>- Cyst: resistant, infectious form.</p>"
+      },
+      {
+       "anchor": "Giardia lamblia",
+       "html": "<p>Transmission:</p><p>- Direct: soiled hands;</p><p>- Indirect: contaminated water or food.</p>"
+      },
+      {
+       "anchor": "malabsorption",
+       "html": "<p>Trophozoites can attach to epithelial cells lining the intestinal tract (most commonly the proximal small intestine), leading to structural and functional abnormalities. Light microscopy may demonstrate no abnormalities, mild or moderate partial villous atrophy, or subtotal villous atrophy in severe cases. An increase in crypt depth may be seen, and microvilli shortening or disruption may occur. Intestinal epithelial tight junctions may be disrupted leading to increased permeability and altered epithelial cell survival. Consequent deficiencies in small bowel epithelial brush border enzymes, including disaccharidases such as lactase, may develop. Such local epithelial enzyme deficiencies likely contribute to symptoms such as malabsorption seen in acute and chronic giardiasis and are slow to recover even with effective treatment of the infection. Loss of intestinal barrier function and disruption of the commensal intestinal microbiota in the setting of infection are also thought to contribute to symptoms.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H418921777\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H418921777</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "Giardiasis",
+       "html": "<p>Acute giardiasis - Symptoms usually develop after an incubation period of 7 to 14 days. Onset of acute gastrointestinal symptoms within less than a week of exposure is not likely attributable to infection with Giardia. When acute symptoms occur, they generally last one to four weeks.</p><p>Symptoms of acute giardiasis include:</p><p>- Diarrhea (90%)</p><p>- Malaise (86%)</p><p>- Foul-smelling and fatty stools (steatorrhea; 75%)</p><p>- Flatulence (75%)</p><p>- Abdominal cramps and bloating (71%)</p><p>- Nausea (69%)</p><p>- Weight loss (66%)</p><p>- Vomiting (23%)</p><p>- Fever (15%)</p><p>- Constipation (13%)</p><p>- Urticaria (10%)</p><p>Chronic giardiasis - Chronic giardiasis may follow the acute phase of illness or may develop in the absence of an antecedent symptomatic acute illness. Among symptomatic individuals, chronic symptoms can develop in up to half of symptomatic individuals that are not promptly treated after acquiring the infection.</p><p>Symptoms of chronic giardiasis may include:</p><p>- Loose stools but usually not diarrhea</p><p>-Steatorrhea</p><p>- Profound weight loss (10 to 20% of body weight)</p><p>- Malabsorption</p><p>- Stunted growth</p><p>- Malaise</p><p>- Fatigue</p><p>- Depression</p><p>- Abdominal cramping</p><p>- Borborygmi</p><p>- Flatulence</p><p>- Burping</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H7\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H7</a></p>"
+      },
+      {
+       "anchor": "hematochezia",
+       "html": "<p>Passage of fresh, bright red blood from the rectum, either in or with the stool, or on toilet paper.</p>"
+      },
+      {
+       "anchor": "ulceration",
+       "html": "<p>!Hypersensitivity phenomena - Hypersensitivity phenomena such as rash, urticaria, aphthous ulceration, and reactive arthritis or synovitis have been described in the setting of giardiasis, although these manifestations are rare.&quot;</p><p><a href=\"https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H7\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/giardiasis-epidemiology-clinical-manifestations-and-diagnosis#H7</a></p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": "transmitted",
+       "html": "<p>Transmission of ascariasis occurs primarily via ingestion of water or food contaminated with infectious A. lumbricoides or A. suum eggs. Children playing in contaminated soil may acquire the parasite from their hands, and poor hygiene facilitates spread of infection. Uncommonly, transmission occurs via airborne ingestion of contaminated dust. Maternal-fetal transmission via transplacental migration of larvae has been described.</p><p>Transmission of infection is enhanced by asymptomatically infected individuals who can continue to shed eggs for years. Reinfection occurring in endemic areas is common. Prior infection does not confer protective immunity. In addition, coinfection with other parasitic diseases is common given similar predisposing factors for transmission.</p><p>Transmission of A. suum is associated with pig husbandry and use of pig feces as fertilizer.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/ascariasis#H3\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/ascariasis#H3</a></p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image13.webp",
+      "w": 508,
+      "h": 478
+     },
+     {
+      "html": "Adult worms (females 20 to 35 cm; males 15 to 30 cm) <strong>(1)</strong> live in the lumen of the small intestine. A female may produce approximately 200,000 eggs per day, which are passed with the faeces <strong>(2)</strong>. Unfertilized eggs may be ingested but are not infective. Fertile eggs embryonate and become infective after 18 days to several weeks (3), depending on the environmental conditions (optimum: moist, warm, shaded soil). After infective eggs are swallowed <strong>(4)</strong>, the larvae hatch <strong>(5)</strong>, invade the intestinal mucosa, and are carried via the portal, then systemic circulation to the lungs <strong>(6)</strong>. The larvae mature further in the lungs (10 to 14 days), penetrate the alveolar walls, ascend the bronchial tree to the throat, and are swallowed <strong>(7)</strong>. Upon reaching the small intestine, they develop into adult worms <strong>(1)</strong>. Between two and three months are required from ingestion of the infective eggs to oviposition by the adult female. Adult worms can live one to two years."
+     }
+    ]
+   },
+   {
+    "id": "62c29e543b",
+    "n": 2,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "In case of celiac disease, what are the correct statements?",
+    "options": [
+     "Celiac disease is an autoimmune chronic enteropathy.",
+     "Celiac disease is an allergy to gluten.",
+     "Genetic susceptibility is present in all patients.",
+     "It is reversible spontaneously in adults."
+    ],
+    "answer": [
+     0
+    ],
+    "key": "chica",
+    "optNotes": {
+     "1": [
+      {
+       "anchor": "allergy",
+       "html": "<p>IgE-mediated vs. T-cell-mediated</p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "Genetic susceptibility",
+       "html": "<p>Celiac disease is an immune disorder triggered by an environmental agent (the gluten component of wheat and related cereals) in genetically predisposed individuals. The genetic basis of celiac disease is supported by the frequent intrafamilial occurrence and the remarkably close association with the human leukocyte antigen (HLA) DR3-DQ2 and/or DR4-DQ8 gene locus. More than 99% of individuals with celiac disease have HLA DR3-DQ2 and/or DR4-DQ8, compared with 30 to 40% of the general population of most countries. Homozygosity for HLA DQ2 has been associated with an increased risk for celiac disease and enteropathy-associated T-cell lymphoma.</p><p>[...]</p><p>Several non-HLA locus genes conferring risk for celiac disease have also been identified and an increasing number of non-HLA risk alleles have been associated with an increased risk of celiac disease. Non-HLA genes that may influence susceptibility to the disease have been identified, but their influence has not been confirmed. However, these polymorphisms, even when taken together, contribute only 3 to 4% to the genetic risk for celiac disease, as compared with 30 to 40% for HLA-DQ2 or -DQ8.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults#H3\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults#H3</a></p>"
+      },
+      {
+       "anchor": "Genetic susceptibility",
+       "html": "<p>One of the most frequent genetically based disorder</p><p class=\"src\">Celiac Disease PPT - Prof. Wafaa Khannoussi</p>"
+      },
+      {
+       "anchor": "Genetic susceptibility",
+       "html": "<p>Genetic susceptibility:</p><p>- 90% HLA DQ2;</p><p>- 10% HLA DQ8.</p><p class=\"src\">Celiac Disease PPT - Prof. Wafaa Khannoussi</p>"
+      },
+      {
+       "anchor": "all",
+       "html": "<p>Celiac disease (CeD) is a multifactorial autoimmune enteropathy that develops in genetically predisposed subjects carrying the HLA-DQ2 or HLA-DQ8 haplotype. The prevalence of these HLA haplotypes in the general population is around 30%-40%, suggesting that they are necessary, but not sufficient, to induce CeD.</p><p class=\"src\"><a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC8790554/\" target=\"_blank\" rel=\"noopener\">https://pmc.ncbi.nlm.nih.gov/articles/PMC8790554/</a></p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "celiac disease",
+      "html": "<p>Celiac disease, also known as gluten-sensitive enteropathy, is a common immune-mediated inflammatory disease of the small intestine caused by sensitivity to dietary gluten and related proteins in genetically predisposed individuals.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults</a></p>"
+     }
+    ]
+   },
+   {
+    "id": "44ff38faff",
+    "n": 3,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the first line workup in case of functional dysphagia?",
+    "options": [
+     "Abdominal ultrasound.",
+     "Ambulatory reflux monitoring 24h pHmetry.",
+     "Chest CT.",
+     "Upper GI endoscopy and esophageal biopsies."
+    ],
+    "answer": [
+     3
+    ],
+    "key": "chica",
+    "optNotes": {
+     "3": [
+      {
+       "anchor": "Upper GI endoscopy",
+       "html": "<p>Esophagogastroduodenoscopy (EGD) + barium swallow</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "functional dysphagia",
+      "html": "<p>Functional dysphagia - According to the Rome IV criteria, functional dysphagia is defined by the following:</p><p>- A sense of solid and/or liquid food lodging, sticking, or passing abnormally through the esophagus.</p><p>- No evidence that an esophageal mucosal or structural abnormality is the cause of the symptom.</p><p>- No evidence that GERD or eosinophilic esophagitis is the cause of the symptom.</p><p>- Absence of a major esophageal motor disorder (achalasia, EGJ outflow obstruction, distal esophageal spasm, hypercontractile esophagus, ineffective esophageal motility, and absent peristalsis) [6].</p><p>All criteria must be fulfilled for the past three months with symptom onset at least six months prior to the diagnosis and with a frequency of at least once a week.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/approach-to-the-evaluation-of-dysphagia-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/approach-to-the-evaluation-of-dysphagia-in-adults</a></p>"
+     },
+     {
+      "anchor": "functional dysphagia",
+      "html": "<p>Functional dysphagia is a diagnosis of exclusion. An algorithmic approach should be used to exclude other diagnoses, including performance of an EGD, barium swallow, proton pump inhibitor (PPI) trial, and manometry. EGD with biopsy is performed first to exclude mucosal or structural lesions. If nothing is discovered, then barium swallow should be done to confirm, which may also give insight into possible motility disorders. If reflux symptoms are present, a trial of PPI therapy can be initiated. Response may indicate GERD as the true etiology; however, objective evidence of GERD should be excluded by EGD or pH testing. Then manometry should be preformed to rule out motility disorders. If dysphagia is felt to be cervical, a videofluoroscopic swallowing study is appropriate to evaluate for oropharyngeal disorders. If all of these studies result in no diagnosis, then functional dysphagia is the diagnosis.</p><p class=\"src\"><a href=\"https://www.sciencedirect.com/science/article/abs/pii/B9780128017722000394\" target=\"_blank\" rel=\"noopener\">https://www.sciencedirect.com/science/article/abs/pii/B9780128017722000394</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image54.webp",
+      "w": 1600,
+      "h": 899
+     },
+     {
+      "html": "Diagnostic algorithm for dysphagia. EGD, esophagogastroduodenoscopy; PPI, proton pump inhibitor; GERD, gastroesophageal reflux disorder."
+     }
+    ]
+   },
+   {
+    "id": "b23574d892",
+    "n": 4,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What are the risk factors of GERD?",
+    "options": [
+     "Chronic antibiotics use.",
+     "Previous gastroenteritis.",
+     "Obesity.",
+     "Pregnancy."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "chica",
+    "flag": "red",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "antibiotics",
+       "html": "<p>NSAIDs</p><p>Anticholinergics</p><p>Ca2+ channel blockers</p><p>Erectile dysfunction medicines</p><p>Tricyclic antidepressants</p><p>Opioids</p><p>Theophylline (bronchodilator)</p><p>Diazepam</p><p>Barbiturates</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "risk factors of GERD",
+      "html": "<p>&quot;Several factors may contribute to development of pathologic reflux by exacerbating the mechanical or functional impairment of the esophagogastric junction (EGJ).</p><p>Obesity - Obesity is an independent risk factor for GERD symptoms and erosive esophagitis. In a cross-sectional survey of 10,545 women, increasing body mass index was associated with a significant increase in frequency of GERD symptoms; even moderate weight gain in women of normal weight was associated with symptom exacerbation. The estimated odds ratios for heartburn and acid regurgitation occurring at least once a week in overweight or obesity are 1.82 and 2.91, respectively.</p><p>Several mechanisms have been proposed by which obesity contributes to reflux. In an observational study that included 285 patients with GERD in whom anthropometric variables were correlated with findings on manometry, there was a significant correlation of body mass index and waist circumference with intragastric pressure and the gastroesophageal pressure gradient [52]. Obesity was also associated with disruption of the EGJ leading to a hiatal hernia and increased esophageal acid exposure.</p><p>Pregnancy and exogenous estrogen - Heartburn occurs with 30 to 50% of pregnancies. This is likely due to hormonal (estrogen and progesterone reducing LES tone) and possible mechanical factors (gravid uterus elevating intra-abdominal pressure). Estrogen replacement therapy in postmenopausal women also appears to modestly increase the risk of heartburn.</p><p>[Continues]</p>"
+     },
+     {
+      "anchor": "risk factors of GERD",
+      "html": "<p>Diet and medications - Specific foods (fat, chocolate, peppermint), caffeine, alcohol, smoking, and several drugs (eg, anticholinergics, nitrates, calcium channel blockers, erectile dysfunction medicines, tricyclic antidepressants, opioids, theophylline, diazepam, barbiturates) can cause or exacerbate reflux by inducing LES hypotension. Medications that cause delayed gastric emptying, such as glucagon-like peptide 1 receptor agonists, may also lead to the development of GERD.</p><p>Psychosocial factors - Patients with heartburn often report symptom exacerbations during periods of psychological stress or sleep deprivation. Similarly, symptom severity is affected by psychosocial comorbidities. Hypervigilance is a mechanism that leads to heightened awareness and amplification of sensations. This increased awareness of symptoms can generate a learned fear response, resulting in a vicious cycle of autonomic nervous system arousal that leads to unconscious behaviors to avoid the symptom. Hypervigilance can occur in all phenotypes of GERD, including nonerosive disease and erosive esophagitis, and strongly correlates with reported symptom severity.</p><p>Helicobacter pylori - The link between GERD and Helicobacter pylori is complex and, in many cases, H. pylori may actually be protective against GERD.&quot;</p><p><a href=\"https://www.uptodate.com/contents/pathophysiology-of-gastroesophageal-reflux-disease\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/pathophysiology-of-gastroesophageal-reflux-disease</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image34.webp",
+      "w": 1334,
+      "h": 924
+     },
+     {
+      "html": "Risk factors for GERD."
+     }
+    ]
+   },
+   {
+    "id": "bb0d2d1518",
+    "n": 5,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following statements about IBD treatment are correct?",
+    "options": [
+     "Aminosalicylates are first-line agents for mild to moderate UC.",
+     "Anti-TNF biologics are indicated in refractory or severe disease.",
+     "Corticosteroids are appropriate for long-term maintenance.",
+     "NSAIDs are recommended for controlling abdominal pain during flares."
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "chica",
+    "flag": "red",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "Aminosalicylates",
+       "html": "<p>Mesalamine or 5-aminosalicylic acid (5-ASA), is a medication used to treat inflammatory bowel disease, including ulcerative colitis and Crohn&#x27;s disease.[1] It is generally used for mildly to moderately severe disease.[1] It is taken by mouth or rectally.[1] The formulations which are taken by mouth appear to be similarly-effective.</p><p class=\"src\"><a href=\"https://en.wikipedia.org/wiki/Mesalazine\" target=\"_blank\" rel=\"noopener\">https://en.wikipedia.org/wiki/Mesalazine</a></p>"
+      },
+      {
+       "anchor": "mild to moderate UC",
+       "html": "<p>Initial therapy</p><p>Topical mesalamine - We and several society guidelines prefer topical (rectal) mesalamine as first-line treatment for inducing remission in low-risk patients with mild to moderate ulcerative proctitis or proctosigmoiditis.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis#H100504367\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis#H100504367</a></p>"
+      },
+      {
+       "anchor": "UC",
+       "html": "<p>Ulcerative colitis (UC) is a chronic inflammatory condition characterized by relapsing episodes of inflammation limited to the mucosal layer of the colon. The rectum is usually affected, and inflammation may extend in a proximal and continuous fashion to involve other portions of the colon.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis</a></p>"
+      },
+      {
+       "anchor": "UC",
+       "html": "<p>Mild - Patients with mild clinical disease have ≤4 stools per day with or without small amounts of blood, no signs of systemic toxicity (eg, no tachycardia), and a normal C-reactive protein (CRP) and/or erythrocyte sedimentation rate (ESR). Mild crampy abdominal pain, tenesmus, and periods of constipation are also common, but severe abdominal pain, profuse bleeding, fever, and weight loss are not part of the spectrum of mild disease.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis</a></p>"
+      },
+      {
+       "anchor": "UC",
+       "html": "<p>Moderate - Patients with moderate clinical disease may have frequent (four to six per day), loose, bloody stools, mild anemia not requiring blood transfusions (hemoglobin &gt;10 g/dL), and abdominal pain that is not severe. Patients have no or minimal signs of systemic toxicity. Adequate nutrition is usually maintained and weight loss is not associated with moderate clinical disease.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis</a></p>"
+      },
+      {
+       "anchor": "UC",
+       "html": "<p>Severe - Patients with a severe clinical disease typically have frequent, loose bloody stools (≥6 per day) with severe cramps and evidence of systemic toxicity as demonstrated by a fever (temperature ≥37.8°C), tachycardia (heart rate ≥90 beats per minute), anemia (hemoglobin &lt;10 g/dL), and/or an elevated CRP or ESR. Patients may have weight loss.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/medical-management-of-low-risk-adult-patients-with-mild-to-moderate-ulcerative-colitis</a></p>"
+      }
+     ],
+     "1": [
+      {
+       "anchor": "refractory or severe disease",
+       "html": "<p>For the patient with moderate to severe UC, first-line induction therapy options include biologic agents (with or without an immunomodulator [eg, azathioprine, 6-mercaptopurine]), oral sphingosine-1-phosphate (S1P) receptor modulators, or glucocorticoids.</p><p>As an example, we typically use an induction regimen of an anti-TNF agent (with or without an immunomodulator) for patients who have coexisting inflammatory disease such as rheumatoid arthritis, ankylosing spondylitis, or other conditions treated with anti-TNF therapy. For patients with psoriasis or psoriatic arthritis, we may use ustekinumab or mirikizumab as initial induction therapy. For patients with multiple sclerosis or other demyelinating condition, we may initiate a S1P receptor modulator (eg, ozanimod, etrasimod) and avoid anti-TNF therapy.</p><p>For most patients who are ≥65 years old or who have a history of recent infection (eg, pneumonia within the previous three months), we typically use vedolizumab or an anti-interleukin (IL) agent for induction therapy because these agents have not been associated with increased risk of serious infection.</p><p>Product labeling indicates that use of oral JAK inhibitors is limited to second-line therapy after an anti-TNF agent. This is in contrast to clinical trial design and the initial regulatory approval of a JAK inhibitor for UC.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/management-of-moderate-to-severe-ulcerative-colitis-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/management-of-moderate-to-severe-ulcerative-colitis-in-adults</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "long-term maintenance",
+       "html": "<p>Although CS are quite effective at the initial induction of symptomatic remission of IBD, they have no role in the long-term maintenance of remission. In general, CS are not associated with induction of mucosal healing, histologic control, or transmural healing, the evolving and preferred targets for stable remission and disease modification in IBD. Additionally, CS are associated with the highest rate of side effects of any treatments used in IBD.</p><p class=\"src\"><a href=\"https://www.sciencedirect.com/science/article/pii/S154235652500535X\" target=\"_blank\" rel=\"noopener\">https://www.sciencedirect.com/science/article/pii/S154235652500535X</a></p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": "NSAIDs",
+       "html": "<p>NSAIDs — Nonsteroidal antiinflammatory drugs (NSAIDs) may increase risk for developing IBD, but the magnitude of the risk appears small.</p><p>[...]</p><p>While NSAIDs are associated with intestinal mucosal injury, some patients with IBD can tolerate NSAIDs, particularly when they are given in low doses (eg, ibuprofen ≤200 mg daily, naproxen &lt;220 mg daily).</p><p>[...]</p><p>Experience with the cyclooxygenase-2 (COX-2) selective inhibitors in patients with IBD is limited. Although small case series suggested an increased risk of exacerbation of IBD, randomized controlled trials have demonstrated no significant increase in disease activity or relapse in patients treated with short-term COX-2 selective inhibitors.</p><p>The association of NSAIDs with IBD may be due to several mechanisms. Cyclooxygenase-mediated disruption of the intestinal epithelial barrier associated with NSAID use can affect the interaction between the gut microbiome and immune cells in the intestine lining. In addition, NSAIDs alter platelet aggregation, the release of inflammatory mediators, and microvascular response to stress, which are key events in the pathogenesis of IBD.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/definitions-epidemiology-and-risk-factors-for-inflammatory-bowel-disease\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/definitions-epidemiology-and-risk-factors-for-inflammatory-bowel-disease</a></p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image27.webp",
+      "w": 800,
+      "h": 450
+     },
+     {
+      "src": "img/mid-s5-2526-image18.webp",
+      "w": 1600,
+      "h": 741
+     },
+     {
+      "html": "Medical treatment of ulcerative colitis. 5-ASA, 5-aminosalicylic acid (aminosalicylates)."
+     }
+    ]
+   },
+   {
+    "id": "17a0b4ee78",
+    "n": 6,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "In peptic ulcer bleeding, what are the correct statements?",
+    "options": [
+     "Endoscopic treatment is mandatory in all cases.",
+     "It never presents with hematochezia.",
+     "Mortality rate is 5–10%.",
+     "Primary emergency management is essential to improve prognosis."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "chica",
+    "flag": "red",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "Endoscopic treatment",
+       "html": "<p>Patients with clinically significant UGI bleeding (ie, signs of active UGI bleeding including hematemesis, melena, or hematochezia, with or without hemodynamic instability or blood transfusion requirement) should be started on an intravenous proton pump inhibitor while undergoing initial evaluation. Once the patient is stabilized, endoscopy is performed to diagnose and treat high-risk lesions. Ulcers that are actively bleeding and most nonbleeding ulcers that are at high risk for recurrent bleeding based on the presence of stigmata of recent hemorrhage require endoscopic therapy. Ulcers that lack high-risk stigmata can be managed acutely with acid suppression alone.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/overview-of-the-treatment-of-bleeding-peptic-ulcers\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-the-treatment-of-bleeding-peptic-ulcers</a></p>"
+      }
+     ],
+     "1": [
+      {
+       "anchor": "hematochezia",
+       "html": "<p>Hematochezia in severe bleeding associated with hemodynamic instability.</p><p class=\"src\">Gastroduodenal (Peptic Ulcer Disease) PPT - Prof. Wafaa Khannoussi</p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": "Primary emergency management",
+       "html": "<p>The initial evaluation of a patient with upper gastrointestinal (UGI) bleeding starts with assessing hemodynamic stability and determining the need for fluid resuscitation and/or blood transfusion.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/overview-of-the-treatment-of-bleeding-peptic-ulcers\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-the-treatment-of-bleeding-peptic-ulcers</a></p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image7.webp",
+      "w": 1600,
+      "h": 1193
+     },
+     {
+      "src": "img/mid-s5-2526-image40.webp",
+      "w": 1258,
+      "h": 504
+     }
+    ]
+   },
+   {
+    "id": "a7a73fd272",
+    "n": 7,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What are the physiological defending factors of the gastric mucosa in peptic ulcer pathophysiology?",
+    "options": [
+     "Diet rich in fibers.",
+     "Bile reflux.",
+     "Blood flow.",
+     "Mucus and bicarbonate."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "chica",
+    "flag": "red",
+    "qNotes": [
+     {
+      "anchor": "factors",
+      "html": "<p>The main mucosal defense factors include the synthesis of cytoprotective prostaglandins (PGs), mucus, bicarbonate (HCO3−), nitric oxide (NO), endogenous antioxidant system, and adequate blood flow. Aggressive agents include hydrochloric acid (HCl) secretion, and pepsin activity, bile reflux, abnormal motility, decreased blood flow and infection with Helicobacter pylori, a bacterium that frequently colonizes the human stomach.</p><p>In addition to endogenous aggressive factors, the development of ulceration has been associated with some exogenous factors such as inappropriate eating habits, stress and chemical agents such as alcohol, smoking and prolonged and excessive use of non-steroidal anti-inflammatory drugs (NSAIDs).</p><p class=\"src\"><a href=\"https://www.mdpi.com/1420-3049/25/22/5431\" target=\"_blank\" rel=\"noopener\">https://www.mdpi.com/1420-3049/25/22/5431</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image57.webp",
+      "w": 1600,
+      "h": 1220
+     },
+     {
+      "html": "Source: <a href=\"https://www.mdpi.com/1420-3049/25/22/5431\" target=\"_blank\" rel=\"noopener\">https://www.mdpi.com/1420-3049/25/22/5431</a>"
+     }
+    ]
+   },
+   {
+    "id": "25221693c3",
+    "n": 8,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What are possible etiologies related to the post-absorptive phase in case of malabsorption syndrome?",
+    "options": [
+     "Pancreatic exocrine insufficiency.",
+     "Portal thrombosis.",
+     "Common bile duct malignant obstruction.",
+     "Compressive intraperitoneal lymphadenopathies."
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "chica",
+    "flag": "red",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": null,
+       "html": "<p>Pancreatic exocrine insufficiency - Impaired production of pancreatic lipase, colipase, and bicarbonate of a degree significant enough to cause fat malabsorption may occur with chronic pancreatitis or pancreatectomy. Other disorders associated with fat malabsorption in childhood include cystic fibrosis and Schwachman syndrome. Acidification of the duodenal contents due to Zollinger-Ellison syndrome or the gastric hypersecretory state that follows massive small bowel resection can inactivate pancreatic lipase, creating a functional deficiency of the enzyme.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/overview-of-nutrient-absorption-and-etiopathogenesis-of-malabsorption\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-nutrient-absorption-and-etiopathogenesis-of-malabsorption</a></p>"
+      },
+      {
+       "anchor": null,
+       "html": "<p>Luminal phase</p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": null,
+       "html": "<p>Luminal phase</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "post-absorptive",
+      "html": "<p>Reassembled lipids and</p><p>other key nutrients are</p><p>transported via the</p><p>lymphatics and portal</p><p>circulation from epithelial</p><p>cells to other parts of the</p><p>body.</p><p class=\"src\">Malabsorption Syndromes PPT - Prof. Wafaa Khannoussi</p>"
+     },
+     {
+      "anchor": "syndrome",
+      "html": "<p>The luminal phase involves mechanical mixing and the action of digestive enzymes.</p><p>-The mucosal phase requires a properly functioning mucosal membrane for absorption.</p><p>- The postabsorptive phase becomes facilitated by an intact blood supply and lymphatic system.</p><p class=\"src\"><a href=\"https://www.ncbi.nlm.nih.gov/books/NBK553106/\" target=\"_blank\" rel=\"noopener\">https://www.ncbi.nlm.nih.gov/books/NBK553106/</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image30.webp",
+      "w": 1600,
+      "h": 916
+     },
+     {
+      "html": "Source: <a href=\"https://www.uptodate.com/contents/approach-to-the-adult-patient-with-suspected-malabsorption\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/approach-to-the-adult-patient-with-suspected-malabsorption</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image56.webp",
+      "w": 1522,
+      "h": 1204
+     },
+     {
+      "html": "Source: <a href=\"https://www.sciencedirect.com/science/article/pii/S1521691816000172\" target=\"_blank\" rel=\"noopener\">https://www.sciencedirect.com/science/article/pii/S1521691816000172</a>"
+     }
+    ]
+   },
+   {
+    "id": "b647097a0c",
+    "n": 9,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following statements about chronic gastritis are correct?",
+    "options": [
+     "Helicobacter pylori infection can lead to both ulcerative disease and gastric cancer.",
+     "Multifocal atrophic gastritis is typically limited to the antrum.",
+     "Autoimmune atrophic gastritis is associated with hypochlorhydria and vitamin B12 deficiency.",
+     "NSAIDs are the main cause of autoimmune gastritis."
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "chica",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "ulcerative disease and gastric cancer",
+       "html": "<p>The usual natural history of H. pylori gastritis is of an antral predominant early stage of infection with only minimal corpus involvement. This stage is associated with exaggerated gastrin release and reduced somatostatin release, often precipitating an increase in acid secretion, enough to cause duodenal ulcers in some patients.</p><p>With continued inflammation, gastrin producing (G) cells and acid producing parietal cells are gradually lost, precipitating a fall in acid secretion and the development of atrophy with intestinal metaplasia. These changes facilitate the proximal migration of the bacteria, leading to corpus gastritis. Thus, the natural history of H. pylori gastritis is of diffuse antral inflammation spreading to the corpus, resulting in an atrophic front of advancing corpus injury with concomitant reduction in acid secretion</p><p>[...]</p><p>By contrast, gastric ulcers and gastric cancer are typically associated with more extensive gastritis, widespread intestinal metaplasia, and low-normal or reduced gastric acid secretion.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/acute-and-chronic-gastritis-due-to-helicobacter-pylori\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/acute-and-chronic-gastritis-due-to-helicobacter-pylori</a></p>"
+      }
+     ],
+     "1": [
+      {
+       "anchor": "Multifocal atrophic gastritis",
+       "html": "<p>Multifocal atrophic gastritis: affects antrum and fundus, reduced acid secretion, risk of gastric ulcer and adenocarcinoma.</p><p class=\"src\">Acute and Chronic Gastritis - Prof. O. Bahlaoui</p>"
+      },
+      {
+       "anchor": "Multifocal atrophic gastritis",
+       "html": "<p>AMAG (autoimmune metaplastic atrophic gastritis) is confined to the gastric body and fundus. Mucosal changes in patients with EMAG (environmental metaplastic atrophic gastritis) affect both the body/fundus and the antrum in a multifocal distribution, but with heaviest involvement of the antrum.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/metaplastic-chronic-atrophic-gastritis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/metaplastic-chronic-atrophic-gastritis</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "hypochlorhydria",
+       "html": "<p>With progressive destruction of parietal cells, hydrochloric acid and intrinsic factor production decreases, alongside a simultaneous progressive hyperplasia of gastrin-producing cells and ECL cells, all of which characterize early stages of AIG. As the disease progresses, the corpus and fundus atrophy becomes extensive, intragastric pH increases (achlorhydria) and ECL cell hyperplasia that was initially linear, becomes micronodular and, in more advanced stages, can advance to type 1 gastric NET. Lack of gastric acidity in AIG is the key causative factor for abnormal iron absorption.</p><p class=\"src\"><a href=\"https://www.nature.com/articles/s41572-020-0187-8\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-020-0187-8</a></p>"
+      },
+      {
+       "anchor": "vitamin B12 deficiency",
+       "html": "<p>Anaemia (any type) is the most characteristic feature of AIG that often leads to its diagnosis. Pernicious anaemia is a form of megaloblastic anaemia characterized by vitamin B12 deficiency, macro-ovalocytes, anisocytosis, hyper-segmented neutrophils and, in some cases, pancytopenia.</p><p class=\"src\"><a href=\"https://www.nature.com/articles/s41572-020-0187-8\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-020-0187-8</a></p>"
+      },
+      {
+       "anchor": "vitamin B12 deficiency",
+       "html": "<p>In contrast to Helicobacter pylori-, stress-, or drug-induced gastritis, inflammation and continuous atrophy is restricted to corpus and fundus in AIG. This is due to the fact that the autoimmune reaction in AIG targets parietal cells. Parietal cells are epithelial cells located in the glands of the corpus and fundus but not in the antrum, and produce hydrochloric acid and intrinsic factor. The acidification of the stomach is primarily managed by the gastric H+/K+ ATPase, the proton pump, which is the causative autoantigen and which is recognized by CD4+ T cells. The chronic inflammation leads to an atrophy of the mucosa, with a decrease and final total loss of parietal cells during progression of disease. This results in increased pH of the stomach and loss of intrinsic factor, which is produced by parietal cells. Intrinsic factor is required for uptake of vitamin B12 and vitamin B12 deficiency (pernicious anemia) is a known consequence of AIG.</p><p class=\"src\"><a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5065578/\" target=\"_blank\" rel=\"noopener\">https://pmc.ncbi.nlm.nih.gov/articles/PMC5065578/</a></p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": "main cause of autoimmune gastritis",
+       "html": "<p>AIG is caused by the destruction of parietal cells, secondary to the actions of PCA, which recognizes subunits of the proton pump, H+/K+ATPase, which is unique to the parietal cells. The inflammatory process in AIG.</p><p class=\"src\"><a href=\"https://www.nature.com/articles/s41572-020-0187-8\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-020-0187-8</a></p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image53.webp",
+      "w": 1398,
+      "h": 1452
+     },
+     {
+      "html": "Summary of classifications of gastritis. Classifications of gastritis and their relative nomenclature have changed over time and these changes reflect the progressive knowledge accumulated about this disease."
+     },
+     {
+      "html": "Source: <a href=\"https://www.nature.com/articles/s41572-020-0187-8\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-020-0187-8</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image43.webp",
+      "w": 1060,
+      "h": 1500
+     },
+     {
+      "html": "Source: <a href=\"https://www.nature.com/articles/s41572-020-0187-8\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-020-0187-8</a>"
+     }
+    ]
+   },
+   {
+    "id": "0ef4fd77ff",
+    "n": 10,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What are the atypical symptoms of GERD?",
+    "options": [
+     "Headache.",
+     "Diarrhea.",
+     "Epigastric pain.",
+     "Chest pain."
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "chica",
+    "qNotes": [
+     {
+      "anchor": "atypical symptoms of GERD",
+      "html": "<p>Other symptoms of GERD include dysphagia, chest pain, water brash [or hypersalivation], globus sensation, odynophagia, extraesophageal symptoms (eg, chronic cough, hoarseness, wheezing), and, infrequently, nausea.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-gastroesophageal-reflux-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-gastroesophageal-reflux-in-adults</a></p>"
+     },
+     {
+      "anchor": "atypical symptoms of GERD",
+      "html": "<p>Typical:</p><p>- Pyrosis (heartburn);</p><p>- Regurgitation.</p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image16.webp",
+      "w": 1156,
+      "h": 654
+     },
+     {
+      "html": "Atypical symptoms of GERD."
+     },
+     {
+      "src": "img/mid-s5-2526-image2.webp",
+      "w": 1600,
+      "h": 592
+     },
+     {
+      "html": "Typical and atypical GERD manifestations."
+     },
+     {
+      "html": "Source: <a href=\"https://www.scielo.br/j/abcd/a/ypHKhPWMST8F97KFQFpqQBv/?lang=en\" target=\"_blank\" rel=\"noopener\">https://www.scielo.br/j/abcd/a/ypHKhPWMST8F97KFQFpqQBv/?lang=en</a>"
+     }
+    ]
+   },
+   {
+    "id": "ea6f90c55c",
+    "n": 11,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What are common celiac disease complications?",
+    "options": [
+     "Iron deficiency anemia.",
+     "GI bleeding.",
+     "Chronic respiratory insufficiency.",
+     "Osteoporosis."
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "chica",
+    "qNotes": [
+     {
+      "anchor": "celiac disease complications",
+      "html": "<p>Celiac disease can lead to various complications, as mentioned below, many of which can be prevented by adhering to a GFD.</p><p>- Malabsorption and nutritional deficiencies may cause anemia, skeletal abnormalities, and an increased fracture risk due to osteoporosis in adults, as well as poor growth in children.</p><p>- Celiac disease is also associated with a higher prevalence of gastrointestinal malignancies, including enteropathy-associated T-cell lymphoma and small intestinal adenocarcinoma.</p><p>- Dermatitis herpetiformis is strongly linked to celiac disease and usually improves with a GFD.</p><p>- Celiac disease is also associated with peripheral neuropathy, ataxia, and psychiatric conditions such as depression and anxiety.</p><p>- Celiac disease can cause reproductive problems, including infertility and adverse pregnancy outcomes.</p><p>- Celiac disease increases the risk of pneumococcal infections, including sepsis and pneumonia, even with adherence to a GFD. The ACG guidelines recommend considering pneumococcal vaccination for all patients with celiac disease, particularly those who did not receive the complete pneumococcal vaccination series during childhood.</p><p class=\"src\"><a href=\"https://www.ncbi.nlm.nih.gov/books/NBK441900/\" target=\"_blank\" rel=\"noopener\">https://www.ncbi.nlm.nih.gov/books/NBK441900/</a></p>"
+     },
+     {
+      "anchor": "celiac disease complications",
+      "html": "<p>Nonclassic celiac disease —-Patients with nonclassic (previously called &quot;atypical&quot;) celiac disease lack classic symptoms of malabsorption but may exhibit minor gastrointestinal complaints. They usually have extraintestinal manifestations of celiac disease including anemia, dental enamel defects, osteoporosis, arthritis, increased aminotransferases, neurological symptoms, infertility, and several associated autoimmune diseases. These patients usually have villous atrophy in duodenal biopsies and display positive celiac antibodies, prominently against tissue transglutaminase.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/epidemiology-pathogenesis-and-clinical-manifestations-of-celiac-disease-in-adults</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image46.webp",
+      "w": 1600,
+      "h": 1236
+     },
+     {
+      "html": "Clinical manifestations of coeliac disease."
+     },
+     {
+      "html": "Source: <a href=\"https://www.nature.com/articles/s41572-018-0054-z\" target=\"_blank\" rel=\"noopener\">https://www.nature.com/articles/s41572-018-0054-z</a>"
+     },
+     {
+      "html": "Complications of coeliac disease."
+     },
+     {
+      "src": "img/mid-s5-2526-image59.webp",
+      "w": 1600,
+      "h": 1307
+     }
+    ]
+   },
+   {
+    "id": "a132bca0bd",
+    "n": 12,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "In high surgical risk patients, what is the best treatment option of primary achalasia?",
+    "options": [
+     "Endoscopic myotomy.",
+     "Botulin toxin endoscopic injection.",
+     "Surgical Heller&#x27;s myotomy.",
+     "Balloon dilation."
+    ],
+    "answer": [
+     1
+    ],
+    "key": "chica",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": null,
+       "html": "<p>Aka EPOM (esophageal peroral endoscopic myotomy)</p>"
+      },
+      {
+       "anchor": null,
+       "html": "<p>For patients who are surgical candidates with type I, II or III achalasia.</p><p>&quot;We typically refer patients with type III (spastic) achalasia for E-POEM because it can provide a myotomy tailored to the proximal extent of the spastic contractions in the esophageal body, which is generally not possible with LHM. In addition, studies have suggested that E-POEM may be more effective for relieving symptoms in type III achalasia.&quot;</p><p><a href=\"https://www.uptodate.com/contents/overview-of-the-management-of-achalasia\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-the-management-of-achalasia</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": null,
+       "html": "<p>For patients who are surgical candidates with type I or type II achalasia.</p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": null,
+       "html": "<p>For patients who are surgical candidates.</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "high surgical risk patients",
+      "html": "<p>Patients who are not surgical candidates - For most patients who are not candidates for more definitive therapy because of comorbidities or advanced age, we perform upper endoscopy with botulinum toxin injection into the LES because it improves dysphagia and other symptoms (eg, chest pain). However, many patients relapse within several months, consistent with the expected duration of action of botulinum toxin.</p><p>For patients who have not responded to botulinum toxin injections or who are not candidates for procedural interventions, we use pharmacologic therapy with nitrates.</p><p>Because nitrates are short-acting, sublingual isosorbide dinitrate (5 mg, where available) is administered 10 to 15 minutes before meals. Sublingual nitroglycerin 0.4 mg is an alternative if sublingual isosorbide dinitrate is unavailable.</p><p>Medical therapy is the least effective treatment option for patients with achalasia. Nitrates relax the smooth muscle of the LES both in normal individuals and in patients with achalasia. Treatment with sublingual nitroglycerin may result in short-term symptomatic improvement; however, the benefit is not durable. In addition, side effects such as headache, hypotension, and flushing are common, and contraindications to nitrate use are discussed separately.</p><p>Other drugs have been studied for treating achalasia, but data to support their use has been very limited. These therapies include 5-phosphodiesterase inhibitors (eg, sildenafil), anticholinergics, beta-adrenergic agonists (eg, terbutaline), and theophylline.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/overview-of-the-management-of-achalasia\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-the-management-of-achalasia</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image47.webp",
+      "w": 1600,
+      "h": 837
+     },
+     {
+      "html": "Approach to initial management of adults with achalasia,"
+     },
+     {
+      "html": "Source: <a href=\"https://www.uptodate.com/contents/overview-of-the-management-of-achalasia\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/overview-of-the-management-of-achalasia</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image58.webp",
+      "w": 1246,
+      "h": 1006
+     }
+    ]
+   },
+   {
+    "id": "4f4b5c1e52",
+    "n": 13,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following features are more suggestive of ulcerative colitis than Crohn&#x27;s disease?",
+    "options": [
+     "Transmural inflammation with fistulas and strictures.",
+     "Continuous mucosal inflammation starting at the rectum.",
+     "Presence of crypt abscesses limited to the mucosa.",
+     "Segmental and discontinuous lesions with skip areas."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "chica",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": null,
+       "html": "<p>Crohn</p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "crypt abscesses",
+       "html": "<p>The biopsy features suggestive of ulcerative colitis include crypt abscesses, crypt branching, shortening and disarray, and crypt atrophy.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-ulcerative-colitis-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-ulcerative-colitis-in-adults</a></p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": null,
+       "html": "<p>Crohn</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "ulcerative colitis",
+      "html": "<p>Ulcerative colitis is characterized by recurring episodes of inflammation limited to the mucosal layer of the colon. It commonly involves the rectum and may extend in a proximal and continuous fashion to involve other parts of the colon.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-ulcerative-colitis-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-ulcerative-colitis-in-adults</a></p>"
+     },
+     {
+      "anchor": "Crohn's disease",
+      "html": "<p>&quot;Features of transmural inflammation - Transmural bowel inflammation of Crohn&#x27;s is associated with sinus tracts that may lead to fistulas and inflammatory mass/abscess formation:</p><p># Fistulas - Transmural inflammation is associated with sinus tracts that may penetrate the serosa and give rise to fistulas. Penetration of the bowel wall most often presents as an indolent process and not as the acute onset of severe abdominal pain. Fistulas are tracts or communications that connect two epithelial-lined organs. For example, fistulas may connect the intestine to colon (enterocolonic), to skin (enterocutaneous), to bowel (enteroenteric), or to the vagina (enterovaginal). The clinical manifestation of the fistula depends upon the area of involvement adjacent to the diseased bowel segment:</p><p>- Enteroenteric fistulas may be asymptomatic or present as diarrhea because of loss of absorptive area</p><p>- Enterovesical fistulas lead to recurrent urinary tract infections, often with multiple organisms, and to pneumaturia</p><p>- Enterovaginal fistulas may present with passage of gas or feces through the vagina</p><p>- Enterocutaneous fistulas can cause bowel contents to drain to the surface of the skin.</p><p>[Continues]</p>"
+     },
+     {
+      "anchor": "Crohn's disease",
+      "html": "<p># Inflammatory mass/abscess - All sinus tracts do not lead to fistulas but may present as an inflammatory mass (ie, a walled-off inflammatory mass without bacterial infection) that may be palpated on physical examination of the abdomen. Ileal involvement is suggested by a mass in the right lower quadrant. Some sinus tracts lead to abscess formation and an acute presentation of localized peritonitis with fever, abdominal pain, and tenderness.</p><p># Perianal disease - Symptoms and signs related to perianal disease may occur in approximately one-third of patients during the course of CD. For example, patients with perianal fistula may present with perianal pain and drainage, while patients with perianal abscess present with perianal pain, fever, and purulent discharge. The evaluation and management of perianal CD is discussed separately.&quot;</p><p><a href=\"https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-crohn-disease-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-diagnosis-and-prognosis-of-crohn-disease-in-adults</a></p>"
+     },
+     {
+      "anchor": null,
+      "html": "<p>- Ulcerative colitis (UC): Continuous mucosal inflammation of the rectum and colon.</p><p>- Crohn’s disease (CD): Transmural, segmental inflammation affecting any part of the GI tract.</p><p class=\"src\">Inflamatory Bowel Disease PPT - Prof. O. Bahlaoui</p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image15.webp",
+      "w": 640,
+      "h": 336
+     },
+     {
+      "html": "Source: <a href=\"https://www.dovepress.com/inflammatory-bowel-disease-clinical-aspects-and-treatments-peer-reviewed-fulltext-article-JIR\" target=\"_blank\" rel=\"noopener\">https://www.dovepress.com/inflammatory-bowel-disease-clinical-aspects-and-treatments-peer-reviewed-fulltext-article-JIR</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image29.webp",
+      "w": 640,
+      "h": 242
+     },
+     {
+      "html": "Source: <a href=\"https://www.dovepress.com/inflammatory-bowel-disease-clinical-aspects-and-treatments-peer-reviewed-fulltext-article-JIR\" target=\"_blank\" rel=\"noopener\">https://www.dovepress.com/inflammatory-bowel-disease-clinical-aspects-and-treatments-peer-reviewed-fulltext-article-JIR</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image23.webp",
+      "w": 1600,
+      "h": 515
+     },
+     {
+      "html": "Source: <a href=\"https://www.researchgate.net/publication/338003274_Importance_of_Nanocarriers_and_Probiotics_in_the_Treatment_of_Ulcerative_Colitis\" target=\"_blank\" rel=\"noopener\">https://www.researchgate.net/publication/338003274_Importance_of_Nanocarriers_and_Probiotics_in_the_Treatment_of_Ulcerative_Colitis</a>"
+     }
+    ]
+   },
+   {
+    "id": "cbe29c31c6",
+    "n": 14,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following statements are true regarding the diagnostic approach to irritable bowel syndrome (IBS)?",
+    "options": [
+     "IBS is confirmed by colonoscopy showing mucosal inflammation.",
+     "Alarm signs such as weight loss and anemia justify further investigations.",
+     "IBS diagnosis is based on chronic digestive symptoms without organic abnormalities.",
+     "A positive stool culture is required to exclude post-infectious IBS."
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "chica",
+    "optNotes": {
+     "1": [
+      {
+       "anchor": "Alarm signs",
+       "html": "<p>In the majority of cases of IBS, no additional tests or investigations are required. An effort to keep investigations to a minimum is recommended in straightforward cases of IBS, and especially in younger individuals.</p><p>Additional tests or investigations should be considered if warning signs (“red flags”) are present:</p><p>- Onset of symptoms after 50 years of age</p><p>- Short history of symptoms</p><p>- Change in the bowel habit pattern</p><p>- Unintended weight loss</p><p>- Nocturnal symptoms</p><p>- Family history of colon cancer, celiac disease, inflammatory bowel disease</p><p>- Anemia</p><p>- Rectal bleeding</p><p>- Recent antibiotic use</p><p>- Abdominal/rectal masses</p><p>- Raised inflammatory markers</p><p>- Fever</p><p>The following tests (although commonly performed) are indicated only if supported by the clinical history and where locally relevant:</p><p>- Full blood counts</p><p>- Serum biochemistry</p><p>- Thyroid function tests</p><p>- Stool testing for occult blood and ova and parasites</p><p>Additional tests or investigations may also be considered if:</p><p>- The patient has persistent symptoms or is anxious despite treatment.</p><p>- A major qualitative change in chronic symptoms has occurred.</p><p>- A new coexisting condition should be considered.</p><p class=\"src\"><a href=\"https://www.worldgastroenterology.org/guidelines/irritable-bowel-syndrome-ibs/irritable-bowel-syndrome-ibs-english\" target=\"_blank\" rel=\"noopener\">https://www.worldgastroenterology.org/guidelines/irritable-bowel-syndrome-ibs/irritable-bowel-syndrome-ibs-english</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": null,
+       "html": "<p>- Functional intestinal disorders (FID) are frequent reasons</p><p>for consultation in gastroenterology and general</p><p>medicine.</p><p>- They are characterized by chronic and recurrent lower GI</p><p>symptoms without identifiable organic abnormalities on</p><p>biological or morphological tests.</p><p>- FID includes several entities, the most frequent being</p><p>Irritable Bowel Syndrome (IBS) +++.</p><p>- Course: chronic and often recurrent.</p><p>- No structural or biochemical lesions.</p><p>- Prognosis: favorable, but care is often long and</p><p>challenging.</p><p>- Significant impact on quality of life.</p><p class=\"src\">Functional Intestinal Disorders PPT - Prof. O. Bahlaoui</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "irritable bowel syndrome",
+      "html": "<p>Irritable bowel syndrome (IBS) should be suspected in patients with chronic abdominal pain and altered bowel habits (constipation and/or diarrhea). A clinical diagnosis of IBS requires the fulfillment of symptom-based diagnostic criteria and a limited evaluation to exclude underlying organic disease.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-irritable-bowel-syndrome-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-irritable-bowel-syndrome-in-adults</a></p>"
+     },
+     {
+      "anchor": "irritable bowel syndrome",
+      "html": "<p>There is no definitive diagnostic laboratory test for IBS. The purpose of laboratory testing is primarily to exclude an alternative diagnosis.</p><p>In all patients with suspected IBS, we perform a complete blood count.</p><p>In patients with diarrhea, we perform the following:</p><p>- Fecal calprotectin or fecal lactoferrin;</p><p>- Stool testing for giardia (antigen detection or nucleic acid amplification assay);</p><p>- Serologic testing for celiac disease;</p><p>- C-reactive protein levels, only if fecal calprotectin and fecal lactoferrin cannot be performed.</p><p class=\"src\"><a href=\"https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-irritable-bowel-syndrome-in-adults\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/clinical-manifestations-and-diagnosis-of-irritable-bowel-syndrome-in-adults</a></p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image50.webp",
+      "w": 1328,
+      "h": 1070
+     },
+     {
+      "html": "Source: <a href=\"https://www.worldgastroenterology.org/guidelines/irritable-bowel-syndrome-ibs/irritable-bowel-syndrome-ibs-english\" target=\"_blank\" rel=\"noopener\">https://www.worldgastroenterology.org/guidelines/irritable-bowel-syndrome-ibs/irritable-bowel-syndrome-ibs-english</a>"
+     }
+    ]
+   },
+   {
+    "id": "cd27d202a3",
+    "n": 15,
+    "topic": "digestive-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following statements are correct concerning acute gastritis?",
+    "options": [
+     "Caustic gastritis is benign and self-limiting.",
+     "It may be triggered by drugs such as NSAIDs, aspirin, or alcohol.",
+     "Endoscopy commonly shows localized erosions limited to the fundus.",
+     "Phlegmonous gastritis is a severe bacterial form occurring mainly in immunocompromised patients."
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "chica",
+    "optNotes": {
+     "0": [
+      {
+       "anchor": "Caustic gastritis",
+       "html": "<p>Toxic gastritis can occur following excessive alcohol consumption or accidental ingestion of caustic substances, both leading to significant mucosal injury.</p><p class=\"src\">Acute and Chronic Gastritis PPT - Prof. O. Bahlaoui</p>"
+      },
+      {
+       "anchor": "Caustic gastritis",
+       "html": "<p>Ingestion of caustic substances is a common toxicological emergency, often resulting in significant morbidity and mortality. Accidental ingestion of these toxic agents is most prevalent among children, who may encounter household cleaners and other hazardous substances out of curiosity. In contrast, adults often ingest caustic agents in the context of self-harm or suicide attempts. These agents can cause extensive damage to the gastrointestinal tract, leading to serious complications, including perforation, strictures, and systemic toxicity. Both acids and alkalis are particularly dangerous, as they can create irreversible injuries depending on their concentration and duration of exposure.</p><p class=\"src\"><a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC11682535/\" target=\"_blank\" rel=\"noopener\">https://pmc.ncbi.nlm.nih.gov/articles/PMC11682535/</a></p>"
+      },
+      {
+       "anchor": "Caustic gastritis",
+       "html": "<p>Caustic ingestions, especially those involving strong acids or bases, can cause severe tissue damage to the gastrointestinal tract. Alkalis, such as sodium hydroxide, lead to liquefactive necrosis, dissolving tissues deeply, often causing severe GI damage, while acids like sulfuric acid cause coagulative necrosis, forming a protective layer that limits penetration, thus commonly affecting the stomach and duodenum. Injuries progress through four stages, from initial necrosis with healing occurring between five and 14 days and risks of perforation and stricture formation thereafter to potential scarring and stricture formation. However, both can inflict severe, full-thickness injuries. The severity of damage depends on factors like the substance&#x27;s pH, physical state, contact time, quantity, and concentration. Volatile agents containing acids and bases can be particularly damaging as they disrupt protein metabolism, leading to coagulation, fluid loss, and compromised cell integrity.</p><p class=\"src\"><a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC11682535/\" target=\"_blank\" rel=\"noopener\">https://pmc.ncbi.nlm.nih.gov/articles/PMC11682535/</a></p>"
+      }
+     ],
+     "2": [
+      {
+       "anchor": "Endoscopy",
+       "html": "<p>Endoscopic examination demonstrates diffuse inflammatory changes such as edema, petechiae, erosions, or ulceronecrotic lesions.</p><p class=\"src\">Acute and Chronic Gastritis PPT - Prof. O. Bahlaoui</p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": "Phlegmonous gastritis",
+       "html": "<p>Phlegmonous gastritis, though rare, represents a fulminant bacterial infection often caused by Streptococci, Staphylococci, or Gram-negative organisms, particularly in immunocompromised patients. It manifests with high fever, severe abdominal pain, and peritoneal signs, requiring urgent antibiotic therapy and occasionally surgical intervention.</p><p class=\"src\">Acute and Chronic Gastritis PPT - Prof. O. Bahlaoui</p>"
+      }
+     ]
+    },
+    "qNotes": [
+     {
+      "anchor": "acute gastritis",
+      "html": "<p><a href=\"https://www.osmosis.org/answers/acute-gastritis\" target=\"_blank\" rel=\"noopener\">https://www.osmosis.org/answers/acute-gastritis</a></p>"
+     },
+     {
+      "anchor": "acute gastritis",
+      "html": "<p>Acute gastritis is usually linked to drugs, infections, or chemical injury. It presents with pronounced symptoms and often resolves after eliminating the cause.</p><p class=\"src\">Acute and Chronic Gastritis PPT - Prof. O. Bahlaoui</p>"
+     }
+    ],
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image51.webp",
+      "w": 1600,
+      "h": 806
+     },
+     {
+      "html": "Etiology-based classification of gastropathy and gastritis."
+     },
+     {
+      "html": "Source: <a href=\"https://www.uptodate.com/contents/gastritis-etiology-and-diagnosis\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/gastritis-etiology-and-diagnosis</a>"
+     },
+     {
+      "src": "img/mid-s5-2526-image52.webp",
+      "w": 1229,
+      "h": 782
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dermatology",
+  "name": "DERMATOLOGY",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Proposed answers highlighted in green"
+  ],
+  "questions": [
+   {
+    "id": "6f5e6fd0a3",
+    "n": 1,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Risk factors of syphilis:",
+    "options": [
+     "Homosexuality",
+     "Condom use",
+     "Unprotected sexual relationships",
+     "HPV infection"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image10.webp",
+      "w": 934,
+      "h": 697
+     }
+    ]
+   },
+   {
+    "id": "f1643fcd9d",
+    "n": 2,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "What is the most characteristic symptom of head lice infestation?",
+    "options": [
+     "Hair loss in patches",
+     "Severe headache",
+     "Itching of the scalp",
+     "Sudden fever"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "<strong>Itching </strong>is the <strong>most common </strong>symptom of head lice. People who have head lice for the first time may not feel itchy right way. It can take 4 to 6 weeks for itching to start."
+     },
+     {
+      "html": "Source: <a href=\"https://www.mayoclinic.org/diseases-conditions/head-lice/symptoms-causes/syc-20356180\" target=\"_blank\" rel=\"noopener\">https://www.mayoclinic.org/diseases-conditions/head-lice/symptoms-causes</a>"
+     }
+    ]
+   },
+   {
+    "id": "2145f48a96",
+    "n": 3,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "A 12-year-old girl from Azilal came in for a consultation in December for a papulonodular lesion on her right cheek that had been developing since September. The most likely diagnosis is:",
+    "options": [
+     "A common bacterial abscess",
+     "Cutaneous leishmaniasis",
+     "Sarcoidosis",
+     "Cutaneous tuberculosis"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image39.webp",
+      "w": 904,
+      "h": 601
+     }
+    ]
+   },
+   {
+    "id": "8394202063",
+    "n": 4,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Leprosy:",
+    "options": [
+     "Is due to mycobacterium tuberculosis",
+     "Is characterized by one clinical presentation",
+     "Is a granulomatous infection",
+     "Is a chronic infection"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image1.webp",
+      "w": 919,
+      "h": 696
+     }
+    ]
+   },
+   {
+    "id": "1c3a496a76",
+    "n": 5,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "What is the medical name of head lice?",
+    "options": [
+     "Pediculus humanus capitis",
+     "Cimex lectularius",
+     "Pediculus humanus corporis",
+     "Pthirus pubis"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "<strong>Pediculosis capitis </strong>is a common condition caused by infestation of the hair and scalp by <strong>Pediculus humanus capitis.</strong>"
+     },
+     {
+      "html": "Source: <a href=\"https://www.uptodate.com/contents/pediculosis-capitis?search=pediculosis%20capitis&amp;source=search_result&amp;selectedTitle=1~22&amp;usage_type=default&amp;display_rank=1#H2010251585\" target=\"_blank\" rel=\"noopener\">https://www.uptodate.com/contents/pediculosis-capitis</a>"
+     }
+    ]
+   },
+   {
+    "id": "85db055852",
+    "n": 6,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Leprosy affects:",
+    "options": [
+     "Central nervous system",
+     "Peripheral nerves",
+     "The Skin",
+     "Lymphadenopathies"
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "Leprosy, also known as Hansen’s disease, is a chronic infectious disease caused by Mycobacterium leprae. The disease mainly affects <strong>the skin </strong>and <strong>the peripheral nerves.</strong>"
+     },
+     {
+      "html": "Source: <a href=\"https://www.cda.gov.sg/professionals/diseases/leprosy/\" target=\"_blank\" rel=\"noopener\">https://www.cda.gov.sg/professionals/diseases/leprosy/</a>"
+     }
+    ]
+   },
+   {
+    "id": "7838585a11",
+    "n": 7,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Signs of severity of erysipelas are:",
+    "options": [
+     "Gums",
+     "White scales",
+     "Skin necrosis (superficial or deep)",
+     "Sensory disorders (hypo or anesthesia)"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image22.webp",
+      "w": 918,
+      "h": 657
+     }
+    ]
+   },
+   {
+    "id": "4bd1ccd7d6",
+    "n": 8,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Infantile scabies is characterized by:",
+    "options": [
+     "Axillary scabious nodules",
+     "Absence of pruritus",
+     "Absence of facial involvement",
+     "Palmar-plantar involvement"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image49.webp",
+      "w": 909,
+      "h": 686
+     }
+    ]
+   },
+   {
+    "id": "e1ddc28913",
+    "n": 9,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Folliculitis:",
+    "options": [
+     "Is the inflammation and infection of hair follicles",
+     "Present as pustules centered by a hair",
+     "Is the infection of the sebaceous gland",
+     "Is a clinical sign of acne"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image11.webp",
+      "w": 907,
+      "h": 674
+     }
+    ]
+   },
+   {
+    "id": "804e43d547",
+    "n": 10,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Syphilis:",
+    "options": [
+     "Caused by the spirochaete Treponema Pallidum",
+     "Is immunizing",
+     "Is highly contagious",
+     "Is an acute infectious sexually transmitted disease"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image6.webp",
+      "w": 929,
+      "h": 709
+     }
+    ]
+   },
+   {
+    "id": "ff787c7313",
+    "n": 11,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "A 28-year-old patient came in for a consultation for generalized pruritus that had been developing for a week. You diagnosed scabies based on:",
+    "options": [
+     "The patient&#x27;s stay in Zagora",
+     "The presence of dermographism",
+     "The presence of nocturnal pruritus",
+     "The presence of a similar case in the family"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image41.webp",
+      "w": 900,
+      "h": 633
+     }
+    ]
+   },
+   {
+    "id": "793b2fa544",
+    "n": 12,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Predisposing factors of tuberculosis:",
+    "options": [
+     "Promiscuity",
+     "Heat",
+     "HIV infection",
+     "Good hygiene"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image21.webp",
+      "w": 838,
+      "h": 560
+     }
+    ]
+   },
+   {
+    "id": "6761572c1c",
+    "n": 13,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Eysipelas is:",
+    "options": [
+     "An acute dermo-hypodermatitis",
+     "A non-necrotizing infection",
+     "Due to Beta hemolytic group A streptococcus",
+     "A chronic infection"
+    ],
+    "answer": [
+     0,
+     1,
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image3.webp",
+      "w": 866,
+      "h": 206
+     }
+    ]
+   },
+   {
+    "id": "c17addf8d0",
+    "n": 14,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Which treatment is commonly used to eliminate head lice?",
+    "options": [
+     "Antibiotic ointments",
+     "Pediculicide shampoos",
+     "Antifungal creams",
+     "Steroid injections"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image12.webp",
+      "w": 887,
+      "h": 662
+     },
+     {
+      "src": "img/mid-s5-2526-image55.webp",
+      "w": 633,
+      "h": 1280
+     }
+    ]
+   },
+   {
+    "id": "b4e081b016",
+    "n": 15,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Gums are a frequent clinical sign in:",
+    "options": [
+     "Herpes",
+     "Primary syphilis",
+     "Cutaneous tuberculosis",
+     "Tertiary syphilis"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image28.webp",
+      "w": 909,
+      "h": 579
+     }
+    ]
+   },
+   {
+    "id": "120cecc4fe",
+    "n": 16,
+    "topic": "dermatology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is the most common method of head lice transmission?",
+    "options": [
+     "Sharing hats or combs",
+     "Contaminated water",
+     "Airborne droplets",
+     "Insect bites from mosquitoes"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "Head lice mainly spread by direct contact with the hair of a person infested with lice…"
+     },
+     {
+      "html": "…Although not as common, head lice may spread by:"
+     },
+     {
+      "html": "-Wearing clothing, such as hats, scarves, coats, sports uniforms, or hair ribbons worn by an infested person"
+     },
+     {
+      "html": "<strong>-Using infested combs, brushes, or towels</strong>"
+     },
+     {
+      "html": "-Lying on a bed, couch, pillow, carpet, or stuffed animal that has recently been in contact with an infested person"
+     },
+     {
+      "html": "Source: <a href=\"https://www.cdc.gov/lice/about/head-lice.html\" target=\"_blank\" rel=\"noopener\">https://www.cdc.gov/lice/about/head-lice.html</a>"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cardiac-venous-surgery",
+  "name": "CARDIAC VENOUS SURGERY",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Proposed answers highlighted in green"
+  ],
+  "questions": [
+   {
+    "id": "10e7d19650",
+    "n": 1,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Check the common signs of an uncomplicated form of deep vein thrombosis (DVT):",
+    "options": [
+     "Calf tension or edema with Homans sign",
+     "Hemiplegia",
+     "Spontaneous or provoked calf pain in patient at-risk",
+     "Cold lower limbs"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "key": "proposed",
+    "optNotes": {
+     "1": [
+      {
+       "anchor": null,
+       "html": "<p>is a paralysis on one side of the body, which is typically a symptom of a neurological event like a stroke, not DVT</p>"
+      }
+     ],
+     "3": [
+      {
+       "anchor": null,
+       "html": "<p>DVT typically causes the affected area to feel warm to the touch due to inflammation and blood pooling, not cold.</p>"
+      }
+     ]
+    }
+   },
+   {
+    "id": "a830a8142c",
+    "n": 2,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Check the factors involved in Virchow&#x27;s triad to develop a deep vein thrombosis (DVT):",
+    "options": [
+     "Pulmonary edema",
+     "Normal blood composition",
+     "Alteration of the venous wall",
+     "Venous stasis"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image32.webp",
+      "w": 894,
+      "h": 647
+     }
+    ]
+   },
+   {
+    "id": "cb040eba77",
+    "n": 3,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following is the most significant risk factor for the development of an abdominal aortic aneurysm (AAA)?",
+    "options": [
+     "Female sex",
+     "Smoking history",
+     "Low blood cholesterol",
+     "Age less than 50 years"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image5.webp",
+      "w": 900,
+      "h": 693
+     }
+    ]
+   },
+   {
+    "id": "38725b40e9",
+    "n": 4,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following are typical clinical features of acute limb ischemia?",
+    "options": [
+     "Warm, well-perfused limb with strong pulses",
+     "Gradual onset of mild claudication over months",
+     "Cold and pale limb with absent distal pulses",
+     "Sudden onset of limb pain"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image26.webp",
+      "w": 915,
+      "h": 666
+     },
+     {
+      "src": "img/mid-s5-2526-image4.webp",
+      "w": 876,
+      "h": 601
+     }
+    ]
+   },
+   {
+    "id": "afb2b47d3e",
+    "n": 5,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following best describes the mortality risk associated with a ruptured abdominal aortic aneurysm?",
+    "options": [
+     "Low less than 5 %",
+     "Negligible less than 1 %",
+     "Moderate about 10 %",
+     "High more than 50 %"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "Abdominal aortic aneurysms (AAA) are relatively common. Rupture of AAA can be one of the most dramatic acute surgical problems. It is associated with up to 80% mortality."
+     },
+     {
+      "html": "Source: <a href=\"https://link.springer.com/chapter/10.1007/978-3-030-68700-7_18#:~:text=Abdominal%20aortic%20aneurysms%20(AAA)%20are,mortality%20rate%20(previously%2050%25)\" target=\"_blank\" rel=\"noopener\">https://link.springer.com/chapter/10.1007/978-3-030-68700-7_18#:~:text=Abdominal%20aortic%20aneurysms%20(AAA)%20are,mortality%20rate%20(previously%2050%25)</a>."
+     }
+    ]
+   },
+   {
+    "id": "735af60985",
+    "n": 6,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "A screening ultrasound for AAA is generally recommended for which of the following patient populations?",
+    "options": [
+     "All adults aged 40 years regardless of risk",
+     "Men aged 65-75 years who have ever smoked",
+     "Women aged 40-55 years with no risk factors",
+     "Men aged 40-45 years with no history of smoking"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image19.webp",
+      "w": 664,
+      "h": 687
+     },
+     {
+      "html": "Source: <a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/abdominal-aortic-aneurysm-screening\" target=\"_blank\" rel=\"noopener\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/abdominal-aortic-aneurysm-screening</a>"
+     }
+    ]
+   },
+   {
+    "id": "bf3d5372ee",
+    "n": 7,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following findings is most characteristic of a ruptured AAA?",
+    "options": [
+     "Isolated leg swelling without pain",
+     "Slowly growing pulsatile abdominal mass with stable vital signs",
+     "Sudden, severe abdominal or back pain with hypotension",
+     "Gradual onset of mild abdominal pain only"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "html": "Ruptured AAA presents with a classical triad of pain in the flank or back, hypotension and a pulsatile abdominal mass; however, only about half have the full triad."
+     },
+     {
+      "html": "Source: <a href=\"https://patient.info/doctor/cardiovascular-disease/ruptured-aortic-aneurysm\" target=\"_blank\" rel=\"noopener\">https://patient.info/doctor/cardiovascular-disease/ruptured-aortic-aneurysm</a>"
+     }
+    ]
+   },
+   {
+    "id": "a966294985",
+    "n": 8,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Acute ischemia of a lower limb of embolic origin in a healthy artery:",
+    "options": [
+     "Is an emergency with usually a need for surgical embolectomy",
+     "May be related to cardiac arrhythmia such as atrial fibrillation",
+     "Always requires an exhaustive pre-operative etiological assessment before the revascularization procedure",
+     "Is never related to heart valve disease"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image25.webp",
+      "w": 905,
+      "h": 651
+     }
+    ]
+   },
+   {
+    "id": "458a2173d4",
+    "n": 9,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Check the right answer(s) regarding the Peripheral Arterial Disease (PAD):",
+    "options": [
+     "It can be responsible for trophic disorders as ulcers and gangrene",
+     "It is a common condition characterized by occlusive or stenotic arterial lesions usually caused by atherosclerosis",
+     "Cardiovascular risk factors are not present",
+     "The diagnosis is easy by palpating increased femoral and popliteal pulses"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "official",
+    "notes": [
+     {
+      "html": "<strong>Defintion:</strong>"
+     },
+     {
+      "html": "<strong>Peripheral Arterial Disease (PAD)</strong> is a condition characterized by <strong>occlusive or stenotic lesions</strong> usually caused by <strong>atherosclerosis.</strong>"
+     },
+     {
+      "html": "<strong>Functional symptoms:</strong>"
+     },
+     {
+      "html": "<strong>-Claudication:</strong>"
+     },
+     {
+      "html": "Ischemic pain during activity (calf, thigh, buttocks) that occures after a certain walking distance (above or below 100m). Pain decreases (or stops) when the patient stops"
+     },
+     {
+      "html": "walking."
+     },
+     {
+      "html": "<strong>-Rest Pain:</strong>"
+     },
+     {
+      "html": "Ischemia at rest; analgesics struggle to alleviate the pain, but hanging legs offers a relief"
+     },
+     {
+      "html": "<strong>-Sexual Impotence:</strong>"
+     },
+     {
+      "html": "Leriche syndrome if associated with claudication"
+     },
+     {
+      "html": "<strong>-Acute Ischemia:</strong>"
+     },
+     {
+      "html": "Plaque rupture"
+     },
+     {
+      "html": "<strong>-Trophic Disorders:</strong>"
+     },
+     {
+      "html": "Ulcers, gangrene"
+     },
+     {
+      "html": "<strong>Risk Factors:</strong>"
+     },
+     {
+      "html": "Age, sex, smoking, hypertension, diabetes, dyslipidemia"
+     },
+     {
+      "html": "<strong>Inspection:</strong>"
+     },
+     {
+      "html": "-Signs of arterial insufficiency (muscle wasting, sparse"
+     },
+     {
+      "html": "hair, dry/brittle nails, pale feet, flat veins)"
+     },
+     {
+      "html": "-Trophic disorders (ulcers, gangrene)"
+     },
+     {
+      "html": "<strong>Palpation:</strong>"
+     },
+     {
+      "html": "-Decreased or absent pulses:"
+     },
+     {
+      "html": "<strong>femoraL, popliteal, posterior tibial et dorsalis pedis.</strong>"
+     },
+     {
+      "html": "-Search for aneurysms."
+     },
+     {
+      "html": "<strong>pulsating, blowing et expansile massiles along arterial  pathway.</strong>"
+     },
+     {
+      "html": "<strong>Auscultation:</strong>"
+     },
+     {
+      "html": "Listen for murmurs along the arterial pathway"
+     },
+     {
+      "html": "<strong>murmur = stenosis</strong>"
+     }
+    ]
+   },
+   {
+    "id": "16e8fe79f9",
+    "n": 10,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Which of the following symptoms are more characteristic of chronic mesenteric ischemia?",
+    "options": [
+     "Post-prandial abdominal pain (&quot;intestinal angina&quot;)",
+     "Sudden huge bleed per rectum",
+     "Sudden weight gain",
+     "Rapid onset of sepsis and shock"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "83fe4f3c45",
+    "n": 11,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "In favor of a chronic entero-mesenteric ischemia:",
+    "options": [
+     "An acute abdominal pain with shock in the intensive care unit (ICU) context",
+     "A significant weight loss due to fear of eating",
+     "A chest pain 15 to 30 minutes before meals",
+     "An atheromatous context in elderly subject"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "key": "proposed",
+    "optNotes": {
+     "2": [
+      {
+       "anchor": null,
+       "html": "<p>After meals</p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image33.webp",
+      "w": 894,
+      "h": 572
+     }
+    ]
+   },
+   {
+    "id": "799f66d5f7",
+    "n": 12,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "Regarding prognosis and urgency of acute or chronic mesenteric ischemia:",
+    "options": [
+     "Acute mesenteric ischemia has low mortality and can be delayed for days",
+     "Chronic mesenteric ischemia never progresses to acute form",
+     "Acute mesenteric ischemia is a surgical emergency with high mortality if untreated",
+     "Chronic mesenteric ischemia is always a benign condition without need for treatment"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "3e43d67624",
+    "n": 13,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "A Critical ischemia in Peripheral Arterial Disease:",
+    "options": [
+     "Is equivalent to Fontaine and Leriche classification stages 3 and 4",
+     "Is a condition where the patient is asymptomatic",
+     "Is a condition where the patient presents a severe intermittent claudication",
+     "Is a combination of rest pain or trophic disorders lasting at least 15 days with a systolic blood pressure less than 30 mmHg at the toe"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "official",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image37.webp",
+      "w": 903,
+      "h": 684
+     }
+    ]
+   },
+   {
+    "id": "99b551008e",
+    "n": 14,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "A 65-year-old woman, with a medical history of hypertension, diabetes mellitus and a stroke, presents a severe symptomatic stenosis of the right internal carotid artery (80%). Check the right answer(s) regarding this case:",
+    "options": [
+     "The indication for surgery is to avoid a new major stroke",
+     "The first line indication is Carotid Endateriectomy (CEA)",
+     "There is no indication for medical treatment",
+     "The first line indication is carotid artery stenting (CAS)"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image20.webp",
+      "w": 891,
+      "h": 484
+     },
+     {
+      "src": "img/mid-s5-2526-image45.webp",
+      "w": 886,
+      "h": 507
+     }
+    ]
+   },
+   {
+    "id": "2b90ae4412",
+    "n": 15,
+    "topic": "cardiac-venous-surgery",
+    "source": "mid-s5-2526",
+    "stem": "In favor of an inflammatory aneurysm due to Behcet&#x27;s disease:",
+    "options": [
+     "A history of bipolar aphthosis",
+     "The presence of cardiovascular risk factors",
+     "The old age of the patient",
+     "A history of venous thrombosis"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "key": "proposed",
+    "optNotes": {
+     "2": [
+      {
+       "anchor": null,
+       "html": "<p>Young age</p>"
+      }
+     ]
+    },
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image48.webp",
+      "w": 735,
+      "h": 539
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "endocrinology",
+  "name": "ENDOCRINOLOGY",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Proposed answers highlighted in green"
+  ],
+  "questions": [
+   {
+    "id": "9a8e1c6238",
+    "n": 1,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Mrs Rachida is a 54-year-old woman attending your consultation complains for fatigue, weight gain. You suggest a hypothyroidism. Which other clinical signs are typical of hypothyroidism?",
+    "options": [
+     "Diarrhea",
+     "Exophthalmia",
+     "Bradycardia",
+     "Hair loss"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "3d7f9e7274",
+    "n": 2,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "What are the clinical signs on examination suggesting hypothyroidism?",
+    "options": [
+     "Loss of the lateral third of the eyebrow",
+     "A tremor",
+     "Rapid reflexes",
+     "A puffy face"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "d18059362b",
+    "n": 3,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Miss Amina, a 29-year-old woman, presents with neck discomfort with fatigue. She has a firm and sensitive goiter at the clinical examination. What is the most likely diagnosis?",
+    "options": [
+     "Grave&#x27;s disease",
+     "Silent thyroiditis",
+     "Hashimoto thyroiditis",
+     "Subacute (Dequervain) thyroiditis"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "252836c822",
+    "n": 4,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Which clinical findings are suggestive of hyperthyroidism?",
+    "options": [
+     "Warm, moist skin",
+     "Renal lithiasis",
+     "Unintentional weight loss",
+     "Chvostek&#x27;s sign"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "94e9012a76",
+    "n": 5,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "M. Rachid is attending your consultation for a Grave&#x27;s Disease. Which laboratory findings support your diagnosis?",
+    "options": [
+     "Low TSH level",
+     "Positive TSH receptor antibodies",
+     "Hyponatremia",
+     "High Cholesterol level"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "3850fc20d2",
+    "n": 6,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Which features are most suggestive of toxic multinodular goiter rather grave&#x27;s disease?",
+    "options": [
+     "Ophthalmopathy",
+     "Pretibial myxedema",
+     "Presence of nodules on palpation",
+     "Hyperthyroidism in an older patient"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "5b959ab5ae",
+    "n": 7,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "What is the main side effect of anthyroid drugs?",
+    "options": [
+     "Renal failure",
+     "Digestive intolerance",
+     "Arthralgia",
+     "Agranulocytosis"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "9293d39b66",
+    "n": 8,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Which clinical signs are suggestive of hypocalcemia?",
+    "options": [
+     "Recurrent and bilateral renal lithiasis",
+     "Brown tumor",
+     "Positive Trousseau sign",
+     "Seizures"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "6fc1b07816",
+    "n": 9,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "M. Achraf is consulting for hyperparathyroidism exploration. What biological findings will confirm your diagnosis?",
+    "options": [
+     "Low calciuria",
+     "High or normal parathyroid hormone",
+     "Hypercalcemia",
+     "Hyperphosphoremia"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "10ffa7b6c5",
+    "n": 10,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "What are the possible diagnoses in a patient with hypercalcemia?",
+    "options": [
+     "Hyperparathyroidism",
+     "Thyroid surgery",
+     "Neoplasm",
+     "Granulomatous diseases"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "562875e39d",
+    "n": 11,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Mrs Lamia is referred for a parathyroid adenoma. What are the surgery indications?",
+    "options": [
+     "Nephrolithiasis",
+     "Age&gt; 70 years",
+     "GFR&gt; 80 ml/min",
+     "Osteoporosis"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "2ac16bfaa3",
+    "n": 12,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Which features are most suggestive of a malignant thyroid nodule?",
+    "options": [
+     "Regular thyroid nodule",
+     "Slow growth",
+     "Voice change",
+     "Fixed thyroid nodule"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "737e31f68f",
+    "n": 13,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "Which of the followings are goitrogenic factors?",
+    "options": [
+     "Pregnancy",
+     "Corticosteroids",
+     "Radiation",
+     "Low iodine diet"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "e46be479a8",
+    "n": 14,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "What clinical signs are suggestive of a post-partum thyroiditis?",
+    "options": [
+     "Thyroiditis seen with 6 months after delivery",
+     "Mild goiter",
+     "Exophthalmia",
+     "Painful goiter"
+    ],
+    "answer": [],
+    "key": null
+   },
+   {
+    "id": "4d9baa05fb",
+    "n": 15,
+    "topic": "endocrinology",
+    "source": "mid-s5-2526",
+    "stem": "M. Nabil, 55 years old, presents a fixed goiter, compressive with a general condition preserved. He has negative antibodies, normal thyroid function and hypoechogenic aspect at ultrasound. What is the most likely diagnosis in M. Nabil?",
+    "options": [
+     "Riedel thyroiditis",
+     "Hashimoto&#x27;s thyroiditis",
+     "Dequervain thyroiditis",
+     "Thyroid cancer"
+    ],
+    "answer": [],
+    "key": null
+   }
+  ]
+ },
+ {
+  "id": "digestive-surgical-pathology",
+  "name": "DIGESTIVE SURGICAL PATHOLOGY",
+  "legend": [
+   "Official answers in bold and highlighted in purple",
+   "Proposed answers highlighted in green"
+  ],
+  "questions": [
+   {
+    "id": "76fb049295",
+    "n": 1,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What surgical procedures is possible in curative treatment for stomach cancer?",
+    "options": [
+     "Duodenal and gastric resection",
+     "Total gastrectomy",
+     "Colectomy",
+     "Exclusive feeding jejunostomy"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image35.webp",
+      "w": 873,
+      "h": 613
+     }
+    ]
+   },
+   {
+    "id": "9ca4c2ce72",
+    "n": 2,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Pick the correct symptom to look for in case of suspected gastric cancer?",
+    "options": [
+     "Unexplained weight loss",
+     "Increased appetite",
+     "Lower limbs edema",
+     "Migraine"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image8.webp",
+      "w": 930,
+      "h": 665
+     }
+    ]
+   },
+   {
+    "id": "6a8892754b",
+    "n": 3,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct mandatory procedure to add after total gastrectomy of stomach cancer in the follow-up of treatment?",
+    "options": [
+     "Prescribe DEXA scan (bone density)",
+     "Full body PET-scan",
+     "Dietetic measures of splitting meals throughout the day",
+     "Vitamin A, D, E, K supplementation"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image9.webp",
+      "w": 860,
+      "h": 517
+     }
+    ]
+   },
+   {
+    "id": "134d608ec8",
+    "n": 4,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct required step in order to establish a treatment plan for stomach cancer?",
+    "options": [
+     "ENT examination",
+     "Vitamin level assessment",
+     "Tuberculosis screening",
+     "Evaluation and staging of the disease extension"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "5ea3ba3e89",
+    "n": 5,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the investigation to prescribe as first intention to confirm the diagnosis of suspected gastric cancer?",
+    "options": [
+     "MRI of the abdomen",
+     "Thoracic and Abdominal Ct-scan",
+     "Upper Gastro Intestinal Endoscopy",
+     "Barium swallow"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image36.webp",
+      "w": 818,
+      "h": 127
+     }
+    ]
+   },
+   {
+    "id": "53f881b7ab",
+    "n": 6,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct statement regarding Gastric linitis?",
+    "options": [
+     "Diagnosis is very easy and not challenging",
+     "Total gastrectomy is the only curative surgical option",
+     "Holds a good prognosis",
+     "Among its risk factors is past surgical history"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "bb46076158",
+    "n": 7,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct statement regarding Gastric linitis?",
+    "options": [
+     "Has a bad prognosis",
+     "Can be treated with parietal gastrectomy",
+     "Has good prognosis",
+     "Diagnosis is very easy and not challenging"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image31.webp",
+      "w": 773,
+      "h": 256
+     }
+    ]
+   },
+   {
+    "id": "a2e1248682",
+    "n": 8,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct statement regarding gastric cancer?",
+    "options": [
+     "Has low risk of lymph node dissemination and surgical resection does not involve lymph nodes removal",
+     "Chemo-radiotherapy associated with surgical resection is the most favorable therapeutic plan",
+     "Is incurable",
+     "Gastric linitis is a benign gastric metaplasia"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "d50bc3ddab",
+    "n": 9,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct symptom to look for in case of suspected gastric cancer?",
+    "options": [
+     "Petechiae",
+     "Lower limb edema",
+     "Increased appetite",
+     "Digestive bleeding (hematemesis, or melena, or hematochezia)"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image42.webp",
+      "w": 848,
+      "h": 604
+     }
+    ]
+   },
+   {
+    "id": "f1f9892946",
+    "n": 10,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the best next step after confirmation of stomach cancer diagnosis required in order to establish a treatment plan?",
+    "options": [
+     "Head CT-scan",
+     "Starting treatment for possible symptoms",
+     "Evaluation and staging of the disease extension",
+     "Lipid panel blood test"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "00266cf299",
+    "n": 11,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct statement regarding Upper Gastrointestinal Endoscopy in management of suspected stomach cancer?",
+    "options": [
+     "Assess distant metastasis",
+     "None of the listed statements",
+     "Does not locate the tumor",
+     "Confirm the diagnosis"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "47f55db752",
+    "n": 12,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct advantage of exploratory laparoscopy in case of stomach cancer?",
+    "options": [
+     "Confirming peritoneal carcinomatosis",
+     "There aren&#x27;t advantages for exploratory laparoscopy",
+     "Increases risk of distant metastasis",
+     "Alleviate symptoms while waiting for radical therapy"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image44.webp",
+      "w": 864,
+      "h": 570
+     }
+    ]
+   },
+   {
+    "id": "8e4e8638ce",
+    "n": 13,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct symptom to look for in case of suspected gastric cancer?",
+    "options": [
+     "Lower limbs edema",
+     "No weight loss",
+     "Epigastric pain and early satiety",
+     "Migraine"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "afee1b4a4f",
+    "n": 14,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is a fundamental step in the management of stomach cancer in case of both curative or palliative care?",
+    "options": [
+     "Head MRI",
+     "Colonoscopy",
+     "Multidisciplinary panel discussion",
+     "CBC blood test prescription"
+    ],
+    "answer": [
+     2
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image14.webp",
+      "w": 763,
+      "h": 671
+     }
+    ]
+   },
+   {
+    "id": "0a761a0726",
+    "n": 15,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct statement regarding Upper Gastrointestinal Endoscopy in management of suspected stomach cancer?",
+    "options": [
+     "Does not locate the tumor",
+     "Perform biopsies",
+     "Assess distant metastasis",
+     "Is not indicated"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "e887ab3ac7",
+    "n": 16,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct correlated modifiable risk factors for gastric cancer:",
+    "options": [
+     "Diet rich in fruit and vegetables",
+     "Occupational exposure",
+     "Past surgical history of cholecystectomy",
+     "H. pylori infections"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image38.webp",
+      "w": 888,
+      "h": 630
+     }
+    ]
+   },
+   {
+    "id": "b63645d362",
+    "n": 17,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct correlated modifiable risk factors for gastric cancer:",
+    "options": [
+     "Occupational exposure",
+     "Smoking and alcohol consumption",
+     "Past surgical history of cholecystectomy",
+     "Diet rich in fruit and vegetables"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed"
+   },
+   {
+    "id": "5ab2ac52d5",
+    "n": 18,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What is the correct mandatory medical procedures to add after total gastrectomy of stomach cancer in the follow-up of treatment?",
+    "options": [
+     "Vitamin B12 supplementation",
+     "No vitamin supplementation is required",
+     "Renew the full vaccination program",
+     "Vitamin B9 supplementation"
+    ],
+    "answer": [
+     0
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image24.webp",
+      "w": 927,
+      "h": 650
+     }
+    ]
+   },
+   {
+    "id": "b66751cccb",
+    "n": 19,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "What surgical procedures is possible in curative treatment for stomach cancer?",
+    "options": [
+     "Duodenal and gastric resection",
+     "Subtotal gastrectomy",
+     "Exclusive feeding jejunostomy",
+     "Gastric bypass"
+    ],
+    "answer": [
+     1
+    ],
+    "key": "proposed",
+    "notes": [
+     {
+      "src": "img/mid-s5-2526-image17.webp",
+      "w": 848,
+      "h": 609
+     }
+    ]
+   },
+   {
+    "id": "3b21cca58c",
+    "n": 20,
+    "topic": "digestive-surgical-pathology",
+    "source": "mid-s5-2526",
+    "stem": "Choose the correct statement regarding gastric cancer?",
+    "options": [
+     "Can be treated only by chemotherapy",
+     "Gastric linitis is a benign gastric metaplasia",
+     "Chemo-radiotherapy holds no place in gastric management in both curative or palliative treatment",
+     "Has a high risk of lymph node dissemination and surgical resection requires lymph nodes removal"
+    ],
+    "answer": [
+     3
+    ],
+    "key": "proposed"
+   }
+  ]
+ }
+]

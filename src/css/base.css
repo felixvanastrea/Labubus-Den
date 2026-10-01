@@ -1,0 +1,103 @@
+/* Tokens, resets, screen transitions and motion rules. The look itself lives in gothic.css.
+   One dark look on purpose (charcoal paper and bone ink), so there is no light variant. */
+:root {
+  color-scheme: dark;
+  /* colour: charcoal paper, bone ink, two old inks for right and wrong */
+  --night: #1b1a18;
+  --deep: #0e0d0c;
+  --plate: #211f1c;
+  --plate-2: #2a2723;
+  --ink: #ece3d1;
+  --ink-hi: #fff8ea;
+  --ink-2: #c6bdac;
+  --ink-3: #9a9284;
+  --hair: #38342e;
+  --hair-2: #5a5348;
+  --glass: rgba(24, 23, 21, .76);
+  --right: #9fc6a8;
+  --wrong: #e59177;
+  --right-wash: rgba(159, 198, 168, .1);
+  --wrong-wash: rgba(229, 145, 119, .1);
+  --sel-wash: rgba(236, 227, 209, .06);
+  --glow-soft: rgba(236, 227, 209, .09);
+  --glow-mid: rgba(236, 227, 209, .3);
+  --title-glow: rgba(236, 227, 209, .22);
+  --mottle-1: rgba(92, 74, 50, .2);
+  --mottle-2: rgba(46, 52, 70, .16);
+  --shade: rgba(0, 0, 0, .5);
+  --k-official: #bdaae3;
+  --k-proposed: #adc99e;
+  --k-claude: #ddbd73;
+  --k-none: #a39b8d;
+  --k-official-line: rgba(189, 170, 227, .42);
+  --k-proposed-line: rgba(173, 201, 158, .42);
+  --k-claude-line: rgba(221, 189, 115, .45);
+  --k-none-line: rgba(163, 155, 141, .45);
+  --k-flag-line: rgba(229, 145, 119, .45);
+  --fig-bg: #f3eee3;
+  --scrim: rgba(9, 8, 7, .95);
+
+  /* type: an italic display serif, an old-style book face for everything you read, a mono for small data labels */
+  --f-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --f-read: "EB Garamond", "Iowan Old Style", Garamond, "Palatino Linotype", Georgia, serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-label: .78rem;
+  --t-read: 1.1875rem;
+  --t-stem: clamp(1.35rem, 3.6vw, 1.6rem);
+  --t-h2: clamp(2.3rem, 6vw, 3.5rem);
+  --t-h1: clamp(2.5rem, 7.5vw, 4.5rem);
+
+  /* motion */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --spring: linear(0, .006, .025 2.8%, .101 6.1%, .539 18.9%, .721 25.3%, .849 31.5%, .937 38.1%, .968 41.8%, .991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001 85.9%, 1);
+  --r: 3px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { overflow-x: hidden; }
+@supports (overflow: clip) { html { overflow-x: clip; } }
+.sr-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#app { position: relative; z-index: 2; min-height: 100vh; }
+
+/* ---------- screen changes ---------- */
+.qcard { view-transition-name: qcard; }
+/* where the browser has no view transitions */
+#app.enter-nav .stage, #app.enter-back .stage { animation: enter .55s var(--ease) both; }
+#app.enter-next .qcard { animation: card-in-r .5s var(--ease) both; }
+#app.enter-prev .qcard { animation: card-in-l .5s var(--ease) both; }
+/* with view transitions (Chrome, Edge, Safari 18) */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .42s; animation-timing-function: var(--ease); }
+html[data-vt="nav"]::view-transition-old(root), html[data-vt="back"]::view-transition-old(root) { animation-name: vt-out; }
+html[data-vt="nav"]::view-transition-new(root) { animation-name: vt-in-fwd; }
+html[data-vt="back"]::view-transition-new(root) { animation-name: vt-in-back; }
+::view-transition-group(qcard) { animation-duration: .5s; animation-timing-function: var(--ease); }
+html[data-vt="next"]::view-transition-old(qcard) { animation: vt-card-out-l .34s var(--ease) both; }
+html[data-vt="next"]::view-transition-new(qcard) { animation: card-in-r .5s var(--ease) both; }
+html[data-vt="prev"]::view-transition-old(qcard) { animation: vt-card-out-r .34s var(--ease) both; }
+html[data-vt="prev"]::view-transition-new(qcard) { animation: card-in-l .5s var(--ease) both; }
+html[data-vt="nav"]::view-transition-new(qcard) { animation: rise .55s var(--ease) both; }
+::view-transition-old(sky), ::view-transition-old(grain) { display: none; }
+::view-transition-new(sky), ::view-transition-new(grain) { animation: none; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fill { from { transform: scaleX(0); } }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { 0% { transform: scale(.78); } 100% { transform: scale(1); } }
+@keyframes reveal { from { opacity: .35; transform: translateY(5px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } }
+@keyframes fadein { from { opacity: 0; } }
+@keyframes zoomin { from { opacity: 0; transform: scale(.96); } }
+@keyframes enter { from { opacity: 0; transform: translateY(14px) scale(.995); filter: blur(5px); } }
+@keyframes card-in-r { from { opacity: 0; transform: translateX(44px); filter: blur(4px); } }
+@keyframes card-in-l { from { opacity: 0; transform: translateX(-44px); filter: blur(4px); } }
+@keyframes vt-out { to { opacity: 0; transform: scale(.985); filter: blur(4px); } }
+@keyframes vt-in-fwd { from { opacity: 0; transform: translateY(16px) scale(1.008); filter: blur(5px); } }
+@keyframes vt-in-back { from { opacity: 0; transform: translateY(-12px) scale(.992); filter: blur(5px); } }
+@keyframes vt-card-out-l { to { opacity: 0; transform: translateX(-46px); filter: blur(5px); } }
+@keyframes vt-card-out-r { to { opacity: 0; transform: translateX(46px); filter: blur(5px); } }
+@keyframes hint-in { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

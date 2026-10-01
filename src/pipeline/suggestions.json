@@ -1,0 +1,521 @@
+{
+ "a00088f675": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "Hospital-acquired pneumonia is defined as starting at least 48 h after admission. The 30-day window after discharge is the rule for surgical-site infections, not pneumonia, so A is the trap. The germs are often endogenous (the patient's own colonised oropharyngeal flora, micro-aspiration), mortality is high rather than rare, and hand hygiene is the cornerstone of prevention."
+ },
+ "41bd548bf2": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "CRB-65 = Confusion, Respiratory rate ≥ 30/min, low Blood pressure (systolic < 90 or diastolic ≤ 60 mmHg), age ≥ 65. Fever is not a criterion, and it's hypotension that counts, not high blood pressure."
+ },
+ "9a8e1c6238": {
+  "answer": [
+   2,
+   3
+  ],
+  "why": "Hypothyroidism slows everything down: bradycardia, constipation (not diarrhea), dry skin and dry, brittle hair that falls out. Exophthalmia points to Graves' disease."
+ },
+ "3d7f9e7274": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Loss of the outer third of the eyebrows and a puffy (myxedematous) face are classic. Tremor belongs to hyperthyroidism, and reflexes are slowed in hypothyroidism, with a delayed relaxation phase."
+ },
+ "d18059362b": {
+  "answer": [
+   3
+  ],
+  "why": "A firm, tender goiter with neck discomfort and fatigue in a young woman is subacute (De Quervain) thyroiditis, often after a viral infection. Graves' goiter is soft and painless, Hashimoto's is firm but painless, and silent thyroiditis is painless by definition."
+ },
+ "252836c822": {
+  "answer": [
+   0,
+   2
+  ],
+  "why": "Warm, moist skin and weight loss despite a good appetite are thyrotoxic signs. Kidney stones point to hyperparathyroidism, and Chvostek's sign to hypocalcemia."
+ },
+ "94e9012a76": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Graves' disease gives a suppressed TSH (with high free T4/T3) and positive TSH-receptor antibodies (TRAb), which are specific. Hyponatremia and high cholesterol fit hypothyroidism, not hyperthyroidism."
+ },
+ "3850fc20d2": {
+  "answer": [
+   2,
+   3
+  ],
+  "why": "Toxic multinodular goiter means palpable nodules in an older patient, often with a long-standing goiter. Ophthalmopathy and pretibial myxedema are specific to Graves' disease."
+ },
+ "5b959ab5ae": {
+  "answer": [
+   3
+  ],
+  "why": "Agranulocytosis is the classic serious side effect of antithyroid drugs (carbimazole, PTU): stop the drug and check a CBC if fever or a sore throat appears. Rash, itching, arthralgia and GI upset are more frequent but minor."
+ },
+ "9293d39b66": {
+  "answer": [
+   2,
+   3
+  ],
+  "why": "Hypocalcemia causes neuromuscular irritability: Trousseau and Chvostek signs, paresthesias, tetany, even seizures. Kidney stones and brown tumors belong to hyperparathyroidism with hypercalcemia."
+ },
+ "6fc1b07816": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "Primary hyperparathyroidism = hypercalcemia with a high or inappropriately normal PTH. Phosphate is low, not high, and urinary calcium is normal or high. Low calciuria suggests familial hypocalciuric hypercalcemia instead."
+ },
+ "10ffa7b6c5": {
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "why": "The two big causes are primary hyperparathyroidism and cancer (PTHrP, bone metastases, myeloma). Granulomatous diseases such as sarcoidosis or TB raise calcitriol. Thyroid surgery causes hypocalcemia, through damage to the parathyroids."
+ },
+ "562875e39d": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Surgery is indicated if the patient is symptomatic, or if asymptomatic with any of: calcium > 0.25 mmol/L (1 mg/dL) above normal, osteoporosis (T-score ≤ −2.5) or a vertebral fracture, kidney stones or nephrocalcinosis, eGFR < 60 mL/min, hypercalciuria, or age < 50. Age > 70 and GFR > 80 are the reverse of the real thresholds."
+ },
+ "2ac16bfaa3": {
+  "answer": [
+   2,
+   3
+  ],
+  "why": "Red flags for cancer: a hard, fixed nodule, rapid growth, voice change (recurrent laryngeal nerve), cervical lymph nodes and irregular margins on ultrasound. A regular outline and slow growth are reassuring."
+ },
+ "737e31f68f": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Iodine deficiency is the main goitrogenic factor, and pregnancy raises iodine needs and stimulates the thyroid. Neck radiation is mainly a risk factor for nodules and thyroid cancer, and corticosteroids aren't goitrogenic. C is the debatable one, so check it against your course."
+ },
+ "e46be479a8": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Postpartum thyroiditis is a painless (silent) lymphocytic thyroiditis that starts in the months after delivery, usually within 6 months, with at most a small painless goiter. Exophthalmia points to Graves' disease, and a painful goiter to De Quervain."
+ },
+ "4d9baa05fb": {
+  "answer": [
+   0
+  ],
+  "why": "A hard, fixed, compressive goiter with normal thyroid function, negative antibodies and a preserved general condition fits Riedel's (fibrous) thyroiditis. Hashimoto's has positive antibodies and De Quervain is painful and inflammatory. In real life cancer (D) still has to be ruled out with a biopsy, but the clues in the question point to Riedel."
+ },
+ "aaa6d4bd7d": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Typical appendicitis is right iliac fossa pain with fever. A sub-hepatic appendix gives right hypochondrium pain, so A is true too. Pain in the right hypochondrium radiating to the right shoulder is a biliary pattern. Note: the other copy of this question in the doc only marks the iliac fossa option."
+ },
+ "571ee41d3f": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Obstruction of the lumen (fecalith, lymphoid hyperplasia) is the main mechanism, and muscular peristalsis that empties the lumen is protective (the Finals version of this question in the doc marks it true too). The lumen does open into the cecum, and clinical exam can't always separate complicated from uncomplicated forms."
+ },
+ "d8f06a164c": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "In pregnancy the displaced appendix delays the diagnosis. Option B merges two true statements from the doc (pelvic appendix: tender rectal exam; obese patient: blunted local signs). A retrocecal appendix gives a muted, misleading picture, not a pronounced one."
+ },
+ "a969ccb50f": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "If angina persists under first-line drugs, second-line agents (ivabradine, nitrates, ranolazine, trimetazidine) are added, and cognitive-behavioural support for lifestyle and depression is recommended. Revascularization isn't CABG-first by default, and stenting every stenosis over 50% isn't recommended. Less sure about A."
+ },
+ "12d0793a40": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Chest pain/discomfort is the classic leading complaint, and cardiovascular diseases can cause bilateral (heart failure) or unilateral (venous thrombosis) leg edema. Arrhythmias can cause chest pain, and pericarditis vs aortic dissection pain can be told apart (positional/pleuritic vs tearing, maximal at onset)."
+ },
+ "3abd360b88": {
+  "answer": [
+   2,
+   3
+  ],
+  "why": "Diabetes worsens the lipid profile and exercise protects the arteries. Exercise lowers LDL and triglycerides (and raises HDL), and hypertension damages the arterial wall and favours plaque."
+ },
+ "859a07a98a": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "Acute complications of MI include mitral regurgitation (papillary muscle dysfunction or rupture), atrial fibrillation and ventricular tachycardia/fibrillation. Aortic stenosis isn't a complication of MI."
+ },
+ "062e817509": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Same question as the one above in a different order: exercise lowers LDL, hypertension favours plaque formation. Diabetes worsens the atherogenic profile, and exercise doesn't promote plaque."
+ },
+ "cd1d0ed1aa": {
+  "answer": [
+   0,
+   3
+  ],
+  "why": "Same question as the one above in a different order: chest pain is the classic leading complaint and edema can be uni- or bilateral. Arrhythmias can cause chest pain, and pericarditis vs dissection pain can be told apart."
+ },
+ "793e940658": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "Tendon xanthomas point to familial hypercholesterolemia, and petechiae and clubbing are both signs of (subacute) endocarditis. Raynaud's is a peripheral vasospastic phenomenon, not the marker of central cyanosis (which appears above about 5 g/dL of deoxygenated Hb)."
+ },
+ "fb805ce6d6": {
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "why": "LDL-lowering drugs are statins, ezetimibe and PCSK9 inhibitors. Beta-blockers have no LDL effect."
+ },
+ "71293365cb": {
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "why": "Ventricular tachycardia, mitral regurgitation and atrial fibrillation are recognised complications of MI. Aortic stenosis is not."
+ },
+ "601f8531b9": {
+  "answer": [
+   0
+  ],
+  "why": "Syncope is a transient loss of consciousness from global, temporary, self-limited cerebral hypoperfusion. A first syncope in an elderly patient with heart disease is worrying, vasovagal syncope is the most common type, and hypoglycemia causes loss of consciousness but isn't syncope."
+ },
+ "1262daeb3a": {
+  "answer": [
+   0,
+   2
+  ],
+  "why": "HDL is the protective cholesterol, and a high ApoB/ApoA1 ratio raises MI risk. A high non-HDL doesn't guarantee carotid stenosis, and statins help in secondary prevention whatever the baseline cholesterol."
+ },
+ "7188d5222e": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "Acute pericarditis can recur and cause recurrent effusion (up to tamponade), and it can trigger supraventricular arrhythmias. It doesn't cause shunt reversal or myocardial infarction. Less sure about D, which is a rare complication."
+ },
+ "ebe7f7e061": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "Atherosclerosis starts early (fatty streaks already in adolescence) and smoking strongly aggravates it. In France it's more frequent in the North than around the Mediterranean."
+ },
+ "9865ae020b": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "Typical flutter is cured by cavotricuspid isthmus ablation (first-line), and it converts with a low-energy shock. It needs anticoagulation like AF, and adenosine only slows the ventricles to unmask flutter waves without converting it."
+ },
+ "40e3af9b97": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "The stem is oddly worded, but the options are the forms of ACS: unstable angina, NSTEMI and STEMI. Stable angina is a chronic coronary syndrome."
+ },
+ "22c7e9da67": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "A pericardial friction rub and sharp pleuritic chest pain that's worse lying down (relieved leaning forward) point to acute pericarditis. Q waves suggest old MI, and pericardial calcification suggests chronic constrictive pericarditis."
+ },
+ "f231e0e292": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Reperfusion in STEMI means primary PCI or thrombolysis. Antiplatelets, heparin, beta-blockers and ACE inhibitors are adjunct treatments, not reperfusion."
+ },
+ "3cf6ba2bb2": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "NSTEMI = troponin rise from a sub-occlusive (non-occlusive) coronary lesion. It's managed in hospital, and a Pardee wave (ST elevation) defines STEMI."
+ },
+ "fe69a1efc2": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "The complications of acute pericarditis are recurrence, tamponade and constriction. Aortic dissection and rupture aren't complications of pericarditis."
+ },
+ "ae4e160eba": {
+  "answer": [
+   0
+  ],
+  "why": "Most acute pericarditis is idiopathic, presumed viral."
+ },
+ "b55681fc4d": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "An ASD volume-overloads the right ventricle, and a PDA (like a VSD) volume-overloads the left heart. Left-to-right shunts can end in cyanosis once they reverse (Eisenmenger), so A is false."
+ },
+ "ed04acc928": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "At discharge after STEMI: antiplatelets (dual therapy), high-intensity statin, plus beta-blocker and ACE inhibitor. Diuretics only if there's congestion, and LMWH isn't a discharge treatment."
+ },
+ "ffdf1fc4a1": {
+  "answer": [
+   1
+  ],
+  "why": "Massive PE causes acute right heart failure with hypotension or shock. D-dimers are high, and it doesn't cause mitral regurgitation or hypertension."
+ },
+ "70b5b4daad": {
+  "answer": [
+   0
+  ],
+  "why": "Atrial flutter carries a stroke risk like AF. A long PR is a conduction disorder, torsades de pointes is ventricular, and junctional tachycardia is supraventricular but not atrial."
+ },
+ "18c073c921": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "Inferior STEMI can be complicated by septal rupture (VSD), and thrombolysis isn't effective or indicated that late (beyond about 12 h, certainly by 24 h). No stress test is needed for the diagnosis, and the inferior leads are II, III and aVF (V1 to V6 is anterior)."
+ },
+ "eaa7cf6bc5": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "Thrombolysis has no place in NSTEMI, and patients are admitted urgently to a cardiac intensive care unit for monitoring. NSTEMI is non-occlusive, and a confirmed NSTEMI goes to angiography without a stress test first."
+ },
+ "31621600c1": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "Virchow's triad = venous stasis, vessel wall (endothelial) injury and hypercoagulability. Antithrombin/protein C/S deficiency is a cause of hypercoagulability rather than a component itself, and atherosclerosis is arterial. Less sure about C."
+ },
+ "88a43e362c": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "Chronic mesenteric ischemia = elderly atheromatous patient, post-prandial pain about 15 to 30 min after meals, and weight loss from fear of eating. Pain with shock in the ICU is acute mesenteric ischemia."
+ },
+ "d52d3eff41": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "PAD is common and usually atherosclerotic, causes trophic lesions (ulcers, gangrene), and risk factors are usually present. Pulses are decreased or absent, not increased."
+ },
+ "206bf0a057": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "The question asks for the FALSE ones. LV aneurysm with thrombus and heart failure are real complications of MI, but aortic regurgitation and aortic dissection are not."
+ },
+ "6d17a7e096": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "Cancer, prolonged bed rest, recent surgery and pregnancy/postpartum are all classic VTE risk factors."
+ },
+ "2106f12186": {
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "why": "PE is anticoagulated with heparin (UFH or LMWH), vitamin K antagonists or DOACs (rivaroxaban, apixaban). Aspirin isn't an anticoagulant treatment for PE."
+ },
+ "9fc45b7494": {
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "why": "Virchow's triad = venous stasis, vessel wall injury and hypercoagulability. Hyperventilation is a consequence of PE, not a cause of thrombosis."
+ },
+ "e8909051eb": {
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "why": "Classic findings: a small pleural effusion on chest X-ray, S1Q3 and right axis deviation on ECG, and hypoxemia with hypocapnia (shunt effect). D-dimers are raised, not normal."
+ },
+ "14b97a7a8a": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "Dyspnea, pleuritic chest pain, hemoptysis (infarction) and syncope (massive PE) are all clinical signs of PE."
+ },
+ "3fdabab5ce": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "Inherited thrombophilia (antithrombin, protein C/S deficiency), bed rest, a leg fracture in a cast and pregnancy/postpartum are all VTE risk factors."
+ },
+ "e8a1036ec6": {
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "why": "Look for leg swelling (increased volume), Homans' sign and reduced calf ballottement. A cold limb points to arterial ischemia, since DVT tends to make the limb warm."
+ },
+ "283d1886fb": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "AF can be asymptomatic and found by chance, cause palpitations, decompensate heart failure or reveal itself as a cardioembolic stroke."
+ },
+ "1ccf2ded43": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "In the French classification, supraventricular tachycardias include sinus tachycardia, AF, flutter and junctional tachycardia. Some courses exclude sinus tachycardia, so A is the debatable one."
+ },
+ "45d710f271": {
+  "answer": [
+   1,
+   2
+  ],
+  "why": "Atrial (auricular) tachyarrhythmias are AF and flutter. Junctional tachycardia arises at the AV junction, and torsades de pointes is ventricular."
+ },
+ "f07d1d98cd": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "AF treatment combines anticoagulation, rate or rhythm control with drugs, electrical cardioversion and catheter (radio-frequency) ablation."
+ },
+ "1064303569": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "Coarctation, Conn's adenoma, acute glomerulonephritis and pregnancy (gestational hypertension, pre-eclampsia) are all causes of secondary hypertension."
+ },
+ "545584fa75": {
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "why": "DCM can be idiopathic, familial/genetic, toxic (alcohol, anthracyclines) or post-myocarditis (viral)."
+ },
+ "45012a2910": {
+  "answer": [
+   0,
+   2
+  ],
+  "why": "Lifestyle measures: lose weight if overweight, stop smoking, reduce salt, limit alcohol, exercise regularly. Rest isn't one of them, and alcohol should be limited."
+ },
+ "48a9252c03": {
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "why": "First-line antihypertensives: ACE inhibitors (or ARBs), calcium channel blockers and thiazide(-like) diuretics. Central agents are reserved for later lines."
+ },
+ "222cfe90e8": {
+  "answer": [
+   0
+  ],
+  "why": "The European (ESC/ESH) definition is SBP ≥ 140 and/or DBP ≥ 90 mmHg. The American ACC/AHA guideline uses 130/80, so B depends on which guideline your course follows."
+ },
+ "f01e76f8b2": {
+  "answer": [
+   0,
+   1
+  ],
+  "why": "DCM is treated like heart failure with reduced EF, plus cardiac resynchronization (CRT) when indicated. Cardiac rehab is indicated, and isolated right-ventricular pacing can worsen the dyssynchrony."
+ },
+ "9c7bf5069c": {
+  "answer": [
+   0,
+   2
+  ],
+  "why": "Markers of severity include a restrictive mitral filling profile (high filling pressures) and pulmonary hypertension with RV dilation. Low filling pressures are reassuring. Some courses also count AF as a poor prognostic sign, so D is debatable."
+ },
+ "73609724bc": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "DCM is defined by LV dilation with reduced systolic function, and its prognosis is severe. Dilation isn't always biventricular, and many cases are idiopathic."
+ },
+ "dc60c5e7eb": {
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "why": "Testosterone replacement in hypogonadal men improves anemia, bone density and libido. It improves quality of life rather than lowering it."
+ },
+ "d5e1f1767c": {
+  "answer": [
+   1,
+   3
+  ],
+  "why": "PAD (ischemic foot) = cold foot with weak or absent pulses. Loss of touch sensation and numbness point to diabetic neuropathy."
+ }
+}

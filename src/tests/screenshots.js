@@ -1,0 +1,80 @@
+const { chromium } = require('playwright');
+const OUT = process.env.OUT || require('path').join(__dirname, 'shots') + '/';
+require('fs').mkdirSync(OUT, { recursive: true });
+const wait = ms => new Promise(r => setTimeout(r, ms));
+(async () => {
+  const browser = await chromium.launch();
+  const errors = [];
+  const watch = (pg, tag) => {
+    pg.on('pageerror', e => errors.push(tag + ' pageerror: ' + e.message));
+    pg.on('console', m => { if (m.type() === 'error' && !/fonts\.googleapis|ERR_TUNNEL|Failed to load resource/.test(m.text())) errors.push(tag + ' console: ' + m.text()); });
+  };
+  // desktop
+  const d = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+  watch(d, 'desktop');
+  await d.goto('http://127.0.0.1:8765/index.html', { waitUntil: 'networkidle' });
+  await d.evaluate(() => localStorage.clear());
+  await d.reload({ waitUntil: 'networkidle' });
+  await wait(1800);
+  await d.screenshot({ path: OUT + 'r1_home_top.png' });
+  await d.screenshot({ path: OUT + 'r1_home_full.png', fullPage: true });
+  console.log('fonts:', await d.evaluate(() => [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family + ' ' + f.style + ' ' + f.weight).join(', ')));
+  console.log('title canvas:', await d.evaluate(() => { const c = document.getElementById('title-canvas'); return c ? [c.width, c.height, c.style.width, c.style.height, c.parentElement.className].join(' ') : 'none'; }));
+  // module page
+  await d.click('button[data-topic="respiratory-system-diseases"]');
+  await wait(900);
+  await d.screenshot({ path: OUT + 'r1_module.png' });
+  // quiz
+  await d.click('button[data-start="respiratory-system-diseases"]');
+  await wait(900);
+  await d.click('.opt[data-opt="1"]');
+  await wait(600);
+  await d.screenshot({ path: OUT + 'r1_quiz_selected.png' });
+  console.log('pressed after toggle:', await d.getAttribute('.opt[data-opt="1"]', 'aria-pressed'), '| primary disabled:', await d.$eval('[data-act="primary"]', b => b.disabled));
+  await d.click('[data-act="primary"]');
+  await wait(900);
+  await d.screenshot({ path: OUT + 'r1_quiz_checked.png' });
+  await d.click('[data-act="primary"]');
+  await wait(900);
+  console.log('after next:', await d.textContent('.bar-count'));
+  await d.click('[data-act="back"]');
+  await wait(700);
+  await d.click('[data-act="home"]');
+  await wait(900);
+  await d.click('.navlinks [data-act="repeats"]');
+  await wait(900);
+  await d.screenshot({ path: OUT + 'r1_repeats.png' });
+  await d.click('[data-act="home"]');
+  await wait(900);
+  await d.fill('#q', 'acute bronchitis');
+  await wait(300);
+  await d.evaluate(() => document.querySelector('.skyband').scrollIntoView());
+  await d.screenshot({ path: OUT + 'r1_search.png' });
+  console.log('desktop overflow:', await d.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
+
+  // mobile
+  const m = await (await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true })).newPage();
+  watch(m, 'mobile');
+  await m.goto('http://127.0.0.1:8765/index.html', { waitUntil: 'networkidle' });
+  await wait(1800);
+  await m.screenshot({ path: OUT + 'r1_m_home.png' });
+  await m.evaluate(() => window.scrollTo(0, 900));
+  await wait(300);
+  await m.screenshot({ path: OUT + 'r1_m_home2.png' });
+  await m.evaluate(() => document.getElementById('modules').scrollIntoView());
+  await wait(300);
+  await m.screenshot({ path: OUT + 'r1_m_modules.png' });
+  console.log('mobile overflow (home):', await m.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
+  await m.tap('button[data-topic="cardio-vascular-system-disease"]');
+  await wait(900);
+  await m.screenshot({ path: OUT + 'r1_m_module.png' });
+  await m.tap('button[data-start="cardio-vascular-system-disease"]');
+  await wait(900);
+  await m.tap('.opt[data-opt="0"]');
+  await m.tap('[data-act="primary"]');
+  await wait(900);
+  await m.screenshot({ path: OUT + 'r1_m_quiz.png' });
+  console.log('mobile overflow (quiz):', await m.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
+  console.log('\nERRORS:', errors.length ? errors.join('\n') : 'none');
+  await browser.close();
+})();
