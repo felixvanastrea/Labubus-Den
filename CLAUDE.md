@@ -1,6 +1,6 @@
-# EFM3 MCQ Bank: notes for Claude
+# Labubu’s Den: notes for Claude
 
-A practice site for past EFM3 exam questions (third-year medicine, semester 5, 2025–2026), built for Abi and her class.
+Labubu’s Den (first called EFM3 MCQ Bank) is a practice site for past EFM3 exam questions (third-year medicine, semester 5, 2025–2026), built for Abi and her class.
 One static page: all questions, notes and code are inlined into `index.html`; figures live in `img/`.
 
 ## Where it lives
@@ -26,7 +26,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - One dark "constellation gothic" look: charcoal paper, bone ink, grain, stars. No light mode.
 - Type: Instrument Serif italic for display, EB Garamond for anything read, IBM Plex Mono only for small data labels.
-- No all-caps text anywhere except the pixel title "EFM3 MCQ BANK". She found caps hard to read.
+- No all-caps text anywhere except the pixel title "LABUBU’S DEN". She found caps hard to read.
+- The Labubu head (`src/labubu.svg`, Abi's artwork) is the logo: bone face, charcoal lines. The build makes
+  `favicon.svg` from it and a `<symbol id="labubu">` for the top bar. `favicon-32.png` and `icon-180.png` were
+  rendered once from `favicon.svg` (redo them if the art changes); `og.jpg` is the hero at 1400×735 scaled to 1200×630.
 - Motion should feel smooth (view transitions between screens, spring easing). Always respect `prefers-reduced-motion`.
 - Opening animation (`intro` in `template.html`): the camera looks up at the sky, a shooting star falls, the camera follows it down,
   and the star lands on the title as it resolves from pixels. Home page only; a tap, key or scroll skips it;

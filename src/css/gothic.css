@@ -109,10 +109,11 @@ body[data-view="quiz"] #sky, body[data-view="done"] #sky { opacity: .4; }
 .masthead { position: relative; padding-block: 14px 0; overflow: hidden; }
 .topnav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; }
 .logo {
-  display: inline-flex; align-items: center; gap: .5rem; background: none; border: 0; padding: 4px 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: .6rem; background: none; border: 0; padding: 4px 0; cursor: pointer;
   font-family: var(--f-display); font-size: 1.6rem; line-height: 1; color: var(--ink);
 }
-.logo .star { display: inline-block; font-size: 1.05rem; animation: spin 18s linear infinite; }
+.logo .lb { width: 26px; height: 32px; flex: none; color: var(--ink); --lb-line: var(--night); transform-origin: 50% 85%; transition: transform .6s var(--spring); }
+.logo:hover .lb { transform: rotate(-10deg); }
 .navlinks { display: flex; gap: 28px; color: var(--ink-2); font-size: 1.1rem; }
 .navlinks button { position: relative; background: none; border: 0; padding: 8px 0; cursor: pointer; font: inherit; color: inherit; transition: color .3s var(--ease); }
 .navlinks button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform .45s var(--ease); }

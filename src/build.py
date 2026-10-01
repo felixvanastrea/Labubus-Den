@@ -8,8 +8,8 @@ Writes
 """
 import json
 import os
+import re
 import sys
-from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -20,7 +20,7 @@ from concepts import CONCEPTS, ASPECT_NAMES, tag  # noqa: E402
 from search_extra import SYN as EXTRA_SYN, ABBR as EXTRA_ABBR  # noqa: E402  (search-only aliases)
 
 SITE_URL = 'https://felixvanastrea.github.io/Labubus-Den/'
-TITLE = 'EFM3 MCQ Bank'
+TITLE = 'Labubu’s Den'
 DESC = ('Past EFM3 exam questions (midterms, mocks, finals and second sessions), sorted by module and by exam, '
         'with answers, explanations and a topic search.')
 
@@ -105,15 +105,25 @@ payload = json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('<
 tpl = open('template.html', encoding='utf8').read()
 assert '__BANK_JSON__' in tpl and '/*__CSS__*/' in tpl
 css = '\n'.join(open(os.path.join('css', f'{name}.css'), encoding='utf8').read() for name in ('base', 'gothic'))
-page = tpl.replace('/*__CSS__*/', '\n' + css).replace('__BANK_JSON__', payload)
+# Labubu's head: a symbol for the logo in the top bar, and the tab icon next to index.html
+art = open('labubu.svg', encoding='utf8').read()
+art_box = re.search(r'viewBox="([^"]+)"', art).group(1)
+art_d = {k: re.search(rf'<path id="{k}" d="([^"]+)"', art).group(1) for k in ('face', 'line')}
+symbol = (f'<symbol id="labubu" viewBox="{art_box}"><path fill="currentColor" d="{art_d["face"]}"/>'
+          f'<path style="fill: var(--lb-line, #1b1a18)" d="{art_d["line"]}"/></symbol>')
+assert '<!--__LABUBU__-->' in tpl
+page = (tpl.replace('/*__CSS__*/', '\n' + css).replace('<!--__LABUBU__-->', symbol)
+        .replace('__BANK_JSON__', payload))
+# the tab icon: the head in bone on a charcoal tile
+favicon = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="142.5 146.6 698 698">'
+           '<rect x="142.5" y="146.6" width="698" height="698" rx="150" fill="#1b1a18"/>'
+           f'<path fill="#ece3d1" d="{art_d["face"]}"/><path fill="#1b1a18" d="{art_d["line"]}"/></svg>\n')
+open(os.path.join(ROOT, 'favicon.svg'), 'w', encoding='utf8').write(favicon)
 
 os.makedirs('out', exist_ok=True)
 open(os.path.join('out', 'artifact.html'), 'w', encoding='utf8').write(page)
 
 # the standalone page: the template's title, font links and styles go in <head>, everything else in <body>
-FAVICON = 'data:image/svg+xml,' + quote(
-    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#1b1a18'/>"
-    "<path d='M32 9l4.2 18.8L55 32l-18.8 4.2L32 55l-4.2-18.8L9 32l18.8-4.2z' fill='#ece3d1'/></svg>", safe=":/'=")
 cut = page.index('</style>') + len('</style>')
 head, body = page[:cut], page[cut:]
 doc = f'''<!doctype html>
@@ -131,7 +141,8 @@ doc = f'''<!doctype html>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{FAVICON}">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
 {head}
 </head>

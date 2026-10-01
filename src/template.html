@@ -1,4 +1,4 @@
-<title>EFM3 MCQ Bank</title>
+<title>Labubu’s Den</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
@@ -6,6 +6,7 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
+    <!--__LABUBU__-->
     <radialGradient id="g-window" cx="50%" cy="34%" r="78%">
       <stop offset="0" style="stop-color: var(--plate-2)"/>
       <stop offset="1" style="stop-color: var(--deep)"/>
@@ -652,7 +653,7 @@
     app.innerHTML = `
       <header class="masthead wrap stage">
         <nav class="topnav" aria-label="Site">
-          <button class="logo" type="button" data-act="top" aria-label="EFM3 MCQ Bank, back to top"><span class="star" aria-hidden="true">✶</span>EFM3</button>
+          <button class="logo" type="button" data-act="top" aria-label="Labubu’s Den, back to top"><svg class="lb" aria-hidden="true" focusable="false"><use href="#labubu"/></svg>Labubu’s Den</button>
           <div class="navlinks">
             <button type="button" data-act="goto-modules">Modules</button>
             <button type="button" data-act="repeats">Most repeated</button>
@@ -666,7 +667,7 @@
           <ul class="meta mono rise-in" style="--d:1">
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
           </ul>
-          <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">EFM3<br>MCQ Bank</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
+          <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}</div>
         </div>
       </header>
@@ -1362,7 +1363,7 @@
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
     const box = c.parentElement, W = box.clientWidth; if (!W) return;
     const ink = rgbOf(cssVar('--ink'));
-    const lines = ['EFM3', 'MCQ BANK'];
+    const lines = ['LABUBU’S', 'DEN'];
     const fin = W < 520 ? 3 : W < 900 ? 4 : 5;
     const family = '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif';
     const ctx = c.getContext('2d', { willReadFrequently: true });
