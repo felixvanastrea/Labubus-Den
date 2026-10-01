@@ -2,7 +2,7 @@
 
 Every question from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets, sorted by module and by exam, with answers, explanations, a topic search and the most repeated questions.
 
-**Live site:** https://felixvanastrea.github.io/EFM3-MCQ-BANK/
+**Live site:** https://felixvanastrea.github.io/Labubus-Den/
 
 Made by the Labubu.
 

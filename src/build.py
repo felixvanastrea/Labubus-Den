@@ -19,7 +19,7 @@ sys.path.insert(0, HERE)
 from concepts import CONCEPTS, ASPECT_NAMES, tag  # noqa: E402
 from search_extra import SYN as EXTRA_SYN, ABBR as EXTRA_ABBR  # noqa: E402  (search-only aliases)
 
-SITE_URL = 'https://felixvanastrea.github.io/EFM3-MCQ-BANK/'
+SITE_URL = 'https://felixvanastrea.github.io/Labubus-Den/'
 TITLE = 'EFM3 MCQ Bank'
 DESC = ('Past EFM3 exam questions (midterms, mocks, finals and second sessions), sorted by module and by exam, '
         'with answers, explanations and a topic search.')

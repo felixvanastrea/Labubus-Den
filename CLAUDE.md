@@ -5,7 +5,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Where it lives
 
-- **GitHub Pages** serves the repo root of `main`: https://felixvanastrea.github.io/EFM3-MCQ-BANK/
+- The repo is `felixvanastrea/Labubus-Den` (renamed from EFM3-MCQ-BANK; the old name redirects).
+- **GitHub Pages** serves the repo root of `main`: https://felixvanastrea.github.io/Labubus-Den/
   Pushing to `main` redeploys it in about a minute. There is no CI; the built `index.html` is committed.
 - **claude.ai artifact** (older share link, keep in sync when asked): https://claude.ai/artifact/HZk3c1yCNdBwmNS8aS6KKr
   Publish `src/out/artifact.html` to it with the Artifact tool, passing that URL (read it first if this conversation hasn't).
