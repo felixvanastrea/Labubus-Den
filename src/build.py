@@ -74,6 +74,33 @@ bank['concepts'] = [{'id': cid, 'm': mod, 'n': name,
                     for cid, mod, name, syn, abbr, parent in CONCEPTS]
 bank['aspects'] = ASPECT_NAMES
 
+# the current quest (quests.json): every question in its module tagged with one of each topic's concepts,
+# plus hand-picked extras ("add") minus exclusions ("drop"), by short id. Word-for-word copies are left out.
+# Within a topic, versions of the most repeated questions come first.
+quests = json.load(open('quests.json', encoding='utf8'))
+cur = next((x for x in quests['quests'] if x['id'] == quests.get('current')), None)
+if cur:
+    rank = lambda q: (Q[q['id']].get('rep', 10 ** 6), order[q['id']])
+    topics, seen, flat = [], set(), []
+    for t in cur['topics']:
+        want = set(t.get('concepts', []))
+        add = {shortids[s] for s in t.get('add', [])}
+        drop = {shortids[s] for s in t.get('drop', [])}
+        picked = [q for q in bank['questions']
+                  if q['topic'] == cur['module'] and not q.get('dupOf') and q['id'] not in drop
+                  and (want & set(q['c']) or q['id'] in add)]
+        picked.sort(key=rank)
+        ids = [q['id'] for q in picked]
+        assert ids, f"quest topic {t['name']!r} has no questions"
+        topics.append({'name': t['name'], 'q': ids})
+        flat += [i for i in ids if i not in seen]
+        seen.update(ids)
+    bank['quest'] = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note')}
+    bank['quest'].update(topics=topics, q=flat)
+    print('quest', cur['id'], '|', len(flat), 'questions |',
+          ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),
+          '| without a key:', sum(1 for i in flat if not Q[i]['answer']))
+
 payload = json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 tpl = open('template.html', encoding='utf8').read()
 assert '__BANK_JSON__' in tpl and '/*__CSS__*/' in tpl

@@ -1,0 +1,21 @@
+{
+  "current": "resp-midterm-2026",
+  "quests": [
+    {
+      "id": "resp-midterm-2026",
+      "title": "Respiratory midterm",
+      "module": "respiratory-system-diseases",
+      "due": "2026-10-07",
+      "goal": 80,
+      "note": "The six topics on the respiratory midterm, gathered from every past exam.",
+      "topics": [
+        { "name": "Acute bronchitis", "concepts": ["R.bronchitis"] },
+        { "name": "Community-acquired pneumonia", "concepts": ["R.cap", "R.atypical", "R.pneumonia", "R.aspiration"] },
+        { "name": "Pulmonary abscess", "concepts": ["R.abscess"] },
+        { "name": "Viral pneumonia", "concepts": ["R.viral", "R.covid"] },
+        { "name": "Nosocomial pneumonia", "concepts": ["R.nosocomial"] },
+        { "name": "Bronchiectasis", "concepts": ["R.bronchiectasis"] }
+      ]
+    }
+  ]
+}

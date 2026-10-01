@@ -33,6 +33,18 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - A theme switcher (gothic + the original "classic" answer-sheet look) was started and parked at Abi's request.
   The work is in `src/wip_themes/` if she asks for it again.
 
+## Quests
+
+- The current quest is set in `src/quests.json`: a title, the module, the exam date (`due`), the goal (% right),
+  and topics. Each topic lists concept ids from `concepts.py` (plus optional `add` / `drop` lists of short ids
+  like `"R83"`). The build gathers every question in that module tagged with those concepts, drops word-for-word
+  copies, puts the most repeated first, and prints the counts per topic: check them before shipping.
+- On the site it's a card on the homepage (countdown, progress, the six topics, two wax seals) and the hero's
+  main button until it's done. Done = every question answered and goal% right, retries count.
+  "Clean run" = goal% right on the first try (first results are kept in `S.first`).
+- After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
+  ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
+
 ## Data notes
 
 - Question fields: `id`, `topic`, `source` (exam set), `n`, `stem`, `options` (HTML), `answer` (option indices),
@@ -50,6 +62,6 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node screenshots.js   # screenshots land in src/tests/shots/
+node intro_controls.js; node intro_frames.js; node quest.js; node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

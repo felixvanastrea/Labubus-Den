@@ -35,6 +35,7 @@
   --k-none-line: rgba(163, 155, 141, .45);
   --k-flag-line: rgba(229, 145, 119, .45);
   --fig-bg: #f3eee3;
+  --wax-edge: #c4b89f;
   --scrim: rgba(9, 8, 7, .95);
 
   /* type: an italic display serif, an old-style book face for everything you read, a mono for small data labels */
@@ -96,6 +97,8 @@ html[data-vt="nav"]::view-transition-new(qcard) { animation: rise .55s var(--eas
 @keyframes vt-in-back { from { opacity: 0; transform: translateY(-12px) scale(.992); filter: blur(5px); } }
 @keyframes vt-card-out-l { to { opacity: 0; transform: translateX(-46px); filter: blur(5px); } }
 @keyframes vt-card-out-r { to { opacity: 0; transform: translateX(46px); filter: blur(5px); } }
+@keyframes stamp { 0% { opacity: 0; transform: scale(1.75) rotate(-16deg); filter: blur(3px); } 55% { opacity: 1; transform: scale(.93) rotate(2deg); filter: none; } 78% { transform: scale(1.03) rotate(-.6deg); } 100% { transform: none; } }
+@keyframes stamp-ring { from { opacity: .75; transform: scale(.55); } to { opacity: 0; transform: scale(1.45); } }
 @keyframes hint-in { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
 @media (prefers-reduced-motion: reduce) {

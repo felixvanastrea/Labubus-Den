@@ -10,6 +10,11 @@
       <stop offset="0" style="stop-color: var(--plate-2)"/>
       <stop offset="1" style="stop-color: var(--deep)"/>
     </radialGradient>
+    <radialGradient id="g-wax" cx="38%" cy="32%" r="80%">
+      <stop offset="0" style="stop-color: var(--ink-hi)"/>
+      <stop offset=".55" style="stop-color: var(--ink)"/>
+      <stop offset="1" style="stop-color: var(--wax-edge)"/>
+    </radialGradient>
     <radialGradient id="g-halo">
       <stop offset="0" style="stop-color: var(--ink); stop-opacity: .5"/>
       <stop offset="1" style="stop-color: var(--ink); stop-opacity: 0"/>
@@ -117,7 +122,7 @@
   const ARCH_IN = 'M10 124V60A54 54 0 0 1 50 7.85A54 54 0 0 1 90 60V124';
 
   // ---------- state ----------
-  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
+  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
   let storageOK = false;
   function load() {
     try {
@@ -136,6 +141,9 @@
   function sanitize() {
     if (!S.answers || typeof S.answers !== 'object') S.answers = {};
     for (const id of Object.keys(S.answers)) if (!Q.has(id)) delete S.answers[id];
+    if (!S.first || typeof S.first !== 'object') S.first = {};
+    for (const id of Object.keys(S.first)) if (!Q.has(id)) delete S.first[id];
+    if (!S.seals || typeof S.seals !== 'object') S.seals = {};
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -222,13 +230,13 @@
     const sess = S.session; if (!sess) return;
     const wrong = sess.order.filter(id => result(Q.get(id)) === 'wrong');
     if (!wrong.length) return;
-    wrong.forEach(id => delete S.answers[id]);
+    wrong.forEach(id => { keepFirst(id); delete S.answers[id]; });
     S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0 });
     S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function restartSession() {
     const sess = S.session; if (!sess) return;
-    sess.order.forEach(id => delete S.answers[id]);
+    sess.order.forEach(id => { delete S.answers[id]; delete S.first[id]; });
     sess.idx = 0; S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function goBack() {
@@ -236,7 +244,7 @@
     const inQuiz = S.view === 'quiz' || S.view === 'done';
     let restore = false;
     if (sess && inQuiz && sess.from === 'repeats') { S.view = 'repeats'; restore = true; }
-    else if (sess && inQuiz && sess.from === 'search') { S.view = 'home'; restore = true; }
+    else if (sess && inQuiz && (sess.from === 'search' || sess.from === 'quest')) { S.view = 'home'; restore = true; }
     else if (sess && sess.topic !== '*' && inQuiz) { S.topicId = sess.topic; S.view = 'topic'; }
     else S.view = 'home';
     save();
@@ -277,12 +285,13 @@
     const q = curQ(); const a = S.answers[q.id];
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
+    if (!(q.id in S.first)) S.first[q.id] = a.correct;
     save();
     justChecked = true;
     render(false, 'verdict');
     justChecked = false;
   }
-  function tryAgain() { const q = curQ(); delete S.answers[q.id]; save(); render(false); }
+  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; save(); render(false); }
   function go(delta) {
     const sess = S.session; const n = sess.idx + delta;
     if (n < 0) return;
@@ -451,13 +460,190 @@
     </svg></div>`;
   }
 
+  // ---------- the current quest ----------
+  // The topics of an upcoming exam, gathered from every past exam (quests.json, resolved at build time).
+  // It's done when every question is answered and at least goal% are right; retries count, so fixing mistakes is how
+  // you finish it. The "clean run" seal needs goal% right on the first try.
+  const QUEST = BANK.quest && BANK.quest.q && BANK.quest.q.length ? BANK.quest : null;
+  const QUEST_SET = new Set(QUEST ? QUEST.q : []);
+  const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
+  const isLeft = id => ['todo', 'draft'].includes(result(Q.get(id)));
+  function firstTry(q) {
+    if (q.id in S.first) return S.first[q.id];
+    const a = S.answers[q.id];
+    return a && a.checked ? !!a.correct : undefined;   // answered before first tries were tracked
+  }
+  // before an answer is cleared for a retry, keep its first result
+  function keepFirst(id) { const a = S.answers[id]; if (a && a.checked && !(id in S.first)) S.first[id] = !!a.correct; }
+  function dueDate() { const [y, m, d] = QUEST.due.split('-').map(Number); return new Date(y, m - 1, d); }
+  function questDays() { const n = new Date(); return Math.round((dueDate() - new Date(n.getFullYear(), n.getMonth(), n.getDate())) / 864e5); }
+  const dueLabel = () => dueDate().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  function doneBy(st) { return st.keyed > 0 && st.right + st.wrong === st.keyed && st.right >= Math.ceil(st.keyed * QUEST.goal / 100); }
+  function questInfo() {
+    if (!QUEST) return null;
+    const qs = QUEST.q.map(id => Q.get(id)).filter(Boolean);
+    const st = stats(qs), need = Math.ceil(st.keyed * QUEST.goal / 100);
+    let firstRight = 0, firstDone = 0;
+    for (const q of qs) {
+      if (!q.answer.length) continue;
+      const f = firstTry(q);
+      if (f !== undefined) { firstDone++; if (f) firstRight++; }
+    }
+    const done = doneBy(st);
+    return { st, need, answered: st.right + st.wrong, firstRight, firstDone, done, clean: done && firstRight >= need, days: questDays() };
+  }
+  // what the quest's main button does next
+  function questNext(qi) {
+    if (qi.done) return { act: 'review', label: 'Review the quest' };
+    if (!qi.answered) return { act: 'go', label: 'Start the quest' };
+    if (qi.answered < qi.st.keyed) return { act: 'go', label: 'Continue the quest' };
+    return { act: 'retry', label: `Retry the ${fmtN(qi.st.wrong)} wrong` };
+  }
+  // topic: index into QUEST.topics or null for the whole quest; mode: 'go' (first unanswered), 'retry' (the wrong ones, cleared), 'review'
+  function startQuest(topic, repeatedOnly, mode) {
+    if (!QUEST) return;
+    const t = topic === null ? null : QUEST.topics[topic];
+    let ids = t ? t.q : QUEST.q;
+    if (repeatedOnly) ids = ids.filter(id => repOf(Q.get(id)));
+    if (!ids.length) return;
+    const meta = { topic: QUEST.module, from: 'quest', qall: !t && !repeatedOnly,
+      title: t ? `${QUEST.title} · ${t.name}` : repeatedOnly ? `${QUEST.title} · repeated` : `${QUEST.title} quest` };
+    if (mode === 'retry') {
+      const wrong = ids.filter(id => result(Q.get(id)) === 'wrong');
+      if (wrong.length) {
+        wrong.forEach(id => { keepFirst(id); delete S.answers[id]; });
+        startList(wrong, 0, Object.assign(meta, { mode: 'mistakes' }));
+        return;
+      }
+    }
+    startList(ids, mode === 'review' || !ids.some(isLeft) ? 0 : -1, meta);
+  }
+  function questGo() {
+    const qi = questInfo(); if (!qi) return;
+    const nx = questNext(qi), s = S.session;
+    if (nx.act === 'go' && s && s.from === 'quest' && s.qall && s.qids.some(isLeft)) resume();   // keeps your place and shuffle
+    else startQuest(null, false, nx.act);
+  }
+
+  // a wax seal with the module's constellation inside: its stars light up as you get questions right,
+  // and once the quest is done it's stamped in bone
+  function sealSVG(qi) {
+    const art = ART[QUEST.module] || ART[Object.keys(ART)[0]];
+    let rim = '';
+    for (let i = 0; i <= 140; i++) {
+      const a = i / 140 * 6.2832, r = 56 + 1.5 * Math.sin(a * 28) + .6 * Math.sin(a * 11 + 1);
+      rim += (i ? 'L' : 'M') + (Math.cos(a) * r).toFixed(2) + ' ' + (Math.sin(a) * r).toFixed(2);
+    }
+    const xs = art.p.map(p => p[0]), ys = art.p.map(p => p[1]);
+    const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+    const k = 44 / (Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys)) || 1);
+    const P = art.p.map(([x, y]) => [((x - cx) * k).toFixed(2), ((y - cy) * k).toFixed(2)]);
+    const lit = qi.done ? P.length : Math.round((qi.st.keyed ? qi.st.right / qi.st.keyed : 0) * P.length);
+    const lines = art.e.map(([a, b]) => `<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}"/>`).join('');
+    const stars = P.map(([x, y], i) => `<circle class="${i < lit ? 'on' : ''}" cx="${x}" cy="${y}" r="${i === 0 ? 2.3 : 1.55}"/>`).join('');
+    const year = dueDate().getFullYear();
+    return `<svg class="seal" viewBox="-60 -60 120 120" aria-hidden="true" focusable="false">
+      <path class="rim" d="${rim}Z"/>
+      <circle class="ring" r="48"/><circle class="ring" r="35.5"/>
+      <path id="seal-ring" d="M0,-41.6a41.6,41.6 0 1,1 0,83.2a41.6,41.6 0 1,1 0,-83.2" fill="none"/>
+      <text class="seal-text"><textPath href="#seal-ring" textLength="259" lengthAdjust="spacing">${esc(`${QUEST.title} ✦ ${year} ✦ ${QUEST.title} ✦ ${year} ✦ `)}</textPath></text>
+      <g class="lines">${lines}</g><g class="stars">${stars}</g>
+    </svg>`;
+  }
+  function cleanSVG() {
+    return `<svg class="seal mini" viewBox="-24 -24 48 48" aria-hidden="true" focusable="false">
+      <circle class="rim" r="21.5"/><circle class="ring" r="16.5"/>
+      <path class="star" d="M0-11.5l2.7 8.8 8.8 2.7-8.8 2.7-2.7 8.8-2.7-8.8-8.8-2.7 8.8-2.7z"/>
+    </svg>`;
+  }
+  // a seal stamps itself once, the first time it's on screen after being earned
+  function sealsHTML(qi) {
+    const due = k => qi[k] && !(S.seals[QUEST.id] || {})[k];
+    return `<div class="qp-seals">
+      <figure class="seal-wrap${qi.done ? ' earned' : ''}"${due('done') ? ' data-stamp="done"' : ''}>${sealSVG(qi)}
+        <figcaption>${qi.done ? 'Seal earned' : `Seal at ${QUEST.goal}% right`}</figcaption></figure>
+      <figure class="seal-wrap small${qi.clean ? ' earned' : ''}"${due('clean') ? ' data-stamp="clean"' : ''}>${cleanSVG()}
+        <figcaption>${qi.clean ? 'Clean run' : `Clean run: ${QUEST.goal}% on the first try`}</figcaption></figure>
+    </div>`;
+  }
+  let stampObs = null;
+  function stampSeals(qi) {
+    if (!QUEST || !qi) return;
+    const rec = S.seals[QUEST.id] || (S.seals[QUEST.id] = {});
+    let changed = false;
+    for (const k of ['done', 'clean']) if (!qi[k] && rec[k]) { delete rec[k]; changed = true; }   // lost it: it can stamp again later
+    if (changed) save();
+    const els = [...app.querySelectorAll('[data-stamp]')];
+    if (!els.length) return;
+    const fire = el => { el.classList.add('stamp'); rec[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save(); };
+    if (stampObs) stampObs.disconnect();
+    if (!('IntersectionObserver' in window)) { els.forEach(fire); return; }
+    stampObs = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > .6) { stampObs.unobserve(e.target); setTimeout(() => fire(e.target), 250); }
+    }), { threshold: [0, .6, 1] });
+    els.forEach(el => stampObs.observe(el));
+  }
+  function questHTML(qi) {
+    if (!qi) return '';
+    const nx = questNext(qi), ended = qi.days < 0;
+    const repN = QUEST.q.filter(id => repOf(Q.get(id))).length;
+    const topics = QUEST.topics.map((t, i) => {
+      const ts = stats(t.q.map(id => Q.get(id)));
+      const tdone = doneBy(ts);
+      return `<li><button type="button" class="entry q-topic${tdone ? ' is-done' : ''}" data-qtopic="${i}">
+        <span class="q-star" aria-hidden="true">✦</span>
+        <span class="e-main"><span class="e-name">${esc(t.name)}</span>${barLine(ts)}<span class="e-meta">${tdone ? 'Done · ' : ''}${metaLine(ts)}</span></span>
+        <span class="e-side"><span class="e-count num">${fmtN(t.q.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
+      </button></li>`;
+    }).join('');
+    const line = qi.answered
+      ? `${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} answered · ${pct(qi.st.right, qi.answered)}% right${qi.firstDone ? ` · first try ${pct(qi.firstRight, qi.firstDone)}%` : ''}`
+      : `${fmtN(qi.st.keyed)} questions, none answered yet`;
+    const count = ended ? '' : qi.days === 0
+      ? `<p class="qp-count today"><b>Today</b><span>exam day, good luck</span></p>`
+      : `<p class="qp-count"><b class="num">${qi.days}</b><span>${qi.days === 1 ? 'day left' : 'days left'}</span></p>`;
+    return `<section class="quest wrap" id="quest" aria-labelledby="quest-h">
+      <div class="quest-plate plate${qi.done ? ' is-done' : ''}">
+        <div class="qp-main">
+          <p class="eyebrow">${ended ? 'Quest ended' : 'Current quest'} · ${esc(dueLabel())}</p>
+          <h2 class="h2" id="quest-h">${esc(QUEST.title)}</h2>
+          <p class="qp-note">${esc(QUEST.note)} Answer all ${fmtN(qi.st.keyed)} and get ${QUEST.goal}% right to earn the seal.</p>
+          <div class="qp-progress">${barLine(qi.st)}<p class="qp-stats">${line}</p></div>
+          <div class="qp-actions">
+            <button class="btn primary" type="button" data-act="quest-go">${nx.label} ${ICON.next}</button>
+            ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
+            ${resetHTML('quest')}
+          </div>
+        </div>
+        <div class="qp-side">${count}${sealsHTML(qi)}</div>
+        <ul class="ledger qp-topics" aria-label="Quest topics">${topics}</ul>
+      </div>
+    </section>`;
+  }
+  function questDoneHTML(qi) {
+    const text = qi.done
+      ? `Seal earned: all ${fmtN(qi.st.keyed)} answered, ${pct(qi.st.right, qi.st.keyed)}% right.${qi.clean ? ' And a clean run on the first try.' : ''}`
+      : `${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} answered, ${pct(qi.st.right, qi.answered)}% right. ` +
+        (qi.answered < qi.st.keyed ? `${fmtN(qi.st.keyed - qi.answered)} to go.` : `The seal needs ${QUEST.goal}% right, so retry the ones you got wrong.`);
+    return `<div class="quest-done${qi.done ? ' is-done' : ''}">
+      ${sealsHTML(qi)}
+      <div class="qd-text"><p class="eyebrow">${esc(QUEST.title)} quest</p><p class="qd-line">${text}</p></div>
+    </div>`;
+  }
+
   // ---------- home ----------
   // a masthead with the pixel title over a turning astrolabe, search across the Milky Way, modules as arched windows
   function renderHome() {
     const allQs = questionsFor(S.type, '*');
     const all = stats(allQs);
     const sess = S.session;
-    const cta = sess
+    const qi = questInfo();
+    const questOn = qi && qi.days >= 0 && !qi.done;
+    const cta = questOn
+      ? `<p class="cta-note">Current quest: <b>${esc(QUEST.title)}</b>, ${qi.days > 1 ? `due in ${qi.days} days` : qi.days === 1 ? 'due tomorrow' : 'due today'}. ${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} done.</p>
+         <button class="btn primary" type="button" data-act="quest-go">${questNext(qi).label} ${ICON.next}</button>
+         ${sess && sess.from !== 'quest' ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
+      : sess
       ? `<p class="cta-note">Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question ${sess.idx + 1} of ${sess.qids.length}</p>
          <button class="btn primary" type="button" data-act="resume">Continue ${ICON.next}</button>`
       : `<p class="cta-note">${fmtN(REPS.length)} questions came up in more than one exam.</p>
@@ -491,6 +677,7 @@
           <p class="credit">Made by <b>the Labubu</b></p>
         </div>
       </section>
+      ${questHTML(qi)}
       <section class="skyband" aria-label="Search the questions">
         <canvas id="milky" aria-hidden="true"></canvas>
         <div class="wrap">
@@ -525,6 +712,7 @@
       <div class="wrap">${footHTML()}</div>`;
     updateSearch();
     paintHome();
+    stampSeals(qi);
   }
   function archCard(t, i) {
     const qs = questionsFor(S.type, t.id);
@@ -569,21 +757,29 @@
       <p>Made by the Labubu</p>
     </footer>`;
   }
-  // scope: 'all' or a module id
+  // scope: 'all', 'quest' or a module id
+  function resetIds(scope) {
+    if (scope === 'all') return Object.keys(S.answers);
+    if (scope === 'quest') return Object.keys(S.answers).filter(id => QUEST_SET.has(id));
+    return Object.keys(S.answers).filter(id => (Q.get(id) || {}).topic === scope);
+  }
   function resetHTML(scope) {
-    const ids = scope === 'all' ? Object.keys(S.answers) : Object.keys(S.answers).filter(id => (Q.get(id) || {}).topic === scope);
+    const ids = resetIds(scope);
     if (!ids.length) return '';
     if (confirmReset === scope) {
-      const what = scope === 'all' ? 'every answer saved on this device' : `your ${fmtN(ids.length)} saved ${ids.length === 1 ? 'answer' : 'answers'} in this module`;
+      const what = scope === 'all' ? 'every answer saved on this device' : `your ${fmtN(ids.length)} saved ${ids.length === 1 ? 'answer' : 'answers'} in this ${scope === 'quest' ? 'quest' : 'module'}`;
       return `<span class="confirm" role="alert">Erase ${what}? <button class="btn danger" type="button" data-act="reset-yes">Erase</button><button class="btn quiet" type="button" data-act="reset-no">Cancel</button></span>`;
     }
-    return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : 'Reset this module'}</button>`;
+    return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope === 'quest' ? 'Reset this quest' : 'Reset this module'}</button>`;
   }
   function doReset(scope) {
-    if (scope === 'all') { S.answers = {}; S.session = null; }
+    if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; }
     else {
-      for (const id of Object.keys(S.answers)) if ((Q.get(id) || {}).topic === scope) delete S.answers[id];
-      if (S.session && (S.session.topic === scope || S.session.qids.some(id => (Q.get(id) || {}).topic === scope))) S.session = null;
+      const hit = id => scope === 'quest' ? QUEST_SET.has(id) : (Q.get(id) || {}).topic === scope;
+      for (const id of Object.keys(S.answers)) if (hit(id)) delete S.answers[id];
+      for (const id of Object.keys(S.first)) if (hit(id)) delete S.first[id];
+      if (QUEST && QUEST.q.some(hit)) delete S.seals[QUEST.id];
+      if (S.session && (scope === 'quest' ? S.session.from === 'quest' : (S.session.topic === scope || S.session.qids.some(hit)))) S.session = null;
     }
     confirmReset = false; save(); render(false);
   }
@@ -755,6 +951,7 @@
     const st = stats(qs);
     const answered = st.right + st.wrong;
     const pct = answered ? Math.round(100 * st.right / answered) : 0;
+    const qi = sess.from === 'quest' ? questInfo() : null;
     app.innerHTML = `
       ${barHTML('back', '', sessionTitle(sess))}
       <main class="wrap narrow stage">
@@ -762,8 +959,10 @@
           <p class="eyebrow">${esc(sessionTitle(sess))}</p>
           ${st.keyed ? `<p class="score"><b class="num">${fmtN(st.right)}</b><span>/ ${fmtN(st.keyed)} right</span></p>` : `<p class="score"><span>No answer key for these yet</span></p>`}
           <p class="d-meta">${st.keyed ? `${fmtN(answered)} checked${answered ? `, ${pct}% right` : ''}${st.left ? `, ${fmtN(st.left)} skipped` : ''}${st.nokey ? `, ${fmtN(st.nokey)} without an answer key` : ''}.` : `The doc has no highlighted answers for these ${st.total} questions.`}</p>
+          ${qi ? questDoneHTML(qi) : ''}
           <div class="d-actions">
             ${st.wrong ? `<button class="btn primary" type="button" data-act="mistakes">Retry the ${fmtN(st.wrong)} you got wrong</button>` : ''}
+            ${qi && !qi.done ? `<button class="btn${st.wrong ? '' : ' primary'}" type="button" data-act="quest-go">${questNext(qi).label} ${ICON.next}</button>` : ''}
             <button class="btn" type="button" data-act="review">Review questions</button>
             <button class="btn" type="button" data-act="restart">Start over</button>
             <button class="btn quiet" type="button" data-act="back">Back</button>
@@ -774,6 +973,7 @@
           }).join('')}</nav>
         </section>
       </main>`;
+    stampSeals(qi);
   }
 
   // ---------- topic search: synonyms, French terms, abbreviations, typos ----------
@@ -1634,6 +1834,7 @@
     }
     if (t.dataset.repmod) { S.repMod = t.dataset.repmod; save(); render(false); return; }
     if (t.dataset.cluster !== undefined) { practiceCluster(+t.dataset.cluster, +t.dataset.rank || 1); return; }
+    if (t.dataset.qtopic !== undefined) { startQuest(+t.dataset.qtopic, false, 'go'); return; }
     switch (t.dataset.act) {
       case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
       case 'goto-modules': {
@@ -1652,6 +1853,8 @@
       case 'kw-more': kwAll = true; updateSearch(); break;
       case 'practice-top': practiceTop(+t.dataset.n || 25); break;
       case 'practice-repeated': practiceRepeated(S.topicId); break;
+      case 'quest-go': questGo(); break;
+      case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;
       case 'back': goBack(); break;
       case 'resume': resume(); break;
