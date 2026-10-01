@@ -1,14 +1,10 @@
 [
   {
-    "id": "2026-10-01-den",
+    "id": "2026-10-01-log",
     "date": "2026-10-01",
-    "title": "Labubu’s Den",
+    "title": "Update log",
     "items": [
-      "A new name, with Labubu as the icon.",
-      "Its own address on GitHub, so the link stays the same from now on.",
-      "Easier reading: no more text in capitals, and the introduction is set like the first page of a book.",
-      "An opening animation: a shooting star falls and lands on the title. Tap to skip it, or turn it off at the bottom of the page.",
-      "This update log. When new questions come in, the question count at the top of the homepage shows how many are new since your last visit."
+      "New questions are listed here when they’re added, and the homepage shows how many are new."
     ]
   },
   {
@@ -16,52 +12,38 @@
     "date": "2026-10-01",
     "title": "Respiratory midterm quest",
     "items": [
-      "Every past exam question on the six midterm topics in one quest on the homepage: acute bronchitis, community-acquired pneumonia, pulmonary abscess, viral pneumonia, nosocomial pneumonia and bronchiectasis (60 questions).",
-      "A countdown to Wednesday 7 October, practice by topic, and your progress as you go.",
-      "Two seals to earn: answer them all with 80% right (retries count), or get 80% right on the first try."
+      "The 60 past questions on the six midterm topics in one place, with a countdown, progress by topic and seals to earn."
     ]
   },
   {
-    "id": "2026-09-30-sky",
+    "id": "2026-09-30-repeats",
     "date": "2026-09-30",
-    "title": "The night sky",
+    "title": "Most repeated questions",
     "items": [
-      "A new look: charcoal paper, bone ink and constellations.",
-      "Each module is an arched window holding its own constellation, and the stars light up as you get its questions right.",
-      "Smooth transitions between pages and between questions."
+      "The 224 questions asked in two or more exam sets, ranked, plus a Repeated only option in each module."
     ]
   },
   {
     "id": "2026-09-30-search",
     "date": "2026-09-30",
-    "title": "Topic search and the most repeated questions",
+    "title": "Topic search",
     "items": [
-      "Search by topic, not just by word: “acute bronchitis” finds every related question, even the ones that never say it. French terms, abbreviations (BPCO, IDM, RGO) and typos work too.",
-      "Narrow a search down to what the question asks about: signs, diagnosis, treatment, causes, complications.",
-      "Most repeated: the 224 questions that came up in two or more exam sets, ranked, with all their versions to practice.",
-      "Every question shows how many sets it was asked in, and each module has a Repeated only button."
+      "Search by topic in English or French, with abbreviations and typos, and narrow it down to signs, diagnosis or treatment."
     ]
   },
   {
     "id": "2026-09-29-rest",
     "date": "2026-09-29",
-    "title": "The rest of S5",
-    "types": ["Mock", "Finals", "Second session", "Collected"],
-    "items": [
-      "Mocks, finals, a second session and the professors’ question sets for every module."
-    ]
+    "title": "Mocks, finals and professors’ sets",
+    "types": ["Mock", "Finals", "Second session", "Collected"]
   },
   {
     "id": "2026-09-29-open",
     "date": "2026-09-29",
-    "title": "The bank opens",
+    "title": "Midterms 2025–2026",
     "types": ["Midterms"],
     "items": [
-      "The 2025–2026 midterms, sorted by module and by exam.",
-      "Tick every answer you think is right, then check it.",
-      "Each answer says where it comes from: the official key, the answers proposed in the doc, or a suggested answer with its reason when nothing was highlighted.",
-      "Notes and explanations from the docs under each question, with figures you can enlarge.",
-      "Your answers stay saved on your device: pick up where you left off, retry your mistakes, shuffle, or reset a module."
+      "Practice by module or by exam, check your answers, and see where each answer comes from, with notes and explanations."
     ]
   }
 ]

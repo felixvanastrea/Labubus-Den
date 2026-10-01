@@ -51,12 +51,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Update log
 
-- `src/updates.json`, newest first: `id`, `date`, `title`, `items` (short sentences in plain words), and for
+- `src/updates.json`, newest first: `id`, `date`, `title`, `items` (one short line each), and for
   question uploads the exam sets they brought (`sets`: set ids, or `types`: exam types) and/or single questions
   (`questions`: short ids). The build counts the questions per entry.
 - Every time new MCQs go into `bank.json`, add an entry at the top: today's date, a title naming the exam
   (e.g. "Cardio midterm 2026–2027"), the new set ids, and a line on where they come from. New features get
-  an entry too. Returning visitors then see "+N new" on the question count at the top of the homepage until they
+  an entry too, but only study features (search, quests...) and new questions: Abi doesn't want renames,
+  hosting or design changes in it. Returning visitors then see "+N new" on the question count at the top of the homepage until they
   open the log; the log has a button to practise an entry's questions (up to 300).
 - First-time visitors start with nothing marked new (`S.seenUpdate` is set to the newest entry).
 
