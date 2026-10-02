@@ -130,6 +130,22 @@
       "from": "AC",
       "to": "ABCD",
       "why": "Acute urticaria: “not always mild” and “angioedema can threaten life” are true; the professor's copy (Q36) marks them."
+    },
+    {
+      "q": "R174",
+      "confirmed": "2026-10-02",
+      "field": "answer",
+      "from": "ABCD",
+      "to": "ABC",
+      "why": "Abi's bronchiectasis lecture: digital clubbing is uncommon overall and very common only in the diffuse form, so \"a usual sign\" is false."
+    },
+    {
+      "q": "R65",
+      "confirmed": "2026-10-02",
+      "field": "answer",
+      "from": "A",
+      "to": "AC",
+      "why": "Brensocatib (Brinsupri) was approved by the FDA on 12 August 2025 as the first treatment for non-cystic fibrosis bronchiectasis, so the statement is true. Not in the lecture."
     }
   ]
 }
