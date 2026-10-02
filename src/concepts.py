@@ -186,9 +186,8 @@ CONCEPTS = [
 
 # manual overrides after review: qshort-id -> concepts
 OVERRIDES = {
-    'R244': ['R.bronchitis'],
     'R10': ['R.hp'], 'R181': ['R.ild'], 'R165': ['R.tb-caseous'], 'R141': ['R.pleural-tb'],
-    'C120': ['C.ms'], 'C125': ['C.ms'], 'C71': ['C.aorta'], 'C101': ['C.aorta'], 'C102': ['C.aorta'],          # "During Acute Bronchiectasis" is the acute bronchitis question (typo in the doc)
+    'C120': ['C.ms'], 'C125': ['C.ms'], 'C71': ['C.aorta'], 'C101': ['C.aorta'], 'C102': ['C.aorta'],
     'R29': ['R.bronchiectasis'], 'R30': ['R.bronchiectasis', 'R.hemoptysis'], 'R65': ['R.bronchiectasis'],
     'R40': ['R.copd', 'R.bronchiectasis'],
     'R25': ['R.hiv'], 'R26': ['R.hiv'], 'R122': ['R.hiv'], 'R169': ['R.hiv', 'R.tb'],

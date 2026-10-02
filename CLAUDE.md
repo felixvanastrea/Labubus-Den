@@ -19,6 +19,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
    - `css/base.css` (tokens, transitions, keyframes) and `css/gothic.css` (the look)
    - `bank.json`: questions, answers, notes; `repeats.json`: repeated-question clusters
    - `concepts.py`: topic dictionary and tagger for search; `search_extra.py`: extra search-only aliases
+   - `corrections.json`: doc mistakes Abi confirmed; `feedback.json`: the Google Form behind the feedback buttons
 2. `python3 src/build.py` writes `index.html` (full page with meta tags, icon, link preview) and `src/out/artifact.html`.
 3. Check it in a browser (see Tests), then commit sources and `index.html` together and push to `main`.
 
@@ -36,6 +37,29 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the footer has an on/off switch and "replay". It skips itself in automated browsers unless the URL ends in `#intro`.
 - A theme switcher (gothic + the original "classic" answer-sheet look) was started and parked at Abi's request.
   The work is in `src/wip_themes/` if she asks for it again.
+
+## Mistakes in the docs: flag, show, wait for Abi
+
+- Never quietly work around a mistake in the source docs (a typo that changes the topic, a wrong answer key,
+  two docs disagreeing on the same question, a missing option...), not even through tags or `OVERRIDES`.
+  Flag it to Abi: show her the question as the doc has it, what looks wrong and why, and what you'd change.
+  Change nothing until she confirms.
+- Once she confirms, add the fix to `src/corrections.json`: the short id, the field (`stem`, `option A`–`E`
+  or `answer` as letters), the doc's text in `from` (the build checks it still matches), the fix in `to`,
+  the date she confirmed, and a note. The note is shown on the question, so the fix is never invisible.
+- Reports from classmates arrive through the feedback form (below). Treat them the same way: check the
+  question, show Abi what you found, and wait for her answer.
+
+## Feedback
+
+- Every question has a "Report a mistake" link at the foot of its card; the homepage (under "About this bank"),
+  the footer and the update log have "Ask the Labubu". They open Abi's Google Form ("Ask the Labubu") in a new tab,
+  with "What is it about?" ticked and, for a mistake, the question filled in (short id, exam set and number,
+  case, stem, options, the answer shown). The question is also copied to the clipboard.
+- `src/feedback.json` holds the form's pre-filled link (made with "A mistake in a question" ticked and "x" in
+  "The question"); the build reads the form address and field ids from it. If Abi edits the form's questions
+  or option names, ask her for a new pre-filled link. With no link, the buttons are hidden.
+- Responses reach Abi by email and in a linked Google Sheet; Claude can't see them unless she shares them.
 
 ## Quests
 
@@ -65,7 +89,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - Question fields: `id`, `topic`, `source` (exam set), `n`, `stem`, `options` (HTML), `answer` (option indices),
   `key` (official / proposed / claude / none), `qNotes`, `optNotes`, `notes`, `case`, `stemImgs`, `twinOf`, `flag`.
-  The build adds `c` (topic concepts), `a` (aspect), `rep` (repeat cluster) and `dupOf`.
+  The build adds `sid` (short id like `R244`), `c` (topic concepts), `a` (aspect), `rep` (repeat cluster), `dupOf`,
+  and `fix` (notes from `corrections.json`).
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
@@ -78,6 +103,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node screenshots.js   # screenshots land in src/tests/shots/
+node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js
+node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

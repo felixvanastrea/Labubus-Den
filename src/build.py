@@ -27,6 +27,27 @@ DESC = ('Past EFM3 exam questions (midterms, mocks, finals and second sessions),
 bank = json.load(open('bank.json', encoding='utf8'))
 shortids = json.load(open('shortids.json', encoding='utf8'))
 Q = {q['id']: q for q in bank['questions']}
+for sid, qid in shortids.items():
+    Q[qid]['sid'] = sid             # shown in mistake reports, so a report names the question
+
+# Mistakes in the docs that Abi confirmed (corrections.json). Applied before tagging, so search and quests use
+# the fixed text. "from" must still match the bank, and the note is shown on the question.
+LETTERS = 'ABCDE'
+for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
+    q, field = Q[shortids[f['q']]], f['field']
+    if field == 'stem':
+        old, put = q['stem'], lambda v: q.__setitem__('stem', v)
+    elif field.startswith('option '):
+        i = LETTERS.index(field[-1])
+        old, put = q['options'][i], lambda v, i=i: q['options'].__setitem__(i, v)
+    elif field == 'answer':
+        old = ''.join(LETTERS[i] for i in q['answer'])
+        put = lambda v: q.__setitem__('answer', [LETTERS.index(c) for c in v])
+    else:
+        raise ValueError(f"correction {f['q']}: unknown field {field!r}")
+    assert old == f['from'], f"correction {f['q']} {field}: the bank says {old!r}, not {f['from']!r}"
+    put(f['to'])
+    q.setdefault('fix', []).append(f['note'])
 
 # Follow-up questions in the dermatology professor set that say "this case" / "your diagnosis" without the case:
 # show the vignette they follow as an open case box.
@@ -118,6 +139,20 @@ for u in updates:
                                   'sets': sets, 'q': single, 'n': n}.items() if v or k in ('n', 'items')})
 bank['updates'] = log
 print('update log:', len(log), 'entries |', ', '.join(f"{u['id']} +{u['n']}" for u in log if u['n']))
+
+# the feedback form (feedback.json): its pre-filled link gives the form address and the ids of the two fields we
+# fill, "What is it about?" (ticked with the mistake option) and "The question" (an x)
+fb = json.load(open('feedback.json', encoding='utf8'))
+if fb.get('prefilled'):
+    from urllib.parse import urlsplit, parse_qsl
+    u = urlsplit(fb['prefilled'].strip())
+    entries = {k: v for k, v in parse_qsl(u.query) if k.startswith('entry.')}
+    kind = [k for k, v in entries.items() if v.strip() == fb['kinds']['mistake']]
+    asked = [k for k, v in entries.items() if v.strip().lower() == 'x']
+    assert u.netloc == 'docs.google.com' and u.path.endswith('/viewform'), 'feedback: not a Google Form link'
+    assert len(kind) == 1 and len(asked) == 1, f'feedback: expected the mistake option and an x in the link, got {entries}'
+    bank['feedback'] = {'form': f'https://{u.netloc}{u.path}', 'kind': kind[0], 'question': asked[0], 'kinds': fb['kinds']}
+print('feedback form:', bank['feedback']['form'] if bank.get('feedback') else 'none yet, buttons hidden')
 
 payload = json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 tpl = open('template.html', encoding='utf8').read()

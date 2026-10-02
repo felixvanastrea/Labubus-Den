@@ -683,6 +683,7 @@
         <div class="i-body rise-in" style="--d:4">
           <p class="lede">Every question here comes straight from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
           <p class="credit">Made by <b>the Labubu</b></p>
+          ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
         </div>
       </section>
       ${questHTML(qi)}
@@ -762,7 +763,7 @@
     return `<footer class="foot">
       <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
-      <p><button class="foot-btn" type="button" data-act="updates">Update log</button></p>
+      <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       <p>Made by the Labubu</p>
     </footer>`;
   }
@@ -836,6 +837,55 @@
       </main>`;
   }
 
+  // ---------- feedback: the Google Form behind "Report a mistake" and "Ask the Labubu" (feedback.json) ----------
+  // Links open the form in a new tab with the kind ticked and, for a mistake, the question filled in. The
+  // question is also copied, in case the form doesn't fill. No form set: no buttons.
+  const FB = BANK.feedback && BANK.feedback.form ? BANK.feedback : null;
+  const LB_ICON = '<svg class="lb" aria-hidden="true" focusable="false"><use href="#labubu"/></svg>';
+  const flat = h => stripTags(h).replace(/\s+/g, ' ').trim();
+  const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
+  function formURL(kind, text) {
+    const p = new URLSearchParams({ usp: 'pp_url' });
+    p.set(FB.kind, FB.kinds[kind]);
+    if (text) p.set(FB.question, clip(text, 1500));
+    return FB.form + '?' + p;
+  }
+  // one line each for where it's from, the case, the stem, the options and the answer shown. Lines end in a space
+  // so they still read apart if the form's box is a single line, which drops line breaks.
+  function reportText(q) {
+    const t = TOPIC.get(q.topic), c = CASE_OF(q);
+    const lines = [`[${q.sid || q.id} · ${setLabel(q)}, Q${q.n}${t ? ' · ' + t.name : ''}]`];
+    if (c) lines.push('Case: ' + clip(flat(c.html), 400));
+    lines.push(flat(q.stem));
+    q.options.forEach((o, i) => lines.push(`${LETTERS[i]}. ${flat(o)}`));
+    lines.push(KEY_LONG[keyOf(q)] + (q.answer.length ? ': ' + letters(q.answer) : ''));
+    return lines.join(' \n');
+  }
+  function reportHTML(q) {
+    if (!FB) return '';
+    return `<div class="qfoot"><a class="report" href="${esc(formURL('mistake', reportText(q)))}" target="_blank" rel="noopener" data-report="${esc(q.id)}">${LB_ICON}Report a mistake</a></div>`;
+  }
+  function askHTML(cls, label, icon) {
+    if (!FB) return '';
+    return `<a class="${cls}" href="${esc(formURL('idea'))}" target="_blank" rel="noopener" data-ask>${icon === false ? '' : LB_ICON}${label}</a>`;
+  }
+  let toastTimer = null;
+  function toast(msg) {
+    let el = document.getElementById('toast');
+    if (!el) {
+      el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; el.setAttribute('role', 'status');
+      document.body.appendChild(el);
+    }
+    el.textContent = msg; el.classList.add('on');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('on'), 3200);
+  }
+  function copyReport(q) {
+    try {
+      const p = navigator.clipboard && navigator.clipboard.writeText(reportText(q));
+      if (p && p.then) p.then(() => toast('Question copied, and the form opens in a new tab'), () => {});
+    } catch (err) {}
+  }
+
   // ---------- quiz ----------
   function caseHTML(q) {
     if (!q.case || !CASE.has(q.case)) return '';
@@ -904,6 +954,7 @@
             ${q.flag ? `<span class="key flag" title="This question's text is highlighted red in the doc, with no legend">Marked red in the doc</span>` : ''}
           </div>
           ${alsoIn}
+          ${(q.fix || []).map(n => `<p class="fixnote">${esc(n)}</p>`).join('')}
           ${caseHTML(q)}
           <h2 class="stem" id="stem">${q.stem}</h2>
           ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
@@ -911,6 +962,7 @@
           <div class="opts${checked ? ' checked' : ''}${justChecked ? ' reveal' : ''}" role="group" aria-labelledby="stem">${opts}</div>
           ${verdict}
           ${ex}
+          ${reportHTML(q)}
         </article>
         <div class="actions">
           <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
@@ -1322,6 +1374,7 @@
             <p class="eyebrow">What’s new in Labubu’s Den</p>
             <h1 class="h1">Update log</h1>
             <p class="ph-lead">New questions and new features, newest first. When new questions come in, they show up here with their date and where they come from.</p>
+            ${FB ? `<div class="row">${askHTML('btn ask-btn', 'Ask the Labubu for a feature')}</div>` : ''}
           </div>
         </header>
         <ol class="log">${rows}</ol>
@@ -1893,6 +1946,8 @@
     if (inp) { inp.value = ''; if (focus) inp.focus(); }
   }
   app.addEventListener('click', e => {
+    const rep = e.target.closest('a[data-report]');
+    if (rep) { const q = Q.get(rep.dataset.report); if (q) copyReport(q); return; }   // the link itself opens the form
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; save(); render(false); return; }
@@ -1996,6 +2051,7 @@
     if (idx !== -1 && idx < q.options.length) { e.preventDefault(); toggle(idx); return; }
     if (key === 'enter') {
       const ae = document.activeElement;
+      if (ae && ae.tagName === 'A') return;   // Enter on a link follows it
       if (ae && ae.tagName === 'BUTTON' && !ae.closest('.opts') && ae.dataset.act !== 'primary') return;
       e.preventDefault(); primaryAction(); return;
     }

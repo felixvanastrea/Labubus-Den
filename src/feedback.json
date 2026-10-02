@@ -1,0 +1,8 @@
+{
+  "about": "The Google Form behind “Report a mistake” (every question) and “Ask the Labubu” (homepage, footer, update log). Paste the form's pre-filled link in 'prefilled', made with “A mistake in a question” ticked and “x” typed in “The question”; the build reads the form address and field ids from it. While 'prefilled' is empty, the buttons stay hidden. 'kinds' must match the form's two options word for word.",
+  "prefilled": "https://docs.google.com/forms/d/e/1FAIpQLSeD22DSoebeVoM6XE0WE-a6SQGrdsxDqWRGkXbt8VaKgXBvCg/viewform?usp=pp_url&entry.653728834=A+mistake+in+a+question&entry.1911767984=x",
+  "kinds": {
+    "mistake": "A mistake in a question",
+    "idea": "An idea for the site"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "about": "Mistakes in the exam docs that Abi confirmed should be fixed on the site. Nothing goes in here before she confirms it. Each fix names the question (short id), the field ('stem', 'option A' to 'option E', or 'answer' as letters like 'BC'), the doc's text ('from', checked at build time so a changed bank fails loudly) and the fix ('to'). The note is shown on the question.",
+  "fixes": [
+    {
+      "q": "R244",
+      "confirmed": "2026-10-02",
+      "field": "stem",
+      "from": "During Acute Bronchiectasis:",
+      "to": "During acute bronchitis:",
+      "note": "Typo fixed: the doc says “During Acute Bronchiectasis”, but this is the acute bronchitis question (same options and answer as Q10 of the 2025–2026 midterm)."
+    }
+  ]
+}
