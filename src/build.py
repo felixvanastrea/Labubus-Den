@@ -17,6 +17,7 @@ os.chdir(HERE)                      # data files and modules sit next to this sc
 sys.path.insert(0, HERE)
 
 from concepts import CONCEPTS, ASPECT_NAMES, tag  # noqa: E402
+import constellations  # noqa: E402
 from search_extra import SYN as EXTRA_SYN, ABBR as EXTRA_ABBR  # noqa: E402  (search-only aliases)
 
 SITE_URL = 'https://felixvanastrea.github.io/Labubus-Den/'
@@ -27,6 +28,7 @@ DESC = ('Past EFM3 exam questions (midterms, mocks, finals and second sessions),
 bank = json.load(open('bank.json', encoding='utf8'))
 shortids = json.load(open('shortids.json', encoding='utf8'))
 Q = {q['id']: q for q in bank['questions']}
+rev_sid = {v: k for k, v in shortids.items()}
 for sid, qid in shortids.items():
     Q[qid]['sid'] = sid             # shown in mistake reports, so a report names the question
 
@@ -90,6 +92,38 @@ for i, r in enumerate(repeats):
     for qid in r['q']:
         Q[qid]['rep'] = i
 bank['repeats'] = repeats
+# constellations (constellations.py): copies of a repeated question with the same propositions and the same key.
+# Only the quest groups them, as one question (the lead, listed first) whose copies can be done one by one.
+cst, cst_conflicts = constellations.find(bank, [r['q'] for r in rep['repeats']])
+for x, y, _ in cst_conflicts:
+    print('  key conflict between copies, left ungrouped (show Abi):', rev_sid[x], rev_sid[y])
+for i, ids in enumerate(cst):
+    for qid in ids:
+        Q[qid]['cst'] = i
+bank['cst'] = cst
+
+# explanations (explanations.json): why each proposition is right or wrong, from Abi's lecture summaries. An entry
+# also covers its constellation's other stars and word-for-word copies, matched option by option.
+ex = json.load(open('explanations.json', encoding='utf8'))
+n_exp = 0
+for sid, e in ex['questions'].items():
+    q = Q[shortids[sid]]
+    lines = [e.get(LETTERS[i]) for i in range(len(q['options']))]
+    assert all(lines) and len([k for k in e if len(k) == 1]) == len(lines), f'explanations {sid}: one line per option'
+    lec = ex['lectures'][e['lecture']]['title']
+    targets = [q['id']] + [i for i in (cst[q['cst']] if 'cst' in q else []) if i != q['id']]
+    targets += [d for d, keep in rep['dup'].items() if keep in targets and d not in targets]
+    for t in targets:
+        m = {i: i for i in range(len(lines))} if t == q['id'] else constellations.pair_options(q, Q[t])
+        assert m, f'explanations {sid}: the options of {rev_sid[t]} do not pair up'
+        if 'exp' in Q[t] and t != q['id']:
+            continue   # that copy has an entry of its own
+        o = [None] * len(Q[t]['options'])
+        for i, j in m.items():
+            o[j] = lines[i]
+        Q[t]['exp'] = {'lec': lec, 'o': o}
+        n_exp += 1
+print('explanations:', len(ex['questions']), 'entries, on', n_exp, 'questions')
 bank['concepts'] = [{'id': cid, 'm': mod, 'n': name,
                      's': list(dict.fromkeys(syn + EXTRA_SYN.get(cid, []))),
                      'ab': list(dict.fromkeys(abbr + EXTRA_ABBR.get(cid, []))), 'p': parent}
@@ -97,8 +131,8 @@ bank['concepts'] = [{'id': cid, 'm': mod, 'n': name,
 bank['aspects'] = ASPECT_NAMES
 
 # the current quest (quests.json): every question in its module tagged with one of each topic's concepts,
-# plus hand-picked extras ("add") minus exclusions ("drop"), by short id. Word-for-word copies are left out.
-# Within a topic, versions of the most repeated questions come first.
+# plus hand-picked extras ("add") minus exclusions ("drop"), by short id. Word-for-word copies are left out, and
+# a constellation counts once, as its lead. Within a topic, versions of the most repeated questions come first.
 quests = json.load(open('quests.json', encoding='utf8'))
 cur = next((x for x in quests['quests'] if x['id'] == quests.get('current')), None)
 if cur:
@@ -112,7 +146,7 @@ if cur:
                   if q['topic'] == cur['module'] and not q.get('dupOf') and q['id'] not in drop
                   and (want & set(q['c']) or q['id'] in add)]
         picked.sort(key=rank)
-        ids = [q['id'] for q in picked]
+        ids = list(dict.fromkeys(cst[q['cst']][0] if 'cst' in q else q['id'] for q in picked))
         assert ids, f"quest topic {t['name']!r} has no questions"
         topics.append({'name': t['name'], 'q': ids})
         flat += [i for i in ids if i not in seen]
@@ -121,7 +155,8 @@ if cur:
     bank['quest'].update(topics=topics, q=flat)
     print('quest', cur['id'], '|', len(flat), 'questions |',
           ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),
-          '| without a key:', sum(1 for i in flat if not Q[i]['answer']))
+          '| without a key:', sum(1 for i in flat if not Q[i]['answer']),
+          '| constellations:', sum(1 for i in flat if 'cst' in Q[i]), f'(of {len(cst)} in the bank)')
 
 # the update log (updates.json, newest first): what changed and when. An entry that brought questions names
 # its exam sets ("sets": set ids, or "types": exam types) and/or single questions ("questions": short ids);

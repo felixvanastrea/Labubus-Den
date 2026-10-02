@@ -77,6 +77,9 @@
   const SRC_ORDER = new Map(BANK.sources.map((s, i) => [s.id, i]));
   const REPS = BANK.repeats || [];
   const UPDATES = BANK.updates || [];   // the update log, newest first
+  // constellations: copies of one question with the same propositions, lead first. Only the quest groups them.
+  const CST = new Map();
+  (BANK.cst || []).forEach(ids => ids.forEach(id => CST.set(id, ids)));
   const repOf = q => (q && q.rep !== undefined && q.rep !== null) ? REPS[q.rep] : null;
   // versions of a repeated question, leaving out word-for-word copies
   const versions = r => r.q.filter(id => !Q.get(id).dupOf);
@@ -152,6 +155,17 @@
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
       S.session.order = (S.session.order || S.session.qids).filter(id => Q.has(id));
+      if (S.session.from === 'quest') {   // the quest's list can change (constellations): keep what's still in it
+        S.session.qids = S.session.qids.filter(id => QUEST_SET.has(id));
+        S.session.order = S.session.order.filter(id => QUEST_SET.has(id));
+      }
+      const b = S.session.back;
+      if (b) {
+        b.qids = (b.qids || []).filter(id => Q.has(id) && (b.from !== 'quest' || QUEST_SET.has(id)));
+        b.order = (b.order || b.qids).filter(id => b.qids.includes(id));
+        if (!b.qids.length) delete S.session.back;
+        else b.idx = Math.min(Math.max(0, b.idx | 0), b.qids.length - 1);
+      }
       if (S.session.set && !SRC.has(S.session.set)) S.session.set = null;
       if (!S.session.qids.length) S.session = null;
       else S.session.idx = Math.min(Math.max(0, S.session.idx | 0), S.session.qids.length - 1);
@@ -250,6 +264,9 @@
     const sess = S.session;
     const inQuiz = S.view === 'quiz' || S.view === 'done';
     let restore = false;
+    if (sess && inQuiz && sess.from === 'stars' && sess.back) {
+      S.session = sess.back; S.view = 'quiz'; save(); render(true, null, 'back'); return;
+    }
     if (sess && inQuiz && sess.from === 'repeats') { S.view = 'repeats'; restore = true; }
     else if (sess && inQuiz && sess.from === 'updates') { S.view = 'updates'; restore = true; }
     else if (sess && inQuiz && (sess.from === 'search' || sess.from === 'quest')) { S.view = 'home'; restore = true; }
@@ -526,6 +543,12 @@
       }
     }
     startList(ids, mode === 'review' || !ids.some(isLeft) ? 0 : -1, meta);
+  }
+  // a constellation's stars, one by one; Back returns to the quest question they were opened from
+  function practiceStars(id) {
+    const stars = CST.get(id); if (!stars) return;
+    const back = S.session ? JSON.parse(JSON.stringify(S.session)) : null;
+    startList(stars, 0, { topic: Q.get(id).topic, from: 'stars', title: `Constellation · ${stars.length} stars`, back });
   }
   function questGo() {
     const qi = questInfo(); if (!qi) return;
@@ -888,6 +911,42 @@
     } catch (err) {}
   }
 
+  // ---------- constellations in the quest ----------
+  // a little constellation with one star per copy, joined by a line; the card says where each copy comes from
+  function cstArt(n, seed) {
+    const N = Math.min(n, 7), rnd = mulberry(hashStr(seed)), W = 10 + (N - 1) * 9;
+    const pts = Array.from({ length: N }, (_, i) => [5 + i * 9, 4 + rnd() * 9]);
+    const line = pts.map(([x, y], i) => (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1)).join('');
+    const star = ([x, y]) => `<path class="cs" d="M${x.toFixed(1)} ${(y - 3.4).toFixed(1)}l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z"/>`;
+    return `<svg class="cst-art" viewBox="0 0 ${W} 17" width="${W}" height="17" aria-hidden="true" focusable="false"><path class="cl" d="${line}"/>${pts.map(star).join('')}</svg>`;
+  }
+  function cstChip(q, stars) {
+    return `<button type="button" class="cst-chip" data-act="cst" aria-expanded="false" aria-controls="cst-card">${cstArt(stars.length, q.id)}<span>Constellation · ${stars.length} stars</span></button>`;
+  }
+  function cstCard(q, stars) {
+    const where = stars.map(id => { const x = Q.get(id); return `<li>${esc(setLabel(x))} · Q${esc(x.n)}</li>`; }).join('');
+    return `<div class="cst-card" id="cst-card" role="region" aria-label="Constellation">
+      <p class="cc-t">This question came up ${stars.length} times with the same propositions, so the quest groups the copies into one constellation. Answering it here counts once.</p>
+      <ul class="cc-l">${where}</ul>
+      <button type="button" class="btn cc-go" data-act="stars">Do all ${stars.length} stars ${ICON.next}</button>
+    </div>`;
+  }
+  let cstTimer = null;
+  function cstOpen(on, now) {
+    const card = document.getElementById('cst-card'), chip = app.querySelector('.cst-chip');
+    if (!card || !chip) return;
+    clearTimeout(cstTimer);
+    if (!on) {
+      cstTimer = setTimeout(() => { card.classList.remove('on'); chip.setAttribute('aria-expanded', 'false'); }, now ? 0 : 160);
+      return;
+    }
+    // under the chip, kept inside the question card
+    const box = card.parentElement.getBoundingClientRect(), c = chip.getBoundingClientRect();
+    card.style.top = (c.bottom - box.top + 8) + 'px';
+    card.style.left = Math.max(12, Math.min(c.left - box.left, box.width - card.offsetWidth - 12)) + 'px';
+    card.classList.add('on'); chip.setAttribute('aria-expanded', 'true');
+  }
+
   // ---------- quiz ----------
   function caseHTML(q) {
     if (!q.case || !CASE.has(q.case)) return '';
@@ -940,6 +999,7 @@
     const topicName = sess.topic === '*' ? `<span>${esc((TOPIC.get(q.topic) || {}).name || '')}</span>` : '';
     const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
     const rep = repOf(q);
+    const stars = sess.from === 'quest' && CST.has(q.id) && CST.get(q.id)[0] === q.id ? CST.get(q.id) : null;
     const others = rep ? [...new Set(rep.q.map(id => Q.get(id).source))].filter(s => s !== q.source && SRC.has(s)).sort((x, y) => SRC_ORDER.get(x) - SRC_ORDER.get(y)) : [];
     const alsoIn = others.length ? `<div class="alsoin"><span>Also in</span>${others.map(s => `<span class="pill">${esc(SRC.get(s).label)}</span>`).join('')}</div>` : '';
     const right = `<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
@@ -951,10 +1011,11 @@
         <article class="qcard plate" aria-labelledby="stem">
           <div class="qmeta">
             <span class="qn" title="Question number in this exam set">Q${esc(q.n)}</span>${topicName}<span>${esc(setLabel(q))}${q.chapter ? ' · ' + esc(q.chapter) : ''}</span>
-            ${repBadge(rep)}
+            ${stars ? cstChip(q, stars) : repBadge(rep)}
             <span class="key ${k}">${KEY_LONG[k]}</span>
             ${q.flag ? `<span class="key flag" title="This question's text is highlighted red in the doc, with no legend">Marked red in the doc</span>` : ''}
           </div>
+          ${stars ? cstCard(q, stars) : ''}
           ${alsoIn}
           ${caseHTML(q)}
           <h2 class="stem" id="stem">${q.stem}</h2>
@@ -993,10 +1054,20 @@
     if (mine.length) blocks.push(`<div class="ex-block">${mine.map(noteHTML).join('')}</div>`);
     if (q.twinOf) blocks.push(`<div class="ex-block"><div class="note twin"><p>Nothing was highlighted on this copy, so the answer comes from the same question in ${esc(q.twinOf)}.</p></div></div>`);
     const on = q.optNotes || {};
-    Object.keys(on).map(Number).sort((x, y) => x - y).forEach(i => {
-      const inKey = q.answer.includes(i);
-      blocks.push(`<div class="ex-block"><div class="ex-head"><span class="bub${inKey ? ' k' : ''}">${LETTERS[i]}</span><span>${q.options[i]}</span></div>${on[i].map(noteHTML).join('')}</div>`);
-    });
+    if (q.exp) {
+      // why each proposition is right or wrong, from the lecture (explanations.json)
+      const rows = q.options.map((html, i) => {
+        const inKey = q.answer.includes(i), why = q.exp.o[i];
+        return `<li class="why-row${inKey ? ' k' : ''}"><span class="bub${inKey ? ' k' : ''}">${LETTERS[i]}</span>
+          <div class="why-b"><p class="why-o">${html}</p>${why ? `<p class="why">${esc(why)}</p>` : ''}${(on[i] || []).map(noteHTML).join('')}</div></li>`;
+      }).join('');
+      blocks.push(`<div class="ex-block"><p class="ex-src">Why, from the lecture: ${esc(q.exp.lec)}</p><ol class="whys">${rows}</ol></div>`);
+    } else {
+      Object.keys(on).map(Number).sort((x, y) => x - y).forEach(i => {
+        const inKey = q.answer.includes(i);
+        blocks.push(`<div class="ex-block"><div class="ex-head"><span class="bub${inKey ? ' k' : ''}">${LETTERS[i]}</span><span>${q.options[i]}</span></div>${on[i].map(noteHTML).join('')}</div>`);
+      });
+    }
     if (docQ.length) blocks.push(`<div class="ex-block"><div class="ex-head plain">On the question</div>${docQ.map(noteHTML).join('')}</div>`);
     if (q.notes && q.notes.length) {
       const inner = q.notes.map(n => n.src
@@ -1946,7 +2017,14 @@
     const inp = document.getElementById('q');
     if (inp) { inp.value = ''; if (focus) inp.focus(); }
   }
+  const canHover = () => matchMedia('(hover: hover)').matches;
+  const inCst = el => el && el.closest && el.closest('.cst-chip, .cst-card');
+  app.addEventListener('mouseover', e => { if (canHover() && inCst(e.target)) cstOpen(true); });
+  app.addEventListener('mouseout', e => { if (canHover() && inCst(e.target) && !inCst(e.relatedTarget)) cstOpen(false); });
+  app.addEventListener('focusin', e => { if (inCst(e.target) && e.target.matches(':focus-visible')) cstOpen(true); });
+  app.addEventListener('focusout', e => { if (inCst(e.target) && !inCst(e.relatedTarget)) cstOpen(false); });
   app.addEventListener('click', e => {
+    if (!inCst(e.target)) cstOpen(false, true);
     const rep = e.target.closest('a[data-report]');
     if (rep) { const q = Q.get(rep.dataset.report); if (q) copyReport(q); return; }   // the link itself opens the form
     const t = e.target.closest('button');
@@ -2018,6 +2096,8 @@
         break;
       }
       case 'intro-replay': replayIntro(); break;
+      case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
+      case 'stars': practiceStars(curQ().id); break;
     }
   });
 
@@ -2043,6 +2123,7 @@
       if (inp && !(e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))) { e.preventDefault(); inp.focus(); }
       return;
     }
+    if (e.key === 'Escape') { const card = document.getElementById('cst-card'); if (card && card.classList.contains('on')) { cstOpen(false, true); const c = app.querySelector('.cst-chip'); if (c) c.focus(); return; } }
     if (S.view !== 'quiz' || !S.session || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.target && e.target.closest && e.target.closest('summary')) return;
     const key = e.key.toLowerCase();

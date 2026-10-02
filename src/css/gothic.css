@@ -458,6 +458,46 @@ a.btn { text-decoration: none; font-style: normal; }
 .qmeta .qn { color: var(--ink); font-weight: 600; }
 .alsoin { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: -8px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
 .alsoin .pill { border: 1px solid var(--hair-2); border-radius: 2px; padding: .22em .6em; color: var(--ink-2); }
+/* a constellation (same propositions asked several times) in the quest: a chip with its stars, and a card on hover */
+.cst-chip {
+  display: inline-flex; align-items: center; gap: .55em; white-space: nowrap; line-height: 1.2; cursor: pointer;
+  font-family: var(--f-mono); font-size: .72rem; font-weight: 600; letter-spacing: .01em; color: var(--night);
+  padding: .26em .62em .26em .5em; border: 0; border-radius: 2px; background: var(--ink);
+  transition: box-shadow .4s var(--ease), background-color .3s var(--ease);
+}
+.cst-chip:hover, .cst-chip[aria-expanded="true"] { background: var(--ink-hi); box-shadow: 0 0 0 4px var(--glow-soft), 0 0 18px var(--glow-mid); }
+.cst-art { display: block; overflow: visible; }
+.cst-art .cl { fill: none; stroke: var(--night); stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
+.cst-art .cs { fill: var(--night); }
+.cst-chip:hover .cs, .cst-chip[aria-expanded="true"] .cs { animation: twinkle 1.6s var(--ease) both; }
+.cst-chip .cs:nth-of-type(2) { animation-delay: .12s; } .cst-chip .cs:nth-of-type(3) { animation-delay: .24s; }
+.cst-chip .cs:nth-of-type(4) { animation-delay: .36s; } .cst-chip .cs:nth-of-type(5) { animation-delay: .48s; }
+@keyframes twinkle { 0%, 100% { opacity: 1; } 40% { opacity: .35; } }
+.cst-card {
+  position: absolute; z-index: 30; width: min(340px, calc(100% - 24px)); display: grid; gap: 12px; padding: 16px 18px;
+  background: var(--plate-2); border: 1px solid var(--hair-2); border-radius: var(--r); box-shadow: 0 22px 50px -24px var(--deep);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .25s var(--ease), transform .4s var(--spring), visibility 0s linear .25s;
+}
+.cst-card.on { opacity: 1; visibility: visible; transform: none; transition: opacity .25s var(--ease), transform .4s var(--spring), visibility 0s; }
+.cst-card p { margin: 0; }
+.cc-t { font-size: 1.04rem; line-height: 1.5; color: var(--ink); text-wrap: pretty; }
+.cc-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-2); }
+.cc-l li::before { content: "✦ "; color: var(--ink-3); }
+.cc-go { justify-self: start; min-height: 40px; }
+
+/* explanations from the lecture: every proposition with a line on why it's right or wrong */
+.ex-src { margin: 0; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
+.whys { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 14px; }
+.why-row { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: start; }
+.why-row .bub { width: 26px; height: 26px; font-size: .98rem; }
+.why-row .bub.k { background: var(--right); border-color: var(--right); color: var(--night); }
+.why-b { display: grid; gap: 4px; min-width: 0; }
+.why-b p { margin: 0; }
+.why-o { font-weight: 600; font-size: 1.06rem; line-height: 1.4; overflow-wrap: anywhere; }
+.why { font-size: 1.04rem; line-height: 1.5; color: var(--ink-2); max-width: 68ch; text-wrap: pretty; }
+.why-row.k .why { color: var(--ink); }
+
 /* "Report a mistake": a quiet link at the foot of every question */
 .qfoot { display: flex; justify-content: flex-end; margin-top: -4px; }
 .report { --lb-line: var(--plate); }

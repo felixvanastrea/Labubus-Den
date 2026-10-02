@@ -20,6 +20,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
    - `bank.json`: questions, answers, notes; `repeats.json`: repeated-question clusters
    - `concepts.py`: topic dictionary and tagger for search; `search_extra.py`: extra search-only aliases
    - `corrections.json`: doc mistakes Abi confirmed; `feedback.json`: the Google Form behind the feedback buttons
+   - `explanations.json`: why each proposition is right or wrong, from Abi's lecture summaries
+   - `constellations.py`: finds copies of a question with the same propositions (used by the quest)
 2. `python3 src/build.py` writes `index.html` (full page with meta tags, icon, link preview) and `src/out/artifact.html`.
 3. Check it in a browser (see Tests), then commit sources and `index.html` together and push to `main`.
 
@@ -65,12 +67,35 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   or option names, ask her for a new pre-filled link. With no link, the buttons are hidden.
 - Responses reach Abi by email and in a linked Google Sheet; Claude can't see them unless she shares them.
 
+## Explanations from the lectures
+
+- Abi sends the summary of a lecture (PDF) as she studies. For every question on that lecture's topics, write
+  one short line per proposition saying why it's right or wrong, in `src/explanations.json`: add the lecture
+  under `lectures`, then one entry per question (short id, `lecture`, one line per option letter). Ground the
+  lines in her summary; keep them short and plain, no capitals for emphasis.
+- One entry covers the question's constellation and word-for-word copies: the build copies it over, matching
+  options by wording. Write entries for the quest's leads and for every question that isn't in a constellation.
+- If the lecture contradicts an answer key, don't explain it: flag it to Abi first (rule above). That's how
+  the lobar pneumonia management question was caught (her CAP lecture includes physio and smoking cessation).
+- On the site the lines show under "Notes & explanations" once a question is checked, labelled with the lecture.
+
+## Constellations
+
+- `constellations.py` groups the copies of a repeated question (same `repeats.json` cluster) whose stems agree
+  and whose propositions pair up one to one: any order, typos, "ATB"/"antibiotic", "insidious"/"progressive"
+  onset, hyphens... but never a meaning word (not, acute/chronic, left/right, a number). Keys must agree;
+  a disagreement is printed by the build as a conflict to show Abi.
+- Only the quest uses them (Abi's choice): a constellation counts once, as its lead (keyed, official first, then
+  midterms, mocks, finals...). The lead's card has a "Constellation · N stars" chip; hovering (or tapping) it
+  says where the copies come from and offers "Do all N stars", a session of every copy; Back returns to the quest.
+  Answering the lead counts only for the lead. Modules, exam sets and Most repeated still show every copy.
+
 ## Quests
 
 - The current quest is set in `src/quests.json`: a title, the module, the exam date (`due`), the goal (% right),
   and topics. Each topic lists concept ids from `concepts.py` (plus optional `add` / `drop` lists of short ids
-  like `"R83"`). The build gathers every question in that module tagged with those concepts, drops word-for-word
-  copies, puts the most repeated first, and prints the counts per topic: check them before shipping.
+  like `"R83"`). The build gathers every question in that module tagged with those concepts, keeps one question
+  per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
 - On the site it's a card on the homepage (countdown, progress, the six topics, two wax seals) and the hero's
   main button until it's done. Done = every question answered and goal% right, retries count.
   "Clean run" = goal% right on the first try (first results are kept in `S.first`).
@@ -108,7 +133,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js
+node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

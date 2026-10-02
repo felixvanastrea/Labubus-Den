@@ -30,13 +30,16 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
     await p.goto(URL, { waitUntil: 'load' }); await p.evaluate(() => localStorage.clear());
     await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   };
-  // the quest's acute bronchitis topic, on the question whose stem was fixed
-  const openQuestion = async (p, s, tap, topic = 0) => {
-    await p.evaluate(() => document.getElementById('quest').scrollIntoView());
-    await p[tap ? 'tap' : 'click'](`.q-topic[data-qtopic="${topic}"]`); await p.waitForTimeout(250);
+  // a question through its exam set: module, set, then its number in the strip (copies aren't grouped there)
+  const openQuestion = async (p, s, tap) => {
+    const [topic, source] = await p.evaluate(`(() => { const q = JSON.parse(document.getElementById('bank').textContent).questions.find(q => q.sid === '${s}'); return [q.topic, q.source]; })()`);
+    const go = sel => p[tap ? 'tap' : 'click'](sel);
+    await p.evaluate(t => document.querySelector(`.arch[data-topic="${t}"]`).scrollIntoView({ block: 'center' }), topic);
+    await go(`.arch[data-topic="${topic}"]`); await p.waitForTimeout(250);
+    await go(`[data-set="${source}"]`); await p.waitForTimeout(250);
     const i = await p.evaluate(`JSON.parse(localStorage.getItem('${KEY}')).session.qids.indexOf(${sid(s)})`);
-    check(i >= 0, s + ' is in quest topic ' + topic);
-    await p[tap ? 'tap' : 'click'](`.strip [data-jump="${i}"]`); await p.waitForTimeout(250);
+    check(i >= 0, s + ' is in its exam set');
+    await go(`.strip [data-jump="${i}"]`); await p.waitForTimeout(250);
   };
 
   // 1. with the form
@@ -87,7 +90,9 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
   });
   check(!!caseQ, 'found a question with a long case: ' + (caseQ && caseQ.sid));
   if (caseQ) {
-    await p.click('.bar [data-act="back"]'); await p.waitForTimeout(250);
+    for (let n = 0; n < 3 && await p.evaluate(() => document.body.dataset.view) !== 'home'; n++) {
+      await p.click('.bar [data-act="back"], .bar [data-act="home"]'); await p.waitForTimeout(250);
+    }
     await p.click(`.arch[data-topic="${caseQ.topic}"]`); await p.waitForTimeout(250);
     await p.click(`[data-start="${caseQ.topic}"]`); await p.waitForTimeout(250);
     const ci = await p.evaluate(`JSON.parse(localStorage.getItem('${KEY}')).session.qids.indexOf(${sid(caseQ.sid)})`);
@@ -120,15 +125,15 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
   check(await p0.$$eval('.report', els => els.length) === 0, 'no report link on the question');
   await ctx0.close();
 
-  // 3. an answer saved under the old key is regraded: R268 used to be A, B, D and is now D only
+  // 3. an answer saved under the old key is regraded: R82 used to be B only and is now B, C, D
   const ctxR = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
   const pr = await ctxR.newPage(); watch(pr, 'regrade');
   await fresh(pr);
-  await pr.evaluate(`(() => { const id = ${sid('R268')}; localStorage.setItem('${KEY}', JSON.stringify({ answers: { [id]: { sel: [3], checked: true, correct: false } } })); })()`);
+  await pr.evaluate(`(() => { const id = ${sid('R82')}; localStorage.setItem('${KEY}', JSON.stringify({ answers: { [id]: { sel: [1, 2, 3], checked: true, correct: false } } })); })()`);
   await pr.reload({ waitUntil: 'load' }); await pr.waitForTimeout(300);
-  await openQuestion(pr, 'R268', false, 1);
-  check(await pr.$$eval('.verdict.right', els => els.length) === 1, 'R268 answered “D” before the fix now shows as correct');
-  check(/: D$/.test((await pr.textContent('.verdict .v-sub')).trim()), 'its answer reads ' + (await pr.textContent('.verdict .v-sub')).trim());
+  await openQuestion(pr, 'R82');
+  check(await pr.$$eval('.verdict.right', els => els.length) === 1, 'R82 answered “B, C, D” before the fix now shows as correct');
+  check(/: B, C, D$/.test((await pr.textContent('.verdict .v-sub')).trim()), 'its answer reads ' + (await pr.textContent('.verdict .v-sub')).trim());
   await ctxR.close();
 
   // 4. phone

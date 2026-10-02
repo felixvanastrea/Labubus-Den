@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-02-constellations",
+    "date": "2026-10-02",
+    "title": "Constellations",
+    "items": [
+      "In the quest, a question asked again with the same propositions counts once, as a constellation. Hover over it to see where it came up, or do all its stars one by one."
+    ]
+  },
+  {
+    "id": "2026-10-02-explanations",
+    "date": "2026-10-02",
+    "title": "Explanations",
+    "items": [
+      "Acute bronchitis and community-acquired pneumonia questions now explain why each proposition is right or wrong, from the lecture."
+    ]
+  },
+  {
     "id": "2026-10-02-corrections",
     "date": "2026-10-02",
     "title": "Corrected questions",
@@ -52,13 +68,20 @@
     "id": "2026-09-29-rest",
     "date": "2026-09-29",
     "title": "Mocks, finals and professors’ sets",
-    "types": ["Mock", "Finals", "Second session", "Collected"]
+    "types": [
+      "Mock",
+      "Finals",
+      "Second session",
+      "Collected"
+    ]
   },
   {
     "id": "2026-09-29-open",
     "date": "2026-09-29",
     "title": "Midterms 2025–2026",
-    "types": ["Midterms"],
+    "types": [
+      "Midterms"
+    ],
     "items": [
       "Practice by module or by exam, check your answers, and see where each answer comes from, with notes and explanations."
     ]

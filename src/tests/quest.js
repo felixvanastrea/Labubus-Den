@@ -43,7 +43,8 @@ const KEY = 'efm3-mcq-bank-v1';
   await p.click('[data-act="again"]');
   await answerCurrent(true);
   await p.click('[data-act="primary"]');
-  for (let k = 1; k < 7; k++) { await answerCurrent(true); await p.click('[data-act="primary"]'); }
+  const nTopic = await p.evaluate(() => JSON.parse(document.getElementById('bank').textContent).quest.topics[0].q.length);
+  for (let k = 1; k < nTopic; k++) { await answerCurrent(true); await p.click('[data-act="primary"]'); }
   await p.waitForTimeout(300);
   console.log('done view:', await p.evaluate(() => document.body.dataset.view), '|', (await p.textContent('.qd-line')).trim());
   await p.screenshot({ path: OUT + 'q_done_partial.png' });
