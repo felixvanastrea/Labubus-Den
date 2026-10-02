@@ -458,8 +458,6 @@ a.btn { text-decoration: none; font-style: normal; }
 .qmeta .qn { color: var(--ink); font-weight: 600; }
 .alsoin { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: -8px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
 .alsoin .pill { border: 1px solid var(--hair-2); border-radius: 2px; padding: .22em .6em; color: var(--ink-2); }
-/* a confirmed fix to the doc's text (corrections.json), said plainly above the question */
-.fixnote { margin: -4px 0 0; padding: 2px 0 2px 12px; border-left: 2px solid var(--k-claude-line); font-style: italic; font-size: 1.04rem; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
 /* "Report a mistake": a quiet link at the foot of every question */
 .qfoot { display: flex; justify-content: flex-end; margin-top: -4px; }
 .report { --lb-line: var(--plate); }

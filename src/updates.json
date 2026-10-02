@@ -1,10 +1,19 @@
 [
   {
+    "id": "2026-10-02-corrections",
+    "date": "2026-10-02",
+    "title": "Corrected questions",
+    "kind": "Corrections",
+    "items": [
+      "Some questions were corrected: a few answers and typos."
+    ]
+  },
+  {
     "id": "2026-10-02-feedback",
     "date": "2026-10-02",
-    "title": "Report a mistake",
+    "title": "Flagging and feedback",
     "items": [
-      "Every question has a Report a mistake link that sends it to the Labubu, and Ask the Labubu on the homepage is for ideas."
+      "Every question has a Report a mistake link that flags it to the Labubu, and Ask the Labubu on the homepage takes your ideas for the site."
     ]
   },
   {

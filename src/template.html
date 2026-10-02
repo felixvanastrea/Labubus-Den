@@ -143,6 +143,8 @@
   function sanitize() {
     if (!S.answers || typeof S.answers !== 'object') S.answers = {};
     for (const id of Object.keys(S.answers)) if (!Q.has(id)) delete S.answers[id];
+    // grade checked answers against today's key, so a corrected answer key updates old results too
+    for (const [id, a] of Object.entries(S.answers)) if (a && a.checked && Array.isArray(a.sel)) a.correct = isCorrect(Q.get(id), a.sel);
     if (!S.first || typeof S.first !== 'object') S.first = {};
     for (const id of Object.keys(S.first)) if (!Q.has(id)) delete S.first[id];
     if (!S.seals || typeof S.seals !== 'object') S.seals = {};
@@ -954,7 +956,6 @@
             ${q.flag ? `<span class="key flag" title="This question's text is highlighted red in the doc, with no legend">Marked red in the doc</span>` : ''}
           </div>
           ${alsoIn}
-          ${(q.fix || []).map(n => `<p class="fixnote">${esc(n)}</p>`).join('')}
           ${caseHTML(q)}
           <h2 class="stem" id="stem">${q.stem}</h2>
           ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
@@ -1358,7 +1359,7 @@
       return `<li class="log-entry${fresh ? ' is-new' : ''}">
         <div class="le-date">${showDate ? `<span class="le-day num">${date.getDate()}</span><span class="le-month">${esc(date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))}</span>` : ''}</div>
         <div class="le-body">
-          <p class="le-kind">${qs.length ? `+${fmtN(qs.length)} questions` : 'New on the site'}${fresh ? ' · <b>new since your last visit</b>' : ''}</p>
+          <p class="le-kind">${qs.length ? `+${fmtN(qs.length)} questions` : esc(u.kind || 'New on the site')}${fresh ? ' · <b>new since your last visit</b>' : ''}</p>
           <h2 class="le-title">${esc(u.title)}</h2>
           ${u.items && u.items.length ? `<ul class="le-items">${u.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : ''}
           ${where}

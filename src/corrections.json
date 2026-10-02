@@ -1,13 +1,66 @@
 {
-  "about": "Mistakes in the exam docs that Abi confirmed should be fixed on the site. Nothing goes in here before she confirms it. Each fix names the question (short id), the field ('stem', 'option A' to 'option E', or 'answer' as letters like 'BC'), the doc's text ('from', checked at build time so a changed bank fails loudly) and the fix ('to'). The note is shown on the question.",
+  "about": "Mistakes in the exam docs that Abi confirmed should be fixed on the site. Nothing goes in here before she confirms it. Each fix names the question (short id), the field ('stem', 'option A' to 'option E', or 'answer' as letters like 'BC'), the doc's text ('from', checked at build time so a changed bank fails loudly) and the fix ('to'). 'also' sets other fields of the question. 'why' is for us only: Abi doesn't want the fixes shown on the questions, the update log just says some questions were corrected.",
   "fixes": [
     {
-      "q": "R244",
-      "confirmed": "2026-10-02",
-      "field": "stem",
-      "from": "During Acute Bronchiectasis:",
-      "to": "During acute bronchitis:",
-      "note": "Typo fixed: the doc says “During Acute Bronchiectasis”, but this is the acute bronchitis question (same options and answer as Q10 of the 2025–2026 midterm)."
+      "q": "R244", "confirmed": "2026-10-02", "field": "stem",
+      "from": "During Acute Bronchiectasis:", "to": "During acute bronchitis:",
+      "why": "Typo: the doc says “During Acute Bronchiectasis”, but this is the acute bronchitis question (same options and answer as Q10 of the 2025–2026 midterm)."
+    },
+    {
+      "q": "R268", "confirmed": "2026-10-02", "field": "answer", "from": "ABD", "to": "D",
+      "why": "Lobar pneumonia treatment: the doc marks smoking cessation, drainage physiotherapy and antibiotics. The same question in Midterm 2025–2026 Q6 and Collected Q31 marks antibiotics only."
+    },
+    {
+      "q": "R267", "confirmed": "2026-10-02", "field": "answer", "from": "AB", "to": "AC",
+      "why": "Hypersensitivity pneumonitis: the doc marks “BAL shows neutrophilia” instead of “organic antigens” (highlight one line off). BAL shows lymphocytosis; Mock 2025–2026 Q10 marks crackles and organic antigens."
+    },
+    {
+      "q": "R262", "confirmed": "2026-10-02", "field": "answer", "from": "C", "to": "D",
+      "why": "Chronic ILD: the doc marks “DLCO remains normal in advanced forms” instead of “dry crackles” (highlight one line off). The three other copies mark crackles."
+    },
+    {
+      "q": "R39", "confirmed": "2026-10-02", "field": "answer", "from": "B", "to": "A",
+      "why": "Still unstable after a chest tube that drained minimal air and no blood: tension pneumothorax and hemothorax are ruled out, so cardiac tamponade, not pulmonary contusion."
+    },
+    {
+      "q": "C198", "confirmed": "2026-10-02", "field": "answer", "from": "D", "to": "AC",
+      "why": "“All of the above” counts migratory polyarthralgia as a major Jones criterion; the official keys of C91, C113, C201 and C249 say it isn't."
+    },
+    {
+      "q": "C274", "confirmed": "2026-10-02", "field": "answer", "from": "D", "to": "AD",
+      "why": "Mitral regurgitation: the official keys of the same question (Mock 2025–2026 Q3, In-class Q39) also mark chordae rupture after MI."
+    },
+    {
+      "q": "C271", "confirmed": "2026-10-02", "field": "option C",
+      "from": "high blood pressure of more than 118 mmHg without Target organ damage",
+      "to": "high blood pressure of more than 180 mmHg without Target organ damage",
+      "why": "Typo: 118 mmHg for 180 mmHg (option B and the other copies say 180)."
+    },
+    {
+      "q": "C246", "confirmed": "2026-10-02", "field": "answer", "from": "AB", "to": "ABC",
+      "why": "Patent ductus arteriosus is a left-to-right shunt too."
+    },
+    {
+      "q": "C280", "confirmed": "2026-10-02", "field": "answer", "from": "BCD", "to": "BD",
+      "also": { "key": "proposed", "twinOf": "Professor's questions · Cardio-vascular (Q19 and Q34)", "qNotes": [] },
+      "why": "Nothing was highlighted, so Claude had suggested B, C, D. The two highlighted copies leave out the post-prandial pain option."
+    },
+    {
+      "q": "D153", "confirmed": "2026-10-02", "field": "answer", "from": "B", "to": "ABC",
+      "why": "Hernia risk factors: Finals 2025–2026 Q31 also marks dysuria and asthma; all three raise abdominal pressure."
+    },
+    {
+      "q": "D146", "confirmed": "2026-10-02", "field": "answer", "from": "C", "to": "AC",
+      "why": "Appendicitis pathophysiology: Finals 2025–2026 Q38 marks the protective peristalsis of the muscular layer as true."
+    },
+    {
+      "q": "D202", "confirmed": "2026-10-02", "field": "answer", "from": "AD", "to": "D",
+      "also": { "key": "proposed", "twinOf": "Professor's questions · Digestive Surgical (Q8)", "qNotes": [] },
+      "why": "Nothing was highlighted, so Claude had added right hypochondrium pain in sub-hepatic appendicitis. The highlighted copies (Digestive Surgical Q8, Digestive Surgical Pathology Q59) mark only right iliac fossa pain with fever."
+    },
+    {
+      "q": "S56", "confirmed": "2026-10-02", "field": "answer", "from": "AC", "to": "ABCD",
+      "why": "Acute urticaria: “not always mild” and “angioedema can threaten life” are true; the professor's copy (Q36) marks them."
     }
   ]
 }

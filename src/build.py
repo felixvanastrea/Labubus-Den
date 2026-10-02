@@ -31,7 +31,7 @@ for sid, qid in shortids.items():
     Q[qid]['sid'] = sid             # shown in mistake reports, so a report names the question
 
 # Mistakes in the docs that Abi confirmed (corrections.json). Applied before tagging, so search and quests use
-# the fixed text. "from" must still match the bank, and the note is shown on the question.
+# the fixed text. "from" must still match the bank; "also" sets other fields. Nothing is shown about the fix.
 LETTERS = 'ABCDE'
 for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
     q, field = Q[shortids[f['q']]], f['field']
@@ -47,7 +47,8 @@ for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
         raise ValueError(f"correction {f['q']}: unknown field {field!r}")
     assert old == f['from'], f"correction {f['q']} {field}: the bank says {old!r}, not {f['from']!r}"
     put(f['to'])
-    q.setdefault('fix', []).append(f['note'])
+    q.update(f.get('also', {}))
+    assert all(0 <= i < len(q['options']) for i in q['answer']), f"correction {f['q']}: answer outside the options"
 
 # Follow-up questions in the dermatology professor set that say "this case" / "your diagnosis" without the case:
 # show the vignette they follow as an open case box.
@@ -124,7 +125,8 @@ if cur:
 
 # the update log (updates.json, newest first): what changed and when. An entry that brought questions names
 # its exam sets ("sets": set ids, or "types": exam types) and/or single questions ("questions": short ids);
-# the build stores the set ids, any single question ids, and the question count.
+# the build stores the set ids, any single question ids, and the question count. "kind" relabels an entry
+# without questions (the default label is "New on the site").
 updates = json.load(open('updates.json', encoding='utf8'))
 assert len({u['id'] for u in updates}) == len(updates), 'update ids must be unique'
 assert [u['date'] for u in updates] == sorted((u['date'] for u in updates), reverse=True), 'updates must be newest first'
@@ -135,8 +137,9 @@ for u in updates:
     assert all(s in src_ids for s in sets), f"unknown exam set in update {u['id']}"
     single = [shortids[s] for s in u.get('questions', [])]
     n = sum(1 for q in bank['questions'] if q['source'] in set(sets)) + sum(1 for i in single if Q[i]['source'] not in set(sets))
-    log.append({k: v for k, v in {'id': u['id'], 'date': u['date'], 'title': u['title'], 'items': u.get('items', []),
-                                  'sets': sets, 'q': single, 'n': n}.items() if v or k in ('n', 'items')})
+    log.append({k: v for k, v in {'id': u['id'], 'date': u['date'], 'title': u['title'], 'kind': u.get('kind'),
+                                  'items': u.get('items', []), 'sets': sets, 'q': single, 'n': n}.items()
+                if v or k in ('n', 'items')})
 bank['updates'] = log
 print('update log:', len(log), 'entries |', ', '.join(f"{u['id']} +{u['n']}" for u in log if u['n']))
 

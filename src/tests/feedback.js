@@ -1,6 +1,7 @@
 // Feedback: "Report a mistake" on every question and "Ask the Labubu" on the homepage, footer and update log.
 // The links open the Google Form in feedback.json pre-filled (stubbed here) and the question is copied.
-// Without a form the buttons are hidden. Also checks the confirmed R244 fix (corrections.json).
+// Without a form the buttons are hidden. Also checks the corrections (corrections.json): fixed, with no note shown,
+// and old saved answers regraded against the corrected key.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -30,11 +31,11 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
     await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   };
   // the quest's acute bronchitis topic, on the question whose stem was fixed
-  const openQuestion = async (p, s, tap) => {
+  const openQuestion = async (p, s, tap, topic = 0) => {
     await p.evaluate(() => document.getElementById('quest').scrollIntoView());
-    await p[tap ? 'tap' : 'click']('.q-topic[data-qtopic="0"]'); await p.waitForTimeout(250);
+    await p[tap ? 'tap' : 'click'](`.q-topic[data-qtopic="${topic}"]`); await p.waitForTimeout(250);
     const i = await p.evaluate(`JSON.parse(localStorage.getItem('${KEY}')).session.qids.indexOf(${sid(s)})`);
-    check(i >= 0, s + ' is in the acute bronchitis topic of the quest');
+    check(i >= 0, s + ' is in quest topic ' + topic);
     await p[tap ? 'tap' : 'click'](`.strip [data-jump="${i}"]`); await p.waitForTimeout(250);
   };
 
@@ -56,8 +57,7 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
 
   await openQuestion(p, 'R244');
   check((await p.textContent('#stem')).trim() === 'During acute bronchitis:', 'R244 stem reads “During acute bronchitis:”');
-  const note = await p.textContent('.fixnote');
-  check(/the doc says “During Acute Bronchiectasis”/.test(note), 'R244 shows the typo note');
+  check(await p.$$eval('.fixnote', els => els.length) === 0 && !(await p.textContent('.qcard')).includes('Bronchiectasis'), 'nothing on the question says it was fixed');
   const rep = await p.$eval('.report', a => ({ text: a.textContent.trim(), href: a.href, target: a.target }));
   const u = new globalThis.URL(rep.href);
   const filled = u.searchParams.get(ASKED) || '';
@@ -117,13 +117,21 @@ const sid = s => `JSON.parse(document.getElementById('bank').textContent).questi
   await fresh(p0);
   check(await p0.$$eval('[data-ask], .report, .intro .ask', els => els.length) === 0, 'no feedback buttons without a form');
   await openQuestion(p0, 'R244');
-  check(await p0.$$eval('.report', els => els.length) === 0 && await p0.$$eval('.fixnote', els => els.length) === 1, 'no report link, fix note still there');
-  await p0.click('.strip [data-jump="0"]'); await p0.waitForTimeout(150);
-  const firstIsR244 = await p0.evaluate(`JSON.parse(localStorage.getItem('${KEY}')).session.qids[0] === ${sid('R244')}`);
-  check(firstIsR244 || await p0.$$eval('.fixnote', els => els.length) === 0, 'questions without a fix have no note');
+  check(await p0.$$eval('.report', els => els.length) === 0, 'no report link on the question');
   await ctx0.close();
 
-  // 3. phone
+  // 3. an answer saved under the old key is regraded: R268 used to be A, B, D and is now D only
+  const ctxR = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
+  const pr = await ctxR.newPage(); watch(pr, 'regrade');
+  await fresh(pr);
+  await pr.evaluate(`(() => { const id = ${sid('R268')}; localStorage.setItem('${KEY}', JSON.stringify({ answers: { [id]: { sel: [3], checked: true, correct: false } } })); })()`);
+  await pr.reload({ waitUntil: 'load' }); await pr.waitForTimeout(300);
+  await openQuestion(pr, 'R268', false, 1);
+  check(await pr.$$eval('.verdict.right', els => els.length) === 1, 'R268 answered “D” before the fix now shows as correct');
+  check(/: D$/.test((await pr.textContent('.verdict .v-sub')).trim()), 'its answer reads ' + (await pr.textContent('.verdict .v-sub')).trim());
+  await ctxR.close();
+
+  // 4. phone
   const mctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
   await stubForm(mctx);
   const m = await mctx.newPage(); watch(m, 'phone');

@@ -46,7 +46,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Change nothing until she confirms.
 - Once she confirms, add the fix to `src/corrections.json`: the short id, the field (`stem`, `option A`–`E`
   or `answer` as letters), the doc's text in `from` (the build checks it still matches), the fix in `to`,
-  the date she confirmed, and a note. The note is shown on the question, so the fix is never invisible.
+  the date she confirmed, and `why` (for the record). `also` sets other fields, e.g. a Claude-suggested answer
+  replaced by the docs' answer becomes `key: proposed` with `twinOf` and no Claude note.
+- Nothing about a fix is shown on the question: Abi doesn't want classmates to see notes. Instead the update
+  log gets a short "Corrected questions" entry (`kind: "Corrections"`). Saved answers are regraded against
+  the current key when the page loads, so old results follow a corrected key.
 - Reports from classmates arrive through the feedback form (below). Treat them the same way: check the
   question, show Abi what you found, and wait for her answer.
 
@@ -75,7 +79,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Update log
 
-- `src/updates.json`, newest first: `id`, `date`, `title`, `items` (one short line each), and for
+- `src/updates.json`, newest first: `id`, `date`, `title`, `items` (one short line each), an optional `kind`
+  label for entries without questions (default "New on the site"), and for
   question uploads the exam sets they brought (`sets`: set ids, or `types`: exam types) and/or single questions
   (`questions`: short ids). The build counts the questions per entry.
 - Every time new MCQs go into `bank.json`, add an entry at the top: today's date, a title naming the exam
@@ -89,8 +94,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - Question fields: `id`, `topic`, `source` (exam set), `n`, `stem`, `options` (HTML), `answer` (option indices),
   `key` (official / proposed / claude / none), `qNotes`, `optNotes`, `notes`, `case`, `stemImgs`, `twinOf`, `flag`.
-  The build adds `sid` (short id like `R244`), `c` (topic concepts), `a` (aspect), `rep` (repeat cluster), `dupOf`,
-  and `fix` (notes from `corrections.json`).
+  The build adds `sid` (short id like `R244`), `c` (topic concepts), `a` (aspect), `rep` (repeat cluster) and `dupOf`,
+  after applying `corrections.json`.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
