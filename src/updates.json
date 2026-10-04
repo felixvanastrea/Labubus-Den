@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-10-04-sounds",
+    "date": "2026-10-04",
+    "title": "Sounds",
+    "items": [
+      "Picking, checking and moving between questions now click and chime (right answers climb with your streak), with a vibration on phones. The speaker in the quiz bar turns the sound off."
+    ]
+  },
+  {
     "id": "2026-10-02-constellations",
     "date": "2026-10-02",
     "title": "Constellations",

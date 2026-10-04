@@ -90,6 +90,21 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   says where the copies come from and offers "Do all N stars", a session of every copy; Back returns to the quest.
   Answering the lead counts only for the lead. Modules, exam sets and Most repeated still show every copy.
 
+## Sounds and haptics
+
+- `sfx` in `template.html`: every sound is synthesized in the browser, sample by sample, from a recipe (no audio
+  files): `tick` / `untick` (picking an option; each option is a note of a pentatonic scale via `playbackRate`),
+  `nav` (moving between questions), `right` (two celesta notes, pitched up with the streak of right answers;
+  every 5th in a row adds `sparkle`), `wrong` / `partial` (soft knocks on wood), `seal` (wax thud + stars, timed
+  to the stamp animation), `sparkle` (a constellation card opening), `finish` (a session ending at 80%+).
+  Levels in `LEVEL`, a little room reverb on the chimes in `WET`.
+- On by default (Abi wants it satisfying); quiet; iPhones follow the silent switch (`navigator.audioSession`
+  'ambient'). The audio context only starts on a tap. Switches: the speaker in the quiz bar and "Sounds" in the
+  footer (`efm3-mcq-sound`); "Vibration" in the footer on touch phones (`efm3-mcq-haptics`). Haptics: Android
+  `navigator.vibrate`, iOS the native switch trick (flipping an `<input type=checkbox switch>` plays the system tick).
+- Claude can't listen: when changing a sound, check its stats and spectrum offline (render the recipe in Node)
+  and ask Abi how it sounds on her phone.
+
 ## Quests
 
 - The current quest is set in `src/quests.json`: a title, the module, the exam date (`due`), the goal (% right),
@@ -134,6 +149,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
+node sound.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

@@ -62,6 +62,8 @@
     back: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5L6.5 10l5.5 5.5"/></svg>',
     next: '<svg class="fwd" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5l5.5 5.5L8 15.5"/></svg>',
     shuffle: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h3.2c1.4 0 2.6.7 3.4 1.8l1.8 2.4c.8 1.1 2 1.8 3.4 1.8H17M3 14h3.2c1.4 0 2.6-.7 3.4-1.8M14.5 3.5L17 6l-2.5 2.5M14.5 11.5L17 14l-2.5 2.5M11.4 7.8c.8-1.1 2-1.8 3.4-1.8H17"/></svg>',
+    sound: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.8h2.6L10 4.6v10.8l-3.9-3.2H3.5z"/><path d="M13 7.6a3.4 3.4 0 0 1 0 4.8M15.2 5.4a6.6 6.6 0 0 1 0 9.2"/></svg>',
+    mute: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.8h2.6L10 4.6v10.8l-3.9-3.2H3.5z"/><path d="M13.4 8.1l3.8 3.8M17.2 8.1l-3.8 3.8"/></svg>',
     search: '<svg class="s-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.8 12.8l4.4 4.4"/></svg>',
   };
   // the opening animation can be turned off from the footer; remembered in this browser
@@ -236,6 +238,240 @@
   }
   function stripTags(h) { const d = document.createElement('div'); d.innerHTML = h; return d.textContent; }
 
+  // ---------- sounds and haptics ----------
+  // Small UI sounds made in the browser, sample by sample (no audio files): a key's click when you pick an option
+  // (each option a note of a pentatonic scale, so picking reads like a little tune), a softer one when you unpick,
+  // a picker-wheel detent between questions, two celesta notes when you're right (climbing with your streak),
+  // soft knocks on wood when you're wrong, and a wax-seal thud with stars when a seal is earned. On by default,
+  // quiet; on iPhones Web Audio follows the silent switch. Haptics: vibration on Android, the system's tick on iOS.
+  const sfx = (() => {
+    const SOUND_KEY = 'efm3-mcq-sound', HAPTIC_KEY = 'efm3-mcq-haptics';
+    const pref = (k) => { try { return localStorage.getItem(k) !== 'off'; } catch (e) { return true; } };
+    const keep = (k, v) => { try { localStorage.setItem(k, v ? 'on' : 'off'); } catch (e) {} };
+    let soundOn = pref(SOUND_KEY), hapticOn = pref(HAPTIC_KEY);
+    const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const VIBRATE = !IOS && typeof navigator.vibrate === 'function' && navigator.maxTouchPoints > 0;
+    // loudness: the clicks clear but soft, the chimes about 10 dB above them (measured A-weighted)
+    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34 };
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05 };
+    const JITTER = { tick: 1, untick: 1, nav: 1 };
+    const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24] };
+    let ctx = null, out = null, verb = null, recipes = null, idle = 0;
+    const cache = {};
+
+    function recipesFor(sr) {
+      const TAU = 2 * Math.PI;
+      const make = dur => new Float32Array(Math.ceil(dur * sr));
+      // white noise with an exponential decay: the strike of a key or a mallet
+      const burst = (dur, decay, seed) => {
+        const r = mulberry(seed), x = make(dur);
+        for (let i = 0; i < x.length; i++) x[i] = (r() * 2 - 1) * Math.exp(-i / sr / decay);
+        return x;
+      };
+      const biquad = (x, b0, b1, b2, a0, a1, a2) => {
+        const y = new Float32Array(x.length); let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+        for (let n = 0; n < x.length; n++) {
+          const v = (b0 * x[n] + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2) / a0;
+          x2 = x1; x1 = x[n]; y2 = y1; y1 = v; y[n] = v;
+        }
+        return y;
+      };
+      const bandpass = (x, f, q) => { const w = TAU * f / sr, al = Math.sin(w) / (2 * q); return biquad(x, al, 0, -al, 1 + al, -2 * Math.cos(w), 1 - al); };
+      const lowpass = (x, f, q) => { const w = TAU * f / sr, al = Math.sin(w) / (2 * q), c = Math.cos(w); return biquad(x, (1 - c) / 2, 1 - c, (1 - c) / 2, 1 + al, -2 * c, 1 - al); };
+      const mix = (buf, x, t0, a) => { const n0 = Math.round(t0 * sr); for (let i = 0; i < x.length && n0 + i < buf.length; i++) buf[n0 + i] += a * x[i]; };
+      // one vibrating mode: a sine with a soft attack and an exponential decay, its pitch bent at the strike if asked
+      const mode = (buf, t0, f, a, decay, o = {}) => {
+        const att = o.att || 0.0015, bend = o.bend || 1, bendT = o.bendT || 0.006, n0 = Math.round(t0 * sr);
+        const len = Math.min(buf.length - n0, Math.ceil(decay * 8 * sr));
+        let ph = 0;
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          ph += TAU * f * (1 + (bend - 1) * Math.exp(-t / bendT)) / sr;
+          const env = (t < att ? Math.sin(Math.PI / 2 * t / att) ** 2 : 1) * Math.exp(-t / decay);
+          buf[n0 + i] += a * env * Math.sin(ph);
+        }
+      };
+      // a small metal bar under a soft mallet (celesta): the modes of a free bar, the high ones dying first
+      const bar = (buf, t0, f, a, decay, bright = 1) => {
+        mode(buf, t0, f, a, decay, { att: 0.0018 });
+        mode(buf, t0, f * 2.756, a * 0.24 * bright, decay * 0.16, { att: 0.0012 });
+        mode(buf, t0, f * 5.404, a * 0.07 * bright, decay * 0.06, { att: 0.0008 });
+        mix(buf, bandpass(burst(0.01, 0.0009, Math.round(f)), Math.min(f * 4, sr * 0.4), 1.2), t0, a * 0.18 * bright);
+      };
+      // a block of wood: low, dry, short
+      const wood = (buf, t0, f, a) => {
+        mode(buf, t0, f, a, 0.05, { att: 0.0012, bend: 1.06, bendT: 0.01 });
+        mode(buf, t0, f * 2.57, a * 0.32, 0.016, { att: 0.0008 });
+        mode(buf, t0, f * 0.42, a * 0.3, 0.03, { att: 0.002 });
+        mix(buf, lowpass(burst(0.012, 0.0016, Math.round(f * 3)), 2400, 0.7), t0, a * 0.5);
+      };
+      // no DC, a raised-cosine fade over the tail so nothing clicks or stops short, peak normalized
+      const done = (buf, peak) => {
+        const R = Math.exp(-TAU * 25 / sr); let x1 = 0, y1 = 0;
+        for (let i = 0; i < buf.length; i++) { const y = buf[i] - x1 + R * y1; x1 = buf[i]; y1 = y; buf[i] = y; }
+        const nf = Math.min(buf.length, Math.max(Math.round(0.008 * sr), Math.round(buf.length * 0.25)));
+        for (let i = 0; i < nf; i++) buf[buf.length - 1 - i] *= 0.5 - 0.5 * Math.cos(Math.PI * i / nf);
+        let m = 0; for (let i = 0; i < buf.length; i++) m = Math.max(m, Math.abs(buf[i]));
+        if (m) for (let i = 0; i < buf.length; i++) buf[i] *= peak / m;
+        return buf;
+      };
+      const C6 = 1046.5;
+      return {
+        // the click of a small key, its plastic body ringing for a few ms, a rounded thock under it; tuned to G6
+        tick() {
+          const b = make(0.05);
+          mix(b, bandpass(burst(0.01, 0.0007, 7), 3300, 0.7), 0, 4.6);
+          mode(b, 0, 1568, 0.5, 0.0062, { att: 0.0004, bend: 1.08, bendT: 0.002 });
+          mode(b, 0, 1568 * 2.756, 0.14, 0.0024, { att: 0.0003 });
+          mode(b, 0, 280, 0.36, 0.0085, { att: 0.001, bend: 1.4, bendT: 0.0035 });
+          return done(b, 0.92);
+        },
+        // the key coming back up: softer, shorter, a little lower
+        untick() {
+          const b = make(0.038);
+          mix(b, bandpass(burst(0.008, 0.0005, 11), 2500, 0.7), 0, 3.0);
+          mode(b, 0, 1254, 0.4, 0.0042, { att: 0.0004, bend: 0.95, bendT: 0.002 });
+          mode(b, 0, 230, 0.26, 0.0065, { att: 0.001, bend: 0.9, bendT: 0.003 });
+          return done(b, 0.72);
+        },
+        // one detent of a picker wheel
+        nav() {
+          const b = make(0.025);
+          mix(b, bandpass(burst(0.006, 0.0004, 3), 6000, 0.9), 0, 3.6);
+          mode(b, 0, 3100, 0.26, 0.002, { att: 0.0002 });
+          mode(b, 0, 340, 0.12, 0.0035, { att: 0.0008 });
+          return done(b, 0.55);
+        },
+        // two celesta notes, a fifth apart
+        right() {
+          const b = make(1.6);
+          bar(b, 0, C6, 0.55, 0.34);
+          mode(b, 0, C6 / 2, 0.1, 0.12, { att: 0.004 });
+          bar(b, 0.085, C6 * 1.5, 0.62, 0.5);
+          return done(b, 0.86);
+        },
+        // two soft knocks on wood, falling
+        wrong() {
+          const b = make(0.42);
+          wood(b, 0, 392, 0.9);
+          wood(b, 0.115, 329.6, 0.7);
+          return done(b, 0.8);
+        },
+        // one knock
+        partial() {
+          const b = make(0.3);
+          wood(b, 0, 392, 0.9);
+          return done(b, 0.72);
+        },
+        // a seal pressed into wax, then its stars lighting up one by one
+        seal() {
+          const b = make(2.0);
+          mode(b, 0, 58, 1.0, 0.16, { att: 0.003, bend: 1.9, bendT: 0.03 });
+          mix(b, lowpass(burst(0.12, 0.03, 21), 700, 0.7), 0, 1.2);
+          mix(b, bandpass(burst(0.08, 0.04, 22), 1300, 1.4), 0.004, 0.25);
+          [1, 5 / 4, 3 / 2, 2].forEach((k, i) => bar(b, 0.16 + i * 0.075, C6 * k, 0.42 + i * 0.04, 0.32 + i * 0.12, 0.8));
+          return done(b, 0.9);
+        },
+        // two faint stars
+        sparkle() {
+          const b = make(0.8);
+          bar(b, 0, C6 * 3 / 2, 0.5, 0.2, 0.6);
+          bar(b, 0.055, C6 * 9 / 4, 0.42, 0.24, 0.6);
+          return done(b, 0.6);
+        },
+        // the end of a session that went well: an arpeggio
+        finish() {
+          const b = make(2.2);
+          [1, 5 / 4, 3 / 2, 2].forEach((k, i) => bar(b, i * 0.08, C6 * k, 0.48 + i * 0.03, i === 3 ? 0.8 : 0.3 + i * 0.06));
+          mode(b, 0, C6 / 2, 0.12, 0.35, { att: 0.01 });
+          return done(b, 0.86);
+        }
+      };
+    }
+    // a small, dark room for the chimes
+    function room(c) {
+      const sr = c.sampleRate, len = Math.round(sr * 1.1), ir = c.createBuffer(2, len, sr);
+      for (let ch = 0; ch < 2; ch++) {
+        const d = ir.getChannelData(ch), r = mulberry(97 + ch); let lp = 0;
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          lp += 0.35 * ((r() * 2 - 1) - lp);
+          d[i] = t < 0.007 ? 0 : lp * Math.exp(-t / 0.22);
+        }
+      }
+      return ir;
+    }
+    function buffer(name) {
+      if (!cache[name]) {
+        const x = recipes[name]();
+        const b = ctx.createBuffer(1, x.length, ctx.sampleRate);
+        b.getChannelData(0).set(x);
+        cache[name] = b;
+      }
+      return cache[name];
+    }
+    // the audio context starts on a tap (browsers allow sound only after one); everything else renders when idle
+    function context() {
+      if (ctx) { if (ctx.state !== 'running') ctx.resume().catch(() => {}); return ctx; }
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC || (navigator.userActivation && !navigator.userActivation.isActive)) return null;
+      try { if (navigator.audioSession) navigator.audioSession.type = 'ambient'; } catch (e) {}
+      try { ctx = new AC({ latencyHint: 'interactive' }); } catch (e) { ctx = null; return null; }
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -10; comp.knee.value = 8; comp.ratio.value = 3; comp.attack.value = 0.002; comp.release.value = 0.15;
+      out = ctx.createGain(); out.gain.value = 0.9;
+      out.connect(comp); comp.connect(ctx.destination);
+      verb = ctx.createConvolver(); verb.buffer = room(ctx); verb.connect(out);
+      recipes = recipesFor(ctx.sampleRate);
+      const rest = Object.keys(LEVEL);
+      const later = () => { const n = rest.shift(); if (!n) return; buffer(n); idle = setTimeout(later, 30); };
+      idle = setTimeout(later, 120);
+      if (ctx.state !== 'running') ctx.resume().catch(() => {});
+      return ctx;
+    }
+    function buzz(name, delay) {
+      if (!hapticOn || !(name in BUZZ) || !(VIBRATE || IOS)) return;
+      const go = () => {
+        if (VIBRATE) {
+          try { if (!navigator.userActivation || navigator.userActivation.hasBeenActive) navigator.vibrate(BUZZ[name]); } catch (e) {}
+          return;
+        }
+        try {   // iOS has no vibration API, but flipping a native switch plays the system's own haptic tick
+          const l = document.createElement('label'), i = document.createElement('input');
+          i.type = 'checkbox'; i.setAttribute('switch', ''); l.setAttribute('aria-hidden', 'true'); l.style.display = 'none';
+          l.appendChild(i); document.head.appendChild(l); l.click(); l.remove();
+        } catch (e) {}
+      };
+      if (delay) setTimeout(go, delay * 1000); else go();
+    }
+    // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
+    function play(name, o = {}) {
+      if (soundOn && context()) {
+        try {
+          const src = ctx.createBufferSource(), g = ctx.createGain();
+          src.buffer = buffer(name);
+          src.playbackRate.value = (o.rate || 1) * (JITTER[name] ? 1 + (Math.random() * 2 - 1) * 0.008 : 1);
+          g.gain.value = LEVEL[name] * (JITTER[name] ? 0.94 + Math.random() * 0.12 : 1);
+          src.connect(g); g.connect(out);
+          if (WET[name]) { const w = ctx.createGain(); w.gain.value = WET[name]; g.connect(w); w.connect(verb); }
+          src.start(ctx.currentTime + (o.delay || 0));
+        } catch (e) {}
+      }
+      if (!o.quiet) buzz(name, o.delay);
+    }
+    return {
+      play,
+      sound: () => soundOn,
+      haptics: () => hapticOn,
+      touch: VIBRATE || IOS,
+      setSound(v) { soundOn = v; keep(SOUND_KEY, v); if (v) play('tick', { quiet: true }); },
+      setHaptics(v) { hapticOn = v; keep(HAPTIC_KEY, v); if (v) buzz('tick'); }
+    };
+  })();
+  // pentatonic steps: the five options play G A B D E, and the "right" chime climbs them with your streak
+  const PENTA = [1, 9 / 8, 5 / 4, 3 / 2, 5 / 3, 2, 9 / 4, 5 / 2];
+  let streak = 0;
+
   // ---------- actions ----------
   function startSession(topicId, setId) {
     const qs = questionsFor(setId ? 'all' : S.type, topicId, setId);
@@ -296,6 +532,7 @@
     const k = a.sel.indexOf(i);
     if (k === -1) a.sel.push(i); else a.sel.splice(k, 1);
     a.sel.sort((x, y) => x - y);
+    sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
     save();
     const btn = app.querySelector(`.opt[data-opt="${i}"]`);
     if (!btn) { render(false); return; }
@@ -311,26 +548,41 @@
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
     if (!(q.id in S.first)) S.first[q.id] = a.correct;
+    if (a.correct) {
+      streak++;
+      sfx.play('right', { rate: PENTA[Math.min(streak - 1, 5)] });
+      if (streak % 5 === 0) sfx.play('sparkle', { delay: 0.24, quiet: true });
+    } else {
+      streak = 0;
+      sfx.play(a.sel.some(i => q.answer.includes(i)) ? 'partial' : 'wrong');
+    }
     save();
     justChecked = true;
     render(false, 'verdict');
     justChecked = false;
   }
-  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; save(); render(false); }
+  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; sfx.play('untick'); save(); render(false); }
   function go(delta) {
     const sess = S.session; const n = sess.idx + delta;
     if (n < 0) return;
-    if (n >= sess.qids.length) { S.view = 'done'; save(); render(true, null, 'nav'); return; }
+    if (n >= sess.qids.length) {
+      const st = stats(sess.order.map(id => Q.get(id))), seen = st.right + st.wrong;
+      sfx.play(seen && st.right / seen >= 0.8 ? 'finish' : 'nav');
+      S.view = 'done'; save(); render(true, null, 'nav'); return;
+    }
+    sfx.play('nav');
     sess.idx = n; save(); render(true, null, delta > 0 ? 'next' : 'prev');
   }
   function jump(i) {
     const from = S.view === 'quiz' ? S.session.idx : -1;
+    if (i !== from) sfx.play('nav');
     S.session.idx = i; S.view = 'quiz'; save();
     render(true, null, from === -1 ? 'nav' : (i >= from ? 'next' : 'prev'));
   }
   function toggleShuffle() {
     const sess = S.session; const cur = sess.qids[sess.idx];
     sess.shuffle = !sess.shuffle;
+    sfx.play(sess.shuffle ? 'tick' : 'untick');
     if (sess.shuffle) { sess.qids = shuffled(sess.order); sess.idx = 0; }
     else { sess.qids = sess.order.slice(); sess.idx = Math.max(0, sess.qids.indexOf(cur)); }
     save(); render(true, null, 'next');
@@ -607,7 +859,10 @@
     if (changed) save();
     const els = [...app.querySelectorAll('[data-stamp]')];
     if (!els.length) return;
-    const fire = el => { el.classList.add('stamp'); rec[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save(); };
+    const fire = el => {
+      el.classList.add('stamp'); rec[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save();
+      sfx.play('seal', { delay: reduceMotion() ? 0 : 0.44 });
+    };
     if (stampObs) stampObs.disconnect();
     if (!('IntersectionObserver' in window)) { els.forEach(fire); return; }
     stampObs = new IntersectionObserver(entries => entries.forEach(e => {
@@ -788,6 +1043,7 @@
     return `<footer class="foot">
       <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
+      <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       <p>Made by the Labubu</p>
     </footer>`;
@@ -920,6 +1176,10 @@
     const star = ([x, y]) => `<path class="cs" d="M${x.toFixed(1)} ${(y - 3.4).toFixed(1)}l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z"/>`;
     return `<svg class="cst-art" viewBox="0 0 ${W} 17" width="${W}" height="17" aria-hidden="true" focusable="false"><path class="cl" d="${line}"/>${pts.map(star).join('')}</svg>`;
   }
+  function soundBtn() {
+    const on = sfx.sound();
+    return `<button class="btn quiet toggle snd" type="button" data-act="sound" aria-pressed="${on}" title="${on ? 'Sounds on' : 'Sounds off'}">${on ? ICON.sound : ICON.mute}<span class="sr-label">Sounds</span></button>`;
+  }
   function cstChip(q, stars) {
     return `<button type="button" class="cst-chip" data-act="cst" aria-expanded="false" aria-controls="cst-card">${cstArt(stars.length, q.id)}<span>Constellation · ${stars.length} stars</span></button>`;
   }
@@ -931,7 +1191,7 @@
       <button type="button" class="btn cc-go" data-act="stars">Do all ${stars.length} stars ${ICON.next}</button>
     </div>`;
   }
-  let cstTimer = null;
+  let cstTimer = null, sparkleAt = 0;
   function cstOpen(on, now) {
     const card = document.getElementById('cst-card'), chip = app.querySelector('.cst-chip');
     if (!card || !chip) return;
@@ -944,6 +1204,7 @@
     const box = card.parentElement.getBoundingClientRect(), c = chip.getBoundingClientRect();
     card.style.top = (c.bottom - box.top + 8) + 'px';
     card.style.left = Math.max(12, Math.min(c.left - box.left, box.width - card.offsetWidth - 12)) + 'px';
+    if (!card.classList.contains('on') && Date.now() - sparkleAt > 2000) { sparkleAt = Date.now(); sfx.play('sparkle', { quiet: true }); }
     card.classList.add('on'); chip.setAttribute('aria-expanded', 'true');
   }
 
@@ -1003,6 +1264,7 @@
     const others = rep ? [...new Set(rep.q.map(id => Q.get(id).source))].filter(s => s !== q.source && SRC.has(s)).sort((x, y) => SRC_ORDER.get(x) - SRC_ORDER.get(y)) : [];
     const alsoIn = others.length ? `<div class="alsoin"><span>Also in</span>${others.map(s => `<span class="pill">${esc(SRC.get(s).label)}</span>`).join('')}</div>` : '';
     const right = `<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
+      ${soundBtn()}
       ${sess.qids.length > 2 ? `<button class="btn quiet toggle" type="button" data-act="shuffle" aria-pressed="${!!sess.shuffle}" title="Shuffle question order">${ICON.shuffle}<span class="sr-label">Shuffle</span></button>` : ''}`;
     app.innerHTML = `
       ${barHTML('back', '', sessionTitle(sess), right)}
@@ -2096,6 +2358,14 @@
         break;
       }
       case 'intro-replay': replayIntro(); break;
+      case 'sound': case 'sound-toggle': {
+        sfx.setSound(!sfx.sound());
+        const on = sfx.sound();
+        app.querySelectorAll('[data-act="sound"]').forEach(b => { b.setAttribute('aria-pressed', String(on)); b.title = on ? 'Sounds on' : 'Sounds off'; b.innerHTML = (on ? ICON.sound : ICON.mute) + '<span class="sr-label">Sounds</span>'; });
+        app.querySelectorAll('[data-act="sound-toggle"]').forEach(b => { b.setAttribute('aria-checked', String(on)); b.textContent = on ? 'on' : 'off'; });
+        break;
+      }
+      case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
       case 'stars': practiceStars(curQ().id); break;
     }

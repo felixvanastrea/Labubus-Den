@@ -52,6 +52,8 @@ body[data-view="quiz"] #sky, body[data-view="done"] #sky { opacity: .4; }
 .btn.quiet { border-color: transparent; padding: 0 .75rem; color: var(--ink-2); }
 .btn.quiet:hover { color: var(--ink); background: var(--plate-2); }
 .btn.quiet.toggle[aria-pressed="true"] { color: var(--ink); background: var(--plate-2); border-color: var(--hair-2); }
+.btn.quiet.toggle.snd[aria-pressed="true"] { color: var(--ink-2); background: transparent; border-color: transparent; }
+.btn.quiet.toggle.snd:hover { color: var(--ink); background: var(--plate-2); }
 .btn.danger { color: var(--wrong); }
 .btn svg { width: 16px; height: 16px; flex: none; transition: transform .35s var(--ease); }
 .btn:hover svg.fwd { transform: translateX(3px); }
