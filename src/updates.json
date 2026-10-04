@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-04-exam",
+    "date": "2026-10-04",
+    "title": "Exam mode",
+    "items": [
+      "Take the quest as a timed exam: its 48 questions in a random order, one minute each, marked out of 20.",
+      "All the right answers ticked give the point, at least half of them half a point, and any wrong tick nothing for that question. After handing in, go through every question with its answer and explanation."
+    ]
+  },
+  {
     "id": "2026-10-04-sounds",
     "date": "2026-10-04",
     "title": "Sounds",

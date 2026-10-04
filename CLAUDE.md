@@ -117,6 +117,23 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
+## Exam mode
+
+- The quest taken as a timed exam, graded the way Abi asked: every quest question with a key, shuffled, one minute
+  each (`EXAM_MS_PER_Q`), marked out of 20. Per question: all its right answers ticked = 1 point; at least half of
+  them and no wrong tick = 0.5 (three right answers: two ticked 0.5, one ticked 0); any wrong tick, or a blank = 0
+  for that question only. Mark = points / questions × 20, two decimals (`examPoints`, `examMark`, `examSummary`).
+- While it runs: no verdict, key, explanations, report link or constellation; the strip only shows what's ticked.
+  "Hand in" asks first (blanks and time left; Escape or "Keep going" closes it). At zero it hands itself in as it is,
+  on any page, and on load if the time ran out while the page was closed. Warnings at 5 and 1 minutes.
+- State: `S.exam` (shuffled `qids`, `picks`, `start`, `end`, `handed`, `auto`), kept apart from practice answers,
+  and `S.examLog` (the last 20 marks). A handed-in exam is regraded against the current key on load, like
+  practice answers. "Reset all answers" clears both; "Reset this quest" doesn't touch them.
+- Screens (`S.view = 'exam'`, `S.examScreen`): the rules (an hourglass window that lights up with the best mark),
+  the running exam (clock and a running-down line in the bar), the results (mark, full / half / none / blank,
+  by topic, past exams) and the review (picks against the key, the point and why, the explanations). The quest card
+  has "Exam mode"; while an exam runs it and the hero say "Back to the exam" with the clock.
+
 ## Update log
 
 - `src/updates.json`, newest first: `id`, `date`, `title`, `items` (one short line each), an optional `kind`
@@ -149,7 +166,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js
+node sound.js; node exam.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

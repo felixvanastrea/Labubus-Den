@@ -65,6 +65,8 @@
     sound: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.8h2.6L10 4.6v10.8l-3.9-3.2H3.5z"/><path d="M13 7.6a3.4 3.4 0 0 1 0 4.8M15.2 5.4a6.6 6.6 0 0 1 0 9.2"/></svg>',
     mute: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.8h2.6L10 4.6v10.8l-3.9-3.2H3.5z"/><path d="M13.4 8.1l3.8 3.8M17.2 8.1l-3.8 3.8"/></svg>',
     search: '<svg class="s-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.8 12.8l4.4 4.4"/></svg>',
+    hourglass: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2.5h10M5 17.5h10M6.2 2.5c0 4 3.8 5 3.8 7.5S6.2 13.5 6.2 17.5M13.8 2.5c0 4-3.8 5-3.8 7.5s3.8 3.5 3.8 7.5"/></svg>',
+    half: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 3.5a6.5 6.5 0 0 0 0 13z" fill="currentColor"/></svg>',
   };
   // the opening animation can be turned off from the footer; remembered in this browser
   const INTRO_KEY = 'efm3-mcq-intro';
@@ -123,13 +125,18 @@
     'technical-communication': { // a speech bubble
       p: [[50, 64], [26, 44], [74, 44], [82, 54], [82, 72], [74, 82], [48, 82], [34, 96], [36, 82], [26, 82], [18, 72], [18, 54], [38, 64], [62, 64]],
       e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 1]]
+    },
+    'hourglass': { // exam mode: an hourglass, its sand falling from the waist onto a heap
+      p: [[50, 66], [50, 86], [42, 96], [58, 96], [30, 104], [70, 104], [35, 92], [65, 92], [35, 40], [65, 40], [30, 28], [70, 28], [42, 50], [58, 50]],
+      e: [[10, 11], [4, 5], [10, 8], [8, 0], [0, 6], [6, 4], [11, 9], [9, 0], [0, 7], [7, 5], [12, 13], [2, 1], [1, 3], [0, 1]]
     }
   };
   const ARCH_OUT = 'M6 124V60A58 58 0 0 1 50 3.72A58 58 0 0 1 94 60V124';
   const ARCH_IN = 'M10 124V60A54 54 0 0 1 50 7.85A54 54 0 0 1 90 60V124';
 
   // ---------- state ----------
-  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0 };
+  let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
+    exam: null, examLog: [], examScreen: 'intro' };
   let storageOK = false;
   function load() {
     try {
@@ -172,11 +179,13 @@
       if (!S.session.qids.length) S.session = null;
       else S.session.idx = Math.min(Math.max(0, S.session.idx | 0), S.session.qids.length - 1);
     }
+    sanitizeExam();
     if (S.type !== 'all' && !TYPES.includes(S.type)) S.type = 'all';
     if (S.topicId && !TOPIC.has(S.topicId)) S.topicId = null;
     if ((S.view === 'quiz' || S.view === 'done') && !S.session) S.view = 'home';
     if (S.view === 'topic' && !S.topicId) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates'].includes(S.view)) S.view = 'home';
+    if (S.view === 'exam' && !QUEST && !S.exam) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam'].includes(S.view)) S.view = 'home';
     if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
     // a first visit starts with nothing new: everything in the log is new to them anyway
     if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
@@ -599,6 +608,7 @@
   let lastKey = null;
   function screenKey() {
     if (S.view === 'quiz' && S.session) return 'quiz:' + S.session.idx + ':' + S.session.qids[S.session.idx];
+    if (S.view === 'exam') { const x = examScreen(); return 'exam-' + x + (x === 'run' ? ':' + S.exam.idx : x === 'review' ? ':' + S.exam.ridx : ''); }
     if (S.view === 'done') return 'done';
     if (S.view === 'topic') return 'topic:' + S.topicId;
     return S.view;
@@ -636,6 +646,7 @@
     const keepScroll = !scrollTop && strip ? strip.scrollLeft : null;
     document.body.dataset.view = S.view;
     if (S.view === 'quiz' && S.session) renderQuiz(focusWhat);
+    else if (S.view === 'exam') renderExam(focusWhat);
     else if (S.view === 'done' && S.session) renderDone();
     else if (S.view === 'topic' && S.topicId) renderTopic();
     else if (S.view === 'repeats') renderRepeats();
@@ -889,6 +900,7 @@
     const count = ended ? '' : qi.days === 0
       ? `<p class="qp-count today"><b>Today</b><span>exam day, good luck</span></p>`
       : `<p class="qp-count"><b class="num">${qi.days}</b><span>${qi.days === 1 ? 'day left' : 'days left'}</span></p>`;
+    const exam = examCardHTML();
     return `<section class="quest wrap" id="quest" aria-labelledby="quest-h">
       <div class="quest-plate plate${qi.done ? ' is-done' : ''}">
         <div class="qp-main">
@@ -897,10 +909,12 @@
           <p class="qp-note">${esc(QUEST.note)} Answer all ${fmtN(qi.st.keyed)} and get ${QUEST.goal}% right to earn the seal.</p>
           <div class="qp-progress">${barLine(qi.st)}<p class="qp-stats">${line}</p></div>
           <div class="qp-actions">
-            <button class="btn primary" type="button" data-act="quest-go">${nx.label} ${ICON.next}</button>
+            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${nx.label} ${ICON.next}</button>
+            ${exam.btn}
             ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
             ${resetHTML('quest')}
           </div>
+          ${exam.line}
         </div>
         <div class="qp-side">${count}${sealsHTML(qi)}</div>
         <ul class="ledger qp-topics" aria-label="Quest topics">${topics}</ul>
@@ -918,6 +932,428 @@
     </div>`;
   }
 
+  // ---------- exam mode ----------
+  // The quest as a timed exam: its questions in a random order, one minute each, graded out of 20. A question is
+  // worth one point: every right answer ticked, the full point; at least half of them and no wrong one, half a point;
+  // a single wrong tick, nothing for that question (the rest of the exam keeps its points). When the time is up the
+  // exam is handed in as it is, even if the page was closed. Exam picks live in S.exam, apart from practice answers;
+  // S.examLog keeps the last scores. Nothing shows the answers before the exam is handed in.
+  const EXAM_MS_PER_Q = 60000, EXAM_LOG_MAX = 20;
+  let examConfirm = false, examTimer = null, examWarned = {}, examCountUp = false;
+  const examQs = () => QUEST ? QUEST.q.filter(id => Q.has(id) && Q.get(id).answer.length) : [];
+  const examRunning = () => !!(S.exam && !S.exam.handed);
+  const examLeft = () => S.exam ? Math.max(0, S.exam.end - Date.now()) : 0;
+  const fmtPts = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  function fmtClock(ms) { const s = Math.ceil(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; }
+  function fmtDur(ms) { const s = Math.round(ms / 1000), m = Math.floor(s / 60); return m ? `${m} min${s % 60 ? ` ${s % 60} s` : ''}` : `${s} s`; }
+  // the screen the exam view shows: the running exam, its results, the review of its questions, or the rules
+  function examScreen() {
+    if (examRunning()) return 'run';
+    if (S.exam && (S.examScreen === 'results' || S.examScreen === 'review')) return S.examScreen;
+    return 'intro';
+  }
+  function examPoints(q, sel) {
+    if (!q.answer.length || !sel || !sel.length) return 0;
+    if (sel.some(i => !q.answer.includes(i))) return 0;
+    if (sel.length >= q.answer.length) return 1;
+    return sel.length * 2 >= q.answer.length ? 0.5 : 0;
+  }
+  // how one question scored, and why, in words
+  function examMark(q, sel) {
+    sel = sel || [];
+    const n = q.answer.length, hit = sel.filter(i => q.answer.includes(i)), bad = sel.filter(i => !q.answer.includes(i));
+    const pts = examPoints(q, sel);
+    if (!sel.length) return { pts, cls: 'blank', label: 'Blank', why: 'Nothing ticked, so no point.' };
+    if (bad.length) return { pts, cls: 'zero', label: 'No point', why: `${letters(bad)} ${bad.length > 1 ? 'are' : 'is'} wrong, so this question scores nothing${hit.length ? ', even with the right ones ticked' : ''}.` };
+    if (pts === 1) return { pts, cls: 'full', label: '1 point', why: n > 1 ? `All ${n} right answers ticked, and nothing else.` : 'The right answer, and nothing else.' };
+    if (pts === 0.5) return { pts, cls: 'half', label: 'Half a point', why: `${hit.length} of the ${n} right answers ticked, and no wrong one.` };
+    return { pts, cls: 'zero', label: 'No point', why: `Only ${hit.length} of the ${n} right answers ticked: half a point needs at least ${Math.ceil(n / 2)}.` };
+  }
+  function examSummary(ex, ids) {
+    const s = { points: 0, total: 0, full: 0, half: 0, zero: 0, blank: 0 };
+    for (const id of ids || ex.qids) {
+      const q = Q.get(id); if (!q || !q.answer.length) continue;
+      const m = examMark(q, ex.picks[id]);
+      s.total++; s.points += m.pts; s[m.cls]++;
+    }
+    s.n20 = s.total ? Math.round(s.points / s.total * 2000) / 100 : 0;
+    s.used = Math.max(0, Math.min(ex.handed || Date.now(), ex.end) - ex.start);
+    return s;
+  }
+  function examEntry(ex) {
+    const s = examSummary(ex);
+    return { id: ex.id, quest: ex.quest, date: ex.handed, n20: s.n20, points: s.points, total: s.total, used: s.used, auto: !!ex.auto };
+  }
+  const examLogFor = quest => S.examLog.filter(e => e.quest === quest);
+  function sanitizeExam() {
+    const ex = S.exam;
+    if (ex && typeof ex === 'object' && Array.isArray(ex.qids) && ex.start > 0 && ex.end > ex.start) {
+      ex.qids = ex.qids.filter(id => Q.has(id));
+      const picks = {};
+      for (const id of ex.qids) {
+        const p = ex.picks && ex.picks[id], n = Q.get(id).options.length;
+        if (!Array.isArray(p)) continue;
+        const v = [...new Set(p.filter(i => Number.isInteger(i) && i >= 0 && i < n))].sort((a, b) => a - b);
+        if (v.length) picks[id] = v;
+      }
+      ex.picks = picks;
+      const last = ex.qids.length - 1;
+      ex.idx = Math.min(Math.max(0, ex.idx | 0), last); ex.ridx = Math.min(Math.max(0, ex.ridx | 0), last);
+      ex.handed = ex.handed > 0 ? ex.handed : 0;
+      if (!ex.qids.length) S.exam = null;
+    } else S.exam = null;
+    S.examLog = Array.isArray(S.examLog) ? S.examLog.filter(e => e && typeof e.n20 === 'number' && e.date > 0).slice(0, EXAM_LOG_MAX) : [];
+    if (!['intro', 'results', 'review'].includes(S.examScreen)) S.examScreen = 'intro';
+  }
+  // on load: an exam whose time ran out while the page was closed is handed in as it was; a handed-in exam is
+  // regraded against today's answer key, like practice answers
+  function examBoot() {
+    if (examRunning() && Date.now() >= S.exam.end) {
+      handIn(true, true);
+      if (S.view === 'exam') S.examScreen = 'results';
+    }
+    if (S.exam && S.exam.handed) {
+      const i = S.examLog.findIndex(e => e.id === S.exam.id);
+      if (i !== -1) S.examLog[i] = examEntry(S.exam);
+    }
+    examClock();
+  }
+
+  // actions
+  function openExam() {
+    if (!QUEST && !examRunning()) return;
+    if (S.view !== 'exam') S.scrollBack = window.scrollY;
+    examConfirm = false;
+    if (!examRunning()) S.examScreen = 'intro';
+    S.view = 'exam'; confirmReset = false; save(); render(true, null, 'nav');
+  }
+  function openExamResults() {
+    if (!S.exam || !S.exam.handed) return;
+    if (S.view !== 'exam') S.scrollBack = window.scrollY;
+    S.examScreen = 'results'; S.view = 'exam'; save(); render(true, null, 'nav');
+  }
+  function startExam() {
+    const ids = examQs(); if (!ids.length) return;
+    const now = Date.now();
+    S.exam = { id: now.toString(36), quest: QUEST.id, title: QUEST.title, qids: shuffled(ids), idx: 0, ridx: 0, picks: {},
+      start: now, end: now + ids.length * EXAM_MS_PER_Q, handed: 0, auto: false };
+    examConfirm = false; examWarned = {};
+    S.view = 'exam'; save();
+    sfx.play('nav');
+    render(true, null, 'nav');
+    examClock();
+  }
+  const examQ = () => Q.get(S.exam.qids[S.exam.idx]);
+  const examAnswered = () => S.exam.qids.filter(id => S.exam.picks[id]).length;
+  function examToggle(i) {
+    if (!examRunning()) return;
+    const q = examQ(); if (!q || i >= q.options.length) return;
+    const sel = S.exam.picks[q.id] || [];
+    const k = sel.indexOf(i);
+    if (k === -1) sel.push(i); else sel.splice(k, 1);
+    sel.sort((x, y) => x - y);
+    if (sel.length) S.exam.picks[q.id] = sel; else delete S.exam.picks[q.id];
+    sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
+    save();
+    const btn = app.querySelector(`.opt[data-opt="${i}"]`);
+    if (!btn || examConfirm) { examConfirm = false; render(false); return; }
+    btn.setAttribute('aria-pressed', String(k === -1));
+    const cell = app.querySelector('.strip .cell.cur');
+    if (cell) { cell.classList.toggle('ticked', sel.length > 0); cell.setAttribute('aria-label', `Question ${S.exam.idx + 1}, ${sel.length ? 'answered' : 'blank'}`); }
+    const n = app.querySelector('[data-exam-answered]');
+    if (n) n.textContent = `${fmtN(examAnswered())} of ${fmtN(S.exam.qids.length)} answered`;
+  }
+  // d: +1 / -1 through the running exam, or through the review once it's handed in
+  function examGo(d) {
+    const ex = S.exam; if (!ex) return;
+    const run = examRunning(), k = run ? 'idx' : 'ridx', n = ex[k] + d;
+    if (n < 0) return;
+    if (n >= ex.qids.length) {
+      if (run) askHandIn();
+      else { S.examScreen = 'results'; save(); sfx.play('nav'); render(true, null, 'back'); }
+      return;
+    }
+    examConfirm = false;
+    sfx.play('nav');
+    ex[k] = n; save(); render(true, null, d > 0 ? 'next' : 'prev');
+  }
+  function examJump(i) {
+    const ex = S.exam; if (!ex || i < 0 || i >= ex.qids.length) return;
+    if (examRunning()) {
+      if (i === ex.idx) return;
+      const from = ex.idx; examConfirm = false; sfx.play('nav');
+      ex.idx = i; save(); render(true, null, i > from ? 'next' : 'prev');
+      return;
+    }
+    const from = S.examScreen === 'review' ? ex.ridx : -1;
+    if (i !== from) sfx.play('nav');
+    ex.ridx = i; S.examScreen = 'review'; save();
+    render(true, null, from === -1 ? 'nav' : i >= from ? 'next' : 'prev');
+  }
+  function askHandIn() {
+    if (!examRunning()) return;
+    examConfirm = true; sfx.play('tick', { quiet: true }); render(false, 'confirm');
+  }
+  // auto: the time ran out (handed in at the deadline); quietly: on page load, no sound and no screen change
+  function handIn(auto, quietly) {
+    const ex = S.exam; if (!ex || ex.handed) return;
+    ex.handed = auto ? ex.end : Date.now(); ex.auto = !!auto;
+    examConfirm = false; examStop();
+    const e = examEntry(ex);
+    S.examLog = [e, ...S.examLog.filter(x => x.id !== ex.id)].slice(0, EXAM_LOG_MAX);
+    S.examScreen = 'results';
+    if (quietly) { save(); return; }
+    if (S.view === 'exam' || !auto) {
+      const t = document.getElementById('toast'); if (t) t.classList.remove('on');   // no "five minutes left" over the mark
+      S.view = 'exam'; examCountUp = true; save();
+      sfx.play(e.n20 >= 10 ? 'finish' : 'nav');
+      render(true, null, 'nav');
+    } else {
+      save(); toast('Time’s up: your exam was handed in');
+      if (S.view === 'home') render(false);
+    }
+  }
+  function examBack() {
+    examConfirm = false;
+    if (S.view === 'exam' && examScreen() === 'review') { S.examScreen = 'results'; save(); render(true, null, 'back'); return; }
+    S.view = 'home'; save();
+    render(true, null, 'back', () => { if (S.scrollBack) window.scrollTo(0, S.scrollBack); });
+  }
+
+  // the clock: one tick every quarter second while an exam runs, whatever page is open
+  function examStop() { clearInterval(examTimer); examTimer = null; }
+  function examClock() {
+    examStop();
+    if (!examRunning()) return;
+    examTick();
+    if (examRunning()) examTimer = setInterval(examTick, 250);
+  }
+  function examTick() {
+    if (!examRunning()) { examStop(); return; }
+    const left = examLeft();
+    if (left <= 0) { handIn(true); return; }
+    const txt = fmtClock(left), low = left <= 5 * 60000;
+    document.querySelectorAll('[data-exam-clock]').forEach(el => { if (el.textContent !== txt) el.textContent = txt; });
+    const line = app.querySelector('.ex-time');
+    if (line) { line.style.transform = `scaleX(${(left / (S.exam.end - S.exam.start)).toFixed(4)})`; line.classList.toggle('low', low); }
+    const clk = app.querySelector('.ex-clock');
+    if (clk) { clk.classList.toggle('low', low); clk.classList.toggle('last', left <= 60000); }
+    // a word at five minutes and at one minute (only when it's crossed, not when the page opens past it)
+    for (const [ms, msg] of [[5 * 60000, 'Five minutes left'], [60000, 'One minute left']]) {
+      if (left <= ms && !examWarned[ms]) {
+        examWarned[ms] = true;
+        if (left > ms - 5000) { toast(msg); sfx.play('nav'); }
+      }
+    }
+  }
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && examRunning()) examTick(); });
+
+  // ---------- exam screens ----------
+  function renderExam(focusWhat) {
+    const scr = examScreen();
+    if (scr === 'intro' && !QUEST) { S.view = 'home'; document.body.dataset.view = 'home'; renderHome(); return; }
+    if (scr === 'run') renderExamRun(focusWhat);
+    else if (scr === 'review') renderExamReview(focusWhat);
+    else if (scr === 'results') renderExamResults();
+    else renderExamIntro();
+  }
+  function examPastHTML(log) {
+    if (!log.length) return '';
+    const best = Math.max(...log.map(e => e.n20)), bestId = log.find(e => e.n20 === best).id;
+    const when = d => `${d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })}, ${d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
+    const rows = log.map(e => `<li class="xl-row${e.id === bestId && log.length > 1 ? ' best' : ''}">
+        <span class="xl-main"><span class="xl-date">${esc(when(new Date(e.date)))}${e.id === bestId && log.length > 1 ? ' <span class="xl-best">✦ best</span>' : ''}</span>
+        <span class="xl-meta">${fmtPts(e.points)} of ${fmtN(e.total)} points · ${e.auto ? 'the time ran out' : `handed in after ${esc(fmtDur(e.used))}`}</span></span>
+        <span class="xl-score num"><b>${fmtPts(e.n20)}</b><span>/20</span></span>
+      </li>`).join('');
+    return `<section class="ex-past" aria-labelledby="xp-h"><h2 class="h3" id="xp-h">Your exams</h2><ol class="ledger xl">${rows}</ol></section>`;
+  }
+  function renderExamIntro() {
+    const n = examQs().length, mins = Math.round(n * EXAM_MS_PER_Q / 60000), log = examLogFor(QUEST.id);
+    const best = log.length ? Math.max(...log.map(e => e.n20)) : 0;
+    app.innerHTML = `
+      ${barHTML('exam-back', 'Quest', 'Exam mode')}
+      <main class="wrap narrow stage">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">${esc(QUEST.title)} · ${fmtN(n)} questions · ${fmtN(mins)} minutes</p>
+            <h1 class="h1">Exam mode</h1>
+            <p class="ph-lead">The quest’s ${fmtN(n)} questions as one timed exam, graded out of 20.</p>
+          </div>
+          <div class="ph-art">${windowSVG('hourglass', { right: best / 20, keyed: 1 })}</div>
+        </header>
+        <ol class="ex-rules">
+          <li><b>One minute per question.</b> ${fmtN(mins)} minutes for all ${fmtN(n)}, in a random order. Move between them and change your picks until you hand in.</li>
+          <li><b>One point per question.</b> Tick every right answer for the full point, or at least half of them for half a point. A single wrong tick and that question scores nothing, but your other points stay. With three right answers: all three give 1, two give 0.5, one gives 0.</li>
+          <li><b>No answers until the end.</b> Hand in when you’re done. When the time runs out, the exam is handed in as it is, even if you left the page. Then you get your mark out of 20 and every question with its answer and explanation.</li>
+        </ol>
+        <div class="row ex-go"><button class="btn primary" type="button" data-act="exam-start">${ICON.hourglass}Start the exam ${ICON.next}</button><span class="ex-go-note">The clock starts right away.</span></div>
+        ${examPastHTML(log)}
+        ${footHTML()}
+      </main>`;
+  }
+  function renderExamRun(focusWhat) {
+    const ex = S.exam, q = examQ(), sel = ex.picks[q.id] || [];
+    const left = examLeft(), low = left <= 5 * 60000, total = ex.qids.length, last = ex.idx === total - 1;
+    const cells = ex.qids.map((id, i) => `<button type="button" class="cell${ex.picks[id] ? ' ticked' : ''}${i === ex.idx ? ' cur' : ''}" data-jump="${i}" aria-label="Question ${i + 1}, ${ex.picks[id] ? 'answered' : 'blank'}"${i === ex.idx ? ' aria-current="true"' : ''}>${i + 1}</button>`).join('');
+    const opts = q.options.map((html, i) => `<button type="button" class="opt" data-opt="${i}" style="--i:${i}" aria-pressed="${sel.includes(i)}">
+        <span class="bub">${LETTERS[i]}</span><span class="otext">${html}</span><span class="otag"></span></button>`).join('');
+    const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
+    const blank = total - examAnswered();
+    const right = `<span class="ex-clock num${low ? ' low' : ''}${left <= 60000 ? ' last' : ''}" role="timer" aria-label="Time left" data-exam-clock>${fmtClock(left)}</span>
+      ${soundBtn()}
+      <button class="btn ex-hand" type="button" data-act="exam-handin">Hand in</button>`;
+    const actions = examConfirm
+      ? `<div class="actions ex-confirm"><div class="exc plate" role="alertdialog" aria-labelledby="exc-t" aria-describedby="exc-d">
+          <p class="exc-text"><b id="exc-t">Hand in your exam?</b> <span id="exc-d">${blank ? `${fmtN(blank)} ${blank === 1 ? 'question is' : 'questions are'} still blank, and there’s` : 'There’s'} <span class="num" data-exam-clock>${fmtClock(left)}</span> left.</span></p>
+          <span class="exc-btns">
+            <button class="btn quiet" type="button" data-act="exam-keep">Keep going</button>
+            <button class="btn primary" type="button" data-act="exam-handin-yes">Hand in</button>
+          </span>
+        </div></div>`
+      : `<div class="actions">
+          <button class="btn" type="button" data-act="exam-prev" ${ex.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
+          <span class="grow"></span>
+          <button class="btn primary" type="button" data-act="exam-next">${last ? 'Hand in' : `Next ${ICON.next}`}</button>
+        </div>`;
+    app.innerHTML = `
+      ${barHTML('exam-back', '', `Exam · ${ex.title || 'Quest'}`, right)}
+      <main class="wrap narrow stage">
+        <nav class="strip" aria-label="Questions">${cells}</nav>
+        <article class="qcard plate" aria-labelledby="stem">
+          <div class="qmeta"><span class="qn">Question ${fmtN(ex.idx + 1)}</span><span>of ${fmtN(total)}</span><span class="grow"></span><span data-exam-answered>${fmtN(total - blank)} of ${fmtN(total)} answered</span></div>
+          ${caseHTML(q)}
+          <h2 class="stem" id="stem">${q.stem}</h2>
+          ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
+          <p class="hint">Select all that apply</p>
+          <div class="opts" role="group" aria-labelledby="stem">${opts}</div>
+        </article>
+        ${actions}
+        <p class="kbd-hint">${examConfirm ? 'Esc to keep going' : 'Keys: A–E to pick, Enter for the next question, ← → to move'}</p>
+      </main>`;
+    app.querySelector('.bar').insertAdjacentHTML('beforeend', `<i class="ex-time${low ? ' low' : ''}" aria-hidden="true" style="transform:scaleX(${(left / (ex.end - ex.start)).toFixed(4)})"></i>`);
+    const f = focusWhat === 'confirm' ? '[data-act="exam-keep"]' : focusWhat === 'next' ? '[data-act="exam-next"]' : null;
+    if (f) { const b = app.querySelector(f); if (b) b.focus({ preventScroll: true }); }
+  }
+  const MARK_ICON = { full: ICON.check, half: ICON.half, zero: ICON.cross, blank: '' };
+  function renderExamReview() {
+    const ex = S.exam, q = Q.get(ex.qids[ex.ridx]), sel = ex.picks[q.id] || [], m = examMark(q, sel), k = keyOf(q), total = ex.qids.length;
+    const cells = ex.qids.map((id, i) => {
+      const mk = examMark(Q.get(id), ex.picks[id]);
+      return `<button type="button" class="cell x-${mk.cls}${i === ex.ridx ? ' cur' : ''}" data-jump="${i}" aria-label="Question ${i + 1}, ${mk.label.toLowerCase()}"${i === ex.ridx ? ' aria-current="true"' : ''}>${i + 1}</button>`;
+    }).join('');
+    const opts = q.options.map((html, i) => {
+      const picked = sel.includes(i), inKey = q.answer.includes(i);
+      let cls = 'opt', bub = LETTERS[i], tag = '';
+      if (picked && inKey) { cls += ' is-hit'; bub = ICON.check; tag = 'Your pick'; }
+      else if (picked) { cls += ' is-miss'; bub = ICON.cross; tag = 'Your pick'; }
+      else if (inKey) { cls += ' is-missed'; tag = 'Missed'; }
+      else cls += ' is-rest';
+      if (tag) cls += ' has-tag';
+      return `<button type="button" class="${cls}" data-opt="${i}" style="--i:${i}" aria-disabled="true" aria-label="${LETTERS[i]}. ${esc(stripTags(html))}. ${inKey ? 'Correct answer' : 'Not in the answer'}${picked ? ', you picked it' : ''}">
+        <span class="bub">${bub}</span><span class="otext">${html}</span><span class="otag">${tag}</span></button>`;
+    }).join('');
+    const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
+    const last = ex.ridx === total - 1;
+    app.innerHTML = `
+      ${barHTML('exam-back', 'Results', 'Exam review', `<span class="bar-count num">${fmtN(ex.ridx + 1)}/${fmtN(total)}</span>`)}
+      <main class="wrap narrow stage">
+        <nav class="strip" aria-label="Questions">${cells}</nav>
+        <article class="qcard plate" aria-labelledby="stem">
+          <div class="qmeta">
+            <span class="qn">Question ${fmtN(ex.ridx + 1)}</span><span>${esc(setLabel(q))} · Q${esc(q.n)}</span>
+            <span class="key ${k}">${KEY_LONG[k]}</span>
+          </div>
+          ${caseHTML(q)}
+          <h2 class="stem" id="stem">${q.stem}</h2>
+          ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
+          <div class="opts checked" role="group" aria-labelledby="stem">${opts}</div>
+          <div class="verdict ex-v ${m.cls}" id="verdict" tabindex="-1">
+            <span class="v-main">${MARK_ICON[m.cls]}${m.label}</span><span class="v-sub">${esc(m.why)}</span><span class="spacer"></span>
+            <span class="v-sub">${KEY_LONG[k]}: <b>${letters(q.answer)}</b></span>
+          </div>
+          ${explainHTML(q)}
+          ${reportHTML(q)}
+        </article>
+        <div class="actions">
+          <button class="btn" type="button" data-act="exam-prev" ${ex.ridx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
+          <span class="grow"></span>
+          <button class="btn primary" type="button" data-act="exam-next">${last ? 'Back to the results' : `Next ${ICON.next}`}</button>
+        </div>
+        <p class="kbd-hint">Keys: ← → to move</p>
+      </main>`;
+  }
+  function renderExamResults() {
+    const ex = S.exam, s = examSummary(ex), log = examLogFor(ex.quest);
+    const w = (v, n) => n ? (100 * v / n).toFixed(2) : 0;
+    const bar = (x, n, cls) => `<span class="bar-line ${cls || ''}" aria-hidden="true"><i class="r" style="width:${w(x.full, n)}%"></i><i class="h" style="width:${w(x.half, n)}%"></i><i class="w" style="width:${w(x.zero, n)}%"></i></span>`;
+    const when = new Date(ex.handed);
+    const topics = QUEST && ex.quest === QUEST.id ? QUEST.topics.map(t => {
+      const ids = t.q.filter(id => ex.qids.includes(id)); if (!ids.length) return '';
+      const ts = examSummary(ex, ids);
+      return `<li class="xrow">
+        <span class="xr-main"><span class="xr-name">${esc(t.name)}</span>${bar(ts, ts.total)}
+        <span class="xr-meta">${fmtPts(ts.points)} of ${fmtN(ts.total)} ${ts.total === 1 ? 'point' : 'points'}</span></span>
+        <span class="xr-score num"><b>${fmtPts(ts.n20)}</b><span>/20</span></span>
+      </li>`;
+    }).join('') : '';
+    const cells = ex.qids.map((id, i) => {
+      const mk = examMark(Q.get(id), ex.picks[id]);
+      return `<button type="button" class="cell x-${mk.cls}" data-jump="${i}" aria-label="Question ${i + 1}, ${mk.label.toLowerCase()}">${i + 1}</button>`;
+    }).join('');
+    const tally = [['full', s.full, s.full === 1 ? 'full point' : 'full points'], ['half', s.half, s.half === 1 ? 'half point' : 'half points'], ['zero', s.zero, 'no point'], ['blank', s.blank, 'blank']];
+    app.innerHTML = `
+      ${barHTML('exam-back', 'Quest', `Exam · ${ex.title || 'Quest'}`)}
+      <main class="wrap narrow stage">
+        <section class="done ex-res">
+          <p class="eyebrow">Exam mode · ${esc(when.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }))}, ${esc(when.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }))}</p>
+          ${ex.auto ? `<p class="ex-timeup">${ICON.hourglass}Time’s up: the exam was handed in as it was.</p>` : ''}
+          <p class="score" aria-label="${fmtPts(s.n20)} out of 20"><b class="num" id="ex-score">${fmtPts(s.n20)}</b><span>/ 20</span></p>
+          ${bar(s, s.total, 'ex-bar')}
+          <ul class="ex-tally">${tally.map(([c, v, l]) => `<li class="t-${c}"><b class="num">${fmtN(v)}</b> ${l}</li>`).join('')}</ul>
+          <p class="d-meta">${fmtPts(s.points)} of ${fmtN(s.total)} points, ${ex.auto ? `with all ${esc(fmtDur(ex.end - ex.start))} used` : `handed in after ${esc(fmtDur(s.used))}`}.</p>
+          <div class="d-actions">
+            <button class="btn primary" type="button" data-act="exam-review">Review your answers ${ICON.next}</button>
+            ${QUEST ? `<button class="btn" type="button" data-act="exam-new">New exam</button>` : ''}
+            <button class="btn quiet" type="button" data-act="exam-back">Back to the quest</button>
+          </div>
+          <nav class="strip" aria-label="Questions">${cells}</nav>
+        </section>
+        ${topics ? `<section class="ex-topics" aria-labelledby="xt-h"><h2 class="h3" id="xt-h">By topic</h2><ul class="ledger">${topics}</ul></section>` : ''}
+        ${examPastHTML(log)}
+        ${footHTML()}
+      </main>`;
+    if (examCountUp) {
+      examCountUp = false;
+      const el = document.getElementById('ex-score');
+      if (el && !reduceMotion()) {
+        const to = s.n20, t0 = performance.now(), dur = 1100;
+        const step = now => {
+          const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+          el.textContent = fmtPts(k < 1 ? Math.round(to * e * 10) / 10 : to);
+          if (k < 1) requestAnimationFrame(step);
+        };
+        el.textContent = '0'; requestAnimationFrame(step);
+      }
+    }
+  }
+  // on the quest card: the way in, the clock while an exam runs, and the last scores
+  function examCardHTML() {
+    if (!QUEST) return { btn: '', line: '' };
+    const n = examQs().length;
+    if (!n) return { btn: '', line: '' };
+    if (examRunning()) return {
+      btn: `<button class="btn primary ex-btn" type="button" data-act="exam">${ICON.hourglass}Back to the exam · <span class="num" data-exam-clock>${fmtClock(examLeft())}</span></button>`,
+      line: ''
+    };
+    const log = examLogFor(QUEST.id), best = log.length ? Math.max(...log.map(e => e.n20)) : 0;
+    const seeLast = S.exam && S.exam.handed && log.length && S.exam.id === log[0].id;
+    return {
+      btn: `<button class="btn ex-btn" type="button" data-act="exam" title="All ${fmtN(n)} questions in ${fmtN(Math.round(n * EXAM_MS_PER_Q / 60000))} minutes, graded out of 20">${ICON.hourglass}Exam mode</button>`,
+      line: log.length ? `<p class="qp-exam">Exam mode: last <b class="num">${fmtPts(log[0].n20)}</b>/20${log.length > 1 ? ` · best <b class="num">${fmtPts(best)}</b>/20` : ''}${seeLast ? ` · <button class="foot-btn" type="button" data-act="exam-results">see the results</button>` : ''}</p>` : ''
+    };
+  }
+
   // ---------- home ----------
   // a masthead with the pixel title over a turning astrolabe, search across the Milky Way, modules as arched windows
   function renderHome() {
@@ -926,7 +1362,10 @@
     const sess = S.session;
     const qi = questInfo();
     const questOn = qi && qi.days >= 0 && !qi.done;
-    const cta = questOn
+    const cta = examRunning()
+      ? `<p class="cta-note">Exam in progress: <b><span class="num" data-exam-clock>${fmtClock(examLeft())}</span> left</b>. The clock keeps running while you’re away.</p>
+         <button class="btn primary" type="button" data-act="exam">${ICON.hourglass}Back to the exam ${ICON.next}</button>`
+      : questOn
       ? `<p class="cta-note">Current quest: <b>${esc(QUEST.title)}</b>, ${qi.days > 1 ? `due in ${qi.days} days` : qi.days === 1 ? 'due tomorrow' : 'due today'}. ${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} done.</p>
          <button class="btn primary" type="button" data-act="quest-go">${questNext(qi).label} ${ICON.next}</button>
          ${sess && sess.from !== 'quest' ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
@@ -1064,7 +1503,7 @@
     return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope === 'quest' ? 'Reset this quest' : 'Reset this module'}</button>`;
   }
   function doReset(scope) {
-    if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; }
+    if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; S.exam = null; S.examLog = []; examStop(); }
     else {
       const hit = id => scope === 'quest' ? QUEST_SET.has(id) : (Q.get(id) || {}).topic === scope;
       for (const id of Object.keys(S.answers)) if (hit(id)) delete S.answers[id];
@@ -2295,8 +2734,8 @@
     if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
     if (t.dataset.start) { startSession(t.dataset.start, null); return; }
     if (t.dataset.set) { startSession(S.topicId, t.dataset.set); return; }
-    if (t.dataset.opt !== undefined) { toggle(+t.dataset.opt); return; }
-    if (t.dataset.jump !== undefined) { jump(+t.dataset.jump); return; }
+    if (t.dataset.opt !== undefined) { if (S.view === 'exam') examToggle(+t.dataset.opt); else toggle(+t.dataset.opt); return; }
+    if (t.dataset.jump !== undefined) { if (S.view === 'exam') examJump(+t.dataset.jump); else jump(+t.dataset.jump); return; }
     if (t.dataset.zoom) { openLightbox(t.dataset.zoom); return; }
     if (t.hasAttribute('data-more')) {
       const n = t.closest('.note'); const open = n.classList.toggle('open');
@@ -2368,6 +2807,17 @@
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
       case 'stars': practiceStars(curQ().id); break;
+      case 'exam': openExam(); break;
+      case 'exam-start': startExam(); break;
+      case 'exam-back': examBack(); break;
+      case 'exam-next': examGo(1); break;
+      case 'exam-prev': examGo(-1); break;
+      case 'exam-handin': askHandIn(); break;
+      case 'exam-keep': examConfirm = false; render(false, 'next'); break;
+      case 'exam-handin-yes': handIn(false); break;
+      case 'exam-results': openExamResults(); break;
+      case 'exam-review': examJump(0); break;
+      case 'exam-new': S.examScreen = 'intro'; save(); render(true, null, 'nav'); break;
     }
   });
 
@@ -2394,6 +2844,7 @@
       return;
     }
     if (e.key === 'Escape') { const card = document.getElementById('cst-card'); if (card && card.classList.contains('on')) { cstOpen(false, true); const c = app.querySelector('.cst-chip'); if (c) c.focus(); return; } }
+    if (S.view === 'exam') { examKey(e); return; }
     if (S.view !== 'quiz' || !S.session || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.target && e.target.closest && e.target.closest('summary')) return;
     const key = e.key.toLowerCase();
@@ -2410,6 +2861,34 @@
     if (key === 'arrowright') { e.preventDefault(); go(1); }
     if (key === 'arrowleft') { e.preventDefault(); go(-1); }
   });
+
+  // the exam: A–E (or 1–5) pick, Enter goes on (and offers to hand in after the last question), arrows move;
+  // while "Hand in your exam?" is open, Escape closes it and the keys are left to its buttons
+  function examKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target && e.target.closest && e.target.closest('summary')) return;
+    const scr = examScreen(), key = e.key.toLowerCase();
+    if (scr === 'run') {
+      if (examConfirm) {
+        if (key === 'escape') { e.preventDefault(); examConfirm = false; render(false, 'next'); }
+        return;
+      }
+      const q = examQ();
+      let idx = -1;
+      if (key.length === 1) idx = 'abcdefgh'.indexOf(key) !== -1 ? 'abcdefgh'.indexOf(key) : '12345678'.indexOf(key);
+      if (idx !== -1 && idx < q.options.length) { e.preventDefault(); examToggle(idx); return; }
+      if (key === 'enter') {
+        const ae = document.activeElement;
+        if (ae && ae.tagName === 'A') return;
+        if (ae && ae.tagName === 'BUTTON' && !ae.closest('.opts') && ae.dataset.act !== 'exam-next') return;
+        e.preventDefault(); examGo(1); return;
+      }
+    }
+    if (scr === 'run' || scr === 'review') {
+      if (key === 'arrowright') { e.preventDefault(); examGo(1); }
+      if (key === 'arrowleft') { e.preventDefault(); examGo(-1); }
+    }
+  }
 
   let resizeT = null, lastW = window.innerWidth;
   window.addEventListener('resize', () => {
@@ -2442,6 +2921,7 @@
   function start(data) {
     load();
     if (data && data.S && !storageOK) { S = Object.assign(S, data.S); sanitize(); }
+    examBoot();
     if (S.view === 'home') { S.q = ''; S.aspect = null; }   // a fresh visit opens on the modules, not an old search
     // the opening animation plays when the site opens on the home page (not for automated page captures)
     const opening = S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');

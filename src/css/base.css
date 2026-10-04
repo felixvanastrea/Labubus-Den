@@ -16,8 +16,10 @@
   --glass: rgba(24, 23, 21, .76);
   --right: #9fc6a8;
   --wrong: #e59177;
+  --half: #d6b878;
   --right-wash: rgba(159, 198, 168, .1);
   --wrong-wash: rgba(229, 145, 119, .1);
+  --half-wash: rgba(214, 184, 120, .1);
   --sel-wash: rgba(236, 227, 209, .06);
   --glow-soft: rgba(236, 227, 209, .09);
   --glow-mid: rgba(236, 227, 209, .3);
