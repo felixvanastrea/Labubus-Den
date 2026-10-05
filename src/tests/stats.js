@@ -1,6 +1,6 @@
-// Anonymous stats (PostHog): nothing outside GitHub Pages; the banner once, on a page without a question; nothing
-// loads before a yes; "No thanks" and the footer switch; the events sent (features used, never which options);
-// switching off removes PostHog's storage; the phone layout. PostHog's script is replaced by a recorder.
+// Anonymous stats (PostHog): nothing outside GitHub Pages; on the site it's on by default (no banner, Abi's choice)
+// with an off switch in the footer; the events sent (features used, never which options); switching off removes
+// PostHog's storage and nothing loads after; the phone footer. PostHog's script is replaced by a recorder.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -50,26 +50,14 @@ const names = async p => (await captured(p)).map(c => c.name);
   check(!(await p.$('#consent')) && !(await txt(p, '.foot')).includes('Anonymous stats') && await p.evaluate(() => window.posthog === undefined), 'off GitHub Pages: no banner, no switch, no PostHog');
   await ctx.close();
 
-  // on the site: the banner once, nothing loaded before an answer
+  // on the site: on by default, no banner, PostHog with autocapture, heatmaps and recordings off
   ({ ctx, p } = await open(null, true));
-  await p.waitForTimeout(300);
-  check(!(await p.$('#consent')), 'the banner waits a moment after the page opens');
-  await p.waitForTimeout(1300);
-  check(await txt(p, '.cs-t') === 'Can the Labubu count your visits?' && (await txt(p, '.cs-d')).includes('no names and no answers'), 'then it asks: ' + await txt(p, '.cs-t'));
-  check(await p.evaluate(() => window.posthog === undefined), 'nothing is loaded before an answer');
-  await p.screenshot({ path: OUT + 'stats_banner.png' });
-  await p.click('[data-stats="no"]'); await p.waitForTimeout(500);
-  check(!(await p.$('#consent')) && await p.evaluate(k => localStorage.getItem(k), PREF) === 'off' && await p.evaluate(() => window.posthog === undefined), '"No thanks": gone, remembered, nothing loaded');
-  check((await txt(p, '.foot')).includes('Anonymous stats: off'), 'the footer says off');
-  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(1800);
-  check(!(await p.$('#consent')), 'it doesn\'t ask again');
-
-  // the footer switch turns it on: PostHog with autocapture, heatmaps and recordings off
-  await p.click('[data-act="stats-toggle"]'); await p.waitForTimeout(400);
-  const init = await p.evaluate(() => (window.__ph || []).find(c => c[0] === 'init'));
-  check(!!init && init[1] === 'phc_mHpUpY9vB8ET9xkUtkdDdaQ78RooCv52PeDuy5xFR9LM' && init[2].api_host === 'https://eu.i.posthog.com', 'switched on: PostHog loads, EU, this project');
-  check(init && init[2].autocapture === false && init[2].disable_session_recording === true && init[2].capture_heatmaps === false && init[2].disable_surveys === true, 'autocapture, recordings, heatmaps and surveys off');
+  await p.waitForTimeout(1800);
+  check(!(await p.$('#consent')) && !(await p.$('.consent')), 'no banner');
   check((await txt(p, '.foot')).includes('Anonymous stats: on'), 'the footer says on');
+  const init = await p.evaluate(() => (window.__ph || []).find(c => c[0] === 'init'));
+  check(!!init && init[1] === 'phc_mHpUpY9vB8ET9xkUtkdDdaQ78RooCv52PeDuy5xFR9LM' && init[2].api_host === 'https://eu.i.posthog.com', 'PostHog loads, EU, this project');
+  check(init && init[2].autocapture === false && init[2].disable_session_recording === true && init[2].capture_heatmaps === false && init[2].disable_surveys === true, 'autocapture, recordings, heatmaps and surveys off');
 
   // what gets sent
   await p.click('.arch[data-topic="respiratory-system-diseases"]'); await p.waitForTimeout(150);
@@ -116,32 +104,22 @@ const names = async p => (await captured(p)).map(c => c.name);
   check(await p.evaluate(() => window.posthog === undefined), 'and nothing loads after a reload');
   await ctx.close();
 
-  // Allow; and a first visit that opens on a question gets asked only back on a page without one
+  // switched on again from the footer: it loads again
   ({ ctx, p } = await open(null, true));
-  await p.waitForTimeout(1700);
-  await p.click('[data-stats="yes"]'); await p.waitForTimeout(400);
-  check(await p.evaluate(k => localStorage.getItem(k), PREF) === 'on' && (await txt(p, '#toast')).startsWith('Thank you') && await p.evaluate(() => !!(window.__ph || []).find(c => c[0] === 'init')), 'Allow: on, a thank-you, PostHog loaded');
-  await p.evaluate(([K, P]) => {
-    localStorage.removeItem(P);
-    const id = JSON.parse(document.getElementById('bank').textContent).questions[0].id;
-    const S = JSON.parse(localStorage.getItem(K)); S.session = { topic: '*', type: 'all', set: null, mode: 'all', shuffle: false, from: 'search', qids: [id], order: [id], idx: 0 }; S.view = 'quiz';
-    localStorage.setItem(K, JSON.stringify(S));
-  }, [KEY, PREF]);
-  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(1800);
-  check(!(await p.$('#consent')), 'not asked over a question');
-  await p.click('.bar [data-act="back"]'); await p.waitForTimeout(1700);
-  check(!!(await p.$('#consent')), 'asked once back on the home page');
+  await p.evaluate(k => localStorage.setItem(k, 'off'), PREF);
+  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
+  check(await p.evaluate(() => window.posthog === undefined) && (await txt(p, '.foot')).includes('Anonymous stats: off'), 'off stays off');
+  await p.click('[data-act="stats-toggle"]'); await p.waitForTimeout(300);
+  check(await p.evaluate(k => localStorage.getItem(k), PREF) === 'on' && await p.evaluate(() => !!(window.__ph || []).find(c => c[0] === 'init')), 'switching it on loads PostHog');
   await ctx.close();
 
-  // phone
+  // phone: the switch in the footer, nothing sideways
   ({ ctx, p } = await open({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true }, true));
-  await p.waitForTimeout(1700);
-  await p.screenshot({ path: OUT + 'stats_m_banner.png' });
-  const box = await p.evaluate(() => { const r = document.getElementById('consent').getBoundingClientRect(); return { l: r.left, r: window.innerWidth - r.right, b: window.innerHeight - r.bottom }; });
-  check(box.l >= 15 && box.r >= 15 && box.b >= 15, 'phone: the banner keeps its margins ' + JSON.stringify(box));
+  await p.waitForTimeout(400);
+  await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await p.waitForTimeout(200);
+  await p.screenshot({ path: OUT + 'stats_m_foot.png' });
+  check((await txt(p, '.foot')).includes('Anonymous stats: on'), 'phone: the switch is in the footer');
   check(await p.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth) === 0, 'phone: no sideways scroll');
-  await p.tap('[data-stats="no"]'); await p.waitForTimeout(500);
-  check(!(await p.$('#consent')), 'phone: No thanks closes it');
   await ctx.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');

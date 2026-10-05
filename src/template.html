@@ -482,17 +482,19 @@
   let streak = 0;
 
   // ---------- anonymous stats (PostHog, EU cloud) ----------
-  // Only on the GitHub Pages site, and only once the visitor says yes (the banner, or the footer switch). No names and
-  // no answers: autocapture, heatmaps, recordings and surveys are off, and only the events passed to track() are sent
-  // (which features get used, how many questions; never which options). The choice is kept in efm3-mcq-stats.
+  // Only on the GitHub Pages site. On unless switched off in the footer (Abi's choice: no banner); the choice is kept
+  // in efm3-mcq-stats. No names and no answers: autocapture, heatmaps, recordings and surveys are off, and only the
+  // events passed to track() are sent (which features get used, how many questions; never which options, never marks).
+  // Everything here is wrapped so that PostHog failing to load can never break the site.
   const usage = (() => {
     const KEY = 'efm3-mcq-stats', TOKEN = 'phc_mHpUpY9vB8ET9xkUtkdDdaQ78RooCv52PeDuy5xFR9LM', HOST = 'https://eu.i.posthog.com';
     const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__statsTest;
     const pref = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
-    let loaded = false, offered = false, timer = null;
+    let loaded = false;
     function load() {
       if (loaded || !here) return;
       loaded = true;
+      try {
       // PostHog's loader, as given in posthog.com/docs/libraries/js: it queues calls until array.js arrives
       !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
       window.posthog.init(TOKEN, {
@@ -500,13 +502,14 @@
         autocapture: false, capture_heatmaps: false, capture_dead_clicks: false, rageclick: false,
         disable_session_recording: true, disable_surveys: true, respect_dnt: true
       });
+      } catch (e) { loaded = false; }
     }
-    const on = () => here && pref() === 'on';
+    const on = () => here && pref() !== 'off';
     function track(name, props) {
       if (!on() || !loaded || !window.posthog) return;
       try { window.posthog.capture(name, props || {}); } catch (e) {}
     }
-    // after a no that follows a yes: PostHog's cookie and storage go too
+    // switched off: PostHog's cookie and storage go too
     function forget() {
       const ph = k => /^(ph_|__ph)|posthog/i.test(k);
       for (const st of [window.localStorage, window.sessionStorage]) {
@@ -516,7 +519,6 @@
     }
     function set(v) {
       try { localStorage.setItem(KEY, v ? 'on' : 'off'); } catch (e) {}
-      close();
       if (v) {
         if (loaded) { try { window.posthog.opt_in_capturing(); } catch (e) {} }
         else load();
@@ -525,37 +527,7 @@
         forget();
       }
     }
-    // the banner: once, on a page without a question, after the opening animation
-    const eligible = () => here && pref() === null && !offered && !intro.active() && S.view !== 'quiz' && S.view !== 'exam';
-    function offer() {
-      if (!eligible() || timer) return;
-      timer = setTimeout(() => { timer = null; if (eligible()) show(); }, 1200);
-    }
-    function show() {
-      offered = true;
-      const el = document.createElement('div');
-      el.className = 'consent'; el.id = 'consent';
-      el.setAttribute('role', 'dialog'); el.setAttribute('aria-labelledby', 'cs-t'); el.setAttribute('aria-describedby', 'cs-d');
-      el.innerHTML = `<svg class="lb" aria-hidden="true" focusable="false"><use href="#labubu"/></svg>
-        <div class="cs-text"><p class="cs-t" id="cs-t">Can the Labubu count your visits?</p>
-        <p class="cs-d" id="cs-d">Anonymous: no names and no answers, just how many people come and which features get used. You can change it in the footer.</p></div>
-        <div class="cs-btns"><button class="btn quiet" type="button" data-stats="no">No thanks</button><button class="btn primary" type="button" data-stats="yes">Allow</button></div>`;
-      el.addEventListener('click', e => {
-        const b = e.target.closest('[data-stats]'); if (!b) return;
-        const yes = b.dataset.stats === 'yes';
-        set(yes);
-        if (yes) toast('Thank you, the Labubu is counting ✦');
-        const sw = app.querySelector('[data-act="stats-toggle"]');
-        if (sw) { sw.setAttribute('aria-checked', String(yes)); sw.textContent = yes ? 'on' : 'off'; }
-      });
-      document.body.appendChild(el);
-    }
-    function close() {
-      const el = document.getElementById('consent'); if (!el) return;
-      el.classList.add('out');
-      setTimeout(() => el.remove(), reduceMotion() ? 0 : 360);
-    }
-    return { here, on, track, set, offer, boot() { if (on()) load(); } };
+    return { here, on, track, set, boot() { if (on()) load(); } };
   })();
 
   // ---------- actions ----------
@@ -743,7 +715,6 @@
       }
     }
     if (scrollTop) window.scrollTo(0, 0);
-    usage.offer();
   }
 
   function typeTabs() {
@@ -1568,7 +1539,7 @@
       <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
-      ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used, never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
+      ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       <p>Made by the Labubu</p>
     </footer>`;
@@ -2747,7 +2718,6 @@
       [back, front, hint].forEach(el => el && el.remove());
       back = front = hint = bx = fx = milky = glow = null;
       stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = [];
-      usage.offer();
     }
     // returns false when it can't run (a tiny window), so the caller shows the page straight away
     function play() {
