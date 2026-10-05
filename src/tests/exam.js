@@ -110,14 +110,14 @@ const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g,
   check(await p.evaluate(() => document.body.dataset.view) === 'home', 'Back goes home while it runs');
   const hero = await txt(p, '.hero-cta');
   check(/Exam in progress: \d+:\d\d left/.test(hero) && hero.includes('Back to the exam'), 'hero: ' + hero.slice(0, 70));
-  const cardBtn = await txt(p, '.quest [data-act="exam"]');
+  const cardBtn = await txt(p, '.quest [data-act="exam-resume"]');
   check(/^Back to the exam · \d+:\d\d$/.test(cardBtn), 'quest card: ' + cardBtn);
   const before = await txt(p, '.hero-cta [data-exam-clock]');
   await p.clock.fastForward(2 * MIN); await p.waitForTimeout(100);
   const after = await txt(p, '.hero-cta [data-exam-clock]');
   const secs = t => { const [m, s] = t.split(':').map(Number); return m * 60 + s; };
   check(secs(before) - secs(after) >= 119 && secs(before) - secs(after) <= 121, `the clock runs on the home page: ${before} → ${after}`);
-  await p.click('.hero-cta [data-act="exam"]'); await p.waitForTimeout(200);
+  await p.click('.hero-cta [data-act="exam-resume"]'); await p.waitForTimeout(200);
   check(await txt(p, '.qmeta .qn') === 'Question 5', 'Back to the exam returns to the same question');
 
   // five minutes left: a word, and the clock turns

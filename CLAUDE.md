@@ -119,20 +119,41 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Exam mode
 
-- The quest taken as a timed exam, graded the way Abi asked: every quest question with a key, shuffled, one minute
-  each (`EXAM_MS_PER_Q`), marked out of 20. Per question: all its right answers ticked = 1 point; at least half of
-  them and no wrong tick = 0.5 (three right answers: two ticked 0.5, one ticked 0); any wrong tick, or a blank = 0
-  for that question only. Mark = points / questions × 20, two decimals (`examPoints`, `examMark`, `examSummary`).
+- A timed exam graded the way Abi asked: one minute per question (`EXAM_MS_PER_Q`), marked out of 20. Per question:
+  all its right answers ticked = 1 point; at least half of them and no wrong tick = 0.5 (three right answers: two
+  ticked 0.5, one ticked 0); any wrong tick, or a blank = 0 for that question only. Mark = points / questions × 20,
+  two decimals (`examPoints`, `examMark`, `examSummary`).
+- Four scopes (`scopeInfo`, `S.examScope` = `{kind, id}`): the quest (its questions, shuffled; "Exam mode" on the quest
+  card); a past exam set (all its questions in their own order; the hourglass button on each set row of a module page,
+  which then shows the best mark); a module (a random mock of 20, 25 or 50 questions, the sizes of a midterm, a mock
+  and the finals, one per repeated question; "Exam mode" in the module header); a diagnostic topic (up to 20 of its
+  questions; from its diagnostic page). Back from the rules and results returns where the exam was opened
+  (`S.examBack`). A running exam always comes first: any exam button brings it back.
 - While it runs: no verdict, key, explanations, report link or constellation; the strip only shows what's ticked.
   "Hand in" asks first (blanks and time left; Escape or "Keep going" closes it). At zero it hands itself in as it is,
   on any page, and on load if the time ran out while the page was closed. Warnings at 5 and 1 minutes.
-- State: `S.exam` (shuffled `qids`, `picks`, `start`, `end`, `handed`, `auto`), kept apart from practice answers,
-  and `S.examLog` (the last 20 marks). A handed-in exam is regraded against the current key on load, like
-  practice answers. "Reset all answers" clears both; "Reset this quest" doesn't touch them.
+- State: `S.exam` (`scope`, `qids`, `picks`, `start`, `end`, `handed`, `auto`, `unlocked`), kept apart from practice
+  answers, and `S.examLog` (the last 40 marks, each with its scope key). A handed-in exam is regraded against the
+  current key on load. Every answered exam question is a clean try for the weak spots. "Reset all answers" clears it all.
 - Screens (`S.view = 'exam'`, `S.examScreen`): the rules (an hourglass window that lights up with the best mark),
-  the running exam (clock and a running-down line in the bar), the results (mark, full / half / none / blank,
-  by topic, past exams) and the review (picks against the key, the point and why, the explanations). The quest card
-  has "Exam mode"; while an exam runs it and the hero say "Back to the exam" with the clock.
+  the running exam (clock and a running-down line in the bar), the results (mark, full / half / none / blank, by
+  topic: the quest's topics or the diagnostic's, the diagnostics it unlocked, past marks) and the review.
+
+## Weak spots (the diagnostic)
+
+- Topics are built in `build.py` (`bank.diag`): one per root concept of `concepts.py`, except the roots in
+  `DIAG_SPLIT` (pneumonia, valves, thyroid, diabetes), split into their sub-concepts of 4+ questions; `DIAG_MERGE`
+  follows the lectures (atypical and aspiration pneumonia with CAP, COVID with viral); topics under 4 questions share
+  "Other topics" per module. Sizes count a question once with its word-for-word copies and constellation stars.
+- Evidence (`S.clean`): each question's latest clean try: the first try in practice, every exam answer, or a drill
+  at least 20 hours after the last try (`DRILL_GAP`); never a retry right after the answer was shown. Answers from
+  before the diagnostic existed were backfilled (picks where known, right or wrong otherwise).
+- A topic's diagnostic opens after `DIAG_MIN` (8) tries, or all its questions if it has fewer. The progress shows as
+  stars, one per question needed, lit as they're tried (`xpHTML`): on the weak spots page, the home card, and under
+  the verdict after each clean try ("Diagnostic unlocked" with a sparkle when it opens).
+- The diagnostic: the mark on the topic with the exam's rule, Solid (15+) / Shaky (10+) / Weak spot, what wrong ticks
+  cost (and the mark without them), every proposition got wrong (ticked but false first, then missed) with the
+  lecture's why, and actions: drill the missed ones, practise the ones not tried, an exam on the topic.
 
 ## Anonymous stats (PostHog)
 
@@ -177,7 +198,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
