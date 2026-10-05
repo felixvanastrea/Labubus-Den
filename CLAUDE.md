@@ -134,6 +134,17 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   by topic, past exams) and the review (picks against the key, the point and why, the explanations). The quest card
   has "Exam mode"; while an exam runs it and the hero say "Back to the exam" with the clock.
 
+## Anonymous stats (PostHog)
+
+- Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
+  site (the claude.ai link can't send data out anyway), and only after the visitor taps Allow in the banner (asked
+  once, after the opening animation, never over a question) or turns on "Anonymous stats" in the footer.
+  The choice is kept in `efm3-mcq-stats`; switching off opts out and deletes PostHog's cookie and storage.
+- No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
+  events are sent (module and practice opened, questions checked with their module only, searches, exam mode
+  opened / started / handed in, review, report a mistake, Ask the Labubu, constellations, seals, update log, sound).
+  Never which options were ticked, never marks. Changing that means changing the banner's words first.
+
 ## Update log
 
 - `src/updates.json`, newest first: `id`, `date`, `title`, `items` (one short line each), an optional `kind`
@@ -166,7 +177,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js
+node sound.js; node exam.js; node stats.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

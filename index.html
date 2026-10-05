@@ -823,6 +823,27 @@ details.case[open] .case-b { margin-top: 6px; }
 .verdict.zero .v-main { color: var(--wrong); }
 .verdict.blank { border-style: dashed; border-color: var(--hair-2); }
 .verdict.blank .v-main { color: var(--ink-2); }
+/* ---------- anonymous stats: asked once, at the foot of the page ---------- */
+.consent {
+  position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 65;
+  width: min(36rem, calc(100vw - 32px)); transform: translateX(-50%);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 10px 14px; padding: 16px 18px;
+  background: var(--plate-2); border: 1px solid var(--hair-2); border-radius: var(--r); box-shadow: 0 26px 60px -24px var(--deep);
+  animation: consent-in .7s var(--spring) both;
+}
+.consent.out { animation: consent-out .36s var(--ease) both; }
+@keyframes consent-in { from { opacity: 0; transform: translate(-50%, 22px); } }
+@keyframes consent-out { to { opacity: 0; transform: translate(-50%, 14px); } }
+.consent .lb { width: 24px; height: 30px; margin-top: 3px; color: var(--ink); --lb-line: var(--plate-2); }
+.cs-text { min-width: 0; }
+.cs-t { margin: 0; font-family: var(--f-display); font-style: italic; font-size: 1.45rem; line-height: 1.15; text-wrap: balance; }
+.cs-d { margin: 5px 0 0; font-size: 1.02rem; line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+.cs-btns { grid-column: 2; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.cs-btns .btn { min-height: 40px; }
+@media (max-width: 640px) {
+  .cs-btns { grid-column: 1 / -1; }
+  .cs-btns .btn { flex: 1; }
+}
 /* on question screens the toast sits above the action bar */
 body[data-view="quiz"] .toast, body[data-view="exam"] .toast { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 
@@ -1389,6 +1410,83 @@ html.intro-on #sky { opacity: 0; transition: none; }
   const PENTA = [1, 9 / 8, 5 / 4, 3 / 2, 5 / 3, 2, 9 / 4, 5 / 2];
   let streak = 0;
 
+  // ---------- anonymous stats (PostHog, EU cloud) ----------
+  // Only on the GitHub Pages site, and only once the visitor says yes (the banner, or the footer switch). No names and
+  // no answers: autocapture, heatmaps, recordings and surveys are off, and only the events passed to track() are sent
+  // (which features get used, how many questions; never which options). The choice is kept in efm3-mcq-stats.
+  const usage = (() => {
+    const KEY = 'efm3-mcq-stats', TOKEN = 'phc_mHpUpY9vB8ET9xkUtkdDdaQ78RooCv52PeDuy5xFR9LM', HOST = 'https://eu.i.posthog.com';
+    const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__statsTest;
+    const pref = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    let loaded = false, offered = false, timer = null;
+    function load() {
+      if (loaded || !here) return;
+      loaded = true;
+      // PostHog's loader, as given in posthog.com/docs/libraries/js: it queues calls until array.js arrives
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      window.posthog.init(TOKEN, {
+        api_host: HOST, defaults: '2026-05-30', person_profiles: 'identified_only',
+        autocapture: false, capture_heatmaps: false, capture_dead_clicks: false, rageclick: false,
+        disable_session_recording: true, disable_surveys: true, respect_dnt: true
+      });
+    }
+    const on = () => here && pref() === 'on';
+    function track(name, props) {
+      if (!on() || !loaded || !window.posthog) return;
+      try { window.posthog.capture(name, props || {}); } catch (e) {}
+    }
+    // after a no that follows a yes: PostHog's cookie and storage go too
+    function forget() {
+      const ph = k => /^(ph_|__ph)|posthog/i.test(k);
+      for (const st of [window.localStorage, window.sessionStorage]) {
+        try { Object.keys(st).filter(ph).forEach(k => st.removeItem(k)); } catch (e) {}
+      }
+      try { document.cookie.split(';').map(c => c.split('=')[0].trim()).filter(ph).forEach(n => { document.cookie = `${n}=; Max-Age=0; path=/`; }); } catch (e) {}
+    }
+    function set(v) {
+      try { localStorage.setItem(KEY, v ? 'on' : 'off'); } catch (e) {}
+      close();
+      if (v) {
+        if (loaded) { try { window.posthog.opt_in_capturing(); } catch (e) {} }
+        else load();
+      } else {
+        if (loaded) { try { window.posthog.opt_out_capturing(); window.posthog.reset(); } catch (e) {} }
+        forget();
+      }
+    }
+    // the banner: once, on a page without a question, after the opening animation
+    const eligible = () => here && pref() === null && !offered && !intro.active() && S.view !== 'quiz' && S.view !== 'exam';
+    function offer() {
+      if (!eligible() || timer) return;
+      timer = setTimeout(() => { timer = null; if (eligible()) show(); }, 1200);
+    }
+    function show() {
+      offered = true;
+      const el = document.createElement('div');
+      el.className = 'consent'; el.id = 'consent';
+      el.setAttribute('role', 'dialog'); el.setAttribute('aria-labelledby', 'cs-t'); el.setAttribute('aria-describedby', 'cs-d');
+      el.innerHTML = `<svg class="lb" aria-hidden="true" focusable="false"><use href="#labubu"/></svg>
+        <div class="cs-text"><p class="cs-t" id="cs-t">Can the Labubu count your visits?</p>
+        <p class="cs-d" id="cs-d">Anonymous: no names and no answers, just how many people come and which features get used. You can change it in the footer.</p></div>
+        <div class="cs-btns"><button class="btn quiet" type="button" data-stats="no">No thanks</button><button class="btn primary" type="button" data-stats="yes">Allow</button></div>`;
+      el.addEventListener('click', e => {
+        const b = e.target.closest('[data-stats]'); if (!b) return;
+        const yes = b.dataset.stats === 'yes';
+        set(yes);
+        if (yes) toast('Thank you, the Labubu is counting ✦');
+        const sw = app.querySelector('[data-act="stats-toggle"]');
+        if (sw) { sw.setAttribute('aria-checked', String(yes)); sw.textContent = yes ? 'on' : 'off'; }
+      });
+      document.body.appendChild(el);
+    }
+    function close() {
+      const el = document.getElementById('consent'); if (!el) return;
+      el.classList.add('out');
+      setTimeout(() => el.remove(), reduceMotion() ? 0 : 360);
+    }
+    return { here, on, track, set, offer, boot() { if (on()) load(); } };
+  })();
+
   // ---------- actions ----------
   function startSession(topicId, setId) {
     const qs = questionsFor(setId ? 'all' : S.type, topicId, setId);
@@ -1397,9 +1495,10 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const idx = qs.findIndex(q => ['todo', 'draft'].includes(result(q)));
     S.session = { topic: topicId, type: setId ? 'all' : S.type, set: setId || null, mode: 'all', qids, order: qids.slice(), shuffle: false, idx: Math.max(0, idx) };
     S.view = idx === -1 ? 'done' : 'quiz';
+    usage.track('practice_started', { from: setId ? 'exam set' : 'module', module: topicId === '*' ? 'all' : topicId, title: sessionTitle(S.session), questions: qids.length });
     save(); render(true, null, 'nav');
   }
-  function openTopic(topicId) { S.topicId = topicId; S.view = 'topic'; confirmReset = false; save(); render(true, null, 'nav'); }
+  function openTopic(topicId) { S.topicId = topicId; S.view = 'topic'; confirmReset = false; usage.track('module_opened', { module: topicId }); save(); render(true, null, 'nav'); }
   function retryMistakes() {
     const sess = S.session; if (!sess) return;
     const wrong = sess.order.filter(id => result(Q.get(id)) === 'wrong');
@@ -1435,9 +1534,10 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (idx === -1) idx = Math.max(0, qids.findIndex(id => ['todo', 'draft'].includes(result(Q.get(id)))));
     S.scrollBack = window.scrollY;
     S.session = Object.assign({ topic: '*', type: 'all', set: null, mode: 'all', shuffle: false }, meta, { qids: qids.slice(), order: qids.slice(), idx: Math.min(Math.max(0, idx | 0), qids.length - 1) });
+    usage.track('practice_started', { from: S.session.from || 'list', module: S.session.topic === '*' ? 'all' : S.session.topic, title: sessionTitle(S.session), questions: qids.length });
     S.view = 'quiz'; save(); render(true, null, 'nav');
   }
-  function openRepeats() { S.view = 'repeats'; confirmReset = false; save(); render(true, null, 'nav'); }
+  function openRepeats() { S.view = 'repeats'; confirmReset = false; usage.track('most_repeated_opened'); save(); render(true, null, 'nav'); }
   function goHome() { S.view = 'home'; confirmReset = false; save(); render(true, null, 'back'); }
   function resume() { if (S.session) { S.view = 'quiz'; save(); render(true, null, 'nav'); } }
   function curQ() { return Q.get(S.session.qids[S.session.idx]); }
@@ -1465,6 +1565,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
     if (!(q.id in S.first)) S.first[q.id] = a.correct;
+    usage.track('question_checked', { module: q.topic, quest: QUEST_SET.has(q.id) });
     if (a.correct) {
       streak++;
       sfx.play('right', { rate: PENTA[Math.min(streak - 1, 5)] });
@@ -1485,6 +1586,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (n >= sess.qids.length) {
       const st = stats(sess.order.map(id => Q.get(id))), seen = st.right + st.wrong;
       sfx.play(seen && st.right / seen >= 0.8 ? 'finish' : 'nav');
+      usage.track('practice_finished', { from: sess.from || 'module', questions: sess.qids.length, checked: seen });
       S.view = 'done'; save(); render(true, null, 'nav'); return;
     }
     sfx.play('nav');
@@ -1570,6 +1672,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       }
     }
     if (scrollTop) window.scrollTo(0, 0);
+    usage.offer();
   }
 
   function typeTabs() {
@@ -1779,6 +1882,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const els = [...app.querySelectorAll('[data-stamp]')];
     if (!els.length) return;
     const fire = el => {
+      usage.track('quest_seal', { seal: el.dataset.stamp });
       el.classList.add('stamp'); rec[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save();
       sfx.play('seal', { delay: reduceMotion() ? 0 : 0.44 });
     };
@@ -1932,7 +2036,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (!QUEST && !examRunning()) return;
     if (S.view !== 'exam') S.scrollBack = window.scrollY;
     examConfirm = false;
-    if (!examRunning()) S.examScreen = 'intro';
+    if (!examRunning()) { S.examScreen = 'intro'; usage.track('exam_mode_opened'); }
     S.view = 'exam'; confirmReset = false; save(); render(true, null, 'nav');
   }
   function openExamResults() {
@@ -1947,6 +2051,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       start: now, end: now + ids.length * EXAM_MS_PER_Q, handed: 0, auto: false };
     examConfirm = false; examWarned = {};
     S.view = 'exam'; save();
+    usage.track('exam_started', { questions: ids.length });
     sfx.play('nav');
     render(true, null, 'nav');
     examClock();
@@ -2010,6 +2115,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const e = examEntry(ex);
     S.examLog = [e, ...S.examLog.filter(x => x.id !== ex.id)].slice(0, EXAM_LOG_MAX);
     S.examScreen = 'results';
+    usage.track('exam_handed_in', { time_ran_out: !!auto, answered: examAnswered(), questions: ex.qids.length, minutes_used: Math.round(e.used / 60000) });
     if (quietly) { save(); return; }
     if (S.view === 'exam' || !auto) {
       const t = document.getElementById('toast'); if (t) t.classList.remove('on');   // no "five minutes left" over the mark
@@ -2391,6 +2497,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
+      ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used, never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       <p>Made by the Labubu</p>
     </footer>`;
@@ -2551,7 +2658,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const box = card.parentElement.getBoundingClientRect(), c = chip.getBoundingClientRect();
     card.style.top = (c.bottom - box.top + 8) + 'px';
     card.style.left = Math.max(12, Math.min(c.left - box.left, box.width - card.offsetWidth - 12)) + 'px';
-    if (!card.classList.contains('on') && Date.now() - sparkleAt > 2000) { sparkleAt = Date.now(); sfx.play('sparkle', { quiet: true }); }
+    if (!card.classList.contains('on') && Date.now() - sparkleAt > 2000) { sparkleAt = Date.now(); sfx.play('sparkle', { quiet: true }); usage.track('constellation_opened'); }
     card.classList.add('on'); chip.setAttribute('aria-expanded', 'true');
   }
 
@@ -3013,6 +3120,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (!UPDATES.length) return;
     freshIds = new Set(unseenUpdates().map(u => u.id));   // highlighted this time, then they count as seen
     S.seenUpdate = UPDATES[0].id;
+    usage.track('update_log_opened');
     S.view = 'updates'; confirmReset = false; save(); render(true, null, 'nav');
   }
   function practiceUpdate(id) {
@@ -3568,6 +3676,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       [back, front, hint].forEach(el => el && el.remove());
       back = front = hint = bx = fx = milky = glow = null;
       stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = [];
+      usage.offer();
     }
     // returns false when it can't run (a tiny window), so the caller shows the page straight away
     function play() {
@@ -3635,7 +3744,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
   app.addEventListener('click', e => {
     if (!inCst(e.target)) cstOpen(false, true);
     const rep = e.target.closest('a[data-report]');
-    if (rep) { const q = Q.get(rep.dataset.report); if (q) copyReport(q); return; }   // the link itself opens the form
+    if (rep) { const q = Q.get(rep.dataset.report); if (q) { copyReport(q); usage.track('report_mistake', { question: q.sid || q.id }); } return; }   // the link itself opens the form
+    if (e.target.closest('a[data-ask]')) { usage.track('ask_labubu'); return; }
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; save(); render(false); return; }
@@ -3708,11 +3818,13 @@ html.intro-on #sky { opacity: 0; transition: none; }
       case 'sound': case 'sound-toggle': {
         sfx.setSound(!sfx.sound());
         const on = sfx.sound();
+        usage.track('sound_switched', { on });
         app.querySelectorAll('[data-act="sound"]').forEach(b => { b.setAttribute('aria-pressed', String(on)); b.title = on ? 'Sounds on' : 'Sounds off'; b.innerHTML = (on ? ICON.sound : ICON.mute) + '<span class="sr-label">Sounds</span>'; });
         app.querySelectorAll('[data-act="sound-toggle"]').forEach(b => { b.setAttribute('aria-checked', String(on)); b.textContent = on ? 'on' : 'off'; });
         break;
       }
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
+      case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
       case 'stars': practiceStars(curQ().id); break;
       case 'exam': openExam(); break;
@@ -3724,17 +3836,23 @@ html.intro-on #sky { opacity: 0; transition: none; }
       case 'exam-keep': examConfirm = false; render(false, 'next'); break;
       case 'exam-handin-yes': handIn(false); break;
       case 'exam-results': openExamResults(); break;
-      case 'exam-review': examJump(0); break;
+      case 'exam-review': usage.track('exam_review_opened'); examJump(0); break;
       case 'exam-new': S.examScreen = 'intro'; save(); render(true, null, 'nav'); break;
     }
   });
 
-  let saveTimer = null;
+  let saveTimer = null, searchStatT = null;
   app.addEventListener('input', e => {
     if (e.target.id !== 'q') return;
     S.q = e.target.value; S.aspect = null; kwAll = false;
     updateSearch();
     clearTimeout(saveTimer); saveTimer = setTimeout(save, 400);
+    // what people look for (once they stop typing), to see which searches come up empty
+    clearTimeout(searchStatT);
+    searchStatT = setTimeout(() => {
+      const q = (S.q || '').trim();
+      if (q.length >= 2) usage.track('search', { query: q.slice(0, 60), results: (lastLists.h || []).length + (lastLists.k || []).length });
+    }, 1500);
   });
 
   document.addEventListener('keydown', e => {
@@ -3829,6 +3947,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
   function start(data) {
     load();
     if (data && data.S && !storageOK) { S = Object.assign(S, data.S); sanitize(); }
+    usage.boot();   // first, so an exam handed in on load is counted too
     examBoot();
     if (S.view === 'home') { S.q = ''; S.aspect = null; }   // a fresh visit opens on the modules, not an old search
     // the opening animation plays when the site opens on the home page (not for automated page captures)

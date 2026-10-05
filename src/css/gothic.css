@@ -691,6 +691,27 @@ details.case[open] .case-b { margin-top: 6px; }
 .verdict.zero .v-main { color: var(--wrong); }
 .verdict.blank { border-style: dashed; border-color: var(--hair-2); }
 .verdict.blank .v-main { color: var(--ink-2); }
+/* ---------- anonymous stats: asked once, at the foot of the page ---------- */
+.consent {
+  position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 65;
+  width: min(36rem, calc(100vw - 32px)); transform: translateX(-50%);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 10px 14px; padding: 16px 18px;
+  background: var(--plate-2); border: 1px solid var(--hair-2); border-radius: var(--r); box-shadow: 0 26px 60px -24px var(--deep);
+  animation: consent-in .7s var(--spring) both;
+}
+.consent.out { animation: consent-out .36s var(--ease) both; }
+@keyframes consent-in { from { opacity: 0; transform: translate(-50%, 22px); } }
+@keyframes consent-out { to { opacity: 0; transform: translate(-50%, 14px); } }
+.consent .lb { width: 24px; height: 30px; margin-top: 3px; color: var(--ink); --lb-line: var(--plate-2); }
+.cs-text { min-width: 0; }
+.cs-t { margin: 0; font-family: var(--f-display); font-style: italic; font-size: 1.45rem; line-height: 1.15; text-wrap: balance; }
+.cs-d { margin: 5px 0 0; font-size: 1.02rem; line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+.cs-btns { grid-column: 2; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.cs-btns .btn { min-height: 40px; }
+@media (max-width: 640px) {
+  .cs-btns { grid-column: 1 / -1; }
+  .cs-btns .btn { flex: 1; }
+}
 /* on question screens the toast sits above the action bar */
 body[data-view="quiz"] .toast, body[data-view="exam"] .toast { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 
