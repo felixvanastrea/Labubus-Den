@@ -1084,3 +1084,69 @@ html.intro-on #sky { opacity: 0; transition: none; }
 /* locked for guests: a small padlock before the name of the feature */
 .lk { width: 14px; height: 14px; flex: none; }
 .navlinks .lk { width: 13px; height: 13px; margin-right: 5px; vertical-align: -1px; opacity: .75; }
+
+/* ---------- the blood moon look (a cosmetic): crimson and near-black, the stars kept bone ---------- */
+:root { --blood: #c1121f; --blood-hi: #e63946; }
+:root[data-look="blood"] {
+  --night: #120a0b; --deep: #080405; --plate: #1b0e10; --plate-2: #261316;
+  --ink: #f1e3d8; --ink-hi: #fff4ec; --ink-2: #ceb8ad; --ink-3: #a38d86;
+  --hair: #3b2024; --hair-2: #6b353b; --glass: rgba(24, 11, 13, .78);
+  --sel-wash: rgba(230, 57, 70, .08); --glow-soft: rgba(214, 36, 52, .14); --glow-mid: rgba(214, 36, 52, .42);
+  --title-glow: rgba(200, 24, 40, .55); --mottle-1: rgba(122, 16, 28, .24); --mottle-2: rgba(58, 8, 26, .22);
+  --wax-hi: #ef5560; --wax-mid: #a8121f; --wax-edge: #4c0810; --scrim: rgba(9, 3, 4, .95);
+}
+:root[data-look="blood"] .btn.primary { background: var(--blood); border-color: var(--blood); color: var(--ink-hi); }
+:root[data-look="blood"] .btn.primary:hover { background: var(--blood-hi); border-color: var(--blood-hi); }
+:root[data-look="blood"] ::selection { background: var(--blood); color: var(--ink-hi); }
+:root[data-look="blood"] .moon .mn-lit { fill: var(--blood-hi); }
+:root[data-look="blood"] .moon.full, :root[data-look="blood"] .moon.big { filter: drop-shadow(0 0 14px var(--glow-mid)); }
+:root[data-look="blood"] .astro { opacity: .42; }
+
+/* the moon in the hero, inside the astrolabe's rings */
+.bm { --aw: min(660px, 80vw); position: absolute; z-index: 0; right: calc(-9% + var(--aw) * .27); top: 50%; width: calc(var(--aw) * .46); aspect-ratio: 1; transform: translateY(-50%); pointer-events: none; transition: opacity 1s var(--ease); }
+.bm-img { display: block; width: 100%; height: 100%; border-radius: 50%; filter: drop-shadow(0 0 46px rgba(200, 20, 34, .5)) drop-shadow(0 0 120px rgba(160, 10, 24, .3)); }
+.intro-on .bm, .intro-on .bats { opacity: 0; }
+/* castles on the horizon, under the hero; bats cross the sky above them now and then */
+.bm-land { position: relative; z-index: 0; height: clamp(100px, 15vw, 210px); margin-top: calc(-1 * clamp(44px, 6.5vw, 104px)); margin-bottom: -12px; pointer-events: none; }
+.bm-land svg { display: block; width: 100%; height: 100%; }
+.bm-land .hill { fill: #1c0b0e; }
+.bm-land .castle path, .bm-land .castle rect, .bm-land .ground { fill: var(--deep); }
+.bm-land .pole { fill: none; stroke: var(--deep); stroke-width: 1.4; }
+.bm-land .tree { fill: none; stroke: var(--deep); stroke-width: 2.2; stroke-linecap: round; }
+.bm-land .lit rect { fill: #ff5a3d; filter: drop-shadow(0 0 3px #ff3b2a); animation: flicker 5s ease-in-out infinite; }
+.bm-land .lit rect:nth-child(2n) { animation-duration: 7s; animation-delay: -2s; }
+@keyframes flicker { 0%, 100% { opacity: .95; } 45% { opacity: .7; } 50% { opacity: .9; } 70% { opacity: .55; } }
+.bats { position: absolute; left: 0; right: 0; bottom: 70%; height: min(52vh, 420px); overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.bat { position: absolute; left: 0; top: calc(30% + var(--y)); width: calc(30px * var(--k)); height: auto; overflow: visible; fill: #0c0507; stroke: rgba(193, 18, 31, .7); stroke-width: .5; opacity: 0;
+  animation: batfly 32s linear infinite; animation-delay: calc(2.5s + var(--d)); }
+.bat use { transform-box: view-box; transform-origin: 50% 40%; animation: flap var(--f) ease-in-out infinite alternate; }
+@keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(.28) scaleX(.86); } }
+@keyframes batfly {
+  0% { transform: translate3d(104vw, 0, 0); opacity: 0; }
+  1.5% { opacity: 1; }
+  10% { transform: translate3d(78vw, -20px, 0); }
+  20% { transform: translate3d(50vw, 12px, 0); }
+  30% { transform: translate3d(22vw, -16px, 0); }
+  38% { transform: translate3d(-8vw, 4px, 0); opacity: 1; }
+  39%, 100% { transform: translate3d(-8vw, 4px, 0); opacity: 0; }
+}
+@media (max-width: 640px) {
+  .bm { --aw: 100vw; width: 46vw; right: -7vw; top: -4px; transform: none; opacity: .9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bats { display: none; }
+  .bm-land .lit rect { animation: none; }
+}
+
+/* the looks in the account sheet */
+.acct-looks { display: grid; gap: 10px; padding-top: 4px; border-top: 1px solid var(--hair); }
+.looks { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 8px; }
+.look { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--hair-2); border-radius: var(--r); background: transparent; text-align: left; cursor: pointer; transition: border-color .3s var(--ease), background-color .3s var(--ease); }
+.look:hover { border-color: var(--ink-3); background: var(--plate-2); }
+.look.on { border-color: var(--ink); background: var(--plate-2); box-shadow: 0 0 0 3px var(--glow-soft); }
+.look-sw { flex: none; width: 34px; height: 34px; border-radius: 50%; }
+.sw-gothic { background: radial-gradient(circle at 38% 34%, #fff8ea, #ece3d1 50%, #8f8574); box-shadow: 0 0 0 4px #1b1a18, 0 0 0 5px #5a5348; }
+.sw-blood { background: radial-gradient(circle at 38% 34%, #ef5b4e, #c41f29 48%, #46060f); box-shadow: 0 0 0 4px #120a0b, 0 0 0 5px #6b353b, 0 0 14px rgba(200, 20, 34, .6); }
+.look-t { display: grid; gap: 1px; line-height: 1.25; }
+.look-t b { font-weight: 600; color: var(--ink); }
+.look-t span { font-size: .9rem; font-style: italic; color: var(--ink-3); }

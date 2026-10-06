@@ -7,13 +7,14 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <!--__LABUBU__-->
+    <symbol id="bat" viewBox="-12 -6 24 12"><path d="M0 -1.4L.6 -1.5L1 -3L1.4 -1.1Q2.4 -1.6 3 -1.5Q6.5 -4.8 11.6 -3.4Q10.3 -1.4 9.8 .6Q8.2 -.5 6.8 1.5Q5.2 .2 3.8 1.8Q2.6 1.1 1.6 2.4Q1 3.2 0 3.6Q-1 3.2 -1.6 2.4Q-2.6 1.1 -3.8 1.8Q-5.2 .2 -6.8 1.5Q-8.2 -.5 -9.8 .6Q-10.3 -1.4 -11.6 -3.4Q-6.5 -4.8 -3 -1.5Q-2.4 -1.6 -1.4 -1.1L-1 -3L-.6 -1.5Z"/></symbol>
     <radialGradient id="g-window" cx="50%" cy="34%" r="78%">
       <stop offset="0" style="stop-color: var(--plate-2)"/>
       <stop offset="1" style="stop-color: var(--deep)"/>
     </radialGradient>
     <radialGradient id="g-wax" cx="38%" cy="32%" r="80%">
-      <stop offset="0" style="stop-color: var(--ink-hi)"/>
-      <stop offset=".55" style="stop-color: var(--ink)"/>
+      <stop offset="0" style="stop-color: var(--wax-hi, var(--ink-hi))"/>
+      <stop offset=".55" style="stop-color: var(--wax-mid, var(--ink))"/>
       <stop offset="1" style="stop-color: var(--wax-edge)"/>
     </radialGradient>
     <radialGradient id="g-halo">
@@ -300,8 +301,8 @@
     const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const VIBRATE = !IOS && typeof navigator.vibrate === 'function' && navigator.maxTouchPoints > 0;
     // loudness: the clicks clear but soft, the chimes about 10 dB above them (measured A-weighted)
-    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05 };
+    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34 };
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4 };
     const JITTER = { tick: 1, untick: 1, nav: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24] };
     let ctx = null, out = null, verb = null, recipes = null, idle = 0;
@@ -426,6 +427,35 @@
           bar(b, 0, C6 * 3 / 2, 0.5, 0.2, 0.6);
           bar(b, 0.055, C6 * 9 / 4, 0.42, 0.24, 0.6);
           return done(b, 0.6);
+        },
+        // bats leaving (the blood moon look's intro): leathery wing beats out of step, and high falling squeaks
+        bats() {
+          const b = make(2.6), r = mulberry(66);
+          for (let k = 0; k < 4; k++) {
+            let t = 0.02 + k * 0.07 + r() * 0.05;
+            const rate = 0.085 + r() * 0.03, a0 = 0.5 + r() * 0.3;
+            while (t < 2.2) {
+              const fade = Math.exp(-t / 1.1);
+              mix(b, bandpass(burst(0.06, 0.016, 100 + Math.floor(r() * 1e6)), 700 + r() * 900, 0.9), t, a0 * fade);
+              mix(b, lowpass(burst(0.05, 0.02, 200 + Math.floor(r() * 1e6)), 260, 0.7), t + 0.004, 0.5 * a0 * fade);
+              t += rate * (0.85 + r() * 0.3);
+            }
+          }
+          const chirp = (t0, f0, f1, dur, a) => {
+            const n0 = Math.round(t0 * sr), n = Math.round(dur * sr); let ph = 0;
+            for (let i = 0; i < n && n0 + i < b.length; i++) {
+              const u = i / n, f = f0 * Math.pow(f1 / f0, u);
+              ph += TAU * f / sr;
+              b[n0 + i] += a * Math.sin(Math.PI * u) ** 2 * (1 - 0.5 * u) * (Math.sin(ph) + 0.25 * Math.sin(2 * ph));
+            }
+          };
+          let t = 0.12;
+          for (let k = 0; k < 9 && t < 2.0; k++) {
+            const n = 1 + Math.floor(r() * 3), f0 = 5200 + r() * 2600, a = 0.16 * Math.exp(-t / 1.4) * (0.7 + r() * 0.5);
+            for (let j = 0; j < n; j++) chirp(t + j * (0.045 + r() * 0.02), f0 * (1 - j * 0.04), f0 * 0.62, 0.028 + r() * 0.018, a);
+            t += 0.12 + r() * 0.22;
+          }
+          return done(b, 0.8);
         },
         // the end of a session that went well: an arpeggio
         finish() {
@@ -575,6 +605,103 @@
   // copy in Firestore users/{uid} (field s, JSON) on sign-in, then written back 15 s after the last change and when the
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
+  // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
+  const LOOK_KEY = 'efm3-look';
+  function lookNow() { return document.documentElement.dataset.look === 'blood' ? 'blood' : 'gothic'; }
+  function setLookAttr(id) {
+    const r = document.documentElement;
+    if (id === 'blood') r.dataset.look = 'blood'; else delete r.dataset.look;
+    const m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', id === 'blood' ? '#120a0b' : '#1b1a18');
+  }
+  // the blood moon, painted once: a crimson disc, its dark seas, grain, craters with a lit rim, a rayed crater, the limb
+  function bloodMoon(px) {
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), R = px / 2, rnd = mulberry(1313);
+    g.save(); g.beginPath(); g.arc(R, R, R, 0, 6.2832); g.clip();
+    let gr = g.createRadialGradient(R * .78, R * .7, R * .05, R, R, R);
+    gr.addColorStop(0, '#ef5b4e'); gr.addColorStop(.45, '#c41f29'); gr.addColorStop(.85, '#860e18'); gr.addColorStop(1, '#46060f');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    for (const [x, y, r] of [[.36, .34, .2], [.55, .3, .16], [.63, .5, .22], [.4, .6, .18], [.27, .5, .12], [.7, .68, .13], [.5, .76, .1]]) {
+      for (let k = 0; k < 5; k++) {
+        const cx = (x + (rnd() - .5) * .09) * px, cy = (y + (rnd() - .5) * .09) * px, rr = r * px * (.55 + rnd() * .6);
+        const m = g.createRadialGradient(cx, cy, 0, cx, cy, rr);
+        m.addColorStop(0, 'rgba(58,3,10,.34)'); m.addColorStop(.7, 'rgba(58,3,10,.14)'); m.addColorStop(1, 'rgba(58,3,10,0)');
+        g.fillStyle = m; g.fillRect(cx - rr, cy - rr, rr * 2, rr * 2);
+      }
+    }
+    for (let i = 0, n = px * px / 40; i < n; i++) {
+      const s = (rnd() < .9 ? 1 : 2) * px / 600;
+      g.fillStyle = rnd() < .5 ? 'rgba(40,0,6,.2)' : 'rgba(255,175,155,.09)';
+      g.fillRect(rnd() * px, rnd() * px, s, s);
+    }
+    for (let i = 0; i < 38; i++) {
+      const x = rnd() * px, y = rnd() * px, r = px * (.006 + rnd() ** 2 * .032);
+      g.fillStyle = 'rgba(48,2,8,.3)'; g.beginPath(); g.arc(x, y, r, 0, 6.2832); g.fill();
+      g.strokeStyle = 'rgba(255,165,145,.24)'; g.lineWidth = Math.max(.6, r * .22);
+      g.beginPath(); g.arc(x - r * .12, y - r * .12, r, 3.5, 5.7); g.stroke();
+    }
+    const tx = px * .42, ty = px * .8;
+    g.strokeStyle = 'rgba(255,190,170,.1)'; g.lineWidth = px / 400;
+    for (let i = 0; i < 26; i++) { const a = rnd() * 6.2832, l = px * (.06 + rnd() * .22); g.beginPath(); g.moveTo(tx, ty); g.lineTo(tx + Math.cos(a) * l, ty + Math.sin(a) * l); g.stroke(); }
+    g.fillStyle = 'rgba(255,200,180,.5)'; g.beginPath(); g.arc(tx, ty, px * .009, 0, 6.2832); g.fill();
+    gr = g.createRadialGradient(R * .82, R * .74, R * .3, R, R, R);
+    gr.addColorStop(0, 'rgba(18,0,4,0)'); gr.addColorStop(.72, 'rgba(18,0,4,.14)'); gr.addColorStop(1, 'rgba(18,0,4,.62)');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    g.restore();
+    return cv;
+  }
+  let moonImg = null;
+  function moonURL() { if (moonImg === null) { try { moonImg = bloodMoon(560).toDataURL('image/png'); } catch (e) { moonImg = ''; } } return moonImg; }
+  // a bat in flight, for canvas: flap from -1 (wings down) to 1 (up)
+  function drawBat(ctx, x, y, s, flap, tilt) {
+    const L = flap * .55 * s, sp = .82 + .18 * Math.cos(flap * 1.4);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
+    ctx.beginPath();
+    for (const d of [1, -1]) {
+      ctx.moveTo(d * .07 * s, -.08 * s);
+      ctx.quadraticCurveTo(d * .5 * s * sp, -L * .6 - .32 * s, d * s * sp, -L - .05 * s);
+      ctx.quadraticCurveTo(d * .9 * s * sp, -L * .8, d * .72 * s * sp, -L * .62 + .13 * s);
+      ctx.quadraticCurveTo(d * .6 * s * sp, -L * .52 + .02 * s, d * .45 * s * sp, -L * .36 + .17 * s);
+      ctx.quadraticCurveTo(d * .3 * s * sp, -L * .2 + .06 * s, d * .12 * s, .15 * s);
+      ctx.closePath();
+    }
+    ctx.ellipse(0, .02 * s, .1 * s, .2 * s, 0, 0, 6.2832);
+    ctx.moveTo(-.09 * s, -.14 * s); ctx.lineTo(-.06 * s, -.3 * s); ctx.lineTo(-.01 * s, -.16 * s);
+    ctx.lineTo(.01 * s, -.16 * s); ctx.lineTo(.06 * s, -.3 * s); ctx.lineTo(.09 * s, -.14 * s);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // on the homepage: the moon (smaller than in the intro), the castles on the horizon, and a flock now and then
+  function bloodMoonHTML() {
+    const src = moonURL();
+    return src ? `<div class="bm" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
+  }
+  function bloodLandHTML() {
+    const tower = (cx, w, top, spire) => `<rect x="${cx - w / 2}" y="${top}" width="${w}" height="${190 - top}"/><path d="M${cx - w / 2 - 3} ${top}L${cx} ${top - spire}L${cx + w / 2 + 3} ${top}Z"/><path class="pole" d="M${cx} ${top - spire}v-7"/>`;
+    const merlons = (x0, x1, y) => { let d = ''; for (let x = x0; x < x1; x += 14) d += `M${x} ${y}h7v-6h-7Z`; return `<path d="${d}"/>`; };
+    const lit = [[1077, 86, 4, 7], [1129, 58, 3, 6], [1177, 94, 4, 6], [1104, 120, 3, 5], [1038, 106, 3, 5], [1229, 112, 3, 5], [222, 128, 3, 5]];
+    const tree = (x, y, k) => `<path class="tree" d="M${x} ${y}v-${30 * k}M${x} ${y - 14 * k}l-${11 * k} -${10 * k}M${x} ${y - 20 * k}l${12 * k} -${11 * k}M${x - 6 * k} ${y - 19 * k}l-${4 * k} -${8 * k}M${x + 7 * k} ${y - 26 * k}l${3 * k} -${7 * k}M${x} ${y - 30 * k}l-${5 * k} -${6 * k}"/>`;
+    return `<div class="bm-land" aria-hidden="true"><svg viewBox="0 0 1440 190" preserveAspectRatio="xMaxYMax slice" focusable="false">
+      <defs><linearGradient id="bm-mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--blood)" stop-opacity="0"/><stop offset=".72" stop-color="var(--blood)" stop-opacity=".16"/><stop offset="1" stop-color="var(--blood)" stop-opacity="0"/></linearGradient><linearGradient id="bm-fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="var(--night)" stop-opacity="0"/><stop offset="1" stop-color="var(--night)"/></linearGradient></defs>
+      <path class="hill" d="M0 160C200 128 380 144 560 126S900 108 1080 120S1340 136 1440 124V190H0Z"/>
+      <g class="castle">
+        <path d="M168 190L178 150L200 144L246 146L262 158L270 190Z"/>${tower(196, 16, 120, 20)}${tower(226, 20, 108, 26)}${merlons(200, 222, 140)}
+        <path d="M968 190L996 146L1034 134L1084 138L1122 124L1202 128L1250 142L1296 148L1332 190Z"/>
+        <rect x="1030" y="110" width="210" height="80"/>${merlons(1030, 1240, 110)}
+        ${tower(1040, 26, 92, 26)}${tower(1080, 34, 70, 34)}${tower(1131, 24, 40, 38)}${tower(1180, 36, 78, 30)}${tower(1228, 22, 98, 24)}
+      </g>
+      <g class="lit">${lit.map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1"/>`).join('')}</g>
+      ${tree(420, 150, 1)}${tree(468, 146, .8)}${tree(1372, 136, 1.1)}${tree(1404, 132, .7)}
+      <path class="ground" d="M0 190V172C240 164 520 178 760 168S1200 176 1440 166V190Z"/>
+      <rect width="1440" height="190" fill="url(#bm-mist)"/><rect width="1440" height="190" fill="url(#bm-fade)"/>
+    </svg>${batsHTML()}</div>`;
+  }
+  function batsHTML() {
+    const flock = [[0, 0, 1], [.5, -26, .78], [.9, 18, .7], [.25, 36, .88], [1.4, -10, .6], [1.1, 30, .72], [1.8, 8, .55]];
+    return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
+  }
+
   let acctHook = null;   // save() tells the account a change is waiting
   const acct = (() => {
     const CONFIG = { apiKey: 'AIzaSyC-YmQXRub3uGLpIV6d8nwJIx5x2zMigcg', authDomain: 'labubu-s-den.firebaseapp.com', projectId: 'labubu-s-den',
@@ -597,6 +724,23 @@
     }
     const ref = () => fb.f.doc(db, 'users', user.uid);
     const member = () => !here || ['wait', 'loading', 'in', 'error'].includes(state);
+    // the looks (cosmetics) are only for the Labubu account for now. Names are one per person and lookalikes count as
+    // the same, so only Abi can hold it. Before Firebase wakes up, the name this device last saw stands in.
+    const LOOKS_FOR = 'labubu';
+    const vip = () => here && (['in', 'error'].includes(state) ? me.key === LOOKS_FOR
+      : ['wait', 'loading'].includes(state) && canon(read(NAME) || '') === LOOKS_FOR);
+    function applyLook() {
+      const want = vip() && read(LOOK_KEY) === 'blood' ? 'blood' : 'gothic';
+      if (want === lookNow()) return false;
+      setLookAttr(want); return true;
+    }
+    function setLook(id) {
+      if (!vip()) return;
+      store(LOOK_KEY, id); applyLook();
+      usage.track('look_picked', { look: id });
+      if (fb && user) { try { const b = fb.f.writeBatch(db); b.set(ref(), { look: id }, { merge: true }); b.commit().catch(() => {}); } catch (e) {} }
+      paint(); if (!intro.active()) render(false);
+    }
 
     // ---- the progress, between devices ----
     // the account's doc keeps the synced entries and, for each, when it last changed (S.stamps, deletions too).
@@ -676,7 +820,8 @@
       user = u || null;
       if (!user) {
         const was = state; state = 'off'; me = { name: '', key: '' }; store(FLAG, null); store(NAME, null);
-        if (was !== 'off') { paint(); if (!intro.active()) render(false); }   // nothing to repaint while they type in the sheet
+        const relook = applyLook();
+        if (was !== 'off' || relook) { paint(); if (!intro.active()) render(false); }   // nothing to repaint while they type in the sheet
         return;
       }
       store(FLAG, '1'); state = 'loading'; paint();
@@ -686,6 +831,8 @@
         if (d.s) { try { take(JSON.parse(d.s)); } catch (e) {} }
         me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
         state = me.key ? 'in' : 'naming';
+        if (me.key === LOOKS_FOR && d.look) store(LOOK_KEY, d.look);
+        applyLook();
         save(true); await push(); listen();
         if (state === 'naming' && pendingName) { const n = pendingName; pendingName = ''; await claim(n); }
         else if (state === 'naming' && (pending || (sheet && !sheet.hidden))) open();
@@ -722,6 +869,7 @@
       try { if (user.displayName !== name) await fb.a.updateProfile(user, { displayName: name }); } catch (e) {}
       const was = state; me = { name, key }; store(NAME, name); editing = false;
       if (was === 'naming') { state = 'in'; usage.track('name_picked'); }
+      if (applyLook() && was !== 'naming' && !intro.active()) render(false);
       paint();
       if (was === 'naming') { done(); if (!intro.active()) render(false); }
       return true;
@@ -810,6 +958,7 @@
           ${editing ? `<form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your new name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(me.name)}"></label>
               <div class="row"><button class="btn" type="submit"${dis}>Save</button><button class="btn quiet" type="button" data-acct="rename-no">Cancel</button></div></form>`
             : me.key ? `<p class="acct-p">Your name on the Den: <b>${esc(me.name)}</b> <button class="acct-forgot" type="button" data-acct="rename">Change it</button></p>` : ''}
+          ${vip() ? looksHTML() : ''}
           ${note}
           <div class="row"><button class="btn" type="button" data-acct="out"${dis}>Sign out</button>
           ${erasing ? `<span class="confirm" role="alert">Delete your account and its saved progress? This device keeps its answers. <button class="btn danger" type="button" data-acct="erase-yes">Delete</button><button class="btn quiet" type="button" data-acct="erase-no">Cancel</button></span>`
@@ -829,6 +978,12 @@
         </form>
         ${note}
         <p class="acct-fine">An account keeps your name, your email and your progress, nothing else, and you can delete them anytime. Passwords are stored scrambled: no one can read them, not even the Labubu.</p>`;
+    }
+    function looksHTML() {
+      const cur = lookNow(), one = (id, name, sub) => `<button type="button" class="look${cur === id ? ' on' : ''}" data-look="${id}" aria-pressed="${cur === id}"><span class="look-sw sw-${id}" aria-hidden="true"></span><span class="look-t"><b>${name}</b><span>${sub}</span></span></button>`;
+      return `<div class="acct-looks"><p class="acct-or">Looks · only your account has them for now</p>
+        <div class="looks">${one('gothic', 'Constellation gothic', 'Bone ink on charcoal')}${one('blood', 'Blood moon', 'Crimson, castles and bats')}</div>
+        ${cur === 'blood' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>`;
     }
     const label = () => state === 'off' ? 'Sign in' : state === 'naming' ? 'Pick a name'
       : me.name || (user && (user.displayName || '').split(' ')[0]) || read(NAME) || 'Account';
@@ -860,6 +1015,7 @@
         const val = id => ((sheet.querySelector('#' + id) || {}).value || '').trim();
         sheet.addEventListener('click', e => {
           if (e.target === sheet) { close(); return; }
+          const lk = e.target.closest('button[data-look]'); if (lk) { setLook(lk.dataset.look); return; }
           const b = e.target.closest('[data-acct]'); if (!b) return;
           const k = b.dataset.acct;
           if (k === 'close') close();
@@ -870,6 +1026,7 @@
           else if (k === 'erase-yes') erase();
           else if (k === 'mode-new' || k === 'mode-in') { mode = k === 'mode-new' ? 'new' : 'in'; msg = ''; paint(); const i = sheet.querySelector(mode === 'new' ? '#acct-name' : '#acct-email'); if (i) i.focus(); }
           else if (k === 'forgot') forgot(val('acct-email'));
+          else if (k === 'look-intro') { close(); replayIntro(); }
           else if (k === 'rename' || k === 'rename-no') { editing = k === 'rename'; msg = ''; paint(); const i = sheet.querySelector('#acct-newname'); if (i) i.select(); }
         });
         sheet.addEventListener('submit', e => {
@@ -904,6 +1061,7 @@
     };
     document.addEventListener('visibilitychange', () => { if (document.hidden && timer) push().catch(() => {}); });
     function boot() {
+      applyLook();
       if (state !== 'wait') return;   // Firebase only loads for someone who signed in on this device
       load().catch(() => {});
     }
@@ -2428,7 +2586,7 @@
           </div>
         </nav>
         <div class="hero">
-          ${astrolabeSVG()}
+          ${astrolabeSVG()}${lookNow() === 'blood' ? bloodMoonHTML() : ''}
           <p class="caption rise-in" style="--d:0">An archive of past EFM3 exam questions, sorted by module and by exam.</p>
           <ul class="meta mono rise-in" style="--d:1">
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
@@ -2436,7 +2594,7 @@
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}</div>
         </div>
-      </header>
+      </header>${lookNow() === 'blood' ? bloodLandHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
@@ -3500,6 +3658,8 @@
     let back = null, front = null, hint = null, bx = null, fx = null, milky = null, glow = null;
     let INK = [236, 227, 209], INK_HI = [255, 248, 234], NIGHT = [27, 26, 24];
     let stars = [], asterism = [], minors = [], trail = [], sparks = [], burst = [], P0, P1, P2;
+    // the blood moon look: a big moon that shrinks into the homepage's as the camera comes down, and bats after the star
+    let moonTex = null, moonGlow = null, MS = null, ME = null, flock = [], BLOOD = [193, 18, 31];
 
     // camera height in px: a slight drift further up while the sky fades in, then the long tilt down to the page
     function cam(t) {
@@ -3604,6 +3764,12 @@
         if (s.r > 1) { ctx.beginPath(); ctx.arc(s.x, y, s.r, 0, 6.2832); ctx.fill(); }
         else ctx.fillRect(s.x, y, s.r * 1.5, s.r * 1.5);
       }
+      if (moonTex) {
+        const k = inOutCubic(p), x = MS.x + (ME.x - MS.x) * k, y = MS.y + (ME.y - MS.y) * k, r = MS.r + (ME.r - MS.r) * k;
+        ctx.globalAlpha = vis * .6; ctx.drawImage(moonGlow, x - r * 1.9, y - r * 1.9, r * 3.8, r * 3.8);
+        ctx.globalAlpha = vis; ctx.drawImage(moonTex, x - r, y - r, r * 2, r * 2);
+        ctx.fillStyle = `rgb(${INK})`;
+      }
       if (bare) { ctx.globalAlpha = 1; return; }
       const dy = -c * .6, q = clamp01((t - 200) / 1100), af = (1 - clamp01(p * 2.4)) * vis;
       if (af > 0 && q > 0) {
@@ -3658,6 +3824,33 @@
         if (age > s.life) { sparks.splice(i, 1); continue; }
         ctx.globalAlpha = (1 - age / s.life) * .8 * out;
         ctx.beginPath(); ctx.arc(s.x + s.vx * age / 1000, s.y + s.vy * age / 1000 - shift, s.r, 0, 6.2832); ctx.fill();
+      }
+      if (flock.length && !skipped && t >= T_STAR) {
+        // the bats: they follow the falling star, fanning out, and scatter when it lands
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgb(12,5,7)'; ctx.strokeStyle = `rgba(${BLOOD},.5)`; ctx.lineWidth = .7; ctx.lineJoin = 'round';
+        for (const b of flock) {
+          let x, y, a = out, tilt = 0;
+          if (landedAt === null) {
+            const tt = t - b.lag; if (tt < T_STAR) continue;
+            const h = head(tt), h0 = head(Math.max(T_STAR, tt - 30)), dx = h.x - h0.x, dy = h.y - h0.y, l = Math.hypot(dx, dy) || 1;
+            const fan = clamp01((tt - T_STAR) / 700);
+            x = h.x - dy / l * b.off * fan; y = h.y + dx / l * b.off * fan + Math.sin(t * .004 + b.bob) * 5;
+            tilt = Math.max(-.4, Math.min(.4, dx / l * .25));
+            a *= clamp01((tt - T_STAR) / 200);
+            b.last = { x, y };
+          } else {
+            if (!b.last) continue;
+            const age = t - landedAt;
+            if (!b.v) { const dx = b.last.x - P2.x, dy = b.last.y - P2.y, l = Math.hypot(dx, dy) || 1; b.v = { x: dx / l * b.sp, y: dy / l * b.sp - 90 }; }
+            x = b.last.x + b.v.x * age / 1000; y = b.last.y + b.v.y * age / 1000;
+            a *= clamp01(1 - age / 900);
+          }
+          if (a <= 0) continue;
+          ctx.globalAlpha = a;
+          drawBat(ctx, x, y, b.s, Math.sin(t * b.fq + b.ph), tilt);
+        }
+        ctx.globalCompositeOperation = 'lighter';
       }
       if (landedAt === null && t >= T_STAR) {
         const h = head(t);
@@ -3767,7 +3960,7 @@
       [back, front, hint].forEach(el => el && el.remove());
       closePick(true);
       back = front = hint = bx = fx = milky = glow = null;
-      stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = [];
+      stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = []; flock = []; moonTex = moonGlow = null;
     }
     // returns false when it can't run (a tiny window), so the caller shows the page straight away
     function play() {
@@ -3785,6 +3978,22 @@
       P2 = { x: r.left + r.width * .25, y: r.top + Math.min(r.height * .27, 90) };
       P0 = { x: W * .86, y: H * .07 };
       P1 = { x: P0.x - (P0.x - P2.x) * .38, y: P2.y };
+      flock = []; moonTex = null;
+      if (lookNow() === 'blood') {
+        try {
+          BLOOD = rgbOf(cssVar('--blood'));
+          const small = W < 640, bm = document.querySelector('.bm-img'), br = bm ? bm.getBoundingClientRect() : null;
+          MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
+          ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
+          moonTex = bloodMoon(Math.min(1400, Math.round(MS.r * 2 * Math.min(2, window.devicePixelRatio || 1))));
+          moonGlow = document.createElement('canvas'); moonGlow.width = moonGlow.height = 256;
+          const gc = moonGlow.getContext('2d'), gg = gc.createRadialGradient(128, 128, 0, 128, 128, 128);
+          gg.addColorStop(0, `rgba(${BLOOD},.6)`); gg.addColorStop(.42, `rgba(${BLOOD},.22)`); gg.addColorStop(1, `rgba(${BLOOD},0)`);
+          gc.fillStyle = gg; gc.fillRect(0, 0, 256, 256);
+          const rnd = mulberry(77);
+          flock = Array.from({ length: 9 }, (_, i) => ({ lag: 120 + i * 78 + rnd() * 50, off: (rnd() - .5) * 150, bob: rnd() * 6.28, s: 11 + rnd() * 9, fq: .042 + rnd() * .02, ph: rnd() * 6.28, sp: 240 + rnd() * 200, last: null, v: null }));
+        } catch (e) { moonTex = null; flock = []; }
+      }
       back = document.createElement('canvas'); back.className = 'intro-sky'; back.setAttribute('aria-hidden', 'true');
       front = document.createElement('canvas'); front.className = 'intro-fx'; front.setAttribute('aria-hidden', 'true');
       app.parentNode.insertBefore(back, app);
@@ -3893,6 +4102,7 @@
       makeMinors();
       b.classList.add('fire');
       sfx.play('sparkle');
+      if (flock.length) sfx.play('bats', { delay: .28, quiet: true });
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();

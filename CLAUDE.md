@@ -222,6 +222,21 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
   quest) shows the moon and tonight's comets. Tests: tonight.js, weak.js.
 
+## Looks (cosmetics)
+
+- Only the account named Labubu (Abi's) has them for now (`LOOKS_FOR` in `acct`): names are one per person and lookalikes
+  count, so no one else can hold it. They show as "Looks" in her account sheet. Before Firebase wakes up, the name this
+  device last saw (`efm3-acct-name`) stands in, so the look is on from the first frame. Anyone else, or signed out:
+  the classic look, even if a look is saved on the device. To open them to everyone later, change `vip()`.
+- The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
+- Blood moon (`:root[data-look="blood"]` in gothic.css): crimson and near-black tokens (`--blood`, `--blood-hi`, wax
+  colours), the stars and text kept bone, crimson primary buttons and moon phases. On the homepage: the moon
+  (`bloodMoon()` paints it on a canvas once; `.bm` inside the astrolabe), castles and bare trees on the horizon with
+  flickering windows (`bloodLandHTML`, under the hero), and a flock of bats crossing every 32 s (`batsHTML`, CSS; none
+  with reduced motion). In the intro: the same moon, big behind the year picker, shrinking into the homepage's as the
+  camera comes down (`MS` → `ME`), and nine bats (`drawBat`) following the falling star, scattering when it lands,
+  with the `bats` sound (wing beats and squeaks, synthesized like the others). Test: looks.js.
+
 ## Anonymous stats (PostHog)
 
 - Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
@@ -266,7 +281,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
