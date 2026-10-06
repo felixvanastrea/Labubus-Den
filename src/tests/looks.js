@@ -69,6 +69,29 @@ async function context(b, size, user, docs) {
   check(!(await p.$('.intro-sky')) && await p.evaluate(() => getComputedStyle(document.querySelector('.bm')).opacity) === '1', 'after the intro: the homepage moon shows');
   await ctx.close();
 
+  // Codex: picked in the sheet, then the intro with the gilded halo, and a phone
+  ctx = await context(b, { width: 1280, height: 860 }, labubu, docs);
+  p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
+  await p.click('.nav-acct'); await p.waitForTimeout(200);
+  await p.click('[data-look="codex"]'); await p.waitForTimeout(300);
+  check(await look(p) === 'codex' && await p.evaluate(() => window.__fb.docs['users/u9'].look) === 'codex' && !!(await p.$('.bm-codex .bm-img')) && !!(await p.$('.cx-piece svg')) && !!(await p.$('.cx-strip .cx-motto')) && !(await p.$('.bm-land')), 'Codex: the halo, the collage leaf and the parchment strip, saved');
+  await p.click('[data-acct="close"]'); await p.waitForTimeout(400);
+  await p.screenshot({ path: OUT + 'look_codex_home.png' });
+  await p.goto('about:blank'); await p.goto(URL + '#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
+  await p.screenshot({ path: OUT + 'look_codex_pick.png' });
+  await p.click('.pk-year.on'); await p.waitForTimeout(900); await p.click('.pk-sem.on');
+  await wait(1200); await p.screenshot({ path: OUT + 'look_codex_fall.png' });
+  await wait(3000);
+  check(!(await p.$('.intro-sky')) && await look(p) === 'codex', 'Codex: the intro lands on the halo');
+  await ctx.close();
+  ctx = await context(b, { width: 390, height: 844 }, labubu, Object.assign({}, docs, { 'users/u9': Object.assign({}, docs['users/u9'], { look: 'codex' }) }));
+  p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(1600);
+  check(await look(p) === 'codex' && await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Codex on a phone: no sideways scroll');
+  await p.screenshot({ path: OUT + 'look_codex_phone.png' });
+  await ctx.close();
+
   // a phone
   ctx = await context(b, { width: 390, height: 844 }, labubu, Object.assign({}, docs, { 'users/u9': Object.assign({}, docs['users/u9'], { look: 'blood' }) }));
   p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));

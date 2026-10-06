@@ -1218,7 +1218,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .navlinks .lk { width: 13px; height: 13px; margin-right: 5px; vertical-align: -1px; opacity: .75; }
 
 /* ---------- the blood moon look (a cosmetic): crimson and near-black, the stars kept bone ---------- */
-:root { --blood: #c1121f; --blood-hi: #e63946; }
+:root { --blood: #c1121f; --blood-hi: #e63946; --gold: #c9a24a; --vermilion: #a83a26; }
 :root[data-look="blood"] {
   --night: #120a0b; --deep: #080405; --plate: #1b0e10; --plate-2: #261316;
   --ink: #f1e3d8; --ink-hi: #fff4ec; --ink-2: #ceb8ad; --ink-3: #a38d86;
@@ -1282,6 +1282,54 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .look-t { display: grid; gap: 1px; line-height: 1.25; }
 .look-t b { font-weight: 600; color: var(--ink); }
 .look-t span { font-size: .9rem; font-style: italic; color: var(--ink-3); }
+
+/* ---------- the codex look (a cosmetic): parchment ink on warm charcoal, vermilion and gold leaf, collage pieces ---------- */
+:root[data-look="codex"] {
+  --night: #171410; --deep: #0d0b09; --plate: #1f1b16; --plate-2: #29231c;
+  --ink: #eadcc0; --ink-hi: #fbf1dc; --ink-2: #cdbd9f; --ink-3: #9f8f74;
+  --hair: #3a3227; --hair-2: #6a5a43; --glass: rgba(26, 22, 17, .8);
+  --sel-wash: rgba(201, 162, 74, .08); --glow-soft: rgba(201, 162, 74, .12); --glow-mid: rgba(201, 162, 74, .36);
+  --title-glow: rgba(201, 162, 74, .3); --mottle-1: rgba(122, 86, 40, .22); --mottle-2: rgba(70, 48, 24, .2);
+  --wax-hi: #d9634a; --wax-mid: #a33a2a; --wax-edge: #5e1d12; --scrim: rgba(12, 10, 8, .95);
+}
+:root[data-look="codex"] .btn.primary { background: var(--vermilion); border-color: var(--vermilion); color: var(--ink-hi); }
+:root[data-look="codex"] .btn.primary:hover { background: #c04a32; border-color: #c04a32; }
+:root[data-look="codex"] ::selection { background: var(--vermilion); color: var(--ink-hi); }
+:root[data-look="codex"] .moon .mn-lit { fill: #d9b867; }
+:root[data-look="codex"] .eyebrow { color: #c9a24a; }
+:root[data-look="codex"] .eyebrow::before { content: ""; display: inline-block; width: 22px; height: 1px; margin-right: 10px; vertical-align: middle; background: var(--vermilion); }
+:root[data-look="codex"] .intro .lede::first-letter { color: #f3d98a; background: var(--vermilion); padding: 0 .12em; margin-right: .2em; }
+:root[data-look="codex"] .astro { opacity: .46; }
+.bm-codex .bm-img { filter: drop-shadow(0 0 34px rgba(201, 162, 74, .32)) drop-shadow(0 18px 40px rgba(0, 0, 0, .5)); }
+
+/* the collage leaf above the halo: a Gothic arch round a rose window in lapis and gold, Leonardo's square and circle */
+.cx-piece { --aw: min(660px, 80vw); position: absolute; z-index: 0; top: 0; right: calc(-9% + var(--aw) * .5); width: min(300px, 26vw); transform: rotate(-4deg); pointer-events: none; transition: opacity 1s var(--ease); filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .5)); }
+.cx-piece svg { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
+.cx-red { position: absolute; left: -16%; bottom: -20%; width: 46%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 40% 36%, #c4553a, #a83a26 55%, #7e2818); box-shadow: inset 0 0 18px rgba(60, 14, 6, .5); }
+.cx-sheet { stroke: rgba(110, 78, 36, .55); stroke-width: 1.2; }
+.cx-niche { fill: #33414f; }
+.cx-piece .ink { fill: none; stroke: #d6b25e; stroke-width: 1.1; }
+.cx-piece .ink.faint { stroke: #6b5238; stroke-width: .8; opacity: .55; }
+.cx-frame { fill: none; stroke: #b88f3c; stroke-width: 3.2; }
+.cx-hand { font-family: var(--f-read); font-style: italic; font-size: 13px; fill: #4e3b27; }
+.cx-rule { stroke: var(--vermilion); stroke-width: 1.4; }
+.intro-on .cx-piece { opacity: 0; }
+
+/* under the hero: the torn parchment strip, the motto, Florence */
+.cx-strip { position: relative; z-index: 0; display: flex; align-items: center; height: clamp(66px, 8.5vw, 108px); margin: 6px 0 10px; padding-inline: clamp(22px, 5vw, 64px); pointer-events: none; }
+.cx-strip-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.cx-under { fill: #5e4326; opacity: .6; }
+.cx-motto { position: relative; margin: 0; max-width: 58%; font-family: var(--f-display); font-style: italic; font-size: clamp(1rem, 2.1vw, 1.55rem); line-height: 1.2; color: #3c2c1c; }
+.cx-motto::before { content: ""; display: inline-block; width: 22px; height: 1px; margin-right: 12px; vertical-align: middle; background: var(--vermilion); }
+.cx-city { position: absolute; right: clamp(16px, 4vw, 56px); bottom: 10%; height: 74%; width: auto; max-width: 42%; fill: #5b4630; opacity: .88; }
+@media (max-width: 640px) {
+  .cx-piece { display: none; }
+  .bm-codex { opacity: .85; }
+  :root[data-look] .hero .caption, :root[data-look] .hero .meta { text-shadow: 0 0 6px var(--night), 0 0 14px var(--night), 0 0 2px var(--night); }
+  .cx-motto { max-width: 62%; font-size: .98rem; }
+  .cx-motto::before { display: none; }
+}
+.sw-codex { background: radial-gradient(circle at 38% 34%, #f6e3a1, #d5ad55 50%, #6e4f1a); box-shadow: 0 0 0 4px #171410, 0 0 0 5px #a83a26; }
 </style>
 </head>
 <body>
@@ -1583,8 +1631,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const VIBRATE = !IOS && typeof navigator.vibrate === 'function' && navigator.maxTouchPoints > 0;
     // loudness: the clicks clear but soft, the chimes about 10 dB above them (measured A-weighted)
-    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4 };
+    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3 };
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38 };
     const JITTER = { tick: 1, untick: 1, nav: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24] };
     let ctx = null, out = null, verb = null, recipes = null, idle = 0;
@@ -1739,6 +1787,14 @@ html.intro-on #sky { opacity: 0; transition: none; }
           }
           return done(b, 0.8);
         },
+        // a small church bell (the codex look's intro): hum, prime, minor third, fifth, nominal; the high ones die first
+        bell() {
+          const b = make(3.4), f = 392;
+          [[.5, .45, 1.7], [1, .6, 1.15], [1.2, .4, .95], [1.5, .28, .75], [2, .5, .62], [2.5, .2, .42], [3, .13, .3], [4.2, .06, .18]]
+            .forEach(([k, a, d]) => mode(b, 0, f * k, a, d, { att: 0.002 }));
+          mix(b, bandpass(burst(0.03, 0.008, 31), 2600, 1.2), 0, 0.25);
+          return done(b, 0.8);
+        },
         // the end of a session that went well: an arpeggio
         finish() {
           const b = make(2.2);
@@ -1888,13 +1944,13 @@ html.intro-on #sky { opacity: 0; transition: none; }
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
-  const LOOK_KEY = 'efm3-look';
-  function lookNow() { return document.documentElement.dataset.look === 'blood' ? 'blood' : 'gothic'; }
+  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410' };
+  function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
   function setLookAttr(id) {
     const r = document.documentElement;
-    if (id === 'blood') r.dataset.look = 'blood'; else delete r.dataset.look;
+    if (id in LOOK_NIGHT && id !== 'gothic') r.dataset.look = id; else delete r.dataset.look;
     const m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', id === 'blood' ? '#120a0b' : '#1b1a18');
+    if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
   }
   // the blood moon, painted once: a crimson disc, its dark seas, grain, craters with a lit rim, a rayed crater, the limb
   function bloodMoon(px) {
@@ -1933,8 +1989,10 @@ html.intro-on #sky { opacity: 0; transition: none; }
     g.restore();
     return cv;
   }
-  let moonImg = null;
-  function moonURL() { if (moonImg === null) { try { moonImg = bloodMoon(560).toDataURL('image/png'); } catch (e) { moonImg = ''; } } return moonImg; }
+  // each look's disc (the blood moon, the gilded halo), painted once and kept
+  const discs = {};
+  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : bloodMoon(px);
+  function discURL(look) { if (!(look in discs)) { try { discs[look] = discPaint(look, 560).toDataURL('image/png'); } catch (e) { discs[look] = ''; } } return discs[look]; }
   // a bat in flight, for canvas: flap from -1 (wings down) to 1 (up)
   function drawBat(ctx, x, y, s, flap, tilt) {
     const L = flap * .55 * s, sp = .82 + .18 * Math.cos(flap * 1.4);
@@ -1955,9 +2013,9 @@ html.intro-on #sky { opacity: 0; transition: none; }
     ctx.restore();
   }
   // on the homepage: the moon (smaller than in the intro), the castles on the horizon, and a flock now and then
-  function bloodMoonHTML() {
-    const src = moonURL();
-    return src ? `<div class="bm" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
+  function discHTML(look) {
+    const src = discURL(look);
+    return src ? `<div class="bm bm-${look}" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
   }
   function bloodLandHTML() {
     const tower = (cx, w, top, spire) => `<rect x="${cx - w / 2}" y="${top}" width="${w}" height="${190 - top}"/><path d="M${cx - w / 2 - 3} ${top}L${cx} ${top - spire}L${cx + w / 2 + 3} ${top}Z"/><path class="pole" d="M${cx} ${top - spire}v-7"/>`;
@@ -1979,6 +2037,108 @@ html.intro-on #sky { opacity: 0; transition: none; }
       <rect width="1440" height="190" fill="url(#bm-mist)"/><rect width="1440" height="190" fill="url(#bm-fade)"/>
     </svg>${batsHTML()}</div>`;
   }
+  // the codex look: a gilded halo, punched and incised like the gold grounds of medieval panels, the leaf laid in squares
+  function goldHalo(px) {
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), R = px / 2, rnd = mulberry(909);
+    g.save(); g.beginPath(); g.arc(R, R, R, 0, 6.2832); g.clip();
+    let gr = g.createRadialGradient(R * .7, R * .62, R * .05, R, R, R);
+    gr.addColorStop(0, '#f6e3a1'); gr.addColorStop(.5, '#d5ad55'); gr.addColorStop(.88, '#a57c2e'); gr.addColorStop(1, '#6e4f1a');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    const sq = px / 6.5;
+    g.lineWidth = px / 900; g.strokeStyle = 'rgba(110,78,26,.2)';
+    for (let y = -rnd() * sq; y < px; y += sq) for (let x = -rnd() * sq * .5; x < px; x += sq) {
+      g.fillStyle = rnd() < .5 ? `rgba(255,244,210,${(rnd() * .1).toFixed(3)})` : `rgba(90,60,10,${(rnd() * .1).toFixed(3)})`;
+      g.fillRect(x, y, sq, sq); g.strokeRect(x, y, sq, sq);
+    }
+    g.strokeStyle = 'rgba(95,64,18,.34)'; g.lineWidth = px / 700;
+    for (let a = 0; a < 360; a += 3) {
+      const t = a * Math.PI / 180, r0 = R * .17, r1 = R * (a % 15 === 0 ? .74 : .66);
+      g.beginPath(); g.moveTo(R + Math.cos(t) * r0, R + Math.sin(t) * r0); g.lineTo(R + Math.cos(t) * r1, R + Math.sin(t) * r1); g.stroke();
+    }
+    const punch = (x, y, d) => { g.beginPath(); g.arc(x, y, d, 0, 6.2832); g.fill(); };
+    g.fillStyle = 'rgba(80,52,12,.55)';
+    for (const [r, n, d] of [[.93, 150, .0035], [.87, 130, .0028]]) for (let i = 0; i < n; i++) { const t = i / n * 6.2832; punch(R + Math.cos(t) * R * r, R + Math.sin(t) * R * r, px * d); }
+    for (let i = 0; i < 28; i++) {
+      const t = i / 28 * 6.2832, cx = R + Math.cos(t) * R * .8, cy = R + Math.sin(t) * R * .8;
+      for (let k = 0; k < 6; k++) { const u = k / 6 * 6.2832; punch(cx + Math.cos(u) * px * .009, cy + Math.sin(u) * px * .009, px * .0026); }
+      punch(cx, cy, px * .003);
+    }
+    g.strokeStyle = 'rgba(80,52,12,.5)'; g.lineWidth = px / 500;
+    for (const r of [.97, .9, .835, .76, .17]) { g.beginPath(); g.arc(R, R, R * r, 0, 6.2832); g.stroke(); }
+    g.strokeStyle = 'rgba(70,45,10,.22)'; g.lineWidth = px / 1000;
+    for (let i = 0; i < 40; i++) {
+      let x = rnd() * px, y = rnd() * px; g.beginPath(); g.moveTo(x, y);
+      for (let k = 0; k < 5; k++) { x += (rnd() - .5) * px * .04; y += (rnd() - .5) * px * .04; g.lineTo(x, y); }
+      g.stroke();
+    }
+    for (let i = 0, n = px * px / 50; i < n; i++) { g.fillStyle = rnd() < .5 ? 'rgba(60,40,8,.12)' : 'rgba(255,248,220,.12)'; g.fillRect(rnd() * px, rnd() * px, px / 600, px / 600); }
+    gr = g.createLinearGradient(0, 0, px, px);
+    gr.addColorStop(0, 'rgba(255,250,225,.26)'); gr.addColorStop(.45, 'rgba(255,250,225,0)'); gr.addColorStop(1, 'rgba(40,25,5,.28)');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    g.restore();
+    return cv;
+  }
+  // a torn sheet: an outline with small irregular tears all round, and the odd bigger bite
+  function tornPath(w, h, seed, amp) {
+    const r = mulberry(seed), pts = [], step = 9;
+    const edge = (x0, y0, x1, y1, nx, ny) => {
+      const n = Math.max(2, Math.round(Math.hypot(x1 - x0, y1 - y0) / step));
+      for (let i = 0; i < n; i++) {
+        const t = i / n, j = (r() - .5) * amp + (r() < .08 ? r() * amp * 1.6 : 0);
+        pts.push([x0 + (x1 - x0) * t + nx * j, y0 + (y1 - y0) * t + ny * j]);
+      }
+    };
+    edge(0, 0, w, 0, 0, 1); edge(w, 0, w, h, -1, 0); edge(w, h, 0, h, 0, -1); edge(0, h, 0, 0, 1, 0);
+    return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + 'Z';
+  }
+  const PAPER = k => `<filter id="cx-paper${k}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" values="0 0 0 0 .3  0 0 0 0 .2  0 0 0 0 .08  0 0 0 .55 -.14" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="m"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="m"/></feMerge></filter>
+    <linearGradient id="cx-parch${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e5c8"/><stop offset=".6" stop-color="#e3cfa6"/><stop offset="1" stop-color="#cdb184"/></linearGradient>`;
+  // a rose window, drawn in ink: twelve lights round a hub, trefoils, an outer ring
+  function roseSVG(cx, cy, R) {
+    let d = '';
+    for (let i = 0; i < 12; i++) {
+      const t = i / 12 * 6.2832, c = Math.cos(t), s = Math.sin(t);
+      d += `<line x1="${(cx + c * R * .24).toFixed(1)}" y1="${(cy + s * R * .24).toFixed(1)}" x2="${(cx + c * R * .9).toFixed(1)}" y2="${(cy + s * R * .9).toFixed(1)}"/>`;
+      d += `<circle cx="${(cx + c * R * .62).toFixed(1)}" cy="${(cy + s * R * .62).toFixed(1)}" r="${(R * .13).toFixed(1)}"/>`;
+      const u = t + Math.PI / 12;
+      d += `<circle cx="${(cx + Math.cos(u) * R * .92).toFixed(1)}" cy="${(cy + Math.sin(u) * R * .92).toFixed(1)}" r="${(R * .07).toFixed(1)}"/>`;
+    }
+    return `<g class="ink">${d}<circle cx="${cx}" cy="${cy}" r="${R}"/><circle cx="${cx}" cy="${cy}" r="${(R * .82).toFixed(1)}"/><circle cx="${cx}" cy="${cy}" r="${(R * .24).toFixed(1)}"/><circle cx="${cx}" cy="${cy}" r="${(R * .1).toFixed(1)}"/></g>`;
+  }
+  // in the hero, above the halo: a torn leaf with a Gothic arch round the rose window, Leonardo's circle and square,
+  // a line of Hippocrates; a terracotta circle peeks out from under it
+  function codexPieceHTML() {
+    const ax = 30, aw = 104, base = 200, spring = 108, apex = spring - aw * .866;   // a pointed (equilateral) arch
+    const arch = `M${ax} ${base}V${spring}A${aw} ${aw} 0 0 1 ${ax + aw / 2} ${apex.toFixed(1)}A${aw} ${aw} 0 0 1 ${ax + aw} ${spring}V${base}Z`;
+    return `<div class="cx-piece" aria-hidden="true"><span class="cx-red"></span><svg viewBox="0 0 320 220" focusable="false"><defs>${PAPER('a')}<clipPath id="cx-arch"><path d="${arch}"/></clipPath></defs>
+      <path d="${tornPath(320, 220, 31, 7)}" fill="url(#cx-parcha)" filter="url(#cx-papera)" class="cx-sheet"/>
+      <path d="${arch}" class="cx-niche"/>
+      <g clip-path="url(#cx-arch)">${roseSVG(ax + aw / 2, 130, 40)}</g>
+      <path d="${arch}" class="cx-frame"/>
+      <g class="ink faint"><rect x="178" y="58" width="104" height="104"/><circle cx="230" cy="114" r="60"/><path d="M178 58L282 162M282 58L178 162M230 54V174M170 110H290"/></g>
+      <text x="176" y="196" class="cx-hand">Ars longa, vita brevis.</text>
+      <path d="M24 16h40M256 206h40" class="cx-rule"/>
+    </svg></div>`;
+  }
+  // under the hero: a torn parchment strip, the anatomy theatre's motto, and Florence in ink
+  function codexStripHTML() {
+    const roofs = [[0, 64, 34, 26], [30, 58, 40, 32], [66, 66, 30, 24], [96, 54, 26, 36], [148, 62, 40, 28], [330, 60, 44, 30], [372, 66, 30, 24], [452, 58, 40, 32], [490, 64, 30, 26]];
+    const city = `${roofs.map(([x, y, w, h]) => `<path d="M${x} ${y + 5}L${x + w / 2} ${y}L${x + w} ${y + 5}V${y + h}H${x}Z"/>`).join('')}
+      <path d="M128 90V40Q130 30 132 40V90Z"/><path d="M506 90V38Q509 26 512 38V90Z"/>
+      <path d="M168 90V64H192V90Z"/><path d="M166 64Q180 50 194 64Z"/>
+      <path d="M206 90V52H284V90Z"/><path d="M204 54Q206 18 245 10Q284 18 286 54Z"/><path d="M240 10h10v-9h-10Z"/><path d="M242 1L245 -8L248 1Z"/>
+      <path d="M300 90V8H318V90Z"/><path d="M298 8h22v-4h-22Z"/>
+      <path d="M384 90V54H446V90Z"/><path d="M408 54V20H420V54Z"/><path d="M404 22h20v-8h-20Z"/><path d="M411 14V2H417V14Z"/>`;
+    return `<div class="cx-strip" aria-hidden="true">
+      <svg class="cx-strip-bg" viewBox="0 0 1440 100" preserveAspectRatio="none" focusable="false"><defs>${PAPER('b')}</defs>
+        <path d="${tornPath(1440, 92, 57, 9)}" transform="translate(0 6) rotate(.6 720 50)" class="cx-under"/>
+        <path d="${tornPath(1440, 86, 58, 8)}" transform="translate(0 7)" fill="url(#cx-parchb)" filter="url(#cx-paperb)" class="cx-sheet"/></svg>
+      <p class="cx-motto">Hic locus est ubi mors gaudet succurrere vitae</p>
+      <svg class="cx-city" viewBox="0 -10 520 100" preserveAspectRatio="xMaxYMax meet" focusable="false">${city}<path d="M0 88H520V90H0Z"/></svg>
+    </div>`;
+  }
+
   function batsHTML() {
     const flock = [[0, 0, 1], [.5, -26, .78], [.9, 18, .7], [.25, 36, .88], [1.4, -10, .6], [1.1, 30, .72], [1.8, 8, .55]];
     return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
@@ -2012,7 +2172,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     const vip = () => here && (['in', 'error'].includes(state) ? me.key === LOOKS_FOR
       : ['wait', 'loading'].includes(state) && canon(read(NAME) || '') === LOOKS_FOR);
     function applyLook() {
-      const want = vip() && read(LOOK_KEY) === 'blood' ? 'blood' : 'gothic';
+      const v = read(LOOK_KEY), want = vip() && v in LOOK_NIGHT ? v : 'gothic';
       if (want === lookNow()) return false;
       setLookAttr(want); return true;
     }
@@ -2264,8 +2424,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
     function looksHTML() {
       const cur = lookNow(), one = (id, name, sub) => `<button type="button" class="look${cur === id ? ' on' : ''}" data-look="${id}" aria-pressed="${cur === id}"><span class="look-sw sw-${id}" aria-hidden="true"></span><span class="look-t"><b>${name}</b><span>${sub}</span></span></button>`;
       return `<div class="acct-looks"><p class="acct-or">Looks · only your account has them for now</p>
-        <div class="looks">${one('gothic', 'Constellation gothic', 'Bone ink on charcoal')}${one('blood', 'Blood moon', 'Crimson, castles and bats')}</div>
-        ${cur === 'blood' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>`;
+        <div class="looks">${one('gothic', 'Constellation gothic', 'Bone ink on charcoal')}${one('blood', 'Blood moon', 'Crimson, castles and bats')}${one('codex', 'Codex', 'Parchment, gold leaf, old masters')}</div>
+        ${cur !== 'gothic' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>`;
     }
     const label = () => state === 'off' ? 'Sign in' : state === 'naming' ? 'Pick a name'
       : me.name || (user && (user.displayName || '').split(' ')[0]) || read(NAME) || 'Account';
@@ -3868,7 +4028,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
           </div>
         </nav>
         <div class="hero">
-          ${astrolabeSVG()}${lookNow() === 'blood' ? bloodMoonHTML() : ''}
+          ${astrolabeSVG()}${lookNow() === 'gothic' ? '' : discHTML(lookNow())}${lookNow() === 'codex' ? codexPieceHTML() : ''}
           <p class="caption rise-in" style="--d:0">An archive of past EFM3 exam questions, sorted by module and by exam.</p>
           <ul class="meta mono rise-in" style="--d:1">
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
@@ -3876,7 +4036,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}</div>
         </div>
-      </header>${lookNow() === 'blood' ? bloodLandHTML() : ''}
+      </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'codex' ? codexStripHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
@@ -5261,19 +5421,20 @@ html.intro-on #sky { opacity: 0; transition: none; }
       P0 = { x: W * .86, y: H * .07 };
       P1 = { x: P0.x - (P0.x - P2.x) * .38, y: P2.y };
       flock = []; moonTex = null;
-      if (lookNow() === 'blood') {
+      const lk = lookNow();
+      if (lk !== 'gothic') {
         try {
-          BLOOD = rgbOf(cssVar('--blood'));
+          BLOOD = rgbOf(cssVar(lk === 'codex' ? '--gold' : '--blood'));
           const small = W < 640, bm = document.querySelector('.bm-img'), br = bm ? bm.getBoundingClientRect() : null;
           MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
           ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
-          moonTex = bloodMoon(Math.min(1400, Math.round(MS.r * 2 * Math.min(2, window.devicePixelRatio || 1))));
+          moonTex = discPaint(lk, Math.min(1400, Math.round(MS.r * 2 * Math.min(2, window.devicePixelRatio || 1))));
           moonGlow = document.createElement('canvas'); moonGlow.width = moonGlow.height = 256;
           const gc = moonGlow.getContext('2d'), gg = gc.createRadialGradient(128, 128, 0, 128, 128, 128);
           gg.addColorStop(0, `rgba(${BLOOD},.6)`); gg.addColorStop(.42, `rgba(${BLOOD},.22)`); gg.addColorStop(1, `rgba(${BLOOD},0)`);
           gc.fillStyle = gg; gc.fillRect(0, 0, 256, 256);
           const rnd = mulberry(77);
-          flock = Array.from({ length: 9 }, (_, i) => ({ lag: 120 + i * 78 + rnd() * 50, off: (rnd() - .5) * 150, bob: rnd() * 6.28, s: 11 + rnd() * 9, fq: .042 + rnd() * .02, ph: rnd() * 6.28, sp: 240 + rnd() * 200, last: null, v: null }));
+          if (lk === 'blood') flock = Array.from({ length: 9 }, (_, i) => ({ lag: 120 + i * 78 + rnd() * 50, off: (rnd() - .5) * 150, bob: rnd() * 6.28, s: 11 + rnd() * 9, fq: .042 + rnd() * .02, ph: rnd() * 6.28, sp: 240 + rnd() * 200, last: null, v: null }));
         } catch (e) { moonTex = null; flock = []; }
       }
       back = document.createElement('canvas'); back.className = 'intro-sky'; back.setAttribute('aria-hidden', 'true');
@@ -5385,6 +5546,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       b.classList.add('fire');
       sfx.play('sparkle');
       if (flock.length) sfx.play('bats', { delay: .28, quiet: true });
+      else if (lookNow() === 'codex') sfx.play('bell', { delay: .2, quiet: true });
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();

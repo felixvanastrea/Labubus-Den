@@ -235,7 +235,17 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   flickering windows (`bloodLandHTML`, under the hero), and a flock of bats crossing every 32 s (`batsHTML`, CSS; none
   with reduced motion). In the intro: the same moon, big behind the year picker, shrinking into the homepage's as the
   camera comes down (`MS` → `ME`), and nine bats (`drawBat`) following the falling star, scattering when it lands,
-  with the `bats` sound (wing beats and squeaks, synthesized like the others). Test: looks.js.
+  with the `bats` sound (wing beats and squeaks, synthesized like the others).
+- Codex (`:root[data-look="codex"]`): a medieval painting collage. Warm charcoal, parchment ink, `--vermilion` and `--gold`;
+  gold eyebrows after a vermilion rule, an illuminated drop cap. On the homepage: a gilded halo (`goldHalo()`: leaf laid
+  in squares, incised rays, punched rings and rosettes) in the astrolabe; above it a torn leaf (`codexPieceHTML`,
+  `tornPath`) with a Gothic arch round a rose window in lapis and gold, Leonardo's square and circle and "Ars longa,
+  vita brevis", over a terracotta circle; under the hero a torn parchment strip with "Hic locus est ubi mors gaudet
+  succurrere vitae" and Florence in ink (`codexStripHTML`). In the intro the halo plays the moon's part, with a `bell`.
+  The art hosts (Wikimedia, museums) are blocked from Claude's workspace, so there are no real paintings yet: when Abi
+  sends public-domain ones, they go in the arch (and could become more torn pieces).
+- Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
+  Test: looks.js.
 
 ## Anonymous stats (PostHog)
 
