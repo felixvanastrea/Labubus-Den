@@ -272,15 +272,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   at most every 10 minutes). Only for members on GitHub Pages.
 - For the Labubu account only, the sheet's "Class stats" lists the questions under 40% right (10+ answers), worst first,
   and "Go through these" opens them: often a wrong key, to check with Abi's rules for mistakes.
-- The class sky (homepage, after Tonight; `skyHTML`): Firestore `sky/{week}` (`weekKey`, Monday to Sunday) = {uid: {nm,
-  n: nights this week, d: the day they last studied}}; one read per homepage visit (at most every 3 minutes). A night is
-  a day with `MOON_DAY` questions checked (`S.days`, counted in `moonTick`, synced, kept 21 days). Each classmate is a
-  star placed by a hash of their uid: bigger with each night, a sparkle from 3 nights, twinkling if they studied today;
-  your own has a dashed ring; the Labubu's is gold with an eight-point burst and her Labubu beside it. Hover, focus or
-  tap a star, or hover a name under "Tonight", for the tooltip (`skyTip`). "Hide my star" removes it (`skyHide` on the
-  account, `efm3-sky-hide`). Names and nights only, never marks. Guests see a sky asking them to sign in.
+- The class sky (homepage, after Tonight; `skyHTML`), Abi's design: everyone who checked `SKY_MIN` (10) questions today
+  (`S.days`, counted in `moonTick`, synced, kept 21 days; `S.dayT` = when they reached 10) rises into today's sky,
+  Firestore `sky/d{day}` = {uid: {nm, c: today's count in steps (`SKY_TIERS`), t: when they rose}}, one read per homepage
+  visit (at most every 3 minutes), a few writes a day per person (`classSync`). It starts empty every day. In order of
+  arrival, the stars fill real constellations (`SKY_CONS`: the Little Bear, whose tail ends at the North Star, then the
+  Great Bear, Cassiopeia, Orion, the Lyre, the Swan, the Lion, the Twins, the Scorpion; 65 places, then loose stars):
+  dashed lines while one forms, with its empty places faint (`ghost`), drawn and named once complete. Bigger and
+  sparkling with more questions; your own has a dashed ring. The North Star is the Labubu's: gold, her Labubu beside it,
+  always there whether she studied or not (`northStar`). Hover, focus or tap a star, or hover a name under "Today", for
+  the tooltip (`skyTip`). "Hide my star" (`skyHide` on the account, `efm3-sky-hide`). Names and counts only, never marks.
+  Phones get a taller sky with bigger stars (`K`). Guests see the North Star and a sign-in button.
 - Rules (pasted by Abi): `stats` docs readable and writable by any signed-in user (under 3000 fields); `sky` docs readable
-  by signed-in users, and each user may only write their own star, whose name must be their registered name.
+  by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name.
 - Test: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`).
 
 ## Anonymous stats (PostHog)

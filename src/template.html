@@ -196,6 +196,7 @@
     if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
     if (!S.days || typeof S.days !== 'object' || Array.isArray(S.days)) S.days = {};
     if (!S.statSent || typeof S.statSent !== 'object' || Array.isArray(S.statSent)) S.statSent = {};
+    if (!S.dayT || typeof S.dayT !== 'object' || typeof S.dayT.d !== 'string') S.dayT = null;
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -1084,9 +1085,9 @@
 
     // ---- the class: how everyone did on each question, and the class sky ----
     // stats/{module}: {canon id: {n: first tries, r: right}}, counted once per person (S.statSent), sent at most every
-    // 5 minutes. sky/{week}: {uid: {nm: name, n: nights this week, d: the day they last studied}}, one doc a week, so a
+    // 5 minutes. sky/d{day}: {uid: {nm: name, c: questions today (in steps), t: when they rose}}, one doc a day, so a
     // page load is one read. Only for members on GitHub Pages; nothing is shown elsewhere.
-    const CLASS_MIN = 10, cls = { stats: {}, statsAt: {}, sky: null, skyWeek: '', skyAt: 0, star: '', sentAt: 0, busy: {} };
+    const CLASS_MIN = 10, cls = { stats: {}, statsAt: {}, sky: null, skyDay: '', skyAt: 0, star: '', wrote: '', sentAt: 0, busy: {} };
     const skyHidden = () => read(HIDE) === '1';
     async function classSync(force) {
       if (state !== 'in' || !me.key || !fb) return;
@@ -1107,15 +1108,17 @@
           } catch (e) { sent.forEach(c => delete S.statSent[c]); }
         }
       }
-      const wk = weekKey(), today = dayKey();
-      const star = skyHidden() ? null : { nm: me.name, n: weekNights(), d: (S.days[today] || 0) > 0 ? today : '' };
-      const sig = wk + JSON.stringify(star);
+      // my star in today's sky, once I've done SKY_MIN questions; its count moves in steps, so it's a few writes a day
+      const today = dayKey(), day = 'd' + today, c = S.days[today] || 0, tier = c >= SKY_MIN ? SKY_TIERS.filter(x => c >= x).pop() : 0;
+      const star = skyHidden() || !tier ? null : { nm: me.name, c: tier, t: (S.dayT && S.dayT.d === today && S.dayT.t) || Date.now() };
+      const sig = day + JSON.stringify(star && [star.nm, star.c]);
       if (cls.star === sig) return;
+      if (!star && cls.wrote !== day) { cls.star = sig; return; }   // nothing of mine up there to take down
       try {
         const b = fb.f.writeBatch(db);
-        b.set(fb.f.doc(db, 'sky', wk), { [user.uid]: star || fb.f.deleteField() }, { merge: true });
-        await b.commit(); cls.star = sig;
-        if (cls.sky && cls.skyWeek === wk) { if (star) cls.sky[user.uid] = star; else delete cls.sky[user.uid]; redrawSky(); }
+        b.set(fb.f.doc(db, 'sky', day), { [user.uid]: star || fb.f.deleteField() }, { merge: true });
+        await b.commit(); cls.star = sig; cls.wrote = star ? day : '';
+        if (cls.sky && cls.skyDay === day) { if (star) cls.sky[user.uid] = star; else delete cls.sky[user.uid]; redrawSky(); }
       } catch (e) {}
     }
     async function loadStats(mod) {
@@ -1142,13 +1145,13 @@
       const h = classLine(curQ()); if (h) v.insertAdjacentHTML('beforeend', h);
     }
     async function loadSky() {
-      const wk = weekKey();
-      if (state !== 'in' || !fb || cls.busy.sky || (cls.skyWeek === wk && Date.now() - cls.skyAt < 180000)) return;
+      const day = 'd' + dayKey();
+      if (state !== 'in' || !fb || cls.busy.sky || (cls.skyDay === day && Date.now() - cls.skyAt < 180000)) return;
       cls.busy.sky = 1;
       try {
-        const snap = await fb.f.getDoc(fb.f.doc(db, 'sky', wk));
-        cls.sky = snap.exists() ? snap.data() : {}; cls.skyWeek = wk; cls.skyAt = Date.now();
-      } catch (e) { cls.sky = cls.sky || {}; cls.skyAt = Date.now(); }
+        const snap = await fb.f.getDoc(fb.f.doc(db, 'sky', day));
+        cls.sky = snap.exists() ? snap.data() : {}; cls.skyDay = day; cls.skyAt = Date.now();
+      } catch (e) { cls.sky = cls.sky || {}; cls.skyDay = day; cls.skyAt = Date.now(); }
       finally { delete cls.busy.sky; }
       redrawSky();
     }
@@ -1159,51 +1162,112 @@
       h ^= h >>> 16; h = Math.imul(h, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16;   // mixed well, even for short ids
       return (h >>> 0) / 4294967296;
     };
-    // the class sky: a star for each classmate who studied this week, brighter with each night, twinkling if tonight;
-    // the Labubu's star is gold. Hover or tap a star (or a name) to see who it is.
+    // the constellations today's stars fill, in order of arrival. The Little Bear's tail ends at the North Star, which is
+    // the Labubu's. Points are in units of the sky's height from the constellation's corner (w: wide screens, n: phones:
+    // [x, y, size] in fractions of the sky); e: the lines between points (-1 is the North Star).
+    const POLE = { w: [.52, .1], n: [.6, .06] };
+    const SKY_CONS = [
+      { name: 'the Little Bear', pole: true, w: [0, 0, .62], n: [0, 0, .4],
+        p: [[-.12, .1], [-.22, .17], [-.3, .28], [-.26, .42], [-.42, .5], [-.46, .34]], e: [[-1, 0], [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 2]] },
+      { name: 'the Great Bear', w: [.05, .1, .72], n: [.03, .27, .5],
+        p: [[0, .08], [.13, 0], [.25, .02], [.36, .08], [.38, .24], [.55, .26], [.55, .08]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]] },
+      { name: 'Cassiopeia', w: [.66, .07, .38], n: [.62, .21, .26],
+        p: [[0, .1], [.2, .3], [.4, .15], [.6, .3], [.8, 0]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] },
+      { name: 'Orion', w: [.36, .5, .46], n: [.06, .43, .3],
+        p: [[.4, 0], [.15, .12], [.62, .15], [.32, .48], [.4, .45], [.48, .42], [.25, .85], [.68, .8]], e: [[0, 1], [0, 2], [1, 3], [2, 5], [3, 4], [4, 5], [3, 6], [5, 7]] },
+      { name: 'the Lyre', w: [.62, .34, .3], n: [.38, .37, .2],
+        p: [[.5, 0], [.42, .25], [.62, .28], [.55, .6], [.35, .57]], e: [[0, 1], [0, 2], [1, 2], [2, 3], [3, 4], [4, 1]] },
+      { name: 'the Swan', w: [.78, .3, .5], n: [.6, .33, .3],
+        p: [[.5, 0], [.5, .3], [.5, .52], [.5, .85], [.18, .38], [.82, .22]], e: [[0, 1], [1, 2], [2, 3], [4, 1], [1, 5]] },
+      { name: 'the Lion', w: [.04, .5, .46], n: [.5, .6, .32],
+        p: [[.15, .75], [.18, .5], [.25, .35], [.2, .2], [.08, .12], [0, .25], [.62, .35], [.9, .55], [.62, .6]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [2, 6], [6, 7], [7, 8], [8, 0]] },
+      { name: 'the Twins', w: [.26, .3, .4], n: [.3, .8, .2],
+        p: [[.1, 0], [.3, .05], [.15, .3], [.2, .6], [.25, .9], [.35, .3], [.42, .6], [.5, .88]], e: [[0, 2], [2, 3], [3, 4], [1, 5], [5, 6], [6, 7], [0, 1]] },
+      { name: 'the Scorpion', w: [.56, .6, .38], n: [.03, .7, .3],
+        p: [[0, 0], [.02, .12], [.05, .25], [.2, .22], [.3, .3], [.38, .4], [.45, .55], [.48, .7], [.5, .85], [.78, .92], [.95, .72]], e: [[0, 1], [1, 2], [1, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10]] }
+    ];
+    const listNames = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+    const spark = (r, k) => `M0 -${r * k}L${r * .38} -${r * .38}L${r * k} 0L${r * .38} ${r * .38}L0 ${r * k}L-${r * .38} ${r * .38}L-${r * k} 0L-${r * .38} -${r * .38}Z`;
+    // the class sky: everyone who did SKY_MIN questions today is a star, in order of arrival, filling the constellations;
+    // the Labubu's star is the North Star, gold, always there. Hover or tap a star (or a name) to see who it is.
     function skyHTML() {
       if (!here) return '';
-      const head = `<div class="sky-head"><p class="eyebrow">Tonight, together</p><h2 class="h2" id="sky-h">The class sky</h2>`;
-      const narrow = window.innerWidth < 640, VW = narrow ? 600 : 1000, VH = narrow ? 540 : 340;
-      const dust = () => { const r = mulberry(5); let g = ''; for (let i = 0; i < 70; i++) g += `<circle cx="${(r() * VW).toFixed(0)}" cy="${(14 + r() * (VH - 28)).toFixed(0)}" r="${(.5 + r() * 1.1).toFixed(1)}" opacity="${(.1 + r() * .3).toFixed(2)}"/>`; return `<g class="dust" aria-hidden="true">${g}</g>`; };
-      const deco = () => `<svg class="sky-svg deco" viewBox="0 0 ${VW} ${VH}" aria-hidden="true" focusable="false">${dust()}</svg>`;
+      const head = `<div class="sky-head"><p class="eyebrow">Today, together</p><h2 class="h2" id="sky-h">The class sky</h2>`;
+      const narrow = window.innerWidth < 640, VW = narrow ? 600 : 1000, VH = narrow ? 760 : 520, L = narrow ? 'n' : 'w', K = narrow ? 1.6 : 1;
+      const pole = [POLE[L][0] * VW, POLE[L][1] * VH];
+      const dust = () => { const r = mulberry(5); let g = ''; for (let i = 0; i < 90; i++) g += `<circle cx="${(r() * VW).toFixed(0)}" cy="${(14 + r() * (VH - 28)).toFixed(0)}" r="${(.5 + r() * 1.1).toFixed(1)}" opacity="${(.1 + r() * .3).toFixed(2)}"/>`; return `<g class="dust" aria-hidden="true">${g}</g>`; };
+      // the North Star: the Labubu's, gold, always shining
+      const northStar = lab => {
+        const r = 7 * K, tip = `Labubu · the North Star, always shining${lab ? ` · ${fmtN(lab.c)}+ questions today` : ''}`;
+        return `<g class="ss gold" data-uid="labubu" data-tip="${esc(tip)}" tabindex="0" role="img" aria-label="${esc(tip)}" transform="translate(${pole[0].toFixed(1)} ${pole[1].toFixed(1)})" style="--b:1">
+          <circle class="sg" r="${r * 6}"/><path class="sx" d="${spark(r, 3.4)}"/><circle class="sc" r="${r}"/><use class="slb" href="#labubu" x="${r * 1.9}" y="-${r * 6}" width="${30 * K}" height="${37 * K}"/><text class="sn" y="${r * 5.6}">Labubu</text></g>`;
+      };
+      const field = (inner, extra = '') => `<div class="sky-field"><svg class="sky-svg" viewBox="0 0 ${VW} ${VH}" focusable="false">${dust()}${inner}</svg><p class="sky-tip" hidden></p>${extra}</div>`;
+      const wrap = (sub, body) => `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">${sub}</p></div>${body}</div></section>`;
       if (state === 'off' || state === 'naming') {
-        return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}
-          <p class="sky-sub">Every classmate who studies this week is a star here, brighter with each night. Sign in to join them.</p></div>
-          <div class="sky-field">${deco()}<button class="btn" type="button" data-act="account">${LOCK}Sign in to join the class sky</button></div></div></section>`;
+        return wrap(`Everyone who does ${SKY_MIN} questions today rises into this sky, and together you form the constellations. Sign in to join them.`,
+          field(northStar(null), `<button class="btn" type="button" data-act="account">${LOCK}Sign in to join the class sky</button>`));
       }
-      if (state !== 'in' || !cls.sky || cls.skyWeek !== weekKey()) {
-        loadSky();
-        return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">Gathering the stars…</p></div><div class="sky-field">${deco()}</div></div></section>`;
-      }
+      if (state !== 'in' || !cls.sky || cls.skyDay !== 'd' + dayKey()) { loadSky(); return wrap('Gathering the stars…', field(northStar(null))); }
       loadSky();
-      const today = dayKey(), mine = user.uid;
-      const stars = Object.entries(cls.sky).filter(([, v]) => v && typeof v === 'object' && v.nm)
-        .map(([uid, v]) => ({ uid, nm: String(v.nm).slice(0, 24), n: Math.max(0, Math.min(7, v.n | 0)), tonight: v.d === today, gold: canon(String(v.nm)) === LOOKS_FOR, me: uid === mine }));
-      const tonight = stars.filter(x => x.tonight);
-      const gs = stars.map(x => {
-        const px = x.gold ? VW * .8 : 36 + hash(x.uid, 1) * (VW - 72), py = x.gold ? VH * .3 : 36 + hash(x.uid, 2) * (VH - 80), r = x.gold ? 7 : 2.4 + x.n * .6;
-        const tip = `${x.nm}${x.me ? ' (you)' : ''} · ${x.n === 1 ? '1 night' : `${x.n} nights`} this week${x.tonight ? ' · studied tonight' : ''}`;
-        const body = x.gold
-          ? `<circle class="sg" r="${r * 6}"/><path class="sx" d="M0 -${r * 3.4}L${r * .55} -${r * .55}L${r * 3.4} 0L${r * .55} ${r * .55}L0 ${r * 3.4}L-${r * .55} ${r * .55}L-${r * 3.4} 0L-${r * .55} -${r * .55}Z"/><circle class="sc" r="${r}"/><use class="slb" href="#labubu" x="${r * 1.9}" y="-${r * 6}" width="30" height="37"/><text class="sn" y="${r * 5.6}">Labubu</text>`
-          : `<circle class="sg" r="${r * 4.5}"/>${x.n >= 3 ? `<path class="sp" d="M0 -${r * 2.7}L${r * .38} -${r * .38}L${r * 2.7} 0L${r * .38} ${r * .38}L0 ${r * 2.7}L-${r * .38} ${r * .38}L-${r * 2.7} 0L-${r * .38} -${r * .38}Z"/>` : ''}<circle class="sc" r="${r}"/>${x.me ? `<circle class="sr" r="${r + 6}"/>` : ''}`;
-        return `<g class="ss${x.tonight ? ' tw' : ''}${x.me ? ' me' : ''}${x.gold ? ' gold' : ''}" data-uid="${esc(x.uid)}" data-tip="${esc(tip)}" tabindex="0" role="img" aria-label="${esc(tip)}" transform="translate(${px.toFixed(1)} ${py.toFixed(1)})" style="--tw:${(hash(x.uid, 3) * 4).toFixed(2)}s;--b:${(.45 + x.n * .08).toFixed(2)}">${body}</g>`;
+      const mine = user.uid;
+      const all = Object.entries(cls.sky).filter(([, v]) => v && typeof v === 'object' && v.nm && (v.c | 0) >= SKY_MIN)
+        .map(([uid, v]) => ({ uid, nm: String(v.nm).slice(0, 24), c: v.c | 0, t: +v.t || 0, me: uid === mine, gold: canon(String(v.nm)) === LOOKS_FOR }));
+      const lab = all.find(x => x.gold), stars = all.filter(x => !x.gold).sort((a, b) => a.t - b.t || a.uid.localeCompare(b.uid));
+      // the slots, constellation by constellation
+      const slots = [];
+      SKY_CONS.forEach((c, ci) => {
+        const [x0, y0, sz] = c[L], base = c.pole ? pole : [x0 * VW, y0 * VH];
+        c.p.forEach((pt, i) => slots.push({ ci, i, x: base[0] + pt[0] * sz * VH, y: base[1] + pt[1] * sz * VH }));
       });
-      const order = (a, b) => (b.gold - a.gold) || a.nm.localeCompare(b.nm);
-      const chips = tonight.slice().sort(order);
-      const names = chips.slice(0, 24).map(x => `<button type="button" class="sky-nm${x.gold ? ' gold' : ''}${x.me ? ' me' : ''}" data-sky="${esc(x.uid)}">${esc(x.nm)}</button>`).join('') + (chips.length > 24 ? `<span class="sky-more">and ${fmtN(chips.length - 24)} more</span>` : '');
-      const lines = !stars.length ? 'No stars yet this week. Study tonight and be the first.'
-        : `<b class="num">${fmtN(tonight.length)}</b> of you studied tonight · <b class="num">${fmtN(stars.length)}</b> ${stars.length === 1 ? 'star' : 'stars'} this week. A star shines brighter with each night of ${MOON_DAY} questions or more.`;
-      return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">${lines}</p></div>
-        <div class="sky-field"><svg class="sky-svg" viewBox="0 0 ${VW} ${VH}" focusable="false">${dust()}${gs.join('')}</svg><p class="sky-tip" hidden></p></div>
-        ${names ? `<div class="sky-names"><span class="sky-nl">Tonight</span>${names}</div>` : ''}
-        <p class="sky-foot">${skyHidden() ? 'Your star is hidden.' : 'Your star shows your name and your nights, never your marks.'} <button class="foot-btn" type="button" data-act="sky-hide">${skyHidden() ? 'Show my star' : 'Hide my star'}</button></p>
-      </div></section>`;
+      const at = stars.map((x, k) => k < slots.length ? Object.assign(x, slots[k]) : Object.assign(x, { ci: -1, x: 30 + hash(x.uid, 1) * (VW - 60), y: 30 + hash(x.uid, 2) * (VH - 60) }));
+      const placed = SKY_CONS.map(() => []);
+      at.forEach(x => { if (x.ci >= 0) placed[x.ci][x.i] = x; });
+      const full = SKY_CONS.map((c, ci) => placed[ci].filter(Boolean).length === c.p.length);
+      let lines = '', labels = '';
+      SKY_CONS.forEach((c, ci) => {
+        const pt = j => j === -1 ? { x: pole[0], y: pole[1] } : placed[ci][j];
+        for (const [a, b] of c.e) { const A = pt(a), B = pt(b); if (A && B) lines += `<line class="${full[ci] ? 'on' : ''}" x1="${A.x.toFixed(1)}" y1="${A.y.toFixed(1)}" x2="${B.x.toFixed(1)}" y2="${B.y.toFixed(1)}"/>`; }
+        if (full[ci]) {
+          const ps = placed[ci], cx = ps.reduce((s, p) => s + p.x, 0) / ps.length, by = Math.max(...ps.map(p => p.y));
+          labels += `<text class="cn" x="${cx.toFixed(1)}" y="${(by + 26).toFixed(1)}">${esc(c.name)}</text>`;
+        }
+      });
+      // the constellation forming next: its empty places, faint, so you can see what you're filling
+      const formingAt = full.indexOf(false);
+      let ghosts = '';
+      if (formingAt >= 0) {
+        const c = SKY_CONS[formingAt], pos = slots.filter(sl => sl.ci === formingAt), pt = j => j === -1 ? { x: pole[0], y: pole[1] } : pos[j];
+        for (const [a, b] of c.e) if (!(a >= 0 && placed[formingAt][a] && b >= 0 && placed[formingAt][b]) && !(a === -1 && placed[formingAt][b])) { const A = pt(a), B = pt(b); ghosts += `<line x1="${A.x.toFixed(1)}" y1="${A.y.toFixed(1)}" x2="${B.x.toFixed(1)}" y2="${B.y.toFixed(1)}"/>`; }
+        pos.forEach((sl, i) => { if (!placed[formingAt][i]) ghosts += `<circle cx="${sl.x.toFixed(1)}" cy="${sl.y.toFixed(1)}" r="${(3.2 * K).toFixed(1)}"/>`; });
+      }
+      const gs = at.map(x => {
+        const tier = SKY_TIERS.indexOf(x.c), r = (2.6 + Math.max(0, tier) * .65) * K, con = x.ci >= 0 ? SKY_CONS[x.ci].name : '';
+        const tip = `${x.nm}${x.me ? ' (you)' : ''} · ${fmtN(x.c)}+ questions today${con ? ` · in ${con}` : ''}`;
+        return `<g class="ss tw${x.me ? ' me' : ''}" data-uid="${esc(x.uid)}" data-tip="${esc(tip)}" tabindex="0" role="img" aria-label="${esc(tip)}" transform="translate(${x.x.toFixed(1)} ${x.y.toFixed(1)})" style="--tw:${(hash(x.uid, 3) * 4).toFixed(2)}s;--b:${(.6 + Math.max(0, tier) * .06).toFixed(2)}">
+          <circle class="sg" r="${r * 4.5}"/>${x.c >= 30 ? `<path class="sp" d="${spark(r, 2.7)}"/>` : ''}<circle class="sc" r="${r}"/>${x.me ? `<circle class="sr" r="${r + 6 * K}"/>` : ''}</g>`;
+      });
+      // the line above: how many, what's complete, what's next
+      const done = SKY_CONS.filter((c, ci) => full[ci]).map(c => c.name), ni = full.indexOf(false);
+      const left = ni >= 0 ? SKY_CONS[ni].p.length - placed[ni].filter(Boolean).length : 0;
+      const sub = !stars.length ? `No one has risen yet today: do ${SKY_MIN} questions and be the first star next to the North Star.`
+        : `<b class="num">${fmtN(stars.length)}</b> of you did ${SKY_MIN} questions or more today.${done.length ? ` ${listNames(done).replace(/^the/, 'The')} ${done.length === 1 ? 'is' : 'are'} complete.` : ''}${ni >= 0 ? ` ${left} more ${left === 1 ? 'star' : 'stars'} and ${SKY_CONS[ni].name} ${placed[ni].some(Boolean) ? 'is complete' : 'appears'}.` : ''}`;
+      const chips = stars.slice().sort((a, b) => b.c - a.c || a.nm.localeCompare(b.nm));
+      const names = (lab ? `<button type="button" class="sky-nm gold" data-sky="labubu">Labubu</button>` : '') + chips.slice(0, 30).map(x => `<button type="button" class="sky-nm${x.me ? ' me' : ''}" data-sky="${esc(x.uid)}">${esc(x.nm)}</button>`).join('') + (chips.length > 30 ? `<span class="sky-more">and ${fmtN(chips.length - 30)} more</span>` : '');
+      const myC = S.days[dayKey()] || 0, mine2 = at.find(x => x.me);
+      const status = vip() ? 'Your star is the North Star: it always shines.'
+        : skyHidden() ? 'Your star is hidden.'
+        : mine2 ? `Your star shines ${mine2.ci >= 0 ? `in ${SKY_CONS[mine2.ci].name}` : 'in the open sky'}.`
+        : `Your star: ${fmtN(Math.min(myC, SKY_MIN))} of ${SKY_MIN} questions today.`;
+      return wrap(sub, `${field(`${ghosts ? `<g class="ghost" aria-hidden="true">${ghosts}</g>` : ''}<g class="cl" aria-hidden="true">${lines}</g>${labels ? `<g class="cns" aria-hidden="true">${labels}</g>` : ''}${gs.join('')}${northStar(lab)}`)}
+        ${names ? `<div class="sky-names"><span class="sky-nl">Today</span>${names}</div>` : ''}
+        <p class="sky-foot">${status} Names and question counts only, never marks.${vip() ? '' : ` <button class="foot-btn" type="button" data-act="sky-hide">${skyHidden() ? 'Show my star' : 'Hide my star'}</button>`}</p>`);
     }
     async function toggleSky() {
       const hide = !skyHidden(); store(HIDE, hide ? '1' : null);
       usage.track('sky_star', { hidden: hide });
       if (fb && user) { try { const b = fb.f.writeBatch(db); b.set(ref(), { skyHide: hide }, { merge: true }); b.commit().catch(() => {}); } catch (e) {} }
+      if (hide) cls.wrote = 'd' + dayKey();   // take it down even if this device didn't put it up
       redrawSky(); await classSync().catch(() => {});
     }
     // for the Labubu: the questions the class gets wrong most, to check their keys
@@ -2778,13 +2842,8 @@
   // at MOON_FULL, then starts again. A missed night only pauses it. S.moon = {n, full, last, day, ids}.
   const COMET_STEPS = [1, 3, 7, 14], COMET_MAX = 20, DAY_MS = 864e5;
   const MOON_DAY = 5, MOON_FULL = 14;
-  // the week runs Monday to Sunday; a night counts once MOON_DAY questions were checked that day
-  const weekKey = (t = Date.now()) => { const d = new Date(t); return 'w' + dayKey(t - ((d.getDay() + 6) % 7) * DAY_MS); };
-  function weekNights() {
-    const dow = (new Date().getDay() + 6) % 7; let n = 0;
-    for (let i = 0; i <= dow; i++) if ((S.days[dayKey(Date.now() - i * DAY_MS)] || 0) >= MOON_DAY) n++;
-    return n;
-  }
+  // the class sky: a star once SKY_MIN questions are checked in a day; its count is shown in steps (SKY_TIERS)
+  const SKY_MIN = 10, SKY_TIERS = [10, 20, 30, 50, 75, 100, 150, 200, 300];
   const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
   const dayStart = t => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
   // n days after t: the same hour minus four (missed at 9 pm, back at 5 pm), never before that calendar day
@@ -2857,7 +2916,9 @@
   // a question checked today (practice or exam): the night counts at MOON_DAY different ones
   function moonTick(ids) {
     const m = S.moon, today = dayKey();
-    S.days[today] = (S.days[today] || 0) + ids.length;
+    const before = S.days[today] || 0;
+    S.days[today] = before + ids.length;
+    if (before < SKY_MIN && S.days[today] >= SKY_MIN) S.dayT = { d: today, t: Date.now() };   // when I rose into today's sky
     for (const k of Object.keys(S.days)) if (k < dayKey(Date.now() - 21 * DAY_MS)) delete S.days[k];
     if (m.day !== today) { m.day = today; m.ids = []; }
     if (m.last === today) return null;

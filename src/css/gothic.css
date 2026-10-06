@@ -1389,3 +1389,13 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .hard b { color: var(--ink); }
 .hard span { color: var(--ink-3); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }
+/* the constellations: dashed while they form, drawn and named once complete */
+.sky-svg .cl line { stroke: var(--sky-star); stroke-opacity: .22; stroke-width: 1; stroke-dasharray: 3 4; }
+.sky-svg .cl line.on { stroke-opacity: .45; stroke-dasharray: none; }
+.sky-svg .cn { fill: var(--sky-star); opacity: .78; font-family: var(--f-display); font-style: italic; font-size: 15px; text-anchor: middle; }
+@media (max-width: 640px) {
+  .sky-svg .cn, .ss.gold .sn { font-size: 25px; }
+  .sky-svg .cl line { stroke-width: 1.6; }
+}
+.sky-svg .ghost line { stroke: var(--sky-star); stroke-opacity: .1; stroke-width: 1; stroke-dasharray: 2 5; }
+.sky-svg .ghost circle { fill: none; stroke: var(--sky-star); stroke-opacity: .28; stroke-width: 1; stroke-dasharray: 2 2.5; }
