@@ -23,8 +23,12 @@ const URL = 'http://127.0.0.1:8765/index.html';
   await pg.clock.install({ time: 0 });
   await pg.clock.pauseAt(1000);
 
-  // 1. a click skips: the page lands at once, the title shows, the layers clear away
+  // 1. the picker first (EFM3, then S5), then a click skips: the page lands at once, the title shows, the layers clear
   await pg.goto(URL + '#intro', { waitUntil: 'load' });
+  await pg.clock.runFor(1200);
+  console.log('picking       ', JSON.stringify(await state(pg)), 'picker:', await pg.$$eval('.pk-year', b => b.map(x => x.textContent.replace(/\s+/g, ' ').trim()).join(' | ')));
+  await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800);
+  await pg.click('.pk-sem[data-sem="s5"]');
   await pg.clock.runFor(1500);
   console.log('mid-intro     ', JSON.stringify(await state(pg)));
   await pg.mouse.click(640, 400);
@@ -33,9 +37,14 @@ const URL = 'http://127.0.0.1:8765/index.html';
   await pg.clock.runFor(600);
   console.log('after skip    ', JSON.stringify(await state(pg)), 'view stays home:', await pg.evaluate(() => document.body.dataset.view));
 
-  // 2. a key skips, and the key doesn't do anything else (no search focus from "/")
+  // 2. while picking, a key doesn't skip ("/" doesn't focus the search either); once the star falls, a key skips
   await pg.reload({ waitUntil: 'load' });
   await pg.clock.runFor(1200);
+  await pg.keyboard.press('/');
+  await pg.clock.runFor(100);
+  console.log('key, picking  ', JSON.stringify(await state(pg)), 'picker still there:', !!(await pg.$('.pick')));
+  await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800);
+  await pg.click('.pk-sem[data-sem="s5"]'); await pg.clock.runFor(600);
   await pg.keyboard.press('/');
   await pg.clock.runFor(600);
   console.log('key skip      ', JSON.stringify(await state(pg)), 'focused:', await pg.evaluate(() => document.activeElement && document.activeElement.id));
@@ -54,7 +63,10 @@ const URL = 'http://127.0.0.1:8765/index.html';
   console.log('footer text   ', await pg.evaluate(() => [...document.querySelectorAll('.foot p')].map(p => p.textContent.trim()).join(' | ')));
   await pg.click('[data-act="intro-replay"]');
   await pg.clock.runFor(300);
-  console.log('replaying     ', JSON.stringify(await state(pg)), 'scrollY', await pg.evaluate(() => scrollY));
+  console.log('replaying     ', JSON.stringify(await state(pg)), 'scrollY', await pg.evaluate(() => scrollY), 'picker:', !!(await pg.$('.pick')));
+  await pg.clock.runFor(900);
+  await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800);
+  await pg.click('.pk-sem[data-sem="s5"]');
   await pg.clock.runFor(2000);
   console.log('replay mid    ', JSON.stringify(await state(pg)));
   await pg.clock.runFor(3000);

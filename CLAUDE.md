@@ -34,9 +34,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `favicon.svg` from it and a `<symbol id="labubu">` for the top bar. `favicon-32.png` and `icon-180.png` were
   rendered once from `favicon.svg` (redo them if the art changes); `og.jpg` is the hero at 1400×735 scaled to 1200×630.
 - Motion should feel smooth (view transitions between screens, spring easing). Always respect `prefers-reduced-motion`.
-- Opening animation (`intro` in `template.html`): the camera looks up at the sky, a shooting star falls, the camera follows it down,
-  and the star lands on the title as it resolves from pixels. Home page only; a tap, key or scroll skips it;
-  the footer has an on/off switch and "replay". It skips itself in automated browsers unless the URL ends in `#intro`.
+- Opening animation (`intro` in `template.html`): the camera looks up at the sky, where the years hang as constellations
+  (`YEARS`: EFM3 open; EFM2 and EFM4 "in progress", unlit and locked). Picking EFM3 zooms into it: its semesters are
+  two of its stars (S5 open, S6 in progress). The picked star becomes the shooting star: the camera follows it down
+  and it lands on the title as it resolves from pixels. To open a year or semester later, set `open: true` (and give
+  a year its `sems`). While picking, only Escape, a real scroll or swipe, or "Skip the intro" skip it; once the star
+  falls, any tap or key. Home page only; the footer has an on/off switch and "replay". It skips itself in automated
+  browsers unless the URL ends in `#intro`. If the picker fails to build, the classic star falls from the corner.
 - A theme switcher (gothic + the original "classic" answer-sheet look) was started and parked at Abi's request.
   The work is in `src/wip_themes/` if she asks for it again.
 
@@ -197,7 +201,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
+node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
 node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```

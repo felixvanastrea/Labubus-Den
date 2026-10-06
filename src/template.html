@@ -2851,10 +2851,19 @@
   })();
 
   // ---------- opening animation ----------
-  // The camera starts tilted up at the night sky. A shooting star falls, the camera follows it down to the page,
-  // and the star lands on the title just as it forms. Home page only; a tap, click, key or scroll skips it.
+  // The camera starts tilted up at the night sky, where the years hang as constellations: pick yours (EFM3; the
+  // others are in progress), then your semester, one of its stars (S5; S6 is in progress). That star becomes a
+  // shooting star: the camera follows it down to the page and it lands on the title just as it forms. Home page
+  // only. While picking, Escape, a scroll, a swipe or "Skip the intro" skips it; once the star falls, any tap or key.
   const intro = (() => {
     const T_STAR = 650, T_CAM = 1000, T_LAND = 3600, T_TRAIL = 900;
+    // the years and their semesters (one star each); p: stars in a 100 x 70 sky, e: lines between them
+    const YEARS = [
+      { id: 'efm2', name: 'EFM2', sub: 'second year', open: false, p: [[8, 52], [27, 30], [50, 20], [73, 30], [92, 52]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] },
+      { id: 'efm3', name: 'EFM3', sub: 'third year', open: true, p: [[10, 50], [30, 22], [52, 36], [72, 14], [90, 42], [58, 62]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [2, 5], [5, 4]],
+        sems: [{ id: 's5', name: 'S5', sub: 'semester 5', star: 1, open: true }, { id: 's6', name: 'S6', sub: 'semester 6', star: 3, open: false }] },
+      { id: 'efm4', name: 'EFM4', sub: 'fourth year', open: false, p: [[8, 22], [29, 52], [50, 26], [71, 56], [92, 30]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] }
+    ];
     const F_STAR = .55;                                  // the falling star's depth: how much it moves with the camera
     const ZEN_TOP = [8, 7, 6], ZEN_BOT = [17, 16, 14];   // straight up, the sky is darker than the page's night
     const outCubic = u => 1 - Math.pow(1 - u, 3);
@@ -2863,6 +2872,7 @@
     const mix = (a, b, k) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(',')})`;
     const root = document.documentElement;
     let on = false, raf = 0, t0 = 0, W = 0, H = 0, D = 0, A = 0, landedAt = null, skipped = false;
+    let picking = false, pick = null, touchY = null;
     let back = null, front = null, hint = null, bx = null, fx = null, milky = null, glow = null;
     let INK = [236, 227, 209], INK_HI = [255, 248, 234], NIGHT = [27, 26, 24];
     let stars = [], asterism = [], minors = [], trail = [], sparks = [], burst = [], P0, P1, P2;
@@ -2947,7 +2957,7 @@
       }
     }
 
-    function drawSky(t, c, out) {
+    function drawSky(t, c, out, bare) {
       const ctx = bx;
       ctx.clearRect(0, 0, W, H);
       if (out <= 0) return;
@@ -2957,7 +2967,7 @@
       const g = ctx.createLinearGradient(0, 0, 0, H);
       g.addColorStop(0, mix(NIGHT, ZEN_TOP, deep)); g.addColorStop(1, mix(NIGHT, ZEN_BOT, deep));
       ctx.globalAlpha = out; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-      const vis = fin * out, ts = t / 1000;
+      const vis = fin * out, ts = performance.now() / 1000;
       ctx.globalAlpha = vis;
       ctx.drawImage(milky.c, 0, milky.top - c * milky.f, W, milky.h);
       ctx.fillStyle = `rgb(${INK})`;
@@ -2970,6 +2980,7 @@
         if (s.r > 1) { ctx.beginPath(); ctx.arc(s.x, y, s.r, 0, 6.2832); ctx.fill(); }
         else ctx.fillRect(s.x, y, s.r * 1.5, s.r * 1.5);
       }
+      if (bare) { ctx.globalAlpha = 1; return; }
       const dy = -c * .6, q = clamp01((t - 200) / 1100), af = (1 - clamp01(p * 2.4)) * vis;
       if (af > 0 && q > 0) {
         ctx.globalAlpha = .26 * af; ctx.strokeStyle = `rgb(${INK})`; ctx.lineWidth = .7; ctx.beginPath();
@@ -3059,6 +3070,14 @@
     }
     function frame(now) {
       raf = requestAnimationFrame(frame);
+      if (picking) {
+        // looking up while they choose: the sky fades in and the camera drifts up, then everything waits
+        const p = now - t0, c = -A * outCubic(clamp01(p / T_CAM));
+        app.style.transform = `translate3d(0,${(D - c).toFixed(1)}px,0)`;
+        drawSky(p, c, 1, true);
+        fx.clearRect(0, 0, W, H);
+        return;
+      }
       const t = now - t0;
       if (landedAt === null && t >= T_LAND) land(false, T_LAND);
       const c = landedAt === null ? cam(t) : D;
@@ -3079,6 +3098,7 @@
     function land(isSkip, t) {
       if (landedAt !== null) return;
       landedAt = t; skipped = isSkip;
+      if (picking) { picking = false; closePick(); }
       app.style.transform = ''; app.classList.remove('intro-cam');
       root.classList.remove('intro-on');
       if (front) { front.style.pointerEvents = 'none'; }
@@ -3091,9 +3111,21 @@
     function onPointer(e) { e.preventDefault(); skip(); }
     function onKey(e) {
       if (landedAt !== null || ['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) return;
+      if (picking) {   // Tab, Enter, Space and the arrows work the picker; Escape skips
+        if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); skip(); }
+        return;
+      }
       e.preventDefault(); e.stopPropagation(); skip();
     }
-    function onScroll(e) { if (landedAt === null) { e.preventDefault(); skip(); } }
+    function onScroll(e) {
+      if (landedAt !== null) return;
+      e.preventDefault();
+      if (!picking) { skip(); return; }
+      // while picking, a tap that wobbles isn't a skip: only a real scroll or swipe is
+      if (e.type === 'wheel' && Math.abs(e.deltaY) > 24) skip();
+      if (e.type === 'touchmove' && touchY !== null && e.touches[0] && Math.abs(e.touches[0].clientY - touchY) > 70) skip();
+    }
+    function onTouch(e) { touchY = e.touches && e.touches[0] ? e.touches[0].clientY : null; }
     // the scrollTo(0, 0) at the start fires a late scroll event too, so only a real move away from the top counts
     function onMoved() { if (window.scrollY > 2) skip(); }
     // phones resize a little when the address bar settles; only a real change of size ends the animation
@@ -3105,9 +3137,11 @@
       window.removeEventListener('keydown', onKey, true);
       window.removeEventListener('wheel', onScroll);
       window.removeEventListener('touchmove', onScroll);
+      window.removeEventListener('touchstart', onTouch);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('scroll', onMoved);
       [back, front, hint].forEach(el => el && el.remove());
+      closePick(true);
       back = front = hint = bx = fx = milky = glow = null;
       stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = [];
     }
@@ -3129,11 +3163,8 @@
       P1 = { x: P0.x - (P0.x - P2.x) * .38, y: P2.y };
       back = document.createElement('canvas'); back.className = 'intro-sky'; back.setAttribute('aria-hidden', 'true');
       front = document.createElement('canvas'); front.className = 'intro-fx'; front.setAttribute('aria-hidden', 'true');
-      hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
-      hint.textContent = (window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap' : 'Click') + ' anywhere to skip';
       app.parentNode.insertBefore(back, app);
       app.parentNode.appendChild(front);
-      app.parentNode.appendChild(hint);
       bx = fitCanvas(back, W, H); fx = fitCanvas(front, W, H);
       glow = makeGlow(); makeStars(); makeMilky(); makeMinors();
       root.classList.add('intro-on'); app.classList.add('intro-cam');
@@ -3142,14 +3173,111 @@
       window.addEventListener('keydown', onKey, true);
       window.addEventListener('wheel', onScroll, { passive: false });
       window.addEventListener('touchmove', onScroll, { passive: false });
+      window.addEventListener('touchstart', onTouch, { passive: true });
       window.addEventListener('resize', onResize);
       window.addEventListener('scroll', onMoved, { passive: true });
       t0 = performance.now();
-      drawSky(0, 0, 1);
+      drawSky(0, 0, 1, true);
+      try { openPick(); } catch (e) {
+        // never stuck on the sky: without the picker, the classic star falls from the corner
+        picking = false; closePick(true);
+        hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = 'Click anywhere to skip';
+        app.parentNode.appendChild(hint);
+      }
       raf = requestAnimationFrame(frame);
       return true;
     }
-    return { play, skip, active: () => on };
+
+    // ----- the picker: a year, then a semester -----
+    function conSVG(y, big) {
+      const named = new Set((y.sems || []).map(x => x.star));
+      const lines = y.e.map(([a, b], k) => `<line x1="${y.p[a][0]}" y1="${y.p[a][1]}" x2="${y.p[b][0]}" y2="${y.p[b][1]}" pathLength="1" style="--d:${k}"/>`).join('');
+      const stars = y.p.map(([x, v], k) => {
+        if (big && named.has(k)) return '';   // the semester's own star is a button drawn on top
+        const r = named.has(k) ? 2.1 : 1.15 + (k % 3) * .22;
+        return (y.open ? `<circle class="halo" cx="${x}" cy="${v}" r="${(r * 4.6).toFixed(2)}"/>` : '') + `<circle class="st" cx="${x}" cy="${v}" r="${r.toFixed(2)}" style="--k:${k}"/>`;
+      }).join('');
+      return `<svg class="pk-con" viewBox="0 0 100 70" aria-hidden="true" focusable="false"><g class="lines">${lines}</g><g class="stars">${stars}</g></svg>`;
+    }
+    function yearsHTML() {
+      return `<div class="pk-stage pk-years">
+        <div class="pk-head"><p class="pk-k">Labubu’s Den</p><h2 class="pk-t">Choose your year</h2></div>
+        <div class="pk-row">${YEARS.map(y => `<button type="button" class="pk-year ${y.open ? 'on' : 'off'}" data-year="${y.id}"${y.open ? '' : ' aria-disabled="true"'} aria-label="${y.name}, ${y.open ? y.sub : 'in progress'}">
+          ${conSVG(y)}<span class="pk-name">${y.name}</span><span class="pk-sub">${y.open ? y.sub : 'in progress'}</span></button>`).join('')}</div>
+      </div>`;
+    }
+    function semsHTML(y) {
+      return `<div class="pk-stage pk-sems">
+        <div class="pk-head"><p class="pk-k">${y.name} · ${y.sub}</p><h2 class="pk-t">Choose your semester</h2></div>
+        <div class="pk-big">${conSVG(y, true)}${y.sems.map(m => {
+          const [x, v] = y.p[m.star];
+          return `<button type="button" class="pk-sem ${m.open ? 'on' : 'off'}" data-sem="${m.id}" style="left:${x}%;top:${(v / 70 * 100).toFixed(2)}%"${m.open ? '' : ' aria-disabled="true"'} aria-label="${m.name}, ${m.open ? m.sub : 'in progress'}">
+            <span class="pk-dot"></span><span class="pk-lab"><b>${m.name}</b><span>${m.open ? m.sub : 'in progress'}</span></span></button>`;
+        }).join('')}</div>
+        <button type="button" class="pk-back">${ICON.back}Other years</button>
+      </div>`;
+    }
+    function openPick() {
+      picking = true;
+      pick = document.createElement('div');
+      pick.className = 'pick';
+      pick.setAttribute('role', 'dialog'); pick.setAttribute('aria-label', 'Choose your year and semester');
+      pick.innerHTML = yearsHTML() + `<button type="button" class="pk-skip">Skip the intro</button>`;
+      pick.addEventListener('click', onPick);
+      document.body.appendChild(pick);
+    }
+    function closePick(now) {
+      if (!pick) return;
+      const el = pick; pick = null;
+      if (now || reduceMotion()) { el.remove(); return; }
+      el.classList.add('out');
+      setTimeout(() => el.remove(), 650);
+    }
+    // swap the stage: zoom into the chosen year, or back out to all of them
+    function stage(html, cls) {
+      const old = pick.querySelector('.pk-stage');
+      old.classList.add(cls === 'in' ? 'leave-in' : 'leave-out');
+      old.style.pointerEvents = 'none';
+      old.insertAdjacentHTML('afterend', html);
+      const nu = pick.querySelectorAll('.pk-stage');
+      nu[nu.length - 1].classList.add(cls === 'in' ? 'enter-in' : 'enter-out');
+      setTimeout(() => old.remove(), reduceMotion() ? 0 : 700);
+    }
+    function onPick(e) {
+      const b = e.target.closest('button'); if (!b || !pick || !picking) return;
+      if (b.classList.contains('pk-skip')) { skip(); return; }
+      if (b.getAttribute('aria-disabled') === 'true') {   // in progress: a little no
+        b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope');
+        sfx.play('untick');
+        return;
+      }
+      if (b.dataset.year) {
+        const y = YEARS.find(x => x.id === b.dataset.year);
+        sfx.play('tick', { rate: PENTA[2] });
+        stage(semsHTML(y), 'in');
+        return;
+      }
+      if (b.classList.contains('pk-back')) { sfx.play('untick'); stage(yearsHTML(), 'out'); return; }
+      if (b.dataset.sem) fire(b);
+    }
+    // the chosen star leaves the sky and falls to the page
+    function fire(b) {
+      const r = b.querySelector('.pk-dot').getBoundingClientRect();
+      P0 = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      P1 = { x: P0.x - (P0.x - P2.x) * .38, y: P2.y };
+      makeMinors();
+      b.classList.add('fire');
+      sfx.play('sparkle');
+      usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
+      picking = false;
+      closePick();
+      hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
+      hint.textContent = (window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap' : 'Click') + ' anywhere to skip';
+      app.parentNode.appendChild(hint);
+      t0 = performance.now() - T_STAR;   // the story starts as the star leaves
+    }
+    return { play, skip, active: () => on, picking: () => picking };
   })();
   function replayIntro() {
     if (intro.active() || reduceMotion()) return;

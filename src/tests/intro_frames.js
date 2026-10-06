@@ -2,7 +2,8 @@
 const { chromium } = require('playwright');
 const OUT = process.env.OUT || require('path').join(__dirname, 'shots') + '/';
 require('fs').mkdirSync(OUT, { recursive: true });
-const TIMES = (process.env.TIMES || '0,500,900,1150,1500,1900,2300,2700,3100,3450,3650,3850,4300,5200').split(',').map(Number);
+// times after S5 is picked (the star leaves at once and lands 2.95 s later)
+const TIMES = (process.env.TIMES || '0,250,500,850,1250,1650,2050,2450,2800,3000,3200,3600,4500').split(',').map(Number);
 (async () => {
   const browser = await chromium.launch();
   const errors = [];
@@ -16,6 +17,11 @@ const TIMES = (process.env.TIMES || '0,500,900,1150,1500,1900,2300,2700,3100,345
     await pg.clock.pauseAt(1000);
     await pg.goto('http://127.0.0.1:8765/index.html#intro', { waitUntil: 'load' });
     await pg.evaluate(() => document.fonts.ready);
+    await pg.clock.runFor(1200); await pg.waitForTimeout(1800);
+    await pg.screenshot({ path: `${OUT}in_${tag}_pick_years.png` });
+    await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800); await pg.waitForTimeout(1300);
+    await pg.screenshot({ path: `${OUT}in_${tag}_pick_sems.png` });
+    await pg.click('.pk-sem[data-sem="s5"]');
     let now = 0;
     for (const t of TIMES) {
       await pg.clock.runFor(t - now); now = t;
