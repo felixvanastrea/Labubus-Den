@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-06-accounts",
+    "date": "2026-10-06",
+    "title": "Accounts",
+    "items": [
+      "Sign in at the top of the homepage, with Google or an email and a password, and your answers, weak spots and exam marks follow you between your phone and your laptop.",
+      "It’s optional: everything still works without an account, saved in your browser as before."
+    ]
+  },
+  {
     "id": "2026-10-06-lectures",
     "date": "2026-10-06",
     "title": "Practise by lecture",

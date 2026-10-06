@@ -180,6 +180,22 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   cost (and the mark without them), every proposition got wrong (ticked but false first, then missed) with the
   lecture's why, and actions: drill the missed ones, practise the ones not tried, an exam on the lecture.
 
+## Accounts (Firebase)
+
+- Optional: guests keep everything in the browser as before. An account (Google, or email and password: Abi switched
+  on those two, not email links) syncs progress between devices. `acct` in `template.html`; Abi's Firebase project
+  `labubu-s-den` (free Spark plan), SDK 12.19.0 loaded from gstatic with `import()` only when needed: when someone opens
+  the sheet, or on load if they signed in on this device (`efm3-acct`). Only on GitHub Pages (`window.__acctTest` in tests).
+- Firestore `users/{uid}`: `s` = JSON of `answers`, `first`, `clean`, `seals`, `examLog`; `t` = server time. Signing in
+  merges the account's copy with this device's (`merge`: a checked answer beats a draft, the latest clean try wins,
+  seals and exam marks add up), then saves the merge. Changes go up 15 s after `save()` (`acctHook`) or when the tab hides.
+- The rules Abi pasted in Firestore: each user reads, writes and deletes only their own doc, `s` a string under 900 kB.
+- The sheet: Continue with Google; email + password (sign in, create an account with a first name, forgot password);
+  signed in: Sign out, Delete my data (the doc, then the account; if Firebase wants a fresh sign-in, the doc goes and
+  they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
+- Account-only features are planned on top of this. The gamification work (sure / not sure, comets, the moon) is
+  parked on the `gamification` branch; Abi asked for accounts first.
+
 ## Anonymous stats (PostHog)
 
 - Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
@@ -224,7 +240,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

@@ -153,6 +153,7 @@
   }
   function save() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); storageOK = true; } catch (e) { storageOK = false; }
+    if (acctHook) acctHook();
   }
   function sanitize() {
     if (!S.answers || typeof S.answers !== 'object') S.answers = {};
@@ -536,6 +537,213 @@
       }
     }
     return { here, on, track, set, boot() { if (on()) load(); } };
+  })();
+
+  // ---------- accounts (Firebase project labubu-s-den): sign in to keep your progress on every device ----------
+  // Only on the GitHub Pages site (the claude.ai link can't reach outside servers). Guests keep the whole site; an
+  // account adds the sync: the progress in S (answers, first tries, clean tries, seals, exam marks) is merged with its
+  // copy in Firestore users/{uid} (field s, JSON) on sign-in, then written back 15 s after the last change and when the
+  // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
+  // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
+  let acctHook = null;   // save() tells the account a change is waiting
+  const acct = (() => {
+    const CONFIG = { apiKey: 'AIzaSyC-YmQXRub3uGLpIV6d8nwJIx5x2zMigcg', authDomain: 'labubu-s-den.firebaseapp.com', projectId: 'labubu-s-den',
+      storageBucket: 'labubu-s-den.firebasestorage.app', messagingSenderId: '346205917194', appId: '1:346205917194:web:07badd4c438de301ac8ff3' };
+    const CDN = 'https://www.gstatic.com/firebasejs/12.19.0/', FLAG = 'efm3-acct', KEYS = ['answers', 'first', 'clean', 'seals', 'examLog'];
+    const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__acctTest;
+    let fb = null, auth = null, db = null, user = null, state = 'off', timer = null, synced = 0, msg = '', sheet = null, erasing = false, mode = 'in';
+    const store = (k, v) => { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
+    const read = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    async function load() {
+      if (fb) return;
+      const [app, a, f] = await Promise.all(['app', 'auth', 'firestore'].map(n => import(`${CDN}firebase-${n}.js`)));
+      const inst = app.initializeApp(CONFIG);
+      fb = { a, f }; auth = a.getAuth(inst); db = f.getFirestore(inst);
+      a.onAuthStateChanged(auth, onUser);
+    }
+    const ref = () => fb.f.doc(db, 'users', user.uid);
+    // the copy in the account and this device's: a checked answer beats a draft, the latest clean try wins, seals and
+    // exam marks add up; on a tie this device's stays
+    function merge(c) {
+      if (!c || typeof c !== 'object') return;
+      for (const [id, a] of Object.entries(c.answers || {})) { const m = S.answers[id]; if (a && (!m || (!m.checked && a.checked))) S.answers[id] = a; }
+      for (const [id, v] of Object.entries(c.first || {})) if (!(id in S.first)) S.first[id] = v;
+      for (const [id, e] of Object.entries(c.clean || {})) { const m = S.clean[id]; if (e && (!m || e.t > m.t)) S.clean[id] = e; }
+      for (const [k, v] of Object.entries(c.seals || {})) S.seals[k] = Object.assign({}, v, S.seals[k]);
+      const log = new Map();
+      for (const e of [...(Array.isArray(c.examLog) ? c.examLog : []), ...S.examLog]) if (e && e.id) log.set(e.id, e);
+      S.examLog = [...log.values()].sort((x, y) => (y.date || 0) - (x.date || 0)).slice(0, EXAM_LOG_MAX);
+      sanitize();
+    }
+    async function push() {
+      clearTimeout(timer); timer = null;
+      if (!user || state !== 'in') return;
+      const o = {}; for (const k of KEYS) o[k] = S[k];
+      const s = JSON.stringify(o);
+      if (s.length > 900000) return;
+      await fb.f.setDoc(ref(), { s, t: fb.f.serverTimestamp() });
+      synced = Date.now(); paint();
+    }
+    async function onUser(u) {
+      user = u || null;
+      if (!user) { const was = state; state = 'off'; store(FLAG, null); if (was !== 'off') paint(); return; }   // no repaint while they type
+      store(FLAG, '1'); state = 'loading'; paint();
+      try {
+        const snap = await fb.f.getDoc(ref());
+        if (snap.exists()) { try { merge(JSON.parse(snap.data().s)); } catch (e) {} }
+        state = 'in'; save(); await push();
+        if (!intro.active()) render(false);
+      } catch (e) { state = 'error'; msg = why(e); paint(); }
+    }
+    function why(e) {
+      const c = (e && e.code) || '';
+      if (/popup-closed|cancelled-popup/.test(c)) return '';
+      if (/network/.test(c)) return 'No connection right now. Try again in a moment.';
+      if (/invalid-email/.test(c)) return 'That email doesn’t look right.';
+      if (/invalid-credential|invalid-login|wrong-password|user-not-found/.test(c)) return 'Wrong email or password.';
+      if (/email-already-in-use/.test(c)) return 'There’s already an account with this email. Sign in instead, or reset its password.';
+      if (/weak-password/.test(c)) return 'Choose a password of at least 6 characters.';
+      if (/missing-password/.test(c)) return 'Type your password.';
+      if (/too-many-requests/.test(c)) return 'Too many tries. Wait a few minutes, or reset your password.';
+      if (/user-disabled/.test(c)) return 'This account has been switched off.';
+      if (/operation-not-allowed/.test(c)) return 'This way of signing in isn’t switched on in Firebase yet.';
+      if (/unauthorized-domain|unauthorized-continue/.test(c)) return 'This site isn’t allowed to sign in yet: add it to the authorized domains in Firebase.';
+      if (/permission-denied/.test(c)) return 'Signed in, but your progress couldn’t be saved: the database rules need setting.';
+      return 'Signing in didn’t work' + (c ? ` (${c.replace('auth/', '')})` : '') + '. Try again.';
+    }
+    async function google() {
+      msg = ''; paint('busy');
+      try {
+        await load();
+        const p = new fb.a.GoogleAuthProvider();
+        try { await fb.a.signInWithPopup(auth, p); }
+        catch (e) { if (/popup-blocked|not-supported/.test((e && e.code) || '')) { store(FLAG, '1'); await fb.a.signInWithRedirect(auth, p); } else throw e; }
+        usage.track('signed_in', { with: 'google' });
+      } catch (e) { msg = why(e); paint(); }
+    }
+    // email and password: sign in, or create the account (with a first name for "Hi, …")
+    async function withEmail(name, email, pw) {
+      msg = ''; paint('busy');
+      try {
+        await load();
+        if (mode === 'new') {
+          const c = await fb.a.createUserWithEmailAndPassword(auth, email, pw);
+          if (name) { try { await fb.a.updateProfile(c.user, { displayName: name }); } catch (e) {} }
+          usage.track('signed_up', { with: 'email' });
+        } else {
+          await fb.a.signInWithEmailAndPassword(auth, email, pw);
+          usage.track('signed_in', { with: 'email' });
+        }
+        paint();
+      } catch (e) { msg = why(e); paint(); }
+    }
+    async function forgot(email) {
+      if (!email) { msg = 'Type your email above first, then tap “Forgot your password?” again.'; paint(); return; }
+      msg = ''; paint('busy');
+      try {
+        await load();
+        await fb.a.sendPasswordResetEmail(auth, email);
+        msg = `If ${email} has an account, an email to choose a new password is on its way. Check your spam folder too.`;
+        usage.track('password_reset');
+      } catch (e) { msg = why(e); }
+      paint();
+    }
+    async function out() { try { await push(); } catch (e) {} try { await fb.a.signOut(auth); } catch (e) {} close(); }
+    async function erase() {
+      erasing = false; msg = ''; paint('busy');
+      try { await fb.f.deleteDoc(ref()); } catch (e) { msg = why(e); paint(); return; }
+      try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
+      catch (e) { try { await fb.a.signOut(auth); } catch (x) {} msg = 'Your saved progress is deleted. To remove the account itself, sign in again and delete once more.'; open(); }
+    }
+    // the account sheet
+    function sheetHTML(busy) {
+      const head = '<p class="eyebrow">Your account</p>';
+      if (user && state !== 'off') {
+        const name = (user.displayName || '').split(' ')[0];
+        return `${head}<h2 class="h2" id="acct-h">${name ? `Hi, ${esc(name)}` : 'Signed in'}</h2>
+          <p class="acct-p">Signed in as <b>${esc(user.email || '')}</b>. ${state === 'loading' ? 'Syncing your progress…' : state === 'error' ? 'Your progress isn’t syncing right now.' : synced ? 'Your progress is saved in your account and follows you to any device you sign in on.' : ''}</p>
+          ${msg ? `<p class="acct-msg" role="status">${esc(msg)}</p>` : ''}
+          <div class="row"><button class="btn" type="button" data-acct="out"${busy ? ' disabled' : ''}>Sign out</button>
+          ${erasing ? `<span class="confirm" role="alert">Delete your account and its saved progress? This device keeps its answers. <button class="btn danger" type="button" data-acct="erase-yes">Delete</button><button class="btn quiet" type="button" data-acct="erase-no">Cancel</button></span>`
+            : `<button class="btn quiet" type="button" data-acct="erase"${busy ? ' disabled' : ''}>Delete my data</button>`}</div>`;
+      }
+      return `${head}<h2 class="h2" id="acct-h">Keep your progress everywhere</h2>
+        <p class="acct-p">Sign in and your answers, weak spots and exam marks follow you from your phone to your laptop. Everything still works without an account.</p>
+        <button class="btn primary acct-g" type="button" data-acct="google"${busy ? ' disabled' : ''}>Continue with Google</button>
+        <form class="acct-mail" data-acct-form>
+          <p class="acct-or">${mode === 'new' ? 'Or create an account with your email' : 'Or sign in with your email'}</p>
+          ${mode === 'new' ? `<label class="acct-f"><span>First name</span><input id="acct-name" autocomplete="given-name" maxlength="40"></label>` : ''}
+          <label class="acct-f"><span>Email</span><input id="acct-email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+          <label class="acct-f"><span>Password${mode === 'new' ? ', 6 characters or more' : ''}</span><input id="acct-pw" type="password" required${mode === 'new' ? ' minlength="6" autocomplete="new-password"' : ' autocomplete="current-password"'}></label>
+          <div class="row"><button class="btn" type="submit"${busy ? ' disabled' : ''}>${mode === 'new' ? 'Create my account' : 'Sign in'}</button>
+            <button class="btn quiet" type="button" data-acct="${mode === 'new' ? 'mode-in">I already have one' : 'mode-new">Create an account'}</button></div>
+          ${mode === 'new' ? '' : `<button class="acct-forgot" type="button" data-acct="forgot"${busy ? ' disabled' : ''}>Forgot your password?</button>`}
+        </form>
+        ${msg ? `<p class="acct-msg" role="status">${esc(msg)}</p>` : ''}
+        <p class="acct-fine">An account keeps your email and your progress, nothing else, and you can delete both anytime. Passwords are stored scrambled: no one can read them, not even the Labubu.</p>`;
+    }
+    // the top bar's button: the word, plus a small square for phones (a figure, or your initial once signed in)
+    function navHTML() {
+      const n = label(), on = user && state !== 'off';
+      const ic = on ? `<span class="na-ic" aria-hidden="true" data-i="${esc(n.charAt(0).toUpperCase())}"></span>`
+        : '<span class="na-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.3"/><path d="M3.8 17.2c.9-3.3 3.3-5 6.2-5s5.3 1.7 6.2 5"/></svg></span>';
+      return `${ic}<span class="na-t">${esc(n)}</span>`;
+    }
+    function paint(busy) {
+      for (const b of document.querySelectorAll('[data-act="account"]')) {
+        if (b.classList.contains('nav-acct')) { b.innerHTML = navHTML(); b.setAttribute('aria-label', label()); } else b.textContent = label();
+      }
+      const st = document.querySelector('.foot-store'); if (st) st.textContent = storeLine();
+      if (!sheet) return;
+      // keep what they typed, and where they were typing
+      const kept = [...sheet.querySelectorAll('input')].map(i => [i.id, i.value]), f = sheet.contains(document.activeElement) ? document.activeElement.id : '';
+      sheet.querySelector('.acct-card').innerHTML = `<button class="btn quiet acct-x" type="button" data-acct="close" aria-label="Close">${ICON.cross}</button>${sheetHTML(busy === 'busy')}`;
+      for (const [id, v] of kept) { const i = id && sheet.querySelector('#' + id); if (i) i.value = v; }
+      const back = f && sheet.querySelector('#' + f); if (back) back.focus();
+    }
+    function open() {
+      if (!here) return;
+      if (!sheet) {
+        sheet = document.createElement('div');
+        sheet.className = 'acct-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-labelledby', 'acct-h');
+        sheet.innerHTML = '<div class="acct-card plate"></div>';
+        sheet.addEventListener('click', e => {
+          if (e.target === sheet) { close(); return; }
+          const b = e.target.closest('[data-acct]'); if (!b) return;
+          const k = b.dataset.acct;
+          if (k === 'close') close();
+          else if (k === 'google') google();
+          else if (k === 'out') out();
+          else if (k === 'erase') { erasing = true; paint(); }
+          else if (k === 'erase-no') { erasing = false; paint(); }
+          else if (k === 'erase-yes') erase();
+          else if (k === 'mode-new' || k === 'mode-in') { mode = k === 'mode-new' ? 'new' : 'in'; msg = ''; paint(); const i = sheet.querySelector(mode === 'new' ? '#acct-name' : '#acct-email'); if (i) i.focus(); }
+          else if (k === 'forgot') forgot(val('acct-email'));
+        });
+        const val = id => ((sheet.querySelector('#' + id) || {}).value || '').trim();
+        sheet.addEventListener('submit', e => {
+          e.preventDefault();
+          const pw = (sheet.querySelector('#acct-pw') || {}).value || '';
+          if (val('acct-email') && pw) withEmail(val('acct-name'), val('acct-email'), pw);
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet && !sheet.hidden) close(); });
+        document.body.appendChild(sheet);
+      }
+      sheet.hidden = false; paint();
+      usage.track('account_opened', { signed_in: !!user });
+      if (!fb && read(FLAG) !== '1') load().catch(() => {});   // warm up while they read
+    }
+    function close() { if (sheet) { sheet.hidden = true; erasing = false; msg = ''; mode = 'in'; } }
+    const label = () => user && state !== 'off' ? ((user.displayName || '').split(' ')[0] || 'Account') : 'Sign in';
+    const storeLine = () => user && state === 'in' ? 'Your answers are saved in this browser and in your account.'
+      : storageOK ? 'Your answers are saved in this browser only.' : 'Your answers won’t be kept after you close this page.';
+    acctHook = () => { if (user && state === 'in') { clearTimeout(timer); timer = setTimeout(() => push().catch(() => {}), 15000); } };
+    document.addEventListener('visibilitychange', () => { if (document.hidden && timer) push().catch(() => {}); });
+    function boot() {
+      if (!here || read(FLAG) !== '1') return;   // Firebase only loads for someone who signed in on this device
+      load().catch(() => { state = 'error'; paint(); });
+    }
+    return { here, boot, open, label, navHTML, storeLine, signedIn: () => !!user && state === 'in' };
   })();
 
   // ---------- actions ----------
@@ -1868,7 +2076,10 @@
             <button type="button" data-act="focus-search">Search</button>
             <button type="button" data-act="updates">Updates</button>
           </div>
-          <button class="navstat mono num" type="button" data-act="updates" title="Update log">${fmtN(BANK.questions.length)} questions${newPill()}</button>
+          <div class="nav-end">
+            ${acct.here ? `<button type="button" class="nav-acct" data-act="account" aria-label="${esc(acct.label())}">${acct.navHTML()}</button>` : ''}
+            <button class="navstat mono num" type="button" data-act="updates" title="Update log">${fmtN(BANK.questions.length)} questions${newPill()}</button>
+          </div>
         </nav>
         <div class="hero">
           ${astrolabeSVG()}
@@ -1964,7 +2175,8 @@
   }
   function footHTML() {
     return `<footer class="foot">
-      <p>${storageOK ? 'Your answers are saved in this browser only.' : "Your answers won't be kept after you close this page."}</p>
+      <p class="foot-store">${acct.storeLine()}</p>
+      ${acct.here ? `<p>Account: <button class="foot-btn" type="button" data-act="account">${esc(acct.label())}</button></p>` : ''}
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
@@ -3467,6 +3679,7 @@
       case 'diag-untried': untriedTopic(S.diag); break;
       case 'diag-exam': openExam({ kind: 'topic', id: S.diag }); break;
       case 'diag-all': S.diagAll = true; save(); render(false); break;
+      case 'account': acct.open(); break;
       case 'diag-back': S.view = 'topic'; S.diagFrom = 'weak'; save(); render(true, null, 'back'); break;
       case 'exam-start': startExam(); break;
       case 'exam-back': examBack(); break;
@@ -3588,6 +3801,7 @@
     load();
     if (data && data.S && !storageOK) { S = Object.assign(S, data.S); sanitize(); }
     usage.boot();   // first, so an exam handed in on load is counted too
+    acct.boot();
     examBoot();
     if (S.view === 'home') { S.q = ''; S.aspect = null; }   // a fresh visit opens on the modules, not an old search
     // the opening animation plays when the site opens on the home page (not for automated page captures)
