@@ -21,6 +21,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
    - `concepts.py`: topic dictionary and tagger for search; `search_extra.py`: extra search-only aliases
    - `corrections.json`: doc mistakes Abi confirmed; `feedback.json`: the Google Form behind the feedback buttons
    - `explanations.json`: why each proposition is right or wrong, from Abi's lecture summaries
+   - `lectures.json`: each module's lectures in course order and which questions belong to each (see Lectures)
    - `constellations.py`: finds copies of a question with the same propositions (used by the quest)
 2. `python3 src/build.py` writes `index.html` (full page with meta tags, icon, link preview) and `src/out/artifact.html`.
 3. Check it in a browser (see Tests), then commit sources and `index.html` together and push to `main`.
@@ -130,8 +131,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Four scopes (`scopeInfo`, `S.examScope` = `{kind, id}`): the quest (its questions, shuffled; "Exam mode" on the quest
   card); a past exam set (all its questions in their own order; the hourglass button on each set row of a module page,
   which then shows the best mark); a module (a random mock of 20, 25 or 50 questions, the sizes of a midterm, a mock
-  and the finals, one per repeated question; "Exam mode" in the module header); a diagnostic topic (up to 20 of its
-  questions; from its diagnostic page). Back from the rules and results returns where the exam was opened
+  and the finals, one per repeated question; "Exam mode" in the module header); a lecture (scope kind `topic`, up to 20
+  of its questions; from its diagnostic page). Back from the rules and results returns where the exam was opened
   (`S.examBack`). A running exam always comes first: any exam button brings it back.
 - While it runs: no verdict, key, explanations, report link or constellation; the strip only shows what's ticked.
   "Hand in" asks first (blanks and time left; Escape or "Keep going" closes it). At zero it hands itself in as it is,
@@ -141,23 +142,41 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   current key on load. Every answered exam question is a clean try for the weak spots. "Reset all answers" clears it all.
 - Screens (`S.view = 'exam'`, `S.examScreen`): the rules (an hourglass window that lights up with the best mark),
   the running exam (clock and a running-down line in the bar), the results (mark, full / half / none / blank, by
-  topic: the quest's topics or the diagnostic's, the diagnostics it unlocked, past marks) and the review.
+  the quest's topics or else by lecture, the diagnostics it unlocked, past marks) and the review.
+
+## Lectures
+
+- Abi's Drive folder "S5 | 2025-2026 Lectures" (id `1J7CQn7OQdBKNY8H5NYLkqkdQY75QPLmB`) has every lecture of the
+  semester by module. Read them with the Google Drive tools; big .pptx decks often come back empty, and a PDF copy
+  in her Drive may work instead. `lectures.json` gives each lecture's Drive file id.
+- `lectures.json` lists each module's lectures in course order, as the topics the site uses (`bank.diag`): the module
+  page's "By lecture" list, the weak spots and the exam results. A topic is one lecture; a lecture with under 3 past
+  questions shares a topic with the closest one (COPD and cor pulmonale, the four cardiomyopathy lectures...), and
+  the site then names its lectures (`l`). `take` lists concept ids: a question goes to the topic of its first concept
+  a topic takes (`concept@T` only with that aspect); `q` moves single questions by short id, and their word-for-word
+  copies and constellation stars follow. `unasked` lists lectures no past question comes from yet.
+- The build prints every topic's size and fails on a question no topic takes: when new MCQs come in, check where
+  they land and add a rule or a `q` entry. Questions were assigned by reading their stems against the lectures'
+  outlines (October 2026), not by concept alone: keep that care.
+- Some exam topics have no lecture in the folder: pleural effusion, pneumothorax, chest trauma, mediastinal tumours,
+  chronic coronary syndrome, cardiac semiology (kept as topics, `note` in the file). Dr Bencheqroun's three thoracic
+  surgery decks and the skin cancers .ppt couldn't be read (too big or old format); a PDF export from Abi would do.
+- On the site: a module page lists its questions by exam set (default) or by lecture (`S.topicBy`); a lecture row
+  practises its questions (every copy, with the exam-type filter; `startLecture`, `S.session.lec`) and the button on
+  its right opens its diagnostic, whose Back then returns to the module (`S.diagFrom`).
 
 ## Weak spots (the diagnostic)
 
-- Topics are built in `build.py` (`bank.diag`): one per root concept of `concepts.py`, except the roots in
-  `DIAG_SPLIT` (pneumonia, valves, thyroid, diabetes), split into their sub-concepts of 4+ questions; `DIAG_MERGE`
-  follows the lectures (atypical and aspiration pneumonia with CAP, COVID with viral); topics under 4 questions share
-  "Other topics" per module. Sizes count a question once with its word-for-word copies and constellation stars.
+- One per lecture (Lectures above). Sizes count a question once with its word-for-word copies and constellation stars.
 - Evidence (`S.clean`): each question's latest clean try: the first try in practice, every exam answer, or a drill
   at least 20 hours after the last try (`DRILL_GAP`); never a retry right after the answer was shown. Answers from
   before the diagnostic existed were backfilled (picks where known, right or wrong otherwise).
-- A topic's diagnostic opens after `DIAG_MIN` (8) tries, or all its questions if it has fewer. The progress shows as
+- A lecture's diagnostic opens after `DIAG_MIN` (8) tries, or all its questions if it has fewer. The progress shows as
   stars, one per question needed, lit as they're tried (`xpHTML`): on the weak spots page, the home card, and under
   the verdict after each clean try ("Diagnostic unlocked" with a sparkle when it opens).
-- The diagnostic: the mark on the topic with the exam's rule, Solid (15+) / Shaky (10+) / Weak spot, what wrong ticks
+- The diagnostic: the mark on the lecture with the exam's rule, Solid (15+) / Shaky (10+) / Weak spot, what wrong ticks
   cost (and the mark without them), every proposition got wrong (ticked but false first, then missed) with the
-  lecture's why, and actions: drill the missed ones, practise the ones not tried, an exam on the topic.
+  lecture's why, and actions: drill the missed ones, practise the ones not tried, an exam on the lecture.
 
 ## Anonymous stats (PostHog)
 
@@ -166,8 +185,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   "Anonymous stats: on/off" in the footer turns it off, kept in `efm3-mcq-stats`, and switching off opts out and
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
-  events are sent (module and practice opened, questions checked with their module only, searches, exam mode
-  opened / started / handed in, review, report a mistake, Ask the Labubu, constellations, seals, update log, sound).
+  events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
+  searches, exam mode opened / started / handed in, review, report a mistake, Ask the Labubu, constellations, seals,
+  update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log
@@ -202,7 +222,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

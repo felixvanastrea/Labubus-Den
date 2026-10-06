@@ -131,23 +131,13 @@ bank['concepts'] = [{'id': cid, 'm': mod, 'n': name,
                     for cid, mod, name, syn, abbr, parent in CONCEPTS]
 bank['aspects'] = ASPECT_NAMES
 
-# weak spots (the diagnostic): each module split into topics revised as one lecture. A topic is a root concept of
-# concepts.py; the roots in DIAG_SPLIT bundle several lectures and are split into their sub-concepts of DIAG_SMALL+
-# questions, the rest staying as "<root>: general". A few merges follow the lectures (atypical and aspiration
-# pneumonia go with CAP, COVID with viral pneumonia). Topics under DIAG_SMALL questions share one "Other topics" per
-# module. Sizes count a question once with its word-for-word copies and constellation stars.
-DIAG_MERGE = {'R.atypical': 'R.cap', 'R.aspiration': 'R.cap', 'R.covid': 'R.viral'}
-DIAG_SPLIT = {'R.pneumonia', 'C.valves', 'E.thyroid', 'E.diabetes'}
-DIAG_SMALL = 4
-c_parent = {c[0]: c[5] for c in CONCEPTS}
+# lectures (lectures.json): each module split into its lectures, in course order, one weak-spot topic each (a lecture
+# with under 3 past questions shares a topic with the closest one). A question goes to the topic of its first concept
+# that a topic takes ("concept@T": only with that aspect), unless "q" moves it. Word-for-word copies and constellation
+# stars go with their lead, so a topic holds every copy. Sizes count a question once with its copies.
+LEC = json.load(open('lectures.json', encoding='utf8'))
+LEC_MIN = 3
 c_name = {c[0]: c[2] for c in CONCEPTS}
-
-
-def c_chain(c):
-    out = [c]
-    while c_parent.get(out[-1]):
-        out.append(c_parent[out[-1]])
-    return out          # c ... root
 
 
 def canon(q):
@@ -155,49 +145,58 @@ def canon(q):
     return cst[Q[k]['cst']][0] if 'cst' in Q[k] else k
 
 
+assert set(LEC['modules']) == {t['id'] for t in bank['topics']}, 'lectures.json: one entry per module'
+tid_mod = {d['id']: m for m, ds in LEC['modules'].items() for d in ds}
+assert len(tid_mod) == sum(len(ds) for ds in LEC['modules'].values()), 'lectures.json: topic ids must be unique'
+moved = {}
+for sid, tid in LEC['q'].items():
+    q = Q[shortids[sid]]
+    assert tid_mod.get(tid) == q['topic'], f'lectures.json q: {sid} cannot go to {tid}'
+    moved[canon(q)] = tid
 diag = []
 for t in bank['topics']:
-    qs = [q for q in bank['questions'] if q['topic'] == t['id'] and q['answer']]
-    prim = {}
-    for q in qs:
-        c = q['c'][0]
-        while c in DIAG_MERGE:
-            c = DIAG_MERGE[c]
-        prim[q['id']] = c
-    size = lambda lst: len({canon(q) for q in lst})
-    by_root = defaultdict(list)
-    for q in qs:
-        by_root[c_chain(prim[q['id']])[-1]].append(q)
-    groups = {}
-    for r, rq in by_root.items():
-        if r not in DIAG_SPLIT:
-            groups[r] = (c_name[r], rq)
+    spec = LEC['modules'][t['id']]
+    rules = []
+    for d in spec:
+        for r in d['take']:
+            c, _, asp = r.partition('@')
+            assert c in c_name, f"lectures.json {d['id']}: unknown concept {c}"
+            rules.append((c, asp, d['id']))
+
+    def by_rule(q):
+        for c in q['c']:
+            for rc, asp, tid in rules:
+                if rc == c and asp and q['a'] in asp:
+                    return tid
+            for rc, asp, tid in rules:
+                if rc == c and not asp:
+                    return tid
+        return None
+
+    members = defaultdict(list)
+    lost = []
+    for q in bank['questions']:
+        if q['topic'] != t['id']:
             continue
-        kids = defaultdict(list)
-        for q in rq:
-            ch = c_chain(prim[q['id']])
-            kids[ch[-2] if len(ch) > 1 else r].append(q)
-        rest = []
-        for k, kq in kids.items():
-            if k != r and size(kq) >= DIAG_SMALL:
-                groups[k] = (c_name[k], kq)
-            else:
-                rest += kq
-        if rest:
-            groups[r + ':general'] = (re.sub(r'\s*\((all|all types|all forms)\)\s*$', '', c_name[r]) + ': general', rest)
-    topics, other = [], []
-    for k, (name, kq) in groups.items():
-        if size(kq) < DIAG_SMALL:
-            other += kq
+        k = canon(q)
+        assert Q[k]['topic'] == q['topic'], f"{q['sid']}: its lead {Q[k]['sid']} is in another module"
+        tid = moved.get(k) or by_rule(Q[k])
+        if tid:
+            members[tid].append(q['id'])
         else:
-            name = re.sub(r'\s*\((all|all types|all forms)\)\s*$', '', name)
-            topics.append({'id': k, 'm': t['id'], 'n': name, 'q': [q['id'] for q in sorted(kq, key=lambda q: order[q['id']])]})
-    topics.sort(key=lambda d: (-len({canon(Q[i]) for i in d['q']}), d['n']))
-    if other:
-        topics.append({'id': t['id'] + ':other', 'm': t['id'], 'n': 'Other topics', 'q': [q['id'] for q in sorted(other, key=lambda q: order[q['id']])]})
-    diag += topics
-    print(f"diagnostic {t['id'][:22]}: {len(topics)} topics |",
-          ', '.join(f"{d['n'][:22]} {len({canon(Q[i]) for i in d['q']})}" for d in topics))
+            lost.append(q['sid'])
+    assert not lost, f"lectures.json: no topic takes {', '.join(lost)} ({t['id']}): add a rule or a 'q' entry"
+    sizes = []
+    for d in spec:
+        ids = members.get(d['id'], [])
+        n = len({canon(Q[i]) for i in ids})
+        assert n, f"lectures.json {d['id']}: no question"
+        sizes.append(f"{d['name'][:24]} {n}{' (small)' if n < LEC_MIN else ''}")
+        e = {'id': d['id'], 'm': t['id'], 'n': d['name'], 'q': ids}
+        if len(d['lectures']) > 1:
+            e['l'] = list(dict.fromkeys(x['t'] for x in d['lectures']))
+        diag.append(e)
+    print(f"lectures {t['id'][:22]}: {len(spec)} topics |", ', '.join(sizes))
 bank['diag'] = diag
 
 # the current quest (quests.json): every question in its module tagged with one of each topic's concepts,

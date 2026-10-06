@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-06-lectures",
+    "date": "2026-10-06",
+    "title": "Practise by lecture",
+    "items": [
+      "Every past question is now filed under the lecture it comes from, from this year’s slides. On a module page, switch to By lecture to practise one lecture at a time, in course order.",
+      "Weak spots now diagnose each lecture (tuberculosis as its four lectures, for example), and exams group your results by lecture."
+    ]
+  },
+  {
     "id": "2026-10-05-weak-spots",
     "date": "2026-10-05",
     "title": "Weak spots, and exam mode everywhere",

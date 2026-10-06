@@ -706,6 +706,17 @@ details.case[open] .case-b { margin-top: 6px; }
 .set-exam svg { width: 14px; height: 14px; flex: none; }
 .set-exam.has-best span { font-family: var(--f-display); font-style: italic; font-size: 1.14rem; line-height: 1; color: var(--ink); }
 .set-exam small { margin-left: 1px; font-family: var(--f-mono); font-style: normal; font-size: .64rem; color: var(--ink-3); }
+/* a module's questions by exam set or by lecture; each lecture's diagnostic on the right */
+.by-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.by-seg { padding-right: 18px; border-right: 1px solid var(--hair); }
+.lec-note { margin: -4px 0 14px; max-width: 40rem; font-style: italic; font-size: 1rem; color: var(--ink-3); }
+.entry .e-lecs { margin: -3px 0 0; font-style: italic; font-size: .98rem; line-height: 1.35; color: var(--ink-3); }
+.lec-dg svg { color: var(--ink-3); }
+.lec-dg span { font-variant-numeric: tabular-nums; }
+.lec-dg.has-best.solid svg { color: var(--right); }
+.lec-dg.has-best.shaky svg { color: var(--half); }
+.lec-dg.has-best.weak svg { color: var(--wrong); }
+.dg-lecs { margin: 12px 0 0; max-width: 40rem; font-style: italic; font-size: 1.06rem; line-height: 1.4; color: var(--ink-2); }
 .ex-unlocked { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--ink-3); border-radius: var(--r); background: var(--sel-wash); box-shadow: 0 0 0 4px var(--glow-soft); animation: rise .7s var(--ease) .3s both; }
 .ex-ul-t { margin: 0; font-family: var(--f-display); font-style: italic; font-size: 1.4rem; line-height: 1.15; }
 .ex-ul-l { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -804,6 +815,7 @@ details.case[open] .case-b { margin-top: 6px; }
 @media (max-width: 640px) {
   .wsc-wrap { padding-top: 36px; }
   .set-exam { padding: 0 9px; margin-right: 0; }
+  .by-seg { padding-right: 0; border-right: 0; }
   .dg-mark b { font-size: 1.7rem; }
   .fx-prop { font-size: 1.28rem; }
 }

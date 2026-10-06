@@ -1,7 +1,7 @@
-// Weak spots: every question in exactly one topic; the stars fill with clean tries only (a first try, an exam, a drill
-// a day later; never a retry), the diagnostic unlocks at 8 tries (all of a smaller topic) with a star line under the
+// Weak spots: every question in exactly one lecture (in course order); the stars fill with clean tries only (a first try, an exam, a drill
+// a day later; never a retry), the diagnostic unlocks at 8 tries (all of a smaller lecture) with a star line under the
 // verdict; the diagnostic's mark by the exam's rule, what wrong ticks cost, every proposition got wrong with its why;
-// drill, untried and topic-exam actions; answers from before the update count; Reset all clears it; phone layout.
+// drill, untried and lecture-exam actions; answers from before the update count; Reset all clears it; phone layout.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -35,16 +35,17 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   const lead = new Map(); (bank.cst || []).forEach(ids => ids.forEach(id => lead.set(id, ids[0])));
   const canon = id => { const k = Q.get(id).dupOf || id; return lead.get(k) || k; };
 
-  // the topics: every question in exactly one, the respiratory ones match the quest's lectures
+  // the lectures: every question in exactly one; respiratory in course order, tuberculosis as its four lectures
   const seen = new Map(); bank.diag.forEach(d => d.q.forEach(id => seen.set(id, (seen.get(id) || 0) + 1)));
-  check(bank.questions.every(q => seen.get(q.id) === 1) && new Set(bank.diag.map(d => d.id)).size === bank.diag.length, `${bank.diag.length} topics, every question in exactly one`);
+  check(bank.questions.every(q => seen.get(q.id) === 1) && new Set(bank.diag.map(d => d.id)).size === bank.diag.length, `${bank.diag.length} lectures, every question in exactly one`);
   const resp = bank.diag.filter(d => d.m === 'respiratory-system-diseases').map(d => d.n);
-  check(['Community-acquired & lobar pneumonia', 'Nosocomial pneumonia', 'Acute bronchitis', 'Lung & amoebic abscess', 'Viral pneumonia & influenza', 'Bronchiectasis', 'Tuberculosis'].every(n => resp.includes(n)), 'respiratory: the quest\'s lectures and the others');
+  check(resp.slice(0, 6).join() === 'Acute bronchitis,Community-acquired pneumonia,Lung abscess,Viral pneumonia,Nosocomial pneumonia,Bronchiectasis'
+    && ['Tuberculosis infection', 'Tuberculosis disease', 'Acute forms of tuberculosis', 'Treatment of tuberculosis'].every(n => resp.includes(n)), 'respiratory: ' + resp.slice(0, 6).join(', ') + '…');
 
   // the home card and the page, before anything is tried
-  check((await txt(p, '.wsc-stat')) === 'No topic diagnosed yet.' && (await p.$$('.wsc-row')).length === 3, 'home card: nothing yet, three topics to start');
+  check((await txt(p, '.wsc-stat')) === 'No lecture diagnosed yet.' && (await p.$$('.wsc-row')).length === 3, 'home card: nothing yet, three lectures to start');
   await p.click('.navlinks [data-act="weak"]'); await p.waitForTimeout(250);
-  check(await p.getAttribute('[data-weakmod="respiratory-system-diseases"]', 'aria-selected') === 'true' && (await p.$$('.dg-fresh .dg-row')).length === resp.length, 'opens on the quest\'s module, every topic not started');
+  check(await p.getAttribute('[data-weakmod="respiratory-system-diseases"]', 'aria-selected') === 'true' && (await p.$$('.dg-fresh .dg-row')).length === resp.length, 'opens on the quest\'s module, every lecture not started');
 
   // Bronchiectasis: its questions not tried yet, a star each
   const T = bank.diag.find(d => d.n === 'Bronchiectasis');
@@ -117,18 +118,18 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   check(JSON.stringify(after.s) === JSON.stringify(Q.get(m1).answer.slice().sort((a, c) => a - c)) && after.t > before.t, 'a day later, the drill counts');
   await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
 
-  // an exam on the topic: all its questions, its answers count, Back to the diagnostic
+  // an exam on the lecture: all its questions, its answers count, Back to the diagnostic
   await p.click('[data-act="diag-exam"]'); await p.waitForTimeout(200);
-  check((await txt(p, '.ph-lead')).startsWith(`All ${groups.size} of its questions`) && (await txt(p, '.bar .back')) === 'Diagnostic', 'topic exam rules: ' + await txt(p, '.ph-lead'));
+  check((await txt(p, '.ph-lead')).startsWith(`All ${groups.size} of its questions`) && (await txt(p, '.bar .back')) === 'Diagnostic', 'lecture exam rules: ' + await txt(p, '.ph-lead'));
   await p.click('[data-act="exam-start"]'); await p.waitForTimeout(150);
   S = await state(p);
-  check(S.exam.qids.length === groups.size && S.exam.scope.kind === 'topic', 'the exam is the topic');
+  check(S.exam.qids.length === groups.size && S.exam.scope.kind === 'topic', 'the exam is the lecture');
   for (let k = 0; k < S.exam.qids.length; k++) {
     for (const i of Q.get(S.exam.qids[k]).answer) await p.click(`.opt[data-opt="${i}"]`);
     if (k < S.exam.qids.length - 1) { await p.click('[data-act="exam-next"]'); await p.waitForTimeout(50); }
   }
   await p.click('.bar [data-act="exam-handin"]'); await p.click('[data-act="exam-handin-yes"]'); await p.waitForTimeout(250);
-  check(await txt(p, '#ex-score') === '20' && !(await p.$('.ex-topics')), 'all right: 20, no by-topic for a single topic');
+  check(await txt(p, '#ex-score') === '20' && !(await p.$('.ex-topics')), 'all right: 20, no by-lecture for a single lecture');
   await p.click('.d-actions [data-act="exam-back"]'); await p.waitForTimeout(250);
   check(await p.evaluate(() => document.body.dataset.view) === 'diag' && await txt(p, '.dg-hero .score b') === '20' && await txt(p, '.dg-hero .dg-chip') === 'Solid', 'back on the diagnostic: the exam\'s answers are the latest, 20/20, solid');
   check((await txt(p, '.dg-habit')) === 'Every question right. Nothing lost here.' && !(await p.$('.fx')), 'nothing to fix');
@@ -138,10 +139,10 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   check((await p.$$('.dg-group:not(.dg-fresh) [data-diag]')).length === 1 && (await txt(p, '.dg-sum')).startsWith('1 of '), 'the page: one diagnosed');
   await p.screenshot({ path: OUT + 'wk_page.png', fullPage: true });
   await p.click('.bar [data-act="home"]'); await p.waitForTimeout(250);
-  check((await txt(p, '.wsc-stat')).startsWith('1 topic diagnosed · weakest: Bronchiectasis, 20/20'), 'home card: ' + await txt(p, '.wsc-stat'));
+  check((await txt(p, '.wsc-stat')).startsWith('1 lecture diagnosed · weakest: Bronchiectasis, 20/20'), 'home card: ' + await txt(p, '.wsc-stat'));
 
   // answers from before the diagnostic count: a first try kept with its picks, a retried one as right or wrong only
-  const [a1, a2] = bank.diag.find(d => d.n === 'Tuberculosis').q;
+  const [a1, a2] = bank.diag.find(d => d.n === 'Tuberculosis infection').q;
   await p.evaluate(([K, a1, a2, sel]) => {
     const S = JSON.parse(localStorage.getItem(K)); delete S.clean;
     S.answers[a1] = { sel, checked: true, correct: false }; S.first[a2] = false;
@@ -156,7 +157,7 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   // Reset all answers clears it
   await p.click('.allrow [data-act="reset"]'); await p.click('.allrow [data-act="reset-yes"]'); await p.waitForTimeout(200);
   S = await state(p);
-  check(Object.keys(S.clean).length === 0 && (await txt(p, '.wsc-stat')) === 'No topic diagnosed yet.', 'Reset all answers clears the diagnostic');
+  check(Object.keys(S.clean).length === 0 && (await txt(p, '.wsc-stat')) === 'No lecture diagnosed yet.', 'Reset all answers clears the diagnostic');
   await ctx.close();
 
   // phone
@@ -171,7 +172,7 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   await m.screenshot({ path: OUT + 'wk_m_page.png' });
   o = Math.max(o, await m.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
   // unlock acute bronchitis (5 questions) and open its diagnostic
-  await m.tap('[data-diag-go="R.bronchitis"]'); await m.waitForTimeout(200);
+  await m.tap('[data-diag-go="R-bronchitis"]'); await m.waitForTimeout(200);
   for (let k = 0; k < 5; k++) {
     const sel = await m.evaluate(K => { const S = JSON.parse(localStorage.getItem(K)); const id = S.session.qids[S.session.idx]; const q = JSON.parse(document.getElementById('bank').textContent).questions.find(x => x.id === id); return [[...q.options.keys()].find(i => !q.answer.includes(i))]; }, KEY);
     await m.tap(`.opt[data-opt="${sel[0]}"]`); await m.tap('[data-act="primary"]'); await m.waitForTimeout(100);
