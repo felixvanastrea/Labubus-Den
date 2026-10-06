@@ -1,7 +1,7 @@
-// Weak spots: every question in exactly one lecture (in course order); the stars fill with clean tries only (a first try, an exam, a drill
+// Weak spots: every question in exactly one lecture (in course order); the stars fill with clean tries only (a first try, an exam, a comet
 // a day later; never a retry), the diagnostic unlocks at 8 tries (all of a smaller lecture) with a star line under the
 // verdict; the diagnostic's mark by the exam's rule, what wrong ticks cost, every proposition got wrong with its why;
-// drill, untried and lecture-exam actions; answers from before the update count; Reset all clears it; phone layout.
+// comets (no drill), untried and lecture-exam actions; answers from before the update count; Reset all clears it; phone layout.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -96,27 +96,25 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   check((await p.$$('.fx .fx-why')).length > 0, 'with the lecture\'s why');
   await p.screenshot({ path: OUT + 'wk_diag.png', fullPage: true });
 
-  // drill: the missed ones, answered again; it counts only a day after the last try
+  // the missed ones come back as comets the next day (no drill); catching one then counts as a clean try
   const missed = plan.filter(x => pts(Q.get(x.id), x.sel) < 1).map(x => x.id);
-  check((await txt(p, '[data-act="drill"]')) === `Drill the ${missed.length} you missed`, 'drill button: ' + await txt(p, '[data-act="drill"]'));
-  await p.click('[data-act="drill"]'); await p.waitForTimeout(200);
   S = await state(p);
-  const d0 = S.session.qids[0];
-  check(S.session.qids.slice().sort().join() === missed.slice().sort().join() && S.session.drill && !S.answers[d0], 'the drill: the missed questions, cleared');
-  const before = S.clean[d0];
-  for (const i of Q.get(d0).answer) await p.click(`.opt[data-opt="${i}"]`);
-  await p.click('[data-act="primary"]'); await p.waitForTimeout(80);
-  check(JSON.stringify((await state(p)).clean[d0]) === JSON.stringify(before), 'a drill the same day doesn\'t count');
-  await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
-  check(await p.evaluate(() => document.body.dataset.view) === 'diag', 'Back from the drill: the diagnostic');
+  check(!(await p.$('[data-act="drill"]')) && !(await p.$('[data-act="diag-comets"]')) && missed.every(id => S.comets[canon(id)]), `no drill: the ${missed.length} missed are comets, due tomorrow`);
   await p.clock.fastForward(DAY + 3600e3);
-  await p.click('[data-act="drill"]'); await p.waitForTimeout(200);
-  const m1 = (await state(p)).session.qids[0];
+  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(250);
+  // the first question was retried wrong right after: any miss makes a comet, a retry's too
+  const cq = [...new Set([...missed, plan[0].id].map(canon))], nc = cq.length;
+  check((await txt(p, '[data-act="diag-comets"]')) === `Catch its ${nc} ${nc === 1 ? 'comet' : 'comets'}`, 'a day later: ' + await txt(p, '[data-act="diag-comets"]'));
+  await p.click('[data-act="diag-comets"]'); await p.waitForTimeout(200);
+  S = await state(p);
+  const m1 = S.session.qids[0], before = S.clean[m1];
+  check(S.session.comets && S.session.qids.slice().sort().join() === cq.slice().sort().join() && !S.answers[m1], 'its comets: the missed questions, cleared');
   for (const i of Q.get(m1).answer) await p.click(`.opt[data-opt="${i}"]`);
   await p.click('[data-act="primary"]'); await p.waitForTimeout(80);
   const after = (await state(p)).clean[m1];
-  check(JSON.stringify(after.s) === JSON.stringify(Q.get(m1).answer.slice().sort((a, c) => a - c)) && after.t > before.t, 'a day later, the drill counts');
+  check(JSON.stringify(after.s) === JSON.stringify(Q.get(m1).answer.slice().sort((a, c) => a - c)) && after.t > before.t, 'a comet caught a day later counts');
   await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
+  check(await p.evaluate(() => document.body.dataset.view) === 'diag', 'Back from the comets: the diagnostic');
 
   // an exam on the lecture: all its questions, its answers count, Back to the diagnostic
   await p.click('[data-act="diag-exam"]'); await p.waitForTimeout(200);

@@ -206,8 +206,21 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Rules Abi pasted in Firestore: a user reads/writes/deletes only their own `users` doc (`s` a string under 900 kB; if
   it has a `key`, `names/{key}` must be theirs); `names` docs: any signed-in user can read one, create one for
   themselves only if it doesn't exist (key `[a-z]{2,24}`), update or delete only their own.
+- Comets need an account too (`startComets`); sure / not sure and the moon are open to guests. The game parts sync
+  like the rest (`sure`, `comets`, `moon` in `SYNCED`).
 - Signed in: Sign out, Delete my data (the doc and the name, then the account; if Firebase wants a fresh sign-in, the
   data goes and they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
+
+## Tonight: sure / not sure, comets and the moon
+
+- Three study habits, explained in the comment block "tonight" in `template.html`. Sure / not sure: an optional pick
+  before checking (first tries and comet catches go to `S.sure`), for the "Your instinct" line on the weak spots page.
+- Comets: a question missed (practice or exam) comes back the next day, then after 3, 7 and 14 days (`COMET_STEPS`) until
+  it sticks; missed again, it starts over. `S.comets` = {canon id: {l, d}}; at most `COMET_MAX` (20) a night. Catching
+  one is a clean try for the diagnostic: "Catch its N comets" replaced the drill on the diagnostic page.
+- The moon: a night counts once `MOON_DAY` (5) different questions are checked that day; it grows to full at
+  `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
+  quest) shows the moon and tonight's comets. Tests: tonight.js, weak.js.
 
 ## Anonymous stats (PostHog)
 
@@ -253,7 +266,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

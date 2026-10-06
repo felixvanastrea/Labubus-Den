@@ -153,6 +153,7 @@ const FAKE = {
   await p.clock.fastForward(16000); await p.waitForTimeout(150);
   const after = await cloud(p);
   S = await state(p);
+  check(['sure', 'comets', 'moon', 'stamps'].every(k => k in after), 'the game parts sync too: sure / not sure, comets, the moon');
   check(!before.answers[q0.id] && !!after.answers[q0.id] && !!after.answers[qe.id] && !!after.answers[qd.id] && (q0.id === qa.id || !after.answers[qa.id]) && !!S.answers[qe.id], 'saved 15 s later, merged: nothing from either device lost, the taken-back answer stays gone ' + JSON.stringify([!before.answers[q0.id], !!after.answers[q0.id], !!after.answers[qe.id], !!after.answers[qd.id], !after.answers[qa.id], !!S.answers[qe.id], q0.id === qa.id, q0.id]));
 
   // the next visit signs in again on its own (back on the homepage, where the top bar has the account button)
