@@ -1031,3 +1031,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .acct-msg { padding: 10px 12px; border: 1px dashed var(--hair-2); border-radius: var(--r); font-size: 1rem; line-height: 1.45; color: var(--ink); }
 .acct-fine { font-style: italic; font-size: .98rem; line-height: 1.45; color: var(--ink-3); }
 .acct-card .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.acct-naming { border-top: 0; padding-top: 0; }
+.acct-p .acct-forgot { margin-left: 4px; }
+/* locked for guests: a small padlock before the name of the feature */
+.lk { width: 14px; height: 14px; flex: none; }
+.navlinks .lk { width: 13px; height: 13px; margin-right: 5px; vertical-align: -1px; opacity: .75; }

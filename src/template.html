@@ -57,7 +57,8 @@
   };
   const STORE_KEY = 'efm3-mcq-bank-v1';
   const ICON = {
-    check: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
+    lock: '<svg class="lk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="1.6"/><path d="M7 9V6.6a3 3 0 0 1 6 0V9"/></svg>',
+    check:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
     cross: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>',
     back: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5L6.5 10l5.5 5.5"/></svg>',
     next: '<svg class="fwd" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5l5.5 5.5L8 15.5"/></svg>',
@@ -138,8 +139,31 @@
   // ---------- state ----------
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
-    clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set' };
+    clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {} };
   let storageOK = false;
+  // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
+  // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog'];
+  let lastFlat = null;
+  function flatSync(o) {
+    const f = {};
+    for (const k of SYNCED) {
+      const v = o && o[k];
+      if (!v || typeof v !== 'object') continue;
+      if (Array.isArray(v)) { for (const e of v) if (e && e.id) f[k + '/' + e.id] = JSON.stringify(e); }
+      else for (const id in v) f[k + '/' + id] = JSON.stringify(v[id]);
+    }
+    return f;
+  }
+  function stamp() {
+    const cur = flatSync(S), now = Date.now();
+    if (!S.stamps || typeof S.stamps !== 'object') S.stamps = {};
+    if (lastFlat) {
+      for (const k in cur) if (cur[k] !== lastFlat[k]) S.stamps[k] = now;
+      for (const k in lastFlat) if (!(k in cur)) S.stamps[k] = now;
+    }
+    lastFlat = cur;
+  }
   function load() {
     try {
       const raw = localStorage.getItem(STORE_KEY);
@@ -150,10 +174,12 @@
       }
     } catch (e) { storageOK = false; }
     sanitize();
+    lastFlat = flatSync(S);
   }
-  function save() {
+  function save(quiet) {   // quiet: after taking in the account's copy, nothing new to send back
+    stamp();
     try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); storageOK = true; } catch (e) { storageOK = false; }
-    if (acctHook) acctHook();
+    if (acctHook && quiet !== true) acctHook();
   }
   function sanitize() {
     if (!S.answers || typeof S.answers !== 'object') S.answers = {};
@@ -163,6 +189,7 @@
     if (!S.first || typeof S.first !== 'object') S.first = {};
     for (const id of Object.keys(S.first)) if (!Q.has(id)) delete S.first[id];
     if (!S.seals || typeof S.seals !== 'object') S.seals = {};
+    if (!S.stamps || typeof S.stamps !== 'object' || Array.isArray(S.stamps)) S.stamps = {};
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -549,11 +576,15 @@
   const acct = (() => {
     const CONFIG = { apiKey: 'AIzaSyC-YmQXRub3uGLpIV6d8nwJIx5x2zMigcg', authDomain: 'labubu-s-den.firebaseapp.com', projectId: 'labubu-s-den',
       storageBucket: 'labubu-s-den.firebasestorage.app', messagingSenderId: '346205917194', appId: '1:346205917194:web:07badd4c438de301ac8ff3' };
-    const CDN = 'https://www.gstatic.com/firebasejs/12.19.0/', FLAG = 'efm3-acct', KEYS = ['answers', 'first', 'clean', 'seals', 'examLog'];
+    const CDN = 'https://www.gstatic.com/firebasejs/12.19.0/', FLAG = 'efm3-acct', NAME = 'efm3-acct-name';
     const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__acctTest;
-    let fb = null, auth = null, db = null, user = null, state = 'off', timer = null, synced = 0, msg = '', sheet = null, erasing = false, mode = 'in';
-    const store = (k, v) => { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
-    const read = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    function store(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+    function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    // off: a guest · wait: signed in on this device before, Firebase still waking up · loading: fetching the account's copy
+    // naming: signed in, no name picked yet · in: signed in and syncing · error: signed in, the account can't be reached
+    let state = here && read(FLAG) === '1' ? 'wait' : 'off';
+    let fb = null, auth = null, db = null, user = null, me = { name: '', key: '' }, unsub = null, timer = null, since = 0, synced = 0;
+    let msg = '', sheet = null, erasing = false, mode = 'in', editing = false, reason = '', pending = null, pendingName = '';
     async function load() {
       if (fb) return;
       const [app, a, f] = await Promise.all(['app', 'auth', 'firestore'].map(n => import(`${CDN}firebase-${n}.js`)));
@@ -562,43 +593,141 @@
       a.onAuthStateChanged(auth, onUser);
     }
     const ref = () => fb.f.doc(db, 'users', user.uid);
-    // the copy in the account and this device's: a checked answer beats a draft, the latest clean try wins, seals and
-    // exam marks add up; on a tie this device's stays
-    function merge(c) {
-      if (!c || typeof c !== 'object') return;
-      for (const [id, a] of Object.entries(c.answers || {})) { const m = S.answers[id]; if (a && (!m || (!m.checked && a.checked))) S.answers[id] = a; }
-      for (const [id, v] of Object.entries(c.first || {})) if (!(id in S.first)) S.first[id] = v;
-      for (const [id, e] of Object.entries(c.clean || {})) { const m = S.clean[id]; if (e && (!m || e.t > m.t)) S.clean[id] = e; }
-      for (const [k, v] of Object.entries(c.seals || {})) S.seals[k] = Object.assign({}, v, S.seals[k]);
-      const log = new Map();
-      for (const e of [...(Array.isArray(c.examLog) ? c.examLog : []), ...S.examLog]) if (e && e.id) log.set(e.id, e);
-      S.examLog = [...log.values()].sort((x, y) => (y.date || 0) - (x.date || 0)).slice(0, EXAM_LOG_MAX);
-      sanitize();
+    const member = () => !here || ['wait', 'loading', 'in', 'error'].includes(state);
+
+    // ---- the progress, between devices ----
+    // the account's doc keeps the synced entries and, for each, when it last changed (S.stamps, deletions too).
+    // Taking it in: per entry, the side that changed it last wins, so a reset or a "Try again" on one device isn't undone
+    // by another's older copy. Entries with no time on either side (from before) add up, a checked answer beating a draft.
+    function blob() { const o = { stamps: S.stamps }; for (const k of SYNCED) o[k] = S[k]; return JSON.stringify(o); }
+    function prefer(k, t, m) {
+      if (k.startsWith('answers/')) return !!(t && t.checked && !(m && m.checked));
+      if (k.startsWith('clean/')) return ((t && t.t) || 0) > ((m && m.t) || 0);
+      return false;
     }
+    let logMap = null;
+    function put(k, v) {
+      const i = k.indexOf('/'), kind = k.slice(0, i), id = k.slice(i + 1);
+      if (Array.isArray(S[kind])) {
+        if (!logMap) logMap = new Map(S[kind].map(e => [String(e.id), e]));
+        if (v === undefined) logMap.delete(id); else logMap.set(id, v);
+        return;
+      }
+      if (!S[kind] || typeof S[kind] !== 'object') S[kind] = {};
+      if (v === undefined) delete S[kind][id]; else S[kind][id] = v;
+    }
+    function take(c) {
+      if (!c || typeof c !== 'object') return false;
+      const mine = flatSync(S), theirs = flatSync(c), ms = S.stamps, ts = c.stamps && typeof c.stamps === 'object' ? c.stamps : {};
+      let changed = false;
+      for (const k of new Set([...Object.keys(theirs), ...Object.keys(ts)])) {
+        const a = ms[k] || 0, b = ts[k] || 0, t = theirs[k], m = mine[k];
+        if (t === m) { if (b > a) ms[k] = b; continue; }
+        const win = b > a || (b === a && t !== undefined && (m === undefined || prefer(k, JSON.parse(t), JSON.parse(m))));
+        if (!win) continue;
+        put(k, t === undefined ? undefined : JSON.parse(t)); if (b) ms[k] = b; changed = true;
+      }
+      if (logMap) { S.examLog = [...logMap.values()].sort((x, y) => (y.date || 0) - (x.date || 0)).slice(0, EXAM_LOG_MAX); logMap = null; }
+      if (changed) sanitize();
+      lastFlat = flatSync(S);   // taken in, not changed here: no new times
+      return changed;
+    }
+    // what changed elsewhere shows at once, except in a running exam or while typing
+    function refresh() {
+      const el = document.activeElement;
+      if (intro.active() || S.view === 'exam' || (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
+      render(false);
+    }
+    // send this device's copy, merged first with the account's (a transaction, so two devices can't overwrite each other)
     async function push() {
-      clearTimeout(timer); timer = null;
-      if (!user || state !== 'in') return;
-      const o = {}; for (const k of KEYS) o[k] = S[k];
-      const s = JSON.stringify(o);
-      if (s.length > 900000) return;
-      await fb.f.setDoc(ref(), { s, t: fb.f.serverTimestamp() });
+      clearTimeout(timer); timer = null; since = 0;
+      if (!user || !['in', 'naming'].includes(state)) return;
+      let changed = false;
+      await fb.f.runTransaction(db, async tx => {
+        const snap = await tx.get(ref());
+        if (snap.exists() && snap.data().s) { try { changed = take(JSON.parse(snap.data().s)) || changed; } catch (e) {} }
+        const s = blob();
+        if (s.length > 900000) throw Object.assign(new Error('too big'), { code: 'too-big' });
+        tx.set(ref(), { s, t: fb.f.serverTimestamp(), email: user.email || '', answered: Object.values(S.answers).filter(a => a && a.checked).length }, { merge: true });
+      });
+      if (changed) { save(true); refresh(); }
       synced = Date.now(); paint();
     }
+    // live: another device's change arrives while this page is open
+    function listen() {
+      if (unsub) unsub();
+      unsub = fb.f.onSnapshot(ref(), snap => {
+        if (!snap.exists() || snap.metadata.hasPendingWrites) return;
+        const d = snap.data();
+        if (d.key && (d.key !== me.key || d.name !== me.name)) {
+          const was = state; me = { name: d.name || '', key: d.key }; store(NAME, me.name);
+          if (was === 'naming') { state = 'in'; done(); }
+          paint(); if (was === 'naming') refresh();
+        }
+        let ch = false; try { ch = take(JSON.parse(d.s || '{}')); } catch (e) {}
+        if (ch) { save(true); refresh(); }
+      }, () => {});
+    }
     async function onUser(u) {
+      if (unsub) { unsub(); unsub = null; }
       user = u || null;
-      if (!user) { const was = state; state = 'off'; store(FLAG, null); if (was !== 'off') paint(); return; }   // no repaint while they type
+      if (!user) {
+        const was = state; state = 'off'; me = { name: '', key: '' }; store(FLAG, null); store(NAME, null);
+        if (was !== 'off') { paint(); if (!intro.active()) render(false); }   // nothing to repaint while they type in the sheet
+        return;
+      }
       store(FLAG, '1'); state = 'loading'; paint();
       try {
         const snap = await fb.f.getDoc(ref());
-        if (snap.exists()) { try { merge(JSON.parse(snap.data().s)); } catch (e) {} }
-        state = 'in'; save(); await push();
+        const d = snap.exists() ? snap.data() : {};
+        if (d.s) { try { take(JSON.parse(d.s)); } catch (e) {} }
+        me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
+        state = me.key ? 'in' : 'naming';
+        save(true); await push(); listen();
+        if (state === 'naming' && pendingName) { const n = pendingName; pendingName = ''; await claim(n); }
+        else if (state === 'naming' && (pending || (sheet && !sheet.hidden))) open();
+        if (state === 'in') done();
         if (!intro.active()) render(false);
-      } catch (e) { state = 'error'; msg = why(e); paint(); }
+        paint();
+      } catch (e) { if (state === 'loading') state = 'error'; msg = why(e); paint(); }
     }
+    // signed in (and named) after a locked button sent them here: carry on to what they wanted
+    function done() { if (!pending) return; const f = pending; pending = null; close(); f(); }
+
+    // ---- names: one per person, lookalikes count as the same ----
+    const tidy = s => String(s || '').normalize('NFC').replace(/\s+/g, ' ').trim();
+    // what makes two names the same: capitals, accents, spaces, dots, dashes, apostrophes and doubled letters don't count
+    const canon = s => tidy(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '').replace(/(.)\1+/g, '$1');
+    const nameOK = s => s.length <= 24 && /^\p{L}[\p{L} .'’-]*$/u.test(s) && /^[a-z]{2,24}$/.test(canon(s));
+    const taken = n => `“${n}” is taken, or too close to a name that is. Add an initial to make it yours, like “${n.split(' ')[0]} B.”`;
+    async function claim(raw) {
+      const name = tidy(raw), key = canon(name);
+      if (!nameOK(name)) { msg = 'Use 2 to 24 letters. Spaces, dashes and dots are fine; numbers aren’t.'; paint(); return false; }
+      msg = ''; paint('busy');
+      const nr = fb.f.doc(db, 'names', key);
+      if (key !== me.key) {
+        try { const s = await fb.f.getDoc(nr); if (s.exists() && s.data().uid !== user.uid) { msg = taken(name); paint(); return false; } }
+        catch (e) { msg = /permission/.test((e && e.code) || '') ? 'Names need the new database rules (Firestore, Rules).' : why(e); paint(); return false; }
+      }
+      try {
+        const b = fb.f.writeBatch(db);
+        b.set(nr, { uid: user.uid, name });
+        if (me.key && me.key !== key) b.delete(fb.f.doc(db, 'names', me.key));
+        b.set(ref(), { name, key, email: user.email || '' }, { merge: true });
+        await b.commit();
+      } catch (e) { msg = /permission/.test((e && e.code) || '') ? taken(name) : why(e); paint(); return false; }
+      try { if (user.displayName !== name) await fb.a.updateProfile(user, { displayName: name }); } catch (e) {}
+      const was = state; me = { name, key }; store(NAME, name); editing = false;
+      if (was === 'naming') { state = 'in'; usage.track('name_picked'); }
+      paint();
+      if (was === 'naming') { done(); if (!intro.active()) render(false); }
+      return true;
+    }
+
     function why(e) {
       const c = (e && e.code) || '';
       if (/popup-closed|cancelled-popup/.test(c)) return '';
-      if (/network/.test(c)) return 'No connection right now. Try again in a moment.';
+      if (/network|unavailable/.test(c)) return 'No connection right now. Try again in a moment.';
       if (/invalid-email/.test(c)) return 'That email doesn’t look right.';
       if (/invalid-credential|invalid-login|wrong-password|user-not-found/.test(c)) return 'Wrong email or password.';
       if (/email-already-in-use/.test(c)) return 'There’s already an account with this email. Sign in instead, or reset its password.';
@@ -609,7 +738,8 @@
       if (/operation-not-allowed/.test(c)) return 'This way of signing in isn’t switched on in Firebase yet.';
       if (/unauthorized-domain|unauthorized-continue/.test(c)) return 'This site isn’t allowed to sign in yet: add it to the authorized domains in Firebase.';
       if (/permission-denied/.test(c)) return 'Signed in, but your progress couldn’t be saved: the database rules need setting.';
-      return 'Signing in didn’t work' + (c ? ` (${c.replace('auth/', '')})` : '') + '. Try again.';
+      if (/too-big/.test(c)) return 'Your progress is too big to save to the account.';
+      return 'That didn’t work' + (c ? ` (${c.replace('auth/', '')})` : '') + '. Try again.';
     }
     async function google() {
       msg = ''; paint('busy');
@@ -621,21 +751,21 @@
         usage.track('signed_in', { with: 'google' });
       } catch (e) { msg = why(e); paint(); }
     }
-    // email and password: sign in, or create the account (with a first name for "Hi, …")
+    // email and password: sign in, or create the account (its name is claimed once it exists)
     async function withEmail(name, email, pw) {
+      if (mode === 'new' && !nameOK(tidy(name))) { msg = 'Your name: 2 to 24 letters. Spaces, dashes and dots are fine; numbers aren’t.'; paint(); return; }
       msg = ''; paint('busy');
       try {
         await load();
         if (mode === 'new') {
-          const c = await fb.a.createUserWithEmailAndPassword(auth, email, pw);
-          if (name) { try { await fb.a.updateProfile(c.user, { displayName: name }); } catch (e) {} }
+          pendingName = tidy(name);
+          await fb.a.createUserWithEmailAndPassword(auth, email, pw);
           usage.track('signed_up', { with: 'email' });
         } else {
           await fb.a.signInWithEmailAndPassword(auth, email, pw);
           usage.track('signed_in', { with: 'email' });
         }
-        paint();
-      } catch (e) { msg = why(e); paint(); }
+      } catch (e) { pendingName = ''; msg = why(e); paint(); }
     }
     async function forgot(email) {
       if (!email) { msg = 'Type your email above first, then tap “Forgot your password?” again.'; paint(); return; }
@@ -651,41 +781,58 @@
     async function out() { try { await push(); } catch (e) {} try { await fb.a.signOut(auth); } catch (e) {} close(); }
     async function erase() {
       erasing = false; msg = ''; paint('busy');
-      try { await fb.f.deleteDoc(ref()); } catch (e) { msg = why(e); paint(); return; }
+      if (unsub) { unsub(); unsub = null; }
+      try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
+      catch (e) { msg = why(e); paint(); listen(); return; }
       try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
       catch (e) { try { await fb.a.signOut(auth); } catch (x) {} msg = 'Your saved progress is deleted. To remove the account itself, sign in again and delete once more.'; open(); }
     }
-    // the account sheet
+
+    // ---- the sheet ----
     function sheetHTML(busy) {
-      const head = '<p class="eyebrow">Your account</p>';
-      if (user && state !== 'off') {
-        const name = (user.displayName || '').split(' ')[0];
-        return `${head}<h2 class="h2" id="acct-h">${name ? `Hi, ${esc(name)}` : 'Signed in'}</h2>
-          <p class="acct-p">Signed in as <b>${esc(user.email || '')}</b>. ${state === 'loading' ? 'Syncing your progress…' : state === 'error' ? 'Your progress isn’t syncing right now.' : synced ? 'Your progress is saved in your account and follows you to any device you sign in on.' : ''}</p>
-          ${msg ? `<p class="acct-msg" role="status">${esc(msg)}</p>` : ''}
-          <div class="row"><button class="btn" type="button" data-acct="out"${busy ? ' disabled' : ''}>Sign out</button>
-          ${erasing ? `<span class="confirm" role="alert">Delete your account and its saved progress? This device keeps its answers. <button class="btn danger" type="button" data-acct="erase-yes">Delete</button><button class="btn quiet" type="button" data-acct="erase-no">Cancel</button></span>`
-            : `<button class="btn quiet" type="button" data-acct="erase"${busy ? ' disabled' : ''}>Delete my data</button>`}</div>`;
+      const head = '<p class="eyebrow">Your account</p>', dis = busy ? ' disabled' : '';
+      const note = msg ? `<p class="acct-msg" role="status">${esc(msg)}</p>` : '';
+      if (user && state === 'naming') {
+        const guess = me.name || (user.displayName || '').split(' ')[0];
+        return `${head}<h2 class="h2" id="acct-h">One last thing: your name</h2>
+          <p class="acct-p">It’s how the Den knows you, and it’s yours alone: no one else can take it, or a lookalike of it (capitals, accents, dots or doubled letters don’t make a new name).</p>
+          <form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(guess)}"></label>
+            <div class="row"><button class="btn primary" type="submit"${dis}>Save my name</button><button class="btn quiet" type="button" data-acct="out"${dis}>Sign out</button></div></form>
+          ${note}`;
       }
-      return `${head}<h2 class="h2" id="acct-h">Keep your progress everywhere</h2>
-        <p class="acct-p">Sign in and your answers, weak spots and exam marks follow you from your phone to your laptop. Everything still works without an account.</p>
-        <button class="btn primary acct-g" type="button" data-acct="google"${busy ? ' disabled' : ''}>Continue with Google</button>
-        <form class="acct-mail" data-acct-form>
+      if (user && state !== 'off') {
+        const nm = me.name || (user.displayName || '').split(' ')[0];
+        return `${head}<h2 class="h2" id="acct-h">${nm ? `Hi, ${esc(nm)}` : 'Signed in'}</h2>
+          <p class="acct-p">Signed in as <b>${esc(user.email || '')}</b>. ${state === 'loading' ? 'Syncing your progress…' : state === 'error' ? 'Your progress isn’t syncing right now.' : 'Your progress is saved in your account and follows you to any device you sign in on.'}</p>
+          ${editing ? `<form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your new name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(me.name)}"></label>
+              <div class="row"><button class="btn" type="submit"${dis}>Save</button><button class="btn quiet" type="button" data-acct="rename-no">Cancel</button></div></form>`
+            : me.key ? `<p class="acct-p">Your name on the Den: <b>${esc(me.name)}</b> <button class="acct-forgot" type="button" data-acct="rename">Change it</button></p>` : ''}
+          ${note}
+          <div class="row"><button class="btn" type="button" data-acct="out"${dis}>Sign out</button>
+          ${erasing ? `<span class="confirm" role="alert">Delete your account and its saved progress? This device keeps its answers. <button class="btn danger" type="button" data-acct="erase-yes">Delete</button><button class="btn quiet" type="button" data-acct="erase-no">Cancel</button></span>`
+            : `<button class="btn quiet" type="button" data-acct="erase"${dis}>Delete my data</button>`}</div>`;
+      }
+      return `${head}<h2 class="h2" id="acct-h">${esc(reason || 'Keep your progress everywhere')}</h2>
+        <p class="acct-p">${reason ? 'It’s free and takes a few seconds. ' : ''}An account unlocks exam mode, weak spots and quests, and your answers follow you from your phone to your laptop. Practising questions stays open to everyone.</p>
+        <button class="btn primary acct-g" type="button" data-acct="google"${dis}>Continue with Google</button>
+        <form class="acct-mail" data-acct-form="mail">
           <p class="acct-or">${mode === 'new' ? 'Or create an account with your email' : 'Or sign in with your email'}</p>
-          ${mode === 'new' ? `<label class="acct-f"><span>First name</span><input id="acct-name" autocomplete="given-name" maxlength="40"></label>` : ''}
+          ${mode === 'new' ? `<label class="acct-f"><span>Your name, yours alone on the Den</span><input id="acct-name" autocomplete="given-name" maxlength="24" required></label>` : ''}
           <label class="acct-f"><span>Email</span><input id="acct-email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
           <label class="acct-f"><span>Password${mode === 'new' ? ', 6 characters or more' : ''}</span><input id="acct-pw" type="password" required${mode === 'new' ? ' minlength="6" autocomplete="new-password"' : ' autocomplete="current-password"'}></label>
-          <div class="row"><button class="btn" type="submit"${busy ? ' disabled' : ''}>${mode === 'new' ? 'Create my account' : 'Sign in'}</button>
+          <div class="row"><button class="btn" type="submit"${dis}>${mode === 'new' ? 'Create my account' : 'Sign in'}</button>
             <button class="btn quiet" type="button" data-acct="${mode === 'new' ? 'mode-in">I already have one' : 'mode-new">Create an account'}</button></div>
-          ${mode === 'new' ? '' : `<button class="acct-forgot" type="button" data-acct="forgot"${busy ? ' disabled' : ''}>Forgot your password?</button>`}
+          ${mode === 'new' ? '' : `<button class="acct-forgot" type="button" data-acct="forgot"${dis}>Forgot your password?</button>`}
         </form>
-        ${msg ? `<p class="acct-msg" role="status">${esc(msg)}</p>` : ''}
-        <p class="acct-fine">An account keeps your email and your progress, nothing else, and you can delete both anytime. Passwords are stored scrambled: no one can read them, not even the Labubu.</p>`;
+        ${note}
+        <p class="acct-fine">An account keeps your name, your email and your progress, nothing else, and you can delete them anytime. Passwords are stored scrambled: no one can read them, not even the Labubu.</p>`;
     }
+    const label = () => state === 'off' ? 'Sign in' : state === 'naming' ? 'Pick a name'
+      : me.name || (user && (user.displayName || '').split(' ')[0]) || read(NAME) || 'Account';
     // the top bar's button: the word, plus a small square for phones (a figure, or your initial once signed in)
     function navHTML() {
-      const n = label(), on = user && state !== 'off';
-      const ic = on ? `<span class="na-ic" aria-hidden="true" data-i="${esc(n.charAt(0).toUpperCase())}"></span>`
+      const n = label(), named = state !== 'off' && state !== 'naming' && n !== 'Account';
+      const ic = named ? `<span class="na-ic" aria-hidden="true" data-i="${esc(n.charAt(0).toUpperCase())}"></span>`
         : '<span class="na-ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="7" r="3.3"/><path d="M3.8 17.2c.9-3.3 3.3-5 6.2-5s5.3 1.7 6.2 5"/></svg></span>';
       return `${ic}<span class="na-t">${esc(n)}</span>`;
     }
@@ -707,6 +854,7 @@
         sheet = document.createElement('div');
         sheet.className = 'acct-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-labelledby', 'acct-h');
         sheet.innerHTML = '<div class="acct-card plate"></div>';
+        const val = id => ((sheet.querySelector('#' + id) || {}).value || '').trim();
         sheet.addEventListener('click', e => {
           if (e.target === sheet) { close(); return; }
           const b = e.target.closest('[data-acct]'); if (!b) return;
@@ -719,10 +867,11 @@
           else if (k === 'erase-yes') erase();
           else if (k === 'mode-new' || k === 'mode-in') { mode = k === 'mode-new' ? 'new' : 'in'; msg = ''; paint(); const i = sheet.querySelector(mode === 'new' ? '#acct-name' : '#acct-email'); if (i) i.focus(); }
           else if (k === 'forgot') forgot(val('acct-email'));
+          else if (k === 'rename' || k === 'rename-no') { editing = k === 'rename'; msg = ''; paint(); const i = sheet.querySelector('#acct-newname'); if (i) i.select(); }
         });
-        const val = id => ((sheet.querySelector('#' + id) || {}).value || '').trim();
         sheet.addEventListener('submit', e => {
           e.preventDefault();
+          if (e.target.dataset.acctForm === 'name') { claim(val('acct-newname')); return; }
           const pw = (sheet.querySelector('#acct-pw') || {}).value || '';
           if (val('acct-email') && pw) withEmail(val('acct-name'), val('acct-email'), pw);
         });
@@ -731,20 +880,38 @@
       }
       sheet.hidden = false; paint();
       usage.track('account_opened', { signed_in: !!user });
-      if (!fb && read(FLAG) !== '1') load().catch(() => {});   // warm up while they read
+      if (!fb) load().catch(() => {});   // warm up while they read
     }
-    function close() { if (sheet) { sheet.hidden = true; erasing = false; msg = ''; mode = 'in'; } }
-    const label = () => user && state !== 'off' ? ((user.displayName || '').split(' ')[0] || 'Account') : 'Sign in';
+    function close() { if (sheet) { sheet.hidden = true; erasing = false; editing = false; msg = ''; mode = 'in'; } reason = ''; pending = null; }
+    // the locked features (exam mode, weak spots, quests): a guest gets the sheet, then what they asked for once signed in
+    function gate(why, then) {
+      if (member()) return false;
+      reason = state === 'naming' ? '' : why; pending = then || null;
+      usage.track('locked_feature', { what: why });
+      open(); return true;
+    }
     const storeLine = () => user && state === 'in' ? 'Your answers are saved in this browser and in your account.'
       : storageOK ? 'Your answers are saved in this browser only.' : 'Your answers won’t be kept after you close this page.';
-    acctHook = () => { if (user && state === 'in') { clearTimeout(timer); timer = setTimeout(() => push().catch(() => {}), 15000); } };
+    // a change goes up 15 s after the last one, and at least every 90 s while they keep going, and when the page hides
+    acctHook = () => {
+      if (!user || !['in', 'naming'].includes(state)) return;
+      if (!since) since = Date.now();
+      clearTimeout(timer);
+      timer = setTimeout(() => push().catch(() => {}), Math.max(0, Math.min(15000, since + 90000 - Date.now())));
+    };
     document.addEventListener('visibilitychange', () => { if (document.hidden && timer) push().catch(() => {}); });
     function boot() {
-      if (!here || read(FLAG) !== '1') return;   // Firebase only loads for someone who signed in on this device
-      load().catch(() => { state = 'error'; paint(); });
+      if (state !== 'wait') return;   // Firebase only loads for someone who signed in on this device
+      load().catch(() => {});
     }
-    return { here, boot, open, label, navHTML, storeLine, signedIn: () => !!user && state === 'in' };
+    return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in' };
   })();
+  const LOCK = ICON.lock;
+  const lockMark = () => acct.member() ? '' : LOCK;
+  // screens a guest can't stay on (after signing out, or an old session): exam mode, weak spots, a quest
+  function lockedView() {
+    return ['exam', 'weak', 'diag'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && ['quest', 'diag'].includes(S.session.from));
+  }
 
   // ---------- actions ----------
   function startSession(topicId, setId) {
@@ -927,6 +1094,7 @@
   }
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
   function render(scrollTop, focusWhat, vt, after) {
+    if (lockedView() && !acct.member()) S.view = 'home';
     const key = screenKey();
     const changed = lastKey !== null && key !== lastKey;
     lastKey = key;
@@ -1104,7 +1272,7 @@
   }
   // topic: index into QUEST.topics or null for the whole quest; mode: 'go' (first unanswered), 'retry' (the wrong ones, cleared), 'review'
   function startQuest(topic, repeatedOnly, mode) {
-    if (!QUEST) return;
+    if (!QUEST || acct.gate('Quests need an account', () => startQuest(topic, repeatedOnly, mode))) return;
     const t = topic === null ? null : QUEST.topics[topic];
     let ids = t ? t.q : QUEST.q;
     if (repeatedOnly) ids = ids.filter(id => repOf(Q.get(id)));
@@ -1128,7 +1296,7 @@
     startList(stars, 0, { topic: Q.get(id).topic, from: 'stars', title: `Constellation · ${stars.length} stars`, back });
   }
   function questGo() {
-    const qi = questInfo(); if (!qi) return;
+    const qi = questInfo(); if (!qi || acct.gate('Quests need an account', questGo)) return;
     const nx = questNext(qi), s = S.session;
     if (nx.act === 'go' && s && s.from === 'quest' && s.qall && s.qids.some(isLeft)) resume();   // keeps your place and shuffle
     else startQuest(null, false, nx.act);
@@ -1224,7 +1392,7 @@
           <p class="qp-note">${esc(QUEST.note)} Answer all ${fmtN(qi.st.keyed)} and get ${QUEST.goal}% right to earn the seal.</p>
           <div class="qp-progress">${barLine(qi.st)}<p class="qp-stats">${line}</p></div>
           <div class="qp-actions">
-            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${nx.label} ${ICON.next}</button>
+            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${lockMark()}${nx.label} ${ICON.next}</button>
             ${exam.btn}
             ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
             ${resetHTML('quest')}
@@ -1400,6 +1568,7 @@
   }
   // sc: the scope to open the rules of; a running exam is always the one shown
   function openExam(sc) {
+    if (acct.gate('Exam mode needs an account', () => openExam(sc))) return;
     if (!examRunning()) {
       sc = sc || S.examScope;
       if (!scopeInfo(sc)) return;
@@ -1766,7 +1935,7 @@
     const n = info.pool.length, log = examLogFor(scopeKey(sc)), best = bestMark(scopeKey(sc));
     const seeLast = S.exam && S.exam.handed && log.length && S.exam.id === log[0].id;
     return {
-      btn: `<button class="btn ex-btn" type="button" data-act="exam" title="All ${fmtN(n)} questions in ${fmtN(Math.round(n * EXAM_MS_PER_Q / 60000))} minutes, graded out of 20">${ICON.hourglass}Exam mode</button>`,
+      btn: `<button class="btn ex-btn" type="button" data-act="exam" title="All ${fmtN(n)} questions in ${fmtN(Math.round(n * EXAM_MS_PER_Q / 60000))} minutes, graded out of 20">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>`,
       line: log.length ? `<p class="qp-exam">Exam mode: last <b class="num">${fmtPts(log[0].n20)}</b>/20${log.length > 1 ? ` · best <b class="num">${fmtPts(best)}</b>/20` : ''}${seeLast ? ` · <button class="foot-btn" type="button" data-act="exam-results">see the results</button>` : ''}</p>` : ''
     };
   }
@@ -1878,14 +2047,14 @@
     return top ? top[0] : QUEST && mods.some(t => t.id === QUEST.module) ? QUEST.module : (mods[0] || {}).id;
   }
   function openWeak(mod) {
-    if (!DIAG.length) return;
+    if (!DIAG.length || acct.gate('Weak spots need an account', () => openWeak(mod))) return;
     S.weakMod = mod && TOPIC.has(mod) ? mod : weakDefault();
     const vt = S.view === 'diag' ? 'back' : 'nav';
     S.view = 'weak'; confirmReset = false; usage.track('weak_spots_opened', { module: S.weakMod });
     save(); render(true, null, vt);
   }
   function openDiag(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined) return;
+    const i = DIAG_INDEX.get(id); if (i === undefined || acct.gate('Weak spots need an account', () => openDiag(id))) return;
     if (S.view !== 'diag') S.diagFrom = S.view === 'topic' && S.topicId === DIAG[i].m ? 'topic' : 'weak';
     S.diag = id; S.weakMod = DIAG[i].m; S.diagAll = false; S.view = 'diag';
     usage.track('diagnostic_opened', { topic: id, open: diagState(i).open });
@@ -1893,13 +2062,13 @@
   }
   // practise a topic's questions never tried (toward its diagnostic), or drill the ones missed
   function untriedTopic(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined) return;
+    const i = DIAG_INDEX.get(id); if (i === undefined || acct.gate('Weak spots need an account', () => untriedTopic(id))) return;
     const ids = diagDetail(i).untried;
     if (!ids.length) { openDiag(id); return; }
     startList(ids, 0, { topic: DIAG[i].m, from: S.view === 'diag' ? 'diag' : S.view === 'home' ? 'home' : 'weak', title: `${DIAG[i].n} · toward its diagnostic` });
   }
   function drillTopic(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined) return;
+    const i = DIAG_INDEX.get(id); if (i === undefined || acct.gate('Weak spots need an account', () => drillTopic(id))) return;
     const ids = diagDetail(i).missed; if (!ids.length) return;
     ids.forEach(q => { keepFirst(q); delete S.answers[q]; });
     startList(ids, 0, { topic: DIAG[i].m, from: 'diag', drill: true, title: `${DIAG[i].n} · drill` });
@@ -2037,7 +2206,7 @@
           <h2 class="h2" id="wsc-h">Weak spots</h2>
           <p class="f-lead">Try ${DIAG_MIN} questions from a lecture and the Labubu diagnoses it: your mark on it, the ticks that cost you, and the facts to fix.</p>
           <p class="wsc-stat">${open.length ? `${fmtN(open.length)} ${open.length === 1 ? 'lecture' : 'lectures'} diagnosed${weakest ? ` · weakest: <b>${esc(DIAG[weakest.i].n)}</b>, ${fmtPts(weakest.n20)}/20` : ''}` : 'No lecture diagnosed yet.'}</p>
-          <div><button class="btn primary" type="button" data-act="weak">Open weak spots ${ICON.next}</button></div>
+          <div><button class="btn primary" type="button" data-act="weak">${lockMark()}Open weak spots ${ICON.next}</button></div>
         </div>
         ${rows ? `<div class="wsc-side"><p class="wsc-side-t">${open.length || near.some(s => s.done) ? 'Closest to a diagnostic' : 'Start here'}</p><ul>${rows}</ul></div>` : ''}
       </div>
@@ -2057,7 +2226,7 @@
          <button class="btn primary" type="button" data-act="exam-resume">${ICON.hourglass}Back to the exam ${ICON.next}</button>`
       : questOn
       ? `<p class="cta-note">Current quest: <b>${esc(QUEST.title)}</b>, ${qi.days > 1 ? `due in ${qi.days} days` : qi.days === 1 ? 'due tomorrow' : 'due today'}. ${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} done.</p>
-         <button class="btn primary" type="button" data-act="quest-go">${questNext(qi).label} ${ICON.next}</button>
+         <button class="btn primary" type="button" data-act="quest-go">${lockMark()}${questNext(qi).label} ${ICON.next}</button>
          ${sess && sess.from !== 'quest' ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
       : sess
       ? `<p class="cta-note">Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question ${sess.idx + 1} of ${sess.qids.length}</p>
@@ -2072,7 +2241,7 @@
           <div class="navlinks">
             <button type="button" data-act="goto-modules">Modules</button>
             <button type="button" data-act="repeats">Most repeated</button>
-            ${DIAG.length ? `<button type="button" data-act="weak">Weak spots</button>` : ''}
+            ${DIAG.length ? `<button type="button" data-act="weak">${lockMark()}Weak spots</button>` : ''}
             <button type="button" data-act="focus-search">Search</button>
             <button type="button" data-act="updates">Updates</button>
           </div>
@@ -2229,8 +2398,8 @@
         if (!lq.length) return '';
         const ls = stats(lq), st = diagState(i);
         const dg = st.open
-          ? `<button type="button" class="set-exam lec-dg has-best ${st.status}" data-diag="${esc(d.id)}" title="Its diagnostic: ${STATUS[st.status].toLowerCase()}" aria-label="${esc(d.n)}: diagnostic, ${fmtPts(st.n20)} out of 20, ${STATUS[st.status].toLowerCase()}">${ICON.star}<span>${fmtPts(st.n20)}<small>/20</small></span></button>`
-          : `<button type="button" class="set-exam lec-dg" data-diag="${esc(d.id)}" title="${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic" aria-label="${esc(d.n)}: ${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic">${ICON.star}<span>${fmtN(st.done)}<small>/${fmtN(st.need)}</small></span></button>`;
+          ? `<button type="button" class="set-exam lec-dg has-best ${st.status}" data-diag="${esc(d.id)}" title="Its diagnostic: ${STATUS[st.status].toLowerCase()}" aria-label="${esc(d.n)}: diagnostic, ${fmtPts(st.n20)} out of 20, ${STATUS[st.status].toLowerCase()}">${acct.member() ? ICON.star : LOCK}<span>${fmtPts(st.n20)}<small>/20</small></span></button>`
+          : `<button type="button" class="set-exam lec-dg" data-diag="${esc(d.id)}" title="${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic" aria-label="${esc(d.n)}: ${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic">${acct.member() ? ICON.star : LOCK}<span>${fmtN(st.done)}<small>/${fmtN(st.need)}</small></span></button>`;
         return `<li class="set-row"><button type="button" class="entry" data-lec="${esc(d.id)}">
           <span class="e-main"><span class="e-name">${esc(d.n)}</span>${lecsHTML(d, 'e-lecs')}${barLine(ls)}<span class="e-meta">${metaLine(ls)}</span></span>
           <span class="e-side"><span class="e-count num">${fmtN(lq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
@@ -2247,7 +2416,7 @@
         return `<li class="set-row"><button type="button" class="entry" data-set="${esc(s.id)}">
           <span class="e-main"><span class="e-name">${esc(s.label)}</span>${barLine(ss)}<span class="e-meta">${metaLine(ss)}</span><span class="keys">${chipsFor(sq)}</span></span>
           <span class="e-side"><span class="e-count num">${fmtN(sq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
-        </button>${canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-set="${esc(s.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(s.label)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${ICON.hourglass}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : ''}</li>`;
+        </button>${canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-set="${esc(s.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(s.label)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${acct.member() ? ICON.hourglass : LOCK}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : ''}</li>`;
       }).join('');
       if (rows) groups.push(`<section class="group"><h2>${esc(TYPE_GROUP[ty] || ty)}</h2><ul class="ledger">${rows}</ul></section>`);
     }
@@ -2262,8 +2431,8 @@
             <div class="row">
               <button class="btn primary" type="button" data-start="${esc(t.id)}">Practice all ${fmtN(qs.length)} ${ICON.next}</button>
               ${repIds.length ? `<button class="btn" type="button" data-act="practice-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repIds.length)}</span></button>` : ''}
-              <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${ICON.hourglass}Exam mode</button>
-              ${DIAG.some(d => d.m === t.id) ? `<button class="btn" type="button" data-act="weak-module">Weak spots</button>` : ''}
+              <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
+              ${DIAG.some(d => d.m === t.id) ? `<button class="btn" type="button" data-act="weak-module">${lockMark()}Weak spots</button>` : ''}
               ${resetHTML(t.id)}
             </div>
           </div>

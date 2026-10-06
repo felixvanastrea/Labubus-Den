@@ -182,19 +182,32 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Accounts (Firebase)
 
-- Optional: guests keep everything in the browser as before. An account (Google, or email and password: Abi switched
-  on those two, not email links) syncs progress between devices. `acct` in `template.html`; Abi's Firebase project
-  `labubu-s-den` (free Spark plan), SDK 12.19.0 loaded from gstatic with `import()` only when needed: when someone opens
-  the sheet, or on load if they signed in on this device (`efm3-acct`). Only on GitHub Pages (`window.__acctTest` in tests).
-- Firestore `users/{uid}`: `s` = JSON of `answers`, `first`, `clean`, `seals`, `examLog`; `t` = server time. Signing in
-  merges the account's copy with this device's (`merge`: a checked answer beats a draft, the latest clean try wins,
-  seals and exam marks add up), then saves the merge. Changes go up 15 s after `save()` (`acctHook`) or when the tab hides.
-- The rules Abi pasted in Firestore: each user reads, writes and deletes only their own doc, `s` a string under 900 kB.
-- The sheet: Continue with Google; email + password (sign in, create an account with a first name, forgot password);
-  signed in: Sign out, Delete my data (the doc, then the account; if Firebase wants a fresh sign-in, the doc goes and
-  they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
-- Account-only features are planned on top of this. The gamification work (sure / not sure, comets, the moon) is
-  parked on the `gamification` branch; Abi asked for accounts first.
+- Exam mode, weak spots and quests need an account (Abi's choice, October 2026); practising questions, search, lectures
+  and the update log stay open to guests. `acct.gate(reason, then)` at the top of `openExam`, `openWeak`, `openDiag`,
+  `untriedTopic`, `drillTopic`, `startQuest`, `questGo`: a guest gets the sheet with the reason, and once signed in and
+  named, what they clicked. Padlocks (`ICON.lock`, `lockMark()`) replace the icons on those buttons for guests; `render`
+  sends a guest away from those screens (`lockedView`). Only on GitHub Pages: elsewhere (claude.ai, the tests) nothing
+  is locked (`acct.member()` is true). `window.__acctTest` turns accounts on in account.js.
+- Sign in with Google, or email + password (Abi switched on those two, not email links): sign in, create an account,
+  forgot password. Abi's Firebase project `labubu-s-den` (free Spark plan); SDK 12.19.0 from gstatic with `import()`, only
+  when the sheet opens or on load for someone signed in on this device (`efm3-acct`; `efm3-acct-name` for the label).
+- Names: one per person. After signing in, someone without a name picks one (Google's first name suggested; the sign-up
+  form's name is tried first). `canon`: capitals, accents, spaces, dots, dashes, apostrophes and doubled letters don't
+  count, so "a.bii-M" = "Abi M."; letters only, 2 to 24. Firestore `names/{key}` = `{uid, name}`; claiming is one batch
+  (new name doc, old one deleted, `users/{uid}` name + key). Changeable in the sheet ("Change it").
+- Firestore `users/{uid}`: `name`, `key`, `email`, `answered` (checked answers, for Abi to see who's active), `t`, and `s`
+  = JSON of the synced entries (`SYNCED`: answers, first, clean, seals, examLog) with `stamps`. Abi sees everyone in
+  the Firebase console: Authentication > Users, and Firestore > Data (`users`, `names`).
+- Sync: `save()` stamps every changed or deleted entry (`S.stamps`, `stamp`/`flatSync`). Between devices, per entry
+  the newest change wins, deletions included (a reset or Try again isn't undone by another device); entries without
+  times on either side add up (`take`). Pushing is a transaction (read, merge, write) 15 s after a change, at least every
+  90 s while busy, and when the page hides; `onSnapshot` brings other devices' changes in live (re-render unless in an
+  exam or typing).
+- Rules Abi pasted in Firestore: a user reads/writes/deletes only their own `users` doc (`s` a string under 900 kB; if
+  it has a `key`, `names/{key}` must be theirs); `names` docs: any signed-in user can read one, create one for
+  themselves only if it doesn't exist (key `[a-z]{2,24}`), update or delete only their own.
+- Signed in: Sign out, Delete my data (the doc and the name, then the account; if Firebase wants a fresh sign-in, the
+  data goes and they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
 
 ## Anonymous stats (PostHog)
 
@@ -204,7 +217,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, report a mistake, Ask the Labubu, constellations, seals,
+  searches, exam mode opened / started / handed in, review, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
   update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
