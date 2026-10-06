@@ -90,10 +90,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   and whose propositions pair up one to one: any order, typos, "ATB"/"antibiotic", "insidious"/"progressive"
   onset, hyphens... but never a meaning word (not, acute/chronic, left/right, a number). Keys must agree;
   a disagreement is printed by the build as a conflict to show Abi.
-- Only the quest uses them (Abi's choice): a constellation counts once, as its lead (keyed, official first, then
-  midterms, mocks, finals...). The lead's card has a "Constellation · N stars" chip; hovering (or tapping) it
-  says where the copies come from and offers "Do all N stars", a session of every copy; Back returns to the quest.
-  Answering the lead counts only for the lead. Modules, exam sets and Most repeated still show every copy.
+- The quest uses them (Abi's choice), and so does a module's lecture list, so its counts match the quest's: a
+  constellation counts once, as its lead (keyed, official first, then midterms, mocks, finals...), and word-for-word
+  copies are left out (`lectureQs`). The lead's card has a "Constellation · N stars" chip; hovering (or tapping) it
+  says where the copies come from and offers "Do all N stars", a session of every copy; Back returns to the quest
+  or the lecture. Answering the lead counts only for the lead. Modules, exam sets and Most repeated still show every copy.
 
 ## Sounds and haptics
 
@@ -162,8 +163,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   chronic coronary syndrome, cardiac semiology (kept as topics, `note` in the file). Dr Bencheqroun's three thoracic
   surgery decks and the skin cancers .ppt couldn't be read (too big or old format); a PDF export from Abi would do.
 - On the site: a module page lists its questions by exam set (default) or by lecture (`S.topicBy`); a lecture row
-  practises its questions (every copy, with the exam-type filter; `startLecture`, `S.session.lec`) and the button on
-  its right opens its diagnostic, whose Back then returns to the module (`S.diagFrom`).
+  practises its questions once each, like the quest (Constellations below; with the exam-type filter; `startLecture`,
+  `S.session.lec`), and the button on its right opens its diagnostic, whose Back then returns to the module
+  (`S.diagFrom`). The midterm's lectures and the quest's topics hold the same questions: lectures.js checks it.
 
 ## Weak spots (the diagnostic)
 

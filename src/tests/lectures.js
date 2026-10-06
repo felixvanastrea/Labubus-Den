@@ -1,6 +1,7 @@
 // Lectures: every question sits in exactly one lecture of its module (lectures.json), in course order; a module page
 // lists its questions by exam set (default) or by lecture, kept across reloads; a lecture row practises its questions
-// (all copies, the exam-type filter applies) and Back returns to the list; a lecture that gathers several shows them;
+// once each like the quest (the midterm's lectures match the quest's topics; a constellation lead offers its stars;
+// the exam-type filter applies) and Back returns to the list; a lecture that gathers several shows them;
 // the button on the right opens its diagnostic, whose Back returns to the module; exam results group by lecture.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -29,6 +30,11 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   const bank = await p.evaluate(() => JSON.parse(document.getElementById('bank').textContent));
   const Q = new Map(bank.questions.map(q => [q.id, q]));
   const src = new Map(bank.sources.map(s => [s.id, s]));
+  const lead = new Map(); (bank.cst || []).forEach(ids => ids.forEach(id => lead.set(id, ids[0])));
+  const canon = id => { const k = Q.get(id).dupOf || id; return lead.get(k) || k; };
+  const typeOf = id => src.get(Q.get(id).source).type;
+  // what a lecture practises: each question once (its lead), or with an exam type, that type's copies once each
+  const once = (d, type) => { const seen = new Set(), out = []; for (const id of d.q) { const k = canon(id); if (seen.has(k) || (type && typeOf(id) !== type)) continue; seen.add(k); out.push(!type || typeOf(k) === type ? k : id); } return out; };
 
   // the data: one lecture per question, in its own module
   const seen = new Map(); bank.diag.forEach(d => d.q.forEach(id => seen.set(id, (seen.get(id) || 0) + 1)));
@@ -45,13 +51,17 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   check(rows.join() === lecs.map(d => d.id).join() && !(await p.$('[data-set]')), `by lecture: ${rows.length} lectures in course order`);
   check((await txt(p, `[data-lec="${copd.id}"] .e-lecs`)) === 'Both lectures: COPD · Cor pulmonale', 'the lectures it gathers: ' + await txt(p, `[data-lec="${copd.id}"] .e-lecs`));
   const tb = lecs.find(d => d.n === 'Tuberculosis infection');
-  check((await txt(p, `[data-lec="${tb.id}"] .e-count`)) === `${tb.q.length} Qs` && (await txt(p, `[data-diag="${tb.id}"]`)) === `0/8`, `Tuberculosis infection: ${tb.q.length} questions, 0 of 8 toward its diagnostic`);
+  check((await txt(p, `[data-lec="${tb.id}"] .e-count`)) === `${once(tb).length} Qs` && (await txt(p, `[data-diag="${tb.id}"]`)) === `0/8`, `Tuberculosis infection: ${once(tb).length} questions, 0 of 8 toward its diagnostic`);
+  // the midterm's six lectures count like the quest's six topics
+  const qc = bank.quest.topics.map(t => t.q.length).join(), lc = [];
+  for (const id of ['R-bronchitis', 'R-cap', 'R-abscess', 'R-viral', 'R-nosocomial', 'R-bronchiectasis']) lc.push((await txt(p, `[data-lec="${id}"] .e-count`)).replace(' Qs', ''));
+  check(lc.join() === qc && bank.quest.q.length === lecs.slice(0, 6).reduce((a, d) => a + once(d).length, 0), `the midterm's lectures match the quest: ${lc.join(' ')} (quest ${qc.replace(/,/g, ' ')})`);
   await p.screenshot({ path: OUT + 'lec_list.png', fullPage: true });
 
   // a lecture: its questions, every copy, in exam order
   await p.click(`[data-lec="${tb.id}"]`); await p.waitForTimeout(250);
   let S = await state(p);
-  check(await view(p) === 'quiz' && S.session.qids.join() === tb.q.join() && S.session.lec === tb.id && (await txt(p, '.bar-title')) === 'Tuberculosis infection', `practise it: ${S.session.qids.length} questions, "${await txt(p, '.bar-title')}"`);
+  check(await view(p) === 'quiz' && S.session.qids.join() === once(tb).join() && S.session.lec === tb.id && (await txt(p, '.bar-title')) === 'Tuberculosis infection', `practise it: ${S.session.qids.length} questions, "${await txt(p, '.bar-title')}"`);
   const q0 = Q.get(S.session.qids[0]);
   for (const i of q0.answer) await p.click(`.opt[data-opt="${i}"]`);
   await p.click('[data-act="primary"]'); await p.waitForTimeout(100);
@@ -59,6 +69,19 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   check(await view(p) === 'topic' && !!(await p.$('[data-lec]')) && (await txt(p, `[data-lec="${tb.id}"] .e-meta`)).startsWith('1 right'), 'Back: the lecture list, one right: ' + await txt(p, `[data-lec="${tb.id}"] .e-meta`));
   check((await txt(p, `[data-diag="${tb.id}"]`)) === '1/8', 'its diagnostic: 1 of 8');
 
+  // a constellation lead in a lecture session offers its stars, and Back from them returns to the lecture
+  const capL = lecs.find(d => d.id === 'R-cap'), capQs = once(capL), ci = capQs.findIndex(id => (bank.cst || []).some(c => c[0] === id && c.length > 1));
+  await p.click(`[data-lec="${capL.id}"]`); await p.waitForTimeout(200);
+  await p.click(`.strip [data-jump="${ci}"]`); await p.waitForTimeout(150);
+  const chip = await p.$('.cst-chip');
+  check(ci >= 0 && !!chip, 'a constellation in the lecture: its chip shows');
+  await p.click('.cst-chip'); await p.waitForTimeout(100);
+  check(/the lecture list groups the copies/.test(await txt(p, '.cst-card')), 'its card: ' + (await txt(p, '.cst-card')).slice(0, 90));
+  await p.click('[data-act="stars"]'); await p.waitForTimeout(200);
+  check((await state(p)).session.from === 'stars', 'Do all its stars');
+  await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
+  check((await state(p)).session.lec === capL.id, 'Back from the stars: the lecture');
+  await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
   // kept across a reload
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   check(await view(p) === 'topic' && !!(await p.$('[data-lec]')), 'still by lecture after a reload');
@@ -66,7 +89,7 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   // the exam-type filter applies to the lectures
   const type = 'Midterms';
   await p.click(`[data-type="${type}"]`); await p.waitForTimeout(200);
-  const mids = lecs.map(d => [d, d.q.filter(id => src.get(Q.get(id).source).type === type)]).filter(([, ids]) => ids.length);
+  const mids = lecs.map(d => [d, once(d, type)]).filter(([, ids]) => ids.length);
   const shown = await p.$$eval('[data-lec]', bs => bs.map(x => x.dataset.lec));
   check(shown.join() === mids.map(([d]) => d.id).join(), `${type}: ${shown.length} lectures with midterm questions`);
   const [md, mq] = mids[0];

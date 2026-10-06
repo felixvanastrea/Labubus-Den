@@ -549,10 +549,24 @@
     usage.track('practice_started', { from: setId ? 'exam set' : 'module', module: topicId === '*' ? 'all' : topicId, title: sessionTitle(S.session), questions: qids.length });
     save(); render(true, null, 'nav');
   }
+  // a lecture's questions, each once like in the quest: a word-for-word copy or a constellation star goes with its lead
+  // (whose answer the quest counts too; the lead's card offers the stars). With an exam type picked, that type's
+  // copies, still once each.
+  function lectureQs(d) {
+    const seen = new Set(), out = [];
+    for (const id of d.q) {
+      const k = canonId(id), q = Q.get(id);
+      if (seen.has(k) || !q) continue;
+      if (S.type !== 'all' && typeOf(q) !== S.type) continue;
+      seen.add(k);
+      out.push(S.type === 'all' || typeOf(Q.get(k)) === S.type ? Q.get(k) : q);
+    }
+    return out;
+  }
   // practise one lecture's questions (bank.diag, in exam order), with the module page's exam-type filter
   function startLecture(id) {
     const i = DIAG_INDEX.get(id); if (i === undefined) return;
-    const d = DIAG[i], qs = d.q.map(x => Q.get(x)).filter(q => q && (S.type === 'all' || typeOf(q) === S.type));
+    const d = DIAG[i], qs = lectureQs(d);
     if (!qs.length) return;
     const qids = qs.map(q => q.id), idx = qs.findIndex(q => ['todo', 'draft'].includes(result(q)));
     const title = d.n + (S.type === 'all' ? '' : ' · ' + (TYPE_GROUP[S.type] || S.type));
@@ -1999,7 +2013,7 @@
     if (byLec) {
       // the module's lectures in course order: practise one, or open its diagnostic
       const rows = lecs.map(i => {
-        const d = DIAG[i], lq = d.q.map(id => Q.get(id)).filter(q => S.type === 'all' || typeOf(q) === S.type);
+        const d = DIAG[i], lq = lectureQs(d);
         if (!lq.length) return '';
         const ls = stats(lq), st = diagState(i);
         const dg = st.open
@@ -2010,7 +2024,7 @@
           <span class="e-side"><span class="e-count num">${fmtN(lq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
         </button>${dg}</li>`;
       }).join('');
-      if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order. On the right, each lecture’s diagnostic: the questions tried toward it, then your mark once it opens.</p><ul class="ledger">${rows}</ul></section>`);
+      if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. On the right, each lecture’s diagnostic: the questions tried toward it, then your mark once it opens.</p><ul class="ledger">${rows}</ul></section>`);
     }
     for (const ty of byLec ? [] : TYPES) {
       if (S.type !== 'all' && S.type !== ty) continue;
@@ -2119,7 +2133,7 @@
   function cstCard(q, stars) {
     const where = stars.map(id => { const x = Q.get(id); return `<li>${esc(setLabel(x))} · Q${esc(x.n)}</li>`; }).join('');
     return `<div class="cst-card" id="cst-card" role="region" aria-label="Constellation">
-      <p class="cc-t">This question came up ${stars.length} times with the same propositions, so the quest groups the copies into one constellation. Answering it here counts once.</p>
+      <p class="cc-t">This question came up ${stars.length} times with the same propositions, so the ${S.session && S.session.lec ? 'lecture list' : 'quest'} groups the copies into one constellation. Answering it here counts once.</p>
       <ul class="cc-l">${where}</ul>
       <button type="button" class="btn cc-go" data-act="stars">Do all ${stars.length} stars ${ICON.next}</button>
     </div>`;
@@ -2193,7 +2207,7 @@
     const topicName = sess.topic === '*' ? `<span>${esc((TOPIC.get(q.topic) || {}).name || '')}</span>` : '';
     const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
     const rep = repOf(q);
-    const stars = sess.from === 'quest' && CST.has(q.id) && CST.get(q.id)[0] === q.id ? CST.get(q.id) : null;
+    const stars = (sess.from === 'quest' || sess.lec) && CST.has(q.id) && CST.get(q.id)[0] === q.id ? CST.get(q.id) : null;
     const others = rep ? [...new Set(rep.q.map(id => Q.get(id).source))].filter(s => s !== q.source && SRC.has(s)).sort((x, y) => SRC_ORDER.get(x) - SRC_ORDER.get(y)) : [];
     const alsoIn = others.length ? `<div class="alsoin"><span>Also in</span>${others.map(s => `<span class="pill">${esc(SRC.get(s).label)}</span>`).join('')}</div>` : '';
     const right = `<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
