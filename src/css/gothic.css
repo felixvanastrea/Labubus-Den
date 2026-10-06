@@ -1339,3 +1339,53 @@ html.intro-on #sky { opacity: 0; transition: none; }
 }
 @media (prefers-reduced-motion: reduce) { .cx-crawl { animation: none; } }
 
+
+/* ---------- the class: how everyone did on a question, and the class sky ---------- */
+.v-class { flex-basis: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0 0; font-size: 1rem; color: var(--ink-2); }
+.v-class b { color: var(--ink); font-weight: 600; }
+.vc-bar { flex: none; width: 64px; height: 4px; border-radius: 2px; background: var(--hair); overflow: hidden; }
+.vc-bar i { display: block; height: 100%; background: var(--ink-2); }
+.sky { padding: clamp(22px, 4vw, 40px); display: grid; gap: 18px; }
+.sky-head .h2 { margin: 0 0 8px; }
+.sky-sub { margin: 0; max-width: 44rem; color: var(--ink-2); font-size: 1.08rem; line-height: 1.5; }
+.sky-sub b { color: var(--ink); font-weight: 600; }
+/* the sky itself: a window of night in every theme (charcoal, crimson, or lapis and gold in the Codex) */
+.sky-field { --sky-star: #fff4e0; position: relative; display: grid; place-items: center; border-radius: var(--r); overflow: hidden;
+  background: radial-gradient(130% 120% at 78% 0%, #25232f 0%, #0e0d12 72%); box-shadow: inset 0 0 0 1px var(--hair), inset 0 0 60px rgba(0, 0, 0, .5); }
+:root[data-look="blood"] .sky-field { background: radial-gradient(130% 120% at 78% 0%, #36101a 0%, #0b0406 72%); }
+:root[data-look="codex"] .sky-field { --sky-star: #f3d98a; background: radial-gradient(130% 120% at 78% 0%, #2c4a80 0%, #142245 75%); box-shadow: inset 0 0 0 2px #b8913c, inset 0 0 0 4px #142245, inset 0 0 0 5px #a83a26; }
+.sky-svg { grid-area: 1 / 1; display: block; width: 100%; height: auto; overflow: visible; }
+.sky-svg .dust circle { fill: var(--sky-star); }
+.sky-field > .btn { grid-area: 1 / 1; position: relative; z-index: 1; }
+.ss { cursor: pointer; outline: none; }
+.ss .sc { fill: var(--sky-star); opacity: var(--b); transition: opacity .3s var(--ease); }
+.ss .sg { fill: var(--sky-star); opacity: .1; transition: opacity .3s var(--ease); }
+.ss .sp { fill: var(--sky-star); opacity: calc(var(--b) * .8); }
+.ss .sr { fill: none; stroke: var(--sky-star); stroke-opacity: .6; stroke-width: 1; stroke-dasharray: 2 3; }
+.ss.tw .sc { animation: twinkle 2.8s ease-in-out var(--tw) infinite; }
+.ss.hl .sc, .ss:focus-visible .sc { opacity: 1; }
+.ss.hl .sg, .ss:focus-visible .sg { opacity: .32; }
+@keyframes twinkle { 0%, 100% { opacity: var(--b); } 50% { opacity: 1; } }
+/* the Labubu's star: gold, an eight-point burst, her Labubu beside it */
+.ss.gold .sc { fill: #fff0b8; opacity: 1; }
+.ss.gold .sg { fill: #f3c65a; opacity: .2; }
+.ss.gold .sx { fill: #f3c65a; transform-box: fill-box; transform-origin: center; animation: goldstar 4s ease-in-out infinite; filter: drop-shadow(0 0 6px rgba(243, 198, 90, .9)); }
+.ss.gold .slb { color: #f3d36b; --lb-line: #2a1c06; }
+.ss.gold .sn { fill: #f3d36b; font-family: var(--f-display); font-style: italic; font-size: 15px; text-anchor: middle; }
+@keyframes goldstar { 0%, 100% { transform: scale(1) rotate(0deg); opacity: .95; } 50% { transform: scale(1.18) rotate(8deg); opacity: 1; } }
+.sky-tip { position: absolute; z-index: 2; margin: 0; padding: 6px 11px; transform: translate(-50%, calc(-100% - 14px)); white-space: nowrap; pointer-events: none;
+  background: rgba(12, 10, 9, .92); color: #f4ead6; border: 1px solid rgba(244, 234, 214, .25); border-radius: var(--r); font-size: .95rem; box-shadow: 0 10px 30px -12px #000; }
+.sky-tip.below { transform: translate(-50%, 22px); }
+.sky-names { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.sky-nl { margin-right: 6px; font-family: var(--f-mono); font-size: var(--t-label); color: var(--ink-3); }
+.sky-nm { padding: 3px 11px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .95rem; cursor: pointer; transition: color .3s var(--ease), border-color .3s var(--ease); }
+.sky-nm:hover, .sky-nm:focus-visible { color: var(--ink); border-color: var(--ink-3); }
+.sky-nm.me { font-weight: 600; color: var(--ink); }
+.sky-nm.gold { color: var(--gold-txt, #e9c46a); border-color: var(--gold-txt, #e9c46a); }
+:root[data-look="codex"] :is(.plate) { --gold-txt: #8a5f0c; }
+.sky-more { color: var(--ink-3); font-size: .95rem; }
+.sky-foot { margin: 0; color: var(--ink-3); font-size: .98rem; }
+.hard { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; color: var(--ink-2); font-size: .98rem; }
+.hard b { color: var(--ink); }
+.hard span { color: var(--ink-3); font-style: italic; }
+@media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }

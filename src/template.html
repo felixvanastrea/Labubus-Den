@@ -142,11 +142,11 @@
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
-    sure: {}, comets: {}, cometsInit: 0, moon: null };
+    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {} };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -194,6 +194,8 @@
     if (!S.seals || typeof S.seals !== 'object') S.seals = {};
     if (!S.stamps || typeof S.stamps !== 'object' || Array.isArray(S.stamps)) S.stamps = {};
     if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
+    if (!S.days || typeof S.days !== 'object' || Array.isArray(S.days)) S.days = {};
+    if (!S.statSent || typeof S.statSent !== 'object' || Array.isArray(S.statSent)) S.statSent = {};
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -883,7 +885,7 @@
   const acct = (() => {
     const CONFIG = { apiKey: 'AIzaSyC-YmQXRub3uGLpIV6d8nwJIx5x2zMigcg', authDomain: 'labubu-s-den.firebaseapp.com', projectId: 'labubu-s-den',
       storageBucket: 'labubu-s-den.firebasestorage.app', messagingSenderId: '346205917194', appId: '1:346205917194:web:07badd4c438de301ac8ff3' };
-    const CDN = 'https://www.gstatic.com/firebasejs/12.19.0/', FLAG = 'efm3-acct', NAME = 'efm3-acct-name';
+    const CDN = 'https://www.gstatic.com/firebasejs/12.19.0/', FLAG = 'efm3-acct', NAME = 'efm3-acct-name', HIDE = 'efm3-sky-hide';
     const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__acctTest;
     function store(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
     function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -951,7 +953,7 @@
     function prefer(k, t, m) {
       if (k.startsWith('answers/')) return !!(t && t.checked && !(m && m.checked));
       if (k.startsWith('clean/')) return ((t && t.t) || 0) > ((m && m.t) || 0);
-      if (k === 'moon/n' || k === 'moon/full') return +t > +m;   // the moon only grows
+      if (k === 'moon/n' || k === 'moon/full' || k.startsWith('days/')) return +t > +m;   // the moon only grows; a day's count too
       return false;
     }
     let logMap = null;
@@ -988,7 +990,7 @@
       render(false);
     }
     // send this device's copy, merged first with the account's (a transaction, so two devices can't overwrite each other)
-    async function push() {
+    async function push(force) {
       clearTimeout(timer); timer = null; since = 0;
       if (!user || !['in', 'naming'].includes(state)) return;
       let changed = false;
@@ -1001,6 +1003,7 @@
       });
       if (changed) { save(true); refresh(); }
       synced = Date.now(); paint();
+      await classSync(force).catch(() => {});
     }
     // live: another device's change arrives while this page is open
     function listen() {
@@ -1035,6 +1038,7 @@
         me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
         state = me.key ? 'in' : 'naming';
         if (d.look) store(LOOK_KEY, d.look);
+        if (typeof d.skyHide === 'boolean') store(HIDE, d.skyHide ? '1' : null);
         applyLook();
         save(true); await push(); listen();
         if (state === 'naming' && pendingName) { const n = pendingName; pendingName = ''; await claim(n); }
@@ -1076,6 +1080,155 @@
       paint();
       if (was === 'naming') { done(); if (!intro.active()) render(false); }
       return true;
+    }
+
+    // ---- the class: how everyone did on each question, and the class sky ----
+    // stats/{module}: {canon id: {n: first tries, r: right}}, counted once per person (S.statSent), sent at most every
+    // 5 minutes. sky/{week}: {uid: {nm: name, n: nights this week, d: the day they last studied}}, one doc a week, so a
+    // page load is one read. Only for members on GitHub Pages; nothing is shown elsewhere.
+    const CLASS_MIN = 10, cls = { stats: {}, statsAt: {}, sky: null, skyWeek: '', skyAt: 0, star: '', sentAt: 0, busy: {} };
+    const skyHidden = () => read(HIDE) === '1';
+    async function classSync(force) {
+      if (state !== 'in' || !me.key || !fb) return;
+      if (force || Date.now() - cls.sentAt > 300000) {
+        const byMod = {}, sent = [];
+        for (const [id, ok] of Object.entries(S.first)) {
+          if (sent.length >= 150) break;
+          const c = canonId(id), q = Q.get(c) || Q.get(id); if (!q || S.statSent[c]) continue;
+          S.statSent[c] = 1; sent.push(c);   // marked at once, so a copy of it isn't counted twice
+          (byMod[q.topic] = byMod[q.topic] || {})[c] = { n: fb.f.increment(1), r: fb.f.increment(ok ? 1 : 0) };
+        }
+        if (sent.length) {
+          try {
+            const b = fb.f.writeBatch(db);
+            for (const [m, v] of Object.entries(byMod)) b.set(fb.f.doc(db, 'stats', m), v, { merge: true });
+            await b.commit(); cls.sentAt = Date.now(); save(true);
+            for (const m in byMod) delete cls.statsAt[m];
+          } catch (e) { sent.forEach(c => delete S.statSent[c]); }
+        }
+      }
+      const wk = weekKey(), today = dayKey();
+      const star = skyHidden() ? null : { nm: me.name, n: weekNights(), d: (S.days[today] || 0) > 0 ? today : '' };
+      const sig = wk + JSON.stringify(star);
+      if (cls.star === sig) return;
+      try {
+        const b = fb.f.writeBatch(db);
+        b.set(fb.f.doc(db, 'sky', wk), { [user.uid]: star || fb.f.deleteField() }, { merge: true });
+        await b.commit(); cls.star = sig;
+        if (cls.sky && cls.skyWeek === wk) { if (star) cls.sky[user.uid] = star; else delete cls.sky[user.uid]; redrawSky(); }
+      } catch (e) {}
+    }
+    async function loadStats(mod) {
+      if (state !== 'in' || !fb || cls.busy['s' + mod] || Date.now() - (cls.statsAt[mod] || 0) < 600000) return;
+      cls.busy['s' + mod] = 1;
+      try {
+        const snap = await fb.f.getDoc(fb.f.doc(db, 'stats', mod));
+        cls.stats[mod] = snap.exists() ? snap.data() : {}; cls.statsAt[mod] = Date.now();
+        placeClassLine();
+      } catch (e) {} finally { delete cls.busy['s' + mod]; }
+    }
+    function classStat(q) { const st = (cls.stats[q.topic] || {})[canonId(q.id)]; return st && st.n >= CLASS_MIN ? st : null; }
+    // under the verdict: how the class did on its first try
+    function classLine(q) {
+      if (!here || state !== 'in') return '';
+      loadStats(q.topic);
+      const st = classStat(q); if (!st) return '';
+      const p = Math.round(100 * st.r / st.n);
+      return `<p class="v-class"><span class="vc-bar" aria-hidden="true"><i style="width:${p}%"></i></span><span><b class="num">${p}%</b> of the class got this right on their first try · ${fmtN(st.n)} answers</span></p>`;
+    }
+    function placeClassLine() {
+      const v = document.getElementById('verdict');
+      if (!v || v.querySelector('.v-class') || S.view !== 'quiz' || !S.session) return;
+      const h = classLine(curQ()); if (h) v.insertAdjacentHTML('beforeend', h);
+    }
+    async function loadSky() {
+      const wk = weekKey();
+      if (state !== 'in' || !fb || cls.busy.sky || (cls.skyWeek === wk && Date.now() - cls.skyAt < 180000)) return;
+      cls.busy.sky = 1;
+      try {
+        const snap = await fb.f.getDoc(fb.f.doc(db, 'sky', wk));
+        cls.sky = snap.exists() ? snap.data() : {}; cls.skyWeek = wk; cls.skyAt = Date.now();
+      } catch (e) { cls.sky = cls.sky || {}; cls.skyAt = Date.now(); }
+      finally { delete cls.busy.sky; }
+      redrawSky();
+    }
+    function redrawSky() { const el = document.getElementById('class-sky'); if (el) el.outerHTML = skyHTML(); }
+    const hash = (str, k) => {
+      let h = 2166136261 ^ Math.imul(k, 0x9e3779b1);
+      for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+      h ^= h >>> 16; h = Math.imul(h, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16;   // mixed well, even for short ids
+      return (h >>> 0) / 4294967296;
+    };
+    // the class sky: a star for each classmate who studied this week, brighter with each night, twinkling if tonight;
+    // the Labubu's star is gold. Hover or tap a star (or a name) to see who it is.
+    function skyHTML() {
+      if (!here) return '';
+      const head = `<div class="sky-head"><p class="eyebrow">Tonight, together</p><h2 class="h2" id="sky-h">The class sky</h2>`;
+      const narrow = window.innerWidth < 640, VW = narrow ? 600 : 1000, VH = narrow ? 540 : 340;
+      const dust = () => { const r = mulberry(5); let g = ''; for (let i = 0; i < 70; i++) g += `<circle cx="${(r() * VW).toFixed(0)}" cy="${(14 + r() * (VH - 28)).toFixed(0)}" r="${(.5 + r() * 1.1).toFixed(1)}" opacity="${(.1 + r() * .3).toFixed(2)}"/>`; return `<g class="dust" aria-hidden="true">${g}</g>`; };
+      const deco = () => `<svg class="sky-svg deco" viewBox="0 0 ${VW} ${VH}" aria-hidden="true" focusable="false">${dust()}</svg>`;
+      if (state === 'off' || state === 'naming') {
+        return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}
+          <p class="sky-sub">Every classmate who studies this week is a star here, brighter with each night. Sign in to join them.</p></div>
+          <div class="sky-field">${deco()}<button class="btn" type="button" data-act="account">${LOCK}Sign in to join the class sky</button></div></div></section>`;
+      }
+      if (state !== 'in' || !cls.sky || cls.skyWeek !== weekKey()) {
+        loadSky();
+        return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">Gathering the stars…</p></div><div class="sky-field">${deco()}</div></div></section>`;
+      }
+      loadSky();
+      const today = dayKey(), mine = user.uid;
+      const stars = Object.entries(cls.sky).filter(([, v]) => v && typeof v === 'object' && v.nm)
+        .map(([uid, v]) => ({ uid, nm: String(v.nm).slice(0, 24), n: Math.max(0, Math.min(7, v.n | 0)), tonight: v.d === today, gold: canon(String(v.nm)) === LOOKS_FOR, me: uid === mine }));
+      const tonight = stars.filter(x => x.tonight);
+      const gs = stars.map(x => {
+        const px = x.gold ? VW * .8 : 36 + hash(x.uid, 1) * (VW - 72), py = x.gold ? VH * .3 : 36 + hash(x.uid, 2) * (VH - 80), r = x.gold ? 7 : 2.4 + x.n * .6;
+        const tip = `${x.nm}${x.me ? ' (you)' : ''} · ${x.n === 1 ? '1 night' : `${x.n} nights`} this week${x.tonight ? ' · studied tonight' : ''}`;
+        const body = x.gold
+          ? `<circle class="sg" r="${r * 6}"/><path class="sx" d="M0 -${r * 3.4}L${r * .55} -${r * .55}L${r * 3.4} 0L${r * .55} ${r * .55}L0 ${r * 3.4}L-${r * .55} ${r * .55}L-${r * 3.4} 0L-${r * .55} -${r * .55}Z"/><circle class="sc" r="${r}"/><use class="slb" href="#labubu" x="${r * 1.9}" y="-${r * 6}" width="30" height="37"/><text class="sn" y="${r * 5.6}">Labubu</text>`
+          : `<circle class="sg" r="${r * 4.5}"/>${x.n >= 3 ? `<path class="sp" d="M0 -${r * 2.7}L${r * .38} -${r * .38}L${r * 2.7} 0L${r * .38} ${r * .38}L0 ${r * 2.7}L-${r * .38} ${r * .38}L-${r * 2.7} 0L-${r * .38} -${r * .38}Z"/>` : ''}<circle class="sc" r="${r}"/>${x.me ? `<circle class="sr" r="${r + 6}"/>` : ''}`;
+        return `<g class="ss${x.tonight ? ' tw' : ''}${x.me ? ' me' : ''}${x.gold ? ' gold' : ''}" data-uid="${esc(x.uid)}" data-tip="${esc(tip)}" tabindex="0" role="img" aria-label="${esc(tip)}" transform="translate(${px.toFixed(1)} ${py.toFixed(1)})" style="--tw:${(hash(x.uid, 3) * 4).toFixed(2)}s;--b:${(.45 + x.n * .08).toFixed(2)}">${body}</g>`;
+      });
+      const order = (a, b) => (b.gold - a.gold) || a.nm.localeCompare(b.nm);
+      const chips = tonight.slice().sort(order);
+      const names = chips.slice(0, 24).map(x => `<button type="button" class="sky-nm${x.gold ? ' gold' : ''}${x.me ? ' me' : ''}" data-sky="${esc(x.uid)}">${esc(x.nm)}</button>`).join('') + (chips.length > 24 ? `<span class="sky-more">and ${fmtN(chips.length - 24)} more</span>` : '');
+      const lines = !stars.length ? 'No stars yet this week. Study tonight and be the first.'
+        : `<b class="num">${fmtN(tonight.length)}</b> of you studied tonight · <b class="num">${fmtN(stars.length)}</b> ${stars.length === 1 ? 'star' : 'stars'} this week. A star shines brighter with each night of ${MOON_DAY} questions or more.`;
+      return `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">${lines}</p></div>
+        <div class="sky-field"><svg class="sky-svg" viewBox="0 0 ${VW} ${VH}" focusable="false">${dust()}${gs.join('')}</svg><p class="sky-tip" hidden></p></div>
+        ${names ? `<div class="sky-names"><span class="sky-nl">Tonight</span>${names}</div>` : ''}
+        <p class="sky-foot">${skyHidden() ? 'Your star is hidden.' : 'Your star shows your name and your nights, never your marks.'} <button class="foot-btn" type="button" data-act="sky-hide">${skyHidden() ? 'Show my star' : 'Hide my star'}</button></p>
+      </div></section>`;
+    }
+    async function toggleSky() {
+      const hide = !skyHidden(); store(HIDE, hide ? '1' : null);
+      usage.track('sky_star', { hidden: hide });
+      if (fb && user) { try { const b = fb.f.writeBatch(db); b.set(ref(), { skyHide: hide }, { merge: true }); b.commit().catch(() => {}); } catch (e) {} }
+      redrawSky(); await classSync().catch(() => {});
+    }
+    // for the Labubu: the questions the class gets wrong most, to check their keys
+    let hard = null;
+    async function loadHard() {
+      hard = 'loading'; paint();
+      try {
+        const rows = [];
+        for (const t of BANK.topics) {
+          const snap = await fb.f.getDoc(fb.f.doc(db, 'stats', t.id)); const d = snap.exists() ? snap.data() : {};
+          cls.stats[t.id] = d; cls.statsAt[t.id] = Date.now();
+          for (const [id, st] of Object.entries(d)) if (st && st.n >= CLASS_MIN && Q.has(id)) rows.push({ id, p: Math.round(100 * st.r / st.n), n: st.n });
+        }
+        hard = rows.sort((a, b) => a.p - b.p || b.n - a.n).filter(r => r.p < 40).slice(0, 20);
+      } catch (e) { hard = []; msg = why(e); }
+      paint();
+    }
+    function hardHTML() {
+      if (!vip()) return '';
+      const body = hard === null ? '<button class="acct-forgot" type="button" data-acct="hard">Find the questions the class gets wrong</button>'
+        : hard === 'loading' ? '<p class="acct-p">Counting…</p>'
+        : !hard.length ? `<p class="acct-p">No question is under 40% right yet (with ${CLASS_MIN} answers or more).</p>`
+        : `<ol class="hard">${hard.map(r => { const q = Q.get(r.id); return `<li><b>${esc(q.sid || '')}</b> ${r.p}% of ${fmtN(r.n)} · <span>${esc((TOPIC.get(q.topic) || {}).name || '')}</span></li>`; }).join('')}</ol>
+           <button class="btn" type="button" data-acct="hard-go">Go through these ${fmtN(hard.length)}</button>`;
+      return `<div class="acct-looks"><p class="acct-or">Class stats · only you see this</p><p class="acct-p">Questions most of the class fails on the first try often have a wrong key.</p>${body}</div>`;
     }
 
     function why(e) {
@@ -1161,6 +1314,7 @@
           ${editing ? `<form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your new name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(me.name)}"></label>
               <div class="row"><button class="btn" type="submit"${dis}>Save</button><button class="btn quiet" type="button" data-acct="rename-no">Cancel</button></div></form>`
             : me.key ? `<p class="acct-p">Your name on the Den: <b>${esc(me.name)}</b> <button class="acct-forgot" type="button" data-acct="rename">Change it</button></p>` : ''}
+          ${hardHTML()}
           ${state === 'in' || state === 'error' ? `<div class="acct-looks"><p class="acct-or">Themes</p>${themeListHTML(true)}${lookNow() !== 'gothic' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>` : ''}
           ${note}
           <div class="row"><button class="btn" type="button" data-acct="out"${dis}>Sign out</button>
@@ -1224,6 +1378,8 @@
           else if (k === 'mode-new' || k === 'mode-in') { mode = k === 'mode-new' ? 'new' : 'in'; msg = ''; paint(); const i = sheet.querySelector(mode === 'new' ? '#acct-name' : '#acct-email'); if (i) i.focus(); }
           else if (k === 'forgot') forgot(val('acct-email'));
           else if (k === 'look-intro') { close(); replayIntro(); }
+          else if (k === 'hard') loadHard();
+          else if (k === 'hard-go' && Array.isArray(hard) && hard.length) { const ids = hard.map(r => r.id); close(); startList(ids, 0, { topic: '*', from: 'home', title: 'Hardest for the class' }); }
           else if (k === 'rename' || k === 'rename-no') { editing = k === 'rename'; msg = ''; paint(); const i = sheet.querySelector('#acct-newname'); if (i) i.select(); }
         });
         sheet.addEventListener('submit', e => {
@@ -1256,14 +1412,15 @@
       clearTimeout(timer);
       timer = setTimeout(() => push().catch(() => {}), Math.max(0, Math.min(15000, since + 90000 - Date.now())));
     };
-    document.addEventListener('visibilitychange', () => { if (document.hidden && timer) push().catch(() => {}); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden && (timer || state === 'in')) push(true).catch(() => {}); });
     function boot() {
       applyLook();
       if (state !== 'wait') return;   // Firebase only loads for someone who signed in on this device
       load().catch(() => {});
     }
     return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
-      canWear, wear, noticeUnlocks, isVip: () => vip(), previewing: () => !!pv };
+      canWear, wear, noticeUnlocks, isVip: () => vip(), previewing: () => !!pv,
+      classLine, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -1445,6 +1602,37 @@
 
   // ---------- rendering ----------
   const app = document.getElementById('app');
+  // the class sky's tooltip: a star or a name under the pointer (or focused, or tapped) shows who it is
+  const skyTip = (() => {
+    let cur = null;
+    function show(uid, pin) {
+      const box = document.querySelector('#class-sky .sky-field'), tip = box && box.querySelector('.sky-tip');
+      const g = box && [...box.querySelectorAll('.ss')].find(x => x.dataset.uid === uid);
+      if (!g || !tip) return;
+      if (cur && cur !== g) cur.classList.remove('hl');
+      cur = g; g.classList.add('hl');
+      const br = box.getBoundingClientRect(), sr = g.querySelector('.sc').getBoundingClientRect();
+      tip.textContent = g.dataset.tip; tip.hidden = false;
+      tip.style.left = Math.max(8, Math.min(br.width - 8, sr.left + sr.width / 2 - br.left)) + 'px';
+      tip.style.top = (sr.top - br.top) + 'px';
+      tip.classList.toggle('below', sr.top - br.top < 60);
+      tip.classList.toggle('pinned', !!pin);
+    }
+    function hide(force) {
+      const tip = document.querySelector('#class-sky .sky-tip');
+      if (!tip || (tip.classList.contains('pinned') && !force)) return;
+      tip.hidden = true; if (cur) cur.classList.remove('hl'); cur = null;
+    }
+    const target = e => e.target.closest && e.target.closest('#class-sky .ss, #class-sky .sky-nm');
+    const uidOf = el => el.dataset.uid || el.dataset.sky;
+    app.addEventListener('pointerover', e => { const t = target(e); if (t && e.pointerType !== 'touch') show(uidOf(t)); });
+    app.addEventListener('pointerout', e => { const t = target(e); if (t && !(e.relatedTarget && t.contains(e.relatedTarget))) hide(); });
+    app.addEventListener('focusin', e => { const t = target(e); if (t) show(uidOf(t)); });
+    app.addEventListener('focusout', e => { if (target(e)) hide(true); });
+    app.addEventListener('click', e => { const t = e.target.closest && e.target.closest('#class-sky .ss'); if (t) show(t.dataset.uid, true); else if (!(e.target.closest && e.target.closest('#class-sky .sky-nm'))) hide(true); });
+    return { show, hide };
+  })();
+
   let confirmReset = false;
   let lastKey = null;
   function screenKey() {
@@ -2590,6 +2778,13 @@
   // at MOON_FULL, then starts again. A missed night only pauses it. S.moon = {n, full, last, day, ids}.
   const COMET_STEPS = [1, 3, 7, 14], COMET_MAX = 20, DAY_MS = 864e5;
   const MOON_DAY = 5, MOON_FULL = 14;
+  // the week runs Monday to Sunday; a night counts once MOON_DAY questions were checked that day
+  const weekKey = (t = Date.now()) => { const d = new Date(t); return 'w' + dayKey(t - ((d.getDay() + 6) % 7) * DAY_MS); };
+  function weekNights() {
+    const dow = (new Date().getDay() + 6) % 7; let n = 0;
+    for (let i = 0; i <= dow; i++) if ((S.days[dayKey(Date.now() - i * DAY_MS)] || 0) >= MOON_DAY) n++;
+    return n;
+  }
   const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
   const dayStart = t => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
   // n days after t: the same hour minus four (missed at 9 pm, back at 5 pm), never before that calendar day
@@ -2662,6 +2857,8 @@
   // a question checked today (practice or exam): the night counts at MOON_DAY different ones
   function moonTick(ids) {
     const m = S.moon, today = dayKey();
+    S.days[today] = (S.days[today] || 0) + ids.length;
+    for (const k of Object.keys(S.days)) if (k < dayKey(Date.now() - 21 * DAY_MS)) delete S.days[k];
     if (m.day !== today) { m.day = today; m.ids = []; }
     if (m.last === today) return null;
     for (const id of ids) { const k = canonId(id); if (!m.ids.includes(k)) m.ids.push(k); }
@@ -2804,6 +3001,7 @@
       </section>
       ${questHTML(qi)}
       ${tonightHTML()}
+      ${acct.skyHTML()}
       ${weakCardHTML()}
       ${themesSectionHTML()}
       <section class="skyband" aria-label="Search the questions">
@@ -3119,8 +3317,9 @@
       const main = a.correct ? `${ICON.check} Correct` : (overlap ? `${ICON.cross} Partly right` : `${ICON.cross} Wrong`);
       verdict = `<div class="verdict ${a.correct ? 'right' : 'wrong'}" id="verdict" tabindex="-1" role="status">
         <span class="v-main">${main}</span><span class="v-sub">${KEY_LONG[k]}: <b>${letters(q.answer)}</b></span><span class="spacer"></span>
-        <button class="btn quiet" type="button" data-act="again">Try again</button>${verdictNote(q, a)}</div>`;
+        <button class="btn quiet" type="button" data-act="again">Try again</button>${verdictNote(q, a)}${acct.classLine(q)}</div>`;
     }
+    acct.warm(q.topic);
     const ex = (checked || !hasKey) ? explainHTML(q) : '';
     const primaryLabel = (!hasKey || checked) ? (sess.idx === sess.qids.length - 1 ? `Finish ${ICON.next}` : `Next ${ICON.next}`) : 'Check answer';
     const primaryDisabled = hasKey && !checked && !a.sel.length;
@@ -4432,6 +4631,7 @@
     if (t.dataset.diagGo) { untriedTopic(t.dataset.diagGo); return; }
     if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
     if (t.dataset.theme) { acct.wear(t.dataset.theme); return; }
+    if (t.dataset.sky) { skyTip.show(t.dataset.sky, true); return; }
     switch (t.dataset.act) {
       case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
       case 'goto-modules': {
@@ -4497,6 +4697,7 @@
       case 'diag-exam': openExam({ kind: 'topic', id: S.diag }); break;
       case 'diag-all': S.diagAll = true; save(); render(false); break;
       case 'account': acct.open(); break;
+      case 'sky-hide': acct.toggleSky(); break;
       case 'diag-back': S.view = 'topic'; S.diagFrom = 'weak'; save(); render(true, null, 'back'); break;
       case 'exam-start': startExam(); break;
       case 'exam-back': examBack(); break;

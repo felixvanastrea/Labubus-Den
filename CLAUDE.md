@@ -263,6 +263,26 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.
 
+## The class (social)
+
+- How the class did: every member's first tries (`S.first`) are counted once per question and person (`S.statSent`,
+  synced) into Firestore `stats/{module}` = {canon id: {n, r}} with `increment`, sent at most every 5 minutes and when
+  the page hides (`classSync`). After checking a question, a line under the verdict says "N% of the class got this right
+  on their first try" once there are `CLASS_MIN` (10) answers (`classLine`; the module's doc is read when a quiz opens,
+  at most every 10 minutes). Only for members on GitHub Pages.
+- For the Labubu account only, the sheet's "Class stats" lists the questions under 40% right (10+ answers), worst first,
+  and "Go through these" opens them: often a wrong key, to check with Abi's rules for mistakes.
+- The class sky (homepage, after Tonight; `skyHTML`): Firestore `sky/{week}` (`weekKey`, Monday to Sunday) = {uid: {nm,
+  n: nights this week, d: the day they last studied}}; one read per homepage visit (at most every 3 minutes). A night is
+  a day with `MOON_DAY` questions checked (`S.days`, counted in `moonTick`, synced, kept 21 days). Each classmate is a
+  star placed by a hash of their uid: bigger with each night, a sparkle from 3 nights, twinkling if they studied today;
+  your own has a dashed ring; the Labubu's is gold with an eight-point burst and her Labubu beside it. Hover, focus or
+  tap a star, or hover a name under "Tonight", for the tooltip (`skyTip`). "Hide my star" removes it (`skyHide` on the
+  account, `efm3-sky-hide`). Names and nights only, never marks. Guests see a sky asking them to sign in.
+- Rules (pasted by Abi): `stats` docs readable and writable by any signed-in user (under 3000 fields); `sky` docs readable
+  by signed-in users, and each user may only write their own star, whose name must be their registered name.
+- Test: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`).
+
 ## Anonymous stats (PostHog)
 
 - Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
@@ -307,7 +327,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

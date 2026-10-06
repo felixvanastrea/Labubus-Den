@@ -57,12 +57,17 @@ const FAKE = {
     const notify = r => (subs[r] || []).forEach(cb => cb(snapOf(r)));
     // the rules: a name belongs to whoever has it
     const rules = ops => { for (const [k, r, d] of ops) if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); };
-    const apply = ([k, r, d, o]) => { if (k === 'del') delete fb.docs[r]; else fb.docs[r] = o && o.merge ? Object.assign({}, fb.docs[r], d) : Object.assign({}, d); };
+    // set with merge merges maps deeply, like Firestore; increment() and deleteField() resolve against what's there
+    const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
+    const apply = ([k, r, d, o]) => { if (k === 'del') delete fb.docs[r]; else fb.docs[r] = o && o.merge ? resolve(fb.docs[r], d) : resolve({}, d); };
     const run = ops => { rules(ops); ops.forEach(apply); keep(); ops.forEach(o => notify(o[1])); };
     export function getFirestore() { return {}; }
     export function doc(db, col, id) { return col + '/' + id; }
     export async function getDoc(r) { fb.calls.push('get ' + r); deny(); return snapOf(r); }
     export function serverTimestamp() { return 0; }
+    export function increment(n) { return { __inc: n }; }
+    export function deleteField() { return { __del: 1 }; }
+    export async function setDoc(r, d, o) { fb.calls.push('set ' + r); deny(); run([['set', r, d, o]]); }
     export function writeBatch() { const ops = []; return { set(r, d, o) { ops.push(['set', r, d, o]); }, delete(r) { ops.push(['del', r]); },
       async commit() { fb.calls.push('batch ' + ops.map(o => o[0] + ' ' + o[1]).join(', ')); deny(); run(ops); } }; }
     export async function runTransaction(db, fn) { const ops = []; deny(); await fn({ get: async r => snapOf(r), set: (r, d, o) => ops.push(['set', r, d, o]) }); fb.calls.push('tx ' + ops.map(o => o[1]).join(', ')); run(ops); }
