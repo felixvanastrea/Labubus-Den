@@ -193,6 +193,7 @@
     for (const id of Object.keys(S.first)) if (!Q.has(id)) delete S.first[id];
     if (!S.seals || typeof S.seals !== 'object') S.seals = {};
     if (!S.stamps || typeof S.stamps !== 'object' || Array.isArray(S.stamps)) S.stamps = {};
+    if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -662,7 +663,11 @@
   // each look's disc (the blood moon, the gilded halo), painted once and kept
   const discs = {};
   const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : bloodMoon(px);
-  function discURL(look) { if (!(look in discs)) { try { discs[look] = discPaint(look, 560).toDataURL('image/png'); } catch (e) { discs[look] = ''; } } return discs[look]; }
+  function discURL(look, px = 560) {
+    const k = look + '@' + px;
+    if (!(k in discs)) { try { discs[k] = discPaint(look, px).toDataURL(px > 200 ? 'image/png' : 'image/jpeg', .9); } catch (e) { discs[k] = ''; } }
+    return discs[k];
+  }
   // a bat in flight, for canvas: flap from -1 (wings down) to 1 (up)
   function drawBat(ctx, x, y, s, flap, tilt) {
     const L = flap * .55 * s, sp = .82 + .18 * Math.cos(flap * 1.4);
@@ -814,6 +819,56 @@
     return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
   }
 
+  // ---------- themes: earned with real study milestones, worn on every device you sign in on ----------
+  const THEMES = [
+    { id: 'gothic', name: 'Constellation gothic', sub: 'Bone ink on charcoal, the stars' },
+    { id: 'codex', name: 'Codex', sub: 'Parchment, gold leaf, old masters' },
+    { id: 'blood', name: 'Blood moon', sub: 'Crimson, castles and bats' }
+  ];
+  const SOLID = 15;
+  function bestDiag() {
+    let best = null;
+    for (let i = 0; i < DIAG.length; i++) { const st = diagState(i); if (st.open && (best === null || st.n20 > best)) best = st.n20; }
+    return best;
+  }
+  // done: earned; p: how far along (0 to 1); req: what it asks; now: where you are
+  function themeGoal(id) {
+    if (id === 'codex') {
+      const b = bestDiag();
+      return { done: b !== null && b >= SOLID, p: b === null ? 0 : Math.min(1, b / SOLID), req: `Get one lecture to Solid: ${SOLID}/20 or more on its diagnostic.`,
+        now: b === null ? `No lecture diagnosed yet: try ${DIAG_MIN} questions from one lecture to open its diagnostic.` : `Your best lecture: ${fmtPts(b)}/20.` };
+    }
+    if (id === 'blood') {
+      const m = S.moon || {}, done = (m.full | 0) > 0;
+      return { done, p: done ? 1 : (m.n | 0) / MOON_FULL, req: `Complete a full moon: ${MOON_FULL} study nights of ${MOON_DAY} questions or more.`,
+        now: done ? '' : `Your moon: night ${fmtN(m.n | 0)} of ${MOON_FULL}.` };
+    }
+    return { done: true, p: 1, req: 'Yours from the start.', now: '' };
+  }
+  function themeListHTML(compact) {
+    const cur = lookNow();
+    return `<div class="th-list${compact ? ' compact' : ''}">${THEMES.map(t => {
+      const g = themeGoal(t.id), wear = acct.canWear(t.id), on = cur === t.id && !acct.previewing();
+      const art = t.id === 'gothic' ? '<span class="th-art sw-gothic" aria-hidden="true"></span>'
+        : `<span class="th-art" aria-hidden="true"><img alt="" src="${discURL(t.id, 140)}"></span>`;
+      const btn = on ? '<span class="th-on">Wearing</span>'
+        : wear ? `<button class="btn${compact ? ' quiet' : ''}" type="button" data-theme="${t.id}">Wear it</button>`
+        : `<button class="btn quiet" type="button" data-theme="${t.id}">${LOCK}Preview</button>`;
+      const how = wear || acct.isVip() ? '' : `<p class="th-req">${esc(g.req)}</p>${g.now ? `<p class="th-now">${esc(g.now)}</p>` : ''}<span class="th-bar" aria-hidden="true"><i style="width:${Math.round(g.p * 100)}%"></i></span>`;
+      return `<div class="th-card${on ? ' on' : ''}${wear ? '' : ' locked'}">${art}<div class="th-t"><b>${esc(t.name)}</b><span>${esc(t.sub)}</span>${how}</div><div class="th-act">${btn}</div></div>`;
+    }).join('')}</div>`;
+  }
+  function themesSectionHTML() {
+    return `<section class="section wrap th-wrap" aria-labelledby="th-h">
+      <div class="th plate">
+        <div class="th-head"><p class="eyebrow">Themes</p><h2 class="h2" id="th-h">Dress the Den</h2>
+          <p class="th-sub">Each theme is earned by studying, not by clicking. Once it’s yours, wear it on every device you sign in on. Tap a locked one for a short preview.</p></div>
+        ${themeListHTML(false)}
+        ${acct.here && !acct.member() ? '<p class="th-guest">Themes are earned with an account. <button class="btn" type="button" data-act="account">Sign in</button></p>' : ''}
+      </div>
+    </section>`;
+  }
+
   let acctHook = null;   // save() tells the account a change is waiting
   const acct = (() => {
     const CONFIG = { apiKey: 'AIzaSyC-YmQXRub3uGLpIV6d8nwJIx5x2zMigcg', authDomain: 'labubu-s-den.firebaseapp.com', projectId: 'labubu-s-den',
@@ -841,17 +896,41 @@
     const LOOKS_FOR = 'labubu';
     const vip = () => here && (['in', 'error'].includes(state) ? me.key === LOOKS_FOR
       : ['wait', 'loading'].includes(state) && canon(read(NAME) || '') === LOOKS_FOR);
+    // a theme can be worn once earned (signed in: themes belong to accounts); the Labubu account has them all
+    const canWear = id => id === 'gothic' || vip() || (member() && (here ? state !== 'off' : true) && themeGoal(id).done);
+    let pv = null;   // a preview running
     function applyLook() {
-      const v = read(LOOK_KEY), want = vip() && v in LOOK_NIGHT ? v : 'gothic';
+      if (pv) return false;
+      const v = read(LOOK_KEY), want = v in LOOK_NIGHT && canWear(v) ? v : 'gothic';
       if (want === lookNow()) return false;
       setLookAttr(want); return true;
     }
-    function setLook(id) {
-      if (!vip()) return;
+    function wear(id) {
+      if (!(id in LOOK_NIGHT)) return;
+      if (!canWear(id)) { preview(id); return; }
+      if (pv) { clearTimeout(pv); pv = null; }
       store(LOOK_KEY, id); applyLook();
-      usage.track('look_picked', { look: id });
+      usage.track('theme_worn', { theme: id });
       if (fb && user) { try { const b = fb.f.writeBatch(db); b.set(ref(), { look: id }, { merge: true }); b.commit().catch(() => {}); } catch (e) {} }
       paint(); if (!intro.active()) render(false);
+    }
+    // a locked theme, for a few seconds
+    function preview(id) {
+      const t = THEMES.find(x => x.id === id); if (!t) return;
+      if (pv) clearTimeout(pv);
+      pv = setTimeout(() => { pv = null; applyLook(); paint(); if (!intro.active()) render(false); }, 6000);
+      setLookAttr(id); usage.track('theme_preview', { theme: id });
+      paint(); if (!intro.active()) render(false);
+      toast(`${t.name}, for a few seconds. ${themeGoal(id).req}`);
+    }
+    // once per theme and device: say so when one is newly earned
+    function noticeUnlocks() {
+      if (!member() || (here && state === 'off')) return;
+      if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
+      const fresh = THEMES.filter(t => t.id !== 'gothic' && canWear(t.id) && !S.themesSeen.includes(t.id));
+      if (!fresh.length) return;
+      fresh.forEach(t => S.themesSeen.push(t.id)); save();
+      if (!vip()) setTimeout(() => toast(`New theme unlocked: ${fresh.map(t => t.name).join(' and ')}. Wear it from Themes on the homepage.`), 600);
     }
 
     // ---- the progress, between devices ----
@@ -862,6 +941,7 @@
     function prefer(k, t, m) {
       if (k.startsWith('answers/')) return !!(t && t.checked && !(m && m.checked));
       if (k.startsWith('clean/')) return ((t && t.t) || 0) > ((m && m.t) || 0);
+      if (k === 'moon/n' || k === 'moon/full') return +t > +m;   // the moon only grows
       return false;
     }
     let logMap = null;
@@ -924,7 +1004,8 @@
           paint(); if (was === 'naming') refresh();
         }
         let ch = false; try { ch = take(JSON.parse(d.s || '{}')); } catch (e) {}
-        if (ch) { save(true); refresh(); }
+        if (d.look && d.look !== read(LOOK_KEY)) { store(LOOK_KEY, d.look); ch = applyLook() || ch; }
+        if (ch) { save(true); applyLook(); refresh(); }
       }, () => {});
     }
     async function onUser(u) {
@@ -943,7 +1024,7 @@
         if (d.s) { try { take(JSON.parse(d.s)); } catch (e) {} }
         me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
         state = me.key ? 'in' : 'naming';
-        if (me.key === LOOKS_FOR && d.look) store(LOOK_KEY, d.look);
+        if (d.look) store(LOOK_KEY, d.look);
         applyLook();
         save(true); await push(); listen();
         if (state === 'naming' && pendingName) { const n = pendingName; pendingName = ''; await claim(n); }
@@ -1070,7 +1151,7 @@
           ${editing ? `<form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your new name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(me.name)}"></label>
               <div class="row"><button class="btn" type="submit"${dis}>Save</button><button class="btn quiet" type="button" data-acct="rename-no">Cancel</button></div></form>`
             : me.key ? `<p class="acct-p">Your name on the Den: <b>${esc(me.name)}</b> <button class="acct-forgot" type="button" data-acct="rename">Change it</button></p>` : ''}
-          ${vip() ? looksHTML() : ''}
+          ${state === 'in' || state === 'error' ? `<div class="acct-looks"><p class="acct-or">Themes</p>${themeListHTML(true)}${lookNow() !== 'gothic' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>` : ''}
           ${note}
           <div class="row"><button class="btn" type="button" data-acct="out"${dis}>Sign out</button>
           ${erasing ? `<span class="confirm" role="alert">Delete your account and its saved progress? This device keeps its answers. <button class="btn danger" type="button" data-acct="erase-yes">Delete</button><button class="btn quiet" type="button" data-acct="erase-no">Cancel</button></span>`
@@ -1090,12 +1171,6 @@
         </form>
         ${note}
         <p class="acct-fine">An account keeps your name, your email and your progress, nothing else, and you can delete them anytime. Passwords are stored scrambled: no one can read them, not even the Labubu.</p>`;
-    }
-    function looksHTML() {
-      const cur = lookNow(), one = (id, name, sub) => `<button type="button" class="look${cur === id ? ' on' : ''}" data-look="${id}" aria-pressed="${cur === id}"><span class="look-sw sw-${id}" aria-hidden="true"></span><span class="look-t"><b>${name}</b><span>${sub}</span></span></button>`;
-      return `<div class="acct-looks"><p class="acct-or">Looks · only your account has them for now</p>
-        <div class="looks">${one('gothic', 'Constellation gothic', 'Bone ink on charcoal')}${one('blood', 'Blood moon', 'Crimson, castles and bats')}${one('codex', 'Codex', 'Parchment, gold leaf, old masters')}</div>
-        ${cur !== 'gothic' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>`;
     }
     const label = () => state === 'off' ? 'Sign in' : state === 'naming' ? 'Pick a name'
       : me.name || (user && (user.displayName || '').split(' ')[0]) || read(NAME) || 'Account';
@@ -1127,7 +1202,7 @@
         const val = id => ((sheet.querySelector('#' + id) || {}).value || '').trim();
         sheet.addEventListener('click', e => {
           if (e.target === sheet) { close(); return; }
-          const lk = e.target.closest('button[data-look]'); if (lk) { setLook(lk.dataset.look); return; }
+          const th = e.target.closest('button[data-theme]'); if (th) { wear(th.dataset.theme); return; }
           const b = e.target.closest('[data-acct]'); if (!b) return;
           const k = b.dataset.acct;
           if (k === 'close') close();
@@ -1177,7 +1252,8 @@
       if (state !== 'wait') return;   // Firebase only loads for someone who signed in on this device
       load().catch(() => {});
     }
-    return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in' };
+    return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
+      canWear, wear, noticeUnlocks, isVip: () => vip(), previewing: () => !!pv };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -2663,6 +2739,7 @@
   // ---------- home ----------
   // a masthead with the pixel title over a turning astrolabe, search across the Milky Way, modules as arched windows
   function renderHome() {
+    acct.noticeUnlocks();
     const allQs = questionsFor(S.type, '*');
     const all = stats(allQs);
     const sess = S.session;
@@ -2718,6 +2795,7 @@
       ${questHTML(qi)}
       ${tonightHTML()}
       ${weakCardHTML()}
+      ${themesSectionHTML()}
       <section class="skyband" aria-label="Search the questions">
         <canvas id="milky" aria-hidden="true"></canvas>
         <div class="wrap">
@@ -4293,6 +4371,7 @@
     if (t.dataset.diag) { openDiag(t.dataset.diag); return; }
     if (t.dataset.diagGo) { untriedTopic(t.dataset.diagGo); return; }
     if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
+    if (t.dataset.theme) { acct.wear(t.dataset.theme); return; }
     switch (t.dataset.act) {
       case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
       case 'goto-modules': {

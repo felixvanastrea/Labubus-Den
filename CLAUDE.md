@@ -222,12 +222,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
   quest) shows the moon and tonight's comets. Tests: tonight.js, weak.js.
 
-## Looks (cosmetics)
+## Themes (cosmetics, "looks" in the code)
 
-- Only the account named Labubu (Abi's) has them for now (`LOOKS_FOR` in `acct`): names are one per person and lookalikes
-  count, so no one else can hold it. They show as "Looks" in her account sheet. Before Firebase wakes up, the name this
-  device last saw (`efm3-acct-name`) stands in, so the look is on from the first frame. Anyone else, or signed out:
-  the classic look, even if a look is saved on the device. To open them to everyone later, change `vip()`.
+- Earned with real study milestones (Abi's choice), never by volume: Codex = one lecture at Solid (15/20 or more on its
+  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`). `themeGoal(id)` gives done,
+  progress, the requirement and where you are. Wearing needs an account (`canWear`: signed in, or not on GitHub
+  Pages); the account named Labubu (`LOOKS_FOR`, Abi's) has every theme. A theme not earned is never worn, even if
+  saved on the device.
+- The homepage's "Themes" section (`themesSectionHTML`, after the weak spots card) and the account sheet
+  (`themeListHTML(true)`) list them: worn, Wear it, or locked with its requirement, progress line and bar. Tapping a
+  locked theme previews it for 6 s (`preview`), guests too; guests get a Sign in button. A newly earned theme is
+  announced once per device by a toast on the homepage (`noticeUnlocks`, `S.themesSeen`).
+- To add a theme: its tokens and pieces like the two below, an entry in `THEMES` and `LOOK_NIGHT`, and a case in
+  `themeGoal`.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Blood moon (`:root[data-look="blood"]` in gothic.css): crimson and near-black tokens (`--blood`, `--blood-hi`, wax
   colours), the stars and text kept bone, crimson primary buttons and moon phases. On the homepage: the moon

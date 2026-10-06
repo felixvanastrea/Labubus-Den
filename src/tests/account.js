@@ -221,7 +221,7 @@ const FAKE = {
   const c2 = await b.newContext();
   const p2 = await c2.newPage();
   await p2.goto(URL, { waitUntil: 'load' });
-  check(!(await p2.$('.nav-acct')) && !/Account:/.test(await txt(p2, '.foot')) && !(await p2.$('.lk')), 'elsewhere: no Sign in, no padlocks');
+  check(!(await p2.$('.nav-acct')) && !/Account:/.test(await txt(p2, '.foot')) && await p2.evaluate(() => [...document.querySelectorAll('.lk')].every(l => l.closest('.th-wrap'))), 'elsewhere: no Sign in, no padlocks');
   await c2.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');

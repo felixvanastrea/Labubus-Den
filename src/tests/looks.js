@@ -46,8 +46,8 @@ async function context(b, size, user, docs) {
   await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
   check(await look(p) === 'gothic', 'Labubu starts on the classic look');
   await p.click('.nav-acct'); await p.waitForTimeout(200);
-  check(!!(await p.$('.acct-looks [data-look="blood"]')), 'Labubu: the looks are in the sheet');
-  await p.click('[data-look="blood"]'); await p.waitForTimeout(300);
+  check(!!(await p.$('.acct-looks [data-theme="blood"]')) && /Wear it/.test(await p.textContent('.acct-looks [data-theme="codex"]')), 'Labubu: every theme is hers to wear, in the sheet');
+  await p.click('.acct-looks [data-theme="blood"]'); await p.waitForTimeout(300);
   const saved = await p.evaluate(() => window.__fb.docs['users/u9'].look);
   check(await look(p) === 'blood' && saved === 'blood' && !!(await p.$('.bm-img')) && !!(await p.$('.bm-land .castle')) && (await p.$$('.bats .bat')).length === 7, 'Blood moon: on, saved to the account, with the moon, the castles and the bats');
   await p.screenshot({ path: OUT + 'look_sheet.png' });
@@ -74,7 +74,7 @@ async function context(b, size, user, docs) {
   p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
   await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
   await p.click('.nav-acct'); await p.waitForTimeout(200);
-  await p.click('[data-look="codex"]'); await p.waitForTimeout(300);
+  await p.click('.acct-looks [data-theme="codex"]'); await p.waitForTimeout(300);
   check(await look(p) === 'codex' && await p.evaluate(() => window.__fb.docs['users/u9'].look) === 'codex' && !!(await p.$('.bm-codex .bm-img')) && !!(await p.$('.cx-piece svg')) && !!(await p.$('.cx-strip .cx-motto')) && !(await p.$('.bm-land')), 'Codex: the halo, the collage leaf and the parchment strip, saved');
   await p.click('[data-acct="close"]'); await p.waitForTimeout(400);
   await p.screenshot({ path: OUT + 'look_codex_home.png' });
@@ -100,15 +100,34 @@ async function context(b, size, user, docs) {
   await p.screenshot({ path: OUT + 'look_phone.png' });
   await ctx.close();
 
-  // anyone else: no looks, even with the look saved on the device
+  // anyone else: themes are earned. Sara has had a full moon (Blood moon is hers), no Solid lecture (Codex is locked)
   const sara = { uid: 'u2', displayName: 'Sara', email: 'sara@example.com' };
-  ctx = await context(b, { width: 1280, height: 860 }, sara, { 'users/u2': { s: '{}', name: 'Sara', key: 'sara' }, 'names/sara': { uid: 'u2', name: 'Sara' } });
-  await ctx.addInitScript(() => localStorage.setItem('efm3-look', 'blood'));
+  const saraS = JSON.stringify({ moon: { n: 2, full: 1, last: '', day: '', ids: [] }, stamps: {} });
+  ctx = await context(b, { width: 1280, height: 860 }, sara, { 'users/u2': { s: saraS, name: 'Sara', key: 'sara' }, 'names/sara': { uid: 'u2', name: 'Sara' } });
+  await ctx.addInitScript(() => { if (location.protocol !== 'about:' && !sessionStorage.getItem('lk')) { sessionStorage.setItem('lk', '1'); localStorage.setItem('efm3-look', 'codex'); } });
   p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
-  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
-  await p.click('.nav-acct'); await p.waitForTimeout(200);
-  check(await look(p) === 'gothic' && !(await p.$('.acct-looks')) && !(await p.$('.bm-img')), 'Sara: no looks, classic palette');
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(900);
+  check(await look(p) === 'gothic', 'Sara: a theme she hasn\'t earned isn\'t worn, even saved on the device');
+  check(/New theme unlocked: Blood moon/.test(await p.evaluate(() => (document.querySelector('.toast') || {}).textContent || '')), 'Sara: told she unlocked Blood moon');
+  const card = id => p.evaluate(id => { const b = document.querySelector(`.th-wrap [data-theme="${id}"]`); return b ? b.closest('.th-card').textContent.replace(/\s+/g, ' ') : ''; }, id);
+  check(/Wear it/.test(await card('blood')) && /Preview/.test(await card('codex')) && /Solid: 15\/20/.test(await card('codex')) && /No lecture diagnosed yet/.test(await card('codex')), 'Themes section: Blood moon to wear, Codex locked with its requirement');
+  await p.evaluate(() => document.querySelector('.th-wrap').scrollIntoView());
+  await p.screenshot({ path: OUT + 'look_themes.png' });
+  await p.click('.th-wrap [data-theme="codex"]'); await p.waitForTimeout(300);
+  const during = await look(p);
+  await p.waitForTimeout(6300);
+  check(during === 'codex' && await look(p) === 'gothic', 'a locked theme previews for a few seconds, then goes');
+  await p.click('.th-wrap [data-theme="blood"]'); await p.waitForTimeout(300);
+  check(await look(p) === 'blood' && await p.evaluate(() => window.__fb.docs['users/u2'].look) === 'blood', 'Sara wears Blood moon, saved to her account');
   await ctx.close();
+
+  // a guest: the section shows, with a way to sign in; a preview works
+  const c3 = await b.newContext({ viewport: { width: 1280, height: 860 } });
+  await c3.addInitScript(() => { window.__acctTest = true; });
+  p = await c3.newPage(); p.on('pageerror', e => errors.push(e.message));
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
+  check(!!(await p.$('.th-guest [data-act="account"]')) && /Preview/.test(await p.textContent('.th-wrap [data-theme="blood"]')), 'guest: themes locked, Sign in offered');
+  await c3.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');
   console.log(fails ? `${fails} FAILED` : 'all passed');
