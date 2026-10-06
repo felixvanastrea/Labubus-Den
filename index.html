@@ -944,6 +944,54 @@ details.case[open] .case-b { margin-top: 6px; }
 .wsc-left { grid-area: left; align-self: center; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); white-space: nowrap; }
 .wsc-row .xp { grid-area: xp; }
 @media (max-width: 760px) { .wsc { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- tonight: how sure you were, comets, the moon ---------- */
+.sure { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: -4px; }
+.sure-t { margin-right: 2px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
+.sure-b {
+  min-height: 34px; padding: 0 15px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent;
+  color: var(--ink-2); font: inherit; font-size: .98rem; cursor: pointer;
+  transition: border-color .3s var(--ease), color .3s var(--ease), background-color .3s var(--ease), transform .2s var(--ease);
+}
+.sure-b:hover { border-color: var(--ink-3); color: var(--ink); }
+.sure-b:active { transform: scale(.96); }
+.sure-b[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--night); }
+.verdict .v-note { flex-basis: 100%; display: block; font-style: italic; font-size: 1.04rem; line-height: 1.4; color: var(--ink-2); }
+.v-note .comet-i { width: 15px; height: 15px; margin: 0 6px 0 3px; vertical-align: -2px; color: var(--ink-hi); }
+.moon { flex: none; overflow: visible; }
+.moon .mn-dark { fill: var(--plate-2); stroke: var(--hair-2); stroke-width: .6; }
+.moon .mn-lit { fill: var(--ink); }
+.moon.big { filter: drop-shadow(0 0 12px var(--glow-soft)); }
+.moon.full { filter: drop-shadow(0 0 16px var(--glow-mid)); }
+.moonl .moon { margin-block: -3px; }
+.tn-wrap { padding-top: 48px; }
+.tn { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 26px 44px; padding: clamp(22px, 4vw, 40px); }
+.tn-moon { display: flex; align-items: flex-start; gap: 22px; min-width: 0; }
+.tn-mt { display: grid; gap: 10px; min-width: 0; }
+.tn-mt p, .tn-comets p { margin: 0; }
+.tn-sub { font-size: 1.06rem; line-height: 1.45; color: var(--ink-2); }
+.tn-how { max-width: 30rem; font-style: italic; font-size: 1rem; line-height: 1.45; color: var(--ink-3); }
+.tn-comets { display: grid; gap: 10px; align-content: center; justify-items: start; min-width: 0; padding-left: 34px; border-left: 1px solid var(--hair); }
+.tn-comets > .comet-i { width: 30px; height: 30px; color: var(--ink-hi); filter: drop-shadow(0 0 6px var(--glow-soft)); }
+.tn-big { font-family: var(--f-display); font-style: italic; font-size: 1.9rem; line-height: 1.05; color: var(--ink); }
+.tn-big b { margin-right: 6px; font-weight: 400; font-size: 2.6rem; }
+.ins { display: grid; gap: 4px; max-width: 40rem; margin: 16px 0 0; }
+.ins p, p.ins { margin: 0; font-size: 1.06rem; line-height: 1.5; color: var(--ink-2); }
+p.ins { margin-top: 16px; }
+.ins b { color: var(--ink); font-weight: 600; }
+.ins-l { display: inline-block; margin-right: 8px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
+.ins .n { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
+.ins .ins-tip { font-style: italic; font-size: 1rem; color: var(--ink-3); }
+p.ins.quiet { font-size: 1rem; color: var(--ink-3); }
+@media (max-width: 760px) {
+  .tn { grid-template-columns: minmax(0, 1fr); }
+  .tn-comets { padding-left: 0; border-left: 0; padding-top: 22px; border-top: 1px solid var(--hair); }
+}
+@media (max-width: 640px) {
+  .tn-wrap { padding-top: 36px; }
+  .tn-moon { gap: 16px; }
+  .tn-moon .moon.big { width: 60px; height: 60px; }
+}
 @media (max-width: 640px) {
   .wsc-wrap { padding-top: 36px; }
   .set-exam { padding: 0 9px; margin-right: 0; }
@@ -1192,6 +1240,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     hourglass: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2.5h10M5 17.5h10M6.2 2.5c0 4 3.8 5 3.8 7.5S6.2 13.5 6.2 17.5M13.8 2.5c0 4-3.8 5-3.8 7.5s3.8 3.5 3.8 7.5"/></svg>',
     half: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 3.5a6.5 6.5 0 0 0 0 13z" fill="currentColor"/></svg>',
     star: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l1.7 5.8 5.8 1.7-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7z" fill="currentColor"/></svg>',
+    comet: '<svg class="comet-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 17.5l7.4-7.4M3.6 12.6l3.6-3.6M7.4 16.4l3.6-3.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><circle cx="13.2" cy="6.8" r="3.7" fill="currentColor"/></svg>',
   };
   // the opening animation can be turned off from the footer; remembered in this browser
   const INTRO_KEY = 'efm3-mcq-intro';
@@ -1262,7 +1311,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
   // ---------- state ----------
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
-    clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set' };
+    clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set',
+    sure: {}, comets: {}, cometsInit: 0, moon: null };
   let storageOK = false;
   function load() {
     try {
@@ -1307,6 +1357,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       else S.session.idx = Math.min(Math.max(0, S.session.idx | 0), S.session.qids.length - 1);
     }
     sanitizeClean();
+    sanitizeTonight();
     sanitizeExam();
     if (S.type !== 'all' && !TYPES.includes(S.type)) S.type = 'all';
     if (S.topicId && !TOPIC.has(S.topicId)) S.topicId = null;
@@ -1769,10 +1820,15 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
     if (!(q.id in S.first)) S.first[q.id] = a.correct;
-    // a clean try: the first one, or a drill a day after the last try
-    const prev = S.clean[q.id], di = DIAG_OF.get(q.id);
+    // a clean try: the first one, or a comet caught (or a drill) a day after the last try
+    const prev = S.clean[q.id], di = DIAG_OF.get(q.id), now = Date.now();
+    const clean = !prev || ((S.session.comets || S.session.drill) && now - prev.t > DRILL_GAP);
     xpGain = null;
-    if (!prev || (S.session.drill && Date.now() - prev.t > DRILL_GAP)) {
+    if (clean && (a.sure === true || a.sure === false)) S.sure[q.id] = [a.sure ? 1 : 0, a.correct ? 1 : 0, now];
+    a.cn = cometAfter(q.id, a.correct, now);
+    moonGain = moonTick([q.id]);
+    if (moonGain === 'full') sfx.play('sparkle', { delay: 0.4, quiet: true });
+    if (clean) {
       const before = di !== undefined ? diagState(di) : null;
       S.clean[q.id] = { s: a.sel.slice(), ok: a.correct, t: Date.now(), x: 0 };
       if (before) {
@@ -1793,7 +1849,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     save();
     justChecked = true;
     render(false, 'verdict');
-    justChecked = false; xpGain = null;
+    justChecked = false; xpGain = null; moonGain = null;
   }
   function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; sfx.play('untick'); save(); render(false); }
   function go(delta) {
@@ -2409,6 +2465,10 @@ html.intro-on #sky { opacity: 0; transition: none; }
     for (const id of ex.qids) { const i = DIAG_OF.get(id); if (i !== undefined && !was.has(i)) was.set(i, diagState(i).open); }
     for (const id of ex.qids) { const p = ex.picks[id]; if (p && p.length) S.clean[id] = { s: p.slice(), ok: isCorrect(Q.get(id), p), t: ex.handed, x: 1 }; }
     ex.unlocked = [...was].filter(([i, open]) => !open && diagState(i).open).map(([i]) => DIAG[i].id);
+    // the questions answered: a miss becomes a comet, a due comet answered right is caught; and they count for the moon
+    const answered = ex.qids.filter(id => ex.picks[id] && ex.picks[id].length);
+    for (const id of answered) cometAfter(id, isCorrect(Q.get(id), ex.picks[id]), ex.handed);
+    moonTick(answered);
     usage.track('exam_handed_in', { time_ran_out: !!auto, answered: examAnswered(), questions: ex.qids.length, minutes_used: Math.round(e.used / 60000) });
     if (quietly) { save(); return; }
     if (S.view === 'exam' || !auto) {
@@ -2807,18 +2867,12 @@ html.intro-on #sky { opacity: 0; transition: none; }
     usage.track('diagnostic_opened', { topic: id, open: diagState(i).open });
     save(); render(true, null, 'nav');
   }
-  // practise a topic's questions never tried (toward its diagnostic), or drill the ones missed
+  // practise a lecture's questions never tried (toward its diagnostic); the ones missed come back as comets
   function untriedTopic(id) {
     const i = DIAG_INDEX.get(id); if (i === undefined) return;
     const ids = diagDetail(i).untried;
     if (!ids.length) { openDiag(id); return; }
     startList(ids, 0, { topic: DIAG[i].m, from: S.view === 'diag' ? 'diag' : S.view === 'home' ? 'home' : 'weak', title: `${DIAG[i].n} · toward its diagnostic` });
-  }
-  function drillTopic(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined) return;
-    const ids = diagDetail(i).missed; if (!ids.length) return;
-    ids.forEach(q => { keepFirst(q); delete S.answers[q]; });
-    startList(ids, 0, { topic: DIAG[i].m, from: 'diag', drill: true, title: `${DIAG[i].n} · drill` });
   }
 
   function renderWeak() {
@@ -2862,6 +2916,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
             <p class="eyebrow">The diagnostic</p>
             <h1 class="h1">Weak spots</h1>
             <p class="ph-lead">Try ${DIAG_MIN} questions from a lecture and the Labubu diagnoses it: your mark on it with the exam’s rule, what costs you the points, and every fact to fix, with the lecture’s why.</p>
+            ${instinctHTML()}
           </div>
         </header>
         <div class="controls"><div class="seg" role="tablist" aria-label="Module">${tabs}</div></div>
@@ -2910,6 +2965,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       </li>`;
     }).join('');
     const ticks = det.items.filter(x => x.tick).length;
+    const lc = cometsDue(k => DIAG_OF.get(k) === i);   // its comets due tonight
     app.innerHTML = `
       ${bar}
       <main class="wrap narrow stage">
@@ -2926,11 +2982,11 @@ html.intro-on #sky { opacity: 0; transition: none; }
           <ol class="fx-list">${fx}</ol>
           ${det.items.length > shown.length ? `<div class="more-row"><button class="btn" type="button" data-act="diag-all">Show all ${fmtN(det.items.length)}</button></div>` : ''}</section>` : ''}
         <div class="row dg-actions">
-          ${det.missed.length ? `<button class="btn primary" type="button" data-act="drill">Drill the ${fmtN(det.missed.length)} you missed ${ICON.next}</button>` : ''}
-          ${det.untried.length ? `<button class="btn${det.missed.length ? '' : ' primary'}" type="button" data-act="diag-untried">${fmtN(det.untried.length)} not tried yet ${ICON.next}</button>` : ''}
+          ${lc.length ? `<button class="btn primary" type="button" data-act="diag-comets">Catch its ${fmtN(lc.length)} ${lc.length === 1 ? 'comet' : 'comets'} ${ICON.next}</button>` : ''}
+          ${det.untried.length ? `<button class="btn${lc.length ? '' : ' primary'}" type="button" data-act="diag-untried">${fmtN(det.untried.length)} not tried yet ${ICON.next}</button>` : ''}
           <button class="btn" type="button" data-act="diag-exam">${ICON.hourglass}Exam on this lecture</button>
         </div>
-        <p class="dg-note">A drill counts toward the diagnostic from the next day, so it measures what stuck.</p>
+        <p class="dg-note">The questions you miss come back as comets: the next day, then after 3, 7 and 14 days. Catching one counts toward the diagnostic, so it measures what stuck.</p>
         ${footHTML()}
       </main>`;
   }
@@ -2956,6 +3012,174 @@ html.intro-on #sky { opacity: 0; transition: none; }
           <div><button class="btn primary" type="button" data-act="weak">Open weak spots ${ICON.next}</button></div>
         </div>
         ${rows ? `<div class="wsc-side"><p class="wsc-side-t">${open.length || near.some(s => s.done) ? 'Closest to a diagnostic' : 'Start here'}</p><ul>${rows}</ul></div>` : ''}
+      </div>
+    </section>`;
+  }
+
+  // ---------- tonight: how sure you were, comets (questions that come back) and the moon (study nights) ----------
+  // Sure / not sure: optional, picked before checking (a.sure on the practice answer). First tries and comet catches go
+  // to S.sure = {id: [sure 1/0, right 1/0, t]} for the instinct line on the weak spots page (a retry right after seeing
+  // the answer would flatter it).
+  // Comets: a question missed (wrong or only partly right), in practice or in an exam, comes back the next day; caught
+  // when due, it comes back after 3, 7 and 14 days, then it's gone; missed again, it starts over. One comet per question
+  // with its copies (canonId): S.comets = {id: {l: times caught, d: when it's due}}. Catching one is a clean try for the
+  // diagnostic (it replaced the drill). At most COMET_MAX a night, the longest waiting first. Misses from before comets
+  // existed were queued once (S.cometsInit), COMET_MAX a night, the latest first.
+  // The moon: a night counts once MOON_DAY different questions are checked that day; it grows one step per night to full
+  // at MOON_FULL, then starts again. A missed night only pauses it. S.moon = {n, full, last, day, ids}.
+  const COMET_STEPS = [1, 3, 7, 14], COMET_MAX = 20, DAY_MS = 864e5;
+  const MOON_DAY = 5, MOON_FULL = 14;
+  const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  const dayStart = t => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
+  // n days after t: the same hour minus four (missed at 9 pm, back at 5 pm), never before that calendar day
+  const cometDue = (t, n) => Math.max(t + n * DAY_MS - 4 * 3600e3, dayStart(t) + n * DAY_MS);
+  let moonGain = null;   // the night a check just counted ('grew' or 'full'), shown under the verdict once
+
+  function sanitizeTonight() {
+    if (!S.sure || typeof S.sure !== 'object') S.sure = {};
+    for (const [k, v] of Object.entries(S.sure)) if (!Q.has(k) || !Array.isArray(v) || v.length !== 3) delete S.sure[k];
+    if (!S.comets || typeof S.comets !== 'object') S.comets = {};
+    for (const [k, c] of Object.entries(S.comets)) {
+      const ok = c && typeof c === 'object' && Number.isFinite(c.d) && Number.isInteger(c.l) && c.l >= 0 && c.l < COMET_STEPS.length;
+      if (!ok || !keyedId(k)) { delete S.comets[k]; continue; }
+      const kk = canonId(k);   // copies regrouped since: keep one comet, the earliest due
+      if (kk !== k) { if (!S.comets[kk] || S.comets[kk].d > c.d) S.comets[kk] = c; delete S.comets[k]; }
+    }
+    if (!S.cometsInit) {
+      const miss = new Map();
+      for (const [id, e] of Object.entries(S.clean)) {
+        if (e.ok || !keyedId(id)) continue;
+        const k = canonId(id); if (!miss.has(k) || miss.get(k) < e.t) miss.set(k, e.t);
+      }
+      const now = Date.now();
+      [...miss].sort((a, b) => b[1] - a[1]).forEach(([k], i) => { if (!S.comets[k]) S.comets[k] = { l: 0, d: now - COMET_MAX + i % COMET_MAX + Math.floor(i / COMET_MAX) * DAY_MS }; });
+      S.cometsInit = 1;
+    }
+    const m = S.moon && typeof S.moon === 'object' ? S.moon : {}, str = v => typeof v === 'string' ? v : '';
+    S.moon = { n: Math.min(MOON_FULL, Math.max(0, m.n | 0)), full: Math.max(0, m.full | 0), last: str(m.last), day: str(m.day),
+      ids: Array.isArray(m.ids) ? m.ids.filter(id => typeof id === 'string').slice(0, MOON_DAY) : [] };
+  }
+  // when a comet is due, in words
+  function whenText(d) {
+    const days = Math.round((dayStart(d) - dayStart(Date.now())) / DAY_MS);
+    if (d <= Date.now() || days <= 0) return 'tonight';
+    if (days === 1) return 'tomorrow';
+    if (days < 7) return 'on ' + new Date(d).toLocaleDateString('en-GB', { weekday: 'long' });
+    return `in ${days} days`;
+  }
+  // after a question is answered (practice or exam): a miss makes or restarts its comet, a catch when due moves it on
+  function cometAfter(id, ok, t) {
+    if (!keyedId(id)) return null;
+    const k = canonId(id), c = S.comets[k];
+    if (!ok) { S.comets[k] = { l: 0, d: cometDue(t, COMET_STEPS[0]) }; return 'new'; }
+    if (!c || c.d > t) return null;
+    c.l++;
+    if (c.l >= COMET_STEPS.length) { delete S.comets[k]; return 'gone'; }
+    c.d = cometDue(t, COMET_STEPS[c.l]);
+    return 'caught';
+  }
+  function cometsDue(keep) {
+    const now = Date.now();
+    return Object.entries(S.comets).filter(([k, c]) => c.d <= now && (!keep || keep(k))).sort((x, y) => x[1].d - y[1].d).map(([k]) => k);
+  }
+  // the next night with comets, and how many come back then
+  function cometsNext() {
+    const now = Date.now(), later = Object.values(S.comets).filter(c => c.d > now);
+    if (!later.length) return null;
+    const first = Math.min(...later.map(c => c.d)), day = dayStart(first);
+    return { d: first, n: later.filter(c => dayStart(c.d) === day).length };
+  }
+  function startComets(keep, from) {
+    const ids = cometsDue(keep).slice(0, COMET_MAX);
+    if (!ids.length) return;
+    ids.forEach(id => { keepFirst(id); delete S.answers[id]; });
+    const mods = new Set(ids.map(id => Q.get(id).topic));
+    usage.track('comets_started', { questions: ids.length, from });
+    startList(ids, 0, { topic: mods.size === 1 ? [...mods][0] : '*', from, comets: true, title: 'Comets' });
+  }
+  // a question checked today (practice or exam): the night counts at MOON_DAY different ones
+  function moonTick(ids) {
+    const m = S.moon, today = dayKey();
+    if (m.day !== today) { m.day = today; m.ids = []; }
+    if (m.last === today) return null;
+    for (const id of ids) { const k = canonId(id); if (!m.ids.includes(k)) m.ids.push(k); }
+    if (m.ids.length < MOON_DAY) return null;
+    if (m.n >= MOON_FULL) m.n = 0;
+    m.n++; m.last = today; m.ids = [];
+    if (m.n === MOON_FULL) { m.full++; usage.track('full_moon', { moons: m.full }); return 'full'; }
+    return 'grew';
+  }
+  // the moon at n nights of MOON_FULL: lit from the right, a crescent, then gibbous, then full
+  function moonSVG(n, size, cls) {
+    const p = Math.max(0, Math.min(1, n / MOON_FULL)), r = 10, c = 12, rx = (r * Math.abs(1 - 2 * p)).toFixed(2);
+    const lit = p <= 0 ? '' : p >= 1 ? `<circle class="mn-lit" cx="${c}" cy="${c}" r="${r}"/>`
+      : `<path class="mn-lit" d="M${c} ${c - r}A${r} ${r} 0 0 1 ${c} ${c + r}A${rx} ${r} 0 0 ${p < 0.5 ? 0 : 1} ${c} ${c - r}Z"/>`;
+    return `<svg class="moon${cls ? ' ' + cls : ''}${p >= 1 ? ' full' : ''}" viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true" focusable="false"><circle class="mn-dark" cx="${c}" cy="${c}" r="${r}"/>${lit}</svg>`;
+  }
+  function moonLineHTML(g) {
+    return g === 'full'
+      ? `<div class="xpl open moonl" role="status">${moonSVG(MOON_FULL, 30)}<span class="xpl-t">Full moon: <b>${MOON_FULL} study nights</b>.</span></div>`
+      : `<div class="xpl moonl" role="status">${moonSVG(S.moon.n, 24)}<span class="xpl-t">Tonight counts: the moon grows to <b>night ${fmtN(S.moon.n)} of ${MOON_FULL}</b>.</span></div>`;
+  }
+  // the picker before checking, and what the verdict says about it and about the question's comet
+  function sureRowHTML(a) {
+    return `<div class="sure" role="group" aria-label="How sure are you?"><span class="sure-t">How sure?</span>
+      <button type="button" class="sure-b" data-sure="1" aria-pressed="${a.sure === true}">Sure</button>
+      <button type="button" class="sure-b" data-sure="0" aria-pressed="${a.sure === false}">Not sure</button></div>`;
+  }
+  function setSure(v) {
+    const q = curQ(); if (!q || !q.answer.length) return;
+    const a = S.answers[q.id] || (S.answers[q.id] = { sel: [], checked: false });
+    if (a.checked) return;
+    if (a.sure === v) delete a.sure; else a.sure = v;   // a second tap clears it
+    sfx.play('tick', { quiet: true }); save();
+    app.querySelectorAll('.sure-b').forEach(b => b.setAttribute('aria-pressed', String(a.sure === (b.dataset.sure === '1'))));
+  }
+  function verdictNote(q, a) {
+    const out = [];
+    if (a.sure === true || a.sure === false) {
+      const part = !a.correct && a.sel.some(i => q.answer.includes(i));
+      out.push(a.sure ? (a.correct ? 'You were sure, and right.' : part ? 'You were sure, but only partly right.' : 'You were sure, and wrong.')
+        : (a.correct ? 'You weren’t sure, but you were right.' : part ? 'You weren’t sure: partly right.' : 'You weren’t sure, and it was wrong.'));
+    }
+    const c = S.comets[canonId(q.id)];
+    if (a.cn === 'gone') out.push(`${ICON.comet}Comet caught for good.`);
+    else if (a.cn === 'caught' && c) out.push(`${ICON.comet}Comet caught: back ${whenText(c.d)}.`);
+    else if (a.cn === 'new' && c) out.push(`${ICON.comet}Back ${whenText(c.d)} as a comet.`);
+    return out.length ? `<span class="v-note">${out.join(' ')}</span>` : '';
+  }
+  // your instinct: how often you're right when you're sure, and when you're not (every module)
+  function instinctHTML() {
+    const v = Object.values(S.sure), su = v.filter(x => x[0] === 1), un = v.filter(x => x[0] === 0);
+    if (su.length + un.length < 5) return `<p class="ins quiet"><span class="ins-l">Your instinct</span> Tap <b>Sure</b> or <b>Not sure</b> before you check a question: after five, this shows how often your “sure” is right.</p>`;
+    const pct = a => Math.round(100 * a.filter(x => x[1]).length / a.length);
+    const parts = [];
+    if (su.length) parts.push(`when you’re sure, you’re right <b>${pct(su)}%</b> of the time <span class="n num">(${fmtN(su.length)})</span>`);
+    if (un.length) parts.push(`when you’re not, <b>${pct(un)}%</b> <span class="n num">(${fmtN(un.length)})</span>`);
+    const tip = su.length >= 5 && pct(su) < 70 ? 'Your “sure” isn’t solid yet: in the exam, tick only the propositions you’d bet on.'
+      : un.length >= 5 && pct(un) >= 60 ? 'You know more than you think.'
+      : su.length >= 5 && pct(su) >= 85 ? 'When you’re sure, trust it.' : '';
+    return `<div class="ins"><p class="ins-t"><span class="ins-l">Your instinct</span> ${parts.join(' · ')}.</p>${tip ? `<p class="ins-tip">${tip}</p>` : ''}</div>`;
+  }
+  // on the home page: the moon, and tonight's comets
+  function tonightHTML() {
+    const m = S.moon, today = dayKey(), counted = m.last === today, left = Math.max(0, MOON_DAY - (m.day === today ? m.ids.length : 0));
+    const due = cometsDue(), next = cometsNext(), any = Object.keys(S.comets).length > 0;
+    const night = m.n ? `Night ${fmtN(m.n)} of ${MOON_FULL}` : 'A new moon';
+    const moonLine = counted ? (m.n === MOON_FULL ? 'Full moon tonight.' : 'Tonight counts.')
+      : `${left === 1 ? 'One more question' : `${fmtN(left)} more questions`} and tonight counts.`;
+    const teach = !m.full && m.n < 3 ? `<p class="tn-how">Do ${MOON_DAY} questions a night and the moon grows. ${MOON_FULL} nights make a full moon, and a night off only pauses it.</p>` : '';
+    const comets = due.length
+      ? `<p class="tn-big"><b class="num">${fmtN(due.length)}</b> ${due.length === 1 ? 'comet' : 'comets'} tonight</p>
+         <p class="tn-sub">Questions you missed, back for another try${due.length > COMET_MAX ? `, ${COMET_MAX} at a time` : ''}.</p>
+         <div><button class="btn primary" type="button" data-act="comets">Catch them ${ICON.next}</button></div>`
+      : any ? `<p class="tn-big">No comets tonight</p><p class="tn-sub">Next: ${fmtN(next.n)} ${whenText(next.d)}.</p>`
+      : `<p class="tn-big">No comets yet</p><p class="tn-sub">A question you miss comes back here the next day, then after 3, 7 and 14 days, until it sticks.</p>`;
+    return `<section class="section wrap tn-wrap" aria-labelledby="tn-h">
+      <div class="tn plate">
+        <div class="tn-moon">${moonSVG(m.n, 78, 'big')}<div class="tn-mt"><p class="eyebrow">Tonight</p><h2 class="h2" id="tn-h">${night}</h2>
+          <p class="tn-sub">${moonLine}${m.full ? ` ${m.full === 1 ? 'One full moon' : `${fmtN(m.full)} full moons`} so far.` : ''}</p>${teach}</div></div>
+        <div class="tn-comets">${ICON.comet}${comets}</div>
       </div>
     </section>`;
   }
@@ -3013,6 +3237,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
         </div>
       </section>
       ${questHTML(qi)}
+      ${tonightHTML()}
       ${weakCardHTML()}
       <section class="skyband" aria-label="Search the questions">
         <canvas id="milky" aria-hidden="true"></canvas>
@@ -3112,12 +3337,15 @@ html.intro-on #sky { opacity: 0; transition: none; }
     return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope === 'quest' ? 'Reset this quest' : 'Reset this module'}</button>`;
   }
   function doReset(scope) {
-    if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; S.exam = null; S.examLog = []; S.clean = {}; examStop(); }
+    // the moon stays: it counts nights studied, not answers
+    if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; S.exam = null; S.examLog = []; S.clean = {}; S.sure = {}; S.comets = {}; examStop(); }
     else {
       const hit = id => scope === 'quest' ? QUEST_SET.has(id) : (Q.get(id) || {}).topic === scope;
       for (const id of Object.keys(S.answers)) if (hit(id)) delete S.answers[id];
       for (const id of Object.keys(S.first)) if (hit(id)) delete S.first[id];
       for (const id of Object.keys(S.clean)) if (hit(id)) delete S.clean[id];
+      for (const id of Object.keys(S.sure)) if (hit(id)) delete S.sure[id];
+      for (const id of Object.keys(S.comets)) if (hit(id)) delete S.comets[id];
       if (QUEST && QUEST.q.some(hit)) delete S.seals[QUEST.id];
       if (S.session && (scope === 'quest' ? S.session.from === 'quest' : (S.session.topic === scope || S.session.qids.some(hit)))) S.session = null;
     }
@@ -3323,7 +3551,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       const main = a.correct ? `${ICON.check} Correct` : (overlap ? `${ICON.cross} Partly right` : `${ICON.cross} Wrong`);
       verdict = `<div class="verdict ${a.correct ? 'right' : 'wrong'}" id="verdict" tabindex="-1" role="status">
         <span class="v-main">${main}</span><span class="v-sub">${KEY_LONG[k]}: <b>${letters(q.answer)}</b></span><span class="spacer"></span>
-        <button class="btn quiet" type="button" data-act="again">Try again</button></div>`;
+        <button class="btn quiet" type="button" data-act="again">Try again</button>${verdictNote(q, a)}</div>`;
     }
     const ex = (checked || !hasKey) ? explainHTML(q) : '';
     const primaryLabel = (!hasKey || checked) ? (sess.idx === sess.qids.length - 1 ? `Finish ${ICON.next}` : `Next ${ICON.next}`) : 'Check answer';
@@ -3355,8 +3583,10 @@ html.intro-on #sky { opacity: 0; transition: none; }
           ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
           ${checked ? '' : `<p class="hint">Select all that apply</p>`}
           <div class="opts${checked ? ' checked' : ''}${justChecked ? ' reveal' : ''}" role="group" aria-labelledby="stem">${opts}</div>
+          ${hasKey && !checked ? sureRowHTML(a) : ''}
           ${verdict}
           ${checked && xpGain && xpGain.after ? xpLineHTML(xpGain) : ''}
+          ${checked && moonGain ? moonLineHTML(moonGain) : ''}
           ${ex}
           ${reportHTML(q)}
         </article>
@@ -4498,6 +4728,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (t.dataset.start) { startSession(t.dataset.start, null); return; }
     if (t.dataset.set) { startSession(S.topicId, t.dataset.set); return; }
     if (t.dataset.lec) { startLecture(t.dataset.lec); return; }
+    if (t.dataset.sure !== undefined) { setSure(t.dataset.sure === '1'); return; }
     if (t.dataset.by) {
       if (S.topicBy !== t.dataset.by) { S.topicBy = t.dataset.by === 'lecture' ? 'lecture' : 'set'; sfx.play('nav'); usage.track('module_view', { by: S.topicBy, module: S.topicId }); save(); render(false, null, 'next'); }
       return;
@@ -4587,7 +4818,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
       case 'exam-module': openExam({ kind: 'module', id: S.topicId }); break;
       case 'weak': openWeak(t.dataset.mod || (S.view === 'topic' ? S.topicId : null)); break;
       case 'weak-module': openWeak(S.topicId); break;
-      case 'drill': drillTopic(S.diag); break;
+      case 'comets': startComets(null, 'home'); break;
+      case 'diag-comets': { const i = DIAG_INDEX.get(S.diag); startComets(k => DIAG_OF.get(k) === i, 'diag'); break; }
       case 'diag-untried': untriedTopic(S.diag); break;
       case 'diag-exam': openExam({ kind: 'topic', id: S.diag }); break;
       case 'diag-all': S.diagAll = true; save(); render(false); break;
