@@ -236,21 +236,30 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - To add a theme: its tokens and pieces like the two below, an entry in `THEMES` and `LOOK_NIGHT`, and a case in
   `themeGoal`.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
-- Blood moon (`:root[data-look="blood"]` in gothic.css): crimson and near-black tokens (`--blood`, `--blood-hi`, wax
-  colours), the stars and text kept bone, crimson primary buttons and moon phases. On the homepage: the moon
-  (`bloodMoon()` paints it on a canvas once; `.bm` inside the astrolabe), castles and bare trees on the horizon with
-  flickering windows (`bloodLandHTML`, under the hero), and a flock of bats crossing every 32 s (`batsHTML`, CSS; none
-  with reduced motion). In the intro: the same moon, big behind the year picker, shrinking into the homepage's as the
-  camera comes down (`MS` → `ME`), and nine bats (`drawBat`) following the falling star, scattering when it lands,
-  with the `bats` sound (wing beats and squeaks, synthesized like the others).
-- Codex (`:root[data-look="codex"]`): a medieval painting collage. Warm charcoal, parchment ink, `--vermilion` and `--gold`;
-  gold eyebrows after a vermilion rule, an illuminated drop cap. On the homepage: a gilded halo (`goldHalo()`: leaf laid
-  in squares, incised rays, punched rings and rosettes) in the astrolabe; above it a torn leaf (`codexPieceHTML`,
-  `tornPath`) with a Gothic arch round a rose window in lapis and gold, Leonardo's square and circle and "Ars longa,
-  vita brevis", over a terracotta circle; under the hero a torn parchment strip with "Hic locus est ubi mors gaudet
-  succurrere vitae" and Florence in ink (`codexStripHTML`). In the intro the halo plays the moon's part, with a `bell`.
-  The art hosts (Wikimedia, museums) are blocked from Claude's workspace, so there are no real paintings yet: when Abi
-  sends public-domain ones, they go in the arch (and could become more torn pieces).
+- Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first
+  time it's worn; the test copy has them locally from @fontsource), its own title (`TITLE_LOOKS`, `shadeTitle`: the
+  pixel title in the theme's face, coloured pixel by pixel), cards, buttons, answer feedback, sounds (`THEME_SOUND`).
+- Blood moon (`:root[data-look="blood"]` in gothic.css), a vampire's library at the eclipse: Grenze Gotisch (blackletter)
+  headings and Crimson Pro for reading; the title in blackletter, bone turning to blood, with pixel drips; black velvet
+  cards with a crimson rule and gothic corner brackets; an eclipse glow behind the stars; bat marks on the labels;
+  a blackletter initial on each question; a wrong pick bleeds (two drips), right ones glow candle-gold (right is gold,
+  wrong scarlet, half lilac, so red never means right); a right answer plays a pipe organ chord (`organ`). On the
+  homepage: the moon (`bloodMoon()`, `.bm`) in the astrolabe, castles and trees with flickering windows
+  (`bloodLandHTML`), bats every 32 s (`batsHTML`; none with reduced motion). In the intro: the moon big behind the
+  picker, shrinking into the homepage's (`MS` → `ME`), nine bats after the falling star (`drawBat`), the `bats` sound.
+- Codex (`:root[data-look="codex"]`), an illuminated manuscript on a candlelit desk: IM Fell English for headings,
+  EB Garamond (italic for labels), UnifrakturMaguntia for the motto's initial. The homepage is a folio: parchment
+  ruled in gold and vermilion with quatrefoils in the corners, the title in gold leaf outlined in ink with a vermilion
+  shadow, the astrolabe in brown ink over the gilded halo (`goldHalo()`), and at its foot the motto "Hic locus est ubi
+  mors gaudet succurrere vitae" with a lapis initial, a snail crawling the rule (a manuscript drollery), Florence in
+  ink (`codexStripHTML`). Every `.plate` is a parchment leaf (`--parchment`) written in iron-gall ink (the plate scope
+  redefines the colour tokens), with a deckled edge (`clip-path: var(--deckle)`, made once by `deckle()`; not on the
+  question card or the account sheet). First letters of headings are rubricated, the intro has an illuminated initial
+  (gold Fell on lapis), question stems a vermilion initial, answer letters in red. Sounds: a handbell for a right
+  answer, a page turned for the next question; a church bell in the intro, where the halo plays the moon's part.
+  No real paintings yet (the art hosts are blocked from Claude's workspace); Abi can send public-domain ones.
+- `src/tests/review_looks.js [blood|codex]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+  a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.
 

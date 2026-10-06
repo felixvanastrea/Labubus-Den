@@ -302,9 +302,9 @@
     const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const VIBRATE = !IOS && typeof navigator.vibrate === 'function' && navigator.maxTouchPoints > 0;
     // loudness: the clicks clear but soft, the chimes about 10 dB above them (measured A-weighted)
-    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38 };
-    const JITTER = { tick: 1, untick: 1, nav: 1 };
+    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16 };
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04 };
+    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24] };
     let ctx = null, out = null, verb = null, recipes = null, idle = 0;
     const cache = {};
@@ -458,6 +458,33 @@
           }
           return done(b, 0.8);
         },
+        // the themes' own sounds. Blood moon, a right answer: a pipe organ chord, its pipes speaking a little apart
+        organ() {
+          const b = make(1.35);
+          [[261.63, .5, 0], [392, .34, .012], [523.25, .3, .02], [659.25, .26, .03]].forEach(([f, a0, d0], j) => {
+            for (let h = 1; h <= 6; h++) {
+              const a = a0 / Math.pow(h, 1.15), n0 = Math.round(d0 * sr);
+              for (let i = n0; i < b.length; i++) {
+                const t = (i - n0) / sr, env = Math.min(1, t / 0.04) * (t < 0.6 ? 1 : Math.exp(-(t - 0.6) / 0.17)) * (1 + 0.035 * Math.sin(TAU * 5.4 * t));
+                b[i] += a * env * Math.sin(TAU * f * h * t + j * 1.7 + h);
+              }
+            }
+          });
+          return done(b, 0.8);
+        },
+        // Codex, a right answer: a small handbell
+        handbell() {
+          const b = make(1.6), f = 1046.5;
+          [[1, .6, .7], [2, .3, .42], [2.4, .22, .34], [3, .16, .24], [4.2, .07, .14]].forEach(([k, a, d]) => mode(b, 0, f * k, a, d, { att: 0.0015 }));
+          mix(b, bandpass(burst(0.02, 0.006, 41), 3800, 1.4), 0, 0.2);
+          return done(b, 0.75);
+        },
+        // Codex, the next question: a page turned, a short swish of paper
+        page() {
+          const b = make(0.34), r = mulberry(91);
+          for (let i = 0; i < b.length; i++) { const t = i / sr, e = Math.sin(Math.PI * Math.min(1, t / 0.27)) ** 2; b[i] = (r() * 2 - 1) * e * (0.7 + 0.3 * Math.sin(TAU * 31 * t)); }
+          return done(lowpass(bandpass(b, 2500, 0.6), 5600, 0.7), 0.55);
+        },
         // a small church bell (the codex look's intro): hum, prime, minor third, fifth, nominal; the high ones die first
         bell() {
           const b = make(3.4), f = 392;
@@ -532,7 +559,10 @@
       if (delay) setTimeout(go, delay * 1000); else go();
     }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
+    // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
+    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' } };
     function play(name, o = {}) {
+      const own = THEME_SOUND[lookNow()]; if (own && own[name] && (name !== 'nav' || !o.rate)) name = own[name];
       if (soundOn && context()) {
         try {
           const src = ctx.createBufferSource(), g = ctx.createGain();
@@ -617,9 +647,32 @@
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
   const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410' };
   function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
+  // a look's own typefaces, from Google Fonts, fetched the first time it's worn
+  const LOOK_FONTS = {
+    blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
+    codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia'
+  };
+  function lookFonts(id) {
+    if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
+    const l = document.createElement('link'); l.id = 'lf-' + id; l.rel = 'stylesheet';
+    l.href = `https://fonts.googleapis.com/css2?family=${LOOK_FONTS[id]}&display=swap`;
+    document.head.appendChild(l);
+    if (document.fonts) l.addEventListener('load', () => { if (lookNow() === id && !intro.active() && S.view === 'home') paintTitle(); });
+  }
+  // a parchment leaf's deckled edge: a clip path with small irregular tears, made once
+  function deckle() {
+    const r = mulberry(4242), n = 44, j = () => (r() * 3.4).toFixed(1) + 'px', pct = i => (i / n * 100).toFixed(2) + '%', pts = [];
+    for (let i = 0; i <= n; i++) pts.push(`${pct(i)} ${j()}`);
+    for (let i = 1; i <= n; i++) pts.push(`calc(100% - ${j()}) ${pct(i)}`);
+    for (let i = n - 1; i >= 0; i--) pts.push(`${pct(i)} calc(100% - ${j()})`);
+    for (let i = n - 1; i >= 1; i--) pts.push(`${j()} ${pct(i)}`);
+    return `polygon(${pts.join(',')})`;
+  }
   function setLookAttr(id) {
     const r = document.documentElement;
     if (id in LOOK_NIGHT && id !== 'gothic') r.dataset.look = id; else delete r.dataset.look;
+    lookFonts(id);
+    if (id === 'codex' && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
     const m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
   }
@@ -754,49 +807,9 @@
     g.restore();
     return cv;
   }
-  // a torn sheet: an outline with small irregular tears all round, and the odd bigger bite
-  function tornPath(w, h, seed, amp) {
-    const r = mulberry(seed), pts = [], step = 9;
-    const edge = (x0, y0, x1, y1, nx, ny) => {
-      const n = Math.max(2, Math.round(Math.hypot(x1 - x0, y1 - y0) / step));
-      for (let i = 0; i < n; i++) {
-        const t = i / n, j = (r() - .5) * amp + (r() < .08 ? r() * amp * 1.6 : 0);
-        pts.push([x0 + (x1 - x0) * t + nx * j, y0 + (y1 - y0) * t + ny * j]);
-      }
-    };
-    edge(0, 0, w, 0, 0, 1); edge(w, 0, w, h, -1, 0); edge(w, h, 0, h, 0, -1); edge(0, h, 0, 0, 1, 0);
-    return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + 'Z';
-  }
-  const PAPER = k => `<filter id="cx-paper${k}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" values="0 0 0 0 .3  0 0 0 0 .2  0 0 0 0 .08  0 0 0 .55 -.14" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="m"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="m"/></feMerge></filter>
-    <linearGradient id="cx-parch${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e5c8"/><stop offset=".6" stop-color="#e3cfa6"/><stop offset="1" stop-color="#cdb184"/></linearGradient>`;
-  // a rose window, drawn in ink: twelve lights round a hub, trefoils, an outer ring
-  function roseSVG(cx, cy, R) {
-    let d = '';
-    for (let i = 0; i < 12; i++) {
-      const t = i / 12 * 6.2832, c = Math.cos(t), s = Math.sin(t);
-      d += `<line x1="${(cx + c * R * .24).toFixed(1)}" y1="${(cy + s * R * .24).toFixed(1)}" x2="${(cx + c * R * .9).toFixed(1)}" y2="${(cy + s * R * .9).toFixed(1)}"/>`;
-      d += `<circle cx="${(cx + c * R * .62).toFixed(1)}" cy="${(cy + s * R * .62).toFixed(1)}" r="${(R * .13).toFixed(1)}"/>`;
-      const u = t + Math.PI / 12;
-      d += `<circle cx="${(cx + Math.cos(u) * R * .92).toFixed(1)}" cy="${(cy + Math.sin(u) * R * .92).toFixed(1)}" r="${(R * .07).toFixed(1)}"/>`;
-    }
-    return `<g class="ink">${d}<circle cx="${cx}" cy="${cy}" r="${R}"/><circle cx="${cx}" cy="${cy}" r="${(R * .82).toFixed(1)}"/><circle cx="${cx}" cy="${cy}" r="${(R * .24).toFixed(1)}"/><circle cx="${cx}" cy="${cy}" r="${(R * .1).toFixed(1)}"/></g>`;
-  }
-  // in the hero, above the halo: a torn leaf with a Gothic arch round the rose window, Leonardo's circle and square,
-  // a line of Hippocrates; a terracotta circle peeks out from under it
-  function codexPieceHTML() {
-    const ax = 30, aw = 104, base = 200, spring = 108, apex = spring - aw * .866;   // a pointed (equilateral) arch
-    const arch = `M${ax} ${base}V${spring}A${aw} ${aw} 0 0 1 ${ax + aw / 2} ${apex.toFixed(1)}A${aw} ${aw} 0 0 1 ${ax + aw} ${spring}V${base}Z`;
-    return `<div class="cx-piece" aria-hidden="true"><span class="cx-red"></span><svg viewBox="0 0 320 220" focusable="false"><defs>${PAPER('a')}<clipPath id="cx-arch"><path d="${arch}"/></clipPath></defs>
-      <path d="${tornPath(320, 220, 31, 7)}" fill="url(#cx-parcha)" filter="url(#cx-papera)" class="cx-sheet"/>
-      <path d="${arch}" class="cx-niche"/>
-      <g clip-path="url(#cx-arch)">${roseSVG(ax + aw / 2, 130, 40)}</g>
-      <path d="${arch}" class="cx-frame"/>
-      <g class="ink faint"><rect x="178" y="58" width="104" height="104"/><circle cx="230" cy="114" r="60"/><path d="M178 58L282 162M282 58L178 162M230 54V174M170 110H290"/></g>
-      <text x="176" y="196" class="cx-hand">Ars longa, vita brevis.</text>
-      <path d="M24 16h40M256 206h40" class="cx-rule"/>
-    </svg></div>`;
-  }
-  // under the hero: a torn parchment strip, the anatomy theatre's motto, and Florence in ink
+  // at the foot of the folio: the anatomy theatre's motto as a rubric, a snail in the margin (the drollery of medieval
+  // manuscripts), and Florence drawn in ink
+  const SNAIL = `<svg class="cx-snail" viewBox="0 0 64 34" focusable="false"><path class="body" d="M2 31C8 29 14 28.5 22 28.5H45C50 28.5 53 27 55 22.5L56 19.5C57 18 59 18.5 58.6 20.5L57.5 25C56.5 29 52 31.5 46 31.5H20C12 31.5 6 32 2 31Z"/><path class="horn" d="M55.5 20L54 11M57.6 20.4L60 12.4"/><circle class="eye" cx="53.9" cy="10.4" r="1.2"/><circle class="eye" cx="60.2" cy="11.8" r="1.2"/><path class="shell" d="M20 28.5C14 22 16 8 30 6C42 4.5 48 14 45 22C43 27.5 38 28.5 34 28.5Z"/><path class="whorl" d="M31 21C28 21 27 18 29 16.5C31.5 15 34.5 17 34 20C33.4 23.5 28.5 25 25.5 22.5C22 19.5 23.5 13 28.5 11.5C34 10 40 13.5 40 19.5C40 24 37 27 33 28"/></svg>`;
   function codexStripHTML() {
     const roofs = [[0, 64, 34, 26], [30, 58, 40, 32], [66, 66, 30, 24], [96, 54, 26, 36], [148, 62, 40, 28], [330, 60, 44, 30], [372, 66, 30, 24], [452, 58, 40, 32], [490, 64, 30, 26]];
     const city = `${roofs.map(([x, y, w, h]) => `<path d="M${x} ${y + 5}L${x + w / 2} ${y}L${x + w} ${y + 5}V${y + h}H${x}Z"/>`).join('')}
@@ -806,14 +819,11 @@
       <path d="M300 90V8H318V90Z"/><path d="M298 8h22v-4h-22Z"/>
       <path d="M384 90V54H446V90Z"/><path d="M408 54V20H420V54Z"/><path d="M404 22h20v-8h-20Z"/><path d="M411 14V2H417V14Z"/>`;
     return `<div class="cx-strip" aria-hidden="true">
-      <svg class="cx-strip-bg" viewBox="0 0 1440 100" preserveAspectRatio="none" focusable="false"><defs>${PAPER('b')}</defs>
-        <path d="${tornPath(1440, 92, 57, 9)}" transform="translate(0 6) rotate(.6 720 50)" class="cx-under"/>
-        <path d="${tornPath(1440, 86, 58, 8)}" transform="translate(0 7)" fill="url(#cx-parchb)" filter="url(#cx-paperb)" class="cx-sheet"/></svg>
       <p class="cx-motto">Hic locus est ubi mors gaudet succurrere vitae</p>
+      <span class="cx-crawl">${SNAIL}</span>
       <svg class="cx-city" viewBox="0 -10 520 100" preserveAspectRatio="xMaxYMax meet" focusable="false">${city}<path d="M0 88H520V90H0Z"/></svg>
     </div>`;
   }
-
   function batsHTML() {
     const flock = [[0, 0, 1], [.5, -26, .78], [.9, 18, .7], [.25, 36, .88], [1.4, -10, .6], [1.1, 30, .72], [1.8, 8, .55]];
     return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
@@ -2775,15 +2785,15 @@
           </div>
         </nav>
         <div class="hero">
-          ${astrolabeSVG()}${lookNow() === 'gothic' ? '' : discHTML(lookNow())}${lookNow() === 'codex' ? codexPieceHTML() : ''}
+          ${astrolabeSVG()}${lookNow() === 'gothic' ? '' : discHTML(lookNow())}
           <p class="caption rise-in" style="--d:0">An archive of past EFM3 exam questions, sorted by module and by exam.</p>
           <ul class="meta mono rise-in" style="--d:1">
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
           </ul>
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}</div>
-        </div>
-      </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'codex' ? codexStripHTML() : ''}
+        </div>${lookNow() === 'codex' ? codexStripHTML() : ''}
+      </header>${lookNow() === 'blood' ? bloodLandHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
@@ -3690,31 +3700,81 @@
   // the title is set in the display face, then rendered at a low resolution and scaled up: a bitmap serif.
   // The first time it's shown it resolves from coarse to fine pixels (after the opening animation, when the star lands on it).
   let titleShown = false, titleHold = false, titleTimer = 0;
+  // the title in each look: classic caps in Instrument Serif; Blood moon in blackletter, bone turning to blood, dripping;
+  // Codex in Fell italic, gold leaf outlined in ink with a vermilion shadow
+  const TITLE_LOOKS = {
+    gothic: { lines: ['LABUBU’S', 'DEN'], weight: 'italic 400', family: '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif' },
+    blood: { lines: ['Labubu’s', 'Den'], weight: '700', family: '"Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif', drip: .3 },
+    codex: { lines: ['Labubu’s', 'Den'], weight: 'italic 400', family: '"IM Fell English", "EB Garamond", Georgia, serif', gild: true }
+  };
+  const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
+  function shadeTitle(T, on, d, block, ink) {
+    const { w, h } = d, out = new Uint8ClampedArray(w * h * 4), hash = (x, y) => ((x * 73856093 ^ y * 19349663) >>> 0) % 1000 / 1000;
+    const put = (k, c, a = 255) => { out[k * 4] = c[0]; out[k * 4 + 1] = c[1]; out[k * 4 + 2] = c[2]; out[k * 4 + 3] = a; };
+    const mixc = (a, b, t) => [0, 1, 2].map(i => Math.round(a[i] + (b[i] - a[i]) * t));
+    if (T.drip) {
+      // drips hang from the bottoms of the letters; the last line's run longest
+      const r = mulberry(13);
+      T.lines.forEach((_, li) => {
+        const base = Math.round(d.s * .78 + li * d.lineH), last = li === T.lines.length - 1;
+        for (let x = 1; x < w - 1; x++) {
+          let y = Math.min(h - 1, base + 1);
+          while (y > base - d.s * .22 && !on[y * w + x]) y--;
+          if (on[y * w + x] !== 1 || r() > .17) continue;
+          const len = Math.max(1, Math.round((last ? .05 + r() * r() * T.drip : .03 + r() * .06) * d.s));
+          for (let k = 1; k <= len && y + k < h; k++) on[(y + k) * w + x] = k === len ? 3 : 2;
+          x += 2;
+        }
+      });
+    }
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const k = y * w + x, v = on[k];
+      if (T.drip) {
+        if (v === 1) {
+          const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
+          const top = d.s * .78 + li * d.lineH - d.s * .7, t = Math.min(1, Math.max(0, (y - top) / (d.s * .74)));
+          put(k, mixc([243, 230, 220], [196, 20, 34], Math.pow(t, 1.8)));
+        } else if (v === 2) put(k, [150, 10, 24]); else if (v === 3) put(k, [226, 52, 62]);
+      } else if (T.gild) {
+        if (v) {
+          const sheen = .5 + .5 * Math.sin((x * .8 + y * 1.7) / w * 9 + hash(x >> 1, y >> 1) * 1.2), n = (hash(x, y) - .5) * 26;
+          const c = sheen < .5 ? mixc([138, 104, 34], [214, 174, 86], sheen * 2) : mixc([214, 174, 86], [248, 230, 166], (sheen - .5) * 2);
+          put(k, c.map(q => q + n));
+        } else {
+          const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
+          if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [52, 32, 16]);
+          else if (at(x - 2, y - 2) || at(x - 1, y - 2)) put(k, [168, 58, 38]);
+        }
+      } else if (v) put(k, ink);
+    }
+    return out;
+  }
   function drawTitle(animate) {
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
     const box = c.parentElement, W = box.clientWidth; if (!W) return;
     const ink = rgbOf(cssVar('--ink'));
-    const lines = ['LABUBU’S', 'DEN'];
+    const T = titleLook(), lines = T.lines;
     const fin = W < 520 ? 3 : W < 900 ? 4 : 5;
-    const family = '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif';
+    const family = T.family;
     const ctx = c.getContext('2d', { willReadFrequently: true });
-    ctx.font = `italic 400 100px ${family}`;
+    ctx.font = `${T.weight} 100px ${family}`;
     const widest = Math.max(...lines.map(l => ctx.measureText(l).width)) || 1;
     const sizeCss = Math.min(W * .95 / widest * 100, 240);
     const dims = block => {
       const s = sizeCss / block, lineH = s * .84;
-      return { s, lineH, w: Math.max(1, Math.floor(W / block)), h: Math.max(1, Math.ceil(lineH * (lines.length - 1) + s)) };
+      return { s, lineH, w: Math.max(1, Math.floor(W / block)), h: Math.max(1, Math.ceil(lineH * (lines.length - 1) + s * (1 + (T.drip || 0) * .8))) };
     };
     // every step is shown at the final size, so nothing below the title moves while the pixels resolve
     const end = dims(fin), cssW = end.w * fin, cssH = end.h * fin;
     const draw = block => {
       const d = dims(block);
       c.width = d.w; c.height = d.h;
-      ctx.font = `italic 400 ${d.s}px ${family}`;
+      ctx.font = `${T.weight} ${d.s}px ${family}`;
       ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
-      lines.forEach((l, i) => ctx.fillText(l, d.s * .03, d.s * .78 + i * d.lineH));
-      const img = ctx.getImageData(0, 0, d.w, d.h), px = img.data;
-      for (let i = 0; i < px.length; i += 4) { const on = px[i + 3] > 105; px[i] = ink[0]; px[i + 1] = ink[1]; px[i + 2] = ink[2]; px[i + 3] = on ? 255 : 0; }
+      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild ? 2 : 0), d.s * .78 + i * d.lineH));
+      const img = ctx.getImageData(0, 0, d.w, d.h), px = img.data, on = new Uint8Array(d.w * d.h);
+      for (let i = 0, j = 0; i < px.length; i += 4, j++) on[j] = px[i + 3] > 105 ? 1 : 0;
+      img.data.set(shadeTitle(T, on, d, block, ink));
       ctx.putImageData(img, 0, 0);
       c.style.width = cssW + 'px'; c.style.height = cssH + 'px';
     };
@@ -3728,7 +3788,7 @@
   }
   // force: resolve from coarse pixels now. While the opening animation holds the title, it's laid out but hidden.
   function paintTitle(force) {
-    const face = 'italic 400 40px "Instrument Serif"';
+    const T = titleLook(), face = `${T.weight} 40px ${T.family.split(',')[0]}`;
     const animate = !!force || (!titleShown && !titleHold);
     if (!titleHold) titleShown = true;
     if (!document.fonts || document.fonts.check(face)) { drawTitle(animate); return; }
