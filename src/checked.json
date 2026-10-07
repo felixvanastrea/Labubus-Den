@@ -835,7 +835,7 @@
       "lecture": [
         "Entero-mesenteric ischemia"
       ],
-      "note": "All three chronic features are verbatim on the chronic-form slide; ICU shock is the acute form. Not labelled: a copy of a question already corrected in corrections.json (C280); the lecture check would add an option, left for them to decide so the copies keep one key."
+      "note": "All three chronic features are verbatim on the chronic-form slide; ICU shock is the acute form. Not labelled: a copy of a question already corrected in corrections.json (C280). The optional corrections in corrections.json change this copy and its copies together, so they keep one key."
     },
     "C341": {
       "where": "Professor's questions · Cardio-vascular Q22",
@@ -897,7 +897,7 @@
       "lecture": [
         "Entero-mesenteric ischemia"
       ],
-      "note": "Same as C338 reordered: everything except the ICU shock option. Not labelled: a copy of a question already corrected in corrections.json (C280); the lecture check would add an option, left for them to decide so the copies keep one key."
+      "note": "Same as C338 reordered: everything except the ICU shock option. Not labelled: a copy of a question already corrected in corrections.json (C280). The optional corrections in corrections.json change this copy and its copies together, so they keep one key."
     },
     "C359": {
       "where": "Professor's questions · Cardio-vascular Q40",
@@ -1648,7 +1648,7 @@
       "lecture": [
         "Acute appendicitis"
       ],
-      "note": "Typical RIF pain with fever plus RUQ pain in the subhepatic ectopic form. Not labelled: a copy of a question already corrected in corrections.json (D202); the lecture check would add an option, left for them to decide so the copies keep one key."
+      "note": "Typical RIF pain with fever plus RUQ pain in the subhepatic ectopic form. Not labelled: a copy of a question already corrected in corrections.json (D202). The optional corrections in corrections.json change this copy and its copies together, so they keep one key."
     },
     "D170": {
       "where": "Professor's questions · Digestive Surgical Pathology Q60",
@@ -1896,7 +1896,7 @@
       "lecture": [
         "Acute appendicitis"
       ],
-      "note": "Same as D169 reordered: RIF pain with fever and subhepatic RUQ pain. Not labelled: a copy of a question already corrected in corrections.json (D202); the lecture check would add an option, left for them to decide so the copies keep one key."
+      "note": "Same as D169 reordered: RIF pain with fever and subhepatic RUQ pain. Not labelled: a copy of a question already corrected in corrections.json (D202). The optional corrections in corrections.json change this copy and its copies together, so they keep one key."
     },
     "D210": {
       "where": "Professor's questions · Digestive Surgical Q21",

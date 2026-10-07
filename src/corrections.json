@@ -605,6 +605,60 @@
       "from": "ABC",
       "to": "BC",
       "why": "Lecture check: removes A (Hypercalcemia): p.8 'Important: Serum calcium is normal' in DI [lecture]"
+    },
+    {
+      "q": "D169",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AB",
+      "why": "Optional, revisits the 2026-10-02 fix of D202 and its copies: adds B (right hypochondrium pain in sub-hepatic appendicitis). The highlighted copies mark only right iliac fossa pain with fever, but the appendicitis lecture shows the supramesocolic (sub-hepatic) position among the 'Variations de position' and asks to 'Consider systematically the ectopic forms of acute appendicitis'; the pain follows the appendix, so a sub-hepatic appendix hurts in the right hypochondrium (textbook medicine). [lecture, solid medicine]"
+    },
+    {
+      "q": "D197",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AC",
+      "why": "Optional, same as D169 (copy of D202): adds C (right hypochondrium pain in sub-hepatic appendicitis). The lecture shows the sub-hepatic position and asks to 'Consider systematically the ectopic forms'; a sub-hepatic appendix gives right hypochondrium pain. [lecture, solid medicine]"
+    },
+    {
+      "q": "C338",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "AD",
+      "to": "ACD",
+      "why": "Optional, revisits the 2026-10-02 fix of C280 and its copies: adds C (postprandial pain radiating into the back 15 to 30 minutes after meals). The entero-mesenteric ischemia lecture, chronic form, lists it word for word as one of the 'Two important functional signs': 'Postprandial pain: \"Abdominal angina\" Periumbilical or epigastric cramp radiating into the back Early postprandial pain (15 to 30 minutes) after meals'. [lecture]"
+    },
+    {
+      "q": "C353",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "BCD",
+      "why": "Optional, same as C338 (copy of C280): adds C (postprandial pain radiating into the back 15 to 30 minutes after meals), word for word on the chronic-form slide: 'Periumbilical or epigastric cramp radiating into the back Early postprandial pain (15 to 30 minutes) after meals'. [lecture]"
+    },
+    {
+      "q": "D202",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "D",
+      "to": "AD",
+      "why": "Optional, revisits the 2026-10-02 fix (D, from the highlighted copies): adds A (right hypochondrium pain in sub-hepatic appendicitis), so the three copies (D169, D197, D202) keep one key. Typical right iliac fossa pain with fever, plus right hypochondrium pain in the sub-hepatic ectopic form the lecture asks to consider. [lecture, solid medicine]"
+    },
+    {
+      "q": "C280",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "BCD",
+      "why": "Optional, revisits the 2026-10-02 fix (BD, from the highlighted copies): adds C (postprandial pain radiating into the back 15 to 30 minutes after meals), so the three copies (C280, C338, C353) keep one key. All three chronic features (atheromatous elderly subject, postprandial 'abdominal angina', weight loss from fear of eating) are on the chronic-form slide; acute pain with shock in ICU is the acute form. [lecture]"
     }
   ]
 }
