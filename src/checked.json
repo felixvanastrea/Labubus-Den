@@ -4220,6 +4220,243 @@
         "Cutaneous leishmaniasis"
       ],
       "note": "Depends on a missing map: south/south-east (L. major) means B, D (+/-E); centre/north (L. tropica) means A, C (+/-E)."
+    },
+    "S239": {
+      "where": "Professor's questions Q148",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Varicella slide: 'The site: beginning of the face and scalp, then: extension to the trunk and limbs'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Varicella slide, word for word: 'An acute vesicular eruption at different stages of development'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Epidemiology: 'Varicella (Chickenpox): 1 to 14 years (peak: 5 and 9 years) / sometimes infant or adult'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Conclusion: 'Highly contagious childhood viral disease, often mild'."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick B and D. Missing from the bank: professor's list Q1, only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S240": {
+      "where": "Professor's questions Q149",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Epidemiology: 'sometimes infant or adult (severity)'; pneumonitis: '30% of deaths during adult chickenpox'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Treatment: 'No salicylates (REYE) or NSAIDs (necrotizing fasciitis) ++++'; 'Antipyretics: Paracetamol, no NSAIDs'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Neurological complications: 'Sd of Reye ... Promoted by taking salicylates (aspirin)'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Pregnant woman's form: 'T1: Risk of varicella foetopathy (malformations) / T3: Neonatal varicella'."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick A and C. Missing from the bank: professor's list Q3, only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S241": {
+      "where": "Professor's questions Q150",
+      "label": false,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Zona treatment: 'No salicylates (REYE) or NSAIDs (necrotizing fasciitis)+++++'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Zona complications: 'Ophthalmological: only for ophthalmic zona'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in the lecture; possible after a necrotizing superinfection, but not confirmed."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Zona complications: 'Postherpetic pain ++++'."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick A, B and D; septic shock is not in the lecture, left unticked. Missing from the bank: professor's list Q16, only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S242": {
+      "where": "Professor's questions Q151",
+      "label": false,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "Acitretin is an oral retinoid only."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "textbook",
+          "why": "Isotretinoin exists as oral capsules and as a topical gel."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Topical medications: 'Topical Retinoids ... Adapalene DIFFERINE 0.1 gel, cream applied in the evening'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "textbook",
+          "why": "Oral isotretinoin is teratogenic (pregnancy prevention programme); the lecture also contraindicates topical retinoids in pregnancy."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Oral isotretinoin with a tetracycline is contraindicated (intracranial hypertension), but the lecture itself pairs a topical retinoid with oral antibiotics for moderate acne."
+        }
+      },
+      "lecture": [
+        "Acne"
+      ],
+      "note": "Tick B and D; E is probably meant as true (oral isotretinoin + cyclines) but the lecture combines topical retinoids with oral cyclines, so it is left unticked. Missing from the bank: professor's list Q23 (French list: Acne Q4), only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S243": {
+      "where": "Professor's questions Q152",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "Secondary syphilis gives roseola and papular syphilids, not angiomatous nodules."
+        },
+        "B": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "Cutaneous lymphoma gives infiltrated plaques and nodules, not angiomatous ones."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "textbook",
+          "why": "Angiomatous (vascular) plaques and nodules in a young man with weight loss: Kaposi's disease, HHV8 (the herpes lecture: 'HHV8: Rhadinovirus (Kaposi)')."
+        },
+        "D": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "A drug eruption is not angiomatous and does not explain the weight loss."
+        },
+        "E": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "Urticaria gives fleeting wheals, not nodules."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick C. The lectures only name HHV8 as the Kaposi virus; the answer rests on textbook medicine. Missing from the bank: professor's list, Leishmaniasis Q1, only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S244": {
+      "where": "Professor's questions Q153",
+      "label": false,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Introduction: 'Acne is a common chronic inflammatory skin disease of the pilosebaceous follicle'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Physiopathology: 'Cutibacterium acnes (C. acnes) which normally lives on the skin'; acne is not contagious."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Epidemiology: 'predominates during adolescence and early adulthood', with persistent and late-onset forms after 25: could be read either way."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Conclusion: 'Significant alteration of quality of life'."
+        },
+        "E": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Acne scars: 'Frequent'."
+        }
+      },
+      "lecture": [
+        "Acne"
+      ],
+      "note": "Tick A and D; C is ambiguous, left unticked. Translated from the French (French list: Acne Q22, \"L'acné :\"), only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "S245": {
+      "where": "Professor's questions Q154",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Listed only as a differential diagnosis ('Canker sores, or aphthous ulcers'); aphthae are painful."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Syphilitic chancre: 'Painless', with 'Satellite lymphadenopathy+++ ... Small, hard, mobile, painless'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Listed only as a differential diagnosis ('Chancroid'); the chancroid ulcer is painful."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Listed only as a differential diagnosis ('Carcinomas'); not an acute ulcer."
+        },
+        "E": {
+          "status": "no",
+          "basis": "textbook",
+          "why": "Rare, and the question asks for the diagnosis to suggest first."
+        }
+      },
+      "lecture": [
+        "Syphilis"
+      ],
+      "note": "Tick B. Translated from the French (French list: Syphilis Q6, \"Une ulcération génitale aiguë non douloureuse...\"), only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
     }
   }
 }

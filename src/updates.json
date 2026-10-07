@@ -1,5 +1,22 @@
 [
   {
+    "id": "2026-10-07-derm-professor",
+    "date": "2026-10-07",
+    "title": "Dermatology: 7 more professor’s questions",
+    "questions": [
+      "S239",
+      "S240",
+      "S241",
+      "S242",
+      "S243",
+      "S244",
+      "S245"
+    ],
+    "items": [
+      "Seven questions from the professor’s dermatology list that weren’t on the site yet: varicella, shingles, retinoids, acne, syphilis and Kaposi. Nobody had marked answers for them, so they were answered from the S5 lectures."
+    ]
+  },
+  {
     "id": "2026-10-07-checked",
     "date": "2026-10-07",
     "title": "Answers checked against the lectures",

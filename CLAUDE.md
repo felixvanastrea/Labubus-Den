@@ -69,6 +69,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   question, and textbook medicine. Per question: `key` (the confirmed key), `label`, and per option `status`
   (tick / no / unsure), `basis` and `why`. Unsure options were left as the key had them. Questions already
   corrected in `corrections.json`, and the other copies of two of those fixes, keep no label.
+- It also holds S239–S245: seven professor's dermatology questions that were missing from the bank (in the
+  "Uncorrected All MCQs" doc with no answers marked; two translated from its French list). They went into
+  `bank.json` as `key: "claude"` with a reason note, answered by the same lecture check; the four fully confirmed
+  ones get the label, the three with an unsure option stay Claude-suggested.
 - The answer changes it led to are ordinary fixes in `corrections.json` (`proposed` instead of a `confirmed` date
   until they are reviewed). The build gives a question the "Checked against lecture" label (`key: "checked"`) when
   `label` is true and its key still equals `key`; otherwise it prints why and leaves the label off. Checked

@@ -135,7 +135,7 @@
     "R184": "R-cancer-surgery", "R210": "R-cancer-surgery", "C223": "C-acs", "C321": "C-cpb", "C322": "C-cpb", "C323": "C-cpb",
     "C330": "C-cpb", "C333": "C-cpb", "C371": "C-cpb", "C39": "C-aaa", "C69": "C-aaa", "C71": "C-aaa",
     "C100": "C-aaa", "C102": "C-aaa", "C277": "C-aaa", "C279": "C-aaa", "C331": "C-aaa", "C43": "C-ali",
-    "C99": "C-ali", "C286": "C-ali", "D14": "D-parasites", "S114": "S-bacterial", "E24": "E-thyroiditis", "E39": "E-obesity",
+    "C99": "C-ali", "C286": "C-ali", "D14": "D-parasites", "S114": "S-bacterial", "S243": "S-leish", "E24": "E-thyroiditis", "E39": "E-obesity",
     "E46": "E-t2", "E119": "E-t1", "E120": "E-t1", "E121": "E-t1", "E122": "E-t1", "E123": "E-t1",
     "E124": "E-t1", "E125": "E-t1", "E126": "E-t1", "T3": "T-foundations", "T10": "T-foundations", "T15": "T-foundations",
     "T16": "T-foundations", "T19": "T-foundations", "T24": "T-foundations"
