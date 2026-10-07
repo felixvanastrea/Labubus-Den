@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-07-checked",
+    "date": "2026-10-07",
+    "title": "Answers checked against the lectures",
+    "kind": "Corrections",
+    "items": [
+      "The answers that looked doubtful were checked against the S5 lectures, and the ones that didn’t match were corrected. Checked answers now say “Checked against lecture”."
+    ]
+  },
+  {
     "id": "2026-10-07-resp-midterm",
     "date": "2026-10-07",
     "title": "Respiratory midterm 2026–2027",

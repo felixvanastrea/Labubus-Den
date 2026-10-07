@@ -146,6 +146,465 @@
       "from": "A",
       "to": "AC",
       "why": "Brensocatib (Brinsupri) was approved by the FDA on 12 August 2025 as the first treatment for non-cystic fibrosis bronchiectasis, so the statement is true. Not in the lecture."
+    },
+    {
+      "q": "D113",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ACD",
+      "to": "AC",
+      "why": "Lecture check: removes D (In case of typical symptoms to confirm GERD): 'Upper GI endoscopy: No direct diagnosis'; GERD diagnosis is clinical. [lecture]"
+    },
+    {
+      "q": "D231",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "CD",
+      "to": "C",
+      "why": "Lecture check: removes D (HP infection is not an etiology for the acute gastritis only): Etiologies slide: 'A- Acute H. pylori gastritis'. [lecture]"
+    },
+    {
+      "q": "D20",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "AB",
+      "why": "Lecture check: adds A (TB PCR in ascites fluid.): TB slide 19 table (checked image): 'PCR in ascitic fluid 93'. [lecture]; adds B (Deamidated Adenosin (ADA) >30 UI/l in ascites fluid.): TB slide 19 table: 'ADA Up to 100'. [lecture]; removes C (Tuberculosis skin test.): Slide 19: 'Positive PPD skin test 38'. [lecture]"
+    },
+    {
+      "q": "D163",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "B",
+      "to": "D",
+      "why": "Lecture check: adds D (The evolution is characterized by a 4 stages evolution): Acute hepatitis slides: 'Four Phases: Incubation, Prodromal, Icteric, Convalescence'. [lecture]; removes B (The diagnosis is made by the research of HVA antibodies igG): 'IgM anti-HAV → acute infection. IgG anti-HAV → past infection or vaccination'. [lecture]"
+    },
+    {
+      "q": "D176",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "BC",
+      "why": "Lecture check: adds B (Pancreatic cancer): CP lecture 'Differential diagnosis: Pancreatic cancer'; smoking/alcohol/CP are PDAC risk factors. [lecture]"
+    },
+    {
+      "q": "D26",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "CD",
+      "to": "BCD",
+      "why": "Lecture check: adds B (Progressive dysphagia.): 'Difficulty swallowing => Dysphagia: progressive +++'. [lecture]"
+    },
+    {
+      "q": "D49",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABC",
+      "to": "BCD",
+      "why": "Lecture check: adds D (Diet rich in nitrites and nitrates.): Lecture 'nitrosamines'; nitrate/nitrite-rich diet is the classic precursor-based SCC dietary risk. [solid medicine]; removes A (Gastroesophageal reflux.): GERD listed under 'Adenocarcinoma: Unmanaged acid reflux, GERD'. [lecture]"
+    },
+    {
+      "q": "D37",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AD",
+      "why": "Lecture check: adds D (Clinical examination may reveal a positive McBurney's sign.): 'Abdominal Guarding located at the Mac Burney point +++'. [lecture]"
+    },
+    {
+      "q": "D41",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ACD",
+      "to": "ABCD",
+      "why": "Lecture check: adds B (Anxiety.): 'Patient is anxious'. [lecture]"
+    },
+    {
+      "q": "D143",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AC",
+      "why": "Lecture check: adds C (Late complications may occur such as postoperative incisiona): Incisional hernia after laparotomy; appendicitis slide: 'Late complications: ...post operative incisional hernias'. [solid medicine]"
+    },
+    {
+      "q": "D210",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AB",
+      "why": "Lecture check: adds B (It is a closed sac in males): 'Closed sac in males, open at the ends of fallopian tubes in females'. [lecture]"
+    },
+    {
+      "q": "D142",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "AC",
+      "why": "Lecture check: adds A (Hydatid serology.): 'Hydatid Serology: ++++ ... These two tests constitute the diagnosis'. [lecture]"
+    },
+    {
+      "q": "D185",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "D",
+      "to": "BCD",
+      "why": "Lecture check: adds B (The pleura): 'Rupture into the thorax: Pleural effusion + lower thoracic pain'. [lecture]; adds C (The bronchi): 'Hydatid vomit: Specific sign of a ruptured hydatid cyst into the bronchi'. [lecture]"
+    },
+    {
+      "q": "D196",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AD",
+      "why": "Lecture check: adds D (The adult form lives as saprophyte in the small intestine of): 'living as a saprophyte, attached between the villi of the small intestine of the dog'. [lecture]"
+    },
+    {
+      "q": "S46",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "B",
+      "to": "BD",
+      "why": "Lecture check: adds D (Tinea Capitis): Slide 46: mandatory for 'nail and scalp involvement'. [lecture]"
+    },
+    {
+      "q": "S118",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "B",
+      "to": "C",
+      "why": "Lecture check: adds C (Trichophytic ringworm): Slide 24: 'Small alopecic patches: 0.5-2 cm, short broken hair' - trichophytic. [lecture]; removes B (Scalp psoriasis): Slides 29-30: psoriasis only a differential; does not break hairs. [lecture]"
+    },
+    {
+      "q": "S49",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AC",
+      "why": "Lecture check: adds C (Phtirius inguinalis): Slide 26, under PEDICULOSIS: 'Phtirius inguinalis at the pubis'. [lecture]"
+    },
+    {
+      "q": "S102",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "B",
+      "to": "BD",
+      "why": "Lecture check: adds D (Dyspnea): 'Cough, difficulty breathing' with risk of asphyxia/anaphylaxis. [lecture]"
+    },
+    {
+      "q": "S105",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "D",
+      "to": "BD",
+      "why": "Lecture check: adds B (Is characterized by vesiculobullous lesions with melicoid cr): 'pustules, blisters... forms a classic honey-colored crust' (melicerous crusts). [lecture]"
+    },
+    {
+      "q": "S176",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "CD",
+      "why": "Lecture check: adds D (Can lead to acute post-streptococcal glomerulonephritis): Post-streptococcal glomerulonephritis is a classic complication of streptococcal impetigo. [solid medicine]"
+    },
+    {
+      "q": "S161",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BCDE",
+      "to": "ABCDE",
+      "why": "Lecture check: adds A (Use of cosmetics): Aggravating factors: 'Skin care products such as cosmetics... can clog hair follicles'. [lecture]"
+    },
+    {
+      "q": "S163",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "CD",
+      "to": "BCD",
+      "why": "Lecture check: adds B (Oral retinoids): Oral isotretinoin is the standard treatment of severe acne (lecture: severe acne 'Refer to dermatologist'). [solid medicine]"
+    },
+    {
+      "q": "S165",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BC",
+      "to": "BCDE",
+      "why": "Lecture check: adds D (Nodular acne or acne conglobata): Slide 22, severe forms: '1.Nodular acne'. [lecture]; adds E (Fulminant acne): Slide 24: '3-Acne fulminans or acne maligna'. [lecture]"
+    },
+    {
+      "q": "S19",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABC",
+      "to": "ABCD",
+      "why": "Lecture check: adds D (Is due to reactivation of a latent herpes virus): 'Reactivation of a latent VZV'; VZV listed among the human herpesviruses. [lecture]"
+    },
+    {
+      "q": "S197",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "D",
+      "why": "Lecture check: adds D (Palmoplantar blisters): Palmoplantar bullae (syphilitic pemphigus) are the hallmark of early congenital syphilis. [solid medicine]; removes C (Deafness): Eighth-nerve deafness is a late congenital sign (Hutchinson triad). [solid medicine]"
+    },
+    {
+      "q": "R71",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AB",
+      "why": "Lecture check: adds B (It helps predict postoperative risk): Pre-op slide: 'Predicted Post Op Pulmonary Function FEV1, FVC, DLCO'; ppo-DLCO in risk algorithm. [lecture]"
+    },
+    {
+      "q": "R75",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AB",
+      "why": "Lecture check: adds B (Oncologic outcomes are comparable overall): p36: 'Oncological result identical to open surgery'. [lecture]"
+    },
+    {
+      "q": "R73",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AB",
+      "why": "Lecture check: adds B (Spillage causing secondary seeding): Slide 15: 'Cyst rupture with dissemination'; slide 69 'Dissemination: Secondary cysts'. [lecture]"
+    },
+    {
+      "q": "R17",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "AC",
+      "why": "Lecture check: adds A (A fever at 39-40°C.): TB infection lecture, typhoid-like form of Landouzy: 'Fever at 39-40°C'. [lecture]"
+    },
+    {
+      "q": "R205",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABD",
+      "to": "AB",
+      "why": "Lecture check: removes D (Long-term oral corticosteroid treatment is indicated for fre): Long-term oral corticosteroids are not indicated in stable COPD; lecture uses them only in exacerbations. [solid medicine]"
+    },
+    {
+      "q": "C27",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BC",
+      "to": "AC",
+      "why": "Lecture check: adds A (ST segment depression.): ACS slide 66 NSTEMI patterns: 'ST depression'. [lecture]; removes B (Pathological Q waves at presentation.): Slide 6: Q-wave MI is the former name of STEMI. [lecture]"
+    },
+    {
+      "q": "C226",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "CD",
+      "to": "BCD",
+      "why": "Lecture check: adds B (anticoagulation should be given to everybody): ESC: parenteral anticoagulation for all ACS at diagnosis; slide 96 'Treatment includes ... anticoagulants'. [solid medicine]"
+    },
+    {
+      "q": "C238",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BC",
+      "to": "BCD",
+      "why": "Lecture check: adds D (Anticoagulation): Slide 96: 'Treatment includes antiplatelet drugs, anticoagulants, nitrates...'. [lecture]"
+    },
+    {
+      "q": "C288",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "A",
+      "to": "AD",
+      "why": "Lecture check: adds D (prolonged epigastric pain can be a feature of STE ACS): Prolonged epigastric pain is a classic (inferior) STEMI presentation; slide 18 atypical pain. [solid medicine]"
+    },
+    {
+      "q": "C361",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "C",
+      "to": "AC",
+      "why": "Lecture check: adds A (an electrocardiogram (ECG)): Slide 21: 'ECG: key diagnosis ... In only 10 min from the first medical contact!' [lecture]"
+    },
+    {
+      "q": "C378",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "D",
+      "to": "AD",
+      "why": "Lecture check: adds A (an electrocardiogram (ECG)): Slide 21: ECG within 10 min of first medical contact. [lecture]"
+    },
+    {
+      "q": "C286",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "ABD",
+      "why": "Lecture check: adds A (May be related to heart valve disease such as mitral valve s): Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'. [lecture]"
+    },
+    {
+      "q": "C341",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "ABD",
+      "why": "Lecture check: adds A (May be related to heart valve disease such as mitral valve s): Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'. [lecture]"
+    },
+    {
+      "q": "C359",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "ABD",
+      "why": "Lecture check: adds A (May be related to heart valve disease such as mitral valve s): Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'. [lecture]"
+    },
+    {
+      "q": "C36",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BC",
+      "to": "B",
+      "why": "Lecture check: removes C (There is a desire for pregnancy.): p34: 'Desire for pregnancy' listed under BIOLOGICAL VALVE. [lecture]"
+    },
+    {
+      "q": "C41",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "D",
+      "to": "BD",
+      "why": "Lecture check: adds B (A thromboembolic event.): Valve Surgery p32: 'Thromboembolic events: 1.3 % patient-years'. [lecture]"
+    },
+    {
+      "q": "C190",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BD",
+      "to": "D",
+      "why": "Lecture check: removes B (Orthopnea): MS slide 10: 'Pulmonary Congestiv/oedema: Orthopnea'. [lecture]"
+    },
+    {
+      "q": "C314",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABC",
+      "to": "ABCD",
+      "why": "Lecture check: adds D (Mucocutaneous purpura): Slide 21 'Petechial rash', subconjunctival haemorrhage; mucocutaneous purpura is classic IE. [solid medicine]"
+    },
+    {
+      "q": "C318",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABD",
+      "to": "ABCD",
+      "why": "Lecture check: adds C (Heart failure): Slide 39: 'HEART FAILURE: Main and Serious complication'. [lecture]"
+    },
+    {
+      "q": "E46",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "B",
+      "to": "BD",
+      "why": "Lecture check: adds D (HbA1c around 8%.): p.3: 'HbA1c < 8% in patients with severe hypoglycemia... long-standing diabetes' [lecture]"
+    },
+    {
+      "q": "E164",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "AC",
+      "to": "ABC",
+      "why": "Lecture check: adds B (Frequent severe hyperglycemia at diagnosis): T1D features: 'Marked hyperglycemia with positive ketones'; abrupt onset [lecture]"
+    },
+    {
+      "q": "E156",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABC",
+      "to": "ABD",
+      "why": "Lecture check: adds D (Chronic fatigue): p.9-10: 'Fatigue, depression…' [lecture]; removes C (Muscle mass gain): p.9: 'Loss muscle mass and strength' [lecture]"
+    },
+    {
+      "q": "E36",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "AD",
+      "to": "D",
+      "why": "Lecture check: removes A (Radiotherapy.): p.52: 'First-line medical treatment+++: Cabergoline' [lecture]"
+    },
+    {
+      "q": "E145",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "CD",
+      "to": "C",
+      "why": "Lecture check: removes D (Acrofacial dysmorphism): Dysmorphism belongs to 'Somatotropic hypersecretion syndrome', not tumor syndrome [lecture]"
+    },
+    {
+      "q": "E170",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "BC",
+      "to": "ABC",
+      "why": "Lecture check: adds A (Pegvisomant): Pegvisomant is a GH-receptor antagonist used in acromegaly (not in lecture) [solid medicine]"
+    },
+    {
+      "q": "E66",
+      "confirmed": null,
+      "proposed": "2026-10-07, lecture check",
+      "field": "answer",
+      "from": "ABC",
+      "to": "BC",
+      "why": "Lecture check: removes A (Hypercalcemia): p.8 'Important: Serum calcium is normal' in DI [lecture]"
     }
   ]
 }
