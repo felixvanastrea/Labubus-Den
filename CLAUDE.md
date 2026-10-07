@@ -243,8 +243,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   across devices) and can be reread from the account sheet. So far: Amro (the most questions done) and Zeineb (among the
   most), 7 October 2026, the Blood moon. To add one: an entry with a new `id`, `to` (the canon key), `looks`, `date`, `title`, `lines`.
   `lines: []` is a gift with no message ("A gift from the Labubu", no signature). `held: true` = written, not sent: no one
-  gets it until Abi says so. Waiting: Nada, the Golden phase, no message (Abi's wish). She has no account yet; when Abi
-  says send, check the name Nada took (if it isn't "Nada", change `to`), remove `held`, set `date` to that day.
+  gets it until Abi says so. Sent 7 October 2026: Nada ("étoile filante" on the Den, `to: 'etoilefilante'`), the Golden
+  phase, no message (Abi's wish).
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first
