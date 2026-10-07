@@ -4088,8 +4088,8 @@
   const UPD_QS = new Map();
   function updateQs(u) {
     if (!UPD_QS.has(u.id)) {
-      const sets = new Set(u.sets || []), single = new Set(u.q || []);
-      UPD_QS.set(u.id, BANK.questions.filter(q => sets.has(q.source) || single.has(q.id)));
+      const sets = new Set(u.sets || []), single = new Set(u.q || []), skip = new Set(u.x || []);
+      UPD_QS.set(u.id, BANK.questions.filter(q => (sets.has(q.source) && !skip.has(q.id)) || single.has(q.id)));
     }
     return UPD_QS.get(u.id);
   }

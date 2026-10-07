@@ -73,8 +73,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   "Uncorrected All MCQs" doc with no answers marked; two translated from its French list). They went into
   `bank.json` as `key: "claude"` with a reason note, answered by the same lecture check; the four fully confirmed
   ones get the label, the three with an unsure option stay Claude-suggested.
-- The answer changes it led to are ordinary fixes in `corrections.json` (`proposed` instead of a `confirmed` date
-  until they are reviewed). The build gives a question the "Checked against lecture" label (`key: "checked"`) when
+- The answer changes it led to are ordinary fixes in `corrections.json`. Abi confirmed all of them, the 9 the slides don't
+  settle included, on 7 October 2026 (a classmate's patch, reviewed against her decks), with R225 aligned to R17. The build gives a question the "Checked against lecture" label (`key: "checked"`) when
   `label` is true and its key still equals `key`; otherwise it prints why and leaves the label off. Checked
   Claude-suggested answers lose Claude's reasoning note. Nothing else from the file is shown.
 
@@ -368,6 +368,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   hosting or design changes in it. Returning visitors then see "+N new" on the question count at the top of the homepage until they
   open the log; the log has a button to practise an entry's questions (up to 300).
 - First-time visitors start with nothing marked new (`S.seenUpdate` is set to the newest entry).
+- Questions an entry brings one by one (`questions`) into an older set count for that entry only: older entries list
+  them in `x` and leave them out (the 7 professor's dermatology questions of 7 October 2026).
 
 ## Data notes
 
