@@ -20,6 +20,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
    - `bank.json`: questions, answers, notes; `repeats.json`: repeated-question clusters
    - `concepts.py`: topic dictionary and tagger for search; `search_extra.py`: extra search-only aliases
    - `corrections.json`: doc mistakes Abi confirmed; `feedback.json`: the Google Form behind the feedback buttons
+   - `checked.json`: answers checked against the lectures, with the evidence per option (see below)
    - `explanations.json`: why each proposition is right or wrong, from Abi's lecture summaries
    - `lectures.json`: each module's lectures in course order and which questions belong to each (see Lectures)
    - `constellations.py`: finds copies of a question with the same propositions (used by the quest)
@@ -60,6 +61,18 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the current key when the page loads, so old results follow a corrected key.
 - Reports from classmates arrive through the feedback form (below). Treat them the same way: check the
   question, show Abi what you found, and wait for her answer.
+
+## Answers checked against the lectures
+
+- `src/checked.json` (October 2026): 131 student-proposed or Claude-suggested keys that looked
+  wrong or doubtful, checked option by option against the S5 lecture slides, official keys on copies of the same
+  question, and textbook medicine. Per question: `key` (the confirmed key), `label`, and per option `status`
+  (tick / no / unsure), `basis` and `why`. Unsure options were left as the key had them. Questions already
+  corrected in `corrections.json`, and the other copies of two of those fixes, keep no label.
+- The answer changes it led to are ordinary fixes in `corrections.json` (`proposed` instead of a `confirmed` date
+  until they are reviewed). The build gives a question the "Checked against lecture" label (`key: "checked"`) when
+  `label` is true and its key still equals `key`; otherwise it prints why and leaves the label off. Checked
+  Claude-suggested answers lose Claude's reasoning note. Nothing else from the file is shown.
 
 ## Feedback
 
@@ -355,7 +368,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Data notes
 
 - Question fields: `id`, `topic`, `source` (exam set), `n`, `stem`, `options` (HTML), `answer` (option indices),
-  `key` (official / proposed / claude / none), `qNotes`, `optNotes`, `notes`, `case`, `stemImgs`, `twinOf`, `flag`.
+  `key` (official / checked / proposed / claude / none), `qNotes`, `optNotes`, `notes`, `case`, `stemImgs`, `twinOf`, `flag`.
   The build adds `sid` (short id like `R244`), `c` (topic concepts), `a` (aspect), `rep` (repeat cluster) and `dupOf`,
   after applying `corrections.json`.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.

@@ -136,7 +136,7 @@ def find(bank, clusters):
     cases = {c['id']: c['html'] for c in bank.get('cases', [])}
     types = bank['types']
     src_rank = {s['id']: (types.index(s['type']) if s['type'] in types else 99, i) for i, s in enumerate(bank['sources'])}
-    key_rank = {'official': 0, 'proposed': 1, 'claude': 2, 'none': 3}
+    key_rank = {'official': 0, 'checked': 1, 'proposed': 1, 'claude': 2, 'none': 3}
     # a set added after the first build ("added": its date) never takes the lead from an older question: the lead is
     # the canonical id everyone's progress hangs on (clean tries, comets, class stats), so it must not move
     added = {s['id']: s.get('added', '') for s in bank['sources']}

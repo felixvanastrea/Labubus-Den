@@ -81,6 +81,7 @@ a.btn { text-decoration: none; font-style: normal; }
 }
 .key .n { opacity: .75; font-variant-numeric: tabular-nums; }
 .key.official { color: var(--k-official); border-color: var(--k-official-line); }
+.key.checked { color: var(--k-checked); border-color: var(--k-checked-line); }
 .key.proposed { color: var(--k-proposed); border-color: var(--k-proposed-line); }
 .key.claude { color: var(--k-claude); border-color: var(--k-claude-line); }
 .key.none { color: var(--k-none); border-color: var(--k-none-line); }
@@ -1283,8 +1284,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
   --sel-wash: rgba(168, 58, 38, .07); --glow-soft: rgba(168, 58, 38, .13); --glow-mid: rgba(168, 58, 38, .26);
   --right: #3b7042; --wrong: #a3281a; --half: #93680f;
   --right-wash: rgba(59, 112, 66, .1); --wrong-wash: rgba(163, 40, 26, .08); --half-wash: rgba(147, 104, 15, .1);
-  --k-official: #57418f; --k-proposed: #3b7042; --k-claude: #8a5f0c; --k-none: #6b5d48;
-  --k-official-line: rgba(87, 65, 143, .45); --k-proposed-line: rgba(59, 112, 66, .45); --k-claude-line: rgba(138, 95, 12, .45);
+  --k-official: #57418f; --k-checked: #2c6a70; --k-proposed: #3b7042; --k-claude: #8a5f0c; --k-none: #6b5d48;
+  --k-official-line: rgba(87, 65, 143, .45); --k-checked-line: rgba(44, 106, 112, .45); --k-proposed-line: rgba(59, 112, 66, .45); --k-claude-line: rgba(138, 95, 12, .45);
   --k-none-line: rgba(107, 93, 72, .45); --k-flag-line: rgba(163, 40, 26, .45);
   --shade: rgba(60, 35, 10, .2); --rubric: #a83a26;
   color: var(--ink);

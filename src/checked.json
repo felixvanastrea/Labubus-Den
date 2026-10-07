@@ -1,0 +1,4225 @@
+{
+  "about": "Answers checked against the S5 2025-2026 lectures (October 2026). Each question lists, per option, tick / no / unsure and the basis: the lecture (title and slide), an official key on a copy of the same question, or textbook medicine. Unsure options were left as the key had them. The build shows the \"Checked against lecture\" label only when every ticked option is confirmed (label: true). Nothing here is shown on the site: it is for the maintainer.",
+  "questions": {
+    "C18": {
+      "where": "Finals 2025–2026 Q18",
+      "label": false,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "ECG image missing; rhythm cannot be identified."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "ECG image missing; rhythm cannot be identified."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "ECG image missing; rhythm cannot be identified."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "ECG image missing; students recall flutter but unverifiable."
+        }
+      },
+      "lecture": [],
+      "note": "The tracing is missing, so nothing can be verified; read the ECG on the day (students remember atrial flutter)."
+    },
+    "C27": {
+      "where": "Finals 2025–2026 Q27",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "ACS slide 66 NSTEMI patterns: 'ST depression'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 6: Q-wave MI is the former name of STEMI."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 66 'Negative T wave'; slide 70 'ondes T négatives'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Persistent ST elevation in two leads defines STEMI (slide 35)."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "NSTEMI = ST depression and negative T waves; Q waves and contiguous ST elevation belong to STEMI."
+    },
+    "C36": {
+      "where": "Finals 2025–2026 Q36",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Valve Surgery p34: age > 70 listed under BIOLOGICAL VALVE."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p34 MECHANICAL VALVE: '- Patient choice'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p34: 'Desire for pregnancy' listed under BIOLOGICAL VALVE."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p34: 'Contraindication to anticoagulants' listed under BIOLOGICAL VALVE."
+        }
+      },
+      "lecture": [
+        "Heart valve surgery"
+      ],
+      "note": "Only patient choice favours a mechanical valve; the other three favour a bioprosthesis."
+    },
+    "C41": {
+      "where": "Finals 2025–2026 Q41",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Aortic dissection is not a mitral prosthesis complication; absent from p32 list."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Valve Surgery p32: 'Thromboembolic events: 1.3 % patient-years'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Aortic aneurysm unrelated to a mitral prosthesis; absent from p32 list."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p32: 'Endocarditis : 0.8% /year'."
+        }
+      },
+      "lecture": [
+        "Heart valve surgery"
+      ],
+      "note": "Thromboembolism and endocarditis are the listed mechanical-prosthesis complications."
+    },
+    "C47": {
+      "where": "Finals 2025–2026 Q47",
+      "label": false,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "Thoracic Aorta Surgery p28 'largest diameter > 55 mm measured on CT or MRI'; keyed true in C326/C339."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Threshold is >55 mm, not <40 mm."
+        },
+        "C": {
+          "status": "no",
+          "basis": "official key",
+          "why": "'Asymptomatic mild aortic stenosis' keyed false in C326, C339, C346, C365."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture says 'history of systemic embolism', not 'stroke'; rewording may not be accepted."
+        }
+      },
+      "lecture": [
+        "Thoracic aorta surgery"
+      ],
+      "note": "Tick the >55 mm diameter; 'history of stroke' is probably a reworded 'systemic embolism' but is not certain."
+    },
+    "C51": {
+      "where": "Mock 2025–2026 Q1",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HTN slide 24 secondary causes: 'hyperthyroidism, hypothyroidism'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HTN slide 24: 'coarctation of the aorta'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Aortic stenosis does not cause hypertension; absent from slide 24 list."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 25 image shows atherosclerotic renovascular HTN, but slide 35 lists atherosclerosis as an HTN complication."
+        }
+      },
+      "lecture": [
+        "Hypertension"
+      ],
+      "note": "Dysthyroidism and coarctation are certain; atherosclerosis could be counted either way."
+    },
+    "C190": {
+      "where": "In-class questions (Nazi) Q80",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "official key",
+          "why": "C124 keys palpitations as associated with MS; MS slide 10 'Palpitations ... AF'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "MS slide 10: 'Pulmonary Congestiv/oedema: Orthopnea'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "official key",
+          "why": "C124/C78 key hemoptysis as associated with MS."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "C124 and C78 key syncope as NOT associated with MS."
+        }
+      },
+      "lecture": [
+        "Mitral stenosis"
+      ],
+      "note": "Negative question: only syncope is not a mitral stenosis symptom."
+    },
+    "C193": {
+      "where": "In-class questions (Nazi) Q83",
+      "label": true,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "ARF slide 12: carditis 'Designed as Pancarditis (endocarditis, myocarditis and pericarditis)'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ARF slide 11: 'Arthritis is self-limiting'; not chronic."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Stroke not in ARF lecture; belongs to chronic rheumatic valve disease/AF."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ARF is 'non suppurative'; skin infection is not a complication."
+        }
+      },
+      "lecture": [
+        "Acute rheumatic fever"
+      ],
+      "note": "Pancarditis is the certain answer; stroke is a late complication of rheumatic valve disease, not clearly of ARF itself."
+    },
+    "C198": {
+      "where": "In-class questions (Nazi) Q88",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "C113 keys chorea as a major criterion."
+        },
+        "B": {
+          "status": "no",
+          "basis": "official key",
+          "why": "C91 keys migratory polyarthralgia as NOT a major Jones criterion."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "C113 keys erythema marginatum as a major criterion."
+        },
+        "D": {
+          "status": "no",
+          "basis": "official key",
+          "why": "Falls because polyarthralgia is not major (C91)."
+        }
+      },
+      "lecture": [
+        "Acute rheumatic fever"
+      ],
+      "note": "This course counts arthralgia as minor, so 'all of the above' is wrong. Not labelled: already corrected in corrections.json."
+    },
+    "C217": {
+      "where": "Professor's questions · Cardiac disease Q18",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Type 1 vs type 2 MI is mechanism (plaque vs supply/demand), not ECG."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 28 table: 'DII, DIII, VF Inférieur CD ou circonflexe dominante'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "ESC 0h/3h rule-out supports it, but lecture silent and troponin cannot exclude unstable angina."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Fibrinolysis is not used in NSTEMI; very-high-risk means immediate invasive strategy (slide 74)."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "Inferior ST elevation = right coronary is certain; the troponin rule-out statement is probably true but not taught."
+    },
+    "C224": {
+      "where": "Professor's questions · Cardiac disease Q25",
+      "label": true,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Premature CVD deaths linked to socioeconomic factors is well-established epidemiology."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ARF slide 27: 'public health issue in developing countries ... leading cause of valvulopathies'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in lectures; women/men CVD mortality comparison is professor-specific."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Ischemic heart disease remains the leading CVD cause and is not stable."
+        }
+      },
+      "lecture": [
+        "Acute rheumatic fever"
+      ],
+      "note": "Only the socioeconomic statement is safe; the women-vs-men mortality claim is not taught anywhere."
+    },
+    "C226": {
+      "where": "Professor's questions · Cardiac disease Q27",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Beta-blockers contraindicated in shock/acute HF/bradycardia; lecture lists them only as secondary prevention."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "ESC: parenteral anticoagulation for all ACS at diagnosis; slide 96 'Treatment includes ... anticoagulants'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 78: aspirin 'recommended for all patients without contraindications'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 78: P2Y12 inhibitor 'recommended in addition to aspirin ... 12 months'."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "Every ACS gets aspirin, a P2Y12 inhibitor and acute anticoagulation; beta-blockers are not for everyone."
+    },
+    "C234": {
+      "where": "Professor's questions · Cardiac disease Q35",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Ischemic heart disease remains the leading CVD cause; stroke did not overtake it."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in lectures; women/men CVD mortality comparison is professor-specific."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Premature CVD deaths linked to socioeconomic factors is well-established epidemiology."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ARF slide 27: rheumatic disease still a 'public health issue in developing countries'."
+        }
+      },
+      "lecture": [
+        "Acute rheumatic fever"
+      ],
+      "note": "Same as C224 reordered: only the socioeconomic statement is safe."
+    },
+    "C238": {
+      "where": "Professor's questions · Cardiac disease Q39",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "'To everybody' is false: contraindicated in shock, acute HF, bradycardia."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 47/78: 'L'Aspirine et l'inhibiteur de la P2Y12!!!'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 78: aspirin for all patients without contraindication."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 96: 'Treatment includes antiplatelet drugs, anticoagulants, nitrates...'."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "Same as C226: aspirin, P2Y12 inhibitor and anticoagulation; not beta-blockers for everybody."
+    },
+    "C239": {
+      "where": "Professor's questions · Cardiac disease Q40",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture gives monotherapy for native strep/staph IE, but 'in vitro' reasoning is a classic trap."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "IE slide 45: 'Adapted ATB parenterally for 4-6 weeks'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 18: 'Right IE ... multiple septic lungs (drug addicts)'; slide 36 septic pulmonary emboli."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture says 'Streptococcus viridans (most common)', but modern data favour staphylococci; examiner intent unclear."
+        }
+      },
+      "lecture": [
+        "Infective endocarditis"
+      ],
+      "note": "Septic lung lesions in drug users is safe; the staph-vs-strep option conflicts between lecture and current data."
+    },
+    "C246": {
+      "where": "Professor's questions · Cardiac disease Q47",
+      "label": false,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Congenital p33 VSD: 'Naturally L to R shunt'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Congenital p19 ASD: 'Naturally L to R shunt (higher BP in LA)'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "PDA section: signs depend on 'the Left to Right shunt'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Coarctation is obstructive: 'significant afterload on the LV', no shunt."
+        }
+      },
+      "lecture": [
+        "Congenital heart disease",
+        "Congenital heart disease surgery"
+      ],
+      "note": "VSD, ASD and PDA are left-to-right shunts; coarctation is an obstruction. Not labelled: already corrected in corrections.json."
+    },
+    "C250": {
+      "where": "Professor's questions · Cardiac disease Q51",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "MS slide 10: 'Rarely: chest pain'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "True only if it means pulmonary hypertension; systemic HTN keyed false in C120."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "MS slide 9: 'Enlargement and High pressure in LA'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "official key",
+          "why": "C120/C125 key 'Left ventricle enlargement' false for mitral stenosis."
+        }
+      },
+      "lecture": [
+        "Mitral stenosis"
+      ],
+      "note": "LA enlargement is certain; 'Hypertension' is probably pulmonary hypertension with a word dropped, but that is a guess."
+    },
+    "C266": {
+      "where": "Professor's questions · Cardiac disease Q67",
+      "label": true,
+      "key": "CD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Aortic stenosis does not cause hypertension; absent from slide 24 list."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Atherosclerotic renal artery stenosis vs atherosclerosis as HTN complication (slide 35); ambiguous."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HTN slide 24: 'hyperthyroidism, hypothyroidism'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HTN slide 24: 'coarctation of the aorta'."
+        }
+      },
+      "lecture": [
+        "Hypertension"
+      ],
+      "note": "Same as C51 reordered: tick dysthyroidism and coarctation, leave atherosclerosis."
+    },
+    "C274": {
+      "where": "Professor's questions · Cardiac disease Q75",
+      "label": false,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "Same item C53 (key AB) and C149 (key CD) mark cordage rupture after MI true."
+        },
+        "B": {
+          "status": "no",
+          "basis": "official key",
+          "why": "Diastolic murmur keyed false in C53/C149."
+        },
+        "C": {
+          "status": "no",
+          "basis": "official key",
+          "why": "Keyed false in C53/C149; MR slide 6 lists mitral valve prolapse as cause."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "official key",
+          "why": "C53/C149 key pansystolic apical murmur true; MR slide 14."
+        }
+      },
+      "lecture": [
+        "Mitral regurgitation"
+      ],
+      "note": "Faculty keys of the same question give AD. Not labelled: already corrected in corrections.json."
+    },
+    "C286": {
+      "where": "Professor's questions · Cardiac disease Q87",
+      "label": true,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p9 cardiac causes 'Arrhythmias'; p31 'Rhythm disorders (FA)'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p17: 'THE PRE OPERATIVE ASSESSMENT SHOULD IN NO CASE DELAY THERAPEUTIC MANAGEMENT'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p34: embolism on healthy arteries, 'Fogarty catheter embolectomy: treatment of choice'."
+        }
+      },
+      "lecture": [
+        "Acute limb ischemia"
+      ],
+      "note": "Mitral valve disease and AF both cause limb emboli; it is an emergency treated by Fogarty embolectomy without delaying work-up."
+    },
+    "C287": {
+      "where": "Professor's questions · Cardiac disease Q88",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Routine angiography after lysis is recommended; 'always' and 'primary' make wording ambiguous."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 40: PCI delay >120 min means fibrinolysis strategy."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Rescue PCI complements lysis, but that is not 'primary' angioplasty; lecture silent."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Classic teaching: in first hours lysis equals PCI; slide 42 lysis 'most effective before 3 hours'."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "Only the golden-hour equivalence is safe; the post-lysis options depend on how the examiner reads 'primary'."
+    },
+    "C288": {
+      "where": "Professor's questions · Cardiac disease Q89",
+      "label": true,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 32: 'We will not wait for the troponin results to make the diagnosis!'; ECG key."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 32: 'Treatment should not be delayed!'"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 16: 'Prolonged more than 20 minutes ... Trinitro resistant'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Prolonged epigastric pain is a classic (inferior) STEMI presentation; slide 18 atypical pain."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "STEMI is diagnosed on clinic + ECG without waiting for troponin, and can present as epigastric pain."
+    },
+    "C311": {
+      "where": "Professor's questions · Cardiac disease Q112",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Salt-free diet is treatment (slide 34); trigger is 'Non-adherance to treatment or diet'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HF slide 30: 'Infection: particularly pulmonary'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture says infection generally, 'particularly pulmonary'; GI infection only by extension."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HF slide 30: 'Rhythm or conduction disorders: AF++++'."
+        }
+      },
+      "lecture": [
+        "Chronic heart failure"
+      ],
+      "note": "Pulmonary infection and AF are safe; GI infection is arguable and may be the intended distractor."
+    },
+    "C314": {
+      "where": "Professor's questions · Cardiac disease Q115",
+      "label": true,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "IE slide 19: 'Fever = major symptom ... anorexia, weight loss, fatigue'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 19: 'Splenomegaly: 20 to 40% of cases'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 20: 'Janway lesions'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Slide 21 'Petechial rash', subconjunctival haemorrhage; mucocutaneous purpura is classic IE."
+        }
+      },
+      "lecture": [
+        "Infective endocarditis"
+      ],
+      "note": "All four are recognised manifestations of infective endocarditis."
+    },
+    "C316": {
+      "where": "Professor's questions · Cardiac disease Q117",
+      "label": true,
+      "key": "ACD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "IE slide 17: 'DENTAL +++: extraction, Scaling, brushing'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 17 says 'DIGESTIVE' generically; fibroscopy itself not named and prophylaxis not recommended."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 17: 'CUTANEOUS: infectious wounds, dermatitis'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 17: 'Others: ORL, urinary, genital'; purulent otitis is an ENT infection."
+        }
+      },
+      "lecture": [
+        "Infective endocarditis"
+      ],
+      "note": "Dental, skin and ENT portals are listed; digestive endoscopy is defensible but not certain."
+    },
+    "C318": {
+      "where": "Professor's questions · Cardiac disease Q119",
+      "label": true,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "IE slide 11: 'Perforation or disruption of chordea'; slide 32 perforation."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 39: 'Perivalvular abcsesses: Major complication'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 39: 'HEART FAILURE: Main and Serious complication'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 41: 'EMBOLIC CEREBRAL INFARCTS'."
+        }
+      },
+      "lecture": [
+        "Infective endocarditis"
+      ],
+      "note": "All four are listed consequences of infective endocarditis."
+    },
+    "C338": {
+      "where": "Professor's questions · Cardio-vascular Q19",
+      "label": false,
+      "key": "ACD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Mesenteric ischemia p20: 'Significant weight loss due to fear of eating'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ICU/shock context describes acute non-occlusive ischemia (p17), not chronic."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p20: 'cramp radiating into the back Early postprandial pain (15 to 30 minutes)'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p20: '- Elderly subject - Atheromatous context'."
+        }
+      },
+      "lecture": [
+        "Entero-mesenteric ischemia"
+      ],
+      "note": "All three chronic features are verbatim on the chronic-form slide; ICU shock is the acute form. Not labelled: a copy of a question already corrected in corrections.json (C280); the lecture check would add an option, left for them to decide so the copies keep one key."
+    },
+    "C341": {
+      "where": "Professor's questions · Cardio-vascular Q22",
+      "label": true,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p9 cardiac causes 'Arrhythmias'; p31 'Rhythm disorders (FA)'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p17: pre-operative assessment 'SHOULD IN NO CASE DELAY THERAPEUTIC MANAGEMENT'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p34: 'Fogarty catheter embolectomy: treatment of choice'."
+        }
+      },
+      "lecture": [
+        "Acute limb ischemia"
+      ],
+      "note": "Same as C286: ABD."
+    },
+    "C353": {
+      "where": "Professor's questions · Cardio-vascular Q34",
+      "label": false,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ICU/shock context describes acute non-occlusive ischemia (p17), not chronic."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p20: '- Elderly subject - Atheromatous context'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p20: 'cramp radiating into the back Early postprandial pain (15 to 30 minutes)'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p20: 'Significant weight loss due to fear of eating'."
+        }
+      },
+      "lecture": [
+        "Entero-mesenteric ischemia"
+      ],
+      "note": "Same as C338 reordered: everything except the ICU shock option. Not labelled: a copy of a question already corrected in corrections.json (C280); the lecture check would add an option, left for them to decide so the copies keep one key."
+    },
+    "C359": {
+      "where": "Professor's questions · Cardio-vascular Q40",
+      "label": true,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Acute Limb Ischemia p9 cardiac emboli: 'Valve diseases'; p31 'Mostly mitral valve diseases'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p9 cardiac causes 'Arrhythmias'; p31 'Rhythm disorders (FA)'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p17: pre-operative assessment 'SHOULD IN NO CASE DELAY THERAPEUTIC MANAGEMENT'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p34: 'Fogarty catheter embolectomy: treatment of choice'."
+        }
+      },
+      "lecture": [
+        "Acute limb ischemia"
+      ],
+      "note": "Same as C286: ABD."
+    },
+    "C361": {
+      "where": "Professor's questions · Cardio-vascular Q42",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 21: 'ECG: key diagnosis ... In only 10 min from the first medical contact!'"
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Cardiac MRI is a later test (MINOCA), not admission work-up; stem says two answers."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 71 biological assessment: 'Troponins'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "CT thorax not routine admission work-up; stem says only two right answers."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "ECG plus troponin; the stem itself says two answers."
+    },
+    "C378": {
+      "where": "Professor's questions · Cardio-vascular Q59",
+      "label": true,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 21: ECG within 10 min of first medical contact."
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Cardiac MRI not admission work-up (C361 twin: two answers)."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "CT thorax not routine admission work-up (C361 twin)."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 71 biological assessment: 'Troponins'."
+        }
+      },
+      "lecture": [
+        "Acute coronary syndromes"
+      ],
+      "note": "Same as C361: ECG plus troponin."
+    },
+    "D7": {
+      "where": "Finals 2025–2026 Q7",
+      "label": false,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Anti-HBs are the protective antibodies; Lancet reading: 'protective anti-HBs levels (≥10 mIU/mL)'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Course slides silent on immunocompromised; >100 target taught in some guidelines, not others."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "No guideline uses 5 IU/L as a protective threshold."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "≥10 is the general threshold (Lancet); immunocompromised-specific target may be >100 in course."
+        }
+      },
+      "lecture": [
+        "Hepatitis-B Lancet 2023 (vaccination section)"
+      ],
+      "note": "The course never states the immunocompromised threshold; it is either >10 or >100, so nothing is safe to tick."
+    },
+    "D13": {
+      "where": "Finals 2025–2026 Q13",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Gluten is not a GERD risk factor; absent from lecture table."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "GERD table p8: 'Overweight Obesity'; official D79 also keys obesity."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in lecture table; raised abdominal pressure argument makes it debatable."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "GERD table p8: 'Medication Calcium channel blockers'."
+        }
+      },
+      "lecture": [
+        "Gastroesophageal reflux disease"
+      ],
+      "note": "Obesity and calcium channel blockers are in the lecture table; weight lifting is not listed but may be intended."
+    },
+    "D20": {
+      "where": "Finals 2025–2026 Q20",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "TB slide 19 table (checked image): 'PCR in ascitic fluid 93'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "TB slide 19 table: 'ADA Up to 100'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 19: 'Positive PPD skin test 38'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 19: 'Culture 35'."
+        }
+      },
+      "lecture": [
+        "Digestive tuberculosis"
+      ],
+      "note": "The course sensitivity table gives PCR 93% and ADA up to 100%, versus 38% and 35% for skin test and culture."
+    },
+    "D25": {
+      "where": "Finals 2025–2026 Q25",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture names only breath test for control; PCR not usual but not explicitly excluded."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists stool Ag for diagnosis only; guidelines accept it for test-of-cure."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Eradication control: Urea breath test after 4 weeks'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Serology stays positive after eradication; never used for control."
+        }
+      },
+      "lecture": [
+        "Acute and chronic gastritis"
+      ],
+      "note": "Only the urea breath test is named for eradication control in the course; stool antigen is guideline-valid but not in the slides."
+    },
+    "D26": {
+      "where": "Finals 2025–2026 Q26",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Not in 'Symptoms to be on the lookout for' list."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Difficulty swallowing => Dysphagia: progressive +++'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Inquire about warning symptoms: 1.(Progressive) dysphagia 2.Unexplained weight loss 3.Odynophagia'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Weight loss or loss of appetite' verbatim."
+        }
+      },
+      "lecture": [
+        "Esophageal cancer"
+      ],
+      "note": "Progressive dysphagia, odynophagia and weight loss are all listed warning symptoms; the site key wrongly omits dysphagia."
+    },
+    "D37": {
+      "where": "Finals 2025–2026 Q37",
+      "label": true,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Heel drop test: best predictive value for peritoneal irritation'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'the general condition is often preserved'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Fever: 37.8 to 38.5 ˚C'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Abdominal Guarding located at the Mac Burney point +++'."
+        }
+      },
+      "lecture": [
+        "Acute appendicitis"
+      ],
+      "note": "Heel drop and McBurney are listed signs; fever is moderate and general condition preserved."
+    },
+    "D41": {
+      "where": "Finals 2025–2026 Q41",
+      "label": true,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'At First: General condition preserved'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Patient is anxious'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Fever often early: 39°or 40°C if bacterial peritonitis'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Tense facial expression (pain, dehydration, and infection)'."
+        }
+      },
+      "lecture": [
+        "Acute peritonitis"
+      ],
+      "note": "All four options are copied from the 'At first' general-signs slide, so tick everything."
+    },
+    "D43": {
+      "where": "Finals 2025–2026 Q43",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Two histological types: Squamous cell carcinomas = 80%'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Synonym of SCC, but stem asks for two types; key likely treats it as distractor."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Two types of cancers: Adenocarcinoma, Squamous cell carcinoma'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Sarcoma only among rare 'Others'."
+        }
+      },
+      "lecture": [
+        "Esophageal cancer"
+      ],
+      "note": "Tick squamous cell carcinoma and adenocarcinoma; 'epidermoid' is a synonym but the key probably doesn't count it."
+    },
+    "D49": {
+      "where": "Finals 2025–2026 Q49",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "GERD listed under 'Adenocarcinoma: Unmanaged acid reflux, GERD'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "SCC slide: 'Smoking, alcohol-intake...'; 'SCC: Alcohol, tobacco use, and nitrosamines'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'SCC: Alcohol, tobacco use, and nitrosamines'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Lecture 'nitrosamines'; nitrate/nitrite-rich diet is the classic precursor-based SCC dietary risk."
+        }
+      },
+      "lecture": [
+        "Esophageal cancer"
+      ],
+      "note": "GERD is the adenocarcinoma risk factor; tobacco, alcohol and nitrite/nitrosamine diet are SCC risks."
+    },
+    "D53": {
+      "where": "Mock 2025–2026 Q3",
+      "label": false,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "TB slide 17: 'Deamidated Adenosin (ADA) > 30 UI/l'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Option truncated; lecture says 'SAAG <11g/l' but direction not visible in option."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 17: 'lymphocytic predominance', not neutrophils."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 17: 'Exudative : protein > 25g/l' – not transudative."
+        }
+      },
+      "lecture": [
+        "Digestive tuberculosis"
+      ],
+      "note": "Tick ADA >30; the albumin-gradient option is cut off so its direction cannot be checked."
+    },
+    "D55": {
+      "where": "Mock 2025–2026 Q5",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Celiac infiltrate is lymphocytic; lecture lists atrophy, crypt hyperplasia, IEL only."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Finding is right but '25-76%' does not match lecture '25-29% borderline >30% pathological'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Celiac p12: 'Villous Atrophy'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Gastric metaplasia suggests peptic duodenitis, not celiac."
+        }
+      },
+      "lecture": [
+        "Celiac disease"
+      ],
+      "note": "Villous atrophy is safe; the lymphocytosis option has odd numbers that don't match the slide."
+    },
+    "D56": {
+      "where": "Mock 2025–2026 Q6",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture 'for liquids> solids'; option wording ambiguous (solids-then-liquids vs worse for liquids)."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'for at least 6 mo. Chronic, intermittent'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'no PS or weight loss decrease (initial stage)'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide verbatim: 'for liquids> solids, heat sensitive'."
+        }
+      },
+      "lecture": [
+        "Esophageal motility disorders (achalasia)"
+      ],
+      "note": "Chronic >6 months and heat sensitive are on the slide; option A is ambiguously worded so leave it."
+    },
+    "D113": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q3",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Alarm symptoms slide: 'Weight Loss'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Young age is never an endoscopy indication; older age is."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Alarm symptoms slide: 'Upper GI bleeding'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Upper GI endoscopy: No direct diagnosis'; GERD diagnosis is clinical."
+        }
+      },
+      "lecture": [
+        "Gastroesophageal reflux disease"
+      ],
+      "note": "Endoscopy is for alarm signs (weight loss, bleeding); typical GERD is diagnosed clinically."
+    },
+    "D142": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q32",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Hydatid Serology: ++++ ... These two tests constitute the diagnosis'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Complementary exams: US, CT, chest X-ray, serology; no cerebral CT."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'US examination is the basis of CE diagnosis in abdominal locations'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Not among complementary exams."
+        }
+      },
+      "lecture": [
+        "Hydatid cyst of the liver"
+      ],
+      "note": "Ultrasound and hydatid serology are the course's essential tests."
+    },
+    "D143": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q33",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Peritonitis: 'infectious complications in the abdominal wall (abscesses...)'; appendicitis: 'Early complications: parietal suppuration'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'It is a medical-surgical therapeutic emergency'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Incisional hernia after laparotomy; appendicitis slide: 'Late complications: ...post operative incisional hernias'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Prognosis 'Depends on: Patient's age, Timing of the intervention, Etiology'."
+        }
+      },
+      "lecture": [
+        "Acute appendicitis",
+        "Acute peritonitis"
+      ],
+      "note": "Wound infection early and incisional hernia late are classic; prognosis depends on more than etiology."
+    },
+    "D146": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q36",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Protective effect of the muscularis (peristalsis = emptying)'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'The lumen of the appendix opens into the cecum'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Causes: 'Hematogenous diffusion (exceptional)'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'clinical examination can rarely predict the complicated or uncomplicated form'."
+        }
+      },
+      "lecture": [
+        "Acute appendicitis"
+      ],
+      "note": "Both true options are taken word for word from the appendicitis pathophysiology slides. Not labelled: already corrected in corrections.json."
+    },
+    "D153": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q43",
+      "label": false,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Predisposing factors: asthma, dysuria, constipation (increased abdominal pressure)'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Same line: 'constipation'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Same line: 'dysuria'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Diarrhea absent from the list and does not raise abdominal pressure."
+        }
+      },
+      "lecture": [
+        "Groin hernias and other abdominal wall hernias"
+      ],
+      "note": "The hernia lecture lists exactly asthma, dysuria and constipation. Not labelled: already corrected in corrections.json."
+    },
+    "D154": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q44",
+      "label": true,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Fever often early: 39°or 40°C if bacterial peritonitis'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Tense facial expression (pain, dehydration, and infection)'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture never says general signs are mild; wording vague, not explicitly contradicted."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'At First : General condition preserved'."
+        }
+      },
+      "lecture": [
+        "Acute peritonitis"
+      ],
+      "note": "A, B and D are copied from the 'At first' general-signs slide; C is not in the lecture."
+    },
+    "D163": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q53",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'HAV NEVER LEADS TO CHRONIC HEPATITIS'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'IgM anti-HAV → acute infection. IgG anti-HAV → past infection or vaccination'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'No specific antiviral therapy needed'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Acute hepatitis slides: 'Four Phases: Incubation, Prodromal, Icteric, Convalescence'."
+        },
+        "E": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Vaccination: inactivated vaccine (Avaxim® 80 U)'."
+        }
+      },
+      "lecture": [
+        "Acute hepatitis",
+        "Viral hepatitis A and C"
+      ],
+      "note": "All other options are directly contradicted by the hepatitis A slides; the four-phase course is in the acute hepatitis lecture."
+    },
+    "D166": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q56",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in lecture modifiable list; medically recognised, so key could go either way."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Stomach cancer p20 Modifiable: 'Radiation exposure'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Modifiable: 'Smoking', 'Alcohol consumption'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Modifiable: 'H. pylori and EBV infections'."
+        }
+      },
+      "lecture": [
+        "Stomach cancer"
+      ],
+      "note": "B, C and D are on the modifiable-risk-factor slide; occupational exposure is not."
+    },
+    "D169": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q59",
+      "label": false,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Pain 'seat = right iliac fossa'; fever 37.8-38.5."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Subhepatic appendix gives right hypochondrium pain; lecture: 'Consider systematically the ectopic forms'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "RUQ pain radiating to shoulder is biliary pattern."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Lecture seat is RIF; LIF pain with fever suggests sigmoiditis."
+        }
+      },
+      "lecture": [
+        "Acute appendicitis"
+      ],
+      "note": "Typical RIF pain with fever plus RUQ pain in the subhepatic ectopic form. Not labelled: a copy of a question already corrected in corrections.json (D202); the lecture check would add an option, left for them to decide so the copies keep one key."
+    },
+    "D170": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q60",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 13 lists 'PPI or antiacid drugs relief' as history item, not in pain description."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 12: 'increase by fasting, relieved by food intake'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 12: 'Epigastric pain, non irradiating, increase by fasting'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 12: 'non irradiating'."
+        }
+      },
+      "lecture": [
+        "Gastroduodenal ulcers"
+      ],
+      "note": "Pain increased by fasting is certain; PPI response is plausible but not part of the slide's pain description."
+    },
+    "D173": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q63",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Polyps are removed endoscopically; colectomy reserved for polyposis syndromes."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "No lecture; true for adenomas but not hyperplastic/inflammatory polyps."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Adenomas are the most frequent polyp type (about two-thirds) in standard teaching."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Polyps can bleed or cause transit changes."
+        }
+      },
+      "lecture": [],
+      "note": "No lecture covers polyps; adenoma being most frequent is safe, 'precancerous' depends on how strictly the key reads it."
+    },
+    "D176": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q66",
+      "label": true,
+      "key": "BC",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Coronary disease does not explain steatorrhea and weight loss."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "CP lecture 'Differential diagnosis: Pancreatic cancer'; smoking/alcohol/CP are PDAC risk factors."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "CP slide: alcohol, smoking, post-meal pain, 'Weight loss, Chronic diarrhea, steatorhea'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Colon cancer does not cause steatorrhea or post-prandial epigastric pain."
+        }
+      },
+      "lecture": [
+        "Chronic pancreatitis"
+      ],
+      "note": "Chronic pancreatitis is the leading diagnosis and pancreatic cancer is the lecture's named differential."
+    },
+    "D180": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q70",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Peritoneal TB work-up (slide 17) is ascitic fluid + imaging; colonoscopy not first-line."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Abdominal Ultrasound' in work-up, but key may want fluid analysis only."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "MRI is not first-line for new ascites; lecture proposes US/CT."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 17: 'Specific: Ascitis fluid – Exudative...ADA...PCR TB'."
+        }
+      },
+      "lecture": [
+        "Digestive tuberculosis"
+      ],
+      "note": "Ascitic fluid analysis is certain; ultrasound is very likely but the key might want D alone."
+    },
+    "D184": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q74",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Steatorrhea fits, but key may exclude it in a 23-year-old without risk factors."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Celiac lecture: 'Chronic malabsorption diarrhea with or without steatorrhea', weight loss, anemia."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "TB lecture lists 'Malabsorption syndrom' but steatorrhea picture not typical; key unclear."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not in lectures; mostly motor diarrhea, unlikely but not certain to be keyed false."
+        }
+      },
+      "lecture": [
+        "Celiac disease",
+        "Digestive tuberculosis",
+        "Chronic pancreatitis"
+      ],
+      "note": "Celiac disease is the safe pick for steatorrhea with anemia and edema; the other etiologies depend on the key."
+    },
+    "D185": {
+      "where": "Professor's questions · Digestive Surgical Pathology Q75",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Bone only an 'Unusual location'; not among rupture sites."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Rupture into the thorax: Pleural effusion + lower thoracic pain'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Hydatid vomit: Specific sign of a ruptured hydatid cyst into the bronchi'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Rupture into the peritoneal cavity: Post-traumatic or spontaneous'."
+        }
+      },
+      "lecture": [
+        "Hydatid cyst of the liver"
+      ],
+      "note": "Pleura, bronchi and peritoneum are all lecture rupture sites; bone is a primary location, not a rupture route."
+    },
+    "D196": {
+      "where": "Professor's questions · Digestive Surgical Q7",
+      "label": true,
+      "key": "AD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'It exists in three evolutionary forms': adult, egg, metacestode."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Its survival on the ground... 1 month at +20°C, 15 months at +7°C'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Eggs are in the 'gravid proglottid', not the head/scolex."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'living as a saprophyte, attached between the villi of the small intestine of the dog'."
+        }
+      },
+      "lecture": [
+        "Hydatid cyst of the liver"
+      ],
+      "note": "Both true options are verbatim from the parasite slides."
+    },
+    "D197": {
+      "where": "Professor's questions · Digestive Surgical Q8",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Pain 'seat = right iliac fossa'; fever 37.8-38.5."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Lecture seat is RIF; LIF pain with fever suggests sigmoiditis."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Subhepatic appendix gives right hypochondrium pain; lecture: 'Consider systematically the ectopic forms'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "RUQ pain radiating to shoulder is biliary pattern."
+        }
+      },
+      "lecture": [
+        "Acute appendicitis"
+      ],
+      "note": "Same as D169 reordered: RIF pain with fever and subhepatic RUQ pain. Not labelled: a copy of a question already corrected in corrections.json (D202); the lecture check would add an option, left for them to decide so the copies keep one key."
+    },
+    "D210": {
+      "where": "Professor's questions · Digestive Surgical Q21",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'In health: Visceral lubrification'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Closed sac in males, open at the ends of fallopian tubes in females'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Parts of peritoneum: Parietal peritoneum, Visceral peritoneum'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; classic teaching says sub-mesocolic is septic, but absolute wording untested."
+        }
+      },
+      "lecture": [
+        "Acute peritonitis"
+      ],
+      "note": "A and B are verbatim from the anatomy slides; the inframesocolic statement is not in the lecture."
+    },
+    "D220": {
+      "where": "Professor's questions · Digestive Pathology Q9",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Criteria slide: pain/discomfort, bloating, transit; '≥3 days/month in the last 3 months', 'Duration ≥6 months'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Pathophysiology: 'Dysbiosis : imbalance of the intestinal microbiota'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'IBS remains a diagnosis of elimination'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'No test is required to confirm it'; endoscopy only for specific indications."
+        }
+      },
+      "lecture": [
+        "Functional intestinal disorders"
+      ],
+      "note": "Both true options are near-verbatim from the IBS slides."
+    },
+    "D226": {
+      "where": "Professor's questions · Digestive Pathology Q15",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 12: 'non irradiating'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 13 lists 'PPI or antiacid drugs relief' as history item, not in pain description."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 12: 'increase by fasting, relieved by food intake'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 12: 'increase by fasting'."
+        }
+      },
+      "lecture": [
+        "Gastroduodenal ulcers"
+      ],
+      "note": "Same as D170 reordered: tick 'increase at fasting'; PPI response is uncertain for the key."
+    },
+    "D231": {
+      "where": "Professor's questions · Digestive Pathology Q20",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Unlike chronic gastritis, symptoms are usually more intense'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Diagnosis is based on endoscopy and on histology'; CT only ancillary."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Caused by various agents: drugs (NSAIDs, aspirin...)'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Etiologies slide: 'A- Acute H. pylori gastritis'."
+        }
+      },
+      "lecture": [
+        "Acute and chronic gastritis"
+      ],
+      "note": "Only NSAIDs as a common cause is correct; the lecture has a section on acute H. pylori gastritis."
+    },
+    "E2": {
+      "where": "Finals 2025–2026 Q2",
+      "label": true,
+      "key": "ACD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.15 diagram: 'Non-alcoholic steatotic diseases: steatosis'; p.264 'MASLD'"
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Diagram only says 'Skin'; hyperkeratosis not named"
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.15 complications diagram explicitly lists 'Cataracts'"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.15 diagram 'obstructive sleep apnea'; p.24 OSA management"
+        }
+      },
+      "lecture": [
+        "Obesity"
+      ],
+      "note": "The lecture diagram lists steatosis, cataracts and sleep apnea; hyperkeratosis is only implied by a generic 'Skin' label."
+    },
+    "E36": {
+      "where": "Finals 2025–2026 Q36",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.52: 'First-line medical treatment+++: Cabergoline'"
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.52: surgery only 'if unsuccessful or with major visual risk'"
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Radioactive iodine treats thyroid disease, not pituitary adenoma"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.52: 'Prolactinoma: First-line medical treatment+++'"
+        }
+      },
+      "lecture": [
+        "Pituitary adenoma"
+      ],
+      "note": "Prolactinoma is treated first with a dopamine agonist (cabergoline)."
+    },
+    "E46": {
+      "where": "Finals 2025–2026 Q46",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.3: '<8% in patients with severe hypoglycemia... macrovascular complications'"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Recurrent hypoglycemia in frail elderly: avoiding hypoglycemia is the priority"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.3: <6.5% only with 'No significant cardiovascular disease'"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.3: 'HbA1c < 8% in patients with severe hypoglycemia... long-standing diabetes'"
+        }
+      },
+      "lecture": [
+        "Type 2 diabetes treatment"
+      ],
+      "note": "Relaxed target around 8% with hypoglycemia avoidance; strict normalization and <6.5% are wrong here."
+    },
+    "E56": {
+      "where": "Mock 2025–2026 Q6",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.45: urinary methoxylated derivatives = pheochromocytoma"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.30 Cushing hormonal assessment: 'Elevated urinary free cortisol'"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "High aldosterone = primary hyperaldosteronism section"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.30 Cushing hormonal assessment: 'Low ACTH ++++'"
+        }
+      },
+      "lecture": [
+        "Adrenal diseases"
+      ],
+      "note": "The lecture's Cushing syndrome slide lists both high urinary free cortisol and low ACTH."
+    },
+    "E66": {
+      "where": "Mock 2025–2026 Q16",
+      "label": true,
+      "key": "BC",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.8 'Important: Serum calcium is normal' in DI"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.11: 'Urine specific density < 1.005: very dilute urine'"
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.8: 'Blood glucose is normal'"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.8: 'No signs of hyperglycemia'; glycosuria = osmotic diuresis"
+        }
+      },
+      "lecture": [
+        "Diabetes insipidus"
+      ],
+      "note": "Dilute urine and normal glucose support DI; hypercalcemia and glycosuria are alternative causes of polyuria."
+    },
+    "E68": {
+      "where": "Mock 2025–2026 Q18",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.18: 'reduce high-GI sugars'"
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.18: deficit '–300 to –500 kcal/day'; <800 kcal is VLCD only"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.18: 'Goal: weight loss of 0.5 to 1 kg per week'"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.19: 'Mediterranean diet should be strongly favored +++'"
+        }
+      },
+      "lecture": [
+        "Obesity"
+      ],
+      "note": "Only the Mediterranean diet matches the lecture; the deficit, rate and GI options contradict it."
+    },
+    "E136": {
+      "where": "Past questions Q2",
+      "label": true,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "slide 31: 'High or normal PTH (inappropriate)'"
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "slide 31: 'Hypercalcemia'"
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture: hypercalcemia 'on two occasions', not 3 values; intent likely true but number mismatches"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "slide 31: 'Hypophosphoremia'"
+        }
+      },
+      "lecture": [
+        "Hyperparathyroidism"
+      ],
+      "note": "Tick A; C is probably intended true but the lecture says two measurements, not three, so leave it."
+    },
+    "E137": {
+      "where": "Past questions Q3",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture cutoff: 'GH > 1 ng/ml' on 75g OGTT, not 0.4 µg/l"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.43: 'High IGF1 relative to age and sex'"
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Low TSH is hyperthyroidism, not an acromegaly criterion"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Urinary free cortisol belongs to Cushing's disease workup"
+        }
+      },
+      "lecture": [
+        "Pituitary adenoma"
+      ],
+      "note": "High IGF-1 is safe; the OGTT option uses 0.4 while the lecture says 1 ng/ml, so leave it."
+    },
+    "E145": {
+      "where": "Past questions Q11",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Headache is in lecture's 'tumor syndrome', not explicitly 'neuro-ophthalmological'"
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Exophthalmia is a Graves sign; not a pituitary tumor sign"
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Visual disturbances... Bitemporal quadrantanopia followed by bilateral hemianopsia'"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Dysmorphism belongs to 'Somatotropic hypersecretion syndrome', not tumor syndrome"
+        }
+      },
+      "lecture": [
+        "Pituitary adenoma"
+      ],
+      "note": "Visual field defect is safe; headache depends on whether the examiner means the whole tumor syndrome."
+    },
+    "E152": {
+      "where": "Past questions Q18",
+      "label": false,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.39 table: 'Paroxysmal hypertension 30%'"
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists vague 'visual disturbances'; 'visual field' is a pituitary sign"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Moon face is Cushing: 'rounded face, buffalo hump'"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.37: 'Headaches, palpitations, pallor (MENARD TRIADS)'"
+        }
+      },
+      "lecture": [
+        "Adrenal diseases"
+      ],
+      "note": "Paroxysmal hypertension and palpitations are safe; visual field trouble is probably a distractor but not certain."
+    },
+    "E153": {
+      "where": "Past questions Q19",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.38: 'Cushing's disease: Normal or high' ACTH (pituitary ACTH)"
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Disease = corticotroph pituitary adenoma, not adrenal adenoma"
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture separates 'Cushing's disease (pituitary)' from ectopic ACTH; examiner may use term loosely"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Low ACTH = adrenal (ACTH-independent) form; disease has normal/high ACTH"
+        }
+      },
+      "lecture": [
+        "Pituitary adenoma",
+        "Adrenal diseases"
+      ],
+      "note": "Only 'ACTH dependent' is safe; the ectopic option depends on how loosely 'disease' is used."
+    },
+    "E156": {
+      "where": "Past questions Q22",
+      "label": false,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture: 'increase abdominal fat, feminine fat distribution'; 'truncal obesity' could be a Cushing distractor"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.9: 'Low Libido, decrease in morning erections'"
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "p.9: 'Loss muscle mass and strength'"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.9-10: 'Fatigue, depression…'"
+        }
+      },
+      "lecture": [
+        "Male hypogonadism"
+      ],
+      "note": "Low libido and fatigue are safe; truncal obesity is plausible but not certain to be keyed."
+    },
+    "E164": {
+      "where": "Past questions Q30",
+      "label": false,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'T1D: chronic autoimmune disease with absolute insulin deficiency'"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "T1D features: 'Marked hyperglycemia with positive ketones'; abrupt onset"
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "'Insulin vital, lifelong' but absolute 'only' wording; lecture also cites education, activity"
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Body type: Lean or normal weight (not associated with obesity)'"
+        }
+      },
+      "lecture": [
+        "Diabetes mellitus",
+        "Type 1 diabetes treatment"
+      ],
+      "note": "A and B are safe; C is likely intended true but the absolute word 'only' makes it risky."
+    },
+    "E170": {
+      "where": "Past questions Q36",
+      "label": true,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Pegvisomant is a GH-receptor antagonist used in acromegaly (not in lecture)"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.52: 'Acromegaly: Somatostatin analogs, surgical treatment, radiotherapy'"
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p.51: 'Transphenoidal: Best method, especially in microadenomas'"
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Thiamazole is an antithyroid drug"
+        }
+      },
+      "lecture": [
+        "Hyperthyroidism",
+        "Pituitary adenoma"
+      ],
+      "note": "Pegvisomant, somatostatin analogues and transsphenoidal surgery are all acromegaly treatments."
+    },
+    "E171": {
+      "where": "Past questions Q37",
+      "label": true,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "slide 34: 'Technetium-99m-sestamibi subtraction scintigraphy'"
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "slide 34: 'Contrast-enhanced 4D computed tomography (CT)'"
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "MRI never listed in lecture; medically a second-line option"
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "slide 34: 'High resolution neck ultrasound'"
+        }
+      },
+      "lecture": [
+        "Hyperparathyroidism"
+      ],
+      "note": "Ultrasound, sestamibi and CT are in the lecture; MRI is not, so leave it."
+    },
+    "R17": {
+      "where": "Finals 2025–2026 Q17",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "TB infection lecture, typhoid-like form of Landouzy: 'Fever at 39-40°C'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Same slide stresses 'Absence of digestive signs'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Allergic-type phenomena: 'Erythema nodosum +++'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Not listed among TB infection forms; lecture silent rather than explicitly excluding it."
+        }
+      },
+      "lecture": [
+        "Tuberculosis infection (not there); Tuberculosis disease",
+        "Tuberculosis infection - Active TI: Patent forms",
+        "Tuberculosis infection - Patent forms"
+      ],
+      "note": "Lecture gives the 39-40°C typhoid-like fever and erythema nodosum; it explicitly says no digestive signs."
+    },
+    "R39": {
+      "where": "Finals 2025–2026 Q39",
+      "label": false,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Persistent shock after chest tube excludes tension PTX/hemothorax: think obstructive shock, tamponade."
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Pulmonary contusion causes hypoxemia, not persistent hypotension."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Chest tube draining minimal air has treated/excluded tension pneumothorax."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Chest tube yielding no blood argues against massive hemothorax."
+        }
+      },
+      "lecture": [
+        "Cardiac tamponade"
+      ],
+      "note": "Standard trauma reasoning: once the chest tube rules out pneumothorax and hemothorax, look for cardiac tamponade. Not labelled: already corrected in corrections.json."
+    },
+    "R65": {
+      "where": "Mock 2025–2026 Q15",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide: 'Airway clearance is not optional—it's the single most important daily therapy'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 59: 'Surgery is rarely indicated'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 58 says brensocatib 'pending widespread regulatory approval'; FDA approved Aug 2025, intent unclear."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Definition: 'an irreversible and abnormal dilation of the bronchial tree'."
+        }
+      },
+      "lecture": [
+        "Bronchiectasis - Definition",
+        "Bronchiectasis surgery"
+      ],
+      "note": "A is certain; C is factually true (FDA approval August 2025) but the slide calls it pending, so it is a gamble."
+    },
+    "R70": {
+      "where": "Mock 2025–2026 Q20",
+      "label": true,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "COPD lecture: lung volume reduction for 'Severe emphysema and hyperinflation'; valves deflate target lobe."
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Endobronchial valves have no anti-inflammatory action."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent on mechanism; diaphragm improvement is a consequence, may or may not be keyed."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Valves cause lobar collapse; they do not remove or eradicate emphysematous tissue."
+        }
+      },
+      "lecture": [
+        "COPD (mechanism not described)",
+        "COPD (not described)",
+        "COPD - Chest X-ray signs of hyperinflation",
+        "COPD - Surgical treatment"
+      ],
+      "note": "Reducing hyperinflation is the certain answer; better diaphragm mechanics is plausible but not confirmed by the course."
+    },
+    "R71": {
+      "where": "Mock 2025–2026 Q21",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "DLCO measures alveolar-capillary gas transfer; standard physiology."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Pre-op slide: 'Predicted Post Op Pulmonary Function FEV1, FVC, DLCO'; ppo-DLCO in risk algorithm."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "DLCO does not measure airway obstruction (that is FEV1/FVC); 'only' is false."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Algorithm uses FEV1 and DLCO together: 'Either one < 80%'."
+        }
+      },
+      "lecture": [
+        "Thoracic surgery: infectious diseases",
+        "Surgery of lung cancer"
+      ],
+      "note": "DLCO reflects gas exchange and predicts postoperative risk; it neither measures obstruction nor replaces FEV1."
+    },
+    "R73": {
+      "where": "Mock 2025–2026 Q23",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 64: cyst rupture - 'prevent anaphylaxis with antihistamines ready'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15: 'Cyst rupture with dissemination'; slide 69 'Dissemination: Secondary cysts'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "'only' makes it false; anaphylaxis and seeding are the key risks."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 53: rupture can cause anaphylaxis, empyema, dissemination - not 'without consequence'."
+        }
+      },
+      "lecture": [
+        "Thoracic surgery: infectious diseases"
+      ],
+      "note": "Intraoperative rupture risks anaphylaxis and secondary seeding; C and D are absolute-word distractors."
+    },
+    "R75": {
+      "where": "Mock 2025–2026 Q25",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Surgery lung cancer p40: 'Reduced post-operative pain ... Quick return daily activity'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "p36: 'Oncological result identical to open surgery'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 27: VATS has 'reduced blood loss (150-300mL vs. 400-600mL)'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "VATS does 'Anatomical resection'; lobectomy by VATS is standard."
+        }
+      },
+      "lecture": [
+        "Thoracic surgery: infectious diseases",
+        "Surgery of lung cancer"
+      ],
+      "note": "The lecture states both VATS advantages (less pain/faster recovery, identical oncologic results): tick AB."
+    },
+    "R82": {
+      "where": "Midterm 2025–2026 · Respiratory Disease Q6",
+      "label": false,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "No antiparasitic in the CAP treatment slides (four components listed)."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "First treatment component: 'Empirical antibiotic therapy'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Chest physiotherapy for bronchial drainage' under symptomatic care, but 'based on' may mean antibiotics only."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Smoking cessation +++' as preventive; unclear if graded as treatment of lobar pneumonia."
+        }
+      },
+      "lecture": [
+        "Community-acquired acute pneumonias"
+      ],
+      "note": "Antibiotics are certain; physiotherapy and smoking cessation appear in the lecture but past keys differ, so leave them."
+    },
+    "R90": {
+      "where": "Midterm 2025–2026 · Respiratory Disease Q14",
+      "label": false,
+      "key": "BC",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Atypical agents: 'Mycoplasma pneumoniae, Chlamydiae, Rickettsiae, Legionella'; pneumococcus is typical."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Atypical pneumonia: 'Fever < 39°C, slight chills, myalgia'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture contradicts itself: 'CBC: Leukopenia, neutropenia' vs table 'Normal or slightly elevated WBC'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Nasolabial herpes is listed under acute lobar (pneumococcal) pneumonia."
+        }
+      },
+      "lecture": [
+        "Community-acquired acute pneumonias - Acute Lobar Pneumonia",
+        "Community-acquired acute pneumonias - Atypical",
+        "Community-acquired acute pneumonias - Atypical Pneumonia clinical signs",
+        "Community-acquired acute pneumonias - Diagnostic Approach"
+      ],
+      "note": "Myalgia is safe; leukopenia appears on one slide but the comparison table says normal WBC, so it is uncertain."
+    },
+    "R124": {
+      "where": "Finals 2020–2021 Q13",
+      "label": true,
+      "key": "ABCE",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Bronchiectasis PDF: circumstances include 'Incidental discovery'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Physical exam slide: 'Well-preserved general condition'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "CXR 'May be normal ... (radioclinical discordance)'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "HRCT is the 'confirmatory test'; bronchoscopy only seeks local causes."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Treatment is medical in all cases, while surgical treatment has its indications'."
+        }
+      },
+      "lecture": [
+        "Bronchiectasis"
+      ],
+      "note": "All five options are settled by the bronchiectasis lecture: tick ABCE, leave D."
+    },
+    "R145": {
+      "where": "Finals 2020–2021 Q34",
+      "label": false,
+      "key": "BCDE",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Thymomas are anterior mediastinal tumours, not posterior."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Classic association of thymoma with myasthenia gravis."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "CT is the standard exam for location and size of mediastinal masses."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Encapsulated thymomas are treated by surgical resection (thymectomy)."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; old teaching 'mostly benign' vs WHO 'all malignant potential'."
+        }
+      },
+      "lecture": [],
+      "note": "No lecture covers thymoma; BCD are textbook facts, but 'mostly benign' depends on which teaching the grader follows."
+    },
+    "R159": {
+      "where": "Finals 2020–2021 Q48",
+      "label": false,
+      "key": "BCE",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; subcutaneous emphysema is listed as a severity sign in some sources, not others."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Depressed diaphragmatic dome is a classic radiological sign of a severe (tension) pneumothorax."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Mediastinal shift is the classic radiological severity sign."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; rib fractures are associated lesions, inconsistently counted as severity criteria."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; pneumomediastinum suggests airway injury, inconsistently listed as severity criterion."
+        }
+      },
+      "lecture": [],
+      "note": "Only the two classic tension signs (diaphragm pushed down, mediastinum shifted) are safe; the other three depend on the teacher."
+    },
+    "R164": {
+      "where": "Second session 2020–2021 Q3",
+      "label": true,
+      "key": "BCDE",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Lecture: 'Hominis (99%) ... Bovis (rare) ... Africanum (exceptional)'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Latent TI: '70 à 80 % of cases'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Latent TI discovered by 'Screening +++' and 'Tuberculin conversion' - i.e. fortuitously."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Laboratory tests: 'Tuberculin Skin Test (TST): positive'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Treatment slide: 'Antibacillary treatment: 2RHZE/4RH'."
+        }
+      },
+      "lecture": [
+        "Tuberculosis infection - Circumstances of discovery",
+        "Tuberculosis infection - Etiopathogenesis",
+        "Tuberculosis infection - Laboratory tests",
+        "Tuberculosis infection - Treatment"
+      ],
+      "note": "The lecture states each of BCDE; E differs from international latent-TB regimens, but the course says 2RHZE/4RH."
+    },
+    "R172": {
+      "where": "Second session 2020–2021 Q11",
+      "label": false,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "'Always' is false: multiple hydatidosis can be primary (multiple infestation) as well as secondary."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "General condition may be altered in multiple hydatidosis; weak 'may' claim, standard teaching."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Classic 'lâcher de ballons' (balloon release) radiological image."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture silent; true for primary forms, but secondary embolic cysts are usually same age."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture: surgery for multiple cysts, but albendazole for disseminated cysts; debatable."
+        }
+      },
+      "lecture": [
+        "Thoracic surgery: infectious diseases"
+      ],
+      "note": "Only the general-condition and 'balloon' image items are safe; cyst stages and surgical-only treatment are debated."
+    },
+    "R173": {
+      "where": "Second session 2020–2021 Q12",
+      "label": true,
+      "key": "BDE",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Lecture lists Aspergillosis under 'Opportunistic fungal infections'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Lecture: Aspergillus is an 'Aerobic fungus'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'It's a fungal mass in a preexisting cavity'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Classic 'grelot' image: rounded opacity with gas crescent; lecture 'Typical Image'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'The diagnosis of certainty can be established through: Aspergillus serology'."
+        }
+      },
+      "lecture": [
+        "Respiratory fungal infections"
+      ],
+      "note": "Lecture supports BDE and rules out A and C; 'hanging ball' is the translation of the classic French 'image en grelot'."
+    },
+    "R174": {
+      "where": "Second session 2020–2021 Q13",
+      "label": false,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Congenital forms 'Rare'; acquired forms dominated by infections (TB, suppurations, measles, pertussis)."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Physiopathology: 'Systemic hyper-vascularization' leading to 'Hemoptysis'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Chronic productive cough ... bronchorrhea +++'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture conflicts: 'Clubbing of nails (uncommon)' vs diffuse forms 'Digital clubbing +++'."
+        },
+        "E": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "HRCT is the 'confirmatory test', not bronchoscopy."
+        }
+      },
+      "lecture": [
+        "Bronchiectasis - Clinical features",
+        "Bronchiectasis - Etiological forms",
+        "Bronchiectasis - Imaging",
+        "Bronchiectasis - Physical Examination",
+        "Bronchiectasis - Physiopathology"
+      ],
+      "note": "ABC are safe from the lecture; clubbing is called uncommon in one slide and +++ in diffuse forms, so leave D. Not labelled: already corrected in corrections.json."
+    },
+    "R205": {
+      "where": "Second session 2020–2021 Q44",
+      "label": true,
+      "key": "AB",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Treatment goals: 'Prevent and treat exacerbations'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Smoking cessation: the only treatment likely to slow down the decline in FEV1'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Daily regimen is based on long-acting bronchodilators, not inhaled corticosteroids."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Long-term oral corticosteroids are not indicated in stable COPD; lecture uses them only in exacerbations."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture uses GOLD 2025 groups (LABA/LAMA for E); 'grade D' is old nomenclature."
+        }
+      },
+      "lecture": [
+        "COPD - Daily regimen table",
+        "COPD - Non Pharmacological Treatment",
+        "COPD - Treatment Goals",
+        "COPD - systemic CS only for exacerbations"
+      ],
+      "note": "A and B are certain; E is probably true under GOLD but the lecture has no 'grade D', so it is not risk-free."
+    },
+    "R242": {
+      "where": "Collected questions Q31",
+      "label": false,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "No antiparasitic in the CAP treatment slides (four components listed)."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "First treatment component: 'Empirical antibiotic therapy'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Chest physiotherapy for bronchial drainage' under symptomatic care, but 'based on' may mean antibiotics only."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Smoking cessation +++' as preventive; unclear if graded as treatment of lobar pneumonia."
+        }
+      },
+      "lecture": [
+        "Community-acquired acute pneumonias"
+      ],
+      "note": "Same question as R82: tick only the probabilistic antibiotics."
+    },
+    "R244": {
+      "where": "Collected questions Q33",
+      "label": false,
+      "key": "BC",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Acute bronchitis lecture: 'Chest X-ray is unnecessary unless there is doubt with pneumonia'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Lecture: 'Normal auscultation, or sometimes presence of sonorous rhonchi'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Lecture: causes 'are mostly viruses'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "No imaging needed in acute bronchitis; CT is not a diagnostic test for it."
+        }
+      },
+      "lecture": [
+        "Acute bronchitis"
+      ],
+      "note": "The stem's 'bronchiectasis' is a mistranslation of acute bronchitis; read that way the lecture gives BC. Not labelled: already corrected in corrections.json."
+    },
+    "R262": {
+      "where": "Collected questions Q51",
+      "label": false,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "ILD lecture: CXR 'May be normal in 10%'; CT is part of positive diagnosis."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Chronic ILD onset: 'Insidious, progressive'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "PFT: 'Reduction in carbon monoxide diffusing capacity (DLCO)'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Clinical examination: 'Dry crackles at the lung bases'."
+        }
+      },
+      "lecture": [
+        "Interstitial lung diseases - Chronic ILD Clinical features",
+        "Interstitial lung diseases - Clinical examination",
+        "Interstitial lung diseases - PFT",
+        "Interstitial lung diseases - Positive Diagnosis Radiological findings"
+      ],
+      "note": "Only D is true: DLCO falls, onset is insidious and CT is needed. Not labelled: already corrected in corrections.json."
+    },
+    "R267": {
+      "where": "Collected questions Q56",
+      "label": false,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "HP lecture: 'Diffuse crackles at both lung bases'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "BAL shows 'Lymphocytosis (≥ 20–30%)', not neutrophilia."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Secondary to an exaggerated response to repeated inhalation of antigens, most often organic'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'circulating precipitins ... do not confirm diagnosis!'"
+        }
+      },
+      "lecture": [
+        "Hypersensitivity pneumonitis - BAL",
+        "Hypersensitivity pneumonitis - Introduction",
+        "Hypersensitivity pneumonitis - Positive Diagnosis Clinical features",
+        "Hypersensitivity pneumonitis - Serology"
+      ],
+      "note": "Lecture settles all four: tick AC. Not labelled: already corrected in corrections.json."
+    },
+    "R268": {
+      "where": "Collected questions Q57",
+      "label": false,
+      "key": "ABD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Smoking cessation +++' as preventive; unclear if graded as treatment of lobar pneumonia."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture lists 'Chest physiotherapy for bronchial drainage', but other versions keyed antibiotics only."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "No antiparasitic in the four CAP treatment components."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Empirical antibiotic therapy'; 'Principles of antibiotic therapy: Empirical+++'."
+        }
+      },
+      "lecture": [
+        "Community-acquired acute pneumonias - Preventive treatment",
+        "Community-acquired acute pneumonias - Symptomatic treatment",
+        "Community-acquired acute pneumonias - Therapeutic Strategy",
+        "Community-acquired acute pneumonias - Treatment Means"
+      ],
+      "note": "Same question as R82 with shuffled letters: only the probabilistic antibiotics are certain."
+    },
+    "S19": {
+      "where": "Finals 2025–2026 Q19",
+      "label": true,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Verbatim: 'limited to one lymph node (metameric characteristic)'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Acute posterior ganglioriculitis, especially in adults'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Acute posterior ganglioriculitis'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Reactivation of a latent VZV'; VZV listed among the human herpesviruses."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "All four are lifted from the zona slide; VZV is a herpesvirus, so D is true too."
+    },
+    "S32": {
+      "where": "Finals 2025–2026 Q32",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Agent is 'Treponema pallidum'; gonococcus causes gonorrhoea."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "True description ('A spirochete: Spiral-shaped bacteria') but key may want only the species."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Agent is 'Treponema pallidum'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'caused by the spirochaete Treponema pallidum subspecies pallidum'."
+        }
+      },
+      "lecture": [
+        "Syphilis"
+      ],
+      "note": "Treponema pallidum is certain; 'spirochete bacterium' is true but may not be counted."
+    },
+    "S35": {
+      "where": "Finals 2025–2026 Q35",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 26: 'Ulcerated and/or budding form: 90%' - not rare."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 6: chronic cumulative sun exposure 'favoring squamous cell carcinomas' - sun-exposed, not protected."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Slide 27 'Skin and mucous membranes'; SCC is mostly cutaneous, not mostly mucosal."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 27: 'lymph nodes metastasis : 20%'."
+        }
+      },
+      "lecture": [
+        "Skin cancers"
+      ],
+      "note": "Tick D only; the 20% figure is the lecture's number even if real-world rates are lower."
+    },
+    "S46": {
+      "where": "Finals 2025–2026 Q46",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Conclusion: 'Easy clinical diagnosis'; mandatory only for 'nail and scalp involvement'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 46: 'Biological diagnosis mandatory (nail and scalp involvement +++)'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 12: tinea cruris has a 'Clinical diagnosis'; mandatory limited to nail/scalp."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 46: mandatory for 'nail and scalp involvement'."
+        }
+      },
+      "lecture": [
+        "Superficial fungal infections"
+      ],
+      "note": "The lecture makes mycology mandatory for nails and scalp, so tick onychomycosis and tinea capitis."
+    },
+    "S49": {
+      "where": "Finals 2025–2026 Q49",
+      "label": true,
+      "key": "AC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 25: 'Pediculus humanus: Capitis: head lice, pediculosis of the scalp'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 7: Sarcoptes scabiei causes scabies."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 26, under PEDICULOSIS: 'Phtirius inguinalis at the pubis'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Dermatophytes are fungi (fungal lecture slide 10)."
+        }
+      },
+      "lecture": [
+        "Superficial fungal infections",
+        "Scabies and pediculosis"
+      ],
+      "note": "Both lice (head louse and pubic louse) cause pediculosis; the site key A is incomplete."
+    },
+    "S56": {
+      "where": "Mock 2025–2026 Q6",
+      "label": false,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'It can occur at different ages of life'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Severe forms: Vital prognosis can be engaged anaphylactic shock'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Acute urticaria: < 6 weeks of evolution'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Angioedema of the pharynx or larynx may be life-threatening through the risk of asphyxiation'."
+        }
+      },
+      "lecture": [
+        "Urticaria and angioedema"
+      ],
+      "note": "All four statements are written in the lecture; the site key AC is incomplete. Not labelled: already corrected in corrections.json."
+    },
+    "S65": {
+      "where": "Mock 2025–2026 Q15",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture: HSV1 = cephalic, yet 'Genital herpes: 80% HSV2 / 20% HSV1'; intended false but literally true."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'HSV1: Upper half of the body: Cephalic region 90%'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture assigns STD to HSV2, but HSV1 causes 20% of genital herpes."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'can be contracted as early as childhood'; '1st contact with the virus: childhood +++'."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick B and D; A and C are meant as HSV-2 traps but are partly true, so skip them."
+    },
+    "S73": {
+      "where": "Mock 2025–2026 Q23",
+      "label": false,
+      "key": "A",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture says early diagnosis is 'clinical and dermoscopy', not biopsy; biopsy only confirms."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Slide 25 lists 'clinical and dermoscopy' and 'Early surgery', but surgery is treatment."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "MRI is not a skin cancer screening/early-diagnosis tool."
+        },
+        "D": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Ultrasound is not a primary early-diagnosis method for skin cancer."
+        }
+      },
+      "lecture": [
+        "Skin cancers"
+      ],
+      "note": "A and B are both half right compared with the slide ('clinical and dermoscopy'), so neither is safe; MRI and ultrasound are wrong."
+    },
+    "S102": {
+      "where": "Professor's questions Q11",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Pruritus is a feature of common superficial urticaria ('Pruritic'), not severity."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Angioedema: 'Dysphonia, dysphagia, hyper-sialorrhoea Risk of asphyxia'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Headache is not a severity sign of urticaria; not mentioned in lecture."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Cough, difficulty breathing' with risk of asphyxia/anaphylaxis."
+        }
+      },
+      "lecture": [
+        "Urticaria and angioedema"
+      ],
+      "note": "Dysphagia and dyspnea are both severity signs (laryngeal angioedema); the site key B misses dyspnea."
+    },
+    "S105": {
+      "where": "Professor's questions Q14",
+      "label": true,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'most commonly seen in children'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'pustules, blisters... forms a classic honey-colored crust' (melicerous crusts)."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Germs are Staph aureus +/- group A strep; Pseudomonas not cited."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Peri orificial (all the body)'."
+        }
+      },
+      "lecture": [
+        "Common bacterial infections"
+      ],
+      "note": "Honey-coloured crusts and periorificial location are both textbook impetigo; the site key D misses B."
+    },
+    "S115": {
+      "where": "Professor's questions Q24",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 14 differential: flexural candidiasis = 'Macerated white appearance', not circinate border."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 14: erythrasma = 'Burnt appearance, due to corynebacteria'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 14: flexural psoriasis listed as differential, no circinate border."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 12, large folds/axillae: 'erythematous appearance, finely scaly, circinate border'; diabetes a contributing factor (slide 8)."
+        }
+      },
+      "lecture": [
+        "Superficial fungal infections"
+      ],
+      "note": "The circular (circinate) border points to dermatophyte epidermomycosis per the lecture; diabetes is a distractor."
+    },
+    "S118": {
+      "where": "Professor's questions Q27",
+      "label": true,
+      "key": "C",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 25: microsporic = '1 to 3 patches, 2-4 cm' - few large, not multiple small."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slides 29-30: psoriasis only a differential; does not break hairs."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 24: 'Small alopecic patches: 0.5-2 cm, short broken hair' - trichophytic."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Slide 29: alopecia areata is a differential; broken hairs mean tinea."
+        }
+      },
+      "lecture": [
+        "Superficial fungal infections"
+      ],
+      "note": "Many small patches with short broken hairs is the lecture's trichophytic tinea; the site key B is wrong."
+    },
+    "S134": {
+      "where": "Professor's questions Q43",
+      "label": true,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'chronic relapsing and remitting inflammatory skin disease'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'The most common form of eczema is atopic dermatitis'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Eczema is often the first sign of atopy'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Truncated fragment; AD is chronic with flares, but 'is an acute flare-up' would be false."
+        }
+      },
+      "lecture": [
+        "Eczema"
+      ],
+      "note": "Tick A, B, C; leave the vague 'acute flare up' alone."
+    },
+    "S140": {
+      "where": "Professor's questions Q49",
+      "label": false,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Iron is not a recognised contact allergen, but lecture only says 'metals' generically."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Chromium (cement) is a classic contact allergen; lecture: 'metals'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Nickel is the commonest contact allergen; lecture: 'metals'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Copper is a rare, debated contact allergen; not named in lecture."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Option text was corrected from a typo; latex mainly causes contact urticaria (rubber additives cause eczema)."
+        }
+      },
+      "lecture": [
+        "Urticaria and angioedema",
+        "Eczema"
+      ],
+      "note": "Nickel and chromium are certain; iron, copper and latex are doubtful, so leave them."
+    },
+    "S143": {
+      "where": "Professor's questions Q52",
+      "label": false,
+      "key": "ABCD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Iron is not a recognised contact allergen, but lecture only says 'metals' generically."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Chromium (cement) is a classic contact allergen; lecture: 'metals'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Nickel is the commonest contact allergen; lecture: 'metals'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Copper is a rare, debated contact allergen; not named in lecture."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Latex proteins mainly cause contact urticaria (lecture urticaria 'latex++'); rubber additives cause eczema."
+        }
+      },
+      "lecture": [
+        "Urticaria and angioedema",
+        "Eczema"
+      ],
+      "note": "Duplicate of S140: nickel and chromium only."
+    },
+    "S161": {
+      "where": "Professor's questions Q70",
+      "label": true,
+      "key": "ABCDE",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Aggravating factors: 'Skin care products such as cosmetics... can clog hair follicles'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Diet: High glycemic load diet, High-fat foods'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Stress: can exacerbate acne'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Fluctuations in the levels of androgens: Women's acne; Endocrine disorders (PCOS)'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Various medications and drugs can trigger acne, including corticosteroids'."
+        }
+      },
+      "lecture": [
+        "Acne"
+      ],
+      "note": "All five appear on the lecture's 'risk and aggravating factors' slide."
+    },
+    "S163": {
+      "where": "Professor's questions Q72",
+      "label": true,
+      "key": "BCD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "NSAIDs are not an acne treatment; absent from lecture."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Oral isotretinoin is the standard treatment of severe acne (lecture: severe acne 'Refer to dermatologist')."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Oral antibiotics: Lymecycline, Doxycycline'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Benzoyl Peroxide: creams, and gels can kill C. acnes'."
+        },
+        "E": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Corticosteroids listed as acne triggers."
+        }
+      },
+      "lecture": [
+        "Acne"
+      ],
+      "note": "Oral retinoids (isotretinoin) treat acne even though the slides skip them; steroids worsen acne."
+    },
+    "S165": {
+      "where": "Professor's questions Q74",
+      "label": true,
+      "key": "BCDE",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture has 'Juvenile acne', neonatal acne, child acne from adrenal tumor; 'childhood acne' translation unclear."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Clinical forms slide 20: 'B-Retentional acne'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 21: 'C-Inflammatory acne'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 22, severe forms: '1.Nodular acne'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 24: '3-Acne fulminans or acne maligna'."
+        }
+      },
+      "lecture": [
+        "Acne"
+      ],
+      "note": "Retentional, inflammatory, nodular and fulminant acne are all named clinical forms; 'childhood acne' is ambiguous."
+    },
+    "S170": {
+      "where": "Professor's questions Q79",
+      "label": true,
+      "key": "E",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Often asymptomatic (90%) rarely symptomatic (10%)'."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Gingivostomatitis is the main symptomatic form, but most primary infections are asymptomatic."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Metameric arrangement belongs to zona: 'vesicles grouped in a cluster of metameric arrangement'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'Serology: has value only in primary infection → seroconversion (IgM)'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Genital herpes 'STI+++' with 'Primary infection' section."
+        }
+      },
+      "lecture": [
+        "Herpes virus infections"
+      ],
+      "note": "Tick E; 'most common form' for gingivostomatitis is ambiguous since most primary infections are silent."
+    },
+    "S172": {
+      "where": "Professor's questions Q81",
+      "label": true,
+      "key": "BCDE",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Condylomas are HPV; 'HHV8: Rhadinovirus (Kaposi)'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Any STI requires screening for others; objective: 'global approach of sexually transmitted diseases'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Treatment: 'Keratolytic acids: Trichloroacetic acid (TCA), Salicylic acid'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Condylomas= genital warts... adults, risk of cervical cancer'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'acetic acid can help in the detection of subclinical skin lesions'; flat condylomas 'sometimes invisible'."
+        }
+      },
+      "lecture": [
+        "HPV infections",
+        "Herpes virus infections"
+      ],
+      "note": "Everything except HHV8 is supported by the HPV lecture."
+    },
+    "S173": {
+      "where": "Professor's questions Q82",
+      "label": false,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lesion image/description missing; diagnosis cannot be determined."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lesion image/description missing."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lesion image/description missing."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Impetigo plausible (child, no fever) but image missing."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Furuncle plausible but image missing."
+        }
+      },
+      "lecture": [
+        "Common bacterial infections"
+      ],
+      "note": "The question depends on a missing picture, so nothing can be ticked safely; if you recognise the image on the day, answer from it."
+    },
+    "S174": {
+      "where": "Professor's questions Q83",
+      "label": false,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Treatment: 'Local care with antiseptics' - recommended, not avoided."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Manipulating any infectious skin lesion is avoided; lecture: 'Avoid handling a boil of the face'."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Depends on the missing lesion; compresses used for crusts/furuncles."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Systemic antibiotics unnecessary for limited lesions, but whether 'to avoid' depends on the lesion."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Local antibiotics are first-line for limited impetigo but not for every lesion; image missing."
+        }
+      },
+      "lecture": [
+        "Common bacterial infections"
+      ],
+      "note": "Not manipulating the lesion is right whatever it is; the rest depends on the missing image."
+    },
+    "S176": {
+      "where": "Professor's questions Q85",
+      "label": true,
+      "key": "CD",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Impetigo is listed under 'Non-follicular infections'."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "'most commonly seen in children', 'Child <10 years old'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Peri orificial (all the body)'."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Post-streptococcal glomerulonephritis is a classic complication of streptococcal impetigo."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture says 'No general signs' yet lists fever/lymphadenopathy as systemic-antibiotic indications; contradictory."
+        }
+      },
+      "lecture": [
+        "Common bacterial infections"
+      ],
+      "note": "Tick periorificial and glomerulonephritis; fever with lymphadenopathy is contradictory in the lecture, so skip it."
+    },
+    "S178": {
+      "where": "Professor's questions Q87",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "In Morocco 'Gums and scrofulodermas: 73% of cases' - lupus is not the most common."
+        },
+        "B": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Same slide: gummas/scrofulodermas 73%."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Same slide: gummas/scrofulodermas 73%."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Gums and scrofulodermas: 73% of cases' (In Morocco)."
+        },
+        "E": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Same slide: gummas/scrofulodermas 73%."
+        }
+      },
+      "lecture": [
+        "Cutaneous tuberculosis"
+      ],
+      "note": "Tuberculous gumma is the lecture's most common Moroccan form (scrofuloderma is not offered)."
+    },
+    "S197": {
+      "where": "Professor's questions Q106",
+      "label": true,
+      "key": "D",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Gummas are late congenital (tertiary-type) lesions."
+        },
+        "B": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Interstitial keratitis is a late congenital sign (Hutchinson triad)."
+        },
+        "C": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Eighth-nerve deafness is a late congenital sign (Hutchinson triad)."
+        },
+        "D": {
+          "status": "tick",
+          "basis": "solid medicine",
+          "why": "Palmoplantar bullae (syphilitic pemphigus) are the hallmark of early congenital syphilis."
+        },
+        "E": {
+          "status": "no",
+          "basis": "solid medicine",
+          "why": "Gastritis is listed only under acquired secondary syphilis, not congenital."
+        }
+      },
+      "lecture": [
+        "Syphilis"
+      ],
+      "note": "Lecture gives no signs, but syphilitic pemphigus is the classic early congenital sign; the site key C (deafness) is a late sign."
+    },
+    "S205": {
+      "where": "Professor's questions Q114",
+      "label": true,
+      "key": "BCE",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Secondary syphilis follows the chancre ('45 days after the chancre') but lecture never frames it as a suspicion sign."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'A nonscarring alopecia with a moth-eaten appearance is characteristic of secondary syphilis'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "'Mucous patches are the most characteristic mucous membrane lesions of secondary syphilis'."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Tertiary: 'Syphilitic gums Deep hypodermic nodules'."
+        },
+        "E": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Secondary syphilids: 'Palmoplantar ++++'."
+        }
+      },
+      "lecture": [
+        "Syphilis"
+      ],
+      "note": "Tick alopecia, mucous patches and palmoplantar lesions; prior genital ulcer is plausible but uncertain."
+    },
+    "S213": {
+      "where": "Professor's questions Q122",
+      "label": true,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15 'Scabies in infants': 'Involvement of the back and face'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15: 'Palmoplantar vesicular lesions'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15: 'Involvement of the back and face'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Pruritus exists in all scabies but is not listed as an infant feature."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Only 'nodules (axillae, genitals)' listed; 'flexural folds' not named."
+        }
+      },
+      "lecture": [
+        "Scabies and pediculosis"
+      ],
+      "note": "Tick face, palms/soles and back, which the infant slide lists; pruritus and folds are not infant-specific."
+    },
+    "S221": {
+      "where": "Professor's questions Q130",
+      "label": true,
+      "key": "ABC",
+      "options": {
+        "A": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15 'Scabies in infants': 'Involvement of the back and face'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15: 'Palmoplantar vesicular lesions'."
+        },
+        "C": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Slide 15: 'Involvement of the back and face'."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Pruritus exists in all scabies but is not listed as an infant feature."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Only 'nodules (axillae, genitals)' listed; 'flexural folds' not named."
+        }
+      },
+      "lecture": [
+        "Scabies and pediculosis"
+      ],
+      "note": "Duplicate of S213: tick face, palms/soles and back."
+    },
+    "S234": {
+      "where": "Professor's questions Q143",
+      "label": false,
+      "key": "BD",
+      "options": {
+        "A": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "True only if the missing map shows an L. tropica (anthroponotic) zone."
+        },
+        "B": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "True only if the missing map shows an L. major (zoonotic) zone."
+        },
+        "C": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Ph. sergenti is the L. tropica vector; depends on the area."
+        },
+        "D": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Meriones shawi is the L. major reservoir; depends on the area."
+        },
+        "E": {
+          "status": "unsure",
+          "basis": "none",
+          "why": "Lecture never states spontaneous healing outright."
+        }
+      },
+      "lecture": [
+        "Cutaneous leishmaniasis"
+      ],
+      "note": "Depends on a missing map: south/south-east (L. major) means B, D (+/-E); centre/north (L. tropica) means A, C (+/-E)."
+    }
+  }
+}

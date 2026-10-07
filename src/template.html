@@ -48,11 +48,12 @@
   const TYPES = BANK.types;
   const TYPE_GROUP = { Midterms: 'Midterms', Mock: 'Mock exams', Finals: 'Finals', 'Second session': 'Second session', Collected: 'Collected questions' };
   const LETTERS = 'ABCDEFGH';
-  const KEY_ORDER = ['official', 'proposed', 'claude', 'none'];
-  const KEY_SHORT = { official: 'Official', proposed: 'Proposed', claude: 'Claude', none: 'No key' };
-  const KEY_LONG = { official: 'Official answer', proposed: 'Proposed answer', claude: "Claude's suggested answer", none: 'No answer key' };
+  const KEY_ORDER = ['official', 'checked', 'proposed', 'claude', 'none'];
+  const KEY_SHORT = { official: 'Official', checked: 'Checked', proposed: 'Proposed', claude: 'Claude', none: 'No key' };
+  const KEY_LONG = { official: 'Official answer', checked: 'Checked against lecture', proposed: 'Proposed answer', claude: "Claude's suggested answer", none: 'No answer key' };
   const KEY_LEGEND = {
     official: 'Official answer key',
+    checked: 'Checked against the S5 lectures: every marked answer is backed by a lecture slide, an official key on a copy of the question, or textbook medicine.',
     proposed: 'Proposed answers, green in the doc. Not official, so double-check.',
     claude: "Nothing was highlighted in the doc, so these are Claude's suggested answers, each with a short reason. Check them against your course.",
     none: "Nothing was highlighted in the doc, so these can't be graded yet"

@@ -53,6 +53,20 @@ for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
     q.update(f.get('also', {}))
     assert all(0 <= i < len(q['options']) for i in q['answer']), f"correction {f['q']}: answer outside the options"
 
+# Answers checked against the lectures (checked.json): the "Checked against lecture" label, only when the key is
+# still the one the check confirmed. The per-option evidence stays in the file for us; nothing else is shown.
+# A Claude-suggested answer that was checked drops Claude's reasoning note, which argued for the old key.
+for s, c in json.load(open('checked.json', encoding='utf8'))['questions'].items():
+    q = Q[shortids[s]]
+    if not c['label']:
+        continue
+    if ''.join(LETTERS[i] for i in q['answer']) != c['key']:
+        print(f"checked.json {s}: the key is {''.join(LETTERS[i] for i in q['answer'])}, not {c['key']}: no label")
+        continue
+    if q.get('key') == 'claude':
+        q['qNotes'] = [n for n in q.get('qNotes', []) if n.get('by') != 'claude']
+    q['key'] = 'checked'
+
 # Follow-up questions in the dermatology professor set that say "this case" / "your diagnosis" without the case:
 # show the vignette they follow as an open case box.
 FOLLOW_UPS = {

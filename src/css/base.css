@@ -28,10 +28,12 @@
   --mottle-2: rgba(46, 52, 70, .16);
   --shade: rgba(0, 0, 0, .5);
   --k-official: #bdaae3;
+  --k-checked: #93c6cc;
   --k-proposed: #adc99e;
   --k-claude: #ddbd73;
   --k-none: #a39b8d;
   --k-official-line: rgba(189, 170, 227, .42);
+  --k-checked-line: rgba(147, 198, 204, .42);
   --k-proposed-line: rgba(173, 201, 158, .42);
   --k-claude-line: rgba(221, 189, 115, .45);
   --k-none-line: rgba(163, 155, 141, .45);
