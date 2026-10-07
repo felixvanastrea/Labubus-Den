@@ -225,7 +225,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Themes (cosmetics, "looks" in the code)
 
 - Earned with real study milestones (Abi's choice), never by volume: Codex = one lecture at Solid (15/20 or more on its
-  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`). `themeGoal(id)` gives done,
+  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`); Golden phase = a golden exam, 16/20
+  or more in exam mode on 20 questions or more (`GOLD_MARK`, `GOLD_N`, from `S.examLog`). `themeGoal(id)` gives done,
   progress, the requirement and where you are. Wearing needs an account (`canWear`: signed in, or not on GitHub
   Pages); the account named Labubu (`LOOKS_FOR`, Abi's) has every theme. A theme not earned is never worn, even if
   saved on the device.
@@ -265,7 +266,22 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (gold Fell on lapis), question stems a vermilion initial, answer letters in red. Sounds: a handbell for a right
   answer, a page turned for the next question; a church bell in the intro, where the halo plays the moon's part.
   No real paintings yet (the art hosts are blocked from Claude's workspace); Abi can send public-domain ones.
-- `src/tests/review_looks.js [blood|codex]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+- Golden phase (`:root[data-look="klimt"]`), made for a friend of Abi's who loves Klimt's The Kiss (and money): the one
+  light theme. Abi asked for it light, with the painting a main part of the background, and a more beautiful title.
+  The lovers, cut out of the painting's dark ground (`img/klimt-kiss.webp`, made by `src/pipeline/klimt_cut.py` from
+  her photo; public domain, Klimt 1908), are a fixed layer behind every screen (`.km-bg`, its image set in CSS so it's
+  only fetched when worn): full on the right of the homepage, fading to a watermark as you scroll (`kmScroll`,
+  `--km-scroll`), half beside the questions. Ivory ground flecked with gold leaf (`--flecks`; the starfield's stars in
+  gold, `--star-pal`); Playfair Display for the title and headings, Jost to read; the title drawn smooth in hammered
+  gold leaf once it resolves (`leaf`, `leafText`, `LEAF`; `span` keeps it to the left two thirds). Cards are ivory with
+  a band of his mosaic on top (`--mosaic`) and a gold spiral over the question card (`--spiral`); answers are gold
+  coins, flipped when picked, shining when right, tarnished when wrong (right is green, wrong poppy red, half cobalt,
+  the meadow's colours). On the homepage the facts and the quest move to the left, a meadow of colour dabs runs under
+  the hero (`meadowHTML`) and gold leaf drifts down (`leavesHTML`). The intro still looks up into the night (its words
+  keep night colours, `--intro-ink`; the picker's tokens are scoped dark): the painting hangs dim behind the picker,
+  lights up as the gold star falls shedding leaf (`drawLeaf`), and lands in its place on the page. Sounds: `coins` (a
+  right answer), `brush` (the next question), `shimmer` (the intro). The disc is a gold coin with his spirals (`goldCoin`).
+- `src/tests/review_looks.js [blood|codex|klimt]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.

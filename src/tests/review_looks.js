@@ -1,11 +1,11 @@
-// Screenshots of each theme for a design review (not a pass/fail test): node review_looks.js [blood|codex]
+// Screenshots of each theme for a design review (not a pass/fail test): node review_looks.js [blood|codex|klimt]
 const { chromium } = require('playwright');
 const path = require('path'), fs = require('fs');
 const OUT = path.join(__dirname, 'shots') + '/';
 const URL = (process.env.BASE || 'http://127.0.0.1:8765') + '/index.html';
 const acc = fs.readFileSync(path.join(__dirname, 'account.js'), 'utf8');
 const FAKE = new Function(acc.slice(acc.indexOf('const FAKE = {'), acc.indexOf('\n};\n', acc.indexOf('const FAKE = {')) + 3) + '\nreturn FAKE;')();
-const looks = process.argv.slice(2).length ? process.argv.slice(2) : ['blood', 'codex'];
+const looks = process.argv.slice(2).length ? process.argv.slice(2) : ['blood', 'codex', 'klimt'];
 (async () => {
   const b = await chromium.launch();
   for (const lk of looks) for (const [vw, vh, tag] of [[1280, 860, 'd'], [390, 844, 'm']]) {

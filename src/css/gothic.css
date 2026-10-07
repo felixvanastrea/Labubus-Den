@@ -1340,6 +1340,144 @@ html.intro-on #sky { opacity: 0; transition: none; }
 @media (prefers-reduced-motion: reduce) { .cx-crawl { animation: none; } }
 
 
+/* =====================================================================================================================
+   Golden phase: Klimt's gold, in daylight. The lovers of The Kiss (1908, public domain), cut from the painting's dark
+   ground, stand on the page as the background of every screen, on ivory flecked with gold leaf like his own grounds;
+   the title in gold leaf (Playfair Display italic, drawn smooth), Jost to read; a band of his mosaic on every card,
+   gold spirals, answers struck as gold coins; under the hero a meadow of colour dabs and the gold tendrils of her
+   dress; gold leaf drifting down. The intro still looks up into the night, then comes down into the gold.
+   Sounds: coins for a right answer, a brush stroke for the next question, a shower of gold in the intro.
+   ===================================================================================================================== */
+:root[data-look="klimt"] {
+  --night: #f3e9d2; --deep: #e4d3ad; --plate: rgba(252, 247, 234, .93); --plate-2: #f6ecd6;
+  --ink: #2b1e0e; --ink-hi: #1a1107; --ink-2: #5b4728; --ink-3: #87704b;
+  --hair: rgba(130, 94, 32, .24); --hair-2: rgba(130, 94, 32, .46); --glass: rgba(246, 238, 220, .86);
+  --right: #3f7a2e; --wrong: #b8361f; --half: #2f56a8;
+  --right-wash: rgba(63, 122, 46, .09); --wrong-wash: rgba(184, 54, 31, .07); --half-wash: rgba(47, 86, 168, .08);
+  --sel-wash: rgba(201, 150, 42, .1); --glow-soft: rgba(201, 150, 42, .18); --glow-mid: rgba(201, 150, 42, .42);
+  --title-glow: rgba(214, 165, 49, .3); --mottle-1: rgba(222, 176, 70, .2); --mottle-2: rgba(80, 130, 60, .08); --shade: rgba(150, 104, 30, .22);
+  --k-official: #57418f; --k-proposed: #3b7042; --k-claude: #8a5f0c; --k-none: #6b5d48;
+  --k-official-line: rgba(87, 65, 143, .45); --k-proposed-line: rgba(59, 112, 66, .45); --k-claude-line: rgba(138, 95, 12, .45);
+  --k-none-line: rgba(107, 93, 72, .45); --k-flag-line: rgba(184, 54, 31, .45);
+  --fig-bg: #fffaf0;
+  --wax-hi: #f7dc84; --wax-mid: #cc9a25; --wax-edge: #6b4a0b; --scrim: rgba(52, 36, 12, .55);
+  --f-display: "Playfair Display", "Bodoni Moda", Didot, Georgia, serif;
+  --f-read: "Jost", "Futura", system-ui, sans-serif;
+  --f-mono: "Jost", "Futura", system-ui, sans-serif;
+  --t-label: .84rem;
+  --gold: #c9962a; --gold-hi: #e9bd52; --gold-deep: #8f6411; --gold-ink: #94670f; --gold-txt: #f2c654;
+  --star-pal: #b8862b #c9962a #d9a93a #a8761c #c8461f #b8862b #8f6411;
+  --intro-ink: #f4e7c5; --intro-ink-hi: #fff7de;
+  --fx: #f2c654; --fx-hi: #fff4d0;
+  --coin: radial-gradient(circle at 34% 28%, #fff3c0 0, #f2cf66 20%, #d6a531 52%, #a07214 82%, #6b4a0b 100%);
+  --flecks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Ccircle cx='76' cy='234' r='1.2' fill='%23b8862b' opacity='0.49'/%3E%3Ccircle cx='80' cy='194' r='0.6' fill='%23b8862b' opacity='0.4'/%3E%3Ccircle cx='80' cy='32' r='0.5' fill='%23d9a93a' opacity='0.47'/%3E%3Ccircle cx='124' cy='158' r='0.6' fill='%238f6411' opacity='0.43'/%3E%3Ccircle cx='3' cy='181' r='0.5' fill='%23b8862b' opacity='0.29'/%3E%3Ccircle cx='86' cy='307' r='1.2' fill='%23b8862b' opacity='0.41'/%3E%3Ccircle cx='171' cy='292' r='0.7' fill='%23d9a93a' opacity='0.29'/%3E%3Ccircle cx='193' cy='199' r='0.8' fill='%23b8862b' opacity='0.24'/%3E%3Ccircle cx='88' cy='246' r='0.8' fill='%23b8862b' opacity='0.42'/%3E%3Ccircle cx='21' cy='233' r='1.1' fill='%23b8862b' opacity='0.34'/%3E%3Ccircle cx='196' cy='154' r='1.1' fill='%23b8862b' opacity='0.28'/%3E%3Crect x='97' y='346' width='3.0' height='2.1' transform='rotate(74 97 346)' fill='%23c8461f' opacity='0.29'/%3E%3Ccircle cx='244' cy='7' r='1.0' fill='%23d9a93a' opacity='0.4'/%3E%3Ccircle cx='297' cy='115' r='0.9' fill='%23b8862b' opacity='0.55'/%3E%3Crect x='57' y='136' width='2.0' height='1.9' transform='rotate(43 57 136)' fill='%23b8862b' opacity='0.25'/%3E%3Ccircle cx='187' cy='346' r='0.9' fill='%23d9a93a' opacity='0.4'/%3E%3Crect x='140' y='328' width='2.5' height='2.3' transform='rotate(2 140 328)' fill='%23d9a93a' opacity='0.22'/%3E%3Ccircle cx='177' cy='264' r='1.3' fill='%238f6411' opacity='0.32'/%3E%3Ccircle cx='90' cy='243' r='0.8' fill='%23b8862b' opacity='0.32'/%3E%3Ccircle cx='242' cy='85' r='0.5' fill='%23d9a93a' opacity='0.41'/%3E%3Ccircle cx='273' cy='218' r='1.1' fill='%238f6411' opacity='0.43'/%3E%3Crect x='99' y='8' width='1.7' height='2.3' transform='rotate(17 99 8)' fill='%23b8862b' opacity='0.35'/%3E%3Ccircle cx='168' cy='188' r='0.7' fill='%238f6411' opacity='0.4'/%3E%3Ccircle cx='62' cy='151' r='1.1' fill='%23d9a93a' opacity='0.35'/%3E%3Ccircle cx='36' cy='49' r='1.3' fill='%23c8461f' opacity='0.3'/%3E%3Ccircle cx='146' cy='239' r='0.6' fill='%23c8461f' opacity='0.41'/%3E%3Ccircle cx='315' cy='29' r='0.9' fill='%23b8862b' opacity='0.19'/%3E%3Ccircle cx='131' cy='128' r='1.1' fill='%23b8862b' opacity='0.45'/%3E%3Crect x='314' y='257' width='1.9' height='1.3' transform='rotate(84 314 257)' fill='%23c8461f' opacity='0.38'/%3E%3Ccircle cx='146' cy='127' r='1.1' fill='%23b8862b' opacity='0.33'/%3E%3Ccircle cx='95' cy='297' r='0.9' fill='%23c8461f' opacity='0.2'/%3E%3Ccircle cx='66' cy='276' r='1.0' fill='%23b8862b' opacity='0.22'/%3E%3Ccircle cx='264' cy='343' r='1.2' fill='%23b8862b' opacity='0.29'/%3E%3Ccircle cx='74' cy='122' r='0.5' fill='%23b8862b' opacity='0.27'/%3E%3Ccircle cx='256' cy='291' r='0.8' fill='%23d9a93a' opacity='0.5'/%3E%3Ccircle cx='98' cy='136' r='0.4' fill='%23c8461f' opacity='0.54'/%3E%3Crect x='274' y='290' width='3.4' height='1.7' transform='rotate(13 274 290)' fill='%238f6411' opacity='0.45'/%3E%3Ccircle cx='78' cy='119' r='1.1' fill='%23b8862b' opacity='0.54'/%3E%3Ccircle cx='157' cy='243' r='1.2' fill='%23d9a93a' opacity='0.44'/%3E%3Crect x='315' y='279' width='1.5' height='1.6' transform='rotate(76 315 279)' fill='%23d9a93a' opacity='0.31'/%3E%3Crect x='306' y='184' width='2.3' height='1.3' transform='rotate(66 306 184)' fill='%23b8862b' opacity='0.32'/%3E%3Ccircle cx='25' cy='247' r='0.7' fill='%238f6411' opacity='0.31'/%3E%3Ccircle cx='129' cy='227' r='0.7' fill='%238f6411' opacity='0.41'/%3E%3Crect x='109' y='80' width='3.3' height='2.3' transform='rotate(59 109 80)' fill='%23b8862b' opacity='0.43'/%3E%3Ccircle cx='97' cy='237' r='0.4' fill='%23d9a93a' opacity='0.48'/%3E%3Ccircle cx='50' cy='39' r='0.6' fill='%23b8862b' opacity='0.3'/%3E%3Crect x='319' y='259' width='3.2' height='1.8' transform='rotate(81 319 259)' fill='%238f6411' opacity='0.2'/%3E%3Crect x='115' y='104' width='2.2' height='1.1' transform='rotate(82 115 104)' fill='%23d9a93a' opacity='0.29'/%3E%3Crect x='39' y='231' width='3.4' height='1.8' transform='rotate(84 39 231)' fill='%23b8862b' opacity='0.45'/%3E%3Crect x='99' y='73' width='2.9' height='1.7' transform='rotate(56 99 73)' fill='%238f6411' opacity='0.25'/%3E%3Crect x='351' y='328' width='2.8' height='1.8' transform='rotate(9 351 328)' fill='%23d9a93a' opacity='0.43'/%3E%3Ccircle cx='333' cy='279' r='0.5' fill='%23d9a93a' opacity='0.51'/%3E%3Ccircle cx='249' cy='53' r='0.9' fill='%23b8862b' opacity='0.36'/%3E%3Ccircle cx='74' cy='330' r='0.8' fill='%238f6411' opacity='0.42'/%3E%3Ccircle cx='115' cy='352' r='1.1' fill='%23d9a93a' opacity='0.2'/%3E%3Crect x='119' y='65' width='2.0' height='0.8' transform='rotate(43 119 65)' fill='%23d9a93a' opacity='0.51'/%3E%3Crect x='313' y='83' width='3.4' height='1.0' transform='rotate(69 313 83)' fill='%23b8862b' opacity='0.27'/%3E%3Ccircle cx='344' cy='99' r='0.8' fill='%23b8862b' opacity='0.27'/%3E%3Crect x='281' y='245' width='1.5' height='2.2' transform='rotate(46 281 245)' fill='%238f6411' opacity='0.4'/%3E%3Ccircle cx='199' cy='311' r='1.2' fill='%23d9a93a' opacity='0.22'/%3E%3Ccircle cx='357' cy='26' r='0.8' fill='%238f6411' opacity='0.25'/%3E%3Ccircle cx='173' cy='247' r='1.1' fill='%23b8862b' opacity='0.47'/%3E%3Crect x='127' y='291' width='2.0' height='1.0' transform='rotate(12 127 291)' fill='%23c8461f' opacity='0.52'/%3E%3Ccircle cx='135' cy='232' r='0.8' fill='%23b8862b' opacity='0.35'/%3E%3Ccircle cx='273' cy='277' r='0.9' fill='%23c8461f' opacity='0.41'/%3E%3Crect x='157' y='107' width='1.4' height='1.1' transform='rotate(16 157 107)' fill='%23b8862b' opacity='0.26'/%3E%3Ccircle cx='143' cy='169' r='0.9' fill='%238f6411' opacity='0.48'/%3E%3Ccircle cx='65' cy='85' r='0.7' fill='%238f6411' opacity='0.29'/%3E%3Crect x='222' y='81' width='1.8' height='2.0' transform='rotate(5 222 81)' fill='%23d9a93a' opacity='0.37'/%3E%3Crect x='96' y='46' width='2.1' height='0.9' transform='rotate(45 96 46)' fill='%23d9a93a' opacity='0.43'/%3E%3Crect x='228' y='145' width='3.3' height='2.1' transform='rotate(50 228 145)' fill='%23d9a93a' opacity='0.39'/%3E%3Ccircle cx='42' cy='231' r='1.0' fill='%23b8862b' opacity='0.5'/%3E%3Ccircle cx='110' cy='70' r='0.9' fill='%23b8862b' opacity='0.26'/%3E%3Ccircle cx='93' cy='66' r='0.9' fill='%23c8461f' opacity='0.22'/%3E%3Ccircle cx='133' cy='141' r='1.2' fill='%23d9a93a' opacity='0.53'/%3E%3Ccircle cx='295' cy='164' r='0.5' fill='%238f6411' opacity='0.49'/%3E%3Ccircle cx='118' cy='159' r='0.6' fill='%23d9a93a' opacity='0.53'/%3E%3Ccircle cx='31' cy='153' r='1.3' fill='%23b8862b' opacity='0.33'/%3E%3Crect x='340' y='169' width='2.1' height='1.5' transform='rotate(67 340 169)' fill='%238f6411' opacity='0.51'/%3E%3Crect x='283' y='160' width='2.5' height='1.2' transform='rotate(56 283 160)' fill='%23b8862b' opacity='0.32'/%3E%3Ccircle cx='231' cy='58' r='0.8' fill='%23b8862b' opacity='0.54'/%3E%3Ccircle cx='14' cy='107' r='0.8' fill='%23c8461f' opacity='0.38'/%3E%3Crect x='309' y='227' width='1.3' height='0.9' transform='rotate(48 309 227)' fill='%23b8862b' opacity='0.24'/%3E%3Ccircle cx='218' cy='344' r='0.4' fill='%23b8862b' opacity='0.19'/%3E%3Ccircle cx='346' cy='246' r='1.0' fill='%23d9a93a' opacity='0.25'/%3E%3Ccircle cx='174' cy='58' r='0.9' fill='%23b8862b' opacity='0.33'/%3E%3Ccircle cx='300' cy='97' r='1.2' fill='%23d9a93a' opacity='0.27'/%3E%3Ccircle cx='156' cy='74' r='1.2' fill='%238f6411' opacity='0.54'/%3E%3Ccircle cx='68' cy='55' r='0.8' fill='%23b8862b' opacity='0.25'/%3E%3Ccircle cx='182' cy='292' r='0.9' fill='%23c8461f' opacity='0.22'/%3E%3Ccircle cx='256' cy='47' r='0.7' fill='%23c8461f' opacity='0.48'/%3E%3Ccircle cx='85' cy='168' r='1.1' fill='%23d9a93a' opacity='0.33'/%3E%3Ccircle cx='335' cy='306' r='0.9' fill='%23c8461f' opacity='0.2'/%3E%3Crect x='75' y='235' width='1.9' height='1.2' transform='rotate(72 75 235)' fill='%23b8862b' opacity='0.33'/%3E%3Ccircle cx='185' cy='46' r='1.0' fill='%23c8461f' opacity='0.22'/%3E%3Ccircle cx='116' cy='227' r='0.9' fill='%23b8862b' opacity='0.18'/%3E%3Ccircle cx='133' cy='235' r='1.0' fill='%238f6411' opacity='0.38'/%3E%3Ccircle cx='303' cy='55' r='0.5' fill='%23d9a93a' opacity='0.51'/%3E%3Ccircle cx='243' cy='239' r='0.9' fill='%23b8862b' opacity='0.42'/%3E%3Ccircle cx='245' cy='78' r='0.8' fill='%23d9a93a' opacity='0.43'/%3E%3Ccircle cx='137' cy='285' r='0.6' fill='%238f6411' opacity='0.21'/%3E%3Crect x='28' y='180' width='2.7' height='1.4' transform='rotate(49 28 180)' fill='%238f6411' opacity='0.2'/%3E%3Ccircle cx='321' cy='166' r='1.1' fill='%23b8862b' opacity='0.37'/%3E%3Crect x='235' y='345' width='2.7' height='1.1' transform='rotate(78 235 345)' fill='%23d9a93a' opacity='0.45'/%3E%3Crect x='100' y='163' width='2.7' height='1.3' transform='rotate(23 100 163)' fill='%23c8461f' opacity='0.4'/%3E%3Ccircle cx='128' cy='338' r='0.5' fill='%23b8862b' opacity='0.3'/%3E%3Crect x='353' y='62' width='3.1' height='1.3' transform='rotate(85 353 62)' fill='%23d9a93a' opacity='0.45'/%3E%3Ccircle cx='219' cy='16' r='1.3' fill='%23b8862b' opacity='0.48'/%3E%3Ccircle cx='333' cy='106' r='1.3' fill='%23c8461f' opacity='0.54'/%3E%3Crect x='318' y='154' width='3.3' height='2.0' transform='rotate(72 318 154)' fill='%23b8862b' opacity='0.54'/%3E%3C/svg%3E");
+  --mosaic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='12' viewBox='0 0 132 12' preserveAspectRatio='none'%3E%3Crect width='132' height='12' fill='%23c9962a'/%3E%3Crect x='0' y='0' width='7' height='12' fill='%23e3b54a'/%3E%3Crect x='8' y='2' width='9' height='8' fill='%23a9c4bd'/%3E%3Crect x='18' y='0' width='5' height='12' fill='%23e3b54a'/%3E%3Crect x='24' y='1' width='5' height='10' fill='%2317100a'/%3E%3Crect x='25.5' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3Crect x='30' y='0' width='5' height='12' fill='%23e3b54a'/%3E%3Crect x='36' y='1' width='6' height='10' fill='%2317100a'/%3E%3Crect x='38.0' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3Crect x='43' y='2' width='9' height='8' fill='%23efe4c8'/%3E%3Crect x='44' y='5' width='7' height='2' fill='%23c9962a'/%3E%3Crect x='53' y='1' width='6' height='10' fill='%2317100a'/%3E%3Crect x='55.0' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3Crect x='60' y='1' width='9' height='10' fill='%2317100a'/%3E%3Crect x='63.5' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3Crect x='70' y='1' width='11' height='10' fill='%2317100a'/%3E%3Crect x='74.5' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3Crect x='82' y='2' width='6' height='8' fill='%23a9c4bd'/%3E%3Crect x='89' y='0' width='11' height='12' fill='%23e3b54a'/%3E%3Crect x='101' y='2' width='11' height='8' fill='%23a9c4bd'/%3E%3Crect x='113' y='0' width='5' height='12' fill='%23e3b54a'/%3E%3Crect x='119' y='2' width='5' height='8' fill='%23a9c4bd'/%3E%3Crect x='125' y='1' width='6' height='10' fill='%2317100a'/%3E%3Crect x='127.0' y='4' width='2' height='4' fill='%23efe4c8'/%3E%3C/svg%3E");
+  --spiral: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20.0 20.0 L20.0 20.1 L20.0 20.2 L20.0 20.3 L20.0 20.4 L19.9 20.5 L19.8 20.6 L19.7 20.7 L19.5 20.7 L19.4 20.7 L19.2 20.7 L19.0 20.7 L18.9 20.6 L18.7 20.5 L18.6 20.3 L18.4 20.2 L18.3 20.0 L18.2 19.8 L18.1 19.5 L18.1 19.3 L18.1 19.0 L18.2 18.7 L18.3 18.4 L18.4 18.2 L18.6 17.9 L18.8 17.6 L19.1 17.4 L19.4 17.2 L19.7 17.0 L20.1 16.9 L20.4 16.8 L20.9 16.8 L21.3 16.8 L21.7 16.9 L22.1 17.1 L22.5 17.3 L22.9 17.5 L23.3 17.8 L23.6 18.2 L23.9 18.6 L24.2 19.1 L24.3 19.6 L24.5 20.1 L24.5 20.7 L24.5 21.3 L24.4 21.8 L24.2 22.4 L24.0 23.0 L23.7 23.5 L23.3 24.0 L22.9 24.5 L22.3 24.9 L21.8 25.2 L21.1 25.5 L20.5 25.7 L19.8 25.8 L19.0 25.9 L18.3 25.8 L17.6 25.7 L16.8 25.4 L16.1 25.1 L15.5 24.6 L14.9 24.1 L14.3 23.5 L13.8 22.9 L13.4 22.1 L13.1 21.3 L12.9 20.5 L12.8 19.6 L12.8 18.7 L12.9 17.8 L13.1 16.9 L13.4 16.1 L13.9 15.2 L14.4 14.4 L15.1 13.7 L15.8 13.1 L16.7 12.5 L17.6 12.1 L18.5 11.7 L19.5 11.5 L20.6 11.4 L21.6 11.4 L22.7 11.6 L23.7 11.9 L24.7 12.3 L25.7 12.9 L26.6 13.5 L27.4 14.3 L28.2 15.2 L28.8 16.2 L29.3 17.3 L29.6 18.4 L29.9 19.6 L30.0 20.8 L29.9 22.0 L29.7 23.2 L29.3 24.4 L28.8 25.6 L28.1 26.7 L27.3 27.7 L26.4 28.6 L25.4 29.4 L24.2 30.1 L23.0 30.6 L21.7 31.0 L20.4 31.3 L19.0 31.3 L17.6 31.2 L16.2 30.9 L14.9 30.5 L13.6 29.9 L12.4 29.1 L11.2 28.2 L10.2 27.1 L9.3 25.9 L8.6 24.6 L8.0 23.3 L7.6 21.8 L7.4 20.3 L7.3 18.7 L7.5 17.2 L7.8 15.6 L8.3 14.1 L9.0 12.7 L9.9 11.4 L11.0 10.1 L12.2 9.0 L13.5 8.0 L15.0 7.2 L16.5 6.6 L18.2 6.2 L19.9 6.0 L21.6 6.0 L23.3 6.2 L25.0 6.6 L26.6 7.2 L28.2 8.0 L29.7 9.0 L31.0 10.2 L32.2 11.5 L33.3 13.0 L34.1 14.6 L34.8 16.4 L35.2 18.2 L35.4 20.0 L35.4 21.9 L35.1 23.8 L34.7 25.6 L34.0 27.4 L33.1 29.1 L31.9 30.7 L30.6 32.2 L29.1 33.5 L27.5 34.6 L25.7 35.5 L23.8 36.1 L21.8 36.6 L19.8 36.8 L17.7 36.7 L15.7 36.4' fill='none' stroke='%23d9a93a' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+  font-synthesis: none; scrollbar-color: #c9962a #f3e9d2; color-scheme: light;
+}
+/* the ground: ivory, flecked with gold leaf, warm with gold high on the right */
+:root[data-look="klimt"] .paper {
+  background:
+    var(--flecks) 0 0 / 360px 360px,
+    radial-gradient(60% 50% at 82% 8%, rgba(226, 178, 70, .26), transparent 70%),
+    radial-gradient(55% 45% at 8% 96%, rgba(90, 140, 70, .12), transparent 70%),
+    radial-gradient(70% 55% at 16% 10%, var(--mottle-1), transparent 70%),
+    radial-gradient(130% 95% at 50% 40%, transparent 58%, var(--shade) 100%);
+}
+:root[data-look="klimt"] .grain { opacity: .06; }
+/* the painting: the lovers on the page, right of the content on wide screens, always there behind it */
+.km-bg { display: none; }
+:root[data-look="klimt"] .km-bg {
+  display: block; position: fixed; z-index: 1; pointer-events: none; bottom: -2vh; right: max(-40px, calc(50vw - 36rem - 70px));
+  height: min(91vh, 1100px); aspect-ratio: 964 / 1500; background: url("img/klimt-kiss.webp") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 18px 40px rgba(120, 80, 20, .18)); transition: opacity .9s var(--ease);
+}
+/* full in the hero, then a watermark as you scroll into the page (--km-scroll: 1 at the top, 0 a screen down); beside
+   the questions, half */
+:root[data-look="klimt"] body[data-view="home"] .km-bg { opacity: calc(.2 + .8 * var(--km-scroll, 1)); transition: none; }
+body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
+.intro-on .km-bg { opacity: 0 !important; transition: none; }
+:root[data-look="klimt"] :is(.h1, .h2, .h3) { font-style: italic; font-weight: 500; letter-spacing: 0; }
+:root[data-look="klimt"] :is(.qmeta, .otag, .le-mod, .alsoin, .qp-stats, .mono:not(.navstat)) { font-size: max(.82rem, 1em); letter-spacing: .015em; }
+:root[data-look="klimt"] .eyebrow { color: var(--gold-ink); letter-spacing: .02em; }
+:root[data-look="klimt"] .eyebrow::before { content: ""; display: inline-block; width: 15px; height: 15px; margin-right: 8px; vertical-align: -3px; background: var(--spiral) center / contain no-repeat; }
+:root[data-look="klimt"] .navlinks button::after { background: var(--gold); height: 2px; }
+:root[data-look="klimt"] ::selection { background: #e9c66a; color: #1a1107; }
+:root[data-look="klimt"] .logo { font-style: italic; }
+:root[data-look="klimt"] .logo .lb { color: #fbf3dc; --lb-line: #6b4a0b; }
+/* every card: ivory a touch see-through over the painting, a band of the mosaic along its top, a gold hairline */
+:root[data-look="klimt"] .plate {
+  border-color: rgba(150, 108, 32, .38);
+  background: var(--mosaic) left top / 132px 7px repeat-x, linear-gradient(180deg, rgba(253, 249, 238, .97), rgba(250, 243, 226, .95));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5), 0 30px 60px -40px rgba(110, 70, 10, .45);
+}
+/* sheets over the page (the account, a letter) are solid, so nothing shows through their words */
+:root[data-look="klimt"] .acct-card { background: var(--mosaic) left top / 132px 7px repeat-x, #fbf6e9; }
+:root[data-look="klimt"] .btn.primary { background: linear-gradient(180deg, #f2cd62, #d6a531 48%, #b07f1a); border-color: #a87a1c; color: #2a1a05; box-shadow: inset 0 1px 0 rgba(255, 246, 210, .8), inset 0 -2px 0 rgba(100, 64, 8, .3), 0 8px 20px -10px rgba(150, 100, 20, .6); }
+:root[data-look="klimt"] .btn.primary:hover { background: linear-gradient(180deg, #f8da7c, #e2b33f 48%, #bd8a1f); box-shadow: inset 0 1px 0 rgba(255, 246, 210, .85), inset 0 -2px 0 rgba(100, 64, 8, .3), 0 0 0 5px rgba(214, 165, 49, .18), 0 10px 26px -10px rgba(170, 115, 20, .7); }
+:root[data-look="klimt"] .moon .mn-lit { fill: var(--gold); }
+:root[data-look="klimt"] .moon.full, :root[data-look="klimt"] .moon.big { filter: drop-shadow(0 0 12px var(--glow-mid)); }
+:root[data-look="klimt"] .astro { opacity: .3; }
+:root[data-look="klimt"] .astro :is(circle, ellipse, line) { stroke: #a8802e; }
+/* the questions: a spiral over the card, a gold initial; the answers are coins, plain until picked, struck in gold and
+   flipped as they're picked; a right one catches the light, a wrong one tarnishes */
+:root[data-look="klimt"] .qcard::before { content: ""; top: -12px; width: 26px; height: 24px; padding: 0 5px; background: var(--spiral) center / 22px no-repeat, var(--night); background-origin: content-box; }
+:root[data-look="klimt"] .stem::first-letter { font-family: "Playfair Display", serif; font-style: italic; font-weight: 600; color: var(--gold-ink); font-size: 1.5em; line-height: .8; }
+:root[data-look="klimt"] .bub { font-family: "Playfair Display", serif; font-style: italic; font-weight: 600; font-size: 1.12rem; color: var(--gold-ink); border: 1.5px solid #c9962a; background: radial-gradient(circle at 35% 30%, #fffaf0, #f4e6c4 75%); box-shadow: inset 0 0 0 3px rgba(201, 150, 42, .12); }
+:root[data-look="klimt"] .opt:hover .bub { border-color: var(--gold-deep); }
+:root[data-look="klimt"] .opts:not(.checked) .opt[aria-pressed="true"] .bub, :root[data-look="klimt"] .opt.is-hit .bub {
+  background: var(--coin); border-color: #a87a1c; color: #3a2606;
+  box-shadow: inset 0 0 0 2px rgba(255, 240, 180, .6), inset 0 -3px 4px rgba(90, 58, 6, .45), 0 0 0 4px rgba(214, 165, 49, .16), 0 3px 10px rgba(150, 100, 20, .35);
+}
+:root[data-look="klimt"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { animation: coinflip .6s var(--spring); }
+:root[data-look="klimt"] .opt.is-hit .bub { background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 238, .95) 50%, transparent 62%) -160% 0 / 260% 100% no-repeat, var(--coin); animation: coinshine 1.5s var(--ease) .15s both; }
+:root[data-look="klimt"] .opt.is-miss .bub { background: radial-gradient(circle at 35% 30%, #8a6a48, #4a3020 78%); border-color: var(--wrong); color: #fbe3d6; box-shadow: 0 0 0 4px rgba(184, 54, 31, .1); }
+@keyframes coinflip { 0% { transform: rotateY(0) scale(.82); } 65% { transform: rotateY(330deg) scale(1.08); } 100% { transform: rotateY(360deg) scale(1); } }
+@keyframes coinshine { to { background-position: 160% 0, 0 0; } }
+/* the class sky stays a window of night, in Klimt's colours: gold stars on a dark ground */
+:root[data-look="klimt"] .sky-field { --sky-star: #f2c654; background: radial-gradient(130% 120% at 78% 0%, #3b230e 0%, #120a05 75%); box-shadow: inset 0 0 0 2px #c9962a, inset 0 0 0 4px #120a05, inset 0 0 60px rgba(0, 0, 0, .55); }
+/* the intro's sky is still night: its words keep the night's colours */
+:root[data-look="klimt"] :is(.pick, .intro-hint) { --ink: #f4e7c5; --ink-hi: #fff7de; --ink-2: #ddc99d; --ink-3: #b9a170; --hair: #4a3618; --hair-2: #7a5a22; --glow-mid: rgba(230, 180, 60, .42); --glow-soft: rgba(230, 180, 60, .16); --title-glow: rgba(214, 160, 40, .4); }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-look="klimt"] .opts .opt .bub { animation: none; }
+}
+/* the hero: the facts move under the caption on the left, the painting has the right */
+:root[data-look="klimt"] .title canvas { filter: drop-shadow(0 2px 1.5px rgba(90, 60, 10, .28)) drop-shadow(0 0 30px var(--title-glow)); }
+:root[data-look="klimt"] .hero :is(.caption, .meta, .cta-note) { text-shadow: 0 0 8px var(--night), 0 0 16px var(--night), 0 0 2px var(--night); }
+@media (min-width: 641px) {
+  :root[data-look="klimt"] .hero .caption { grid-row: 1; }
+  :root[data-look="klimt"] .hero .meta { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: 0 18px; text-align: left; line-height: 1.6; color: var(--ink-3); }
+  :root[data-look="klimt"] .hero .title { grid-row: 3; margin-top: 18px; }
+  :root[data-look="klimt"] .hero .hero-cta { grid-column: 1; grid-row: 4; justify-items: start; text-align: left; }
+  :root[data-look="klimt"] .hero .hero-cta .cta-note { max-width: 26rem; }
+  /* the meadow stops before the painting, which has its own */
+  :root[data-look="klimt"] .km-meadow { -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 64%); mask-image: linear-gradient(90deg, #000 40%, transparent 64%); }
+}
+/* gold leaf drifting down through the hero, turning as it falls */
+.km-leaves { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.km-leaves i { position: absolute; left: var(--x); top: -30px; width: calc(15px * var(--k)); height: calc(12px * var(--k)); opacity: 0; animation: leaffall 26s linear infinite; animation-delay: calc(2.5s + var(--d)); }
+.km-leaves b { display: block; width: 100%; height: 100%; background: linear-gradient(135deg, #fff0b0, #e0b040 45%, #9a6c12); clip-path: polygon(0 22%, 92% 4%, 100% 80%, 12% 96%); animation: leafturn var(--f) ease-in-out infinite alternate; }
+@keyframes leafturn { from { transform: rotateY(0) rotate(-8deg); filter: brightness(1.15); } to { transform: rotateY(160deg) rotate(14deg); filter: brightness(.65); } }
+@keyframes leaffall {
+  0% { transform: translate3d(0, 0, 0) rotate(0); opacity: 0; }
+  3% { opacity: .95; }
+  44% { transform: translate3d(-90px, 560px, 0) rotate(150deg); opacity: .85; }
+  48%, 100% { transform: translate3d(-96px, 610px, 0) rotate(165deg); opacity: 0; }
+}
+.intro-on .km-leaves { opacity: 0; }
+/* under the hero: dabs of colour like the lovers' meadow, and the gold tendrils of her dress hanging into it */
+.km-meadow { position: relative; z-index: 0; height: clamp(80px, 10vw, 150px); margin-top: calc(-1 * clamp(30px, 4vw, 64px)); margin-bottom: -10px; pointer-events: none; }
+.km-meadow svg { display: block; width: 100%; height: 100%; }
+.km-meadow .km-g1 { fill: none; stroke: #5d9a48; stroke-linecap: round; }
+.km-meadow .km-g2 { fill: none; stroke: #3f7a33; stroke-linecap: round; }
+@media (max-width: 640px) {
+  :root[data-look="klimt"] .km-bg { right: -24vw; bottom: auto; top: 46px; height: min(80vh, 620px); }
+  :root[data-look="klimt"] body[data-view="home"] .km-bg { opacity: calc(.14 + .3 * var(--km-scroll, 1)); }
+  body[data-view]:not([data-view="home"]) .km-bg { opacity: .22; }
+}
+@media (prefers-reduced-motion: reduce) { .km-leaves { display: none; } }
+
+
 /* ---------- the class: how everyone did on a question, and the class sky ---------- */
 .v-class { flex-basis: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0 0; font-size: 1rem; color: var(--ink-2); }
 .v-class b { color: var(--ink); font-weight: 600; }

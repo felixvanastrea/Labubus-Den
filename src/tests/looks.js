@@ -1,7 +1,8 @@
 // Looks (cosmetics), against the fake Firebase of account.js: only the account named Labubu gets them. Signed in as
 // Labubu: the looks in the sheet, Blood moon puts on the crimson palette, the moon, the castles and the bats, saved to
 // the account; the intro has the big moon that shrinks into the homepage's and bats after the falling star. Signed out,
-// or anyone else: no looks, the classic palette. Screenshots in shots/look_*.png.
+// or anyone else: no looks, the classic palette. Golden phase: light, the painting behind the page, its intro.
+// Screenshots in shots/look_*.png.
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
@@ -93,6 +94,35 @@ async function context(b, size, user, docs) {
   await p.screenshot({ path: OUT + 'look_codex_phone.png' });
   await ctx.close();
 
+  // Golden phase: a light page, the lovers of The Kiss as the background, the title in gold leaf; the intro lands the
+  // painting on the page; scrolling down, it becomes a watermark
+  ctx = await context(b, { width: 1280, height: 860 }, labubu, docs);
+  p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(400);
+  await p.click('.nav-acct'); await p.waitForTimeout(200);
+  await p.click('.acct-looks [data-theme="klimt"]'); await p.waitForTimeout(300);
+  await p.click('[data-acct="close"]'); await p.waitForTimeout(800);
+  const km = await p.evaluate(() => { const bg = getComputedStyle(document.querySelector('.km-bg')); return { d: bg.display, img: bg.backgroundImage, o: +bg.opacity, body: getComputedStyle(document.body).backgroundColor, h2: getComputedStyle(document.querySelector('.h2')).fontFamily }; });
+  check(await look(p) === 'klimt' && await p.evaluate(() => window.__fb.docs['users/u9'].look) === 'klimt' && km.d === 'block' && /klimt-kiss\.webp/.test(km.img) && km.o > .9 && /Playfair Display/.test(km.h2) && !!(await p.$('.km-meadow')) && !!(await p.$('.km-leaves')),
+    'Golden phase: the painting behind the page, Playfair headings, the meadow and the falling leaf, saved: ' + JSON.stringify({ o: km.o, body: km.body }));
+  check(/rgb\(2[2-5]\d, 2[2-4]\d, 2[01]\d\)/.test(km.body) || km.body === 'rgba(0, 0, 0, 0)', 'Golden phase is light: ' + km.body);
+  await p.screenshot({ path: OUT + 'look_klimt_home.png' });
+  await p.evaluate(() => window.scrollTo(0, innerHeight * 1.2)); await p.waitForTimeout(300);
+  check(await p.evaluate(() => +getComputedStyle(document.querySelector('.km-bg')).opacity) < .4, 'scrolled into the page, the painting is a watermark');
+  await p.goto('about:blank'); await p.goto(URL + '#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
+  check(!!(await p.$('.pick')) && await p.evaluate(() => getComputedStyle(document.querySelector('.pk-t')).color) !== 'rgb(43, 30, 14)', 'the intro picker keeps the night\'s colours on a light theme');
+  await p.click('.pk-year.on'); await p.waitForTimeout(900); await p.click('.pk-sem.on');
+  await wait(1200); await p.screenshot({ path: OUT + 'look_klimt_fall.png' });
+  await wait(3000);
+  check(!(await p.$('.intro-sky')) && await look(p) === 'klimt' && await p.evaluate(() => +getComputedStyle(document.querySelector('.km-bg')).opacity) > .9, 'Golden phase: the intro lands the painting on the page');
+  await ctx.close();
+  ctx = await context(b, { width: 390, height: 844 }, labubu, Object.assign({}, docs, { 'users/u9': Object.assign({}, docs['users/u9'], { look: 'klimt' }) }));
+  p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
+  await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(1600);
+  check(await look(p) === 'klimt' && await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Golden phase on a phone: no sideways scroll');
+  await p.screenshot({ path: OUT + 'look_klimt_phone.png' });
+  await ctx.close();
+
   // a phone
   ctx = await context(b, { width: 390, height: 844 }, labubu, Object.assign({}, docs, { 'users/u9': Object.assign({}, docs['users/u9'], { look: 'blood' }) }));
   p = await ctx.newPage(); p.on('pageerror', e => errors.push(e.message));
@@ -112,6 +142,7 @@ async function context(b, size, user, docs) {
   check(/New theme unlocked: Blood moon/.test(await p.evaluate(() => (document.querySelector('.toast') || {}).textContent || '')), 'Sara: told she unlocked Blood moon');
   const card = id => p.evaluate(id => { const b = document.querySelector(`.th-wrap [data-theme="${id}"]`); return b ? b.closest('.th-card').textContent.replace(/\s+/g, ' ') : ''; }, id);
   check(/Wear it/.test(await card('blood')) && /Preview/.test(await card('codex')) && /Solid: 15\/20/.test(await card('codex')) && /No lecture diagnosed yet/.test(await card('codex')), 'Themes section: Blood moon to wear, Codex locked with its requirement');
+  check(/Preview/.test(await card('klimt')) && /golden exam: 16\/20 or more in exam mode, on 20 questions or more/.test(await card('klimt')) && /No exam of 20 questions or more yet/.test(await card('klimt')), 'Golden phase locked: a golden exam, 16/20 on 20 questions or more');
   await p.evaluate(() => document.querySelector('.th-wrap').scrollIntoView());
   await p.screenshot({ path: OUT + 'look_themes.png' });
   await p.click('.th-wrap [data-theme="codex"]'); await p.waitForTimeout(300);
