@@ -1388,6 +1388,19 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .hard { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; color: var(--ink-2); font-size: .98rem; }
 .hard b { color: var(--ink); }
 .hard span { color: var(--ink-3); font-style: italic; }
+/* a letter from the Labubu (GIFTS): her gold head as the seal, the lines in reading type, signed in display italic */
+.lt { gap: 12px; }
+.lt-head { display: flex; align-items: center; gap: 14px; padding-right: 40px; }
+.lt-head .eyebrow { margin: 0; line-height: 1.5; }
+.lt-mark { width: 40px; height: 49px; flex: none; color: #f3d36b; --lb-line: #2a1c06; filter: drop-shadow(0 0 14px rgba(243, 211, 107, .4)); animation: pop .7s var(--spring) both; }
+.lt-p { font-size: 1.14rem; line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+.lt-sign { justify-self: end; font-family: var(--f-display); font-style: italic; font-size: 1.7rem; line-height: 1; color: var(--gold-txt, #e9c46a); }
+.lt-gift { display: flex; align-items: center; gap: 14px; margin-top: 4px; padding: 12px 14px; border: 1px solid var(--hair-2); border-radius: var(--r); }
+.lt-gift img { width: 56px; height: 56px; flex: none; border-radius: 50%; }
+.lt-gift b { display: block; color: var(--ink); font-weight: 600; font-size: 1.1rem; }
+.lt-gift span { color: var(--ink-3); font-style: italic; }
+.th-gift { color: var(--gold-txt, #e9c46a); }
+@media (prefers-reduced-motion: reduce) { .lt-mark { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }
 /* the constellations: dashed while they form, drawn and named once complete */
 .sky-svg .cl line { stroke: var(--sky-star); stroke-opacity: .22; stroke-width: 1; stroke-dasharray: 3 4; }

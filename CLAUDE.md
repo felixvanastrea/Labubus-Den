@@ -235,6 +235,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   announced once per device by a toast on the homepage (`noticeUnlocks`, `S.themesSeen`).
 - To add a theme: its tokens and pieces like the two below, an entry in `THEMES` and `LOOK_NIGHT`, and a case in
   `themeGoal`.
+- Gifts from the Labubu (`GIFTS` in `template.html`, Abi's call each time): a letter to one account, by its name key
+  (`canon`, so lookalikes count; only that account holds the name), with themes it can wear without the requirement
+  ("A gift from the Labubu" under Themes, no unlock toast). The letter opens once on the homepage when signed in
+  (`noticeGifts`, `showLetter`; "Wear the … now" wears it with its sound), is marked read in `S.gifts` (synced, so once
+  across devices) and can be reread from the account sheet. First one: Amro, 7 October 2026, the most questions done,
+  the Blood moon. To add one: an entry with a new `id`, `to` (the canon key), `looks`, `date`, `title`, `lines`.
+  If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first
   time it's worn; the test copy has them locally from @fontsource), its own title (`TITLE_LOOKS`, `shadeTitle`: the
@@ -336,7 +343,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

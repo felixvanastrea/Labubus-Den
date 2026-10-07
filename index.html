@@ -1520,6 +1520,19 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .hard { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; color: var(--ink-2); font-size: .98rem; }
 .hard b { color: var(--ink); }
 .hard span { color: var(--ink-3); font-style: italic; }
+/* a letter from the Labubu (GIFTS): her gold head as the seal, the lines in reading type, signed in display italic */
+.lt { gap: 12px; }
+.lt-head { display: flex; align-items: center; gap: 14px; padding-right: 40px; }
+.lt-head .eyebrow { margin: 0; line-height: 1.5; }
+.lt-mark { width: 40px; height: 49px; flex: none; color: #f3d36b; --lb-line: #2a1c06; filter: drop-shadow(0 0 14px rgba(243, 211, 107, .4)); animation: pop .7s var(--spring) both; }
+.lt-p { font-size: 1.14rem; line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+.lt-sign { justify-self: end; font-family: var(--f-display); font-style: italic; font-size: 1.7rem; line-height: 1; color: var(--gold-txt, #e9c46a); }
+.lt-gift { display: flex; align-items: center; gap: 14px; margin-top: 4px; padding: 12px 14px; border: 1px solid var(--hair-2); border-radius: var(--r); }
+.lt-gift img { width: 56px; height: 56px; flex: none; border-radius: 50%; }
+.lt-gift b { display: block; color: var(--ink); font-weight: 600; font-size: 1.1rem; }
+.lt-gift span { color: var(--ink-3); font-style: italic; }
+.th-gift { color: var(--gold-txt, #e9c46a); }
+@media (prefers-reduced-motion: reduce) { .lt-mark { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }
 /* the constellations: dashed while they form, drawn and named once complete */
 .sky-svg .cl line { stroke: var(--sky-star); stroke-opacity: .22; stroke-width: 1; stroke-dasharray: 3 4; }
@@ -1673,11 +1686,11 @@ html.intro-on #sky { opacity: 0; transition: none; }
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
-    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {} };
+    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {} };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -1727,6 +1740,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
     if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
     if (!S.days || typeof S.days !== 'object' || Array.isArray(S.days)) S.days = {};
     if (!S.statSent || typeof S.statSent !== 'object' || Array.isArray(S.statSent)) S.statSent = {};
+    if (!S.gifts || typeof S.gifts !== 'object' || Array.isArray(S.gifts)) S.gifts = {};
     if (!S.dayT || typeof S.dayT !== 'object' || typeof S.dayT.d !== 'string') S.dayT = null;
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
@@ -2369,6 +2383,15 @@ html.intro-on #sky { opacity: 0; transition: none; }
     { id: 'codex', name: 'Codex', sub: 'Parchment, gold leaf, old masters' },
     { id: 'blood', name: 'Blood moon', sub: 'Crimson, castles and bats' }
   ];
+  // gifts from the Labubu (Abi): a letter for one account, by its name key (canon; names are one per person, lookalikes
+  // too, so only that account holds it), and the themes it brings, worn without the requirement. The letter shows once on
+  // the homepage (seen ones in S.gifts, synced) and can be read again from the account sheet.
+  const GIFTS = [
+    { id: 'amro-2026-10', to: 'amro', looks: ['blood'], date: '7 October 2026', title: 'Congratulations, Amro',
+      lines: ['Of everyone in the Den, you’ve answered the most questions. I counted.',
+        'That deserves more than a star, so the Blood moon is yours: crimson, castles, bats, and an organ chord every time you get one right. Everyone else has to wait for a full moon to wear it.',
+        'Keep going, and good luck in the exams.'] }
+  ];
   const SOLID = 15;
   function bestDiag() {
     let best = null;
@@ -2398,7 +2421,8 @@ html.intro-on #sky { opacity: 0; transition: none; }
       const btn = on ? '<span class="th-on">Wearing</span>'
         : wear ? `<button class="btn${compact ? ' quiet' : ''}" type="button" data-theme="${t.id}">Wear it</button>`
         : `<button class="btn quiet" type="button" data-theme="${t.id}">${LOCK}Preview</button>`;
-      const how = wear || acct.isVip() ? '' : `<p class="th-req">${esc(g.req)}</p>${g.now ? `<p class="th-now">${esc(g.now)}</p>` : ''}<span class="th-bar" aria-hidden="true"><i style="width:${Math.round(g.p * 100)}%"></i></span>`;
+      const how = acct.giftOf(t.id) && !acct.isVip() ? '<p class="th-now th-gift">A gift from the Labubu</p>'
+        : wear || acct.isVip() ? '' : `<p class="th-req">${esc(g.req)}</p>${g.now ? `<p class="th-now">${esc(g.now)}</p>` : ''}<span class="th-bar" aria-hidden="true"><i style="width:${Math.round(g.p * 100)}%"></i></span>`;
       return `<div class="th-card${on ? ' on' : ''}${wear ? '' : ' locked'}">${art}<div class="th-t"><b>${esc(t.name)}</b><span>${esc(t.sub)}</span>${how}</div><div class="th-act">${btn}</div></div>`;
     }).join('')}</div>`;
   }
@@ -2438,10 +2462,14 @@ html.intro-on #sky { opacity: 0; transition: none; }
     // the looks (cosmetics) are only for the Labubu account for now. Names are one per person and lookalikes count as
     // the same, so only Abi can hold it. Before Firebase wakes up, the name this device last saw stands in.
     const LOOKS_FOR = 'labubu';
-    const vip = () => here && (['in', 'error'].includes(state) ? me.key === LOOKS_FOR
-      : ['wait', 'loading'].includes(state) && canon(read(NAME) || '') === LOOKS_FOR);
-    // a theme can be worn once earned (signed in: themes belong to accounts); the Labubu account has them all
-    const canWear = id => id === 'gothic' || vip() || (member() && (here ? state !== 'off' : true) && themeGoal(id).done);
+    const keyNow = () => !here ? '' : ['in', 'error'].includes(state) ? me.key
+      : ['wait', 'loading'].includes(state) ? canon(read(NAME) || '') : '';
+    const vip = () => keyNow() === LOOKS_FOR;
+    const myGifts = () => { const k = keyNow(); return k ? GIFTS.filter(g => g.to === k) : []; };
+    const giftOf = id => myGifts().find(g => (g.looks || []).includes(id)) || null;
+    // a theme can be worn once earned (signed in: themes belong to accounts); the Labubu account has them all, and a
+    // gift from her brings its themes
+    const canWear = id => id === 'gothic' || vip() || !!giftOf(id) || (member() && (here ? state !== 'off' : true) && themeGoal(id).done);
     let pv = null;   // a preview running
     function applyLook() {
       if (pv) return false;
@@ -2469,12 +2497,60 @@ html.intro-on #sky { opacity: 0; transition: none; }
     }
     // once per theme and device: say so when one is newly earned
     function noticeUnlocks() {
+      noticeGifts();
       if (!member() || (here && state === 'off')) return;
       if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
       const fresh = THEMES.filter(t => t.id !== 'gothic' && canWear(t.id) && !S.themesSeen.includes(t.id));
       if (!fresh.length) return;
       fresh.forEach(t => S.themesSeen.push(t.id)); save();
-      if (!vip()) setTimeout(() => toast(`New theme unlocked: ${fresh.map(t => t.name).join(' and ')}. Wear it from Themes on the homepage.`), 600);
+      const told = fresh.filter(t => !giftOf(t.id));   // a gift's theme is announced by its letter
+      if (!vip() && told.length) setTimeout(() => toast(`New theme unlocked: ${told.map(t => t.name).join(' and ')}. Wear it from Themes on the homepage.`), 600);
+    }
+
+    // ---- a letter from the Labubu (GIFTS): once, on the homepage, when the account is in ----
+    let letter = null;
+    function letterHTML(g) {
+      const looks = (g.looks || []).map(id => THEMES.find(t => t.id === id)).filter(Boolean);
+      const wearIt = looks.find(t => lookNow() !== t.id);
+      return `<button class="btn quiet acct-x" type="button" data-letter="close" aria-label="Close">${ICON.cross}</button>
+        <div class="lt-head"><svg class="lt-mark" aria-hidden="true" focusable="false"><use href="#labubu"/></svg><p class="eyebrow">A letter from the Labubu<br>${esc(g.date)}</p></div>
+        <h2 class="h2" id="lt-h">${esc(g.title)}</h2>
+        ${g.lines.map(l => `<p class="lt-p">${esc(l)}</p>`).join('')}
+        <p class="lt-sign">The Labubu</p>
+        ${looks.map(t => `<div class="lt-gift"><img alt="" src="${discURL(t.id, 140)}"><div><b>${esc(t.name)}</b><span>${esc(t.sub)}. Yours to keep.</span></div></div>`).join('')}
+        <div class="row">${wearIt ? `<button class="btn primary" type="button" data-letter="wear" data-id="${wearIt.id}">Wear the ${esc(wearIt.name)} now</button>` : ''}<button class="btn quiet" type="button" data-letter="close">${wearIt ? 'Later' : 'Close'}</button></div>`;
+    }
+    function showLetter(g) {
+      if (!g || (letter && !letter.hidden)) return;
+      if (!letter) {
+        letter = document.createElement('div');
+        letter.className = 'acct-sheet lt-sheet'; letter.setAttribute('role', 'dialog'); letter.setAttribute('aria-modal', 'true'); letter.setAttribute('aria-labelledby', 'lt-h');
+        letter.innerHTML = '<div class="acct-card plate lt"></div>';
+        letter.addEventListener('click', e => {
+          const b = e.target.closest('[data-letter]');
+          if (e.target === letter || (b && b.dataset.letter === 'close')) closeLetter();
+          else if (b && b.dataset.letter === 'wear') { const id = b.dataset.id; closeLetter(); wear(id); if (id === 'blood') sfx.play('bats', { quiet: true }); }
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && letter && !letter.hidden) closeLetter(); });
+        document.body.appendChild(letter);
+      }
+      letter._g = g; letter.querySelector('.lt').innerHTML = letterHTML(g); letter.hidden = false;
+      const f = letter.querySelector('[data-letter="wear"]') || letter.querySelector('.row [data-letter="close"]');
+      if (f) try { f.focus({ preventScroll: true }); } catch (e) {}
+      usage.track('letter_opened');
+    }
+    function closeLetter() {
+      if (!letter || letter.hidden) return;
+      letter.hidden = true;
+      const g = letter._g; if (g && !S.gifts[g.id]) { S.gifts[g.id] = Date.now(); save(); }
+    }
+    function noticeGifts() {
+      if (!here || state !== 'in') return;
+      const g = myGifts().find(x => !S.gifts[x.id]); if (!g) return;
+      setTimeout(() => {
+        if (S.gifts[g.id] || S.view !== 'home' || intro.active() || (sheet && !sheet.hidden) || state !== 'in') return;
+        showLetter(g);
+      }, 700);
     }
 
     // ---- the progress, between devices ----
@@ -2938,6 +3014,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
           ${editing ? `<form class="acct-mail acct-naming" data-acct-form="name"><label class="acct-f"><span>Your new name</span><input id="acct-newname" autocomplete="given-name" maxlength="24" required value="${esc(me.name)}"></label>
               <div class="row"><button class="btn" type="submit"${dis}>Save</button><button class="btn quiet" type="button" data-acct="rename-no">Cancel</button></div></form>`
             : me.key ? `<p class="acct-p">Your name on the Den: <b>${esc(me.name)}</b> <button class="acct-forgot" type="button" data-acct="rename">Change it</button></p>` : ''}
+          ${myGifts().length ? '<p class="acct-p"><button class="acct-forgot lt-again" type="button" data-acct="letter">Read the Labubu’s letter again</button></p>' : ''}
           ${hardHTML()}
           ${state === 'in' || state === 'error' ? `<div class="acct-looks"><p class="acct-or">Themes</p>${themeListHTML(true)}${lookNow() !== 'gothic' ? '<button class="acct-forgot" type="button" data-acct="look-intro">See it from the intro</button>' : ''}</div>` : ''}
           ${note}
@@ -3004,6 +3081,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
           else if (k === 'look-intro') { close(); replayIntro(); }
           else if (k === 'hard') loadHard();
           else if (k === 'top') loadTop();
+          else if (k === 'letter') { const g = myGifts()[0]; close(); showLetter(g); }
           else if (k === 'hard-go' && Array.isArray(hard) && hard.length) { const ids = hard.map(r => r.id); close(); startList(ids, 0, { topic: '*', from: 'home', title: 'Hardest for the class' }); }
           else if (k === 'rename' || k === 'rename-no') { editing = k === 'rename'; msg = ''; paint(); const i = sheet.querySelector('#acct-newname'); if (i) i.select(); }
         });
@@ -3044,7 +3122,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
       load().catch(() => {});
     }
     return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
-      canWear, wear, noticeUnlocks, isVip: () => vip(), previewing: () => !!pv,
+      canWear, wear, noticeUnlocks, isVip: () => vip(), giftOf, previewing: () => !!pv,
       classLine, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky };
   })();
   const LOCK = ICON.lock;
