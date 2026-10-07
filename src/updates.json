@@ -1,11 +1,22 @@
 [
   {
+    "id": "2026-10-07-resp-midterm",
+    "date": "2026-10-07",
+    "title": "Respiratory midterm 2026–2027",
+    "sets": [
+      "s5-2627-respiratory-system-diseases-midterm-respiratory-disease-2026-2027"
+    ],
+    "items": [
+      "Today’s respiratory midterm, all 15 questions as they were given, with proposed answers. Practise it, or take it as a timed exam."
+    ]
+  },
+  {
     "id": "2026-10-06-class",
     "date": "2026-10-06",
     "title": "Studying together",
     "items": [
       "After you check a question, see how the class did on its first try, once enough of you have answered it. A question most people miss is worth a second look.",
-      "The class sky on the homepage: do 10 questions in a day and your star rises into that day\u2019s sky. The more of you there are, the more constellations you form together, starting with the Little Bear around the Labubu\u2019s North Star. Hover a star to see who it is, or hide yours anytime."
+      "The class sky on the homepage: do 10 questions in a day and your star rises into that day’s sky. The more of you there are, the more constellations you form together, starting with the Little Bear around the Labubu’s North Star. Hover a star to see who it is, or hide yours anytime."
     ]
   },
   {
@@ -151,11 +162,17 @@
     "id": "2026-09-29-open",
     "date": "2026-09-29",
     "title": "Midterms 2025–2026",
-    "types": [
-      "Midterms"
-    ],
     "items": [
       "Practice by module or by exam, check your answers, and see where each answer comes from, with notes and explanations."
+    ],
+    "sets": [
+      "all-s5-2526-digestive-system-disease-midterm-digestive-pathology-2025-2026",
+      "all-s5-2526-digestive-system-disease-midterm-digestive-surgical-pathology-2025-2026",
+      "all-s5-2526-dermatology-midterm-dermatology-2025-2026",
+      "all-s5-2526-respiratory-system-diseases-midterm-respiratory-disease-2025-2026",
+      "all-s5-2526-cardio-vascular-system-disease-midterm-cardiac-diseases-2025-2026",
+      "all-s5-2526-cardio-vascular-system-disease-midterm-cardiac-venous-surgery-2025-2026",
+      "all-s5-2526-endocrinology-midterm-endocrinology-2025-2026"
     ]
   }
 ]

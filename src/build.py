@@ -206,13 +206,15 @@ quests = json.load(open('quests.json', encoding='utf8'))
 cur = next((x for x in quests['quests'] if x['id'] == quests.get('current')), None)
 if cur:
     rank = lambda q: (Q[q['id']].get('rep', 10 ** 6), order[q['id']])
+    # a set added on or after the quest's due date (the exam itself, typed up afterwards) isn't part of it
+    after = {s['id'] for s in bank['sources'] if s.get('added', '') >= cur['due']}
     topics, seen, flat = [], set(), []
     for t in cur['topics']:
         want = set(t.get('concepts', []))
         add = {shortids[s] for s in t.get('add', [])}
         drop = {shortids[s] for s in t.get('drop', [])}
         picked = [q for q in bank['questions']
-                  if q['topic'] == cur['module'] and not q.get('dupOf') and q['id'] not in drop
+                  if q['topic'] == cur['module'] and not q.get('dupOf') and q['id'] not in drop and q['source'] not in after
                   and (want & set(q['c']) or q['id'] in add)]
         picked.sort(key=rank)
         ids = list(dict.fromkeys(cst[q['cst']][0] if 'cst' in q else q['id'] for q in picked))
@@ -220,12 +222,22 @@ if cur:
         topics.append({'name': t['name'], 'q': ids})
         flat += [i for i in ids if i not in seen]
         seen.update(ids)
-    bank['quest'] = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note')}
+    bank['quest'] = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note', 'end') if k in cur}
     bank['quest'].update(topics=topics, q=flat)
     print('quest', cur['id'], '|', len(flat), 'questions |',
           ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),
           '| without a key:', sum(1 for i in flat if not Q[i]['answer']),
           '| constellations:', sum(1 for i in flat if 'cst' in Q[i]), f'(of {len(cst)} in the bank)')
+
+# the spotlight (quests.json "spotlight"): a set just added, today's exam, on the homepage in the quest's place from
+# "from" to "until" (inclusive), with its practice and its timed exam
+spot = quests.get('spotlight')
+if spot:
+    s_ = next(s for s in bank['sources'] if s['id'] == spot['set'])
+    n_ = sum(1 for q in bank['questions'] if q['source'] == spot['set'])
+    assert n_, f"spotlight: the set {spot['set']} has no questions"
+    bank['spotlight'] = dict(spot, module=s_['topic'], label=s_['label'], n=n_)
+    print('spotlight', s_['label'], '|', n_, 'questions |', spot['from'], 'to', spot['until'])
 
 # the update log (updates.json, newest first): what changed and when. An entry that brought questions names
 # its exam sets ("sets": set ids, or "types": exam types) and/or single questions ("questions": short ids);

@@ -377,6 +377,104 @@
       "B": "Diffuse forms can lead to amyloidosis.",
       "C": "Sarcoidosis is a separate disease, not a complication.",
       "D": "A lung abscess is an infectious complication."
+    },
+    "R271": {
+      "lecture": "viral-pneumonia",
+      "A": "They come especially in winter, often as outbreaks, not in summer.",
+      "B": "They're usually mild.",
+      "C": "Vaccination against influenza and COVID-19 helps prevent them, with hand washing and masks.",
+      "D": "The X-ray shows an interstitial syndrome: fine reticular or micronodular opacities, on one or both sides."
+    },
+    "R272": {
+      "lecture": "cap",
+      "A": "Not a CRB-65 criterion: the score is confusion, respiratory rate, blood pressure and age.",
+      "B": "The C in CRB-65: confusion.",
+      "C": "The 65 in CRB-65: age over 65.",
+      "D": "Oxygen saturation isn't in the score: confusion, respiratory rate, blood pressure, age."
+    },
+    "R273": {
+      "lecture": "bronchiectasis",
+      "A": "It can suction secretions, but a superinfection is treated with antibiotics.",
+      "B": "It looks for a local cause: a foreign body, a tumor, a compression.",
+      "C": "HRCT confirms the diagnosis, not bronchoscopy.",
+      "D": "It shows the state of the bronchial mucosa and where the secretions or bleeding come from."
+    },
+    "R274": {
+      "lecture": "viral-pneumonia",
+      "A": "Influenza is the most common of the viruses that infect the lungs.",
+      "B": "It's highly contagious: it spreads as epidemics, even pandemics.",
+      "C": "Group A mutates a lot, which is why it causes most epidemics and the pandemics.",
+      "D": "The incubation is short: 2 to 4 days."
+    },
+    "R275": {
+      "lecture": "bronchiectasis",
+      "A": "It can be found by chance on a scan done for something else.",
+      "B": "The X-ray can be normal. With bronchorrhea or hemoptysis, that should still raise suspicion.",
+      "C": "The patient often looks generally well.",
+      "D": "Medical treatment is given in every case. Surgery comes after it, for localized forms."
+    },
+    "R277": {
+      "lecture": "cap",
+      "A": "Legionella is an atypical germ. The leading germ of lobar pneumonia is the pneumococcus.",
+      "B": "Streptococcus pneumoniae is the leading germ, 30 to 47% of cases.",
+      "C": "Mycoplasma causes atypical pneumonia. The leading germ is the pneumococcus.",
+      "D": "Chlamydia psittaci is an atypical germ, caught from birds."
+    },
+    "R278": {
+      "lecture": "cap",
+      "A": "Myalgia is common in atypical pneumonia.",
+      "B": "The pneumococcus causes typical pneumonia. Atypical germs: Mycoplasma, Chlamydia, Rickettsiae, Legionella.",
+      "C": "It often starts like a cold, with catarrh of the upper airways.",
+      "D": "Some crackles, but no focal signs. The X-ray shows an interstitial pattern."
+    },
+    "R279": {
+      "lecture": "cap",
+      "A": "The exam finds a condensation syndrome: increased vocal fremitus, dullness, crackles.",
+      "B": "The onset is sudden. A gradual onset suggests atypical pneumonia.",
+      "C": "Fever is the rule: 39 to 40°C, with intense chills.",
+      "D": "A dense, homogeneous alveolar opacity limited to a lobe or segment, often with an air bronchogram."
+    },
+    "R280": {
+      "lecture": "cap",
+      "A": "Community-acquired means caught outside a hospital. Caught in hospital, it's nosocomial pneumonia.",
+      "B": "It's the leading cause of death from infectious disease.",
+      "C": "It's an alveolitis, an infection of the alveoli. An infection of the bronchi is bronchitis.",
+      "D": "Bacteria are by far the most common cause, the pneumococcus first."
+    },
+    "R281": {
+      "lecture": "bronchiectasis",
+      "A": "Patient education is part of it: the outlook, the long-term treatment, daily airway clearance.",
+      "B": "Surgery is only for localized forms, not diffuse ones.",
+      "C": "Antibiotics are for superinfections, not given all the time.",
+      "D": "Clearing ENT and dental infections is part of the management."
+    },
+    "R282": {
+      "lecture": "nosocomial-pneumonia",
+      "A": "It counts up to 7 days after discharge, not 15.",
+      "B": "Signs must appear at least 48 hours after admission. Earlier, it was already incubating.",
+      "C": "Gram-negative bacilli lead: enterobacteria, Pseudomonas, Acinetobacter, Klebsiella.",
+      "D": "Its incidence is highest in intensive care units."
+    },
+    "R283": {
+      "lecture": "nosocomial-pneumonia",
+      "A": "Delayed or poorly matched antibiotics worsen the prognosis.",
+      "B": "Age over 60 is the poor prognostic factor, not youth.",
+      "C": "Comorbidities are a poor prognostic factor.",
+      "D": "The bad germs are MRSA, Pseudomonas, fungi or several germs at once, not streptococci."
+    },
+    "R284": {
+      "lecture": "acute-bronchitis",
+      "A": "It can complicate chronic bronchitis, triggering COPD exacerbations.",
+      "B": "Inflamed alveoli is pneumonia. Bronchitis inflames the bronchial mucosa and spares the alveoli.",
+      "C": "It goes through two phases: a dry cough first, then a productive one.",
+      "D": "It's usually benign and heals completely within a few weeks."
+    },
+    "R285": {
+      "lecture": "cap",
+      "A": "It lives in hot water systems and air conditioning, and spreads through their droplets.",
+      "B": "Extra-respiratory signs are marked, digestive and neurological.",
+      "C": "Beta-lactams don't work on it: macrolides or fluoroquinolones.",
+      "D": "It's a notifiable disease."
     }
   }
 }

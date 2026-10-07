@@ -137,8 +137,11 @@ def find(bank, clusters):
     types = bank['types']
     src_rank = {s['id']: (types.index(s['type']) if s['type'] in types else 99, i) for i, s in enumerate(bank['sources'])}
     key_rank = {'official': 0, 'proposed': 1, 'claude': 2, 'none': 3}
-    lead_order = lambda q: (1 if q.get('dupOf') else 0, 0 if q['answer'] else 1, key_rank.get(q.get('key') or 'none', 3),
-                            src_rank[q['source']], q['n'])
+    # a set added after the first build ("added": its date) never takes the lead from an older question: the lead is
+    # the canonical id everyone's progress hangs on (clean tries, comets, class stats), so it must not move
+    added = {s['id']: s.get('added', '') for s in bank['sources']}
+    lead_order = lambda q: (1 if q.get('dupOf') else 0, 0 if q['answer'] else 1, added[q['source']],
+                            key_rank.get(q.get('key') or 'none', 3), src_rank[q['source']], q['n'])
     out, conflicts = [], []
     for ids in clusters:
         qs = [Q[i] for i in ids]

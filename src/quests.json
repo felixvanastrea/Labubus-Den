@@ -49,7 +49,15 @@
             "R.bronchiectasis"
           ]
         }
-      ]
+      ],
+      "end": "2026-10-07"
     }
-  ]
+  ],
+  "spotlight": {
+    "set": "s5-2627-respiratory-system-diseases-midterm-respiratory-disease-2026-2027",
+    "title": "Respiratory midterm 2026–2027",
+    "from": "2026-10-07",
+    "until": "2026-10-09",
+    "note": "Today’s respiratory midterm, as it was given. The answers are the proposed ones until an official key comes out."
+  }
 }

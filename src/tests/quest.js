@@ -88,6 +88,18 @@ const KEY = 'efm3-mcq-bank-v1';
     console.log(label, '| eyebrow:', await q.textContent('.quest .eyebrow'), '| count:', await q.$eval('.qp-side', e => (e.querySelector('.qp-count') || { textContent: '(none)' }).textContent.replace(/\s+/g, ' ')), '| hero:', (await q.textContent('.hero-cta .cta-note')).replace(/\s+/g, ' ').trim().slice(0, 60));
     await c.close();
   }
+  // after the spotlight's last day: neither the quest nor the midterm on the homepage
+  {
+    const c = await b.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+    const q = await c.newPage(); watch(q, 'Oct 10');
+    await q.clock.install({ time: new Date(2026, 9, 10, 9) });
+    await q.goto(URL, { waitUntil: 'load' }); await q.waitForTimeout(300);
+    const hero = (await q.textContent('.hero-cta')).replace(/\s+/g, ' ').trim();
+    const gone = !(await q.$('#quest')) && !(await q.$('#spotlight')) && !/\bquest\b|Just added/i.test(hero);
+    console.log('Oct 10 | quest and spotlight gone:', gone, '| hero:', hero.slice(0, 60));
+    if (!gone) errors.push('Oct 10: the quest or the spotlight is still on the homepage');
+    await c.close();
+  }
 
   // phone
   const m = await (await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, reducedMotion: 'reduce' })).newPage();

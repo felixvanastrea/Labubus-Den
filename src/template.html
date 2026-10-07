@@ -2252,8 +2252,41 @@
     }), { threshold: [0, .6, 1] });
     els.forEach(el => stampObs.observe(el));
   }
+  // a quest can be stopped ("end"): from that day it leaves the homepage; its questions stay, for past marks and seals
+  const questOver = () => !!(QUEST && QUEST.end && dayKey() >= QUEST.end);
+  // the spotlight: a set just added (today's exam) in the quest's place on the homepage, "from" to "until" inclusive
+  const SPOT = BANK.spotlight && SRC.has(BANK.spotlight.set) ? BANK.spotlight : null;
+  const spotOn = () => !!(SPOT && dayKey() >= SPOT.from && dayKey() <= SPOT.until);
+  const spotQs = () => BANK.questions.filter(q => q.source === SPOT.set);
+  function spotStart() { if (SPOT) startSession(SPOT.module, SPOT.set); }
+  function spotlightHTML() {
+    if (!spotOn()) return '';
+    const qs = spotQs(), st = stats(qs), answered = st.right + st.wrong, best = bestMark(scopeKey({ kind: 'set', id: SPOT.set }));
+    const line = answered
+      ? `${fmtN(answered)} of ${fmtN(st.keyed)} answered · ${pct(st.right, answered)}% right`
+      : `${fmtN(qs.length)} questions, none answered yet`;
+    const label = answered >= st.keyed && st.keyed ? 'Practise it again' : answered ? 'Continue' : 'Practise it';
+    const side = best !== null
+      ? `<p class="qp-count"><b class="num">${fmtPts(best)}</b><span>your best mark, out of 20</span></p>`
+      : `<p class="qp-count"><b class="num">${fmtN(qs.length)}</b><span>questions, ${fmtN(qs.length)} minutes as an exam</span></p>`;
+    return `<section class="quest wrap" id="spotlight" aria-labelledby="spot-h">
+      <div class="quest-plate plate spot-plate">
+        <div class="qp-main">
+          <p class="eyebrow">Just added · ${esc(SRC.get(SPOT.set).label)}</p>
+          <h2 class="h2" id="spot-h">${esc(SPOT.title)}</h2>
+          <p class="qp-note">${esc(SPOT.note)}</p>
+          <div class="qp-progress">${barLine(st)}<p class="qp-stats">${line}</p></div>
+          <div class="qp-actions">
+            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="spot-go">${label} ${ICON.next}</button>
+            <button class="btn" type="button" data-exam-set="${esc(SPOT.set)}">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
+          </div>
+        </div>
+        <div class="qp-side">${side}</div>
+      </div>
+    </section>`;
+  }
   function questHTML(qi) {
-    if (!qi) return '';
+    if (!qi || questOver()) return '';
     const nx = questNext(qi), ended = qi.days < 0;
     const repN = QUEST.q.filter(id => repOf(Q.get(id))).length;
     const topics = QUEST.topics.map((t, i) => {
@@ -3285,10 +3318,14 @@
     const all = stats(allQs);
     const sess = S.session;
     const qi = questInfo();
-    const questOn = qi && qi.days >= 0 && !qi.done;
+    const questOn = qi && qi.days >= 0 && !qi.done && !questOver();
     const cta = examRunning()
       ? `<p class="cta-note">Exam in progress: <b><span class="num" data-exam-clock>${fmtClock(examLeft())}</span> left</b>. The clock keeps running while you’re away.</p>
          <button class="btn primary" type="button" data-act="exam-resume">${ICON.hourglass}Back to the exam ${ICON.next}</button>`
+      : spotOn()
+      ? `<p class="cta-note">Just added: <b>${esc(SPOT.title)}</b>, all ${fmtN(spotQs().length)} questions.</p>
+         <button class="btn primary" type="button" data-act="spot-go">Practise it ${ICON.next}</button>
+         ${sess ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
       : questOn
       ? `<p class="cta-note">Current quest: <b>${esc(QUEST.title)}</b>, ${qi.days > 1 ? `due in ${qi.days} days` : qi.days === 1 ? 'due tomorrow' : 'due today'}. ${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} done.</p>
          <button class="btn primary" type="button" data-act="quest-go">${lockMark()}${questNext(qi).label} ${ICON.next}</button>
@@ -3333,6 +3370,7 @@
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
         </div>
       </section>
+      ${spotlightHTML()}
       ${questHTML(qi)}
       ${tonightHTML()}
       ${acct.skyHTML()}
@@ -5086,6 +5124,7 @@
       case 'practice-top': practiceTop(+t.dataset.n || 25); break;
       case 'practice-repeated': practiceRepeated(S.topicId); break;
       case 'quest-go': questGo(); break;
+      case 'spot-go': spotStart(); break;
       case 'updates': openUpdates(); break;
       case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;

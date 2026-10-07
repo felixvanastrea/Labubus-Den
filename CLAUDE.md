@@ -91,7 +91,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   onset, hyphens... but never a meaning word (not, acute/chronic, left/right, a number). Keys must agree;
   a disagreement is printed by the build as a conflict to show Abi.
 - The quest uses them (Abi's choice), and so does a module's lecture list, so its counts match the quest's: a
-  constellation counts once, as its lead (keyed, official first, then midterms, mocks, finals...), and word-for-word
+  constellation counts once, as its lead (keyed, a set with `added` never leads, official first, then midterms, mocks, finals...), and word-for-word
   copies are left out (`lectureQs`). The lead's card has a "Constellation · N stars" chip; hovering (or tapping) it
   says where the copies come from and offers "Do all N stars", a session of every copy; Back returns to the quest
   or the lecture. Answering the lead counts only for the lead. Modules, exam sets and Most repeated still show every copy.
@@ -120,6 +120,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - On the site it's a card on the homepage (countdown, progress, the six topics, two wax seals) and the hero's
   main button until it's done. Done = every question answered and goal% right, retries count.
   "Clean run" = goal% right on the first try (first results are kept in `S.first`).
+- `end` (a date) takes the quest off the homepage from that day; its data stays for past marks and seals. A set typed
+  up on or after the quest's due date (`added` on the source) is never part of it.
+- `spotlight` in `quests.json` (`set`, `module`, `title`, `from`, `until`, inclusive) puts a just-added exam set on the
+  homepage in the quest's place, with a hero button: Practise it, or Exam mode. The 2026–2027 respiratory midterm
+  (taken 7 October 2026) is shown until 9 October.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
