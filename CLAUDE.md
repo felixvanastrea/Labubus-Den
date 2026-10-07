@@ -294,6 +294,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   always there whether she studied or not (`northStar`). Hover, focus or tap a star, or hover a name under "Today", for
   the tooltip (`skyTip`). "Hide my star" (`skyHide` on the account, `efm3-sky-hide`). Names and counts only, never marks.
   Phones get a taller sky with bigger stars (`K`). Guests see the North Star and a sign-in button.
+- The account wakes up while the intro plays, when the homepage can't redraw. `caughtUp` remembers it (`behind`: 1 for
+  the sky and a letter, 2 when synced data or the look changed) and `acct.afterIntro()` (called by the intro's `finish`)
+  catches up; the sky also draws itself in place (`skyUp`), and shows even when syncing failed (state `error`).
+  Before this, the sky stayed on "Gathering the stars…" until something redrew the page. Test: sky_intro.js.
 - Rules (pasted by Abi; always give her the whole rules file to paste, never a part to replace): `stats` docs readable and
   writable by any signed-in user (under 3000 fields); `sky` docs readable
   by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name.
@@ -343,7 +347,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

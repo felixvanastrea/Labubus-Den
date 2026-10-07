@@ -70,7 +70,7 @@ const FAKE = {
     export async function setDoc(r, d, o) { fb.calls.push('set ' + r); deny(); run([['set', r, d, o]]); }
     export function writeBatch() { const ops = []; return { set(r, d, o) { ops.push(['set', r, d, o]); }, delete(r) { ops.push(['del', r]); },
       async commit() { fb.calls.push('batch ' + ops.map(o => o[0] + ' ' + o[1]).join(', ')); deny(); run(ops); } }; }
-    export async function runTransaction(db, fn) { const ops = []; deny(); await fn({ get: async r => snapOf(r), set: (r, d, o) => ops.push(['set', r, d, o]) }); fb.calls.push('tx ' + ops.map(o => o[1]).join(', ')); run(ops); }
+    export async function runTransaction(db, fn) { const ops = []; deny(); if (window.__denyTx) no(); await fn({ get: async r => snapOf(r), set: (r, d, o) => ops.push(['set', r, d, o]) }); fb.calls.push('tx ' + ops.map(o => o[1]).join(', ')); run(ops); }
     // queries: a collection ordered by one field, with a limit; only the owner of names/labubu may list the users
     export function collection(db, col) { return col; }
     export function orderBy(by, dir) { return { by, dir }; }

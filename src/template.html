@@ -1051,11 +1051,24 @@
       lastFlat = flatSync(S);   // taken in, not changed here: no new times
       return changed;
     }
-    // what changed elsewhere shows at once, except in a running exam or while typing
+    // what changed elsewhere shows at once, except in a running exam or while typing; during the opening animation the
+    // homepage catches up once it's over (afterIntro)
+    let behind = 0;   // 1: the account woke up during the intro (the sky, a letter); 2: the page itself changed
     function refresh() {
+      if (intro.active()) { behind = 2; return; }
       const el = document.activeElement;
-      if (intro.active() || S.view === 'exam' || (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
+      if (S.view === 'exam' || (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
       render(false);
+    }
+    // the account is ready (or failed): redraw now, or once the intro is over. The sky draws itself in place either way.
+    function caughtUp(full) {
+      if (intro.active()) behind = Math.max(behind, full ? 2 : 1); else refresh();
+      skyUp();
+    }
+    function afterIntro() {
+      const b = behind; behind = 0;
+      if (b === 2) setTimeout(refresh, 300);   // after the title has resolved
+      else if (b === 1) { skyUp(); noticeGifts(); }
     }
     // send this device's copy, merged first with the account's (a transaction, so two devices can't overwrite each other)
     async function push(force) {
@@ -1095,26 +1108,26 @@
       if (!user) {
         const was = state; state = 'off'; me = { name: '', key: '' }; store(FLAG, null); store(NAME, null);
         const relook = applyLook();
-        if (was !== 'off' || relook) { paint(); if (!intro.active()) render(false); }   // nothing to repaint while they type in the sheet
+        if (was !== 'off' || relook) { paint(); if (!intro.active()) render(false); else behind = 2; }   // nothing to repaint while they type in the sheet
         return;
       }
       store(FLAG, '1'); state = 'loading'; paint();
+      let full = false;
       try {
         const snap = await fb.f.getDoc(ref());
         const d = snap.exists() ? snap.data() : {};
-        if (d.s) { try { take(JSON.parse(d.s)); } catch (e) {} }
+        if (d.s) { try { full = take(JSON.parse(d.s)) || full; } catch (e) {} }
         me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
         state = me.key ? 'in' : 'naming';
         if (d.look) store(LOOK_KEY, d.look);
         if (typeof d.skyHide === 'boolean') store(HIDE, d.skyHide ? '1' : null);
-        applyLook();
+        full = applyLook() || full;
         save(true); await push(); listen();
         if (state === 'naming' && pendingName) { const n = pendingName; pendingName = ''; await claim(n); }
         else if (state === 'naming' && (pending || (sheet && !sheet.hidden))) open();
         if (state === 'in') done();
-        if (!intro.active()) render(false);
-        paint();
-      } catch (e) { if (state === 'loading') state = 'error'; msg = why(e); paint(); }
+        paint(); caughtUp(full);
+      } catch (e) { if (state === 'loading') state = 'error'; msg = why(e); paint(); caughtUp(full); }
     }
     // signed in (and named) after a locked button sent them here: carry on to what they wanted
     function done() { if (!pending) return; const f = pending; pending = null; close(); f(); }
@@ -1212,9 +1225,11 @@
       if (!v || v.querySelector('.v-class') || S.view !== 'quiz' || !S.session) return;
       const h = classLine(curQ()); if (h) v.insertAdjacentHTML('beforeend', h);
     }
+    // the sky can be read once signed in, even if syncing the progress failed
+    const skyOK = () => !!(user && fb && ['in', 'error'].includes(state));
     async function loadSky() {
       const day = 'd' + dayKey();
-      if (state !== 'in' || !fb || cls.busy.sky || (cls.skyDay === day && Date.now() - cls.skyAt < 180000)) return;
+      if (!skyOK() || cls.busy.sky || (cls.skyDay === day && Date.now() - cls.skyAt < 180000)) return;
       cls.busy.sky = 1;
       try {
         const snap = await fb.f.getDoc(fb.f.doc(db, 'sky', day));
@@ -1224,6 +1239,12 @@
       redrawSky();
     }
     function redrawSky() { const el = document.getElementById('class-sky'); if (el) el.outerHTML = skyHTML(); }
+    // the sky on the page catches up with the account: drawn now if today's is already loaded, else fetched and drawn
+    function skyUp() {
+      const el = document.getElementById('class-sky');
+      if (el && el.classList.contains('sky-wait') && skyOK() && cls.sky && cls.skyDay === 'd' + dayKey()) redrawSky();
+      else loadSky();
+    }
     const hash = (str, k) => {
       let h = 2166136261 ^ Math.imul(k, 0x9e3779b1);
       for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
@@ -1271,12 +1292,12 @@
           <circle class="sg" r="${r * 6}"/><path class="sx" d="${spark(r, 3.4)}"/><circle class="sc" r="${r}"/><use class="slb" href="#labubu" x="${r * 1.9}" y="-${r * 6}" width="${30 * K}" height="${37 * K}"/><text class="sn" y="${r * 5.6}">Labubu</text></g>`;
       };
       const field = (inner, extra = '') => `<div class="sky-field"><svg class="sky-svg" viewBox="0 0 ${VW} ${VH}" focusable="false">${dust()}${inner}</svg><p class="sky-tip" hidden></p>${extra}</div>`;
-      const wrap = (sub, body) => `<section class="section wrap sky-wrap" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">${sub}</p></div>${body}</div></section>`;
+      const wrap = (sub, body, wait) => `<section class="section wrap sky-wrap${wait ? ' sky-wait' : ''}" id="class-sky" aria-labelledby="sky-h"><div class="sky plate">${head}<p class="sky-sub">${sub}</p></div>${body}</div></section>`;
       if (state === 'off' || state === 'naming') {
         return wrap(`Everyone who does ${SKY_MIN} questions today rises into this sky, and together you form the constellations. Sign in to join them.`,
           field(northStar(null), `<button class="btn" type="button" data-act="account">${LOCK}Sign in to join the class sky</button>`));
       }
-      if (state !== 'in' || !cls.sky || cls.skyDay !== 'd' + dayKey()) { loadSky(); return wrap('Gathering the stars…', field(northStar(null))); }
+      if (!skyOK() || !cls.sky || cls.skyDay !== 'd' + dayKey()) { loadSky(); return wrap('Gathering the stars…', field(northStar(null)), true); }
       loadSky();
       const mine = user.uid;
       const all = Object.entries(cls.sky).filter(([, v]) => v && typeof v === 'object' && v.nm && (v.c | 0) >= SKY_MIN)
@@ -1582,7 +1603,7 @@
       load().catch(() => {});
     }
     return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
-      canWear, wear, noticeUnlocks, isVip: () => vip(), giftOf, previewing: () => !!pv,
+      canWear, wear, noticeUnlocks, isVip: () => vip(), giftOf, previewing: () => !!pv, afterIntro,
       classLine, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky };
   })();
   const LOCK = ICON.lock;
@@ -4570,6 +4591,7 @@
       closePick(true);
       back = front = hint = bx = fx = milky = glow = null;
       stars = []; asterism = []; minors = []; trail = []; sparks = []; burst = []; flock = []; moonTex = moonGlow = null;
+      try { acct.afterIntro(); } catch (e) {}   // what the account brought in while it played (the class sky, a letter)
     }
     // returns false when it can't run (a tiny window), so the caller shows the page straight away
     function play() {
