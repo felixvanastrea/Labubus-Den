@@ -84,6 +84,27 @@ async function as(b, who, viewport) {
   await z.screenshot({ path: OUT + 'gift_letter_zeineb.png' });
   await c4.close();
 
+  // Nada: her letter is written but held until Abi sends it, so nothing yet
+  const c5 = await as(b, { uid: 'u4', name: 'Nada', key: 'nada' });
+  const nd = await c5.newPage(); nd.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await nd.goto(URL, { waitUntil: 'load' }); await nd.waitForTimeout(1500);
+  const nrows = await nd.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
+  check(!(await nd.isVisible('.lt-sheet')) && /Preview/.test(nrows[3] || '') && !/gift/.test(nrows.join(' ')), 'Nada: her letter is held, Golden phase still locked');
+  await c5.close();
+
+  // once Abi sends it (the page served with Nada's gift no longer held): it says it's a gift, and nothing more
+  const c6 = await as(b, { uid: 'u4', name: 'Nada', key: 'nada' });
+  await c6.route(/\/index\.html$/, async route => {
+    const res = await route.fetch(), body = await res.text();
+    route.fulfill({ response: res, body: body.replace("to: 'nada', looks: ['klimt'], held: true,", "to: 'nada', looks: ['klimt'],") });
+  });
+  const ns = await c6.newPage(); ns.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await ns.goto(URL, { waitUntil: 'load' }); await ns.waitForTimeout(1500);
+  check(await ns.isVisible('.lt-sheet') && /^A gift for you$/.test(await txt(ns, '#lt-h')) && /^A gift from the Labubu/.test(await txt(ns, '.lt .eyebrow')) && !(await ns.$('.lt-p')) && !(await ns.$('.lt-sign')) && !!(await ns.$('[data-letter="wear"][data-id="klimt"]')),
+    'Nada, once sent: just a gift, the Golden phase to wear');
+  await ns.screenshot({ path: OUT + 'gift_nada.png' });
+  await c6.close();
+
   // anyone else: no letter, no Blood moon
   const c2 = await as(b, { uid: 'u6', name: 'Sara', key: 'sara' });
   const s = await c2.newPage(); s.on('pageerror', e => errors.push('pageerror: ' + e.message));
