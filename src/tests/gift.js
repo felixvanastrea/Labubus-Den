@@ -76,6 +76,14 @@ async function as(b, who, viewport) {
   await ph.screenshot({ path: OUT + 'gift_letter_phone.png' });
   await c3.close();
 
+  // Zeineb: her own letter
+  const c4 = await as(b, { uid: 'u7', name: 'Zeineb', key: 'zeineb' });
+  const z = await c4.newPage(); z.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await z.goto(URL, { waitUntil: 'load' }); await z.waitForTimeout(1500);
+  check(await z.isVisible('.lt-sheet') && /^Congratulations, Zeineb$/.test(await txt(z, '#lt-h')) && !!(await z.$('[data-letter="wear"][data-id="blood"]')), 'Zeineb: her letter, with the Blood moon');
+  await z.screenshot({ path: OUT + 'gift_letter_zeineb.png' });
+  await c4.close();
+
   // anyone else: no letter, no Blood moon
   const c2 = await as(b, { uid: 'u6', name: 'Sara', key: 'sara' });
   const s = await c2.newPage(); s.on('pageerror', e => errors.push('pageerror: ' + e.message));

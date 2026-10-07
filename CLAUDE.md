@@ -239,8 +239,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (`canon`, so lookalikes count; only that account holds the name), with themes it can wear without the requirement
   ("A gift from the Labubu" under Themes, no unlock toast). The letter opens once on the homepage when signed in
   (`noticeGifts`, `showLetter`; "Wear the … now" wears it with its sound), is marked read in `S.gifts` (synced, so once
-  across devices) and can be reread from the account sheet. First one: Amro, 7 October 2026, the most questions done,
-  the Blood moon. To add one: an entry with a new `id`, `to` (the canon key), `looks`, `date`, `title`, `lines`.
+  across devices) and can be reread from the account sheet. So far: Amro (the most questions done) and Zeineb (among the
+  most), 7 October 2026, the Blood moon. To add one: an entry with a new `id`, `to` (the canon key), `looks`, `date`, `title`, `lines`.
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first
