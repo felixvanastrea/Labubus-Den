@@ -272,6 +272,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   at most every 10 minutes). Only for members on GitHub Pages.
 - For the Labubu account only, the sheet's "Class stats" lists the questions under 40% right (10+ answers), worst first,
   and "Go through these" opens them: often a wrong key, to check with Abi's rules for mistakes.
+- Also for her only: "Most questions done" (`loadTop`), the 10 accounts with the most checked answers (Firestore query on
+  `users` ordered by `answered`), each with its last 7 days (summed from `days` in its `s`) and when it last synced (`t`).
+  Rules: only the owner of `names/labubu` may list `users` (limit 50 or under), and `names/labubu` can never be deleted,
+  so the name (and this access) can't pass to anyone else; the site never deletes it on a rename or Delete my data.
 - The class sky (homepage, after Tonight; `skyHTML`), Abi's design: everyone who checked `SKY_MIN` (10) questions today
   (`S.days`, counted in `moonTick`, synced, kept 21 days; `S.dayT` = when they reached 10) rises into today's sky,
   Firestore `sky/d{day}` = {uid: {nm, c: today's count in steps (`SKY_TIERS`), t: when they rose}}, one read per homepage
@@ -283,7 +287,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   always there whether she studied or not (`northStar`). Hover, focus or tap a star, or hover a name under "Today", for
   the tooltip (`skyTip`). "Hide my star" (`skyHide` on the account, `efm3-sky-hide`). Names and counts only, never marks.
   Phones get a taller sky with bigger stars (`K`). Guests see the North Star and a sign-in button.
-- Rules (pasted by Abi): `stats` docs readable and writable by any signed-in user (under 3000 fields); `sky` docs readable
+- Rules (pasted by Abi; always give her the whole rules file to paste, never a part to replace): `stats` docs readable and
+  writable by any signed-in user (under 3000 fields); `sky` docs readable
   by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name.
 - Test: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`).
 

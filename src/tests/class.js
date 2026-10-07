@@ -25,9 +25,9 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
   const pre = await b.newPage();
   await pre.goto(URL, { waitUntil: 'load' });
   const bank = await pre.evaluate(() => JSON.parse(document.getElementById('bank').textContent));
-  const [week, today] = await pre.evaluate(() => {
+  const [week, today, d3, d10] = await pre.evaluate(() => {
     const dk = t => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
-    return ['d' + dk(Date.now()), dk(Date.now())];
+    return ['d' + dk(Date.now()), dk(Date.now()), dk(Date.now() - 3 * 864e5), dk(Date.now() - 10 * 864e5)];
   });
   await pre.close();
   const endo = bank.questions.filter(q => q.topic === 'endocrinology' && q.answer.length).slice(0, 3);
@@ -35,6 +35,10 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
   const derm = bank.questions.filter(q => q.topic === 'dermatology' && q.answer.length).slice(0, 3);
   const seed = {
     'users/u9': { s: '{}', name: 'Labubu', key: 'labubu', email: 'abi@example.com' }, 'names/labubu': { uid: 'u9', name: 'Labubu' },
+    // three classmates' accounts, for the most questions done: Rim did 30 today and 20 three days ago (and 99 too long ago)
+    'users/u2': { s: JSON.stringify({ days: { [today]: 30, [d3]: 20, [d10]: 99 } }), name: 'Rim', key: 'rim', answered: 640, t: Date.now() - 2 * 864e5 },
+    'users/u0': { s: JSON.stringify({ days: { [today]: 12 } }), name: 'Salma', key: 'salma', answered: 412, t: Date.now() },
+    'users/u3': { s: '{}', name: 'Omar', key: 'omar', answered: 120, t: Date.now() - 10 * 864e5 },
     'stats/respiratory-system-diseases': Object.fromEntries(resp.map(q => [q.id, { n: 20, r: 12 }])),
     'stats/dermatology': Object.fromEntries(derm.map((q, i) => [q.id, { n: 15 + i, r: 2 + i }])),
     ['sky/' + week]: Object.fromEntries(['Salma', 'Yassine', 'Rim', 'Omar', 'Hiba', 'Ilyas', 'Nour', 'Adam', 'Sara'].map((nm, i) => ['u' + i, { nm, c: [30, 10, 50, 20, 10, 10, 75, 10, 20][i], t: 1000 + i }]))
@@ -95,7 +99,15 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
   await p.click('.nav-acct'); await p.waitForTimeout(200);
   await p.click('[data-acct="hard"]'); await p.waitForTimeout(400);
   check((await p.$$('.acct-card .hard li')).length === 3 && /13% of 15/.test(await txt(p, '.acct-card .hard')), 'class stats: the 3 questions most fail, worst first: ' + (await txt(p, '.acct-card .hard')).slice(0, 60));
+  // and who has done the most questions
+  await p.click('[data-acct="top"]'); await p.waitForTimeout(400);
+  const tops = await p.$$eval('.acct-card .top li', ls => ls.map(l => l.textContent.replace(/\s+/g, ' ').trim()));
+  check(tops.length === 4 && /^Rim 640 questions · 50 in the last 7 days, last active 2 days ago$/.test(tops[0]) && /^Salma 412 questions · 12 in the last 7 days, last active today$/.test(tops[1])
+    && /^Omar 120 questions · none in the last 7 days, last active 10 days ago$/.test(tops[2]) && /^Labubu \(you\) 3 questions/.test(tops[3]), 'most questions done, top first: ' + tops.join(' | '));
   await p.screenshot({ path: OUT + 'class_hard.png' });
+  await p.evaluate(() => { window.__fb.user = { uid: 'u2' }; });   // anyone else asking for the list is refused by the rules
+  check(await p.evaluate(async () => { const f = await import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'); try { await f.getDocs(f.query(f.collection({}, 'users'), f.orderBy('answered', 'desc'), f.limit(10))); return false; } catch (e) { return e.code === 'permission-denied'; } }), 'the fake rules refuse the list to anyone but the Labubu');
+  await p.evaluate(() => { window.__fb.user = { uid: 'u9', displayName: 'Labubu', email: 'abi@example.com' }; });
   await p.click('[data-acct="hard-go"]'); await p.waitForTimeout(400);
   const S2 = await p.evaluate(K => JSON.parse(localStorage.getItem(K)), KEY);
   check(S2.view === 'quiz' && S2.session.qids.length === 3, 'and goes through them');

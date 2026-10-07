@@ -56,7 +56,7 @@ const FAKE = {
     const snapOf = r => { const d = fb.docs[r]; return { exists: () => !!d, data: () => d && JSON.parse(JSON.stringify(d)), metadata: { hasPendingWrites: false } }; };
     const notify = r => (subs[r] || []).forEach(cb => cb(snapOf(r)));
     // the rules: a name belongs to whoever has it
-    const rules = ops => { for (const [k, r, d] of ops) if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); };
+    const rules = ops => { for (const [k, r, d] of ops) { if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); if (k === 'del' && r === 'names/labubu') no(); } };
     // set with merge merges maps deeply, like Firestore; increment() and deleteField() resolve against what's there
     const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
     const apply = ([k, r, d, o]) => { if (k === 'del') delete fb.docs[r]; else fb.docs[r] = o && o.merge ? resolve(fb.docs[r], d) : resolve({}, d); };
@@ -71,6 +71,20 @@ const FAKE = {
     export function writeBatch() { const ops = []; return { set(r, d, o) { ops.push(['set', r, d, o]); }, delete(r) { ops.push(['del', r]); },
       async commit() { fb.calls.push('batch ' + ops.map(o => o[0] + ' ' + o[1]).join(', ')); deny(); run(ops); } }; }
     export async function runTransaction(db, fn) { const ops = []; deny(); await fn({ get: async r => snapOf(r), set: (r, d, o) => ops.push(['set', r, d, o]) }); fb.calls.push('tx ' + ops.map(o => o[1]).join(', ')); run(ops); }
+    // queries: a collection ordered by one field, with a limit; only the owner of names/labubu may list the users
+    export function collection(db, col) { return col; }
+    export function orderBy(by, dir) { return { by, dir }; }
+    export function limit(lim) { return { lim }; }
+    export function query(col, ...parts) { return Object.assign({ col }, ...parts); }
+    export async function getDocs(q) {
+      fb.calls.push('list ' + q.col); deny();
+      const lab = fb.docs['names/labubu'];
+      if (q.col === 'users' && !(fb.user && lab && lab.uid === fb.user.uid && q.lim && q.lim <= 50)) no();
+      const docs = Object.entries(fb.docs).filter(([r, d]) => r.startsWith(q.col + '/') && (!q.by || d[q.by] !== undefined))
+        .sort((a, b) => (q.dir === 'desc' ? -1 : 1) * ((a[1][q.by] || 0) - (b[1][q.by] || 0))).slice(0, q.lim || 1e9)
+        .map(([r, d]) => ({ id: r.slice(q.col.length + 1), data: () => JSON.parse(JSON.stringify(d)) }));
+      return { docs, size: docs.length, empty: !docs.length };
+    }
     export function onSnapshot(r, cb) { (subs[r] = subs[r] || []).push(cb); setTimeout(() => cb(snapOf(r)), 0); return () => { subs[r] = subs[r].filter(x => x !== cb); }; }
     fb.remote = (r, data) => { fb.docs[r] = Object.assign({}, fb.docs[r], data); keep(); notify(r); };`,
 };

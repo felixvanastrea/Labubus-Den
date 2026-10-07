@@ -1070,7 +1070,8 @@
       try {
         const b = fb.f.writeBatch(db);
         b.set(nr, { uid: user.uid, name });
-        if (me.key && me.key !== key) b.delete(fb.f.doc(db, 'names', me.key));
+        // the Labubu's name is never given up (the rules forbid it): it's what lets her list the class
+        if (me.key && me.key !== key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key));
         b.set(ref(), { name, key, email: user.email || '' }, { merge: true });
         await b.commit();
       } catch (e) { msg = /permission/.test((e && e.code) || '') ? taken(name) : why(e); paint(); return false; }
@@ -1285,14 +1286,42 @@
       } catch (e) { hard = []; msg = why(e); }
       paint();
     }
+    // and who has done the most questions: the accounts with the most checked answers (`answered`, sent with each push),
+    // with their last 7 days (from their synced day counts) and when they last synced. The rules let only the owner of
+    // names/labubu list the users, and that name can never be deleted, so it can't pass to anyone else.
+    const TOP_N = 10;
+    let top = null;
+    const millis = v => typeof v === 'number' ? v : v && typeof v.toMillis === 'function' ? v.toMillis() : 0;
+    const ago = t => { const d = Math.round((dayStart(Date.now()) - dayStart(t)) / DAY_MS); return d <= 0 ? 'today' : d === 1 ? 'yesterday' : `${fmtN(d)} days ago`; };
+    async function loadTop() {
+      top = 'loading'; paint();
+      try {
+        const f = fb.f, snap = await f.getDocs(f.query(f.collection(db, 'users'), f.orderBy('answered', 'desc'), f.limit(TOP_N)));
+        const from = dayKey(Date.now() - 6 * DAY_MS);
+        top = snap.docs.map(d => {
+          const x = d.data() || {}; let days = {};
+          try { days = (JSON.parse(x.s || '{}') || {}).days || {}; } catch (e) {}
+          const wk = Object.entries(days).filter(([k]) => k >= from).reduce((a, [, v]) => a + (+v || 0), 0);
+          return { me: d.id === user.uid, nm: x.name || 'No name yet', n: +x.answered || 0, wk, t: millis(x.t) };
+        });
+      } catch (e) { top = []; msg = /permission/.test((e && e.code) || '') ? 'This list needs the new database rules: paste them in Firebase (Firestore Database, Rules).' : why(e); }
+      paint();
+    }
     function hardHTML() {
       if (!vip()) return '';
+      const most = top === null ? '<button class="acct-forgot" type="button" data-acct="top">See who has done the most questions</button>'
+        : top === 'loading' ? '<p class="acct-p">Counting…</p>'
+        : !top.length ? '<p class="acct-p">No account has saved any questions yet.</p>'
+        : `<ol class="hard top">${top.map(r => `<li><b>${esc(r.nm)}${r.me ? ' (you)' : ''}</b> ${fmtN(r.n)} question${r.n === 1 ? '' : 's'} · <span>${r.wk ? `${fmtN(r.wk)} in the last 7 days` : 'none in the last 7 days'}${r.t ? `, last active ${ago(r.t)}` : ''}</span></li>`).join('')}</ol>
+           <button class="acct-forgot" type="button" data-acct="top">Count again</button>`;
       const body = hard === null ? '<button class="acct-forgot" type="button" data-acct="hard">Find the questions the class gets wrong</button>'
         : hard === 'loading' ? '<p class="acct-p">Counting…</p>'
         : !hard.length ? `<p class="acct-p">No question is under 40% right yet (with ${CLASS_MIN} answers or more).</p>`
         : `<ol class="hard">${hard.map(r => { const q = Q.get(r.id); return `<li><b>${esc(q.sid || '')}</b> ${r.p}% of ${fmtN(r.n)} · <span>${esc((TOPIC.get(q.topic) || {}).name || '')}</span></li>`; }).join('')}</ol>
            <button class="btn" type="button" data-acct="hard-go">Go through these ${fmtN(hard.length)}</button>`;
-      return `<div class="acct-looks"><p class="acct-or">Class stats · only you see this</p><p class="acct-p">Questions most of the class fails on the first try often have a wrong key.</p>${body}</div>`;
+      return `<div class="acct-looks"><p class="acct-or">Class stats · only you see this</p>
+        <p class="acct-p">Most questions done: the questions each account has checked, top ${TOP_N}. Guests aren’t counted, and resetting answers lowers it.</p>${most}
+        <p class="acct-p">Questions most of the class fails on the first try often have a wrong key.</p>${body}</div>`;
     }
 
     function why(e) {
@@ -1353,7 +1382,7 @@
     async function erase() {
       erasing = false; msg = ''; paint('busy');
       if (unsub) { unsub(); unsub = null; }
-      try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
+      try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
       catch (e) { msg = why(e); paint(); listen(); return; }
       try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
       catch (e) { try { await fb.a.signOut(auth); } catch (x) {} msg = 'Your saved progress is deleted. To remove the account itself, sign in again and delete once more.'; open(); }
@@ -1443,6 +1472,7 @@
           else if (k === 'forgot') forgot(val('acct-email'));
           else if (k === 'look-intro') { close(); replayIntro(); }
           else if (k === 'hard') loadHard();
+          else if (k === 'top') loadTop();
           else if (k === 'hard-go' && Array.isArray(hard) && hard.length) { const ids = hard.map(r => r.id); close(); startList(ids, 0, { topic: '*', from: 'home', title: 'Hardest for the class' }); }
           else if (k === 'rename' || k === 'rename-no') { editing = k === 'rename'; msg = ''; paint(); const i = sheet.querySelector('#acct-newname'); if (i) i.select(); }
         });
