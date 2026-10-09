@@ -84,7 +84,7 @@ const names = async p => (await captured(p)).map(c => c.name);
   const srch = ev.find(e => e.name === 'search');
   check(srch && srch.props.query === 'acute bronchitis' && srch.props.results > 0 && ev.filter(e => e.name === 'search').length === 1, 'one search event once typing stops: ' + JSON.stringify(srch && srch.props));
   const hand = ev.find(e => e.name === 'exam_handed_in');
-  check(hand && hand.props.time_ran_out === false && hand.props.answered === 0 && hand.props.questions === 48, 'handing in: ' + JSON.stringify(hand && hand.props));
+  check(hand && hand.props.time_ran_out === false && hand.props.answered === 0 && hand.props.questions === await p.evaluate(() => JSON.parse(document.getElementById('bank').textContent).quest.q.length), 'handing in: ' + JSON.stringify(hand && hand.props));
   const all = JSON.stringify(ev);
   const optionTexts = qa.options.map(o => o.replace(/<[^>]+>/g, '').trim()).filter(t => t.length > 12);
   check(!/"sel"|"picks"|"answer"/.test(all) && !optionTexts.some(t => all.includes(t)), 'no picks, answers or option texts anywhere in what was sent');

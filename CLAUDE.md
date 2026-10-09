@@ -134,7 +134,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   and topics. Each topic lists concept ids from `concepts.py` (plus optional `add` / `drop` lists of short ids
   like `"R83"`). The build gathers every question in that module tagged with those concepts, keeps one question
   per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
-- On the site it's a card on the homepage (countdown, progress, the six topics, two wax seals) and the hero's
+  A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
+  lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
+- Current quest: the digestive surgery midterm (`dig-surg-midterm-2026`, Wednesday 14 October 2026), Abi's seven
+  lectures: appendicitis, peritonitis, groin hernias, hydatid cyst of the liver, caustic ingestion, stomach cancer,
+  esophageal cancer (100 questions; gallstones, the same professor's, isn't on it). The respiratory quest before it
+  ended on 7 October.
+- On the site it's a card on the homepage (countdown, progress, its topics, two wax seals) and the hero's
   main button until it's done. Done = every question answered and goal% right, retries count.
   "Clean run" = goal% right on the first try (first results are kept in `S.first`).
 - `end` (a date) takes the quest off the homepage from that day; its data stays for past marks and seals. A set typed

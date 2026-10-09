@@ -55,7 +55,7 @@ const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g,
   check(S.exam.qids.join() !== quest.q.join(), 'in a shuffled order');
   check(S.exam.end - S.exam.start === quest.q.length * MIN, 'one minute per question');
   check(await txt(p, '.ex-clock') === `${quest.q.length}:00`, 'the clock starts at ' + await txt(p, '.ex-clock'));
-  check((await p.$$('.strip .cell')).length === quest.q.length && await txt(p, '.qmeta .qn') === 'Question 1', '48 cells in the strip, question 1');
+  check((await p.$$('.strip .cell')).length === quest.q.length && await txt(p, '.qmeta .qn') === 'Question 1', 'one cell per quest question in the strip, question 1');
   check(!(await p.$('.verdict')) && !(await p.$('.ex')) && !(await p.$('.report')) && !(await p.$('.cst-chip')) && !(await p.$('.key')), 'no verdict, explanations, report link, constellation or key while it runs');
   await p.screenshot({ path: OUT + 'ex_run.png' });
 
@@ -179,7 +179,8 @@ const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g,
     });
     check(v.includes(want(x).slice(2)) && optOK, `review ${k + 1} (${x.case}): ${await txt(p, '#verdict')}`);
     if (k === 0) {
-      check(!!(await p.$('.ex .whys')) && !!(await p.$('.report')), 'explanations and Report a mistake in the review');
+      const hasExp = !!q.exp;
+      check((!hasExp ||!!(await p.$('.ex .whys'))) && !!(await p.$('.report')), 'explanations (when the question has some) and Report a mistake in the review');
       await p.screenshot({ path: OUT + 'ex_review.png', fullPage: true });
     }
     await p.keyboard.press('ArrowRight'); await p.waitForTimeout(60);

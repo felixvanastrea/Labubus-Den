@@ -214,8 +214,9 @@ for t in bank['topics']:
 bank['diag'] = diag
 
 # the current quest (quests.json): every question in its module tagged with one of each topic's concepts,
-# plus hand-picked extras ("add") minus exclusions ("drop"), by short id. Word-for-word copies are left out, and
-# a constellation counts once, as its lead. Within a topic, versions of the most repeated questions come first.
+# plus hand-picked extras ("add") minus exclusions ("drop"), by short id. A topic can instead name a lecture
+# ("lecture": a lectures.json topic id) and take exactly that lecture's questions. Word-for-word copies are left
+# out, and a constellation counts once, as its lead. Within a topic, versions of the most repeated questions come first.
 quests = json.load(open('quests.json', encoding='utf8'))
 cur = next((x for x in quests['quests'] if x['id'] == quests.get('current')), None)
 if cur:
@@ -223,17 +224,21 @@ if cur:
     # a set added on or after the quest's due date (the exam itself, typed up afterwards) isn't part of it
     after = {s['id'] for s in bank['sources'] if s.get('added', '') >= cur['due']}
     topics, seen, flat = [], set(), []
+    lec_of = {d['id']: set(d['q']) for d in diag}
     for t in cur['topics']:
         want = set(t.get('concepts', []))
         add = {shortids[s] for s in t.get('add', [])}
         drop = {shortids[s] for s in t.get('drop', [])}
+        if t.get('lecture'):
+            assert t['lecture'] in lec_of, f"quest topic {t['name']!r}: no lecture {t['lecture']} in lectures.json"
+            add |= lec_of[t['lecture']]
         picked = [q for q in bank['questions']
                   if q['topic'] == cur['module'] and not q.get('dupOf') and q['id'] not in drop and q['source'] not in after
                   and (want & set(q['c']) or q['id'] in add)]
         picked.sort(key=rank)
         ids = list(dict.fromkeys(cst[q['cst']][0] if 'cst' in q else q['id'] for q in picked))
         assert ids, f"quest topic {t['name']!r} has no questions"
-        topics.append({'name': t['name'], 'q': ids})
+        topics.append({k: v for k, v in {'name': t['name'], 'q': ids, 'lec': t.get('lecture')}.items() if v})
         flat += [i for i in ids if i not in seen]
         seen.update(ids)
     bank['quest'] = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note', 'end') if k in cur}

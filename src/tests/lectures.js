@@ -52,12 +52,15 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   check((await txt(p, `[data-lec="${copd.id}"] .e-lecs`)) === 'Both lectures: COPD · Cor pulmonale', 'the lectures it gathers: ' + await txt(p, `[data-lec="${copd.id}"] .e-lecs`));
   const tb = lecs.find(d => d.n === 'Tuberculosis infection');
   check((await txt(p, `[data-lec="${tb.id}"] .e-count`)) === `${once(tb).length} Qs` && (await txt(p, `[data-diag="${tb.id}"]`)) === `0/8`, `Tuberculosis infection: ${once(tb).length} questions, 0 of 8 toward its diagnostic`);
-  // the midterm's six lectures count like the quest's six topics, plus the sets typed up after it (the midterm itself)
+  // the quest's lectures count like its topics (topics that name a lecture), less any set typed up after it
   const after = new Set(bank.sources.filter(s => (s.added || '') >= bank.quest.due).map(s => s.id));
   const late = d => once(d).filter(id => after.has(Q.get(id).source)).length;
-  const qc = bank.quest.topics.map(t => t.q.length).join(), lc = [];
-  for (const id of ['R-bronchitis', 'R-cap', 'R-abscess', 'R-viral', 'R-nosocomial', 'R-bronchiectasis']) lc.push(+(await txt(p, `[data-lec="${id}"] .e-count`)).replace(' Qs', '') - late(lecs.find(d => d.id === id)));
-  check(after.size > 0 && lc.join() === qc && bank.quest.q.length === lecs.slice(0, 6).reduce((a, d) => a + once(d).length - late(d), 0), `the midterm's lectures match the quest, less the midterm typed up after it: ${lc.join(' ')} (quest ${qc.replace(/,/g, ' ')})`);
+  const qlec = bank.quest.topics.filter(t => t.lec);
+  if (bank.quest.module !== MOD) { await p.click('.bar .back'); await p.waitForTimeout(250); await p.click(`[data-topic="${bank.quest.module}"]`); await p.waitForTimeout(250); await p.click('[data-by="lecture"]'); await p.waitForTimeout(250); }
+  const qc = qlec.map(t => t.q.length).join(), lc = [];
+  for (const t of qlec) lc.push(+(await txt(p, `[data-lec="${t.lec}"] .e-count`)).replace(' Qs', '') - late(bank.diag.find(d => d.id === t.lec)));
+  check(qlec.length > 0 && lc.join() === qc, `the quest's lectures match its topics: ${lc.join(' ')} (quest ${qc.replace(/,/g, ' ')})`);
+  if (bank.quest.module !== MOD) { await p.click('.bar .back'); await p.waitForTimeout(250); await p.click(`[data-topic="${MOD}"]`); await p.waitForTimeout(250); await p.click('[data-by="lecture"]'); await p.waitForTimeout(250); }
   await p.screenshot({ path: OUT + 'lec_list.png', fullPage: true });
 
   // a lecture: its questions, every copy, in exam order

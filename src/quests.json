@@ -1,6 +1,44 @@
 {
-  "current": "resp-midterm-2026",
+  "current": "dig-surg-midterm-2026",
   "quests": [
+    {
+      "id": "dig-surg-midterm-2026",
+      "title": "Digestive surgery midterm",
+      "module": "digestive-system-disease",
+      "due": "2026-10-14",
+      "goal": 80,
+      "note": "The seven lectures on the digestive surgery midterm, gathered from every past exam. Questions asked again with the same propositions count once, as a constellation.",
+      "topics": [
+        {
+          "name": "Acute appendicitis",
+          "lecture": "D-appendicitis"
+        },
+        {
+          "name": "Peritonitis",
+          "lecture": "D-peritonitis"
+        },
+        {
+          "name": "Groin hernias",
+          "lecture": "D-hernia"
+        },
+        {
+          "name": "Hydatid cyst of the liver",
+          "lecture": "D-hydatid"
+        },
+        {
+          "name": "Caustic ingestion",
+          "lecture": "D-caustic"
+        },
+        {
+          "name": "Stomach cancer",
+          "lecture": "D-gastric-cancer"
+        },
+        {
+          "name": "Esophageal cancer",
+          "lecture": "D-eso-cancer"
+        }
+      ]
+    },
     {
       "id": "resp-midterm-2026",
       "title": "Respiratory midterm",

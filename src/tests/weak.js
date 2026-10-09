@@ -45,7 +45,10 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   // the home card and the page, before anything is tried
   check((await txt(p, '.wsc-stat')) === 'No lecture diagnosed yet.' && (await p.$$('.wsc-row')).length === 3, 'home card: nothing yet, three lectures to start');
   await p.click('.navlinks [data-act="weak"]'); await p.waitForTimeout(250);
-  check(await p.getAttribute('[data-weakmod="respiratory-system-diseases"]', 'aria-selected') === 'true' && (await p.$$('.dg-fresh .dg-row')).length === resp.length, 'opens on the quest\'s module, every lecture not started');
+  const qmod = bank.quest.module, qn = bank.diag.filter(d => d.m === qmod).length;
+  check(await p.getAttribute(`[data-weakmod="${qmod}"]`, 'aria-selected') === 'true' && (await p.$$('.dg-fresh .dg-row')).length === qn, 'opens on the quest\'s module, every lecture not started');
+  // the rest of this test works on respiratory
+  if (qmod !== 'respiratory-system-diseases') { await p.click('[data-weakmod="respiratory-system-diseases"]'); await p.waitForTimeout(250); }
 
   // Bronchiectasis: its questions not tried yet, a star each
   const T = bank.diag.find(d => d.n === 'Bronchiectasis');
@@ -169,12 +172,14 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   await m.tap('.wsc [data-act="weak"]'); await m.waitForTimeout(250);
   await m.screenshot({ path: OUT + 'wk_m_page.png' });
   o = Math.max(o, await m.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth));
-  // unlock acute bronchitis (5 questions) and open its diagnostic
+  // unlock acute bronchitis (all its questions) and open its diagnostic (the page opens on the quest's module)
+  if (await m.$('[data-weakmod="respiratory-system-diseases"][aria-selected="false"]')) { await m.tap('[data-weakmod="respiratory-system-diseases"]'); await m.waitForTimeout(250); }
   await m.tap('[data-diag-go="R-bronchitis"]'); await m.waitForTimeout(200);
-  for (let k = 0; k < 5; k++) {
+  const nb = await m.evaluate(K => JSON.parse(localStorage.getItem(K)).session.qids.length, KEY);
+  for (let k = 0; k < nb; k++) {
     const sel = await m.evaluate(K => { const S = JSON.parse(localStorage.getItem(K)); const id = S.session.qids[S.session.idx]; const q = JSON.parse(document.getElementById('bank').textContent).questions.find(x => x.id === id); return [[...q.options.keys()].find(i => !q.answer.includes(i))]; }, KEY);
     await m.tap(`.opt[data-opt="${sel[0]}"]`); await m.tap('[data-act="primary"]'); await m.waitForTimeout(100);
-    if (k < 4) { await m.tap('[data-act="primary"]'); await m.waitForTimeout(100); }
+    if (k < nb - 1) { await m.tap('[data-act="primary"]'); await m.waitForTimeout(100); }
   }
   await m.screenshot({ path: OUT + 'wk_m_unlock.png' });
   await m.tap('.xpl [data-diag]'); await m.waitForTimeout(250);
