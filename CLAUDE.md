@@ -146,8 +146,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - `end` (a date) takes the quest off the homepage from that day; its data stays for past marks and seals. A set typed
   up on or after the quest's due date (`added` on the source) is never part of it.
 - `spotlight` in `quests.json` (`set`, `module`, `title`, `from`, `until`, inclusive) puts a just-added exam set on the
-  homepage in the quest's place, with a hero button: Practise it, or Exam mode. The 2026–2027 respiratory midterm
-  (taken 7 October 2026) is shown until 9 October.
+  homepage in the quest's place, with a hero button: Practise it, or Exam mode. Without `spotlight`, nothing shows.
+  The 2026–2027 respiratory midterm had it from 7 October 2026; Abi took it down on 9 October.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
