@@ -157,8 +157,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   all its right answers ticked = 1 point; at least half of them and no wrong tick = 0.5 (three right answers: two
   ticked 0.5, one ticked 0); any wrong tick, or a blank = 0 for that question only. Mark = points / questions × 20,
   two decimals (`examPoints`, `examMark`, `examSummary`).
-- Four scopes (`scopeInfo`, `S.examScope` = `{kind, id}`): the quest (its questions, shuffled; "Exam mode" on the quest
-  card); a past exam set (all its questions in their own order; the hourglass button on each set row of a module page,
+- Four scopes (`scopeInfo`, `S.examScope` = `{kind, id}`): the quest ("Exam mode" on the quest card; 20 questions like the
+  midterm by default, 50, or all of them, `QUEST_SIZES`; a draw takes every topic in proportion, at least one each,
+  `spreadDraw`); a past exam set (all its questions in their own order; the hourglass button on each set row of a module page,
   which then shows the best mark); a module (a random mock of 20, 25 or 50 questions, the sizes of a midterm, a mock
   and the finals, one per repeated question; "Exam mode" in the module header); a lecture (scope kind `topic`, up to 20
   of its questions; from its diagnostic page). Back from the rules and results returns where the exam was opened
@@ -351,6 +352,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name.
 - Test: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`).
 
+## The app (Add to Home Screen)
+
+- On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
+  head tags (manifest, `apple-mobile-web-app-*`); the icons `icon-192.png`, `icon-512.png` and `icon-maskable-512.png`
+  are drawn from `src/labubu.svg` by `src/pipeline/app_icons.js` (`NODE_PATH=$(npm root -g) node src/pipeline/app_icons.js`;
+  redo them if the art changes). No service worker and no offline copy, on purpose: a cached old page would keep old keys.
+- "Install the app" (`app_` in `template.html`): under "About this bank" and in the footer, on phones, or wherever the
+  browser offers its install prompt (`beforeinstallprompt`, kept and used by the button); hidden once it runs as the app
+  (`display-mode: standalone`, `navigator.standalone`) and off GitHub Pages (`window.__appTest` turns it on). iPhones have
+  no prompt: the button shows the steps (Share, Add to Home Screen, sign in once, since the iPhone app keeps its own
+  storage); Android browsers without the prompt get the menu steps. Test: app.js.
+- Google sign-in uses a popup (redirect if blocked); inside an iPhone home-screen app it couldn't be tested from here.
+
 ## Anonymous stats (PostHog)
 
 - Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
@@ -359,7 +373,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
+  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
   update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
@@ -397,7 +411,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

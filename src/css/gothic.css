@@ -1538,6 +1538,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .lt-gift img { width: 56px; height: 56px; flex: none; border-radius: 50%; }
 .lt-gift b { display: block; color: var(--ink); font-weight: 600; font-size: 1.1rem; }
 .lt-gift span { color: var(--ink-3); font-style: italic; }
+/* installing the app: the steps on the letter's sheet */
+.app-steps { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; font-size: 1.08rem; line-height: 1.5; color: var(--ink); }
+.app-steps b { font-weight: 600; }
+.app-note { color: var(--ink-3); font-style: italic; }
 .th-gift { color: var(--gold-txt, #e9c46a); }
 @media (prefers-reduced-motion: reduce) { .lt-mark { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }

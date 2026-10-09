@@ -42,8 +42,13 @@ const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g,
   check(!(await p.$('.qp-exam')), 'no exam scores on the card before the first exam');
   await p.click('.quest [data-act="exam"]'); await p.waitForTimeout(200);
   check(await p.evaluate(() => document.body.dataset.view) === 'exam' && await txt(p, 'h1') === 'Exam mode', 'it opens the exam rules');
+  // how long: 20 like the midterm (the default), 50, or the whole quest
+  const sizes = await p.$$eval('[data-exam-n]', bs => bs.map(b => [b.dataset.examN, b.getAttribute('aria-pressed')]));
+  check(JSON.stringify(sizes) === JSON.stringify([['20', 'true'], ['50', 'false'], [String(quest.q.length), 'false']]), 'sizes: ' + JSON.stringify(sizes));
+  check((await txt(p, '.page-head .eyebrow')).includes('20 questions · 20 minutes'), 'by default 20 questions, like the midterm: ' + await txt(p, '.page-head .eyebrow'));
+  await p.click(`[data-exam-n="${quest.q.length}"]`); await p.waitForTimeout(150);
   const eyebrow = await txt(p, '.page-head .eyebrow');
-  check(eyebrow.includes(`${quest.q.length} questions · ${quest.q.length} minutes`), 'rules: ' + eyebrow);
+  check(eyebrow.includes(`${quest.q.length} questions · ${quest.q.length} minutes`), 'the whole quest: ' + eyebrow);
   check((await p.$$('.ex-rules li')).length === 3 && (await txt(p, '.ex-rules')).includes('two give 0.5, one gives 0'), 'three rules, with the half-point example');
   check(!!(await p.$('.ph-art .window')), 'an hourglass in the arched window');
   await p.screenshot({ path: OUT + 'ex_intro.png', fullPage: true });
@@ -58,6 +63,22 @@ const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g,
   check((await p.$$('.strip .cell')).length === quest.q.length && await txt(p, '.qmeta .qn') === 'Question 1', 'one cell per quest question in the strip, question 1');
   check(!(await p.$('.verdict')) && !(await p.$('.ex')) && !(await p.$('.report')) && !(await p.$('.cst-chip')) && !(await p.$('.key')), 'no verdict, explanations, report link, constellation or key while it runs');
   await p.screenshot({ path: OUT + 'ex_run.png' });
+
+  // a 20-question exam on the quest, in another browser: every topic in it, no question twice
+  {
+    const c2 = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
+    const p2 = await c2.newPage(); watch(p2, 'short');
+    await p2.clock.install({ time: new Date(2026, 9, 4, 14, 0) });
+    await p2.goto(URL, { waitUntil: 'load' }); await p2.evaluate(() => localStorage.clear()); await p2.reload({ waitUntil: 'load' }); await p2.waitForTimeout(300);
+    await p2.evaluate(() => document.getElementById('quest').scrollIntoView());
+    await p2.click('.quest [data-act="exam"]'); await p2.waitForTimeout(200);
+    await p2.click('[data-act="exam-start"]'); await p2.waitForTimeout(200);
+    const S2 = await state(p2), got = S2.exam.qids;
+    const per = quest.topics.map(t => got.filter(id => t.q.includes(id)).length);
+    check(got.length === 20 && new Set(got).size === 20 && got.every(id => quest.q.includes(id)) && per.every(n => n >= 1) && S2.exam.end - S2.exam.start === 20 * MIN,
+      `20 questions from the quest, every topic in proportion: ${per.join(' ')}`);
+    await c2.close();
+  }
 
   // answer the first ten: each case of the rule, by click and by key
   const plan = [];

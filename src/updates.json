@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-10-09-quest-exam",
+    "date": "2026-10-09",
+    "title": "Quest exams, short or long",
+    "items": [
+      "Exam mode on the quest now asks how long: 20 questions like the midterm, 50, or all of them. A short one takes questions from every lecture of the quest, in proportion."
+    ]
+  },
+  {
     "id": "2026-10-09-quest",
     "date": "2026-10-09",
     "title": "Digestive surgery midterm quest",

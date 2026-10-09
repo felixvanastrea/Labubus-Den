@@ -1,0 +1,36 @@
+{
+  "id": "./",
+  "name": "Labubu’s Den",
+  "short_name": "Labubu’s Den",
+  "description": "Past EFM3 exam questions (midterms, mocks, finals and second sessions), sorted by module and by exam, with answers, explanations and a topic search.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1b1a18",
+  "theme_color": "#1b1a18",
+  "categories": [
+    "education",
+    "medical"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

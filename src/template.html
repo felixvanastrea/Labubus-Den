@@ -678,6 +678,65 @@
     return { here, on, track, set, boot() { if (on()) load(); } };
   })();
 
+  // ---------- the app (Add to Home Screen) ----------
+  // On GitHub Pages the Den installs like an app (manifest.webmanifest and its icons, from the build): it opens full
+  // screen from its own icon. Chrome and Edge (Android, computers) offer an install prompt, kept here for the
+  // "Install the app" buttons; iPhones have none, so the button shows how to do it from the Share menu (as it does on
+  // other phones without the prompt). The buttons hide once the Den runs as the app.
+  const app_ = (() => {
+    const here = /(^|\.)github\.io$/.test(location.hostname) || !!window.__appTest;
+    let prompt = null, sheet = null;
+    const standalone = () => { try { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch (e) { return false; } };
+    const ios = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const phone = ios || /Android/i.test(navigator.userAgent);
+    const can = () => here && !standalone() && (!!prompt || phone);
+    // the buttons are always in the page where they belong, hidden until the Den can be installed
+    const slot = where => here && !standalone() ? (where === 'foot'
+      ? `<p class="foot-app"${can() ? '' : ' hidden'}><button class="foot-btn" type="button" data-act="install-app">Install the app</button></p>`
+      : `<p class="ask app-ask"${can() ? '' : ' hidden'}>Use the Den as an app. <button class="btn ask-btn" type="button" data-act="install-app">Install the app</button></p>`) : '';
+    const sync = () => document.querySelectorAll('.foot-app, .app-ask').forEach(el => { el.hidden = !can(); });
+    if (here) {
+      window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); prompt = e; sync(); });
+      window.addEventListener('appinstalled', () => { prompt = null; usage.track('app_installed'); sync(); toast('Installed: the Den is on your home screen'); });
+    }
+    function steps() {
+      if (ios) return ['In Safari, tap <b>Share</b>: the square with an arrow (on newer iPhones it’s in the <b>⋯</b> menu).',
+        'Choose <b>Add to Home Screen</b>, then <b>Add</b>.',
+        'Open the Den from its new icon and sign in once: the app keeps its own storage, and your account brings your answers over.'];
+      return ['Open your browser’s menu: <b>⋮</b>, at the top right.', 'Choose <b>Install app</b>, or <b>Add to Home screen</b>.', 'Open the Den from its new icon.'];
+    }
+    function showSteps() {
+      if (!sheet) {
+        sheet = document.createElement('div');
+        sheet.className = 'acct-sheet lt-sheet app-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-labelledby', 'app-h');
+        sheet.addEventListener('click', e => { const b = e.target.closest('[data-app]'); if (e.target === sheet || b) sheet.hidden = true; });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet && !sheet.hidden) sheet.hidden = true; });
+        document.body.appendChild(sheet);
+      }
+      sheet.innerHTML = `<div class="acct-card plate lt">
+        <button class="btn quiet acct-x" type="button" data-app="close" aria-label="Close">${ICON.cross}</button>
+        <div class="lt-head"><svg class="lt-mark" aria-hidden="true" focusable="false"><use href="#labubu"/></svg><p class="eyebrow">Labubu’s Den as an app</p></div>
+        <h2 class="h2" id="app-h">Install the app</h2>
+        <ol class="app-steps">${steps().map(x => `<li>${x}</li>`).join('')}</ol>
+        <p class="app-note">It opens full screen from its own icon, without the browser around it.</p>
+        <div class="row"><button class="btn primary" type="button" data-app="ok">Got it</button></div>
+      </div>`;
+      sheet.hidden = false;
+      const ok = sheet.querySelector('[data-app="ok"]'); if (ok) ok.focus();
+    }
+    function install() {
+      if (prompt) {
+        const p = prompt; prompt = null;
+        usage.track('app_install_opened', { how: 'prompt' });
+        try { p.prompt(); p.userChoice.then(c => { usage.track('app_install_choice', { outcome: c && c.outcome }); sync(); }, () => sync()); } catch (e) { showSteps(); }
+        return;
+      }
+      usage.track('app_install_opened', { how: ios ? 'iphone' : 'menu' });
+      showSteps();
+    }
+    return { here, can, slot, install, standalone };
+  })();
+
   // ---------- accounts (Firebase project labubu-s-den): sign in to keep your progress on every device ----------
   // Only on the GitHub Pages site (the claude.ai link can't reach outside servers). Guests keep the whole site; an
   // account adds the sync: the progress in S (answers, first tries, clean tries, seals, exam marks) is merged with its
@@ -2353,6 +2412,8 @@
   // practice answers; S.examLog keeps the last marks per scope. Nothing shows the answers before it's handed in.
   const EXAM_MS_PER_Q = 60000, EXAM_LOG_MAX = 40, EXAM_TOPIC_MAX = 20;
   const EXAM_SIZES = [[20, 'like a midterm'], [25, 'like a mock'], [50, 'like the finals']];
+  // the quest's exam: a draw the size of the midterm, half the quest, or all of it
+  const QUEST_SIZES = [[20, 'like the midterm'], [50, 'half the quest']];
   let examConfirm = false, examTimer = null, examWarned = {}, examCountUp = false;
   const keyedId = id => Q.has(id) && Q.get(id).answer.length > 0;
   const scopeKey = sc => sc ? sc.kind + ':' + sc.id : '';
@@ -2361,8 +2422,11 @@
     if (!sc) return null;
     if (sc.kind === 'quest') {
       if (!QUEST || sc.id !== QUEST.id) return null;
-      return { kind: 'quest', title: QUEST.title, what: `${QUEST.title} quest`, pool: QUEST.q.filter(keyedId), mod: QUEST.module,
-        lead: `The quest’s ${fmtN(QUEST.q.filter(keyedId).length)} questions as one timed exam, graded out of 20.` };
+      const pool = QUEST.q.filter(keyedId), groups = QUEST.topics.map(t => t.q.filter(keyedId));
+      const sizes = QUEST_SIZES.filter(([k]) => k < pool.length).concat([[pool.length, 'the whole quest']]);
+      return { kind: 'quest', title: QUEST.title, what: `${QUEST.title} quest`, pool, groups, sizes, mod: QUEST.module,
+        lead: sizes.length > 1 ? `Questions drawn from the quest’s ${fmtN(pool.length)}, every topic in proportion, or all of them. Against the clock, graded out of 20.`
+          : `The quest’s ${fmtN(pool.length)} questions as one timed exam, graded out of 20.` };
     }
     if (sc.kind === 'set') {
       const st = SRC.get(sc.id); if (!st || !TOPIC.has(st.topic)) return null;
@@ -2513,10 +2577,29 @@
     keepExamBack();
     S.examScreen = 'results'; S.view = 'exam'; save(); render(true, null, 'nav');
   }
+  // n questions drawn from groups (the quest's topics) in proportion to their size, at least one from each when there's
+  // room, so a short exam never skips a lecture by chance; shuffled together
+  function spreadDraw(groups, n) {
+    const seen = new Set();
+    const gs = groups.map(g => shuffled(g.filter(id => !seen.has(id) && seen.add(id)))).filter(g => g.length);
+    const total = gs.reduce((a, g) => a + g.length, 0);
+    n = Math.min(n, total);
+    const want = gs.map(g => n * g.length / total);
+    const take = want.map((w, i) => Math.min(gs[i].length, Math.max(n >= gs.length ? 1 : 0, Math.floor(w))));
+    let left = n - take.reduce((a, b) => a + b, 0);
+    const order = gs.map((_, i) => i).sort((a, b) => (want[b] % 1) - (want[a] % 1));
+    while (left > 0) {
+      let moved = false;
+      for (const i of order) if (left > 0 && take[i] < gs[i].length) { take[i]++; left--; moved = true; }
+      if (!moved) break;
+    }
+    while (left < 0) { const i = take.indexOf(Math.max(...take)); take[i]--; left++; }
+    return shuffled(gs.flatMap((g, i) => g.slice(0, take[i])));
+  }
   function startExam() {
     const sc = S.examScope, info = scopeInfo(sc); if (!info || !info.pool.length) return;
     const n = scopeCount(info);
-    const ids = info.ordered ? info.pool.slice() : shuffled(info.pool).slice(0, n);
+    const ids = info.ordered ? info.pool.slice() : info.groups && n < info.pool.length ? spreadDraw(info.groups, n) : shuffled(info.pool).slice(0, n);
     const now = Date.now();
     S.exam = { id: now.toString(36), scope: sc, quest: sc.kind === 'quest' ? sc.id : null, title: info.title, qids: ids, idx: 0, ridx: 0, picks: {},
       start: now, end: now + ids.length * EXAM_MS_PER_Q, handed: 0, auto: false, unlocked: [] };
@@ -3376,6 +3459,7 @@
           <p class="lede">Every question here comes straight from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
           <p class="credit">Made by <b>the Labubu</b></p>
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
+          ${app_.slot('home')}
         </div>
       </section>
       ${spotlightHTML()}
@@ -3464,6 +3548,7 @@
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
+      ${app_.slot('foot')}
       <p>Made by the Labubu</p>
     </footer>`;
   }
@@ -5134,6 +5219,7 @@
       case 'quest-go': questGo(); break;
       case 'spot-go': spotStart(); break;
       case 'updates': openUpdates(); break;
+      case 'install-app': app_.install(); break;
       case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;
       case 'back': goBack(); break;

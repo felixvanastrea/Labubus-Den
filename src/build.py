@@ -319,6 +319,19 @@ open(os.path.join(ROOT, 'favicon.svg'), 'w', encoding='utf8').write(favicon)
 os.makedirs('out', exist_ok=True)
 open(os.path.join('out', 'artifact.html'), 'w', encoding='utf8').write(page)
 
+# the home-screen app: on GitHub Pages the Den installs like an app (full screen, its own icon). The icons are drawn
+# from the art by src/pipeline/app_icons.js
+manifest = {
+    'id': './', 'name': TITLE, 'short_name': 'Labubu’s Den', 'description': DESC, 'lang': 'en',
+    'start_url': './', 'scope': './', 'display': 'standalone', 'background_color': '#1b1a18', 'theme_color': '#1b1a18',
+    'categories': ['education', 'medical'],
+    'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png', 'purpose': 'any'},
+              {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'any'},
+              {'src': 'icon-maskable-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]}
+for i in manifest['icons']:
+    assert os.path.exists(os.path.join(ROOT, i['src'])), f"{i['src']} is missing: run src/pipeline/app_icons.js"
+open(os.path.join(ROOT, 'manifest.webmanifest'), 'w', encoding='utf8').write(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+
 # the standalone page: the template's title, font links and styles go in <head>, everything else in <body>
 cut = page.index('</style>') + len('</style>')
 head, body = page[:cut], page[cut:]
@@ -340,6 +353,11 @@ doc = f'''<!doctype html>
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Labubu’s Den">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 {head}
 </head>
 <body>{body}
