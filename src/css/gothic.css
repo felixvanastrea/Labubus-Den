@@ -569,6 +569,28 @@ details.case[open] .case-b { margin-top: 6px; }
 .opt.is-miss .otag { color: var(--wrong); }
 .opt.is-rest { opacity: .5; }
 .opts.reveal .opt { animation: reveal .6s var(--ease) both; animation-delay: calc(var(--i) * 60ms); }
+/* crossing out (right-click, long press, Shift + letter): struck through and dimmed, not graded */
+.opt { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.opt.is-out .otext { text-decoration: line-through; text-decoration-thickness: 1.5px; opacity: .42; }
+.opt.is-out .bub { opacity: .4; border-style: dashed; }
+.opt.is-out:not(.is-hit):not(.is-miss):not(.is-missed) { border-style: dashed; }
+.hint-x { color: var(--ink-3); }
+/* what the class ticked on its first try: a figure and a thin bar along each option */
+.opt.has-cp { position: relative; grid-template-columns: auto minmax(0, 1fr) auto auto; }
+.opt.has-cp::after { content: ''; position: absolute; left: 10px; bottom: 4px; width: calc((100% - 20px) * var(--cpf, 0)); height: 2px; border-radius: 2px; background: currentColor; opacity: .28; pointer-events: none; }
+.opct { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); white-space: nowrap; }
+.v-picks { flex-basis: 100%; margin: 0; font-size: .95rem; font-style: italic; color: var(--ink-3); }
+/* marks: the button under the card, a ribbon on the strip, the line on the Tonight card */
+.mark-btn svg { width: 16px; height: 16px; }
+.mark-btn[aria-pressed="true"] { border-color: var(--ink-3); color: var(--ink); }
+.mark-btn[aria-pressed="true"] svg path { fill: currentColor; }
+.btn .mk-i { width: 16px; height: 16px; }
+.cell.mk { position: relative; }
+.cell.mk::after { content: ''; position: absolute; top: -1px; right: 3px; width: 6px; height: 9px; background: currentColor; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 68%, 0 100%); }
+.tn-marked { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-top: 18px; border-top: 1px solid var(--hair); }
+.tn-marked > svg { width: 22px; height: 22px; flex: none; color: var(--ink-hi); }
+.tn-marked p { flex: 1 1 14rem; margin: 0; font-size: 1.06rem; color: var(--ink-2); }
+.tn-marked b { margin-right: 4px; font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: 1.6rem; color: var(--ink); }
 
 .verdict { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 14px 16px; border: 1px solid var(--hair); border-radius: var(--r); animation: rise .55s var(--ease) both; scroll-margin: 90px 0 130px; }
 .verdict:focus { outline: none; }

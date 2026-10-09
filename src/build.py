@@ -159,6 +159,24 @@ def canon(q):
     return cst[Q[k]['cst']][0] if 'cst' in Q[k] else k
 
 
+# what the class ticked is counted on the lead (the canon id): a copy whose options come in another order says where
+# each of its options is in the lead ("om": lead index per option); "om": 0 if they don't pair up (not counted)
+n_om = n_nom = 0
+for q in bank['questions']:
+    c = canon(q)
+    if c == q['id']:
+        continue
+    m = constellations.pair_options(Q[c], q)   # lead index -> this question's index
+    if not m:
+        q['om'] = 0; n_nom += 1
+        continue
+    inv = [None] * len(q['options'])
+    for i, j in m.items():
+        inv[j] = i
+    if inv != list(range(len(inv))):
+        q['om'] = inv; n_om += 1
+print('class picks: copies in another order', n_om, '| copies that do not pair', n_nom)
+
 assert set(LEC['modules']) == {t['id'] for t in bank['topics']}, 'lectures.json: one entry per module'
 tid_mod = {d['id']: m for m, ds in LEC['modules'].items() for d in ds}
 assert len(tid_mod) == sum(len(ds) for ds in LEC['modules'].values()), 'lectures.json: topic ids must be unique'

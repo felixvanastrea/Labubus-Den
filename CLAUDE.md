@@ -151,6 +151,17 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
+## Crossing out and marks (from UWorld and AMBOSS, October 2026)
+
+- Crossing out: a right-click, a long press on a phone (480 ms; iPhones send no contextmenu, and the tap that ends the
+  press doesn't pick), or Shift + a letter strikes an option through. Not graded; a crossed-out option is unpicked, and
+  picking it brings it back. Practice keeps it per question in `S.cross` (this device only, cleared by Try again and by
+  practising again), an exam in `S.exam.cross`; the review shows them. The hint under the stem explains it until the
+  first time (`efm3-cross-seen`).
+- Marks: the Mark button under the card (or M) puts a question in `S.marks` (synced); a ribbon on the strip. The
+  Tonight card and a module page ("Marked N") practise the marked ones afresh (`practiseMarked`: the first try stays,
+  like retrying mistakes). In an exam the mark shows on the strip and "Hand in" counts them. Test: tools.js.
+
 ## Exam mode
 
 - A timed exam graded the way Abi asked: one minute per question (`EXAM_MS_PER_Q`), marked out of 20. Per question:
@@ -225,7 +236,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   count, so "a.bii-M" = "Abi M."; letters only, 2 to 24. Firestore `names/{key}` = `{uid, name}`; claiming is one batch
   (new name doc, old one deleted, `users/{uid}` name + key). Changeable in the sheet ("Change it").
 - Firestore `users/{uid}`: `name`, `key`, `email`, `answered` (checked answers, for Abi to see who's active), `t`, and `s`
-  = JSON of the synced entries (`SYNCED`: answers, first, clean, seals, examLog) with `stamps`. Abi sees everyone in
+  = JSON of the synced entries (`SYNCED`: answers, first, clean, seals, examLog, marks...) with `stamps`. Abi sees everyone in
   the Firebase console: Authentication > Users, and Firestore > Data (`users`, `names`).
 - Sync: `save()` stamps every changed or deleted entry (`S.stamps`, `stamp`/`flatSync`). Between devices, per entry
   the newest change wins, deletions included (a reset or Try again isn't undone by another device); entries without
@@ -326,6 +337,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the page hides (`classSync`). After checking a question, a line under the verdict says "N% of the class got this right
   on their first try" once there are `CLASS_MIN` (10) answers (`classLine`; the module's doc is read when a quiz opens,
   at most every 10 minutes). Only for members on GitHub Pages.
+- What the class ticked: a first try's picks wait in `S.firstSel` (signed in, this device only) and go up with it as
+  `p` (first tries with picks) and `o` {option: times ticked} on the same `stats/{module}` entry, counted on the lead's
+  options: a copy whose options come in another order has `om` (from the build: the lead index of each of its options;
+  `om: 0` = they don't pair, not counted). They're a write of their own, so the first-try counts never depend on them
+  (if Firebase refuses it, `cls.noPicks`). A checked question (and an exam's review) shows each option's share and a thin
+  bar once `p` reaches `CLASS_MIN` (`classPicks`, `paintPicks`). No rules change was needed: they're fields of the same
+  stats entries. Test: tools.js.
 - For the Labubu account only, the sheet's "Class stats" lists the questions under 40% right (10+ answers), worst first,
   and "Go through these" opens them: often a wrong key, to check with Abi's rules for mistakes.
 - Also for her only: "Most questions done" (`loadTop`), the 10 accounts with the most checked answers (Firestore query on
@@ -373,7 +391,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
+  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
   update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
@@ -411,7 +429,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

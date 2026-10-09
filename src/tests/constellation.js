@@ -1,4 +1,5 @@
-// Constellations in the quest (copies with the same propositions count once) and explanations from the lectures.
+// Constellations in a lecture's practice, as in the quest (copies with the same propositions count once), and
+// explanations from the lectures. A module's lecture list groups them like the quest does.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -28,14 +29,20 @@ const idOf = s => `JSON.parse(document.getElementById('bank').textContent).quest
     return i;
   };
 
-  // 1. desktop: the quest groups copies; the lead shows a constellation chip with a card on hover
+  // 1. desktop: a lecture's practice groups copies; the lead shows a constellation chip with a card on hover
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
   const p = await ctx.newPage(); watch(p, 'desk');
   await fresh(p);
-  const data = await p.evaluate(() => { const B = JSON.parse(document.getElementById('bank').textContent); return { n: B.quest.q.length, t0: B.quest.topics[0].q.length }; });
-  check(data.n === 48 && data.t0 === 5, `quest has ${data.n} questions, acute bronchitis ${data.t0}`);
-  check(/count once, as a constellation/.test(await p.textContent('.qp-note')), 'the quest card says repeats count once');
-  await p.click('.q-topic[data-qtopic="0"]'); await p.waitForTimeout(250);
+  const lecture = async (pg, id, tap) => {
+    await pg[tap ? 'tap' : 'click']('.arch[data-topic="respiratory-system-diseases"]'); await pg.waitForTimeout(250);
+    await pg[tap ? 'tap' : 'click']('[data-by="lecture"]'); await pg.waitForTimeout(250);
+    await pg[tap ? 'tap' : 'click'](`[data-lec="${id}"]`); await pg.waitForTimeout(250);
+  };
+  await p.click('.arch[data-topic="respiratory-system-diseases"]'); await p.waitForTimeout(250);
+  await p.click('[data-by="lecture"]'); await p.waitForTimeout(250);
+  check(/asked again with the same propositions is one constellation/.test(await p.textContent('.lec-note')), 'the lecture list says repeats count once');
+  await p.click('.bar .back'); await p.waitForTimeout(250);
+  await lecture(p, 'R-bronchitis');
   const ids = await p.evaluate(`JSON.parse(localStorage.getItem('${KEY}')).session.qids.map(id => JSON.parse(document.getElementById('bank').textContent).questions.find(q => q.id === id).sid)`);
   check(ids.includes('R86') && !ids.includes('R244') && !ids.includes('R232'), 'acute bronchitis practises R86 once, not its copies: ' + ids.join(' '));
   await jumpTo(p, 'R86');
@@ -79,7 +86,7 @@ const idOf = s => `JSON.parse(document.getElementById('bank').textContent).quest
   check(await p.$$eval('.whys .why-row', e => e.length) === 4, 'the copy shows the same explanations, matched to its own option order');
   await p.click('.bar [data-act="back"]'); await p.waitForTimeout(350);
   const back = { title: await p.textContent('.bar-title'), sid: await p.evaluate(`(() => { const S = JSON.parse(localStorage.getItem('${KEY}')); return JSON.parse(document.getElementById('bank').textContent).questions.find(q => q.id === S.session.qids[S.session.idx]).sid; })()`) };
-  check(back.title === 'Respiratory midterm · Acute bronchitis' && back.sid === 'R86', 'Back returns to the quest on R86: ' + back.title + ' ' + back.sid);
+  check(/Acute bronchitis/.test(back.title) && back.sid === 'R86', 'Back returns to the lecture on R86: ' + back.title + ' ' + back.sid);
   // keyboard: focus the chip, the card opens; Escape closes it
   await p.focus('.cst-chip'); await p.keyboard.press('Shift+Tab'); await p.keyboard.press('Tab'); await p.waitForTimeout(300);
   check(await p.$eval('#cst-card', el => el.classList.contains('on')), 'keyboard focus opens the card');
@@ -99,18 +106,18 @@ const idOf = s => `JSON.parse(document.getElementById('bank').textContent).quest
   await jumpTo(p2, 'R244');
   check(await p2.$$eval('.cst-chip', e => e.length) === 0 && await p2.$$eval('.qmeta .rep', e => e.length) === 1, 'outside the quest: the usual Asked badge, no chip');
   // an old quest session that still lists copies is trimmed to the current quest
-  const old = await p2.evaluate(`(() => { const B = JSON.parse(document.getElementById('bank').textContent); const id = s => B.questions.find(q => q.sid === s).id;
-    const qids = ['R54', 'R251', 'R86', 'R244', 'R232'].map(id); return { session: { topic: B.quest.module, from: 'quest', qall: true, title: 'Respiratory midterm quest', type: 'all', set: null, mode: 'all', shuffle: false, qids, order: qids.slice(), idx: 3 }, view: 'quiz' }; })()`);
+  const old = await p2.evaluate(`(() => { const B = JSON.parse(document.getElementById('bank').textContent);
+    const c = B.cst.find(ids => B.quest.q.includes(ids[0])), other = B.quest.q.find(id => !c.includes(id));
+    const qids = [other].concat(c); return { session: { topic: B.quest.module, from: 'quest', qall: true, title: 'Quest', type: 'all', set: null, mode: 'all', shuffle: false, qids, order: qids.slice(), idx: 1 }, view: 'quiz' }; })()`);
   await fresh(p2, old);
-  check((await p2.$$eval('.strip .cell', e => e.length)) === 2, 'an old quest session with copies is trimmed to R54 and R86');
+  check((await p2.$$eval('.strip .cell', e => e.length)) === 2, 'an old quest session with copies is trimmed to the quest’s own questions (the lead, not its copies)');
   await ctx2.close();
 
   // 3. phone: tap opens and closes the card, which fits the screen
   const m = await (await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, reducedMotion: 'reduce' })).newPage();
   watch(m, 'phone');
   await fresh(m);
-  await m.evaluate(() => document.getElementById('quest').scrollIntoView());
-  await m.tap('.q-topic[data-qtopic="1"]'); await m.waitForTimeout(250);
+  await lecture(m, 'R-cap', true);
   await jumpTo(m, 'R2', true);
   check((await m.textContent('.cst-chip')).trim() === 'Constellation · 4 stars', 'R2 is a constellation of 4');
   await m.tap('.cst-chip'); await m.waitForTimeout(350);

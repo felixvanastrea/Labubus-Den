@@ -72,6 +72,7 @@
     hourglass: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2.5h10M5 17.5h10M6.2 2.5c0 4 3.8 5 3.8 7.5S6.2 13.5 6.2 17.5M13.8 2.5c0 4-3.8 5-3.8 7.5s3.8 3.5 3.8 7.5"/></svg>',
     half: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 3.5a6.5 6.5 0 0 0 0 13z" fill="currentColor"/></svg>',
     star: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l1.7 5.8 5.8 1.7-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7z" fill="currentColor"/></svg>',
+    mark: '<svg class="mk-i" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 2.8h9v14.4L10 13.9l-4.5 3.3z"/></svg>',
     comet: '<svg class="comet-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 17.5l7.4-7.4M3.6 12.6l3.6-3.6M7.4 16.4l3.6-3.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><circle cx="13.2" cy="6.8" r="3.7" fill="currentColor"/></svg>',
   };
   // the opening animation can be turned off from the footer; remembered in this browser
@@ -144,11 +145,11 @@
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
-    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {} };
+    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {} };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -199,6 +200,11 @@
     if (!S.days || typeof S.days !== 'object' || Array.isArray(S.days)) S.days = {};
     if (!S.statSent || typeof S.statSent !== 'object' || Array.isArray(S.statSent)) S.statSent = {};
     if (!S.gifts || typeof S.gifts !== 'object' || Array.isArray(S.gifts)) S.gifts = {};
+    // marks (synced), crossed-out options and first-try picks waiting to be counted for the class (this device only)
+    for (const k of ['marks', 'cross', 'firstSel']) {
+      if (!S[k] || typeof S[k] !== 'object' || Array.isArray(S[k])) S[k] = {};
+      for (const id of Object.keys(S[k])) if (!Q.has(id) || (k !== 'marks' && !Array.isArray(S[k][id]))) delete S[k][id];
+    }
     if (!S.dayT || typeof S.dayT !== 'object' || typeof S.dayT.d !== 'string') S.dayT = null;
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
@@ -1384,20 +1390,28 @@
     }
 
     // ---- the class: how everyone did on each question, and the class sky ----
-    // stats/{module}: {canon id: {n: first tries, r: right}}, counted once per person (S.statSent), sent at most every
-    // 5 minutes. sky/d{day}: {uid: {nm: name, c: questions today (in steps), t: when they rose}}, one doc a day, so a
+    // stats/{module}: {canon id: {n: first tries, r: right, p: first tries with their picks, o: {option: times ticked}}},
+    // counted once per person (S.statSent), sent at most every 5 minutes. The picks (S.firstSel, this device only) are
+    // counted on the lead's options (a copy's "om" says where its options are) and sent in a write of their own, so the
+    // first-try counts never depend on them. sky/d{day}: {uid: {nm: name, c: questions today (in steps), t: when they rose}}, one doc a day, so a
     // page load is one read. Only for members on GitHub Pages; nothing is shown elsewhere.
     const CLASS_MIN = 10, cls = { stats: {}, statsAt: {}, sky: null, skyDay: '', skyAt: 0, star: '', wrote: '', sentAt: 0, busy: {} };
     const skyHidden = () => read(HIDE) === '1';
     async function classSync(force) {
       if (state !== 'in' || !me.key || !fb) return;
       if (force || Date.now() - cls.sentAt > 300000) {
-        const byMod = {}, sent = [];
+        const byMod = {}, sent = [], picks = {};
         for (const [id, ok] of Object.entries(S.first)) {
           if (sent.length >= 150) break;
           const c = canonId(id), q = Q.get(c) || Q.get(id); if (!q || S.statSent[c]) continue;
           S.statSent[c] = 1; sent.push(c);   // marked at once, so a copy of it isn't counted twice
           (byMod[q.topic] = byMod[q.topic] || {})[c] = { n: fb.f.increment(1), r: fb.f.increment(ok ? 1 : 0) };
+          const sel = S.firstSel[id], om = Q.get(id).om;
+          if (Array.isArray(sel) && sel.length && om !== 0) {
+            const o = {};
+            for (const i of sel) { const j = om ? om[i] : i; if (Number.isInteger(j)) o[j] = fb.f.increment(1); }
+            (picks[q.topic] = picks[q.topic] || {})[c] = { p: fb.f.increment(1), o };
+          }
         }
         if (sent.length) {
           try {
@@ -1406,6 +1420,16 @@
             await b.commit(); cls.sentAt = Date.now(); save(true);
             for (const m in byMod) delete cls.statsAt[m];
           } catch (e) { sent.forEach(c => delete S.statSent[c]); }
+          // what was ticked, once the first tries are in (a refusal here leaves those alone)
+          if (Object.keys(picks).length && !cls.noPicks) {
+            try {
+              const b = fb.f.writeBatch(db);
+              for (const [m, v] of Object.entries(picks)) b.set(fb.f.doc(db, 'stats', m), v, { merge: true });
+              await b.commit();
+            } catch (e) { cls.noPicks = true; }
+          }
+          for (const id of Object.keys(S.firstSel)) if (S.statSent[canonId(id)]) delete S.firstSel[id];
+          save(true);
         }
       }
       // my star in today's sky, once I've done SKY_MIN questions; its count moves in steps, so it's a few writes a day
@@ -1428,6 +1452,8 @@
         const snap = await fb.f.getDoc(fb.f.doc(db, 'stats', mod));
         cls.stats[mod] = snap.exists() ? snap.data() : {}; cls.statsAt[mod] = Date.now();
         placeClassLine();
+        const v = document.getElementById('verdict'), q = S.view === 'quiz' && S.session ? curQ() : S.view === 'exam' && S.exam && examScreen() === 'review' ? Q.get(S.exam.qids[S.exam.ridx]) : null;
+        if (v && q && q.topic === mod) paintPicks(q);
       } catch (e) {} finally { delete cls.busy['s' + mod]; }
     }
     function classStat(q) { const st = (cls.stats[q.topic] || {})[canonId(q.id)]; return st && st.n >= CLASS_MIN ? st : null; }
@@ -1438,6 +1464,25 @@
       const st = classStat(q); if (!st) return '';
       const p = Math.round(100 * st.r / st.n);
       return `<p class="v-class"><span class="vc-bar" aria-hidden="true"><i style="width:${p}%"></i></span><span><b class="num">${p}%</b> of the class got this right on their first try · ${fmtN(st.n)} answers</span></p>`;
+    }
+    // what the class ticked on its first try, per option, once CLASS_MIN first tries with their picks are counted
+    function classPicks(q) {
+      if (!here || state !== 'in' || q.om === 0) return null;
+      const st = (cls.stats[q.topic] || {})[canonId(q.id)];
+      if (!st || !(st.p >= CLASS_MIN)) return null;
+      return q.options.map((_, i) => { const j = q.om ? q.om[i] : i; return Math.round(100 * (((st.o || {})[j]) || 0) / st.p); });
+    }
+    // on a checked question (or an exam's review): the share of the class who ticked each option, as a figure and a bar
+    function paintPicks(q) {
+      const pc = classPicks(q); if (!pc) return;
+      const st = (cls.stats[q.topic] || {})[canonId(q.id)];
+      app.querySelectorAll('.opts .opt[data-opt]').forEach(o => {
+        const i = +o.dataset.opt; if (!(i < pc.length) || o.querySelector('.opct')) return;
+        o.style.setProperty('--cpf', pc[i] / 100); o.classList.add('has-cp');
+        o.insertAdjacentHTML('beforeend', `<span class="opct num" title="${pc[i]}% of the class ticked it on their first try">${pc[i]}%<span class="sr-label"> of the class ticked it</span></span>`);
+      });
+      const v = document.getElementById('verdict');
+      if (v && !v.querySelector('.v-picks')) v.insertAdjacentHTML('beforeend', `<p class="v-picks">The % on each option: how many in the class ticked it on their first try (${fmtN(st.p)} first tries).</p>`);
     }
     function placeClassLine() {
       const v = document.getElementById('verdict');
@@ -1823,7 +1868,7 @@
     }
     return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
       canWear, wear, noticeUnlocks, isVip: () => vip(), giftOf, previewing: () => !!pv, afterIntro,
-      classLine, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky };
+      classLine, paintPicks, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -1874,13 +1919,13 @@
     const sess = S.session; if (!sess) return;
     const wrong = sess.order.filter(id => result(Q.get(id)) === 'wrong');
     if (!wrong.length) return;
-    wrong.forEach(id => { keepFirst(id); delete S.answers[id]; });
+    wrong.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
     S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0 });
     S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function restartSession() {
     const sess = S.session; if (!sess) return;
-    sess.order.forEach(id => { delete S.answers[id]; delete S.first[id]; });
+    sess.order.forEach(id => { delete S.answers[id]; delete S.first[id]; delete S.cross[id]; });
     sess.idx = 0; S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function goBack() {
@@ -1924,9 +1969,10 @@
     if (k === -1) a.sel.push(i); else a.sel.splice(k, 1);
     a.sel.sort((x, y) => x - y);
     sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
+    const back = k === -1 && uncross(S.cross, q.id, i);   // picking a crossed-out option brings it back
     save();
     const btn = app.querySelector(`.opt[data-opt="${i}"]`);
-    if (!btn) { render(false); return; }
+    if (!btn || back) { render(false); return; }
     btn.setAttribute('aria-pressed', String(a.sel.includes(i)));
     const prim = app.querySelector('[data-act="primary"]');
     if (prim && q.answer.length) prim.disabled = !a.sel.length;
@@ -1938,7 +1984,7 @@
     const q = curQ(); const a = S.answers[q.id];
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
-    if (!(q.id in S.first)) S.first[q.id] = a.correct;
+    if (!(q.id in S.first)) { S.first[q.id] = a.correct; if (acct.signedIn()) S.firstSel[q.id] = a.sel.slice(); }
     // a clean try: the first one, or a comet caught (or a drill) a day after the last try
     const prev = S.clean[q.id], di = DIAG_OF.get(q.id), now = Date.now();
     const clean = !prev || ((S.session.comets || S.session.drill) && now - prev.t > DRILL_GAP);
@@ -1970,7 +2016,64 @@
     render(false, 'verdict');
     justChecked = false; xpGain = null; moonGain = null;
   }
-  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; sfx.play('untick'); save(); render(false); }
+  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('untick'); save(); render(false); }
+
+  // ---------- crossing out and marking ----------
+  // Crossing out: an option ruled out is struck through (a right-click, a long press on a phone, or Shift + its letter).
+  // It isn't graded, and a crossed-out option is unpicked. Kept per question: S.cross in practice (this device only),
+  // S.exam.cross in an exam. Marking: a question to see again (the Mark button, or M), in S.marks (synced), practised
+  // from the homepage's Tonight card or a module page; in an exam it also shows on the strip and in "Hand in".
+  const CROSS_SEEN = 'efm3-cross-seen';
+  const crossSeen = () => { try { return localStorage.getItem(CROSS_SEEN) === '1'; } catch (e) { return true; } };
+  function uncross(box, id, i) {
+    const l = box && box[id]; if (!l || !l.includes(i)) return false;
+    l.splice(l.indexOf(i), 1); if (!l.length) delete box[id];
+    return true;
+  }
+  const crossedIn = (box, id) => (box && box[id]) || [];
+  function crossTarget() {
+    if (S.view === 'exam' && examRunning() && examScreen() === 'run') return { q: examQ(), exam: true };
+    if (S.view === 'quiz' && S.session) { const q = curQ(), a = S.answers[q.id]; if (q && !(a && a.checked)) return { q, exam: false }; }
+    return null;
+  }
+  function crossToggle(i) {
+    const t = crossTarget(); if (!t || i >= t.q.options.length) return;
+    const q = t.q, box = t.exam ? (S.exam.cross = S.exam.cross || {}) : S.cross;
+    const l = box[q.id] || [];
+    if (l.includes(i)) uncross(box, q.id, i);
+    else {
+      box[q.id] = l.concat(i).sort((x, y) => x - y);
+      // ruled out, so not picked
+      if (t.exam) { const sel = S.exam.picks[q.id]; if (sel && sel.includes(i)) { sel.splice(sel.indexOf(i), 1); if (!sel.length) delete S.exam.picks[q.id]; } }
+      else { const a = S.answers[q.id]; if (a && a.sel.includes(i)) a.sel.splice(a.sel.indexOf(i), 1); }
+    }
+    if (!crossSeen()) { try { localStorage.setItem(CROSS_SEEN, '1'); } catch (e) {} usage.track('option_crossed_out'); }
+    sfx.play('untick', { rate: 0.8 });
+    save(); render(false);
+  }
+  function markTarget() {
+    if (S.view === 'exam' && examRunning() && examScreen() === 'run') return examQ();
+    if (S.view === 'quiz' && S.session) return curQ();
+    return null;
+  }
+  function markToggle() {
+    const q = markTarget(); if (!q) return;
+    if (S.marks[q.id]) delete S.marks[q.id]; else S.marks[q.id] = Date.now();
+    sfx.play(S.marks[q.id] ? 'tick' : 'untick', { rate: 1.2 });
+    usage.track('question_marked', { on: !!S.marks[q.id], exam: S.view === 'exam' });
+    save(); render(false);
+  }
+  const markedIn = mod => Object.keys(S.marks).filter(id => Q.has(id) && (!mod || Q.get(id).topic === mod)).sort((x, y) => BANK_ORDER.get(x) - BANK_ORDER.get(y));
+  // practise the marked questions afresh (the first try stays on record, like retrying mistakes)
+  function practiseMarked(mod) {
+    const ids = markedIn(mod); if (!ids.length) return;
+    ids.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
+    usage.track('marked_practised', { questions: ids.length, module: mod || 'all' });
+    startList(ids, 0, { from: 'marked', topic: mod || '*', title: mod ? `Marked · ${TOPIC_SHORT(TOPIC.get(mod))}` : 'Marked questions' });
+  }
+  const markBtn = q => `<button class="btn mark-btn" type="button" data-act="mark" aria-pressed="${!!S.marks[q.id]}" title="Mark it to practise again (M)">${ICON.mark}<span>${S.marks[q.id] ? 'Marked' : 'Mark'}</span></button>`;
+  const crossHow = () => matchMedia('(pointer: coarse)').matches ? 'long-press one to cross it out' : 'right-click one to cross it out';
+  const hintHTML = () => `<p class="hint">Select all that apply${crossSeen() ? '' : `<span class="hint-x"> · ${crossHow()}</span>`}</p>`;
   function go(delta) {
     const sess = S.session; const n = sess.idx + delta;
     if (n < 0) return;
@@ -2237,7 +2340,7 @@
     if (mode === 'retry') {
       const wrong = ids.filter(id => result(Q.get(id)) === 'wrong');
       if (wrong.length) {
-        wrong.forEach(id => { keepFirst(id); delete S.answers[id]; });
+        wrong.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
         startList(wrong, 0, Object.assign(meta, { mode: 'mistakes' }));
         return;
       }
@@ -2621,9 +2724,10 @@
     sel.sort((x, y) => x - y);
     if (sel.length) S.exam.picks[q.id] = sel; else delete S.exam.picks[q.id];
     sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
+    const back = k === -1 && uncross(S.exam.cross, q.id, i);
     save();
     const btn = app.querySelector(`.opt[data-opt="${i}"]`);
-    if (!btn || examConfirm) { examConfirm = false; render(false); return; }
+    if (!btn || examConfirm || back) { examConfirm = false; render(false); return; }
     btn.setAttribute('aria-pressed', String(k === -1));
     const cell = app.querySelector('.strip .cell.cur');
     if (cell) { cell.classList.toggle('ticked', sel.length > 0); cell.setAttribute('aria-label', `Question ${S.exam.idx + 1}, ${sel.length ? 'answered' : 'blank'}`); }
@@ -2783,9 +2887,11 @@
   function renderExamRun(focusWhat) {
     const ex = S.exam, q = examQ(), sel = ex.picks[q.id] || [];
     const left = examLeft(), low = left <= 5 * 60000, total = ex.qids.length, last = ex.idx === total - 1;
-    const cells = ex.qids.map((id, i) => `<button type="button" class="cell${ex.picks[id] ? ' ticked' : ''}${i === ex.idx ? ' cur' : ''}" data-jump="${i}" aria-label="Question ${i + 1}, ${ex.picks[id] ? 'answered' : 'blank'}"${i === ex.idx ? ' aria-current="true"' : ''}>${i + 1}</button>`).join('');
-    const opts = q.options.map((html, i) => `<button type="button" class="opt" data-opt="${i}" style="--i:${i}" aria-pressed="${sel.includes(i)}">
-        <span class="bub">${LETTERS[i]}</span><span class="otext">${html}</span><span class="otag"></span></button>`).join('');
+    const cells = ex.qids.map((id, i) => `<button type="button" class="cell${ex.picks[id] ? ' ticked' : ''}${i === ex.idx ? ' cur' : ''}${S.marks[id] ? ' mk' : ''}" data-jump="${i}" aria-label="Question ${i + 1}, ${ex.picks[id] ? 'answered' : 'blank'}${S.marks[id] ? ', marked' : ''}"${i === ex.idx ? ' aria-current="true"' : ''}>${i + 1}</button>`).join('');
+    const outs = crossedIn(ex.cross, q.id);
+    const opts = q.options.map((html, i) => `<button type="button" class="opt${outs.includes(i) ? ' is-out' : ''}" data-opt="${i}" style="--i:${i}" aria-pressed="${sel.includes(i)}">
+        <span class="bub">${LETTERS[i]}</span><span class="otext">${html}${outs.includes(i) ? '<span class="sr-label"> (crossed out)</span>' : ''}</span><span class="otag"></span></button>`).join('');
+    const nMarked = ex.qids.filter(id => S.marks[id]).length;
     const figs = (q.stemImgs || []).map(n => `<figure class="fig"><button type="button" data-zoom="${esc(n.src)}" aria-label="Enlarge figure"><img src="${esc(n.src)}" width="${n.w}" height="${n.h}" loading="lazy" alt="Figure for this question"></button></figure>`).join('');
     const blank = total - examAnswered();
     const right = `<span class="ex-clock num${low ? ' low' : ''}${left <= 60000 ? ' last' : ''}" role="timer" aria-label="Time left" data-exam-clock>${fmtClock(left)}</span>
@@ -2793,7 +2899,7 @@
       <button class="btn ex-hand" type="button" data-act="exam-handin">Hand in</button>`;
     const actions = examConfirm
       ? `<div class="actions ex-confirm"><div class="exc plate" role="alertdialog" aria-labelledby="exc-t" aria-describedby="exc-d">
-          <p class="exc-text"><b id="exc-t">Hand in your exam?</b> <span id="exc-d">${blank ? `${fmtN(blank)} ${blank === 1 ? 'question is' : 'questions are'} still blank, and there’s` : 'There’s'} <span class="num" data-exam-clock>${fmtClock(left)}</span> left.</span></p>
+          <p class="exc-text"><b id="exc-t">Hand in your exam?</b> <span id="exc-d">${blank ? `${fmtN(blank)} ${blank === 1 ? 'question is' : 'questions are'} still blank, and there’s` : 'There’s'} <span class="num" data-exam-clock>${fmtClock(left)}</span> left.${nMarked ? ` You marked ${nMarked === 1 ? 'one question' : `${fmtN(nMarked)} questions`} to come back to.` : ''}</span></p>
           <span class="exc-btns">
             <button class="btn quiet" type="button" data-act="exam-keep">Keep going</button>
             <button class="btn primary" type="button" data-act="exam-handin-yes">Hand in</button>
@@ -2801,6 +2907,7 @@
         </div></div>`
       : `<div class="actions">
           <button class="btn" type="button" data-act="exam-prev" ${ex.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
+          ${markBtn(q)}
           <span class="grow"></span>
           <button class="btn primary" type="button" data-act="exam-next">${last ? 'Hand in' : `Next ${ICON.next}`}</button>
         </div>`;
@@ -2813,11 +2920,11 @@
           ${caseHTML(q)}
           <h2 class="stem" id="stem">${q.stem}</h2>
           ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
-          <p class="hint">Select all that apply</p>
+          ${hintHTML()}
           <div class="opts" role="group" aria-labelledby="stem">${opts}</div>
         </article>
         ${actions}
-        <p class="kbd-hint">${examConfirm ? 'Esc to keep going' : 'Keys: A–E to pick, Enter for the next question, ← → to move'}</p>
+        <p class="kbd-hint">${examConfirm ? 'Esc to keep going' : 'Keys: A–E to pick, Shift + a letter to cross it out, M to mark, Enter for the next question, ← → to move'}</p>
       </main>`;
     app.querySelector('.bar').insertAdjacentHTML('beforeend', `<i class="ex-time${low ? ' low' : ''}" aria-hidden="true" style="transform:scaleX(${(left / (ex.end - ex.start)).toFixed(4)})"></i>`);
     const f = focusWhat === 'confirm' ? '[data-act="exam-keep"]' : focusWhat === 'next' ? '[data-act="exam-next"]' : null;
@@ -2826,6 +2933,7 @@
   const MARK_ICON = { full: ICON.check, half: ICON.half, zero: ICON.cross, blank: '' };
   function renderExamReview() {
     const ex = S.exam, q = Q.get(ex.qids[ex.ridx]), sel = ex.picks[q.id] || [], m = examMark(q, sel), k = keyOf(q), total = ex.qids.length;
+    acct.warm(q.topic);
     const cells = ex.qids.map((id, i) => {
       const mk = examMark(Q.get(id), ex.picks[id]);
       return `<button type="button" class="cell x-${mk.cls}${i === ex.ridx ? ' cur' : ''}" data-jump="${i}" aria-label="Question ${i + 1}, ${mk.label.toLowerCase()}"${i === ex.ridx ? ' aria-current="true"' : ''}>${i + 1}</button>`;
@@ -2838,6 +2946,7 @@
       else if (inKey) { cls += ' is-missed'; tag = 'Missed'; }
       else cls += ' is-rest';
       if (tag) cls += ' has-tag';
+      if (crossedIn(ex.cross, q.id).includes(i)) cls += ' is-out';
       return `<button type="button" class="${cls}" data-opt="${i}" style="--i:${i}" aria-disabled="true" aria-label="${LETTERS[i]}. ${esc(stripTags(html))}. ${inKey ? 'Correct answer' : 'Not in the answer'}${picked ? ', you picked it' : ''}">
         <span class="bub">${bub}</span><span class="otext">${html}</span><span class="otag">${tag}</span></button>`;
     }).join('');
@@ -2870,6 +2979,7 @@
         </div>
         <p class="kbd-hint">Keys: ← → to move</p>
       </main>`;
+    acct.paintPicks(q);
   }
   function renderExamResults() {
     const ex = S.exam, s = examSummary(ex), log = examLogFor(scopeKey(ex.scope));
@@ -3396,6 +3506,7 @@
         <div class="tn-moon">${moonSVG(m.n, 78, 'big')}<div class="tn-mt"><p class="eyebrow">Tonight</p><h2 class="h2" id="tn-h">${night}</h2>
           <p class="tn-sub">${moonLine}${m.full ? ` ${m.full === 1 ? 'One full moon' : `${fmtN(m.full)} full moons`} so far.` : ''}</p>${teach}</div></div>
         <div class="tn-comets">${ICON.comet}${comets}</div>
+        ${markedIn().length ? `<div class="tn-marked">${ICON.mark}<p><b class="num">${fmtN(markedIn().length)}</b> marked ${markedIn().length === 1 ? 'question' : 'questions'}, to see again.</p><button class="btn" type="button" data-act="practice-marked">Practise them ${ICON.next}</button></div>` : ''}
       </div>
     </section>`;
   }
@@ -3634,6 +3745,7 @@
               <button class="btn primary" type="button" data-start="${esc(t.id)}">Practice all ${fmtN(qs.length)} ${ICON.next}</button>
               ${repIds.length ? `<button class="btn" type="button" data-act="practice-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repIds.length)}</span></button>` : ''}
               <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
+              ${markedIn(t.id).length ? `<button class="btn" type="button" data-act="practice-marked" title="The questions you marked in this module">${ICON.mark}Marked <span class="n">${fmtN(markedIn(t.id).length)}</span></button>` : ''}
               ${DIAG.some(d => d.m === t.id) ? `<button class="btn" type="button" data-act="weak-module">${lockMark()}Weak spots</button>` : ''}
               ${resetHTML(t.id)}
             </div>
@@ -3754,7 +3866,7 @@
     const k = keyOf(q);
     const cells = sess.qids.map((id, i) => {
       const r = result(Q.get(id));
-      const cls = ['cell', r === 'todo' ? '' : r, i === sess.idx ? 'cur' : ''].join(' ');
+      const cls = ['cell', r === 'todo' ? '' : r, i === sess.idx ? 'cur' : '', S.marks[id] ? 'mk' : ''].join(' ');
       const label = { right: 'right', wrong: 'wrong', nokey: 'no answer key', draft: 'started', todo: 'not answered' }[r];
       return `<button type="button" class="${cls}" data-jump="${i}" aria-label="Question ${i + 1}, ${label}"${i === sess.idx ? ' aria-current="true"' : ''}>${i + 1}</button>`;
     }).join('');
@@ -3769,10 +3881,12 @@
         else cls += ' is-rest';
       }
       if (tag) cls += ' has-tag';
+      const out = crossedIn(S.cross, q.id).includes(i);
+      if (out) cls += ' is-out';
       const pressed = checked ? '' : ` aria-pressed="${picked}"`;
       const aria = checked ? ` aria-label="${LETTERS[i]}. ${esc(stripTags(html))}. ${inKey ? 'Correct answer' : 'Not in the answer'}${picked ? ', you picked it' : ''}"` : '';
       return `<button type="button" class="${cls}" data-opt="${i}" style="--i:${i}"${pressed}${aria}${checked ? ' aria-disabled="true"' : ''}>
-        <span class="bub">${bub}</span><span class="otext">${html}</span><span class="otag">${tag}</span></button>`;
+        <span class="bub">${bub}</span><span class="otext">${html}${out ? '<span class="sr-label"> (crossed out)</span>' : ''}</span><span class="otag">${tag}</span></button>`;
     }).join('');
     let verdict = '';
     if (!hasKey) {
@@ -3813,7 +3927,7 @@
           ${caseHTML(q)}
           <h2 class="stem" id="stem">${q.stem}</h2>
           ${figs ? `<div class="stemfigs">${figs}</div>` : ''}
-          ${checked ? '' : `<p class="hint">Select all that apply</p>`}
+          ${checked ? '' : hintHTML()}
           <div class="opts${checked ? ' checked' : ''}${justChecked ? ' reveal' : ''}" role="group" aria-labelledby="stem">${opts}</div>
           ${hasKey && !checked ? sureRowHTML(a) : ''}
           ${verdict}
@@ -3824,11 +3938,13 @@
         </article>
         <div class="actions">
           <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
+          ${markBtn(q)}
           <span class="grow"></span>
           <button class="btn primary" type="button" data-act="primary" ${primaryDisabled ? 'disabled' : ''}>${primaryLabel}</button>
         </div>
-        <p class="kbd-hint">Keys: A–E to pick, Enter to check or go on, ← → to move</p>
+        <p class="kbd-hint">Keys: A–E to pick, Shift + a letter to cross it out, M to mark, Enter to check or go on, ← → to move</p>
       </main>`;
+    if (checked) acct.paintPicks(q);
     if (focusWhat === 'verdict') {
       const v = document.getElementById('verdict');
       if (v) { v.focus({ preventScroll: true }); v.scrollIntoView({ block: 'nearest', behavior: reduceMotion() ? 'auto' : 'smooth' }); }
@@ -5148,6 +5264,28 @@
     if (inp) { inp.value = ''; if (focus) inp.focus(); }
   }
   const canHover = () => matchMedia('(hover: hover)').matches;
+  // crossing out an option: a right-click, or a long press on a phone (an iPhone sends no contextmenu for it). The tap
+  // that ends a long press doesn't pick the option.
+  let pressT = null, press = null, crossedAt = 0, touchAt = 0;
+  app.addEventListener('contextmenu', e => {
+    const o = e.target.closest('.opt[data-opt]'); if (!o || !crossTarget()) return;
+    e.preventDefault();
+    if (Date.now() - crossedAt < 900) return;   // the long press already did it (Android sends both)
+    if (Date.now() - touchAt < 1500) crossedAt = Date.now();   // a finger: the tap that follows mustn't pick it
+    crossToggle(+o.dataset.opt);
+  });
+  const pressEnd = () => { clearTimeout(pressT); press = null; };
+  app.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'touch') return;
+    touchAt = Date.now();
+    const o = e.target.closest('.opt[data-opt]'); if (!o || !crossTarget()) return;
+    press = { x: e.clientX, y: e.clientY, i: +o.dataset.opt };
+    clearTimeout(pressT);
+    pressT = setTimeout(() => { if (!press) return; const i = press.i; press = null; crossedAt = Date.now(); crossToggle(i); }, 480);
+  }, { passive: true });
+  app.addEventListener('pointermove', e => { if (press && Math.hypot(e.clientX - press.x, e.clientY - press.y) > 10) pressEnd(); }, { passive: true });
+  app.addEventListener('pointerup', pressEnd);
+  app.addEventListener('pointercancel', pressEnd);
   const inCst = el => el && el.closest && el.closest('.cst-chip, .cst-card');
   app.addEventListener('mouseover', e => { if (canHover() && inCst(e.target)) cstOpen(true); });
   app.addEventListener('mouseout', e => { if (canHover() && inCst(e.target) && !inCst(e.relatedTarget)) cstOpen(false); });
@@ -5170,7 +5308,7 @@
       if (S.topicBy !== t.dataset.by) { S.topicBy = t.dataset.by === 'lecture' ? 'lecture' : 'set'; sfx.play('nav'); usage.track('module_view', { by: S.topicBy, module: S.topicId }); save(); render(false, null, 'next'); }
       return;
     }
-    if (t.dataset.opt !== undefined) { if (S.view === 'exam') examToggle(+t.dataset.opt); else toggle(+t.dataset.opt); return; }
+    if (t.dataset.opt !== undefined) { if (Date.now() - crossedAt < 700) return; if (S.view === 'exam') examToggle(+t.dataset.opt); else toggle(+t.dataset.opt); return; }
     if (t.dataset.jump !== undefined) { if (S.view === 'exam') examJump(+t.dataset.jump); else jump(+t.dataset.jump); return; }
     if (t.dataset.zoom) { openLightbox(t.dataset.zoom); return; }
     if (t.hasAttribute('data-more')) {
@@ -5220,6 +5358,8 @@
       case 'spot-go': spotStart(); break;
       case 'updates': openUpdates(); break;
       case 'install-app': app_.install(); break;
+      case 'mark': markToggle(); break;
+      case 'practice-marked': practiseMarked(S.view === 'topic' ? S.topicId : null); break;
       case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;
       case 'back': goBack(); break;
@@ -5314,6 +5454,9 @@
     if (e.target && e.target.closest && e.target.closest('summary')) return;
     const key = e.key.toLowerCase();
     const q = curQ();
+    const xi = crossKey(e);
+    if (xi !== -1) { if (xi < q.options.length) { e.preventDefault(); crossToggle(xi); } return; }
+    if (key === 'm' && !e.shiftKey) { e.preventDefault(); markToggle(); return; }
     let idx = -1;
     if (key.length === 1) idx = 'abcdefgh'.indexOf(key) !== -1 ? 'abcdefgh'.indexOf(key) : '12345678'.indexOf(key);
     if (idx !== -1 && idx < q.options.length) { e.preventDefault(); toggle(idx); return; }
@@ -5327,6 +5470,12 @@
     if (key === 'arrowleft') { e.preventDefault(); go(-1); }
   });
 
+  // Shift + a letter (or a number): the option to cross out, else -1
+  function crossKey(e) {
+    if (!e.shiftKey || !e.code) return -1;
+    const m = e.code.match(/^Key([A-H])$|^Digit([1-8])$/);
+    return m ? (m[1] ? m[1].charCodeAt(0) - 65 : +m[2] - 1) : -1;
+  }
   // the exam: A–E (or 1–5) pick, Enter goes on (and offers to hand in after the last question), arrows move;
   // while "Hand in your exam?" is open, Escape closes it and the keys are left to its buttons
   function examKey(e) {
@@ -5339,6 +5488,9 @@
         return;
       }
       const q = examQ();
+      const xi = crossKey(e);
+      if (xi !== -1) { if (xi < q.options.length) { e.preventDefault(); crossToggle(xi); } return; }
+      if (key === 'm' && !e.shiftKey) { e.preventDefault(); markToggle(); return; }
       let idx = -1;
       if (key.length === 1) idx = 'abcdefgh'.indexOf(key) !== -1 ? 'abcdefgh'.indexOf(key) : '12345678'.indexOf(key);
       if (idx !== -1 && idx < q.options.length) { e.preventDefault(); examToggle(idx); return; }
