@@ -1920,12 +1920,13 @@
     const wrong = sess.order.filter(id => result(Q.get(id)) === 'wrong');
     if (!wrong.length) return;
     wrong.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
-    S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0 });
+    S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0, gain: null, doneSeen: 0 });
     S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function restartSession() {
     const sess = S.session; if (!sess) return;
     sess.order.forEach(id => { delete S.answers[id]; delete S.first[id]; delete S.cross[id]; });
+    sess.gain = null; sess.doneSeen = 0;
     sess.idx = 0; S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function goBack() {
@@ -2011,10 +2012,21 @@
       streak = 0;
       sfx.play(a.sel.some(i => q.answer.includes(i)) ? 'partial' : 'wrong');
     }
+    // what this session earned, for its end
+    const g = S.session.gain || (S.session.gain = { best: 0, caught: 0, comets: 0, diag: {}, moon: 0 });
+    g.best = Math.max(g.best, streak);
+    if (a.cn === 'caught' || a.cn === 'gone') g.caught++;
+    if (a.cn === 'new') g.comets++;
+    if (xpGain && xpGain.after && xpGain.before) { const id = DIAG[xpGain.i].id; g.diag[id] = (g.diag[id] || 0) + Math.max(0, xpGain.after.done - xpGain.before.done); }
+    if (moonGain) g.moon = moonGain === 'full' ? 2 : 1;
+    const shoot = (a.correct && streak % 7 === 0) || (xpGain && xpGain.after && xpGain.after.open && !xpGain.before.open) ? 'star'
+      : (a.cn === 'caught' || a.cn === 'gone') ? 'comet' : '';
     save();
     justChecked = true;
     render(false, 'verdict');
     justChecked = false; xpGain = null; moonGain = null;
+    if (a.correct) flyStars();
+    if (shoot) setTimeout(() => shootingStar(shoot === 'comet' ? 'comet' : ''), 500);
   }
   function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('untick'); save(); render(false); }
 
@@ -3908,7 +3920,7 @@
     const stars = (sess.from === 'quest' || sess.lec) && CST.has(q.id) && CST.get(q.id)[0] === q.id ? CST.get(q.id) : null;
     const others = rep ? [...new Set(rep.q.map(id => Q.get(id).source))].filter(s => s !== q.source && SRC.has(s)).sort((x, y) => SRC_ORDER.get(x) - SRC_ORDER.get(y)) : [];
     const alsoIn = others.length ? `<div class="alsoin"><span>Also in</span>${others.map(s => `<span class="pill">${esc(SRC.get(s).label)}</span>`).join('')}</div>` : '';
-    const right = `<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
+    const right = `${streakHTML()}<span class="bar-count num">${fmtN(sess.idx + 1)}/${fmtN(sess.qids.length)}</span>
       ${soundBtn()}
       ${sess.qids.length > 2 ? `<button class="btn quiet toggle" type="button" data-act="shuffle" aria-pressed="${!!sess.shuffle}" title="Shuffle question order">${ICON.shuffle}<span class="sr-label">Shuffle</span></button>` : ''}`;
     app.innerHTML = `
@@ -3997,12 +4009,16 @@
     const answered = st.right + st.wrong;
     const pct = answered ? Math.round(100 * st.right / answered) : 0;
     const qi = sess.from === 'quest' ? questInfo() : null;
+    const play = !sess.doneSeen && !reduceMotion(), sky = sessionSky(sess);
     app.innerHTML = `
       ${barHTML('back', '', sessionTitle(sess))}
       <main class="wrap narrow stage">
         <section class="done">
           <p class="eyebrow">${esc(sessionTitle(sess))}</p>
-          ${st.keyed ? `<p class="score"><b class="num">${fmtN(st.right)}</b><span>/ ${fmtN(st.keyed)} right</span></p>` : `<p class="score"><span>No answer key for these yet</span></p>`}
+          ${sky.html ? `<div class="dc${play ? '' : ' now'}" role="img" aria-label="${esc(sky.label)}">${sky.html}</div>` : ''}
+          ${st.keyed ? `<p class="score"><b class="num" data-countup="${st.right}">${play ? 0 : fmtN(st.right)}</b><span>/ ${fmtN(st.keyed)} right</span></p>` : `<p class="score"><span>No answer key for these yet</span></p>`}
+          ${sky.name ? `<p class="dc-name">${esc(sky.name)}</p>` : ''}
+          ${gainsHTML(sess)}
           <p class="d-meta">${st.keyed ? `${fmtN(answered)} checked${answered ? `, ${pct}% right` : ''}${st.left ? `, ${fmtN(st.left)} skipped` : ''}${st.nokey ? `, ${fmtN(st.nokey)} without an answer key` : ''}.` : `The doc has no highlighted answers for these ${st.total} questions.`}</p>
           ${qi ? questDoneHTML(qi) : ''}
           <div class="d-actions">
@@ -4019,6 +4035,136 @@
         </section>
       </main>`;
     stampSeals(qi);
+    if (!sess.doneSeen) { sess.doneSeen = Date.now(); save(true); }
+    if (play) playSessionSky(sky, st.keyed ? st.right / st.keyed : 0);
+  }
+
+  // ---------- stars ----------
+  // A right answer sends a star from each right pick to its square on the strip (to the streak if the strip is out of
+  // view). The streak grows in the bar as the Great Bear, star by star, and glows once its seven stars are lit. Shooting
+  // stars for the moments: every 7 in a row, a diagnostic opening, a comet caught (a comet), a session at 80% or more.
+  // The end of a session draws it as a constellation: one star per question, the right ones lit in order and joined
+  // while they were in a row, as the score counts up. All of it gives way to reduced motion.
+  const STAR_D = 'M0-6l1.4 4.6 4.6 1.4-4.6 1.4L0 6l-1.4-4.6L-6 0l4.6-1.4z';
+  function flyStars() {
+    if (reduceMotion() || !document.body.animate) return;
+    const from = [...app.querySelectorAll('.opts .opt.is-hit .bub')].slice(0, 4);
+    const cell = app.querySelector('.strip .cell.cur'), bear = document.querySelector('.bar .streak');
+    let to = cell && cell.getBoundingClientRect();
+    if (!to || to.bottom < 64 || to.top > innerHeight) to = bear ? bear.getBoundingClientRect() : null;
+    if (!to || !from.length) return;
+    const x1 = to.left + to.width / 2, y1 = to.top + to.height / 2;
+    from.forEach((b, k) => {
+      const r = b.getBoundingClientRect(), x0 = r.left + r.width / 2, y0 = r.top + r.height / 2, dx = x1 - x0, dy = y1 - y0;
+      const lift = Math.min(150, Math.abs(dx) * .3 + 70);
+      const el = document.createElement('span'); el.className = 'flystar';
+      el.innerHTML = `<svg viewBox="-7 -7 14 14" aria-hidden="true"><path d="${STAR_D}" fill="currentColor"/></svg>`;
+      el.style.left = x0 + 'px'; el.style.top = y0 + 'px';
+      document.body.appendChild(el);
+      const an = el.animate([
+        { transform: 'translate(-50%, -50%) scale(.3) rotate(0deg)', opacity: 0 },
+        { transform: `translate(calc(-50% + ${(dx * .3).toFixed(1)}px), calc(-50% + ${(dy * .3 - lift).toFixed(1)}px)) scale(1.3) rotate(110deg)`, opacity: 1, offset: .4 },
+        { transform: `translate(calc(-50% + ${dx.toFixed(1)}px), calc(-50% + ${dy.toFixed(1)}px)) scale(.5) rotate(250deg)`, opacity: .9 }
+      ], { duration: 760, delay: 160 + k * 110, easing: 'cubic-bezier(.32,.72,.3,1)', fill: 'both' });
+      an.onfinish = () => {
+        el.remove();
+        if (k) return;
+        const c = app.querySelector('.strip .cell.cur'); if (c) { c.classList.remove('twinkle'); void c.offsetWidth; c.classList.add('twinkle'); }
+      };
+    });
+  }
+  // the streak: the Great Bear, from the end of its handle to its bowl
+  const BEAR = [[2, 4], [8, 2.6], [13, 3.7], [18, 5.6], [18.7, 11.2], [26.2, 12.2], [26.6, 5.2]];
+  const BEAR_LINES = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]];
+  function streakHTML() {
+    if (streak < 2) return '';
+    const lit = Math.min(streak, 7), full = streak >= 7;
+    const lines = BEAR_LINES.filter(([x, y]) => x < lit && y < lit).map(([x, y]) => `<line x1="${BEAR[x][0]}" y1="${BEAR[x][1]}" x2="${BEAR[y][0]}" y2="${BEAR[y][1]}"/>`).join('');
+    const stars = BEAR.map(([x, y], i) => `<circle class="${i < lit ? 'on' : ''}${i === lit - 1 && (!full || streak === 7) ? ' new' : ''}" cx="${x}" cy="${y}" r="${i < lit ? 1.4 : .7}"/>`).join('');
+    const label = `${streak} right in a row${full ? ': the Great Bear is complete' : ''}`;
+    return `<span class="streak${full ? ' full' : ''}" title="${label}" role="img" aria-label="${label}"><svg viewBox="0 0 29 14.5" aria-hidden="true"><g class="sl">${lines}</g>${stars}</svg>${streak >= 3 ? `<b class="num">${streak}</b>` : ''}</span>`;
+  }
+  function shootingStar(kind) {
+    if (reduceMotion() || !document.body.animate) return;
+    const el = document.createElement('span'); el.className = 'shoot' + (kind ? ' ' + kind : '');
+    const w = innerWidth, h = innerHeight, deg = 18 + Math.random() * 14, len = Math.min(w * .6, 640);
+    el.style.left = (w * (.5 + Math.random() * .4)) + 'px'; el.style.top = (h * (.05 + Math.random() * .16)) + 'px';
+    document.body.appendChild(el);
+    const rad = deg * Math.PI / 180, dx = -Math.cos(rad) * len, dy = Math.sin(rad) * len;
+    const an = el.animate([
+      { transform: `translate(0, 0) rotate(${-deg}deg) scaleX(.2)`, opacity: 0 },
+      { opacity: 1, offset: .18 },
+      { transform: `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) rotate(${-deg}deg) scaleX(1)`, opacity: 0 }
+    ], { duration: kind === 'comet' ? 1300 : 950, easing: 'cubic-bezier(.4,.1,.6,1)', fill: 'both' });
+    an.onfinish = () => el.remove();
+  }
+  // the end of a session as a constellation: one star per question with a key, in a row of up to 24, wandering a little
+  // (the same session always draws the same shape); the right ones lit, joined while they came in a row
+  function sessionSky(sess) {
+    const ids = sess.order.filter(keyedId);
+    if (!ids.length) return { html: '' };
+    const n = ids.length, per = Math.min(n, 24), rows = Math.ceil(n / per), W = 640, RH = 62, H = rows * RH + 12;
+    let seed = 7;
+    for (const id of ids) for (let k = 0; k < id.length; k++) seed = (Math.imul(seed, 31) + id.charCodeAt(k)) >>> 0;
+    const rnd = () => (seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0) / 4294967296;
+    const T = Math.min(1700, Math.max(500, n * 60)), gap = T / n;
+    const pts = [], res = ids.map(id => result(Q.get(id)));
+    let y = 0;
+    ids.forEach((id, i) => {
+      const r = Math.floor(i / per), c = i % per, cols = Math.min(per, n - r * per), span = (W - 48) / Math.max(1, cols - 1);
+      if (c === 0) y = 0;
+      y = Math.max(-RH * .36, Math.min(RH * .36, y + (rnd() - .5) * RH * .7));
+      const x = cols === 1 ? W / 2 : 24 + c * span + (rnd() - .5) * span * .35;
+      pts.push([x, 6 + r * RH + RH / 2 + y]);
+    });
+    let lines = '', stars = '', right = 0;
+    pts.forEach(([x, py], i) => {
+      const d = Math.round(i * gap), ok = res[i] === 'right';
+      if (ok) right++;
+      if (ok && i && res[i - 1] === 'right' && Math.floor(i / per) === Math.floor((i - 1) / per))
+        lines += `<line class="dl" pathLength="1" x1="${pts[i - 1][0].toFixed(1)}" y1="${pts[i - 1][1].toFixed(1)}" x2="${x.toFixed(1)}" y2="${py.toFixed(1)}" style="--d:${d + 90}ms"/>`;
+      stars += `<g transform="translate(${x.toFixed(1)} ${py.toFixed(1)})">${ok ? `<path class="ds" d="${STAR_D}" style="--d:${d}ms"/>` : `<circle class="ds ${res[i] === 'wrong' ? 'w' : 'u'}" r="${res[i] === 'wrong' ? 2 : 1.5}" style="--d:${d}ms"/>`}</g>`;
+    });
+    const g = sess.gain || {};
+    const name = right ? `A constellation of ${fmtN(right)} ${right === 1 ? 'star' : 'stars'}${g.best >= 3 ? `, its longest line ${fmtN(g.best)} in a row` : ''}` : '';
+    return { html: `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><g>${lines}</g><g>${stars}</g></svg>`, ms: T + 400, right, name,
+      label: `Your session as a constellation: ${fmtN(right)} of ${fmtN(n)} lit` };
+  }
+  function playSessionSky(sky, share) {
+    const box = app.querySelector('.dc'), num = app.querySelector('[data-countup]');
+    const target = num ? +num.dataset.countup : 0, t0 = performance.now();
+    let done = false;
+    const finish = () => { if (done) return; done = true; if (box) box.classList.add('now'); if (num) num.textContent = fmtN(target); };
+    const tick = now => {
+      if (done || !num || !num.isConnected) return;
+      const p = Math.min(1, (now - t0) / Math.max(1, sky.ms - 300));
+      num.textContent = fmtN(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(tick); else done = true;
+    };
+    requestAnimationFrame(tick);
+    if (box) box.addEventListener('click', finish);
+    setTimeout(() => {
+      if (!app.contains(box || num)) return;
+      if (sky.right) sfx.play('sparkle', { quiet: true });
+      if (share >= .8) shootingStar();
+    }, sky.ms);
+  }
+  // what the session added: its longest line, the diagnostics it fed, tonight's moon, comets
+  function gainsHTML(sess) {
+    const g = sess.gain; if (!g) return '';
+    const items = [];
+    if (g.best >= 3) items.push(`Longest line: ${fmtN(g.best)} right in a row`);
+    for (const [id, k] of Object.entries(g.diag || {}).sort((x, y) => y[1] - x[1]).slice(0, 2)) {
+      const i = DIAG_INDEX.get(id); if (i === undefined || !k) continue;
+      const st = diagState(i);
+      items.push(st.open ? `${esc(DIAG[i].n)}: its diagnostic is open` : `${esc(DIAG[i].n)}: ${fmtN(st.done)} of ${fmtN(st.need)} toward its diagnostic`);
+    }
+    if (g.moon) items.push(g.moon === 2 ? 'A full moon tonight' : 'Tonight counts for the moon');
+    if (g.caught) items.push(`${fmtN(g.caught)} ${g.caught === 1 ? 'comet' : 'comets'} caught`);
+    if (g.comets) items.push(`${fmtN(g.comets)} ${g.comets === 1 ? 'comet comes' : 'comets come'} back tomorrow`);
+    if (!items.length) return '';
+    const st = `<svg viewBox="-7 -7 14 14" aria-hidden="true"><path d="${STAR_D}" fill="currentColor"/></svg>`;
+    return `<ul class="dc-gains">${items.map((t, i) => `<li style="--d:${600 + i * 120}ms">${st}${t}</li>`).join('')}</ul>`;
   }
 
   // ---------- topic search: synonyms, French terms, abbreviations, typos ----------

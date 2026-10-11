@@ -1577,3 +1577,45 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 }
 .sky-svg .ghost line { stroke: var(--sky-star); stroke-opacity: .1; stroke-width: 1; stroke-dasharray: 2 5; }
 .sky-svg .ghost circle { fill: none; stroke: var(--sky-star); stroke-opacity: .28; stroke-width: 1; stroke-dasharray: 2 2.5; }
+
+/* ---------- stars: a right answer's star, the streak's Great Bear, shooting stars, a session's constellation ---------- */
+:root { --star-ink: var(--ink-hi); }
+:root[data-look="blood"] { --star-ink: #e8c47c; }
+:root[data-look="codex"] { --star-ink: #e0b867; }
+:root[data-look="klimt"] { --star-ink: #c9962a; }
+.flystar { position: fixed; z-index: 70; width: 24px; height: 24px; color: var(--star-ink); pointer-events: none; filter: drop-shadow(0 0 5px var(--star-ink)) drop-shadow(0 0 14px var(--glow-mid)); }
+.flystar svg { display: block; width: 100%; height: 100%; }
+.cell.twinkle { animation: cell-twinkle .75s var(--spring); }
+@keyframes cell-twinkle { 0% { transform: scale(1); } 35% { transform: scale(1.2); box-shadow: 0 0 0 4px var(--glow-soft), 0 0 24px var(--star-ink); } 100% { transform: scale(1); } }
+.streak { display: inline-flex; align-items: center; gap: 5px; margin-right: 4px; color: var(--star-ink); animation: fadein .4s var(--ease) both; }
+.streak svg { width: 48px; height: 24px; overflow: visible; }
+.streak .sl line { stroke: currentColor; stroke-width: .45; opacity: .55; }
+.streak circle { fill: var(--ink-3); opacity: .45; }
+.streak circle.on { fill: currentColor; opacity: 1; }
+.streak circle.new { transform-box: fill-box; transform-origin: center; animation: star-pop .6s var(--spring) both; }
+.streak b { font-family: var(--f-mono); font-size: .72rem; font-weight: 400; }
+.streak.full svg { animation: bear-glow 2.6s ease-in-out infinite; }
+@keyframes star-pop { 0% { transform: scale(0); } 60% { transform: scale(1.9); } 100% { transform: scale(1); } }
+@keyframes bear-glow { 0%, 100% { filter: drop-shadow(0 0 1px var(--star-ink)); } 50% { filter: drop-shadow(0 0 5px var(--star-ink)); } }
+.shoot { position: fixed; z-index: 69; width: 170px; height: 2px; border-radius: 2px; pointer-events: none; transform-origin: 0 50%; background: linear-gradient(90deg, var(--star-ink), transparent); }
+.shoot::before { content: ''; position: absolute; left: -3px; top: -2px; width: 6px; height: 6px; border-radius: 50%; background: var(--star-ink); box-shadow: 0 0 10px 2px var(--star-ink); }
+.shoot.comet { width: 240px; height: 3px; }
+.shoot.comet::before { left: -5px; top: -3.5px; width: 10px; height: 10px; }
+/* the end of a session */
+.dc { width: 100%; max-width: 640px; margin: 2px 0 6px; color: var(--star-ink); cursor: pointer; }
+.dc svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dc .dl { fill: none; stroke: currentColor; stroke-width: 1; opacity: .5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .45s var(--ease) forwards; animation-delay: var(--d); }
+.dc .ds { fill: currentColor; transform-box: fill-box; transform-origin: center; animation: star-pop .55s var(--spring) both; animation-delay: var(--d); }
+.dc path.ds { filter: drop-shadow(0 0 3px currentColor); }
+.dc .ds.w { fill: var(--ink-3); opacity: .7; }
+.dc .ds.u { fill: var(--ink-3); opacity: .35; }
+.dc.now .dl, .dc.now .ds { animation-delay: 0s !important; animation-duration: 1ms !important; }
+.dc-name { margin: 0; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
+.dc-gains { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px 20px; margin: 6px 0 0; padding: 0; list-style: none; font-size: 1.02rem; color: var(--ink-2); }
+.dc-gains li { display: inline-flex; align-items: center; gap: 7px; animation: rise .5s var(--ease) both; animation-delay: var(--d); }
+.dc-gains svg { width: 11px; height: 11px; flex: none; color: var(--star-ink); }
+@media (prefers-reduced-motion: reduce) {
+  .flystar, .shoot { display: none; }
+  .cell.twinkle, .streak, .streak circle.new, .streak.full svg, .dc .ds, .dc-gains li { animation: none !important; }
+  .dc .dl { animation: none !important; stroke-dashoffset: 0; }
+}

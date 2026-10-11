@@ -24,6 +24,34 @@
     "bronchiectasis": {
       "title": "Bronchiectasis",
       "added": "2026-10-02"
+    },
+    "acute-appendicitis": {
+      "title": "Acute appendicitis",
+      "added": "2026-10-11"
+    },
+    "peritonitis": {
+      "title": "Acute peritonitis",
+      "added": "2026-10-11"
+    },
+    "groin-hernias": {
+      "title": "Groin hernias and other abdominal wall hernias",
+      "added": "2026-10-11"
+    },
+    "hydatid-liver": {
+      "title": "Hydatid cyst of the liver",
+      "added": "2026-10-11"
+    },
+    "caustic-ingestion": {
+      "title": "Caustic ingestion",
+      "added": "2026-10-11"
+    },
+    "stomach-cancer": {
+      "title": "Stomach cancer",
+      "added": "2026-10-11"
+    },
+    "esophageal-cancer": {
+      "title": "Esophageal cancer",
+      "added": "2026-10-11"
     }
   },
   "questions": {
@@ -475,6 +503,691 @@
       "B": "Extra-respiratory signs are marked, digestive and neurological.",
       "C": "Beta-lactams don't work on it: macrolides or fluoroquinolones.",
       "D": "It's a notifiable disease."
+    },
+    "D38": {
+      "lecture": "acute-appendicitis",
+      "A": "Obstruction of the lumen is the main cause. Stasis lets germs multiply, then the wall turns ischemic.",
+      "B": "Lymphoid hyperplasia of the wall is one cause, along with fecaliths, worms or foreign bodies.",
+      "C": "The lumen opens into the cecum, which is how the colon's septic contents reach it.",
+      "D": "The muscle layer's peristalsis empties the lumen. Lymphoid tissue also destroys germs."
+    },
+    "D146": {
+      "lecture": "acute-appendicitis",
+      "A": "The muscle layer's peristalsis empties the lumen. Lymphoid tissue also destroys germs.",
+      "B": "The lumen opens into the cecum, which is how the colon's septic contents reach it.",
+      "C": "Hematogenous spread is a cause, though exceptional. Obstruction is by far the main one.",
+      "D": "Clinical examination can rarely tell complicated from uncomplicated forms: the classic anatomoclinical dissociation."
+    },
+    "D203": {
+      "lecture": "acute-appendicitis",
+      "A": "The muscle layer's peristalsis empties the lumen. Lymphoid tissue also destroys germs.",
+      "B": "Obstruction of the lumen is the main cause. Stasis lets germs multiply, then the wall turns ischemic.",
+      "C": "The lumen opens into the cecum, which is how the colon's septic contents reach it.",
+      "D": "Clinical examination can rarely tell complicated from uncomplicated forms: the classic anatomoclinical dissociation."
+    },
+    "D37": {
+      "lecture": "acute-appendicitis",
+      "A": "Pain on dropping onto the heels has the best predictive value for peritoneal irritation.",
+      "B": "The general condition is usually preserved.",
+      "C": "Fever is moderate, 37.8 to 38.5°C; a higher fever suggests a complication.",
+      "D": "Tenderness and guarding at McBurney's point, the outer third of the umbilicus to iliac spine line, is the key sign."
+    },
+    "D156": {
+      "lecture": "acute-appendicitis",
+      "A": "Rectal and vaginal exams are part of the workup: normal at first, sometimes painful on the right.",
+      "B": "Murphy's sign belongs to acute cholecystitis, not appendicitis.",
+      "C": "Fever is moderate, 37.8 to 38.5°C; a higher fever suggests a complication.",
+      "D": "Pain on dropping onto the heels has the best predictive value for peritoneal irritation."
+    },
+    "D50": {
+      "lecture": "acute-appendicitis",
+      "A": "Prothrombin time doesn't help the diagnosis. At most it's part of the pre-anesthetic workup.",
+      "B": "The blood count shows leukocytosis over 10,000/mm³, mostly neutrophils.",
+      "C": "CRP is raised. With the blood count, it backs up the clinical diagnosis.",
+      "D": "Potassium doesn't help diagnose appendicitis."
+    },
+    "D169": {
+      "lecture": "acute-appendicitis",
+      "A": "Right iliac fossa pain with moderate fever is the typical picture.",
+      "B": "A subhepatic appendix, from incomplete rotation, gives pain in the right upper quadrant.",
+      "C": "Right upper quadrant pain radiating to the shoulder is biliary, as in cholecystitis.",
+      "D": "Left iliac fossa pain with fever suggests sigmoid diverticulitis."
+    },
+    "D68": {
+      "lecture": "acute-appendicitis",
+      "A": "The base sits 2 cm below the end of the terminal ileum.",
+      "B": "The base lies where the three taeniae coli meet, so following them leads to it.",
+      "C": "Haustra don't help locate the appendix.",
+      "D": "Only the base is constant. The tip can point in many directions."
+    },
+    "D71": {
+      "lecture": "acute-appendicitis",
+      "A": "Antibiotics and analgesics only support surgery, which treats the cause.",
+      "B": "It can be done by laparoscopy or by laparotomy.",
+      "C": "The removed appendix is always sent for pathology, which can find a tumor such as a carcinoid.",
+      "D": "It's a surgical emergency: appendectomy, by laparoscopy or laparotomy."
+    },
+    "D152": {
+      "lecture": "acute-appendicitis",
+      "A": "A collected abscess can be drained percutaneously under ultrasound or CT guidance.",
+      "B": "Patients are hospitalized in a surgical unit.",
+      "C": "Antibiotics go with drainage. Alone, they don't treat a collected abscess.",
+      "D": "An abscess needs draining and antibiotics, not just removal of the appendix."
+    },
+    "D205": {
+      "lecture": "acute-appendicitis",
+      "A": "Pregnant women tend to present late, which makes the diagnosis harder.",
+      "B": "A pelvic appendix gives rectal tenderness, and obesity dulls all the local signs.",
+      "C": "A retrocecal appendix is often silent: little rigidity, sometimes no tenderness even on deep pressure."
+    },
+    "D31": {
+      "lecture": "groin-hernias",
+      "A": "Diarrhea isn't on the list. Constipation is, because straining raises abdominal pressure.",
+      "B": "Dysuria makes the patient strain, which raises abdominal pressure.",
+      "C": "Asthma and its coughing raise abdominal pressure.",
+      "D": "Hypertension doesn't raise abdominal pressure. The factors are asthma, dysuria and constipation."
+    },
+    "D153": {
+      "lecture": "groin-hernias",
+      "A": "Asthma and its coughing raise abdominal pressure.",
+      "B": "Straining at stool raises abdominal pressure.",
+      "C": "Dysuria makes the patient strain, which raises abdominal pressure.",
+      "D": "Diarrhea isn't on the list. Constipation is, because straining raises abdominal pressure."
+    },
+    "D35": {
+      "lecture": "groin-hernias",
+      "A": "It swells and tenses on coughing. Losing that impulse is a sign of strangulation.",
+      "B": "There is no spontaneous pain and none on palpation.",
+      "C": "It can be pushed back into the abdomen, and the swelling disappears.",
+      "D": "Signs of obstruction point to strangulation, a surgical emergency."
+    },
+    "D198": {
+      "lecture": "groin-hernias",
+      "A": "It can be pushed back into the abdomen, and the swelling disappears.",
+      "B": "It swells and tenses when the patient coughs: the cough impulse.",
+      "C": "An uncomplicated hernia is painless. Pain suggests strangulation.",
+      "D": "Signs of obstruction point to strangulation, a surgical emergency."
+    },
+    "D36": {
+      "lecture": "groin-hernias",
+      "A": "That defines an incisional hernia. In evisceration the wall and skin are open, after a wound gives way.",
+      "B": "That's the definition: protrusion through a natural weak point of the abdominal wall.",
+      "C": "That's the definition: protrusion through a weakness left by previous surgery, under intact skin.",
+      "D": "Diastasis recti is a gap of more than 2 cm between the rectus muscles."
+    },
+    "D190": {
+      "lecture": "groin-hernias",
+      "A": "Diastasis recti is a gap of more than 2 cm between the rectus muscles.",
+      "B": "That's the definition: protrusion through a weakness left by previous surgery, under intact skin.",
+      "C": "That's the definition: protrusion through a natural weak point of the abdominal wall.",
+      "D": "That defines a hernia. In evisceration the wall and skin are open, after a laparotomy gives way or a penetrating wound."
+    },
+    "D48": {
+      "lecture": "groin-hernias",
+      "A": "Its sac follows the inguinal canal and can reach the scrotum: an inguinoscrotal hernia.",
+      "B": "Like any hernia, it can strangulate.",
+      "C": "It's congenital, from a persistent peritoneovaginal canal. The acquired weakness hernia is the direct one.",
+      "D": "It's seen in newborns and young adults. Adults and the elderly get direct hernias."
+    },
+    "D155": {
+      "lecture": "groin-hernias",
+      "A": "Like any hernia, it can strangulate.",
+      "B": "It can reach the scrotum. The direct hernia is the one that never does.",
+      "C": "It's seen in newborns and young adults. Adults and the elderly get direct hernias.",
+      "D": "It's congenital, from a persistent peritoneovaginal canal. The acquired weakness hernia is the direct one."
+    },
+    "D148": {
+      "lecture": "groin-hernias",
+      "A": "Hernias are very common, a frequent reason for consultation.",
+      "B": "They don't heal on their own and can strangulate. Surgery is the only definitive treatment.",
+      "C": "They occur at any age, newborns included.",
+      "D": "That's the definition: protrusion through a congenital or acquired defect of the wall."
+    },
+    "D27": {
+      "lecture": "caustic-ingestion",
+      "A": "No neutralizing: milk or any other oral antidote is on the list of mistakes to avoid.",
+      "B": "Rinsing the mouth with saline is one of the right first steps, not a mistake.",
+      "C": "Never induce vomiting: the caustic would burn the esophagus a second time on the way up.",
+      "D": "No lying flat: the patient is kept half seated."
+    },
+    "D75": {
+      "lecture": "caustic-ingestion",
+      "A": "Intubate if there's respiratory distress or severe consciousness disturbances, and only then.",
+      "B": "Correcting hypovolemia and acid-base imbalances is part of the first steps.",
+      "C": "Keep the upper airway open, give oxygen, and IV corticosteroids if the larynx is swollen.",
+      "D": "No nasogastric tube: it's on the list of mistakes to avoid."
+    },
+    "D157": {
+      "lecture": "caustic-ingestion",
+      "A": "No neutralizing with milk or any other antidote: it's a mistake to avoid.",
+      "B": "No gastric lavage: it's on the list of mistakes to avoid.",
+      "C": "The patient is kept half seated, never lying flat.",
+      "D": "Never induce vomiting: the caustic would burn the esophagus again on the way up."
+    },
+    "D200": {
+      "lecture": "caustic-ingestion",
+      "A": "Half seated is the right position. It's lying flat that's avoided.",
+      "B": "No left jugular or subclavian line: the left neck may be needed for an emergency cervical approach.",
+      "C": "Rinsing the mouth with saline is one of the right first steps.",
+      "D": "Neutralizing with milk or another oral antidote is a mistake to avoid."
+    },
+    "D39": {
+      "lecture": "caustic-ingestion",
+      "A": "The esophagus and stomach are the main targets. Lesions beyond the pylorus are less common.",
+      "B": "Management is multidisciplinary: anesthesiologist, emergency physician, surgeon, radiologist, ENT, psychiatrist.",
+      "C": "Severity depends on the product's nature, pH, concentration, form and the amount swallowed.",
+      "D": "Suicide attempts are the most common cause: 9 out of 10 ingestions are voluntary."
+    },
+    "D141": {
+      "lecture": "caustic-ingestion",
+      "A": "In children, ingestion is usually accidental.",
+      "B": "The esophagus and stomach are the main targets, not the jejunum or colon.",
+      "C": "Suicide attempts are the most common cause: 9 out of 10 ingestions are voluntary.",
+      "D": "It's a medical and surgical emergency with significant mortality."
+    },
+    "D40": {
+      "lecture": "caustic-ingestion",
+      "A": "Labels should stay on and labeling rules be followed.",
+      "B": "Special safety caps are part of primary prevention.",
+      "C": "Caustics must never go into food or drink containers, where they get mistaken for a drink.",
+      "D": "Siphoning caustic products is a classic accident, so it's to be avoided."
+    },
+    "D67": {
+      "lecture": "caustic-ingestion",
+      "A": "Labels should stay on and labeling rules be followed.",
+      "B": "Keeping household products out of children's reach prevents accidental ingestions.",
+      "C": "The opposite: never put caustics into food containers, where they get mistaken for a drink.",
+      "D": "Prevention campaigns on TV and in the media are part of primary prevention."
+    },
+    "D29": {
+      "lecture": "caustic-ingestion",
+      "A": "Edema and hyperemia of the mucosa is grade 1. Grade 2A is superficial, non-circumferential ulceration.",
+      "B": "Grade 1 is only edema and hyperemia. Small areas of necrosis are grade 3A.",
+      "C": "Grade 3B is extensive necrosis. 3A is limited necrosis.",
+      "D": "Grade 2B means circumferential ulcerations. In 2A they don't go all the way round."
+    },
+    "D151": {
+      "lecture": "caustic-ingestion",
+      "A": "Past surgical history isn't a severity factor. The product and how much was swallowed are.",
+      "B": "The product's nature, acid, base or oxidant, is the first severity factor.",
+      "C": "A very low (under 2) or very high (over 12) pH means more severe lesions.",
+      "D": "Diabetes isn't a severity factor. Severity comes from the product, its pH, concentration and amount."
+    },
+    "D193": {
+      "lecture": "caustic-ingestion",
+      "A": "Oxidants like bleach are the most common caustics, but a pH under 2 or over 12 does the most damage.",
+      "B": "Strong acids like hydrochloric acid cause coagulation necrosis.",
+      "C": "Bases cause liquefaction necrosis, which hits the esophagus more than the stomach.",
+      "D": "Coagulation necrosis spreads little in depth: it leaves superficial eschars, not diffuse wall damage."
+    },
+    "D26": {
+      "lecture": "esophageal-cancer",
+      "A": "Headache and neck pain aren't warning signs of esophageal cancer.",
+      "B": "Progressive dysphagia, solids then liquids, is the leading symptom (74% of patients).",
+      "C": "Odynophagia, pain on swallowing, is one of the warning symptoms.",
+      "D": "Weight loss is the second most common symptom, in 57% of patients."
+    },
+    "D139": {
+      "lecture": "esophageal-cancer",
+      "A": "Odynophagia, pain on swallowing, is one of the warning symptoms.",
+      "B": "Weight loss or loss of appetite is common, in 57% of patients.",
+      "C": "Neck pain isn't a warning symptom. Hoarseness or cervical lymph nodes are.",
+      "D": "Headache isn't one of the symptoms to look out for."
+    },
+    "D49": {
+      "lecture": "esophageal-cancer",
+      "A": "Reflux leads to Barrett's esophagus and adenocarcinoma, not squamous cell carcinoma.",
+      "B": "Tobacco is a major risk factor for squamous cell carcinoma.",
+      "C": "Alcohol is a major risk factor, especially together with tobacco.",
+      "D": "Nitrosamines, made from nitrites and nitrates in food, are a dietary risk factor."
+    },
+    "D64": {
+      "lecture": "esophageal-cancer",
+      "A": "Reflux, through Barrett's esophagus, is the main risk factor for adenocarcinoma.",
+      "B": "Tobacco and alcohol are risk factors for both types, above all squamous cell carcinoma.",
+      "C": "Menopause isn't a risk factor. Esophageal cancer is mostly a disease of men.",
+      "D": "Diet matters: nitrosamines, barbecue, canned foods and very hot drinks raise the risk."
+    },
+    "D43": {
+      "lecture": "esophageal-cancer",
+      "A": "Squamous cell carcinoma is the most common type.",
+      "B": "Epidermoid carcinoma is another name for squamous cell carcinoma, not a second type.",
+      "C": "Adenocarcinoma is the other main type, arising on Barrett's esophagus.",
+      "D": "Sarcomas are rare: each uncommon type makes up under 1% of esophageal cancers."
+    },
+    "D70": {
+      "lecture": "esophageal-cancer",
+      "A": "Staging the disease, local, regional and distant, comes before any treatment plan.",
+      "B": "A clinical assessment comes first, of both the patient and the disease.",
+      "C": "The plan is decided in a multidisciplinary panel discussion.",
+      "D": "A head CT is only done for warning signs, not routinely."
+    },
+    "D195": {
+      "lecture": "esophageal-cancer",
+      "A": "The chest and abdominal CT is for staging, once the diagnosis is made.",
+      "B": "Abdominal MRI plays no part in diagnosing esophageal cancer.",
+      "C": "A barium swallow is only used when the endoscope can't get past a complete stenosis.",
+      "D": "Upper endoscopy with biopsies confirms the diagnosis and locates the tumor."
+    },
+    "D32": {
+      "lecture": "hydatid-liver",
+      "A": "Humans are accidental hosts, a dead end for the parasite's cycle.",
+      "B": "In over 70% of cases, the liver is the only organ involved.",
+      "C": "It's non-immunizing: reinfestation is possible.",
+      "D": "Dogs are the definitive hosts. Sheep and other ungulates are the transient hosts."
+    },
+    "D149": {
+      "lecture": "hydatid-liver",
+      "A": "The liver comes first. The lungs are the second most common location.",
+      "B": "Humans are accidental hosts. The cycle runs between dogs and sheep.",
+      "C": "It's non-immunizing, so reinfestation is possible.",
+      "D": "Dogs are the definitive hosts. Sheep and other ungulates are the transient hosts."
+    },
+    "D34": {
+      "lecture": "hydatid-liver",
+      "A": "Type 4 is the pseudotumoral form: heterogeneous, with anechoic and echogenic areas.",
+      "B": "Type 1 is univesicular: a round, anechoic, pure liquid cyst. Multivesicular is type 3.",
+      "C": "Type 2 is the detached, doubled membrane.",
+      "D": "Type 5 is the calcified cyst. Pseudotumoral is type 4."
+    },
+    "D201": {
+      "lecture": "hydatid-liver",
+      "A": "Type 3 is multivesicular: a honeycomb of daughter cysts.",
+      "B": "Type 5 is the calcified cyst. Pseudotumoral is type 4.",
+      "C": "Type 1 is univesicular, pure liquid. Multivesicular is type 3.",
+      "D": "Type 2 shows membrane doubling: the membrane has come away from the wall."
+    },
+    "D207": {
+      "lecture": "hydatid-liver",
+      "A": "Type 3 is multivesicular: a honeycomb of daughter cysts.",
+      "B": "Type 1 is univesicular, pure liquid. Multivesicular is type 3.",
+      "C": "Type 2 is membrane doubling. Univesicular is type 1.",
+      "D": "Type 4 is the pseudotumoral form: heterogeneous, with anechoic and echogenic areas."
+    },
+    "D33": {
+      "lecture": "hydatid-liver",
+      "A": "The simple form is often asymptomatic, found by chance on an ultrasound or CT.",
+      "B": "Compression of the bile ducts and rupture into them, with cyst material migrating, both cause jaundice.",
+      "C": "Most are found at the simple stage: by chance, or from pain and a mass as it grows.",
+      "D": "Infection is the most common complication and can reveal the cyst."
+    },
+    "D138": {
+      "lecture": "hydatid-liver",
+      "A": "Contact with dogs is a frequent finding in the history, not a constant one.",
+      "B": "Rupture into the bile ducts also causes jaundice, as cyst material migrates into them.",
+      "C": "The simple form is often asymptomatic, found by chance on an ultrasound or CT.",
+      "D": "Most are found at the simple stage: by chance, or from pain and a mass as it grows."
+    },
+    "D47": {
+      "lecture": "hydatid-liver",
+      "A": "Home slaughter lets dogs eat infected offal, which closes the cycle.",
+      "B": "Poor hygiene raises the risk of swallowing eggs shed in dog feces.",
+      "C": "Sharing food spaces with infected dogs exposes you to the eggs in their feces.",
+      "D": "Deworming by a vet is prevention. Doing it yourself at home is what raises the risk."
+    },
+    "D65": {
+      "lecture": "hydatid-liver",
+      "A": "Fewer stray dogs means fewer definitive hosts spreading eggs.",
+      "B": "Deworming dogs with anthelmintics is one of the pillars of control programs.",
+      "C": "That's a risk factor, not a control measure.",
+      "D": "Home slaughter is a risk factor. Control programs enforce strict slaughter standards."
+    },
+    "D136": {
+      "lecture": "hydatid-liver",
+      "A": "Reducing the stray dog population is one of the pillars of control programs.",
+      "B": "Deworming or handling infected dogs at home raises the risk. Dogs should be registered and dewormed properly.",
+      "C": "Home slaughter is a risk factor. Control means veterinary checks and no clandestine slaughtering.",
+      "D": "Sharing food spaces with infected dogs is a risk factor, not a control measure."
+    },
+    "D66": {
+      "lecture": "hydatid-liver",
+      "A": "CL is the undifferentiated cystic lesion stage the WHO added to Gharbi's classification.",
+      "B": "CE4 and CE5 are the inactive, late stages.",
+      "C": "CE1 and CE2 are the active stages.",
+      "D": "CE3 is transitional, between the active and inactive stages."
+    },
+    "D145": {
+      "lecture": "hydatid-liver",
+      "A": "Only types 2 and 3 swap places: CE5 and Gharbi type 5 are both the calcified cyst.",
+      "B": "CE3 is transitional. Only CE1 and CE2 are active.",
+      "C": "CL is the undifferentiated cystic lesion stage the WHO added to Gharbi's classification.",
+      "D": "CE1 and CE2 are active. CE3 is the transitional stage."
+    },
+    "D46": {
+      "lecture": "hydatid-liver",
+      "A": "Perdromo's directed transparieto-hepatic fistulization is one of the conservative fistula treatments.",
+      "B": "A simple suture can close the fistula, typically when it's small.",
+      "C": "Repair over a Kehr drain in the bile duct is another option.",
+      "D": "A cysto-biliary fistula is a contraindication to PAIR."
+    },
+    "D142": {
+      "lecture": "hydatid-liver",
+      "A": "Serology (ELISA, immunoelectrophoresis) confirms the diagnosis in 80 to 95% of cases and is used for follow-up.",
+      "B": "The brain is a rare location. A cerebral CT is only for neurological signs.",
+      "C": "Ultrasound is the basis of diagnosis: it finds 90% and shows the location, content and number of cysts.",
+      "D": "Bone is a rare location. The routine search for other cysts is a chest X-ray, for the lungs."
+    },
+    "D160": {
+      "lecture": "hydatid-liver",
+      "A": "Here it means antiparasitic drugs: albendazole, for inoperable patients or multiple or disseminated cysts.",
+      "B": "Radiotherapy has no place in treating a hydatid cyst.",
+      "C": "Puncture, aspiration, scolicide injection, re-aspiration, guided by ultrasound or CT. Not with a cysto-biliary fistula.",
+      "D": "Surgery is the gold standard treatment."
+    },
+    "D185": {
+      "lecture": "hydatid-liver",
+      "A": "Bone is a rare location of hydatid disease, not somewhere a liver cyst ruptures into.",
+      "B": "Rupture into the thorax gives a pleural effusion with lower chest pain and dyspnea.",
+      "C": "Rupture into the bronchi gives a hydatid vomica. Bile in the sputum means a bilio-cysto-bronchial fistula.",
+      "D": "Rupture into the peritoneum, spontaneous or after trauma, can cause peritonitis or anaphylactic shock."
+    },
+    "D186": {
+      "lecture": "hydatid-liver",
+      "A": "Eggs survive on the ground for weeks to months: 1 month at 20°C, 15 months at 7°C.",
+      "B": "The adult has three parts: the head (scolex), the neck and the body.",
+      "C": "The germinal layer, held by a laminated membrane, buds small vesicles that make protoscolices.",
+      "D": "The eggs form in the last segment of the body, the gravid proglottid, not the head."
+    },
+    "D196": {
+      "lecture": "hydatid-liver",
+      "A": "Three forms: the adult worm, the egg and the metacestode, which is the hydatid cyst.",
+      "B": "Eggs survive on the ground for weeks to months: 1 month at 20°C, 15 months at 7°C.",
+      "C": "The eggs form in the last segment of the body, the gravid proglottid, not the head.",
+      "D": "The adult lives as a saprophyte between the villi of the dog's small intestine."
+    },
+    "D44": {
+      "lecture": "peritonitis",
+      "A": "The transverse mesocolon splits the cavity into two levels: supra-mesocolic and sub-mesocolic.",
+      "B": "That's the definition: a serous membrane lining the abdominal cavity.",
+      "C": "It has two parts: parietal, lining the walls, and visceral, around the organs.",
+      "D": "It's a closed sac in males. Only in females is it open, at the ends of the fallopian tubes."
+    },
+    "D137": {
+      "lecture": "peritonitis",
+      "A": "It has two parts: parietal, lining the walls, and visceral, around the organs.",
+      "B": "In disease it perceives pain, mounts the inflammatory and immune response and has fibrinolytic activity.",
+      "C": "Two levels, not three: supra-mesocolic and sub-mesocolic.",
+      "D": "In health its fluid lubricates the viscera, allowing easy movement and peristalsis."
+    },
+    "D210": {
+      "lecture": "peritonitis",
+      "A": "Its fluid, under 100 ml, lubricates the viscera for easy movement and peristalsis.",
+      "B": "Closed in males. In females it opens at the ends of the fallopian tubes.",
+      "C": "It has two parts: parietal and visceral.",
+      "D": "The deck doesn't tie the germ to the level: peritonitis can be chemical, bacterial, or chemical then bacterial."
+    },
+    "D28": {
+      "lecture": "peritonitis",
+      "A": "Three types: primary, secondary (the most frequent) and tertiary.",
+      "B": "Primary peritonitis is often monomicrobial: pneumococcus, streptococcus, Koch's bacillus, staphylococcus.",
+      "C": "It can stay localized, like a plastron, or spread to the whole cavity.",
+      "D": "Secondary peritonitis is the most common. Tertiary is an infection that persists after adequate treatment."
+    },
+    "D204": {
+      "lecture": "peritonitis",
+      "A": "It can stay localized, like a plastron, or spread to the whole cavity.",
+      "B": "Secondary peritonitis is the most frequent, mostly from a GI perforation or a nearby septic site.",
+      "C": "Primary, secondary and tertiary, with secondary by far the most common.",
+      "D": "With no intra-abdominal source, it's usually one germ: pneumococcus, streptococcus, Koch's bacillus, staphylococcus."
+    },
+    "D41": {
+      "lecture": "peritonitis",
+      "A": "At first the general condition is preserved. It deteriorates later, with toxic-infectious shock.",
+      "B": "The patient is anxious from the start.",
+      "C": "Fever comes early, 39 to 40°C when the peritonitis is bacterial. It can come later if chemical.",
+      "D": "The face is tense, from pain, dehydration and infection."
+    },
+    "D154": {
+      "lecture": "peritonitis",
+      "A": "Fever is often early: 39 to 40°C in bacterial peritonitis, later in chemical peritonitis.",
+      "B": "A tense face, from pain, dehydration and infection, is one of the first general signs.",
+      "C": "They're clear from the start: anxiety, tense face, fast pulse, high fever. Shock follows if untreated.",
+      "D": "At first the general condition is usually preserved, before toxic-infectious shock sets in."
+    },
+    "D73": {
+      "lecture": "peritonitis",
+      "A": "Midline laparotomy or laparoscopy both work. Laparoscopy is avoided in shock.",
+      "B": "Medical treatment goes alongside surgery: fluids, antibiotics, nasogastric suction, analgesics.",
+      "C": "Peritoneal fluid is sampled first thing on opening, to adjust the antibiotics.",
+      "D": "Surgery is the mainstay, done fast, to treat the source and wash out the cavity."
+    },
+    "D74": {
+      "lecture": "peritonitis",
+      "A": "Fibrinolytic activity is one of its roles in disease.",
+      "B": "It mounts an inflammatory and immune response, with fluid rich in immunoglobulins and phagocytes.",
+      "C": "Irritation of its nerve endings gives the pain and the abdominal contracture.",
+      "D": "In disease it feels pain, fights infection and has fibrinolytic activity."
+    },
+    "D143": {
+      "lecture": "peritonitis",
+      "A": "Wound infection is an early complication: infected tissues heal poorly, with wall abscesses and dehiscence.",
+      "B": "Untreated, it leads to septic shock, multi-organ failure and death.",
+      "C": "An incisional hernia after the laparotomy is a classic late complication, like adhesive bowel obstruction.",
+      "D": "Prognosis also depends on the patient's age and on how quickly they're operated on."
+    },
+    "D158": {
+      "lecture": "peritonitis",
+      "A": "Not one of the paths of infection: it's parasitic seeding from a ruptured hydatid cyst.",
+      "B": "Germs can reach the peritoneum through the blood, during a septicemia.",
+      "C": "Exogenous contamination: drains, open surgery, trauma, peritoneal dialysis.",
+      "D": "Ascites alone isn't a route in. Infected ascites in cirrhosis comes from germs crossing the bowel wall."
+    },
+    "D165": {
+      "lecture": "peritonitis",
+      "A": "Infection can spread from the female genital tract, as in salpingitis.",
+      "B": "Not one of the paths of infection: it's parasitic seeding from a ruptured hydatid cyst.",
+      "C": "The blood route: a septicemia can seed the peritoneum.",
+      "D": "GI perforation is the main route: perforated ulcer, appendix or diverticulum."
+    },
+    "D191": {
+      "lecture": "peritonitis",
+      "A": "The CT is for doubtful cases, suspected sigmoid diverticulitis, or ruling out pancreatitis.",
+      "B": "The diagnosis is clinical. The X-ray may show pneumoperitoneum, but a normal one doesn't rule it out.",
+      "C": "Procalcitonin tells infection apart from plain inflammation.",
+      "D": "Blood tests assess severity: blood count, CRP, electrolytes, kidney and liver tests, blood gas."
+    },
+    "D192": {
+      "lecture": "peritonitis",
+      "A": "Not one of its functional signs. Tenesmus shows up only in pelvic localized forms.",
+      "B": "Pain is the main sign: sudden, very intense, stabbing and rapidly generalized.",
+      "C": "Vomiting blood points to GI bleeding. Peritonitis gives food, then bilious, then fecaloid vomiting.",
+      "D": "Transit stops, usually constipation from reflex ileus, sometimes diarrhea."
+    },
+    "D208": {
+      "lecture": "peritonitis",
+      "A": "Sudden, intense, stabbing pain that quickly spreads is the leading sign.",
+      "B": "Nausea and vomiting are among the functional signs.",
+      "C": "Not a sign of peritonitis. Only pelvic forms bring urinary symptoms, and then it's dysuria.",
+      "D": "Vomiting blood suggests GI bleeding, not peritonitis."
+    },
+    "D209": {
+      "lecture": "peritonitis",
+      "A": "The CT is for doubtful cases, suspected sigmoid diverticulitis, or ruling out pancreatitis.",
+      "B": "The X-ray can show pneumoperitoneum, but the diagnosis is above all clinical.",
+      "C": "White cells rise above 10,000/mm³, mostly neutrophils.",
+      "D": "Procalcitonin tells infection apart from plain inflammation."
+    },
+    "D30": {
+      "lecture": "stomach-cancer",
+      "A": "Unexplained weight loss is one of the warning symptoms to ask about.",
+      "B": "Persistent vomiting is a warning sign, often from an obstructed gastric outlet.",
+      "C": "Predominant epigastric pain and early satiety are both warning symptoms.",
+      "D": "Lower limb edema isn't one of the warning symptoms of gastric cancer."
+    },
+    "D92": {
+      "lecture": "stomach-cancer",
+      "A": "Unexplained weight loss is a warning symptom. With abdominal pain, it's the classic pair.",
+      "B": "It's the opposite: loss of appetite and early satiety are what to look for.",
+      "C": "Lower limb edema isn't one of the warning symptoms of gastric cancer.",
+      "D": "Migraine has nothing to do with gastric cancer."
+    },
+    "D99": {
+      "lecture": "stomach-cancer",
+      "A": "Petechiae aren't a sign of it. Its skin signs are acanthosis nigricans and Leser-Trelat.",
+      "B": "Lower limb edema isn't one of the warning symptoms of gastric cancer.",
+      "C": "Appetite drops, with early satiety. It doesn't increase.",
+      "D": "Signs of GI bleeding are warning symptoms: hematemesis, melena, iron deficiency anemia."
+    },
+    "D103": {
+      "lecture": "stomach-cancer",
+      "A": "Lower limb edema isn't one of the warning symptoms of gastric cancer.",
+      "B": "It's the reverse: unexplained weight loss is one of the warning symptoms.",
+      "C": "Predominant epigastric pain and early satiety are both warning symptoms.",
+      "D": "Migraine has nothing to do with gastric cancer."
+    },
+    "D42": {
+      "lecture": "stomach-cancer",
+      "A": "H. pylori is the main modifiable risk factor, especially for the intestinal type.",
+      "B": "Family history of gastric cancer is a non-modifiable risk factor.",
+      "C": "It's a diet low in fresh vegetables that raises the risk, not a high-fiber one.",
+      "D": "A diet high in salt and nitrites is a classic risk factor."
+    },
+    "D106": {
+      "lecture": "stomach-cancer",
+      "A": "Fruit and vegetables protect. The risk is a diet low in fresh vegetables.",
+      "B": "Occupational exposure isn't on the list of modifiable risk factors: H. pylori, smoking, alcohol, obesity, salt, radiation.",
+      "C": "A past cholecystectomy isn't a risk factor for gastric cancer.",
+      "D": "H. pylori infection is the leading modifiable risk factor."
+    },
+    "D107": {
+      "lecture": "stomach-cancer",
+      "A": "Occupational exposure isn't on the list of modifiable risk factors: H. pylori, smoking, alcohol, obesity, salt, radiation.",
+      "B": "Smoking and alcohol are both modifiable risk factors.",
+      "C": "A past cholecystectomy isn't a risk factor for gastric cancer.",
+      "D": "Fruit and vegetables protect. The risk is a diet low in fresh vegetables."
+    },
+    "D166": {
+      "lecture": "stomach-cancer",
+      "A": "Occupational exposure isn't on the list of modifiable risk factors. Radiation exposure is.",
+      "B": "Radiation exposure is one of the modifiable risk factors.",
+      "C": "Smoking and alcohol are both modifiable risk factors.",
+      "D": "H. pylori infection is the leading modifiable risk factor."
+    },
+    "D69": {
+      "lecture": "stomach-cancer",
+      "A": "Subtotal gastrectomy with lymph node dissection treats distal, antral intestinal-type tumors.",
+      "B": "A feeding jejunostomy only feeds the patient. It leaves the tumor in place.",
+      "C": "It isn't one of the curative operations, which are total and subtotal gastrectomy.",
+      "D": "Total gastrectomy with lymph node dissection treats proximal and body tumors, and the diffuse type."
+    },
+    "D91": {
+      "lecture": "stomach-cancer",
+      "A": "It isn't one of the curative operations, which are total and subtotal gastrectomy.",
+      "B": "Total gastrectomy with lymph node dissection treats proximal and body tumors, and the diffuse type.",
+      "C": "Colectomy isn't an operation for gastric cancer. The curative ones are total and subtotal gastrectomy.",
+      "D": "A feeding jejunostomy only feeds the patient. It leaves the tumor in place."
+    },
+    "D109": {
+      "lecture": "stomach-cancer",
+      "A": "It isn't one of the curative operations, which are total and subtotal gastrectomy.",
+      "B": "Subtotal gastrectomy with lymph node dissection treats distal, antral intestinal-type tumors.",
+      "C": "A feeding jejunostomy only feeds the patient. It leaves the tumor in place.",
+      "D": "Bypass surgery is palliative, for an obstructed gastric outlet. It leaves the tumor in place."
+    },
+    "D72": {
+      "lecture": "stomach-cancer",
+      "A": "The supplement needed is B12, not folate, because intrinsic factor is lost with the stomach.",
+      "B": "Splitting meals is a must after gastrectomy, with no fast sugars if there's dumping syndrome.",
+      "C": "Vaccines are only for a splenectomy (flu, pneumococcus, meningococcus, Haemophilus), not the whole program.",
+      "D": "No stomach means no intrinsic factor: B12 by IM injection every 6 months, or macrocytic anemia follows."
+    },
+    "D93": {
+      "lecture": "stomach-cancer",
+      "A": "A bone density scan isn't part of the mandatory follow-up.",
+      "B": "PET isn't mandatory. Follow-up is history, exam, and CT when indicated.",
+      "C": "Splitting meals is a must after gastrectomy, with no fast sugars if there's dumping syndrome.",
+      "D": "The vitamin to replace is B12, not the fat-soluble ones."
+    },
+    "D108": {
+      "lecture": "stomach-cancer",
+      "A": "No stomach means no intrinsic factor: B12 by IM injection every 6 months, or macrocytic anemia follows.",
+      "B": "B12 must be supplemented after a total gastrectomy, or macrocytic anemia follows.",
+      "C": "Vaccines are only for a splenectomy (flu, pneumococcus, meningococcus, Haemophilus), not the whole program.",
+      "D": "The supplement needed is B12, not folate, because intrinsic factor is lost with the stomach."
+    },
+    "D45": {
+      "lecture": "stomach-cancer",
+      "A": "Peritoneal washing with cytology is done during the staging laparoscopy.",
+      "B": "It's a staging tool, not a treatment. It doesn't relieve symptoms.",
+      "C": "It finds peritoneal spread that imaging misses, which can change or rule out surgery.",
+      "D": "Its main use is looking for peritoneal carcinomatosis, in T3/T4 or diffuse-type tumors."
+    },
+    "D102": {
+      "lecture": "stomach-cancer",
+      "A": "Its main use is looking for peritoneal carcinomatosis, in T3/T4 or diffuse-type tumors.",
+      "B": "It finds peritoneal spread that imaging misses, which can change or rule out surgery.",
+      "C": "It doesn't spread the tumor. It looks for spread that's already there.",
+      "D": "It's a staging tool, not a treatment. It doesn't relieve symptoms."
+    },
+    "D94": {
+      "lecture": "stomach-cancer",
+      "A": "An ENT exam isn't a required step. The plan rests on staging the disease.",
+      "B": "Vitamin levels aren't needed. Nutrition is judged by weight, BMI and nutrition scores.",
+      "C": "Tuberculosis screening isn't part of the gastric cancer workup.",
+      "D": "Treatment depends on the stage: local, regional and distant extension (TNM), plus the patient's fitness."
+    },
+    "D95": {
+      "lecture": "stomach-cancer",
+      "A": "MRI can't confirm it. Only biopsies taken at endoscopy can.",
+      "B": "CT is for staging once the diagnosis is made, not for confirming it.",
+      "C": "Upper endoscopy with biopsies is the diagnostic test of choice.",
+      "D": "A barium swallow can't take biopsies, so it can't confirm the diagnosis."
+    },
+    "D96": {
+      "lecture": "stomach-cancer",
+      "A": "Diagnosis is hard: biopsies are often negative, since the tumor spreads under the mucosa.",
+      "B": "Linitis infiltrates the whole stomach wall, so only a total gastrectomy can remove it.",
+      "C": "Linitis has a bad prognosis.",
+      "D": "Past surgery isn't one of its risk factors. The diffuse type is linked to hereditary diffuse gastric cancer."
+    },
+    "D97": {
+      "lecture": "stomach-cancer",
+      "A": "Linitis has a bad prognosis: an infiltrating signet ring cell cancer, often found late.",
+      "B": "A partial gastrectomy can't clear a cancer infiltrating the whole wall. It needs a total gastrectomy.",
+      "C": "Linitis has a bad prognosis.",
+      "D": "Diagnosis is hard: biopsies are often negative, since the tumor spreads under the mucosa."
+    },
+    "D98": {
+      "lecture": "stomach-cancer",
+      "A": "Lymph node spread is common, so resection always includes a lymph node dissection.",
+      "B": "Combining surgery with chemotherapy or chemoradiotherapy gives the best results. Perioperative FLOT is the preferred plan.",
+      "C": "Caught early, it can be cured by resection. Most patients just present late.",
+      "D": "Linitis is a malignant infiltrating cancer with signet ring cells, not a benign metaplasia."
+    },
+    "D100": {
+      "lecture": "stomach-cancer",
+      "A": "A head CT isn't routine. Staging relies on CT of the chest, abdomen and pelvis.",
+      "B": "Supportive care can start, but the treatment plan needs staging first.",
+      "C": "Treatment depends on the stage: local, regional and distant extension (TNM), plus the patient's fitness.",
+      "D": "A lipid panel plays no part in staging gastric cancer."
+    },
+    "D101": {
+      "lecture": "stomach-cancer",
+      "A": "Distant spread is assessed by CT, not by endoscopy.",
+      "B": "Confirming the diagnosis is one of its roles, so one statement is correct.",
+      "C": "It does locate the tumor, as well as seeing it and taking biopsies.",
+      "D": "Endoscopy with biopsies confirms the diagnosis. It's the test of choice."
+    },
+    "D104": {
+      "lecture": "stomach-cancer",
+      "A": "A head MRI isn't part of the gastric cancer workup.",
+      "B": "Colonoscopy isn't part of the gastric cancer workup.",
+      "C": "Every plan, curative or palliative, is decided in a multidisciplinary discussion.",
+      "D": "A CBC is part of the workup, but it doesn't decide the treatment. The panel does."
+    },
+    "D105": {
+      "lecture": "stomach-cancer",
+      "A": "It does locate the tumor, as well as seeing it and taking biopsies.",
+      "B": "Endoscopy takes biopsies, at least 10 for a good-quality diagnosis.",
+      "C": "Distant spread is assessed by CT, not by endoscopy.",
+      "D": "It's the first-line test for any suspected gastric cancer."
+    },
+    "D110": {
+      "lecture": "stomach-cancer",
+      "A": "Surgery is the main treatment. Chemotherapy is given around it, or alone when palliative.",
+      "B": "Linitis is a malignant infiltrating cancer with signet ring cells, not a benign metaplasia.",
+      "C": "It has a place: after surgery for large or node-positive tumors, and in palliative care.",
+      "D": "Nodes are involved early, so resection includes a lymph node dissection (at least 15 nodes)."
     }
   }
 }

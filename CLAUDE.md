@@ -100,6 +100,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - If the lecture contradicts an answer key, don't explain it: flag it to Abi first (rule above). That's how
   the lobar pneumonia management question was caught (her CAP lecture includes physio and smoking cessation).
 - On the site the lines show under "Notes & explanations" once a question is checked, labelled with the lecture.
+- 11 October 2026: the digestive surgery quest's 100 questions, written from the seven decks in Abi's Drive (Pr Bouziane,
+  Pr Benammi), 98 of them; D150 and D168 wait for Abi (the lecture disagrees with the key, see the flag rule).
 
 ## Constellations
 
@@ -161,6 +163,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Marks: the Mark button under the card (or M) puts a question in `S.marks` (synced); a ribbon on the strip. The
   Tonight card and a module page ("Marked N") practise the marked ones afresh (`practiseMarked`: the first try stays,
   like retrying mistakes). In an exam the mark shows on the strip and "Hand in" counts them. Test: tools.js.
+
+## Stars (October 2026, Abi wanted the Den more satisfying)
+
+- A right answer sends a star from each right pick to its square on the strip, which twinkles (`flyStars`; to the
+  streak if the strip is out of view). The streak grows in the bar as the Great Bear (`streakHTML`, `BEAR`), from 2 in a
+  row, complete and glowing at 7. Shooting stars (`shootingStar`): every 7 in a row, a diagnostic opening, a comet caught
+  (a bigger one), a session ending at 80% or more.
+- The end of a session (`renderDone`) draws it as a constellation (`sessionSky`): one star per question with a key, up
+  to 24 a row, seeded by the questions so a session keeps its shape; right ones lit and joined while they came in a row,
+  the others dim; the score counts up with it (`playSessionSky`), a tap draws it at once, and it plays only once per
+  session (`sess.doneSeen`). Under it, what the session added (`sess.gain`, `gainsHTML`): longest line, diagnostics fed,
+  tonight's moon, comets caught and new. Star colour `--star-ink` per theme. Reduced motion: none of the motion.
+  Test: stars.js.
 
 ## Exam mode
 
@@ -429,7 +444,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
