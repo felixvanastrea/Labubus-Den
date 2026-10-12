@@ -9,6 +9,8 @@ const src = fs.readFileSync(path.join(__dirname, 'account.js'), 'utf8');
 const FAKE = new Function(src.slice(src.indexOf('const FAKE = {'), src.indexOf('\n};\n', src.indexOf('const FAKE = {')) + 3) + '\nreturn FAKE;')();
 let fails = 0;
 const check = (ok, what) => { console.log((ok ? 'ok   ' : 'FAIL ') + what); if (!ok) fails++; };
+// how many stars the class sky has drawn (with the North Star)
+const stars = p => p.evaluate(() => window.__classSky ? window.__classSky().stars.length : -1);
 const txt = async (p, sel) => ((await p.textContent(sel)) || '').replace(/\s+/g, ' ').trim();
 
 async function as(b, who, extra) {
@@ -48,9 +50,9 @@ async function openWithIntro(ctx, errors) {
   const c1 = await as(b, { uid: 'u1', name: 'Lina', key: 'lina' });
   const [p, playing] = await openWithIntro(c1, errors);
   check(playing, 'the intro was playing while the account woke up');
-  await p.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await p.waitForTimeout(300);
+  await p.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await p.waitForTimeout(1800);
   const sub = await txt(p, '#class-sky .sky-sub');
-  check(!/Gathering/.test(sub) && (await p.$$('#class-sky .ss')).length === 4, 'after the intro, the sky shows today’s 3 stars and the North Star: ' + sub);
+  check(!/Gathering/.test(sub) && await stars(p) === 4, 'after the intro, the sky shows today’s 3 stars and the North Star: ' + sub);
   await c1.close();
 
   const c2 = await as(b, { uid: 'u5', name: 'Amro', key: 'amro' });
@@ -65,8 +67,8 @@ async function openWithIntro(ctx, errors) {
   const e = await c3.newPage(); e.on('pageerror', x => errors.push('pageerror: ' + x.message));
   await e.goto(URL, { waitUntil: 'load' }); await e.waitForTimeout(1200);
   check(await e.evaluate(() => !window.__fb.calls.some(c => c.startsWith('tx'))), 'the account’s save was refused');
-  await e.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await e.waitForTimeout(300);
-  check(!/Gathering/.test(await txt(e, '#class-sky .sky-sub')) && (await e.$$('#class-sky .ss')).length === 4, 'when syncing fails, the sky still shows: ' + await txt(e, '#class-sky .sky-sub'));
+  await e.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await e.waitForTimeout(1800);
+  check(!/Gathering/.test(await txt(e, '#class-sky .sky-sub')) && await stars(e) === 4, 'when syncing fails, the sky still shows: ' + await txt(e, '#class-sky .sky-sub'));
   await c3.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');

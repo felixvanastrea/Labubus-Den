@@ -40,6 +40,7 @@ const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
   const takes = [];
   p.on('response', r => { if (/\/snd\/\w+\.mp3$/.test(r.url())) takes.push(r.status()); });
   await p.goto(URL, { waitUntil: 'load' }); await p.evaluate(() => localStorage.clear());
+  takes.length = 0;   // only this visit's
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   check((await p.textContent('.foot')).includes('Sounds: on') && !(await p.textContent('.foot')).includes('Vibration'), 'footer: Sounds on, no vibration switch on a desktop');
   await p.waitForTimeout(1500);

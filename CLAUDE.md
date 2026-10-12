@@ -382,23 +382,44 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   so the name (and this access) can't pass to anyone else; the site never deletes it on a rename or Delete my data.
 - The class sky (homepage, after Tonight; `skyHTML`), Abi's design: everyone who checked `SKY_MIN` (10) questions today
   (`S.days`, counted in `moonTick`, synced, kept 21 days; `S.dayT` = when they reached 10) rises into today's sky,
-  Firestore `sky/d{day}` = {uid: {nm, c: today's count in steps (`SKY_TIERS`), t: when they rose}}, one read per homepage
-  visit (at most every 3 minutes), a few writes a day per person (`classSync`). It starts empty every day. In order of
-  arrival, the stars fill real constellations (`SKY_CONS`: the Little Bear, whose tail ends at the North Star, then the
-  Great Bear, Cassiopeia, Orion, the Lyre, the Swan, the Lion, the Twins, the Scorpion; 65 places, then loose stars):
-  dashed lines while one forms, with its empty places faint (`ghost`), drawn and named once complete. Bigger and
-  sparkling with more questions; your own has a dashed ring. The North Star is the Labubu's: gold, her Labubu beside it,
-  always there whether she studied or not (`northStar`). Hover, focus or tap a star, or hover a name under "Today", for
-  the tooltip (`skyTip`). "Hide my star" (`skyHide` on the account, `efm3-sky-hide`). Names and counts only, never marks.
-  Phones get a taller sky with bigger stars (`K`). Guests see the North Star and a sign-in button.
+  Firestore `sky/d{day}` = {uid: {nm, c: today's count in steps (`SKY_TIERS`), t: when they rose}}, a few writes a day per
+  person (`classSync`). It starts empty every day. In order of arrival, the stars fill real constellations (`SKY_CONS`: the
+  Little Bear, whose tail ends at the North Star, then the Great Bear, Cassiopeia, Orion, the Lyre, the Swan, the Lion,
+  the Twins, the Scorpion; 65 places, then loose stars; `skyModel` gives each star its place): dashed lines while one
+  forms, with its empty places faint, drawn and named once complete. The North Star is the Labubu's: gold, her Labubu
+  beside it, always there whether she studied or not. "Hide my star" (`skyHide` on the account, `efm3-sky-hide`). Names
+  and counts only, never marks. Guests see the North Star and a sign-in button.
+- Since 12 October 2026 (Abi: "alive, sparkly, drag it around, actually beautiful") it's a canvas (`skyView` in the
+  account module), drawn in layers by depth: haze, nebulae and the Milky Way with its dust lanes and thousands of faint
+  stars (one image made per size and look, `gen`), mid and bright stars that twinkle, the class's stars (bigger, rays from
+  20 questions, circling motes from 50), the hills with pines in front. Drag with the mouse (or swipe sideways on a phone,
+  `touch-action: pan-y` keeps the page scrolling) to pan; each layer moves by its depth, it glides and comes back inside its
+  edges (`PAN`); arrow keys too. It leans toward the pointer, wanders, sways around the North Star; shooting stars.
+  The first time it's on screen, today's stars appear one by one (`born`). Colours per look on `.sky-field`: `--sky-star`,
+  `--sky-gold`, `--sky-neb` (two tints), `--sky-hill` (far, near). It only animates while on screen and the page shows.
+  Reduced motion: drawn still, redrawn on changes and drags. Tooltips (`skyTipHTML`) on hover, on a name under the sky,
+  or pinned by a click or tap (Escape or a click elsewhere lets go). `window.__classSky()` says where everything is (tests).
+- Live: while the sky is on the page, `watchSky` listens to today's sky doc and today's sparks (`onSnapshot`, a read per
+  change; stopped when the page hides or the sky leaves the page; a new day starts a new sky). A newcomer rises from behind
+  the hills to their place (the sky turns to them if they're out of view), with a burst, their name and a chime; a
+  constellation completed that way draws itself, with a shooting star; a count going up flashes.
+- Sparks (Abi's choice, 12 October 2026): tap or click a star, "Send a spark": one per person per night to someone in
+  tonight's sky, `sparks/d{day}_{to}_{from}` = {d, to, from, nm, k, t} (`sendSpark`). It flies from your star (or from
+  behind the hills) to theirs, for everyone watching; the star's tooltip counts its sparks and gold glints circle it. Sparks
+  for you: a toast once per device (`efm3-sparks-seen`) and a line under the sky. Delete my data deletes the sparks you sent
+  and got. If the rules refuse the watch, no spark button shows (`cls.noSparks`).
 - The account wakes up while the intro plays, when the homepage can't redraw. `caughtUp` remembers it (`behind`: 1 for
   the sky and a letter, 2 when synced data or the look changed) and `acct.afterIntro()` (called by the intro's `finish`)
   catches up; the sky also draws itself in place (`skyUp`), and shows even when syncing failed (state `error`).
   Before this, the sky stayed on "Gathering the stars…" until something redrew the page. Test: sky_intro.js.
 - Rules (pasted by Abi; always give her the whole rules file to paste, never a part to replace): `stats` docs readable and
   writable by any signed-in user (under 3000 fields); `sky` docs readable
-  by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name.
-- Test: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`).
+  by signed-in users, and each user may only write their own star (count 10 to 5000), under their registered name;
+  `sparks` docs readable by signed-in users, created once (no update) only by their sender (`from`), with the id
+  `{d}_{to}_{from}`, `nm` and `k` matching the sender's `names/{k}`, `t` the server time, to someone else in `sky/{d}`;
+  deleted by their sender or recipient. Claude doesn't have the rules file: ask Abi to paste hers before changing it.
+- Tests: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`; the fake also has
+  `where` and live queries), sky.js (the canvas: appearing, dragging, rising, sparks, phones, reduced motion, guests).
 
 ## The app (Add to Home Screen)
 
@@ -421,7 +442,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals,
+  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent,
   update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
@@ -467,7 +488,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

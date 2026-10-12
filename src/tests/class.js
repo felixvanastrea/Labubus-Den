@@ -73,12 +73,14 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
 
   // the sky: four stars, the Labubu's gold; who studied tonight
   await p.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await p.waitForTimeout(300);
-  check((await p.$$('#class-sky .ss')).length === 10 && !!(await p.$('#class-sky .ss.gold .slb')), 'the class sky: 9 stars and the North Star, gold, with the Labubu');
-  check(/the Little Bear/.test(await txt(p, '#class-sky .cns')) && (await p.$$('#class-sky .cl line.on')).length === 7 && (await p.$$('#class-sky .cl line:not(.on)')).length === 2, 'the Little Bear is complete and drawn; the Great Bear is forming');
+  let cs = await p.evaluate(() => window.__classSky());
+  check(cs.stars.length === 10 && cs.stars.some(x => x.uid === 'labubu') && !!(await p.$('#class-sky .sky-lab')), 'the class sky: 9 stars and the North Star, gold, with the Labubu');
+  check(cs.full.join() === 'the Little Bear' && cs.lines === 7 && cs.dashed === 2, 'the Little Bear is complete and drawn; the Great Bear is forming');
   check(/9 of you did 10 questions or more today\. The Little Bear is complete\. 4 more stars and the Great Bear is complete\./.test(await txt(p, '#class-sky .sky-sub')), 'the line: ' + await txt(p, '#class-sky .sky-sub'));
   await p.hover('#class-sky .sky-nm:has-text("Salma")'); await p.waitForTimeout(150);
-  check(/Salma · 30\+ questions today · in the Little Bear/.test(await txt(p, '#class-sky .sky-tip')) && !!(await p.$('#class-sky .ss.hl')), 'hovering a name lights its star and says who: ' + await txt(p, '#class-sky .sky-tip'));
-  await p.hover('#class-sky .ss.gold .sc'); await p.waitForTimeout(150);
+  check(/Salma · 30\+ questions today · in the Little Bear/.test(await txt(p, '#class-sky .sky-tip')) && (await p.evaluate(() => window.__classSky().hover)) === 'u0', 'hovering a name lights its star and says who: ' + await txt(p, '#class-sky .sky-tip'));
+  const ns = cs.stars.find(x => x.uid === 'labubu'), cb = await p.evaluate(() => { const r = document.querySelector('#class-sky .sky-cv').getBoundingClientRect(); return [r.left, r.top]; });
+  await p.mouse.move(cb[0] + ns.x, cb[1] + ns.y); await p.waitForTimeout(150);
   check(/^Labubu · the North Star, always shining/.test(await txt(p, '#class-sky .sky-tip')) && /Your star is the North Star/.test(await txt(p, '#class-sky .sky-foot')), 'the North Star: ' + await txt(p, '#class-sky .sky-tip'));
   await (await p.$('#class-sky')).screenshot({ path: OUT + 'class_sky.png' });
 
@@ -136,7 +138,7 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
   D = await docs(l);
   check(D['sky/' + week].u8 && D['sky/' + week].u8.c === 10 && D['sky/' + week].u8.nm === 'Lina', 'Lina did 12 today: her star rises (10+)');
   await l.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await l.waitForTimeout(400);
-  check(/Your star shines in the Great Bear/.test(await txt(l, '#class-sky .sky-foot')) && !!(await l.$('#class-sky .ss.me')), 'she sees where her star is: ' + await txt(l, '#class-sky .sky-foot'));
+  check(/Your star shines in the Great Bear/.test(await txt(l, '#class-sky .sky-foot')) && await l.evaluate(() => window.__classSky().stars.some(x => x.me && x.nm === 'Lina')), 'she sees where her star is: ' + await txt(l, '#class-sky .sky-foot'));
   await (await l.$('#class-sky')).screenshot({ path: OUT + 'class_sky_lina.png' });
   await l.click('#class-sky [data-act="sky-hide"]'); await l.waitForTimeout(400);
   D = await docs(l);
@@ -148,7 +150,8 @@ const docs = p => p.evaluate(() => JSON.parse(JSON.stringify(window.__fb.docs)))
   await c2.addInitScript(() => { window.__acctTest = true; });
   const g = await c2.newPage(); g.on('pageerror', e => errors.push('pageerror: ' + e.message));
   await g.goto(URL, { waitUntil: 'load' }); await g.waitForTimeout(400);
-  check(!!(await g.$('#class-sky [data-act="account"]')) && (await g.$$('#class-sky .ss')).length === 1 && !!(await g.$('#class-sky .ss.gold')), 'guest: the North Star, and a sign in to join');
+  await g.evaluate(() => document.getElementById('class-sky').scrollIntoView({ block: 'center' })); await g.waitForTimeout(400);
+  check(!!(await g.$('#class-sky [data-act="account"]')) && await g.evaluate(() => { const s = window.__classSky(); return s.mode === 'guest' && s.stars.length === 1 && s.stars[0].uid === 'labubu'; }), 'guest: the North Star, and a sign in to join');
   await (await g.$('#class-sky')).screenshot({ path: OUT + 'class_sky_phone_guest.png' });
   await c2.close();
 

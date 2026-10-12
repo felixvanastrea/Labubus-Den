@@ -54,9 +54,15 @@ const FAKE = {
     const no = () => { const e = new Error('no'); e.code = 'permission-denied'; throw e; };
     const deny = () => { if (localStorage.getItem('fake-deny')) no(); };
     const snapOf = r => { const d = fb.docs[r]; return { exists: () => !!d, data: () => d && JSON.parse(JSON.stringify(d)), metadata: { hasPendingWrites: false } }; };
-    const notify = r => (subs[r] || []).forEach(cb => cb(snapOf(r)));
+    const qsubs = [];
+    // a query: a collection, maybe one where (field == value); sparks are refused while 'fake-deny-sparks' is set (no rules yet)
+    const qdocs = q => Object.entries(fb.docs).filter(([r, d]) => r.startsWith(q.col + '/') && (!q.wf || d[q.wf] === q.wv))
+      .map(([r, d]) => ({ id: r.slice(q.col.length + 1), data: () => JSON.parse(JSON.stringify(d)) }));
+    const qsnap = q => { const docs = qdocs(q); return { docs, size: docs.length, empty: !docs.length }; };
+    const notify = r => { (subs[r] || []).forEach(cb => cb(snapOf(r))); qsubs.forEach(([q, cb]) => { if (r.startsWith(q.col + '/')) cb(qsnap(q)); }); };
     // the rules: a name belongs to whoever has it
-    const rules = ops => { for (const [k, r, d] of ops) { if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); if (k === 'del' && r === 'names/labubu') no(); } };
+    const rules = ops => { for (const [k, r, d] of ops) { if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); if (k === 'del' && r === 'names/labubu') no();
+      if (r.startsWith('sparks/') && (localStorage.getItem('fake-deny-sparks') || (k === 'set' && (fb.docs[r] || !fb.user || d.from !== fb.user.uid)))) no(); } };
     // set with merge merges maps deeply, like Firestore; increment() and deleteField() resolve against what's there
     const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
     const apply = ([k, r, d, o]) => { if (k === 'del') delete fb.docs[r]; else fb.docs[r] = o && o.merge ? resolve(fb.docs[r], d) : resolve({}, d); };
@@ -76,8 +82,10 @@ const FAKE = {
     export function orderBy(by, dir) { return { by, dir }; }
     export function limit(lim) { return { lim }; }
     export function query(col, ...parts) { return Object.assign({ col }, ...parts); }
+    export function where(f, op, v) { return { wf: f, wv: v }; }
     export async function getDocs(q) {
       fb.calls.push('list ' + q.col); deny();
+      if (q.col === 'sparks') { if (localStorage.getItem('fake-deny-sparks')) no(); return qsnap(q); }
       const lab = fb.docs['names/labubu'];
       if (q.col === 'users' && !(fb.user && lab && lab.uid === fb.user.uid && q.lim && q.lim <= 50)) no();
       const docs = Object.entries(fb.docs).filter(([r, d]) => r.startsWith(q.col + '/') && (!q.by || d[q.by] !== undefined))
@@ -85,7 +93,15 @@ const FAKE = {
         .map(([r, d]) => ({ id: r.slice(q.col.length + 1), data: () => JSON.parse(JSON.stringify(d)) }));
       return { docs, size: docs.length, empty: !docs.length };
     }
-    export function onSnapshot(r, cb) { (subs[r] = subs[r] || []).push(cb); setTimeout(() => cb(snapOf(r)), 0); return () => { subs[r] = subs[r].filter(x => x !== cb); }; }
+    export function onSnapshot(r, cb, err) {
+      if (typeof r !== 'string') {
+        const sub = [r, cb]; fb.calls.push('watch ' + r.col);
+        if (r.col === 'sparks' && localStorage.getItem('fake-deny-sparks')) { setTimeout(() => err && err({ code: 'permission-denied' }), 0); return () => {}; }
+        qsubs.push(sub); setTimeout(() => cb(qsnap(r)), 0); return () => { const i = qsubs.indexOf(sub); if (i >= 0) qsubs.splice(i, 1); };
+      }
+      fb.calls.push('watch ' + r);
+      (subs[r] = subs[r] || []).push(cb); setTimeout(() => cb(snapOf(r)), 0); return () => { subs[r] = subs[r].filter(x => x !== cb); };
+    }
     fb.remote = (r, data) => { fb.docs[r] = Object.assign({}, fb.docs[r], data); keep(); notify(r); };`,
 };
 

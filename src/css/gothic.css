@@ -1458,7 +1458,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 @keyframes coinflip { 0% { transform: rotateY(0) scale(.82); } 65% { transform: rotateY(330deg) scale(1.08); } 100% { transform: rotateY(360deg) scale(1); } }
 @keyframes coinshine { to { background-position: 160% 0, 0 0; } }
 /* the class sky stays a window of night, in Klimt's colours: gold stars on a dark ground */
-:root[data-look="klimt"] .sky-field { --sky-star: #f2c654; background: radial-gradient(130% 120% at 78% 0%, #3b230e 0%, #120a05 75%); box-shadow: inset 0 0 0 2px #c9962a, inset 0 0 0 4px #120a05, inset 0 0 60px rgba(0, 0, 0, .55); }
+:root[data-look="klimt"] .sky-field { --sky-star: #f2c654; --sky-neb: #b07a20 #5d4c16; --sky-hill: #25180a #120b05; background: radial-gradient(130% 120% at 78% 0%, #3b230e 0%, #120a05 75%); }
+:root[data-look="klimt"] .sky-field::after { box-shadow: inset 0 0 0 2px #c9962a, inset 0 0 0 4px #120a05, inset 0 0 60px rgba(0, 0, 0, .55); }
 /* the intro's sky is still night: its words keep the night's colours */
 :root[data-look="klimt"] :is(.pick, .intro-hint) { --ink: #f4e7c5; --ink-hi: #fff7de; --ink-2: #ddc99d; --ink-3: #b9a170; --hair: #4a3618; --hair-2: #7a5a22; --glow-mid: rgba(230, 180, 60, .42); --glow-soft: rgba(230, 180, 60, .16); --title-glow: rgba(214, 160, 40, .4); }
 @media (prefers-reduced-motion: reduce) {
@@ -1510,33 +1511,41 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .sky-head .h2 { margin: 0 0 8px; }
 .sky-sub { margin: 0; max-width: 44rem; color: var(--ink-2); font-size: 1.08rem; line-height: 1.5; }
 .sky-sub b { color: var(--ink); font-weight: 600; }
-/* the sky itself: a window of night in every theme (charcoal, crimson, or lapis and gold in the Codex) */
-.sky-field { --sky-star: #fff4e0; position: relative; display: grid; place-items: center; border-radius: var(--r); overflow: hidden;
-  background: radial-gradient(130% 120% at 78% 0%, #25232f 0%, #0e0d12 72%); box-shadow: inset 0 0 0 1px var(--hair), inset 0 0 60px rgba(0, 0, 0, .5); }
-:root[data-look="blood"] .sky-field { background: radial-gradient(130% 120% at 78% 0%, #36101a 0%, #0b0406 72%); }
-:root[data-look="codex"] .sky-field { --sky-star: #f3d98a; background: radial-gradient(130% 120% at 78% 0%, #2c4a80 0%, #142245 75%); box-shadow: inset 0 0 0 2px #b8913c, inset 0 0 0 4px #142245, inset 0 0 0 5px #a83a26; }
-.sky-svg { grid-area: 1 / 1; display: block; width: 100%; height: auto; overflow: visible; }
-.sky-svg .dust circle { fill: var(--sky-star); }
-.sky-field > .btn { grid-area: 1 / 1; position: relative; z-index: 1; }
-.ss { cursor: pointer; outline: none; }
-.ss .sc { fill: var(--sky-star); opacity: var(--b); transition: opacity .3s var(--ease); }
-.ss .sg { fill: var(--sky-star); opacity: .1; transition: opacity .3s var(--ease); }
-.ss .sp { fill: var(--sky-star); opacity: calc(var(--b) * .8); }
-.ss .sr { fill: none; stroke: var(--sky-star); stroke-opacity: .6; stroke-width: 1; stroke-dasharray: 2 3; }
-.ss.tw .sc { animation: twinkle 2.8s ease-in-out var(--tw) infinite; }
-.ss.hl .sc, .ss:focus-visible .sc { opacity: 1; }
-.ss.hl .sg, .ss:focus-visible .sg { opacity: .32; }
+/* the sky itself: a window of night in every theme, drawn live on a canvas (template.html, skyView). Its colours: the
+   stars, the North Star's gold, two nebula tints for the haze and the Milky Way, the far and near hills */
+.sky-field { --sky-star: #fff4e0; --sky-gold: #f3c65a; --sky-neb: #6c5c9c #2e5f70; --sky-hill: #1a1822 #09080c;
+  position: relative; border-radius: var(--r); overflow: hidden; isolation: isolate;
+  background: radial-gradient(130% 120% at 78% 0%, #25232f 0%, #0e0d12 72%); }
+.sky-field::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--hair), inset 0 0 70px rgba(0, 0, 0, .45); transition: box-shadow .3s var(--ease); }
+.sky-field:has(.sky-cv:focus-visible)::after { box-shadow: inset 0 0 0 2px rgba(255, 244, 224, .6), inset 0 0 70px rgba(0, 0, 0, .45); }
+:root[data-look="blood"] .sky-field { --sky-neb: #8e1b2e #3d1034; --sky-hill: #1d080c #0b0305; background: radial-gradient(130% 120% at 78% 0%, #36101a 0%, #0b0406 72%); }
+:root[data-look="codex"] .sky-field { --sky-star: #f3d98a; --sky-neb: #4f7ad0 #b8913c; --sky-hill: #11214a #0a1331; background: radial-gradient(130% 120% at 78% 0%, #2c4a80 0%, #142245 75%); }
+:root[data-look="codex"] .sky-field::after { box-shadow: inset 0 0 0 2px #b8913c, inset 0 0 0 4px #142245, inset 0 0 0 5px #a83a26; }
+.sky-cv { display: block; width: 100%; aspect-ratio: 1000 / 576; touch-action: pan-y; cursor: grab; outline: none;
+  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+.sky-cv.on-star { cursor: pointer; }
+.sky-cv.grabbing { cursor: grabbing; }
+@media (max-width: 640px) { .sky-cv { aspect-ratio: 600 / 824; } }
+/* her Labubu beside the North Star (moved by the canvas) */
+.sky-lab { position: absolute; left: 0; top: 0; z-index: 1; width: 30px; height: 37px; color: #f3d36b; --lb-line: #2a1c06; pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(243, 211, 107, .45)); will-change: transform; }
+@media (max-width: 640px) { .sky-lab { width: 26px; height: 32px; } .sky-hint { font-size: .88rem; left: 12px; bottom: 10px; } }
+.sky-hint { position: absolute; left: 16px; bottom: 12px; z-index: 3; margin: 0; max-width: calc(100% - 32px); color: rgba(244, 234, 214, .7); font-style: italic; font-size: .95rem;
+  line-height: 1.35; text-shadow: 0 1px 8px #000; pointer-events: none; transition: opacity .9s var(--ease); }
+.sky-hint.gone { opacity: 0; }
+.sky-field > .sky-in { position: absolute; left: 50%; top: 58%; z-index: 3; transform: translate(-50%, -50%); white-space: nowrap; }
 @keyframes twinkle { 0%, 100% { opacity: var(--b); } 50% { opacity: 1; } }
-/* the Labubu's star: gold, an eight-point burst, her Labubu beside it */
-.ss.gold .sc { fill: #fff0b8; opacity: 1; }
-.ss.gold .sg { fill: #f3c65a; opacity: .2; }
-.ss.gold .sx { fill: #f3c65a; transform-box: fill-box; transform-origin: center; animation: goldstar 4s ease-in-out infinite; filter: drop-shadow(0 0 6px rgba(243, 198, 90, .9)); }
-.ss.gold .slb { color: #f3d36b; --lb-line: #2a1c06; }
-.ss.gold .sn { fill: #f3d36b; font-family: var(--f-display); font-style: italic; font-size: 15px; text-anchor: middle; }
-@keyframes goldstar { 0%, 100% { transform: scale(1) rotate(0deg); opacity: .95; } 50% { transform: scale(1.18) rotate(8deg); opacity: 1; } }
-.sky-tip { position: absolute; z-index: 2; margin: 0; padding: 6px 11px; transform: translate(-50%, calc(-100% - 14px)); white-space: nowrap; pointer-events: none;
+.sky-tip { position: absolute; z-index: 4; margin: 0; padding: 6px 11px; transform: translate(-50%, calc(-100% - 16px)); width: max-content; max-width: min(340px, calc(100% - 12px)); text-align: center; pointer-events: none;
   background: rgba(12, 10, 9, .92); color: #f4ead6; border: 1px solid rgba(244, 234, 214, .25); border-radius: var(--r); font-size: .95rem; box-shadow: 0 10px 30px -12px #000; }
-.sky-tip.below { transform: translate(-50%, 22px); }
+.sky-tip.below { transform: translate(-50%, 24px); }
+.sky-tip.pinned { display: grid; justify-items: center; gap: 8px; padding: 9px 13px 10px; pointer-events: auto; }
+.sky-sp { padding: 5px 14px; border: 1px solid rgba(243, 198, 90, .6); border-radius: 999px; background: rgba(243, 198, 90, .12); color: #f6dc95; font: inherit; font-size: .98rem; cursor: pointer;
+  transition: background .25s var(--ease), border-color .25s var(--ease); }
+.sky-sp:hover, .sky-sp:focus-visible { background: rgba(243, 198, 90, .24); border-color: #f3c65a; outline: none; }
+.sky-sent { color: #f6dc95; font-style: italic; }
+.sky-mine { margin: 0; color: var(--ink-2); font-size: 1.05rem; }
+.sky-glint { color: var(--gold-txt, #e9c46a); }
 .sky-names { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .sky-nl { margin-right: 6px; font-family: var(--f-mono); font-size: var(--t-label); color: var(--ink-3); }
 .sky-nm { padding: 3px 11px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .95rem; cursor: pointer; transition: color .3s var(--ease), border-color .3s var(--ease); }
@@ -1566,17 +1575,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .app-note { color: var(--ink-3); font-style: italic; }
 .th-gift { color: var(--gold-txt, #e9c46a); }
 @media (prefers-reduced-motion: reduce) { .lt-mark { animation: none; } }
-@media (prefers-reduced-motion: reduce) { .ss.tw .sc, .ss.gold .sx { animation: none; } }
-/* the constellations: dashed while they form, drawn and named once complete */
-.sky-svg .cl line { stroke: var(--sky-star); stroke-opacity: .22; stroke-width: 1; stroke-dasharray: 3 4; }
-.sky-svg .cl line.on { stroke-opacity: .45; stroke-dasharray: none; }
-.sky-svg .cn { fill: var(--sky-star); opacity: .78; font-family: var(--f-display); font-style: italic; font-size: 15px; text-anchor: middle; }
-@media (max-width: 640px) {
-  .sky-svg .cn, .ss.gold .sn { font-size: 25px; }
-  .sky-svg .cl line { stroke-width: 1.6; }
-}
-.sky-svg .ghost line { stroke: var(--sky-star); stroke-opacity: .1; stroke-width: 1; stroke-dasharray: 2 5; }
-.sky-svg .ghost circle { fill: none; stroke: var(--sky-star); stroke-opacity: .28; stroke-width: 1; stroke-dasharray: 2 2.5; }
 
 /* ---------- stars: a right answer's star, the streak's Great Bear, shooting stars, a session's constellation ---------- */
 :root { --star-ink: var(--ink-hi); }
