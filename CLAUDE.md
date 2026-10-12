@@ -421,6 +421,36 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Tests: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`; the fake also has
   `where` and live queries), sky.js (the canvas: appearing, dragging, rising, sparks, phones, reduced motion, guests).
 
+## Duels and parties (Abi, 12 October 2026)
+
+- A challenge is one exam drawn once (`examDraw`), the same questions in the same order for everyone, graded like exam
+  mode. A duel is 2 people with a colour at stake; a party is up to 8, for a ranking, and moves no colours. Played within
+  24 hours, each when they like, or live: the maker presses Start now once people are in, everyone's exam starts at the
+  same `go` (a 5 s countdown), and each sees how far the others are (`duelRunHTML`, the answered count written every 2 s).
+- Made from the challenge sheet (`openChallenge`): from "Challenge someone" on the homepage card (the quest, or the last
+  exam scope) or "Duel someone" / "Start a party" on any exam's rules page. People come from tonight's sky, past rivals
+  (`S.rivals`) or a name typed (`names/{canon}`). Then a link `#duel-<id>` to copy or share; opening it shows the
+  challenge (it needs an account; `openDuel`), with Join while there's room. The people picked get a live invitation
+  (a sheet, once per device, `efm3-duel-seen`) and an Accept / Decline row on the card.
+- Firestore `duels/{id}` = {by, kind, live, title, what, scope, qids, ms, t, d (its day), until (24 h), ix: [uid@d of
+  everyone invited or in], inm: {invited uid: name}, go, p: {uid: {nm, s: in | no, j, at, n, end, pts, n20, used, picks}}}.
+  Each player writes only their entry and their own tag; only the maker sets go. Invitations and my challenges of today
+  and yesterday come live from one query (`ix` array-contains-any my two tags); older ones by id (`S.duels`, synced).
+  Results are regraded from the picks with today's key. A finished duel exam's mark and picks wait in `S.duelSend`
+  until the account is awake. The page (`renderDuel`, view `duel`): players ranked, the stake, actions, the link, and
+  question by question once you've handed in. Tie: the same mark within a second = a draw.
+- The colours of the sky (`COLOURS`: Betelgeuse, Arcturus, Antares, Achernar, Rigel, Vega, Spica; Abi's gold stays the
+  Labubu's): `colours/{cid}` = {uid ('' = free), nm, since, duel}. A duel's winner takes the loser's colour if they hold
+  none (a free one if the loser had none); a winner who holds one keeps it (defended, `since` renewed) and the loser's
+  goes back to the sky. One colour each. Not defended for 7 days, it fades back (`FADE`). Each side writes its own part
+  once (`settle`, `S.duelSet`): the loser frees theirs, the winner takes or keeps. A holder's star in the class sky shines
+  in that colour (bigger glow and rays, never as bright as the North Star); the card lists who holds what and for how long.
+- Rules (in the file Abi pasted on 12 October 2026): duels readable by signed-in users, created by their maker only with
+  their own entry, updated by a player only in their own entry and own tag (room checked), `go` by the maker only;
+  colours written only by a player of the duel named in the write, for themselves or to free it, and only taken from
+  someone who played that duel, a free one, or a faded one.
+- Test: duel.js (the fake Firestore has `arrayUnion` and array queries).
+
 ## The app (Add to Home Screen)
 
 - On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
@@ -442,7 +472,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent,
+  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, challenges (made,
+  joined, declined, started, settled, link copied or shared),
   update log, sound).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
@@ -488,7 +519,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

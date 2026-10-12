@@ -145,11 +145,12 @@
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
-    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {} };
+    sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {},
+    duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks', 'duels', 'rivals', 'duelSet'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -206,6 +207,11 @@
       for (const id of Object.keys(S[k])) if (!Q.has(id) || (k !== 'marks' && !Array.isArray(S[k][id]))) delete S[k][id];
     }
     if (!S.dayT || typeof S.dayT !== 'object' || typeof S.dayT.d !== 'string') S.dayT = null;
+    // challenges: mine (synced, the last 40), the people I've played, the ones whose colours are settled, results to send
+    for (const k of ['duels', 'rivals', 'duelSet', 'duelSend']) if (!S[k] || typeof S[k] !== 'object' || Array.isArray(S[k])) S[k] = {};
+    const dk = Object.keys(S.duels).sort((a, b) => ((S.duels[b] || {}).t || 0) - ((S.duels[a] || {}).t || 0));
+    dk.slice(40).forEach(k => { delete S.duels[k]; delete S.duelSet[k]; });
+    if (typeof S.duelId !== 'string') S.duelId = null;
     if (S.session) {
       const ok = S.session.topic === '*' || TOPIC.has(S.session.topic);
       S.session.qids = ok ? (S.session.qids || []).filter(id => Q.has(id)) : [];
@@ -236,7 +242,8 @@
     if (S.view === 'exam' && !S.exam && !scopeInfo(S.examScope)) S.view = 'home';
     if (S.view === 'diag' && !DIAG_INDEX.has(S.diag)) S.view = 'weak';
     if (S.view === 'weak' && !DIAG.length) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag'].includes(S.view)) S.view = 'home';
+    if (S.view === 'duel' && !S.duelId) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel'].includes(S.view)) S.view = 'home';
     if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
     // a first visit starts with nothing new: everything in the log is new to them anyway
     if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
@@ -1392,6 +1399,7 @@
     }
     // the account is ready (or failed): redraw now, or once the intro is over. The sky draws itself in place either way.
     function caughtUp(full) {
+      watchDuels();
       if (intro.active()) behind = Math.max(behind, full ? 2 : 1); else refresh();
       skyUp();
     }
@@ -1682,7 +1690,7 @@
       if (state === 'off' || state === 'naming') return { mode: 'guest', stars: [], lab: null, full: [], sparks: {}, sparksTo: {} };
       if (!skyOK() || !cls.sky || cls.skyDay !== 'd' + dayKey()) return { mode: 'wait', stars: [], lab: null, full: [], sparks: {}, sparksTo: {} };
       const all = Object.entries(cls.sky).filter(([, v]) => v && typeof v === 'object' && v.nm && (v.c | 0) >= SKY_MIN)
-        .map(([uid, v]) => ({ uid, nm: String(v.nm).slice(0, 24), c: v.c | 0, t: +v.t || 0, me: uid === user.uid, gold: canon(String(v.nm)) === LOOKS_FOR }));
+        .map(([uid, v]) => ({ uid, nm: String(v.nm).slice(0, 24), c: v.c | 0, t: +v.t || 0, me: uid === user.uid, gold: canon(String(v.nm)) === LOOKS_FOR, col: heldBy(uid) }));
       const lab = all.find(x => x.gold) || null, stars = all.filter(x => !x.gold).sort((a, b) => a.t - b.t || a.uid.localeCompare(b.uid));
       // the k-th star to rise takes the k-th place, constellation by constellation (the same places on every screen)
       let k = 0;
@@ -1728,7 +1736,7 @@
       if (uid === 'labubu') { text = `Labubu · the North Star, always shining${m.lab ? ` · ${fmtN(m.lab.c)}+ questions today` : ''}`; to = m.lab && m.lab.uid; }
       else {
         const s = m.stars.find(x => x.uid === uid); if (!s) return '';
-        text = `${s.nm}${s.me ? ' (you)' : ''} · ${fmtN(s.c)}+ questions today${s.ci >= 0 ? ` · in ${SKY_CONS[s.ci].name}` : ''}`; to = uid;
+        text = `${s.nm}${s.me ? ' (you)' : ''} · ${fmtN(s.c)}+ questions today${s.ci >= 0 ? ` · in ${SKY_CONS[s.ci].name}` : ''}${s.col ? ` · wears ${s.col.name}` : ''}`; to = uid;
       }
       const n = to ? m.sparksTo[to] || 0 : 0;
       if (n) text += ` · ${fmtN(n)} ${n === 1 ? 'spark' : 'sparks'}`;
@@ -2097,15 +2105,18 @@
         c.globalAlpha = 1;
       }
       const fullAt = ci => { const cn = lay.cons.find(x => x.ci === ci); return cn ? Math.max(...cn.ps.map(p => at(p.uid))) : 1e9; };
+      // a colour won in a duel: the star's light in that colour (never as bright as the North Star)
+      const tints = {};
+      const tintOf = c => tints[c.id] || (tints[c.id] = { glow: sprite(c.rgb), spike: spikeImg(mix(c.rgb, [255, 255, 255], .3)), core: mix(c.rgb, [255, 255, 255], .45) });
       function drawStar(s, x, y, t, u) {
-        const tier = Math.max(0, SKY_TIERS.indexOf(s.c)), lit = s.uid === hover || (pin && pin.uid === s.uid);
+        const tier = Math.max(0, SKY_TIERS.indexOf(s.c)), lit = s.uid === hover || (pin && pin.uid === s.uid), tc = s.col ? tintOf(s.col) : null;
         const fl = flash.get(s.uid) || -1e9, fa = cl01(1 - (t - fl) / 1.2);
         const pop = u < 1 ? outBack(u) : 1, r = rOf(s) * pop * (1 + fa * .35), A = Math.min(1, u * 1.6);
         const tw = .8 + .2 * Math.sin(t * (1.2 + hash(s.uid, 4) * 1.6) + hash(s.uid, 3) * TAU), b = A * (lit ? 1 : tw);
         c.globalCompositeOperation = 'lighter';
-        glow(col.glow, x, y, r * (7 + tier * .9) * (lit ? 1.3 : 1) * (1 + fa * .6), b * (.6 + tier * .035 + fa * .4));
-        // from 20 questions, rays; longer with more
-        if (tier >= 1) spikes(x, y, r * (3.4 + tier * .95) * (.86 + .14 * Math.sin(t * 1.7 + s.k)), b * .6, .25 + t * .06 * (hash(s.uid, 5) < .5 ? 1 : -1), col.spike);
+        glow(tc ? tc.glow : col.glow, x, y, r * (7 + tier * .9) * (lit ? 1.3 : 1) * (1 + fa * .6) * (tc ? 1.45 : 1), b * (.6 + tier * .035 + fa * .4) * (tc ? 1.3 : 1));
+        // from 20 questions, rays; longer with more (a coloured star always has them)
+        if (tier >= 1 || tc) spikes(x, y, r * (3.4 + Math.max(1, tier) * .95) * (.86 + .14 * Math.sin(t * 1.7 + s.k)), b * .6, .25 + t * .06 * (hash(s.uid, 5) < .5 ? 1 : -1), tc ? tc.spike : col.spike);
         // the busiest (50+): motes circling them
         for (let i = 0; i < Math.min(4, tier - 2); i++) {
           const ang = t * (.55 + i * .16) + i * 2.1 + s.k, rr = r * (3.1 + i * .85), ga = b * (.4 + .5 * Math.sin(t * 3 + i * 1.7 + s.k));
@@ -2118,7 +2129,7 @@
           glow(col.sparkGlow, gx, gy, 4, ga); spikes(gx, gy, 3.6, ga, ang, col.sparkSpike);
         }
         c.globalCompositeOperation = 'source-over';
-        c.globalAlpha = A; dot(x, y, r * .68, col.core);
+        c.globalAlpha = A; dot(x, y, r * (tc ? .82 : .68), tc ? tc.core : col.core);
         if (s.me) { c.globalAlpha = A * .7; c.strokeStyle = `rgb(${col.star})`; c.lineWidth = 1; c.setLineDash([2, 3.2]); c.lineDashOffset = -t * 4; c.beginPath(); c.arc(x, y, r + 7, 0, TAU); c.stroke(); c.setLineDash([]); }
         if (lit) { c.globalAlpha = .5; c.strokeStyle = `rgb(${col.star})`; c.lineWidth = 1; c.beginPath(); c.arc(x, y, r + (s.me ? 12 : 8), 0, TAU); c.stroke(); }
         c.globalAlpha = 1;
@@ -2529,7 +2540,7 @@
       } catch (e) { msg = why(e); }
       paint();
     }
-    async function out() { try { await push(); } catch (e) {} try { await fb.a.signOut(auth); } catch (e) {} close(); }
+    async function out() { unwatchDuels(); try { await push(); } catch (e) {} try { await fb.a.signOut(auth); } catch (e) {} close(); }
     async function erase() {
       erasing = false; msg = ''; paint('busy');
       if (unsub) { unsub(); unsub = null; }
@@ -2671,16 +2682,566 @@
       if (state !== 'wait') return;   // Firebase only loads for someone who signed in on this device
       load().catch(() => {});
     }
+
+    // ---- duels and parties (Abi, 12 October 2026) ----
+    // A challenge is one exam, drawn once, the same for everyone in it, graded the exam's way out of 20. A duel is two
+    // people with a colour at stake; a party is up to 8, for a ranking only. Played within 24 hours, each when they like,
+    // or live: the maker starts it once everyone's there, and each sees how far the others are. The people picked get a
+    // live invitation; the link lets anyone signed in join while there's room.
+    // duels/{id} = {by, kind: 'duel' | 'party', live, title, what, scope, qids, ms, t, d (the day it was made), until,
+    //   ix: [uid@d of everyone invited or in: the invitations' query], inm: {invited uid: name}, go (live: the start),
+    //   p: {uid: {nm, s: 'in' | 'no', j: joined, at: started, n: answered, end: handed in, pts, n20, used, picks}}}
+    // Each player writes only their own entry and their own tag in ix; only the maker sets go.
+    // The colours of the sky: colours/{cid} = {uid ('' = free), nm, since, duel}. A duel's winner takes the loser's colour
+    // if they hold none (or one from the sky if the loser had none); a winner who holds one keeps it, defended, and the
+    // loser's goes back to the sky. One colour each. Not defended for 7 days, a colour fades back to the sky.
+    const DUEL_MAX = { duel: 2, party: 8 }, DUEL_OPEN = 864e5, FADE = 7 * 864e5;
+    const COLOURS = [
+      { id: 'betelgeuse', name: 'Betelgeuse', rgb: [255, 104, 84] },
+      { id: 'arcturus', name: 'Arcturus', rgb: [255, 164, 72] },
+      { id: 'antares', name: 'Antares', rgb: [255, 120, 172] },
+      { id: 'achernar', name: 'Achernar', rgb: [100, 230, 178] },
+      { id: 'rigel', name: 'Rigel', rgb: [118, 214, 255] },
+      { id: 'vega', name: 'Vega', rgb: [116, 148, 255] },
+      { id: 'spica', name: 'Spica', rgb: [184, 140, 255] }
+    ];
+    cls.colours = {}; cls.coloursIn = false;
+    const duels = {}, duelOffs = {}, settling = new Set(), liveAt = {}, fetched = new Set();
+    let invOff = null, colOff = null, invDay = '', duelTick = 0, progAt = 0, progT = 0, lastCard = '';
+    const tagOf = (uid, d) => uid + '@' + d;
+    const held = v => !!(v && v.uid && Date.now() - (+v.since || 0) < FADE);
+    function heldBy(uid) { for (const c of COLOURS) { const v = cls.colours[c.id]; if (held(v) && v.uid === uid) return c; } return null; }
+    const holderOf = cid => held(cls.colours[cid]) ? cls.colours[cid] : null;
+    const daysLeft = v => Math.max(1, Math.ceil((FADE - (Date.now() - (+v.since || 0))) / 864e5));
+    const dot = c => c ? `<i class="dl-dot" style="--c:rgb(${c.rgb})" aria-hidden="true"></i>` : '';
+    const rid = () => Array.from(crypto.getRandomValues(new Uint8Array(10)), b => (b % 36).toString(36)).join('');
+    const duelURL = id => location.origin + location.pathname + '#duel-' + id;
+    const SEEN_INV = 'efm3-duel-seen', CHEERED = 'efm3-duel-cheered';
+    const seenList = k => { try { const v = JSON.parse(read(k) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } };
+    const addSeen = (k, id) => store(k, JSON.stringify([id, ...seenList(k).filter(x => x !== id)].slice(0, 60)));
+
+    // ---- live: my invitations and challenges of today and yesterday, the colours, the one on screen ----
+    function watchDuels() {
+      if (!here || state !== 'in' || !fb || !user) return;
+      if (!colOff) {
+        try {
+          colOff = fb.f.onSnapshot(fb.f.query(fb.f.collection(db, 'colours')), qs => {
+            const c = {}; qs.docs.forEach(d => { c[d.id] = d.data(); }); cls.colours = c; cls.coloursIn = true; duelsChanged(); redrawSky();
+          }, () => { colOff = null; });
+        } catch (e) { colOff = null; }
+      }
+      flushDuel();
+      const day = 'd' + dayKey();
+      if (!invOff || invDay !== day) {
+        try { if (invOff) invOff(); } catch (e) {}
+        invDay = day;
+        try {
+          invOff = fb.f.onSnapshot(fb.f.query(fb.f.collection(db, 'duels'), fb.f.where('ix', 'array-contains-any', [tagOf(user.uid, day), tagOf(user.uid, 'd' + dayKey(Date.now() - DUEL_OPEN))])), qs => {
+            qs.docs.forEach(d => took(d.id, d.data())); duelsChanged(true);
+          }, () => { invOff = null; });
+        } catch (e) { invOff = null; }
+      }
+      if (S.view === 'duel' && S.duelId) watchDuel(S.duelId);
+      clearInterval(duelTick);
+      duelTick = setInterval(() => { if (state !== 'in') return; if (invDay !== 'd' + dayKey()) watchDuels(); duelsChanged(); }, 20000);
+    }
+    function unwatchDuels() {
+      for (const off of [invOff, colOff, ...Object.values(duelOffs)]) try { if (off) off(); } catch (e) {}
+      invOff = colOff = null; for (const k in duelOffs) delete duelOffs[k]; clearInterval(duelTick);
+    }
+    function watchDuel(id) {
+      if (!fb || !user || state !== 'in' || duelOffs[id]) return;
+      const ids = Object.keys(duelOffs);
+      if (ids.length >= 6) { try { duelOffs[ids[0]](); } catch (e) {} delete duelOffs[ids[0]]; }
+      try {
+        duelOffs[id] = fb.f.onSnapshot(fb.f.doc(db, 'duels', id), snap => {
+          if (snap.exists()) took(id, snap.data()); else duels[id] = { id, gone: 1 };
+          duelsChanged();
+        }, () => { delete duelOffs[id]; if (!duels[id]) duels[id] = { id, gone: 1 }; duelsChanged(); });
+      } catch (e) {}
+    }
+    // a challenge as read: tidied, kept, and remembered as mine if I'm in it or invited
+    function took(id, v) {
+      if (!v || typeof v !== 'object' || !Array.isArray(v.qids)) return;
+      v = Object.assign({}, v, { id });
+      v.p = v.p && typeof v.p === 'object' ? v.p : {}; v.inm = v.inm && typeof v.inm === 'object' ? v.inm : {};
+      v.qids = v.qids.filter(q => Q.has(q)); v.ms = +v.ms || v.qids.length * EXAM_MS_PER_Q; v.until = +v.until || 0; v.go = +v.go || 0;
+      v.t = millis(v.t) || v.until - DUEL_OPEN;
+      const old = duels[id];
+      if (old && old.p && user && old.p[user.uid] && old.p[user.uid].local && !(v.p[user.uid] && v.p[user.uid].end)) v.p[user.uid] = Object.assign({}, v.p[user.uid], old.p[user.uid]);
+      duels[id] = v;
+      if (user && (v.p[user.uid] || Object.prototype.hasOwnProperty.call(v.inm, user.uid)) && !S.duels[id]) { S.duels[id] = { t: v.t, k: v.kind, ti: v.title }; save(); }
+    }
+    // where a challenge stands, from what's in it
+    function duelState(d) {
+      const now = Date.now(), max = DUEL_MAX[d.kind] || 2, n = d.qids.length;
+      const ps = Object.entries(d.p).map(([uid, v]) => Object.assign({}, v, { uid, nm: String((v && v.nm) || 'Someone').slice(0, 24) }));
+      const inn = ps.filter(x => x.s === 'in'), no = ps.filter(x => x.s === 'no');
+      // each one's points, from their picks with today's answer key (so a corrected key counts for everyone)
+      for (const x of inn) if (x.end > 0) {
+        if (x.picks && typeof x.picks === 'object') { const s = examSummary({ picks: x.picks, start: 0, end: 1, handed: 1 }, d.qids); x.pts = s.points; x.n20 = s.n20; }
+        else { x.pts = +x.pts || 0; x.n20 = +x.n20 || 0; }
+      }
+      const waiting = Object.keys(d.inm).filter(u => !d.p[u]).map(u => ({ uid: u, nm: String(d.inm[u]).slice(0, 24) }));
+      const late = x => (x.at > 0 && now > x.at + d.ms + 30000) || (d.live && d.go && now > d.go + d.ms + 30000);
+      const fin = x => x.end > 0 || late(x);
+      const open = !d.gone && now < d.until && inn.length < max && !(d.live && d.go);
+      const deadline = d.live ? (d.go ? d.go + d.ms + 30000 : d.until) : d.until + d.ms + 30000;
+      const declined = d.kind === 'duel' && no.length > 0;
+      const over = declined || now > deadline || (inn.length >= 2 && inn.every(fin) && (!waiting.length || now > d.until) && (d.kind === 'party' || inn.length === 2));
+      const rank = inn.slice().sort((a, b) => (b.end > 0) - (a.end > 0) || (b.pts || 0) - (a.pts || 0) || (a.used || 1e12) - (b.used || 1e12) || a.nm.localeCompare(b.nm));
+      let win = null, lose = null, draw = false, none = false;
+      if (over) {
+        const done = rank.filter(x => x.end > 0);
+        if (d.kind === 'duel') {
+          if (inn.length < 2 || !done.length) none = true;
+          else { const [a, b] = rank; if (b.end > 0 && a.pts === b.pts && Math.abs((a.used || 0) - (b.used || 0)) < 1000) draw = true; else { win = a; lose = b; } }
+        } else if (!done.length || inn.length < 2) none = true; else win = rank[0];
+      }
+      const me = user ? inn.find(x => x.uid === user.uid) || null : null;
+      const meNo = user ? no.some(x => x.uid === user.uid) : false;
+      const invitedMe = !!(user && !me && !meNo && Object.prototype.hasOwnProperty.call(d.inm, user.uid));
+      return { n, ps, inn, no, waiting, open, over, deadline, rank, win, lose, draw, none, me, meNo, invitedMe, fin, declined, by: d.p[d.by] ? String(d.p[d.by].nm).slice(0, 24) : 'Someone' };
+    }
+    // something changed: invitations to show, live starts, colours to settle, screens to refresh
+    function duelsChanged() {
+      if (state !== 'in' || !user) return;
+      for (const d of Object.values(duels)) {
+        if (!d.qids) continue;
+        const st = duelState(d);
+        // live: everyone starts together at go
+        if (d.live && d.go && st.me && !st.me.at && !liveAt[d.id] && Date.now() < d.go + d.ms) {
+          liveAt[d.id] = setTimeout(() => { delete liveAt[d.id]; duelPlay(d.id, true); }, Math.max(0, d.go - Date.now()));
+        }
+        if (d.kind === 'duel' && st.over && (st.win || st.lose) && !S.duelSet[d.id] && cls.coloursIn && (st.win.uid === user.uid || (st.lose && st.lose.uid === user.uid))) settle(d, st);
+      }
+      noticeInvites();
+      const el = document.getElementById('duels');
+      if (el && S.view === 'home') { const h = duelsHTML(); if (h !== lastCard) { lastCard = h; el.outerHTML = h; } }
+      if (S.view === 'duel') {
+        const a = document.activeElement;
+        if (!(a && /^(INPUT|TEXTAREA)$/.test(a.tagName))) paintDuel();
+      }
+      if (S.view === 'exam' && examRunning() && S.exam.duel) { const r = app.querySelector('[data-duel-run]'); if (r) r.outerHTML = duelRunHTML(S.exam.duel); }
+    }
+    // the colours move: each side writes its own part (the loser gives theirs back; the winner takes or keeps), once
+    async function settle(d, st) {
+      const id = d.id; if (settling.has(id) || S.duelSet[id]) return;
+      settling.add(id);
+      const W = st.win.uid, L = st.lose.uid, now = Date.now(), cw = heldBy(W), cl = heldBy(L), put = [];
+      const here2 = cid => (cls.colours[cid] || {}).duel === id;   // already moved by this duel
+      if (user.uid === W) {
+        if (cw) {
+          if (!here2(cw.id)) put.push([cw.id, { uid: W, nm: me.name, since: now, duel: id }]);
+          if (cl && !here2(cl.id)) put.push([cl.id, { uid: '', nm: '', since: now, duel: id }]);
+        } else if (cl) put.push([cl.id, { uid: W, nm: me.name, since: now, duel: id }]);
+        else {
+          const back = COLOURS.find(c => here2(c.id) && !(cls.colours[c.id] || {}).uid);
+          const free = back || shuffled(COLOURS.filter(c => !holderOf(c.id)))[0];
+          if (free) put.push([free.id, { uid: W, nm: me.name, since: now, duel: id }]);
+        }
+      } else if (cl && !here2(cl.id)) put.push([cl.id, { uid: '', nm: '', since: now, duel: id }]);
+      try {
+        if (put.length) { const b = fb.f.writeBatch(db); for (const [cid, v] of put) b.set(fb.f.doc(db, 'colours', cid), v); await b.commit(); }
+        S.duelSet[id] = now; save();
+        const got = put.find(([cid, v]) => v.uid === user.uid && (!cw || cid !== cw.id));
+        if (got) { const c = COLOURS.find(x => x.id === got[0]); toast(`You take ${c.name} ✦ Your star wears it in the class sky.`); sfx.play('sparkle', { quiet: true }); }
+        usage.track('duel_settled', { won: user.uid === W });
+      } catch (e) {} finally { settling.delete(id); }
+    }
+
+    // ---- what I do: accept, decline, play, hand in, start a live one ----
+    async function duelWrite(id, entry, join) {
+      const d = duels[id]; if (!d || !user || !fb) return false;
+      const mine = Object.assign({ nm: me.name }, (d.p[user.uid] || {}), entry);
+      delete mine.local;
+      d.p = Object.assign({}, d.p, { [user.uid]: Object.assign({}, mine, { local: 1 }) });
+      const v = { p: { [user.uid]: mine } };
+      if (join && !(d.ix || []).includes(tagOf(user.uid, d.d))) v.ix = fb.f.arrayUnion(tagOf(user.uid, d.d));
+      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), v, { merge: true }); return true; }
+      catch (e) { return false; }
+    }
+    async function duelAccept(id) {
+      const d = duels[id]; if (!d) return;
+      const st = duelState(d); if (st.me || !st.open) { openDuelPage(id); return; }
+      const ok = await duelWrite(id, { s: 'in', j: Date.now() }, true);
+      if (!ok) { delete d.p[user.uid]; toast('Couldn’t join: it may be full or closed.'); duelsChanged(); return; }
+      for (const x of duelState(d).inn) if (x.uid !== user.uid) S.rivals[x.uid] = x.nm;
+      S.duels[id] = { t: d.t, k: d.kind, ti: d.title }; save();
+      usage.track('duel_joined', { kind: d.kind, live: !!d.live }); sfx.play('flip', { quiet: true });
+      if (inv && !inv.hidden) closeInv();
+      openDuelPage(id);
+    }
+    async function duelDecline(id) {
+      const d = duels[id]; if (!d) return;
+      await duelWrite(id, { s: 'no' }, false);
+      usage.track('duel_declined', { kind: d.kind });
+      if (inv && !inv.hidden) closeInv();
+      duelsChanged(); if (S.view === 'home') render(false);
+    }
+    // start my exam (live: at the start everyone shares)
+    function duelPlay(id, auto) {
+      const d = duels[id]; if (!d || !d.qids.length) return;
+      const st = duelState(d); if (!st.me || st.me.at || st.over) return;
+      if (examRunning()) { if (!auto || S.exam.duel !== id) toast('Finish the exam you’ve started first'); return; }
+      const start = d.live ? (d.go || Date.now()) : Date.now();
+      if (d.live && !d.go) return;
+      if (start + d.ms <= Date.now()) return;
+      startDuelExam(d, start);
+      duelWrite(id, { at: start, n: 0 });
+      usage.track('duel_started', { kind: d.kind, live: !!d.live });
+    }
+    // handed in: my mark and picks go up (later, if the account isn't awake yet)
+    function duelHanded(ex) {
+      const picks = {}; for (const [k, v] of Object.entries(ex.picks || {})) if (Array.isArray(v) && v.length) picks[k] = v.slice();
+      const s = examSummary(ex);
+      S.duelSend[ex.duel] = { at: ex.start, end: ex.handed, n: Object.keys(picks).length, pts: s.points, n20: s.n20, used: s.used, picks };
+      save(); flushDuel();
+    }
+    async function flushDuel() {
+      if (state !== 'in' || !fb) return;
+      for (const [id, e] of Object.entries(S.duelSend)) {
+        if (!duels[id]) { watchDuel(id); continue; }
+        if (await duelWrite(id, e)) { delete S.duelSend[id]; save(); duelsChanged(); }
+      }
+    }
+    // while I answer, the others see how far I am (every 2 s at most)
+    function duelProgress() {
+      const ex = S.exam; if (!ex || !ex.duel || !examRunning()) return;
+      clearTimeout(progT);
+      const go = () => { progAt = Date.now(); duelWrite(ex.duel, { n: ex.qids.filter(id => ex.picks[id]).length }); };
+      if (Date.now() - progAt > 2000) go(); else progT = setTimeout(go, 2000);
+    }
+    async function duelGo(id) {
+      const d = duels[id]; if (!d || d.by !== user.uid || d.go) return;
+      d.go = Date.now() + 5000; duelsChanged();
+      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), { go: d.go }, { merge: true }); usage.track('duel_live_started', { players: duelState(d).inn.length }); }
+      catch (e) { d.go = 0; toast('Couldn’t start it. Try again.'); duelsChanged(); }
+    }
+    function openDuelPage(id) {
+      S.duelId = id; S.view = 'duel'; save(); render(true, null, 'nav');
+    }
+
+    // ---- the invitation: a sheet, once per challenge and device ----
+    let inv = null;
+    function closeInv() { if (inv && !inv.hidden) { inv.hidden = true; sfx.play('shut', { quiet: true }); } }
+    function noticeInvites() {
+      if (!user || state !== 'in' || intro.active() || examRunning() || (inv && !inv.hidden) || (ch && !ch.hidden) || (sheet && !sheet.hidden) || (letter && !letter.hidden)) return;
+      const seen = seenList(SEEN_INV);
+      const d = Object.values(duels).filter(x => x.qids && x.by !== user.uid && !seen.includes(x.id)).find(x => { const st = duelState(x); return st.invitedMe && st.open; });
+      if (!d) return;
+      addSeen(SEEN_INV, d.id); showInvite(d);
+    }
+    function showInvite(d) {
+      const st = duelState(d), mins = Math.round(d.ms / 60000);
+      if (!inv) {
+        inv = document.createElement('div'); inv.className = 'acct-sheet inv-sheet'; inv.hidden = true;
+        inv.setAttribute('role', 'dialog'); inv.setAttribute('aria-modal', 'true'); inv.setAttribute('aria-labelledby', 'inv-h');
+        inv.innerHTML = '<div class="acct-card plate inv"></div>';
+        inv.addEventListener('click', e => {
+          const b = e.target.closest('[data-inv]');
+          if (e.target === inv || (b && b.dataset.inv === 'later')) closeInv();
+          else if (b && b.dataset.inv === 'yes') duelAccept(inv._id);
+          else if (b && b.dataset.inv === 'no') duelDecline(inv._id);
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && inv && !inv.hidden) closeInv(); });
+        document.body.appendChild(inv);
+      }
+      inv._id = d.id;
+      inv.querySelector('.inv').innerHTML = `<button class="btn quiet acct-x" type="button" data-inv="later" aria-label="Close">${ICON.cross}</button>
+        <p class="eyebrow">${d.live ? 'Live: now' : 'Within 24 hours'}</p>
+        <h2 class="h2" id="inv-h">${esc(st.by)} challenges you to ${d.kind === 'duel' ? 'a duel' : 'a party'}</h2>
+        <p class="acct-p">${esc(d.what)}: ${fmtN(st.n)} questions in ${fmtN(mins)} minutes, graded out of 20.${d.kind === 'duel' ? ` ${stakeText(d, st)}` : ` ${fmtN(st.inn.length + st.waiting.length)} invited so far, for a ranking.`}</p>
+        <div class="row"><button class="btn primary" type="button" data-inv="yes">Accept ${ICON.next}</button><button class="btn" type="button" data-inv="later">Not now</button><button class="btn quiet" type="button" data-inv="no">Decline</button></div>`;
+      inv.hidden = false; sfx.play('sheet', { quiet: true });
+      const f = inv.querySelector('[data-inv="yes"]'); if (f) try { f.focus({ preventScroll: true }); } catch (e) {}
+      usage.track('duel_invitation');
+    }
+    // what a duel puts at stake, in words
+    function stakeText(d, st) {
+      const ids = [...st.inn.map(x => x.uid), ...st.waiting.map(x => x.uid)];
+      const hs = ids.map(u => [u, heldBy(u)]).filter(([, c]) => c);
+      const nm = u => (st.inn.find(x => x.uid === u) || st.waiting.find(x => x.uid === u) || { nm: 'Someone' }).nm;
+      if (!hs.length) return 'The winner takes a colour from the sky for their star.';
+      return `At stake: ${hs.map(([u, c]) => `${c.name}, ${u === (user && user.uid) ? 'yours' : `${nm(u)}’s`}`).join(' and ')}.`;
+    }
+
+    // ---- making one: the challenge sheet ----
+    let ch = null, chs = null;
+    function openChallenge(kind) {
+      if (gate('Challenges need an account', () => openChallenge(kind))) return;
+      if (state !== 'in') { toast('Your account is still waking up. Try again in a moment.'); return; }
+      if (!scopeInfo(S.examScope)) { if (QUEST) S.examScope = { kind: 'quest', id: QUEST.id }; else return; }
+      chs = { kind: kind === 'party' ? 'party' : 'duel', live: false, who: [], step: 'pick', id: '', msg: '', busy: false };
+      if (!ch) {
+        ch = document.createElement('div'); ch.className = 'acct-sheet ch-sheet'; ch.hidden = true;
+        ch.setAttribute('role', 'dialog'); ch.setAttribute('aria-modal', 'true'); ch.setAttribute('aria-labelledby', 'ch-h');
+        ch.innerHTML = '<div class="acct-card plate ch"></div>';
+        ch.addEventListener('click', chClick);
+        ch.addEventListener('submit', e => { e.preventDefault(); const i = ch.querySelector('#ch-name'); if (i) addByName(i.value); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && ch && !ch.hidden) closeCh(); });
+        document.body.appendChild(ch);
+      }
+      paintCh(); ch.hidden = false; sfx.play('sheet', { quiet: true });
+      usage.track('challenge_opened', { kind: chs.kind });
+    }
+    function closeCh() { if (ch && !ch.hidden) { ch.hidden = true; sfx.play('shut', { quiet: true }); } }
+    // who you can pick without typing: tonight's sky and the people you've played
+    function people() {
+      const m = new Map(Object.entries(S.rivals));
+      if (cls.sky && cls.skyDay === 'd' + dayKey()) for (const [uid, v] of Object.entries(cls.sky)) if (v && v.nm) m.set(uid, String(v.nm).slice(0, 24));
+      m.delete(user.uid);
+      return [...m].map(([uid, nm]) => ({ uid, nm: String(nm).slice(0, 24) })).sort((a, b) => a.nm.localeCompare(b.nm));
+    }
+    function paintCh() { if (ch) ch.querySelector('.ch').innerHTML = chHTML(); }
+    function chHTML() {
+      const c = chs, info = scopeInfo(S.examScope), n = scopeCount(info), mins = Math.round(n * EXAM_MS_PER_Q / 60000), room = DUEL_MAX[c.kind] - 1;
+      const x = `<button class="btn quiet acct-x" type="button" data-ch="close" aria-label="Close">${ICON.cross}</button>`;
+      if (c.step === 'made') {
+        return `${x}<p class="eyebrow">${c.kind === 'duel' ? 'A duel' : 'A party'}${c.live ? ', live' : ''} · ${esc(info.what)}</p>
+          <h2 class="h2" id="ch-h">${c.who.length ? `Sent to ${esc(listNames(c.who.map(w => w.nm)))}` : `Your ${c.kind} is ready`}</h2>
+          <p class="acct-p">${c.who.length ? 'They get it right away if they’re on the Den, or the next time they open it. ' : ''}Share the link too: ${c.kind === 'duel' ? 'if no one’s picked, the first to open it takes the other place.' : 'anyone with it can join while there’s room.'}${c.live ? ' Open the party and start it once everyone’s in.'.replace('party', c.kind) : ''}</p>
+          <div class="ch-link"><input class="ch-url" id="ch-url" readonly value="${esc(duelURL(c.id))}" aria-label="The link"><button class="btn" type="button" data-ch="copy">Copy</button>${navigator.share ? '<button class="btn" type="button" data-ch="share">Share</button>' : ''}</div>
+          <div class="row"><button class="btn primary" type="button" data-ch="open">Open the ${c.kind} ${ICON.next}</button></div>`;
+      }
+      const ppl = people(), on = uid => c.who.some(w => w.uid === uid);
+      const list = ppl.concat(c.who.filter(w => !ppl.some(p => p.uid === w.uid)));
+      const chips = list.map(p => `<button type="button" class="ch-p" data-ch-who="${esc(p.uid)}" data-nm="${esc(p.nm)}" aria-pressed="${on(p.uid)}">${dot(heldBy(p.uid))}${esc(p.nm)}</button>`).join('');
+      return `${x}<p class="eyebrow">${esc(info.what)} · ${fmtN(n)} questions · ${fmtN(mins)} minutes</p>
+        <h2 class="h2" id="ch-h">Challenge the class</h2>
+        <div class="ch-opts">
+          <div class="seg" role="group" aria-label="Duel or party"><button type="button" data-ch-kind="duel" aria-pressed="${c.kind === 'duel'}">Duel <span class="n">one on one, a colour at stake</span></button><button type="button" data-ch-kind="party" aria-pressed="${c.kind === 'party'}">Party <span class="n">up to 8, a ranking</span></button></div>
+          <div class="seg" role="group" aria-label="When"><button type="button" data-ch-live="0" aria-pressed="${!c.live}">Within 24 hours <span class="n">each when they like</span></button><button type="button" data-ch-live="1" aria-pressed="${c.live}">Live <span class="n">start together</span></button></div>
+        </div>
+        <p class="ch-t">Who${c.kind === 'duel' ? ': one person' : `: up to ${room}`}</p>
+        ${chips ? `<div class="ch-ps">${chips}</div>` : '<p class="ch-none">No one in tonight’s sky yet. Add someone by their name on the Den, or just share the link.</p>'}
+        <form class="ch-add"><label class="acct-f"><span>Add someone by their name on the Den</span><input id="ch-name" maxlength="24" autocomplete="off" placeholder="Their Den name"></label><button class="btn" type="submit">Add</button></form>
+        ${c.msg ? `<p class="acct-msg" role="status">${esc(c.msg)}</p>` : ''}
+        <p class="ch-note">${c.kind === 'duel' ? 'The winner’s star takes a colour in the class sky: the loser’s, or one from the sky.' : 'For the fun and a ranking: a party moves no colours.'} To challenge on something else, open Exam mode on any module, past exam or lecture and press Challenge there.</p>
+        <div class="row"><button class="btn primary" type="button" data-ch="make"${c.busy ? ' disabled' : ''}>${c.who.length ? `Send the ${c.kind}` : `Make the ${c.kind}`} ${ICON.next}</button></div>`;
+    }
+    function chClick(e) {
+      const c = chs; if (!c) return;
+      if (e.target === ch) { closeCh(); return; }
+      const t = e.target.closest('button'); if (!t) return;
+      if (t.dataset.chKind) { c.kind = t.dataset.chKind; if (c.who.length > DUEL_MAX[c.kind] - 1) c.who = c.who.slice(0, DUEL_MAX[c.kind] - 1); sfx.play('toggle'); paintCh(); return; }
+      if (t.dataset.chLive) { c.live = t.dataset.chLive === '1'; sfx.play('toggle'); paintCh(); return; }
+      if (t.dataset.chWho) { pick({ uid: t.dataset.chWho, nm: t.dataset.nm }); paintCh(); return; }
+      const a = t.dataset.ch;
+      if (a === 'close') closeCh();
+      else if (a === 'make') makeDuel();
+      else if (a === 'copy') copyLink(duelURL(c.id));
+      else if (a === 'share') shareLink(c.id);
+      else if (a === 'open') { closeCh(); openDuelPage(c.id); }
+    }
+    function pick(p) {
+      const c = chs, i = c.who.findIndex(w => w.uid === p.uid);
+      if (i >= 0) { c.who.splice(i, 1); sfx.play('untick'); }
+      else { if (c.kind === 'duel') c.who = []; if (c.who.length < DUEL_MAX[c.kind] - 1) { c.who.push(p); sfx.play('tick'); } }
+      c.msg = '';
+    }
+    async function addByName(raw) {
+      const c = chs, k = canon(raw || '');
+      if (!k) { c.msg = 'Type their name on the Den.'; paintCh(); return; }
+      if (k === me.key) { c.msg = 'That’s you!'; paintCh(); return; }
+      try {
+        const s = await fb.f.getDoc(fb.f.doc(db, 'names', k));
+        if (!s.exists()) c.msg = `No one is called ${tidy(raw)} on the Den.`;
+        else { const v = s.data(); if (!c.who.some(w => w.uid === v.uid)) pick({ uid: v.uid, nm: String(v.name || tidy(raw)).slice(0, 24) }); c.msg = ''; }
+      } catch (e) { c.msg = 'Couldn’t look that up. Try again.'; }
+      paintCh();
+      const i = ch.querySelector('#ch-name'); if (i && !c.msg) i.value = '';
+    }
+    async function makeDuel() {
+      const c = chs, info = scopeInfo(S.examScope); if (!info || c.busy || !user) return;
+      c.busy = true; c.msg = ''; paintCh();
+      const id = rid(), day = 'd' + dayKey(), qids = examDraw(info, scopeCount(info));
+      const v = { by: user.uid, kind: c.kind, live: c.live, title: info.title, what: info.what, scope: S.examScope, qids, ms: qids.length * EXAM_MS_PER_Q,
+        t: fb.f.serverTimestamp(), d: day, until: Date.now() + DUEL_OPEN, go: 0,
+        ix: [tagOf(user.uid, day), ...c.who.map(w => tagOf(w.uid, day))], inm: Object.fromEntries(c.who.map(w => [w.uid, w.nm])),
+        p: { [user.uid]: { nm: me.name, s: 'in', j: Date.now() } } };
+      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), v); }
+      catch (e) { c.busy = false; c.msg = 'The challenge couldn’t be made. Try again in a moment.'; paintCh(); return; }
+      took(id, Object.assign({}, v, { t: Date.now() }));
+      c.who.forEach(w => { S.rivals[w.uid] = w.nm; }); S.duels[id] = { t: Date.now(), k: c.kind, ti: info.title }; save();
+      usage.track('duel_made', { kind: c.kind, live: c.live, invited: c.who.length, questions: qids.length });
+      c.busy = false; c.step = 'made'; c.id = id; paintCh(); sfx.play('flip', { quiet: true });
+      watchDuel(id);
+    }
+    function copyLink(url) {
+      const done = () => { toast('Link copied'); sfx.play('toggle', { quiet: true }); };
+      const fall = () => { const i = document.getElementById('ch-url') || document.getElementById('dl-url'); if (i) { i.focus(); i.select(); try { document.execCommand('copy'); done(); } catch (e) {} } };
+      try { navigator.clipboard.writeText(url).then(done, fall); } catch (e) { fall(); }
+      usage.track('duel_link_copied');
+    }
+    function shareLink(id) {
+      const d = duels[id]; if (!d || !navigator.share) return;
+      const text = `${me.name} challenges you to ${d.kind === 'duel' ? 'a duel' : 'a party'} on Labubu’s Den: ${d.what}, ${fmtN(d.qids.length)} questions.`;
+      navigator.share({ title: 'A challenge on Labubu’s Den', text, url: duelURL(id) }).catch(() => {});
+      usage.track('duel_link_shared');
+    }
+    function rematch(id) {
+      const d = duels[id]; if (!d || !scopeInfo(d.scope)) return;
+      S.examScope = d.scope;
+      openChallenge(d.kind);
+      if (!chs) return;
+      chs.who = duelState(d).inn.filter(x => x.uid !== user.uid).slice(0, DUEL_MAX[d.kind] - 1).map(x => ({ uid: x.uid, nm: x.nm }));
+      chs.live = !!d.live; paintCh();
+    }
+
+    // ---- the homepage card ----
+    function myDuels() {
+      return Object.values(duels).filter(d => d.qids && user && (d.p[user.uid] || Object.prototype.hasOwnProperty.call(d.inm, user.uid))).sort((a, b) => b.t - a.t);
+    }
+    function duelLine(d, st) {
+      const who = d.kind === 'duel' ? `${st.inn.concat(st.waiting).filter(x => x.uid !== user.uid).map(x => x.nm)[0] || 'someone'}` : `${fmtN(st.inn.length)} in`;
+      const vs = d.kind === 'duel' ? `Duel with ${who}` : `${st.by === me.name ? 'Your' : `${st.by}’s`} party · ${who}`;
+      let state2;
+      if (st.over) state2 = st.none ? (st.declined ? 'declined' : 'no one played') : st.draw ? 'a draw' : st.win && st.win.uid === user.uid ? (d.kind === 'duel' ? 'you won' : 'you came first') : d.kind === 'duel' ? `${st.win.nm} won` : `${st.win.nm} came first`;
+      else if (st.invitedMe) state2 = 'waiting for your answer';
+      else if (d.live && !d.go) state2 = 'live · waiting to start';
+      else if (st.me && st.me.end) state2 = `handed in · ${fmtPts(st.me.n20)}/20 · waiting for the others`;
+      else if (st.me && st.me.at) state2 = 'you’re playing';
+      else state2 = `open · ${hoursLeft(d)}`;
+      return { vs, state: state2 };
+    }
+    const hoursLeft = d => { const h = Math.ceil(Math.max(0, d.until - Date.now()) / 36e5); return h > 1 ? `${h} hours left` : 'less than an hour left'; };
+    function duelsHTML() {
+      if (!here) return '';
+      const head = `<div class="dl-head"><div><p class="eyebrow">Challenge the class</p><h2 class="h2" id="dl-h">Duels and parties</h2></div>${state === 'in' ? `<button class="btn primary" type="button" data-act="challenge">${ICON.hourglass}Challenge someone</button>` : ''}</div>
+        <p class="dl-lead">The same exam for each of you, graded out of 20. Win a duel and your star in the class sky takes a colour, the loser’s or one from the sky; win again to keep it, or it fades back after a week. Parties are up to 8, for a ranking.</p>`;
+      const wrap = inner => `<section class="section wrap dl-wrap" id="duels" aria-labelledby="dl-h"><div class="dl plate">${inner}</div></section>`;
+      if (state === 'off' || state === 'naming') return wrap(`${head}<div><button class="btn" type="button" data-act="account">${LOCK}Sign in to challenge the class</button></div>`);
+      if (state !== 'in') return wrap(head);
+      for (const [id, e] of Object.entries(S.duels).sort((a, b) => b[1].t - a[1].t).slice(0, 4)) if (!duels[id] && !fetched.has(id)) { fetched.add(id); watchDuel(id); }
+      const mine = myDuels().slice(0, 6);
+      const rows = mine.map(d => {
+        const st = duelState(d), l = duelLine(d, st);
+        const act = st.invitedMe && st.open ? `<span class="dl-acts"><button class="btn primary" type="button" data-duel-yes="${esc(d.id)}">Accept</button><button class="btn quiet" type="button" data-duel-no="${esc(d.id)}">Decline</button></span>`
+          : `<button class="btn" type="button" data-duel="${esc(d.id)}">${st.over ? 'See it' : 'Open'} ${ICON.next}</button>`;
+        return `<li class="dl-row${st.invitedMe && st.open ? ' new' : ''}"><span class="dl-main"><span class="dl-vs">${esc(l.vs)}</span><span class="dl-meta">${esc(d.what)} · ${esc(l.state)}</span></span>${act}</li>`;
+      }).join('');
+      const legend = COLOURS.map(c => { const h = holderOf(c.id); return `<li class="dl-c${h ? ' held' : ''}">${dot(c)}<span><b>${c.name}</b> ${h ? `${esc(String(h.nm || 'Someone').slice(0, 24))}${h.uid === user.uid ? ' (you)' : ''} · ${daysLeft(h) === 1 ? 'fades tomorrow' : `${daysLeft(h)} days left`}` : 'in the sky, free'}</span></li>`; }).join('');
+      return (lastCard = wrap(`${head}${rows ? `<ul class="ledger dl-list">${rows}</ul>` : '<p class="dl-none">No challenges yet.</p>'}
+        <div class="dl-cols"><p class="dl-ct">The colours of the sky</p><ul class="dl-legend">${legend}</ul></div>`));
+    }
+
+    // ---- the challenge's page ----
+    let countT = 0;
+    function paintDuel() { if (S.view === 'duel') { renderDuel(); } }
+    function renderDuel() {
+      const id = S.duelId, d = duels[id];
+      if (state === 'in') watchDuel(id);
+      clearInterval(countT); countT = 0;
+      const bar = barHTML('home', 'Home', d && d.kind === 'party' ? 'Party' : 'Duel');
+      if (!d || d.gone || !d.qids) {
+        app.innerHTML = `${bar}<main class="wrap narrow stage"><header class="page-head"><div><p class="eyebrow">A challenge</p>
+          <h1 class="h1">${d && d.gone ? 'This challenge is gone' : 'Finding the challenge…'}</h1>
+          ${state === 'off' ? `<p class="ph-lead">Sign in to see it.</p><div class="row"><button class="btn primary" type="button" data-act="account">${LOCK}Sign in</button></div>` : ''}</div></header>${footHTML()}</main>`;
+        return;
+      }
+      const st = duelState(d), n = st.n, mins = Math.round(d.ms / 60000), now = Date.now(), meUid = user && user.uid;
+      const others = st.inn.concat(st.waiting).filter(x => x.uid !== meUid);
+      const title = d.kind === 'duel'
+        ? `${esc(st.inn[0] ? st.inn[0].nm : st.by)} <i>against</i> ${esc((st.inn[1] || st.waiting[0] || { nm: '…' }).nm)}`
+        : `${esc(st.by)}’s party`;
+      // where it stands
+      let lead;
+      if (st.over) {
+        if (st.none) lead = st.declined ? `${esc(st.no[0].nm)} declined: no duel this time.` : st.inn.length < 2 ? 'No one else took the challenge.' : 'No one handed in.';
+        else if (st.draw) lead = 'A draw: the same mark, in the same time.';
+        else lead = `${st.win.uid === meUid ? 'You win' : `${esc(st.win.nm)} wins`}${d.kind === 'duel' ? ` the duel, ${fmtPts(st.win.n20)} to ${fmtPts(st.lose.end ? st.lose.n20 : 0)}` : `, with ${fmtPts(st.win.n20)}/20`}.`;
+      } else if (d.live && !d.go) lead = `Live: ${d.by === meUid ? 'start it once everyone’s here' : `${esc(st.by)} starts it once everyone’s here`}. ${st.open ? `It stays open for ${hoursLeft(d)}.` : ''}`;
+      else if (d.live && d.go > now) lead = `Starting in <b class="num" data-duel-count>${Math.ceil((d.go - now) / 1000)}</b>…`;
+      else if (d.live) lead = 'Live: under way.';
+      else lead = `Each of you plays when you like: it closes in ${hoursLeft(d).replace(' left', '')}.`;
+      // the colours
+      let stake = '';
+      if (d.kind === 'duel') {
+        if (!st.over) stake = `<p class="dl-stake">${stakeText(d, st)}</p>`;
+        else if (st.win && st.lose) {
+          const moved = COLOURS.filter(c => (cls.colours[c.id] || {}).duel === d.id);
+          const took = moved.find(c => (cls.colours[c.id] || {}).uid === st.win.uid), freed = moved.find(c => !(cls.colours[c.id] || {}).uid);
+          stake = moved.length ? `<p class="dl-stake">${took ? `${dot(took)}${st.win.uid === meUid ? 'You take' : `${esc(st.win.nm)} ${heldBy(st.win.uid) && freed ? 'keeps' : 'takes'}`} ${took.name}.` : ''}${freed ? ` ${dot(freed)}${freed.name} goes back to the sky.` : ''}</p>` : `<p class="dl-stake">The colours move in a moment…</p>`;
+        }
+      }
+      // the players
+      const place = x => st.over && !st.none && x.end > 0 ? st.rank.filter(y => y.end > 0).indexOf(x) + 1 : 0;
+      const status = x => {
+        if (x.end > 0) return `<b class="num">${fmtPts(x.n20)}</b>/20 · ${esc(fmtDur(x.used || 0))}`;
+        if (st.fin(x)) return 'out of time';
+        if (x.at) return d.live ? `playing · ${fmtN(x.n || 0)} of ${fmtN(n)}` : 'playing';
+        return d.live ? (d.go ? 'late' : 'here') : 'ready';
+      };
+      const row = (x, s, cls2) => `<li class="dl-p${x.uid === meUid ? ' me' : ''}${cls2 || ''}"><span class="dl-pl num">${place(x) || ''}</span><span class="dl-pn">${dot(heldBy(x.uid))}${esc(x.nm)}${x.uid === meUid ? ' <span class="dl-you">(you)</span>' : ''}${st.win && st.win.uid === x.uid ? ' <span class="dl-crown" aria-label="the winner">✦</span>' : ''}</span><span class="dl-ps">${s}</span></li>`;
+      const players = st.rank.map(x => row(x, status(x), st.win && st.win.uid === x.uid ? ' win' : ''))
+        .concat(st.waiting.map(x => row(x, now < d.until ? 'invited' : 'didn’t answer', ' out')))
+        .concat(st.no.map(x => row(x, 'declined', ' out'))).join('');
+      // what I can do
+      let act = '';
+      const share = !st.over && st.open ? `<div class="ch-link dl-link"><input class="ch-url" id="dl-url" readonly value="${esc(duelURL(d.id))}" aria-label="The link"><button class="btn" type="button" data-act="duel-copy">Copy</button>${navigator.share ? '<button class="btn" type="button" data-act="duel-share">Share</button>' : ''}</div>` : '';
+      if (st.invitedMe && st.open) act = `<button class="btn primary" type="button" data-duel-yes="${esc(d.id)}">Accept ${ICON.next}</button><button class="btn quiet" type="button" data-duel-no="${esc(d.id)}">Decline</button>`;
+      else if (!st.me && !st.meNo && st.open) act = `<button class="btn primary" type="button" data-duel-yes="${esc(d.id)}">Join ${ICON.next}</button>`;
+      else if (st.me && !st.over) {
+        const mineRun = examRunning() && S.exam.duel === d.id;
+        if (mineRun) act = `<button class="btn primary" type="button" data-act="exam-resume">${ICON.hourglass}Back to the exam ${ICON.next}</button>`;
+        else if (st.me.end) act = `<p class="dl-wait">You handed in: ${fmtPts(st.me.n20)}/20. ${others.some(x => !st.fin(x)) ? 'Waiting for the others.' : ''}</p>`;
+        else if (st.me.at) act = '';
+        else if (d.live && !d.go) act = d.by === meUid ? `<button class="btn primary" type="button" data-act="duel-go"${st.inn.length < 2 ? ' disabled' : ''}>Start now ${ICON.next}</button><span class="ex-go-note">${st.inn.length < 2 ? 'Waiting for someone to join.' : `${fmtN(st.inn.length)} here: everyone starts together.`}</span>` : '<span class="ex-go-note">Waiting for the start…</span>';
+        else if (!d.live) act = examRunning() ? '<span class="ex-go-note">Finish the exam you’ve started first.</span>' : `<button class="btn primary" type="button" data-act="duel-play">${ICON.hourglass}Start my exam ${ICON.next}</button><span class="ex-go-note">One go: the clock starts right away.</span>`;
+      }
+      if (st.over && (st.me || d.by === meUid)) act += `<button class="btn" type="button" data-act="duel-rematch">${d.kind === 'duel' ? 'Rematch' : 'Another party'}</button>`;
+      const mineEx = S.exam && S.exam.duel === d.id && S.exam.handed;
+      if (mineEx) act += `<button class="btn quiet" type="button" data-act="exam-results">My results</button>`;
+      // question by question, once I'm done (or it's over)
+      const shown = st.rank.filter(x => x.end > 0 && x.picks);
+      const grid = (st.over || (st.me && st.me.end)) && shown.length ? `<section class="dl-grid-w" aria-labelledby="dlg-h"><h2 class="h3" id="dlg-h">Question by question</h2>
+        <div class="dl-grid-s"><table class="dl-grid"><thead><tr><th scope="col">Q</th>${shown.map(x => `<th scope="col">${esc(x.nm)}</th>`).join('')}</tr></thead><tbody>
+        ${d.qids.map((qid, i) => `<tr><th scope="row" class="num">${mineEx ? `<button type="button" class="foot-btn" data-duel-q="${i}">${i + 1}</button>` : i + 1}</th>${shown.map(x => { const m = examMark(Q.get(qid), (x.picks || {})[qid]); return `<td class="x-${m.cls}" aria-label="${esc(m.label)}">${m.cls === 'full' ? '✓' : m.cls === 'half' ? '½' : m.cls === 'zero' ? '✗' : '·'}</td>`; }).join('')}</tr>`).join('')}
+        </tbody></table></div></section>` : '';
+      app.innerHTML = `${bar}<main class="wrap narrow stage dl-page">
+        <header class="page-head"><div>
+          <p class="eyebrow">${esc(d.what)} · ${fmtN(n)} questions · ${fmtN(mins)} minutes${d.live ? ' · live' : ''}</p>
+          <h1 class="h1 dl-h1">${title}</h1>
+          <p class="ph-lead">${lead}</p>
+          ${stake}
+        </div></header>
+        <ol class="ledger dl-players">${players}</ol>
+        <div class="row dl-acts-row">${act}</div>
+        ${share}
+        ${grid}
+        ${footHTML()}
+      </main>`;
+      // a win, cheered once
+      if (st.over && st.win && st.win.uid === meUid && !seenList(CHEERED).includes(d.id)) { addSeen(CHEERED, d.id); shootingStar(); sfx.play('finish', { quiet: true }); }
+      if (d.live && d.go > now) countT = setInterval(() => {
+        const el = document.querySelector('[data-duel-count]'); if (!el) { clearInterval(countT); return; }
+        const s = Math.ceil((d.go - Date.now()) / 1000); if (s <= 0) { clearInterval(countT); return; }
+        if (el.textContent !== String(s)) { el.textContent = s; sfx.play('tick', { quiet: true }); }
+      }, 200);
+    }
+    // during a challenge's exam: how far the others are
+    function duelRunHTML(id) {
+      const d = duels[id]; if (!d || !d.qids || !user) return '';
+      const st = duelState(d), others = st.inn.filter(x => x.uid !== user.uid);
+      if (!others.length) return '<p class="dl-run" data-duel-run hidden></p>';
+      return `<p class="dl-run" data-duel-run>${others.map(x => `<span>${esc(x.nm)} <b class="num">${x.end ? 'handed in' : x.at ? `${fmtN(x.n || 0)}/${fmtN(d.qids.length)}` : 'not started'}</b></span>`).join('')}</p>`;
+    }
+    // the class sky: a star's colour, if it holds one
+    const colourOfStar = uid => heldBy(uid);
+
     return { here, boot, open, gate, member, label, navHTML, storeLine, signedIn: () => !!user && state === 'in',
       canWear, wear, noticeUnlocks, isVip: () => vip(), giftOf, previewing: () => !!pv, afterIntro,
       classLine, paintPicks, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky, sendSpark,
-      skyFocus: (uid, pin, kb) => skyView.focusStar(uid, pin, kb), skyBlur: uid => skyView.blur(uid) };
+      skyFocus: (uid, pin, kb) => skyView.focusStar(uid, pin, kb), skyBlur: uid => skyView.blur(uid),
+      duelsHTML, renderDuel, openChallenge, duelAccept, duelDecline, duelPlay, duelGo, duelHanded, duelProgress, rematch, duelRunHTML,
+      duelCopy: () => copyLink(duelURL(S.duelId)), duelShare: () => shareLink(S.duelId), duelCount: () => Object.keys(duels).length };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
   // screens a guest can't stay on (after signing out, or an old session): exam mode, weak spots, a quest
   function lockedView() {
-    return ['exam', 'weak', 'diag'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && (['quest', 'diag'].includes(S.session.from) || !!S.session.comets));
+    return ['exam', 'weak', 'diag', 'duel'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && (['quest', 'diag'].includes(S.session.from) || !!S.session.comets));
   }
 
   // ---------- actions ----------
@@ -2945,6 +3506,7 @@
     if (S.view === 'topic') return 'topic:' + S.topicId + ':' + S.topicBy;
     if (S.view === 'weak') return 'weak:' + S.weakMod;
     if (S.view === 'diag') return 'diag:' + S.diag;
+    if (S.view === 'duel') return 'duel:' + S.duelId;
     return S.view;
   }
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
@@ -2989,6 +3551,7 @@
     else if (S.view === 'updates') renderUpdates();
     else if (S.view === 'weak' && DIAG.length) renderWeak();
     else if (S.view === 'diag' && DIAG_INDEX.has(S.diag)) renderDiag();
+    else if (S.view === 'duel' && S.duelId) acct.renderDuel();
     else renderHome();
     const nstrip = app.querySelector('.bar ~ main .strip');
     if (nstrip) {
@@ -3450,7 +4013,7 @@
   // where Back goes from the rules and the results: the page the exam was opened from
   function keepExamBack() {
     if (S.view === 'exam') return;
-    S.examBack = { view: S.view, topicId: S.topicId, diag: S.diag, weakMod: S.weakMod };
+    S.examBack = { view: S.view, topicId: S.topicId, diag: S.diag, weakMod: S.weakMod, duelId: S.duelId };
     S.scrollBack = window.scrollY;
   }
   function examBackLabel() {
@@ -3458,6 +4021,7 @@
     if (b.view === 'topic' && TOPIC.has(b.topicId)) return TOPIC_SHORT(TOPIC.get(b.topicId));
     if (b.view === 'diag' && DIAG_INDEX.has(b.diag)) return 'Diagnostic';
     if (b.view === 'weak') return 'Weak spots';
+    if (b.view === 'duel' && b.duelId) return 'The challenge';
     return b.view === 'home' && QUEST && S.examScope && S.examScope.kind === 'quest' ? 'Quest' : 'Home';
   }
   // sc: the scope to open the rules of; a running exam is always the one shown
@@ -3497,10 +4061,26 @@
     while (left < 0) { const i = take.indexOf(Math.max(...take)); take[i]--; left++; }
     return shuffled(gs.flatMap((g, i) => g.slice(0, take[i])));
   }
+  // an exam's questions: a past exam in its order, the quest in proportion to its topics, else at random
+  function examDraw(info, n) {
+    return info.ordered ? info.pool.slice() : info.groups && n < info.pool.length ? spreadDraw(info.groups, n) : shuffled(info.pool).slice(0, n);
+  }
+  // a challenge's exam (a duel or a party): its questions, drawn once for everyone; live, from the shared start
+  function startDuelExam(d, start) {
+    const ids = d.qids.filter(keyedId); if (!ids.length) return;
+    S.exam = { id: 'x' + d.id, duel: d.id, scope: d.scope, quest: d.scope && d.scope.kind === 'quest' ? d.scope.id : null, title: `${d.kind === 'party' ? 'Party' : 'Duel'} · ${d.title}`,
+      qids: ids, idx: 0, ridx: 0, picks: {}, start, end: start + d.ms, handed: 0, auto: false, unlocked: [] };
+    examConfirm = false; examWarned = {};
+    keepExamBack();
+    S.view = 'exam'; save();
+    sfx.play('flip');
+    render(true, null, 'nav');
+    examClock();
+  }
   function startExam() {
     const sc = S.examScope, info = scopeInfo(sc); if (!info || !info.pool.length) return;
     const n = scopeCount(info);
-    const ids = info.ordered ? info.pool.slice() : info.groups && n < info.pool.length ? spreadDraw(info.groups, n) : shuffled(info.pool).slice(0, n);
+    const ids = examDraw(info, n);
     const now = Date.now();
     S.exam = { id: now.toString(36), scope: sc, quest: sc.kind === 'quest' ? sc.id : null, title: info.title, qids: ids, idx: 0, ridx: 0, picks: {},
       start: now, end: now + ids.length * EXAM_MS_PER_Q, handed: 0, auto: false, unlocked: [] };
@@ -3521,6 +4101,7 @@
     if (k === -1) sel.push(i); else sel.splice(k, 1);
     sel.sort((x, y) => x - y);
     if (sel.length) S.exam.picks[q.id] = sel; else delete S.exam.picks[q.id];
+    if (S.exam.duel) acct.duelProgress();
     sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
     const back = k === -1 && uncross(S.exam.cross, q.id, i);
     save();
@@ -3570,6 +4151,7 @@
     examConfirm = false; examStop();
     const e = examEntry(ex);
     S.examLog = [e, ...S.examLog.filter(x => x.id !== ex.id)].slice(0, EXAM_LOG_MAX);
+    if (ex.duel) acct.duelHanded(ex);
     S.examScreen = 'results';
     // every answered question is a clean try for the diagnostic; note the topics this exam unlocked
     const was = new Map();
@@ -3597,7 +4179,8 @@
     examConfirm = false;
     if (S.view === 'exam' && examScreen() === 'review') { S.examScreen = 'results'; save(); render(true, null, 'back'); return; }
     const b = S.examBack || { view: 'home' };
-    S.view = ['home', 'topic', 'weak', 'diag'].includes(b.view) ? b.view : 'home';
+    S.view = ['home', 'topic', 'weak', 'diag', 'duel'].includes(b.view) ? b.view : 'home';
+    if (S.view === 'duel') { if (b.duelId) S.duelId = b.duelId; else S.view = 'home'; }
     if (S.view === 'topic') { if (TOPIC.has(b.topicId)) S.topicId = b.topicId; else S.view = 'home'; }
     if (S.view === 'diag') { if (DIAG_INDEX.has(b.diag)) S.diag = b.diag; else S.view = 'weak'; }
     if (S.view === 'weak' && b.weakMod) S.weakMod = b.weakMod;
@@ -3679,6 +4262,8 @@
           <li><b>No answers until the end.</b> Hand in when you’re done. When the time runs out, the exam is handed in as it is, even if you left the page. Then you get your mark out of 20 and every question with its answer and explanation, and your answers count toward the weak spots.</li>
         </ol>
         <div class="row ex-go"><button class="btn primary" type="button" data-act="exam-start">${ICON.hourglass}Start the exam ${ICON.next}</button><span class="ex-go-note">The clock starts right away.</span></div>
+        ${acct.here ? `<div class="ex-ch"><p class="ex-ch-t"><b>Or challenge the class to it.</b> The same ${fmtN(n)} questions for each of you: a duel for a colour in the class sky, or a party of up to 8 for a ranking.</p>
+          <div class="row"><button class="btn" type="button" data-act="challenge" data-kind="duel">${lockMark()}Duel someone</button><button class="btn" type="button" data-act="challenge" data-kind="party">${lockMark()}Start a party</button></div></div>` : ''}
         ${examPastHTML(log)}
         ${footHTML()}
       </main>`;
@@ -3713,6 +4298,7 @@
     app.innerHTML = `
       ${barHTML('exam-back', '', `Exam · ${ex.title || 'Quest'}`, right)}
       <main class="wrap narrow stage">
+        ${ex.duel ? acct.duelRunHTML(ex.duel) : ''}
         <nav class="strip" aria-label="Questions">${cells}</nav>
         <article class="qcard plate" aria-labelledby="stem">
           <div class="qmeta"><span class="qn">Question ${fmtN(ex.idx + 1)}</span><span>of ${fmtN(total)}</span><span class="grow"></span><span data-exam-answered>${fmtN(total - blank)} of ${fmtN(total)} answered</span></div>
@@ -3823,8 +4409,9 @@
           <ul class="ex-tally">${tally.map(([c, v, l]) => `<li class="t-${c}"><b class="num">${fmtN(v)}</b> ${l}</li>`).join('')}</ul>
           <p class="d-meta">${fmtPts(s.points)} of ${fmtN(s.total)} points, ${ex.auto ? `with all ${esc(fmtDur(ex.end - ex.start))} used` : `handed in after ${esc(fmtDur(s.used))}`}.</p>
           <div class="d-actions">
-            <button class="btn primary" type="button" data-act="exam-review">Review your answers ${ICON.next}</button>
-            ${scopeInfo(ex.scope) ? `<button class="btn" type="button" data-act="exam-new">New exam</button>` : ''}
+            ${ex.duel ? `<button class="btn primary" type="button" data-duel="${esc(ex.duel)}">See the ${ex.title && ex.title.startsWith('Party') ? 'party' : 'duel'} ${ICON.next}</button>` : ''}
+            <button class="btn${ex.duel ? '' : ' primary'}" type="button" data-act="exam-review">Review your answers ${ex.duel ? '' : ICON.next}</button>
+            ${scopeInfo(ex.scope) && !ex.duel ? `<button class="btn" type="button" data-act="exam-new">New exam</button>` : ''}
             <button class="btn" type="button" data-act="weak" data-mod="${esc((scopeInfo(ex.scope) || {}).mod || '')}">Weak spots</button>
             <button class="btn quiet" type="button" data-act="exam-back">Back</button>
           </div>
@@ -4376,6 +4963,7 @@
       ${questHTML(qi)}
       ${tonightHTML()}
       ${acct.skyHTML()}
+      ${acct.duelsHTML()}
       ${weakCardHTML()}
       ${themesSectionHTML()}
       <section class="skyband" aria-label="Search the questions">
@@ -6270,6 +6858,10 @@
     if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
     if (t.dataset.theme) { acct.wear(t.dataset.theme); return; }
     if (t.dataset.sky) { acct.skyFocus(t.dataset.sky, true, e.detail === 0); return; }
+    if (t.dataset.duel) { openDuel(t.dataset.duel); return; }
+    if (t.dataset.duelYes) { acct.duelAccept(t.dataset.duelYes); return; }
+    if (t.dataset.duelNo) { acct.duelDecline(t.dataset.duelNo); return; }
+    if (t.dataset.duelQ !== undefined && S.exam && S.exam.handed) { keepExamBack(); S.view = 'exam'; S.exam.ridx = +t.dataset.duelQ; S.examScreen = 'review'; save(); render(true, null, 'nav'); return; }
     switch (t.dataset.act) {
       case 'top': window.scrollTo({ top: 0, behavior: smooth() }); break;
       case 'goto-modules': {
@@ -6342,6 +6934,12 @@
       case 'account': acct.open(); break;
       case 'sky-hide': acct.toggleSky(); break;
       case 'sky-spark': acct.sendSpark(t.dataset.uid); break;
+      case 'challenge': acct.openChallenge(t.dataset.kind || 'duel'); break;
+      case 'duel-play': acct.duelPlay(S.duelId); break;
+      case 'duel-go': acct.duelGo(S.duelId); break;
+      case 'duel-copy': acct.duelCopy(); break;
+      case 'duel-share': acct.duelShare(); break;
+      case 'duel-rematch': acct.rematch(S.duelId); break;
       case 'diag-back': S.view = 'topic'; S.diagFrom = 'weak'; save(); render(true, null, 'back'); break;
       case 'exam-start': startExam(); break;
       case 'exam-back': examBack(); break;
@@ -6472,6 +7070,15 @@
   lbImg.addEventListener('click', e => { e.stopPropagation(); lb.classList.toggle('actual'); });
   document.getElementById('lb-body').addEventListener('click', e => { if (e.target.id === 'lb-body') closeLightbox(); });
 
+  // a challenge's page (from its link, the homepage or an invitation); it needs an account
+  function openDuel(id) {
+    if (!/^[a-z0-9]{6,24}$/.test(id || '')) return;
+    if (acct.gate('Duels and parties need an account', () => openDuel(id))) return;
+    S.duelId = id; S.view = 'duel'; confirmReset = false; save(); render(true, null, 'nav');
+  }
+  const duelHash = () => { const m = /^#duel-([a-z0-9]{6,24})$/.exec(location.hash || ''); if (m) try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} return m ? m[1] : null; };
+  window.addEventListener('hashchange', () => { const id = duelHash(); if (id) openDuel(id); });
+
   // ---------- boot ----------
   function start(data) {
     load();
@@ -6480,8 +7087,11 @@
     acct.boot();
     examBoot();
     if (S.view === 'home') { S.q = ''; S.aspect = null; }   // a fresh visit opens on the modules, not an old search
+    const dh = duelHash();
+    if (dh && acct.member()) { S.view = 'duel'; S.duelId = dh; }
+    else if (dh) setTimeout(() => openDuel(dh), 400);
     // the opening animation plays when the site opens on the home page (not for automated page captures)
-    const opening = S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');
+    const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');
     titleHold = opening;
     render(false);
     if (opening && intro.play()) return;   // the intro starts the sky when its star lands

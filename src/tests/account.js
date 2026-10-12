@@ -56,7 +56,8 @@ const FAKE = {
     const snapOf = r => { const d = fb.docs[r]; return { exists: () => !!d, data: () => d && JSON.parse(JSON.stringify(d)), metadata: { hasPendingWrites: false } }; };
     const qsubs = [];
     // a query: a collection, maybe one where (field == value); sparks are refused while 'fake-deny-sparks' is set (no rules yet)
-    const qdocs = q => Object.entries(fb.docs).filter(([r, d]) => r.startsWith(q.col + '/') && (!q.wf || d[q.wf] === q.wv))
+    const match = (q, d) => !q.wf || (q.wop === 'array-contains' ? (d[q.wf] || []).includes(q.wv) : q.wop === 'array-contains-any' ? (d[q.wf] || []).some(x => q.wv.includes(x)) : d[q.wf] === q.wv);
+    const qdocs = q => Object.entries(fb.docs).filter(([r, d]) => r.startsWith(q.col + '/') && r.split('/').length === 2 && match(q, d))
       .map(([r, d]) => ({ id: r.slice(q.col.length + 1), data: () => JSON.parse(JSON.stringify(d)) }));
     const qsnap = q => { const docs = qdocs(q); return { docs, size: docs.length, empty: !docs.length }; };
     const notify = r => { (subs[r] || []).forEach(cb => cb(snapOf(r))); qsubs.forEach(([q, cb]) => { if (r.startsWith(q.col + '/')) cb(qsnap(q)); }); };
@@ -64,7 +65,7 @@ const FAKE = {
     const rules = ops => { for (const [k, r, d] of ops) { if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); if (k === 'del' && r === 'names/labubu') no();
       if (r.startsWith('sparks/') && (localStorage.getItem('fake-deny-sparks') || (k === 'set' && (fb.docs[r] || !fb.user || d.from !== fb.user.uid)))) no(); } };
     // set with merge merges maps deeply, like Firestore; increment() and deleteField() resolve against what's there
-    const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
+    const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && v.__union) o[k] = [...new Set([...((old && old[k]) || []), ...v.__union])]; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
     const apply = ([k, r, d, o]) => { if (k === 'del') delete fb.docs[r]; else fb.docs[r] = o && o.merge ? resolve(fb.docs[r], d) : resolve({}, d); };
     const run = ops => { rules(ops); ops.forEach(apply); keep(); ops.forEach(o => notify(o[1])); };
     export function getFirestore() { return {}; }
@@ -82,7 +83,8 @@ const FAKE = {
     export function orderBy(by, dir) { return { by, dir }; }
     export function limit(lim) { return { lim }; }
     export function query(col, ...parts) { return Object.assign({ col }, ...parts); }
-    export function where(f, op, v) { return { wf: f, wv: v }; }
+    export function where(f, op, v) { return { wf: f, wop: op, wv: v }; }
+    export function arrayUnion(...v) { return { __union: v }; }
     export async function getDocs(q) {
       fb.calls.push('list ' + q.col); deny();
       if (q.col === 'sparks') { if (localStorage.getItem('fake-deny-sparks')) no(); return qsnap(q); }

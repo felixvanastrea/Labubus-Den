@@ -1617,3 +1617,74 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .cell.twinkle, .streak, .streak circle.new, .streak.full svg, .dc .ds, .dc-gains li { animation: none !important; }
   .dc .dl { animation: none !important; stroke-dashoffset: 0; }
 }
+
+/* ---------- duels and parties: the homepage card, the challenge sheet, a challenge's page ---------- */
+.dl-wrap { padding-top: 48px; }
+.dl { padding: clamp(22px, 4vw, 40px); display: grid; gap: 18px; }
+.dl-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; }
+.dl-head .h2 { margin: 0; }
+.dl-lead { margin: 0; max-width: 46rem; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
+.dl-list .dl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 0; }
+.dl-row.new .dl-vs::before { content: "✦ "; color: var(--gold-txt, #e9c46a); }
+.dl-main { flex: 1 1 16rem; display: grid; gap: 2px; min-width: 0; }
+.dl-vs { font-size: 1.12rem; color: var(--ink); }
+.dl-meta { font-size: .98rem; color: var(--ink-3); font-style: italic; }
+.dl-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.dl-none { margin: 0; color: var(--ink-3); font-style: italic; }
+.dl-ct { margin: 0 0 10px; font-family: var(--f-mono); font-size: var(--t-label); color: var(--ink-3); }
+.dl-legend { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr)); gap: 8px 20px; }
+.dl-c { display: flex; align-items: center; gap: 10px; color: var(--ink-3); font-size: .98rem; min-width: 0; }
+.dl-c b { margin-right: 3px; color: var(--ink-2); font-weight: 600; }
+.dl-c.held b { color: var(--ink); }
+.dl-dot { display: inline-block; flex: none; width: 10px; height: 10px; margin-right: 7px; border-radius: 50%; background: var(--c); vertical-align: 1px;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 22%, transparent), 0 0 10px var(--c); }
+.dl-c .dl-dot { margin-right: 0; }
+/* the challenge sheet */
+.ch-opts { display: grid; gap: 8px; }
+.ch-opts .seg button { flex: 1 1 12rem; flex-direction: column; align-items: flex-start; text-align: left; }
+.ch-t { margin: 4px 0 0; font-family: var(--f-mono); font-size: var(--t-label); color: var(--ink-3); }
+.ch-ps { display: flex; flex-wrap: wrap; gap: 6px; }
+.ch-p { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: 1rem; cursor: pointer;
+  transition: color .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease); }
+.ch-p:hover, .ch-p:focus-visible { color: var(--ink); border-color: var(--ink-3); }
+.ch-p[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--night); }
+.ch-none, .ch-note { color: var(--ink-3); font-style: italic; font-size: 1rem; line-height: 1.45; }
+.ch-add { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
+.ch-add .acct-f { flex: 1 1 12rem; min-width: 0; }
+.ch-link { display: flex; flex-wrap: wrap; gap: 8px; }
+.ch-url { flex: 1 1 14rem; min-width: 0; min-height: 44px; padding: 0 12px; border: 1px solid var(--hair-2); border-radius: var(--r); background: transparent; color: var(--ink-2); font: inherit; font-size: .95rem; }
+/* on the exam's rules: challenge the class to it */
+.ex-ch { display: grid; gap: 10px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--hair); }
+.ex-ch-t { margin: 0; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
+.ex-ch-t b { color: var(--ink); font-weight: 600; }
+/* a challenge's page */
+.dl-h1 i { padding: 0 .18em; font-size: .55em; color: var(--ink-3); }
+.dl-stake { margin: 10px 0 0; color: var(--ink-2); font-size: 1.06rem; }
+.dl-players { margin-top: 8px; }
+.dl-players .dl-p { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 4px; }
+.dl-pl { font-family: var(--f-display); font-style: italic; font-size: 1.5rem; line-height: 1; color: var(--ink-3); }
+.dl-pn { min-width: 0; font-size: 1.14rem; color: var(--ink); overflow-wrap: anywhere; }
+.dl-p.me .dl-pn { font-weight: 600; }
+.dl-you { color: var(--ink-3); font-weight: 400; font-style: italic; }
+.dl-crown { color: var(--gold-txt, #e9c46a); }
+.dl-ps { color: var(--ink-2); font-size: 1rem; text-align: right; }
+.dl-ps b { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: 1.6rem; color: var(--ink); }
+.dl-p.win .dl-pl { color: var(--gold-txt, #e9c46a); }
+.dl-p.out { opacity: .55; }
+.dl-acts-row { align-items: center; margin-top: 20px; }
+.dl-wait { margin: 0; color: var(--ink-2); }
+.dl-link { margin-top: 14px; }
+.dl-grid-w { margin-top: 34px; }
+.dl-grid-s { overflow-x: auto; margin-top: 10px; }
+.dl-grid { min-width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.dl-grid th, .dl-grid td { padding: 6px 10px; border-bottom: 1px solid var(--hair); text-align: center; }
+.dl-grid thead th { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.dl-grid tbody th { color: var(--ink-3); font-weight: 400; }
+.dl-grid .x-full { color: var(--right); }
+.dl-grid .x-half { color: var(--half); }
+.dl-grid .x-zero { color: var(--wrong); }
+.dl-grid .x-blank { color: var(--ink-3); }
+/* during a challenge's exam: how far the others are */
+.dl-run { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 12px; color: var(--ink-3); font-size: .98rem; font-style: italic; }
+.dl-run b { margin-left: 4px; color: var(--ink); font-style: normal; font-weight: 600; }
+.ch-opts .seg button .n { font-family: var(--f-read, inherit); font-style: italic; font-size: .92rem; letter-spacing: 0; }
