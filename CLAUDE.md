@@ -446,6 +446,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `key` (official / checked / proposed / claude / none), `qNotes`, `optNotes`, `notes`, `case`, `stemImgs`, `twinOf`, `flag`.
   The build adds `sid` (short id like `R244`), `c` (topic concepts), `a` (aspect), `rep` (repeat cluster) and `dupOf`,
   after applying `corrections.json`.
+- Removing a question (only when Abi asks): take it out of `bank.json`, `shortids.json` and every file naming its short id,
+  renumber the rest of its set (`n`), and never reuse the short id. Old saved answers to it are ignored. Removed so far:
+  D205 (12 October 2026, Q16 of the professor's digestive surgical set, its option B had two statements run together).
+- Adding a single question to an existing set (a professor's question from class, say): append it to the set with the next
+  `n`, a new 10-hex `id`, the next free short id in `shortids.json`, a `lectures.json` `q` entry if its concepts would send
+  it elsewhere, an explanation, and an update log entry with `questions`. D240 (12 October 2026): secondary peritonitis,
+  given in class during acute appendicitis, so it sits in that lecture and the quest; its answer B is word for word on the
+  peritonitis slides, so `checked.json` labels it.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked

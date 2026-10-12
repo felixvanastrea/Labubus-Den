@@ -1899,7 +1899,7 @@
       "note": "Same as D169 reordered: RIF pain with fever and subhepatic RUQ pain. Not labelled: a copy of a question already corrected in corrections.json (D202). The optional corrections in corrections.json change this copy and its copies together, so they keep one key."
     },
     "D210": {
-      "where": "Professor's questions · Digestive Surgical Q21",
+      "where": "Professor's questions · Digestive Surgical Q20",
       "label": true,
       "key": "AB",
       "options": {
@@ -4457,6 +4457,37 @@
         "Syphilis"
       ],
       "note": "Tick B. Translated from the French (French list: Syphilis Q6, \"Une ulcération génitale aiguë non douloureuse...\"), only in \"[EFM3] Uncorrected All MCQs\" (no answers marked)."
+    },
+    "D240": {
+      "where": "Professor's questions · Digestive Surgical Q22",
+      "label": true,
+      "key": "B",
+      "options": {
+        "A": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Primary peritonitis is 'often monomicrobial'; secondary is 'Polymicrobial'."
+        },
+        "B": {
+          "status": "tick",
+          "basis": "lecture",
+          "why": "Secondary peritonitis: 'Polymicrobial: E.Coli is the most common organism involved'."
+        },
+        "C": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Its causes are 'GI perforation' and 'Spread of infection from a septic site'; duodenal perforation and burst appendicitis are the commonest."
+        },
+        "D": {
+          "status": "no",
+          "basis": "lecture",
+          "why": "Mycobacterial infection ('Tuberculous peritonitis (Koch's Bacillus)') is listed under primary peritonitis."
+        }
+      },
+      "lecture": [
+        "Acute peritonitis"
+      ],
+      "note": "Tick B. A professor's question given in class (sent by Abi, 12 October 2026, with the answer B), confirmed word for word by Pr Bouziane's peritonitis slides."
     }
   }
 }

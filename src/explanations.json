@@ -574,12 +574,6 @@
       "C": "Antibiotics go with drainage. Alone, they don't treat a collected abscess.",
       "D": "An abscess needs draining and antibiotics, not just removal of the appendix."
     },
-    "D205": {
-      "lecture": "acute-appendicitis",
-      "A": "Pregnant women tend to present late, which makes the diagnosis harder.",
-      "B": "A pelvic appendix gives rectal tenderness, and obesity dulls all the local signs.",
-      "C": "A retrocecal appendix is often silent: little rigidity, sometimes no tenderness even on deep pressure."
-    },
     "D31": {
       "lecture": "groin-hernias",
       "A": "Diarrhea isn't on the list. Constipation is, because straining raises abdominal pressure.",
@@ -1188,6 +1182,13 @@
       "B": "Linitis is a malignant infiltrating cancer with signet ring cells, not a benign metaplasia.",
       "C": "It has a place: after surgery for large or node-positive tumors, and in palliative care.",
       "D": "Nodes are involved early, so resection includes a lymph node dissection (at least 15 nodes)."
+    },
+    "D240": {
+      "lecture": "peritonitis",
+      "A": "Monomicrobial is primary peritonitis: pneumococcus, streptococcus, Koch's bacillus, staphylococcus.",
+      "B": "Secondary peritonitis is polymicrobial, and E. coli is the germ most often involved.",
+      "C": "It mostly comes from a GI perforation (perforated ulcer, burst appendix), or from a nearby septic site.",
+      "D": "Mycobacteria (tuberculous peritonitis) cause primary peritonitis, with no perforation."
     }
   }
 }
