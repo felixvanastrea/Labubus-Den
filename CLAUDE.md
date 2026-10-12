@@ -450,6 +450,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   colours written only by a player of the duel named in the write, for themselves or to free it, and only taken from
   someone who played that duel, a free one, or a faded one.
 - Test: duel.js (the fake Firestore has `arrayUnion` and array queries).
+- News sheet (`NEWS`, `noticeNews`): "Duels and parties" pops once per device on the homepage (`efm3-news` = the news id),
+  after the intro, never over an exam or another sheet; skipped in automated browsers unless `window.__newsTest`. For the
+  next big feature, change `NEWS.id` and the sheet's words. Test: news.js.
 
 ## The app (Add to Home Screen)
 
@@ -519,7 +522,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

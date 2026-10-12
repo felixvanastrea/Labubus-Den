@@ -1827,6 +1827,13 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .dl-run { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 12px; color: var(--ink-3); font-size: .98rem; font-style: italic; }
 .dl-run b { margin-left: 4px; color: var(--ink); font-style: normal; font-weight: 600; }
 .ch-opts .seg button .n { font-family: var(--f-read, inherit); font-style: italic; font-size: .92rem; letter-spacing: 0; }
+/* news: a sheet once per device (duels and parties, October 2026) */
+.news-dots { display: flex; gap: 10px; padding: 2px 0 4px; }
+.news-dots .dl-dot { width: 12px; height: 12px; margin: 0; animation: newsdot 2.4s var(--ease) calc(var(--k) * .18s) infinite; }
+@keyframes newsdot { 0%, 100% { transform: scale(1); opacity: .85; } 40% { transform: scale(1.35); opacity: 1; } }
+.news-l { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
+.news-l b { color: var(--ink); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .news-dots .dl-dot { animation: none; } }
 </style>
 </head>
 <body>
@@ -6827,6 +6834,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       <div class="wrap">${footHTML()}</div>`;
     updateSearch();
     paintHome();
+    noticeNews();
     stampSeals(qi);
   }
   function archCard(t, i) {
@@ -7008,6 +7016,53 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     return `<a class="${cls}" href="${esc(formURL('idea'))}" target="_blank" rel="noopener" data-ask>${icon === false ? '' : LB_ICON}${label}</a>`;
   }
   let toastTimer = null;
+  // news: a sheet shown once per device on the homepage when something big arrives (NEWS.id). It waits for the intro,
+  // a running exam and any other sheet; automated browsers skip it unless window.__newsTest is set.
+  const NEWS = { id: 'duels-2026-10', key: 'efm3-news' };
+  let newsEl = null;
+  function noticeNews() {
+    let seen = null; try { seen = localStorage.getItem(NEWS.key); } catch (e) { return; }
+    if (seen === NEWS.id || (navigator.webdriver && !window.__newsTest)) return;
+    setTimeout(() => {
+      if (S.view !== 'home' || intro.active() || examRunning() || document.querySelector('.acct-sheet:not([hidden])')) return;
+      try { if (localStorage.getItem(NEWS.key) === NEWS.id) return; localStorage.setItem(NEWS.key, NEWS.id); } catch (e) { return; }
+      showNews();
+    }, 1200);
+  }
+  function showNews() {
+    if (!newsEl) {
+      newsEl = document.createElement('div');
+      newsEl.className = 'acct-sheet news-sheet'; newsEl.setAttribute('role', 'dialog'); newsEl.setAttribute('aria-modal', 'true'); newsEl.setAttribute('aria-labelledby', 'news-h');
+      newsEl.addEventListener('click', e => {
+        const b = e.target.closest('[data-news]');
+        if (e.target === newsEl || (b && b.dataset.news === 'close')) closeNews();
+        else if (b && b.dataset.news === 'go') { closeNews(); usage.track('news_go', { news: NEWS.id }); acct.openChallenge('duel'); }
+        else if (b && b.dataset.news === 'see') { closeNews(); const d = document.getElementById('duels'); if (d) d.scrollIntoView({ behavior: smooth(), block: 'start' }); }
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && newsEl && !newsEl.hidden) closeNews(); });
+      document.body.appendChild(newsEl);
+    }
+    const dots = [[255, 104, 84], [255, 164, 72], [255, 120, 172], [100, 230, 178], [118, 214, 255], [116, 148, 255], [184, 140, 255]]
+      .map((c, i) => `<i class="dl-dot" style="--c:rgb(${c});--k:${i}"></i>`).join('');
+    newsEl.innerHTML = `<div class="acct-card plate news">
+      <button class="btn quiet acct-x" type="button" data-news="close" aria-label="Close">${ICON.cross}</button>
+      <p class="eyebrow">New on the Den</p>
+      <h2 class="h2" id="news-h">Duels and parties</h2>
+      <div class="news-dots" aria-hidden="true">${dots}</div>
+      <p class="acct-p">Challenge your classmates to the same exam: the quest, or anything you can open in exam mode. Same questions, same clock, graded out of 20.</p>
+      <ul class="news-l">
+        <li><b>A duel</b> is one on one. Win it and your star in the class sky takes a colour, one of seven named after real stars. Win again to keep it, or it fades back after a week.</li>
+        <li><b>A party</b> is up to 8 of you, for a ranking.</li>
+        <li>Play within 24 hours, or <b>live</b>, all starting together. Pick people from tonight’s sky or by their name: they get the invitation on the Den, and you can share the link.</li>
+      </ul>
+      <div class="row"><button class="btn primary" type="button" data-news="go">${acct.member() ? ICON.hourglass : LOCK}Challenge someone ${ICON.next}</button><button class="btn" type="button" data-news="see">See the colours</button><button class="btn quiet" type="button" data-news="close">Later</button></div>
+    </div>`;
+    newsEl.hidden = false; sfx.play('sheet', { quiet: true });
+    usage.track('news_shown', { news: NEWS.id });
+    const f = newsEl.querySelector('[data-news="go"]'); if (f) try { f.focus({ preventScroll: true }); } catch (e) {}
+  }
+  function closeNews() { if (newsEl && !newsEl.hidden) { newsEl.hidden = true; sfx.play('shut', { quiet: true }); } }
+
   function toast(msg) {
     let el = document.getElementById('toast');
     if (!el) {

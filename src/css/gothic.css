@@ -1688,3 +1688,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .dl-run { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 12px; color: var(--ink-3); font-size: .98rem; font-style: italic; }
 .dl-run b { margin-left: 4px; color: var(--ink); font-style: normal; font-weight: 600; }
 .ch-opts .seg button .n { font-family: var(--f-read, inherit); font-style: italic; font-size: .92rem; letter-spacing: 0; }
+/* news: a sheet once per device (duels and parties, October 2026) */
+.news-dots { display: flex; gap: 10px; padding: 2px 0 4px; }
+.news-dots .dl-dot { width: 12px; height: 12px; margin: 0; animation: newsdot 2.4s var(--ease) calc(var(--k) * .18s) infinite; }
+@keyframes newsdot { 0%, 100% { transform: scale(1); opacity: .85; } 40% { transform: scale(1.35); opacity: 1; } }
+.news-l { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
+.news-l b { color: var(--ink); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .news-dots .dl-dot { animation: none; } }
