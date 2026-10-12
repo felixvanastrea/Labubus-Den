@@ -1,7 +1,7 @@
 # Labubu’s Den: notes for Claude
 
 Labubu’s Den (first called EFM3 MCQ Bank) is a practice site for past EFM3 exam questions (third-year medicine, semester 5, 2025–2026), built for Abi and her class.
-One static page: all questions, notes and code are inlined into `index.html`; figures live in `img/`.
+One static page: all questions, notes and code are inlined into `index.html`; figures live in `img/`, recorded sounds in `snd/`.
 
 ## Where it lives
 
@@ -117,18 +117,33 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Sounds and haptics
 
-- `sfx` in `template.html`: every sound is synthesized in the browser, sample by sample, from a recipe (no audio
-  files): `tick` / `untick` (picking an option; each option is a note of a pentatonic scale via `playbackRate`),
-  `nav` (moving between questions), `right` (two celesta notes, pitched up with the streak of right answers;
-  every 5th in a row adds `sparkle`), `wrong` / `partial` (soft knocks on wood), `seal` (wax thud + stars, timed
-  to the stamp animation), `sparkle` (a constellation card opening), `finish` (a session ending at 80%+).
-  Levels in `LEVEL`, a little room reverb on the chimes in `WET`.
+- `sfx` in `template.html`. Abi wanted the whole Den tactile, "like a Vox video": paper, cards, a creamy keyboard.
+  Two kinds of sound:
+  - Synthesized in the browser, sample by sample, from a recipe: the keys (`key0`–`key3`, four slightly different
+    keys picked at random, `VOICES`; picking an option, typing in the search, `space` for the space bar), their
+    releases (`keyup0/1`: unpicking, deleting), the pencil (`cross`: crossing out), the old `nav` detent, and the
+    chimes: `right` (two celesta notes, pitched up with the streak; every 5th adds `sparkle`), `wrong` / `partial`
+    (soft knocks), `seal`, `sparkle`, `finish`, and the themes' own (`THEME_SOUND`). An option's note only nudges
+    a key's pitch now (`1 + (rate - 1) * 0.08`).
+  - Recorded, CC0, in `snd/*.mp3` (`SAMPLES`, 28 takes, 96 kB; `snd/CREDITS.md` says where each comes from): `nav`
+    (next question: a card slid), `flip` (a new screen: a page turned; `render` plays it, or `back`, a soft swish,
+    unless another sound just played, `sfx.since()`), `sheet` / `shut` (a sheet, letter or picture opens / closes),
+    `mark` / `unmark`, `crumple` (Try again, retry mistakes), `erase` (Reset), `stack` (an exam handed in),
+    `toggle` (every switch). Fetched once the page has settled if sound is on and decoded in an offline context, so
+    no tap is needed; a take never plays twice in a row; until they're in, `STANDIN` borrows a key or stays quiet.
+  - `src/pipeline/sounds.py` makes them from github.com/lavenderdotpet/CC0-Public-Domain-Sounds (Kenney, Ben Burnes,
+    100 CC0 SFX; clone it and pass its folder): cut at the onset, faded, every take brought to the same loudness as
+    heard (A-weighted, loudest 30 ms), MP3 64k mono. Only CC0 sources; the freesound and kenney.nl sites are blocked here.
+- Levels in `LEVEL` (balanced A-weighted, October 2026, against the old tick Abi found right: keys and the paper
+  sounds about level with it, page turns, marks and switches 2 to 4 dB under, the chimes louder), a little room
+  reverb in `WET`, small random pitch and level changes in `JITTER`, haptic patterns in `BUZZ`.
 - On by default (Abi wants it satisfying); quiet; iPhones follow the silent switch (`navigator.audioSession`
   'ambient'). The audio context only starts on a tap. Switches: the speaker in the quiz bar and "Sounds" in the
   footer (`efm3-mcq-sound`); "Vibration" in the footer on touch phones (`efm3-mcq-haptics`). Haptics: Android
   `navigator.vibrate`, iOS the native switch trick (flipping an `<input type=checkbox switch>` plays the system tick).
-- Claude can't listen: when changing a sound, check its stats and spectrum offline (render the recipe in Node)
-  and ask Abi how it sounds on her phone.
+- Claude can't listen: when changing a sound, check its loudness (A-weighted) and spectrum offline (render the recipe
+  in Node, decode the MP3s with ffmpeg) against the others, and ask Abi how it sounds on her phone. `play` tags each
+  source with its name (`src.sfx`), which sound.js reads.
 
 ## Quests
 

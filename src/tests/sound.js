@@ -1,5 +1,6 @@
-// Sounds and haptics: which sound plays for which action (told apart by buffer length), option notes and the
-// streak's climbing pitch, the on/off switches and their memory, vibration on touch phones, no errors.
+// Sounds and haptics: which sound plays for which action (play() tags each source with its name), the keys' notes and
+// the streak's climbing pitch, the recorded takes (snd/*.mp3) loading, the tactile sounds (page turns, marks, crossing
+// out, crumpling, typing, switches), the on/off switches and their memory, vibration on touch phones, no errors.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -8,18 +9,17 @@ const URL = (process.env.BASE || 'http://127.0.0.1:8765') + '/index.html';
 const KEY = 'efm3-mcq-bank-v1';
 let fails = 0;
 const check = (ok, what) => { console.log((ok ? 'ok   ' : 'FAIL ') + what); if (!ok) fails++; };
-// the buffers' lengths, in seconds, name each sound
-const NAMES = { 0.05: 'tick', 0.038: 'untick', 0.025: 'nav', 1.6: 'right', 0.42: 'wrong', 0.3: 'partial', 2: 'seal', 0.8: 'sparkle', 2.2: 'finish' };
 const spy = () => {
   window.__plays = []; window.__buzz = [];
   const start = AudioBufferSourceNode.prototype.start;
   AudioBufferSourceNode.prototype.start = function (when) {
-    window.__plays.push({ dur: Math.round(this.buffer.duration * 1000) / 1000, rate: this.playbackRate.value });
+    window.__plays.push({ name: this.sfx, rate: this.playbackRate.value });
     return start.apply(this, arguments);
   };
   if (navigator.vibrate) { const v = navigator.vibrate.bind(navigator); navigator.vibrate = p => { window.__buzz.push(p); return v(p); }; }
 };
-const plays = async p => (await p.evaluate(() => window.__plays.splice(0))).map(x => ({ name: NAMES[x.dur] || x.dur, rate: Math.round(x.rate * 1000) / 1000 }));
+// the four keys are one sound (key0..key3), the two releases another
+const plays = async p => (await p.evaluate(() => window.__plays.splice(0))).map(x => ({ name: String(x.name).replace(/^(key|keyup)\d$/, '$1'), rate: Math.round(x.rate * 1000) / 1000 }));
 const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
   const S = JSON.parse(localStorage.getItem(KEY)); const id = S.session.qids[S.session.idx];
   const q = JSON.parse(document.getElementById('bank').textContent).questions.find(x => x.id === id);
@@ -36,18 +36,34 @@ const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
   await ctx.addInitScript(spy);
   const p = await ctx.newPage(); watch(p, 'desk');
+  let pl;
+  const takes = [];
+  p.on('response', r => { if (/\/snd\/\w+\.mp3$/.test(r.url())) takes.push(r.status()); });
   await p.goto(URL, { waitUntil: 'load' }); await p.evaluate(() => localStorage.clear());
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   check((await p.textContent('.foot')).includes('Sounds: on') && !(await p.textContent('.foot')).includes('Vibration'), 'footer: Sounds on, no vibration switch on a desktop');
+  await p.waitForTimeout(1500);
+  check(takes.length === 28 && takes.every(c => c === 200), `the 28 recordings load once the page has settled (${takes.length}, ${[...new Set(takes)]})`);
   await p.click('.q-topic[data-qtopic="0"]'); await p.waitForTimeout(250);
-  await plays(p);
+  pl = await plays(p);
+  check(pl.length === 1 && pl[0].name === 'flip', 'opening a quiz, the first tap: a page turns: ' + pl.map(x => x.name));
   check(await p.getAttribute('[data-act="sound"]', 'aria-pressed') === 'true', 'the quiz bar has a sound switch, on');
-  // picking options: a note each, unpicking a softer click
+  // picking options: a key each, unpicking its release
   await p.click('.opt[data-opt="0"]'); await p.click('.opt[data-opt="2"]'); await p.click('.opt[data-opt="2"]');
-  let pl = await plays(p);
+  pl = await plays(p);
   console.log('  picks:', JSON.stringify(pl));
-  check(pl.length === 3 && pl[0].name === 'tick' && pl[1].name === 'tick' && pl[2].name === 'untick', 'tick, tick, untick');
-  check(Math.abs(pl[0].rate - 1) < 0.01 && Math.abs(pl[1].rate - 1.25) < 0.012 && Math.abs(pl[2].rate - 1.25) < 0.012, 'option A plays the root, option C a major third up');
+  check(pl.length === 3 && pl[0].name === 'key' && pl[1].name === 'key' && pl[2].name === 'keyup', 'key, key, release');
+  check(Math.abs(pl[0].rate - 1) < 0.01 && Math.abs(pl[1].rate - 1.02) < 0.01 && pl[1].rate > pl[0].rate, 'option C sits a touch higher than A');
+  // crossing out: a pencil stroke; the mark: a card slipped in, and out
+  await p.keyboard.press('Shift+B'); await p.waitForTimeout(80);
+  pl = await plays(p);
+  check(pl.length === 1 && pl[0].name === 'cross', 'Shift+B crosses B out with a pencil stroke: ' + pl.map(x => x.name));
+  await p.keyboard.press('Shift+B'); await p.waitForTimeout(80);
+  check((await plays(p)).map(x => x.name).join() === 'keyup', 'and back: a release');
+  await p.keyboard.press('m'); await p.waitForTimeout(80);
+  check((await plays(p)).map(x => x.name).join() === 'mark', 'M marks it: a card slipped in');
+  await p.keyboard.press('m'); await p.waitForTimeout(80);
+  check((await plays(p)).map(x => x.name).join() === 'unmark', 'M again: slid out');
   // right answers in a row climb; a wrong one knocks and resets the streak
   await p.click('.opt[data-opt="0"]');   // clear
   await plays(p);
@@ -57,7 +73,7 @@ const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
     await plays(p);
     await p.click('[data-act="primary"]'); await p.waitForTimeout(120);
     pl = await plays(p);
-    const r = pl.find(x => x.name === 'right'); rates.push(r ? r.rate : null);
+    const r = pl.find(x => x.name === 'right'); rates.push(r ? r.rate : pl.map(x => x.name).join('+'));
     await p.click('[data-act="primary"]'); await p.waitForTimeout(150);
     const nav = await plays(p);
     if (k === 0) check(nav.length === 1 && nav[0].name === 'nav', 'Next plays a detent');
@@ -70,6 +86,8 @@ const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
   pl = await plays(p);
   check(pl.length === 1 && (pl[0].name === 'wrong' || pl[0].name === 'partial'), 'a wrong answer knocks: ' + pl.map(x => x.name));
   await p.click('[data-act="again"]'); await p.waitForTimeout(120);
+  pl = await plays(p);
+  check(pl.length === 1 && pl[0].name === 'crumple', 'Try again crumples the wrong try: ' + pl.map(x => x.name));
   for (const i of await answerOf(p, true)) await p.click(`.opt[data-opt="${i}"]`);
   await plays(p);
   await p.click('[data-act="primary"]'); await p.waitForTimeout(120);
@@ -89,10 +107,26 @@ const answerOf = (p, right) => p.evaluate(({ KEY, right }) => {
   check(await p.getAttribute('[data-act="sound"]', 'aria-pressed') === 'false', 'still off after a reload');
   await p.click('[data-act="sound"]'); await p.waitForTimeout(150);
   pl = await plays(p);
-  check(pl.length === 1 && pl[0].name === 'tick', 'switching it back on plays a tick');
+  check(pl.length === 1 && /^(toggle|keyup)$/.test(pl[0].name), 'switching it back on clicks (a key\'s release until the recordings are in): ' + pl.map(x => x.name));
   await p.screenshot({ path: OUT + 'snd_bar.png', clip: { x: 0, y: 0, width: 1280, height: 70 } });
-  // finishing a session that went well plays the arpeggio
+  // back home: a swish; typing in the search: keys, the space bar, a release for a deletion
   await p.click('.bar [data-act="back"]'); await p.waitForTimeout(300);
+  pl = await plays(p);
+  check(pl.length === 1 && pl[0].name === 'back', 'back home: a swish: ' + pl.map(x => x.name));
+  const box = await p.$('input[type="search"]');
+  if (box) {
+    await box.type('ab c', { delay: 40 }); await p.keyboard.press('Backspace'); await p.waitForTimeout(150);
+    pl = (await plays(p)).map(x => x.name);
+    check(pl.join() === 'key,key,space,key,keyup', 'typing in the search: ' + pl.join());
+    await box.fill(''); await p.waitForTimeout(150); await plays(p);
+  } else check(false, 'the search box is there');
+  // footer switches click
+  await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await p.waitForTimeout(100);
+  await p.click('.foot [data-act="sound-toggle"]'); await p.waitForTimeout(80);
+  check((await plays(p)).length === 0, 'the footer switch: off is silent');
+  await p.click('.foot [data-act="sound-toggle"]'); await p.waitForTimeout(80);
+  check((await plays(p)).map(x => x.name).join() === 'toggle', 'and on clicks');
+  // finishing a session that went well plays the arpeggio
   const one = await p.evaluate(() => { const B = JSON.parse(document.getElementById('bank').textContent); return B.quest.q[0]; });
   await p.evaluate(([K, id]) => { const S = JSON.parse(localStorage.getItem(K)); S.session = { topic: 'respiratory-system-diseases', type: 'all', set: null, mode: 'all', shuffle: false, from: 'search', qids: [id], order: [id], idx: 0 }; S.view = 'quiz'; delete S.answers[id]; localStorage.setItem(K, JSON.stringify(S)); }, [KEY, one]);
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);

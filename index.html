@@ -2072,10 +2072,46 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const IOS = /iP(hone|od|ad)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const VIBRATE = !IOS && typeof navigator.vibrate === 'function' && navigator.maxTouchPoints > 0;
     // loudness: the clicks clear but soft, the chimes about 10 dB above them (measured A-weighted)
-    const LEVEL = { tick: .6, untick: .45, nav: .4, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2 };
+    // the Den is tactile (Abi, October 2026): picking an option or typing is a creamy key, the rest is paper. The keys
+    // and the pencil are synthesized below; the paper, cards, swishes and clicks are CC0 recordings in snd/ (SAMPLES,
+    // made by src/pipeline/sounds.py, credits in snd/CREDITS.md), loaded once the sound starts, each played from a few
+    // takes at random. Where a recording can't load (the claude.ai copy), a sound with a recipe falls back to it.
+    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2,
+      key0: .27, key1: .27, key2: .27, key3: .27, keyup0: .4, keyup1: .4, space: .3, cross: .3,
+      flip: .43, back: .39, sheet: .49, shut: .43, crumple: .62, erase: .69, stack: .62, mark: .48, unmark: .39, toggle: .45 };
     const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03 };
-    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1 };
-    const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24] };
+    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
+      flip: 1, back: 1, sheet: 1, shut: 1, crumple: 1, mark: 1, unmark: 1, toggle: 1 };
+    const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24],
+      mark: 10, cross: 6, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
+    // a sound played from one of its takes: the keys (four keys, two releases), and the recordings
+    const VOICES = { tick: ['key0', 'key1', 'key2', 'key3'], type: ['key0', 'key1', 'key2', 'key3'], untick: ['keyup0', 'keyup1'] };
+    const SAMPLES = { nav: 6, flip: 3, back: 3, sheet: 2, shut: 2, crumple: 4, erase: 1, stack: 1, mark: 2, unmark: 1, toggle: 3 };
+    // until its recordings are in, a sound borrows a key's voice (or keeps quiet)
+    const STANDIN = { toggle: 'keyup0', mark: 'key1', unmark: 'keyup1', shut: 'keyup1' };
+    const takes = {}, lastTake = {};
+    let lastAt = 0;
+    // the recordings (96 kB) are fetched once the page has settled, if sound is on, and decoded in an offline context,
+    // which needs no tap (the buffers then play in the real one): even the first page turn has its sound
+    function loadSamples() {
+      if (loadSamples.on || !soundOn) return;
+      let dec = ctx;
+      if (!dec) try { const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext; dec = new OAC(1, 1, 44100); } catch (e) { return; }
+      loadSamples.on = true;
+      for (const [n, k] of Object.entries(SAMPLES)) for (let i = 1; i <= k; i++) {
+        fetch(`snd/${n}${i}.mp3`).then(r => r.ok ? r.arrayBuffer() : Promise.reject(new Error(r.status)))
+          .then(a => new Promise((res, rej) => dec.decodeAudioData(a, res, rej)))
+          .then(buf => {
+            // an MP3 starts with a few ms of silence: start where the sound does
+            const d = buf.getChannelData(0); let pk = 0;
+            for (let j = 0; j < d.length; j++) pk = Math.max(pk, Math.abs(d[j]));
+            let on = 0; while (on < d.length && Math.abs(d[on]) < pk * 0.03) on++;
+            (takes[n] = takes[n] || []).push({ buf, at: Math.max(0, on / buf.sampleRate - 0.002) });
+          }).catch(() => {});
+      }
+    }
+    const settle = () => setTimeout(() => (window.requestIdleCallback || (f => f()))(loadSamples, { timeout: 2000 }), 600);
+    if (document.readyState === 'complete') settle(); else window.addEventListener('load', settle, { once: true });
     let ctx = null, out = null, verb = null, recipes = null, idle = 0;
     const cache = {};
 
@@ -2136,7 +2172,53 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         return buf;
       };
       const C6 = 1046.5;
+      // a creamy linear key (lubed, on foam): a muted tap where the keycap bottoms out, a hollow knock that dies at
+      // once, and the thock of the case under it, its pitch dropping as it hits. Four keys, a little different each.
+      const key = v => {
+        const r = mulberry(31 + v * 13), k = 1 + (r() - 0.5) * 0.09, b = make(0.11);
+        mix(b, lowpass(bandpass(burst(0.005, 0.00045, 41 + v), 1500 * k, 0.7), 2800, 0.7), 0, 2.0);
+        mode(b, 0, 1050 * k, 0.3, 0.004, { att: 0.0004, bend: 1.1, bendT: 0.0015 });
+        mode(b, 0, 600 * k, 0.55, 0.011, { att: 0.0006, bend: 1.06, bendT: 0.002 });
+        mode(b, 0.0005, 330 * k, 0.75, 0.016, { att: 0.0014, bend: 1.3, bendT: 0.005 });
+        mode(b, 0.0005, 165 * k, 0.25, 0.022, { att: 0.0025 });
+        return done(b, 0.9);
+      };
+      // the key coming back up: lighter and higher
+      const keyUp = v => {
+        const r = mulberry(57 + v * 11), k = 1 + (r() - 0.5) * 0.08, b = make(0.06);
+        mix(b, bandpass(burst(0.003, 0.0003, 61 + v), 2400 * k, 0.9), 0, 1.2);
+        mode(b, 0, 900 * k, 0.22, 0.0035, { att: 0.0004 });
+        mode(b, 0, 420 * k, 0.3, 0.007, { att: 0.0008, bend: 0.95, bendT: 0.002 });
+        return done(b, 0.5);
+      };
       return {
+        key0: () => key(0), key1: () => key(1), key2: () => key(2), key3: () => key(3),
+        keyup0: () => keyUp(0), keyup1: () => keyUp(1),
+        // the space bar: deeper, with its stabilizer's wire ticking twice
+        space() {
+          const b = make(0.15);
+          mix(b, lowpass(bandpass(burst(0.006, 0.0006, 71), 1100, 0.7), 2400, 0.7), 0, 2.2);
+          mode(b, 0, 520, 0.4, 0.012, { att: 0.0006 });
+          mode(b, 0.0006, 240, 0.85, 0.024, { att: 0.0016, bend: 1.35, bendT: 0.006 });
+          mode(b, 0.0006, 140, 0.3, 0.032, { att: 0.003 });
+          mix(b, bandpass(burst(0.002, 0.0002, 73), 3000, 1.2), 0.006, 0.5);
+          mix(b, bandpass(burst(0.002, 0.0002, 79), 3300, 1.2), 0.011, 0.3);
+          return done(b, 0.9);
+        },
+        // a pencil struck through a line: graphite catching on the paper's grain, swelling and fading with the stroke
+        cross() {
+          const dur = 0.15, b = make(dur + 0.03), r = mulberry(77), n = new Float32Array(b.length);
+          let g = 1, next = 0;
+          for (let i = 0; i < n.length; i++) {
+            const t = i / sr;
+            if (i >= next) { g = 0.35 + r() * 0.65; next = i + Math.round(sr / (180 + r() * 120)); }
+            n[i] = (r() * 2 - 1) * g * (t < dur ? Math.sin(Math.PI * t / dur) ** 0.8 : 0);
+          }
+          mix(b, bandpass(n, 3600, 0.8), 0, 1);
+          mix(b, bandpass(n, 7000, 1.2), 0, 0.5);
+          mix(b, lowpass(n, 900, 0.7), 0, 0.15);
+          return done(b, 0.5);
+        },
         // the click of a small key, its plastic body ringing for a few ms, a rounded thock under it; tuned to G6
         tick() {
           const b = make(0.05);
@@ -2340,8 +2422,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       out.connect(comp); comp.connect(ctx.destination);
       verb = ctx.createConvolver(); verb.buffer = room(ctx); verb.connect(out);
       recipes = recipesFor(ctx.sampleRate);
-      const rest = Object.keys(LEVEL);
+      const rest = Object.keys(LEVEL).filter(n => recipes[n]);
       const later = () => { const n = rest.shift(); if (!n) return; buffer(n); idle = setTimeout(later, 30); };
+      loadSamples();
       idle = setTimeout(later, 120);
       if (ctx.state !== 'running') ctx.resume().catch(() => {});
       return ctx;
@@ -2364,18 +2447,37 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
     // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
     const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' } };
+    // o.gain scales it (typing is a little quieter than picking)
     function play(name, o = {}) {
       const base = name;   // the haptic follows what happened, whatever the theme's voice for it
       const own = THEME_SOUND[lookNow()]; if (own && own[name] && (name !== 'nav' || !o.rate)) name = own[name];
+      let rate = o.rate || 1;
+      if (VOICES[name]) {
+        // the keys: a different one each time; an option's note only nudges its pitch
+        if (rate !== 1) rate = 1 + (rate - 1) * 0.08;
+        const vs = VOICES[name]; name = vs[Math.floor(Math.random() * vs.length)];
+      }
+      lastAt = Date.now();
       if (soundOn && context()) {
         try {
           const src = ctx.createBufferSource(), g = ctx.createGain();
-          src.buffer = buffer(name);
-          src.playbackRate.value = (o.rate || 1) * (JITTER[name] ? 1 + (Math.random() * 2 - 1) * 0.008 : 1);
-          g.gain.value = LEVEL[name] * (JITTER[name] ? 0.94 + Math.random() * 0.12 : 1);
+          let at = 0;
+          const tk = takes[name];
+          if (tk && tk.length) {
+            let i = Math.floor(Math.random() * tk.length);
+            if (tk.length > 1 && i === lastTake[name]) i = (i + 1) % tk.length;   // never the same take twice in a row
+            lastTake[name] = i; src.buffer = tk[i].buf; at = tk[i].at;
+          } else {
+            if (!recipes[name] && STANDIN[name]) name = STANDIN[name];
+            if (!recipes[name]) throw new Error('not loaded');
+            src.buffer = buffer(name);
+          }
+          src.playbackRate.value = rate * (JITTER[name] ? 1 + (Math.random() * 2 - 1) * (tk ? 0.03 : 0.008) : 1);
+          g.gain.value = LEVEL[name] * (o.gain || 1) * (JITTER[name] ? 0.94 + Math.random() * 0.12 : 1);
+          src.sfx = name;   // which sound it is (the tests read it)
           src.connect(g); g.connect(out);
           if (WET[name]) { const w = ctx.createGain(); w.gain.value = WET[name]; g.connect(w); w.connect(verb); }
-          src.start(ctx.currentTime + (o.delay || 0));
+          src.start(ctx.currentTime + (o.delay || 0), at);
         } catch (e) {}
       }
       if (!o.quiet) buzz(base in BUZZ ? base : name, o.delay);
@@ -2385,7 +2487,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       sound: () => soundOn,
       haptics: () => hapticOn,
       touch: VIBRATE || IOS,
-      setSound(v) { soundOn = v; keep(SOUND_KEY, v); if (v) play('tick', { quiet: true }); },
+      setSound(v) { soundOn = v; keep(SOUND_KEY, v); if (v) { loadSamples(); play('toggle', { quiet: true }); } },
+      // how long ago something played (a screen's page turn stays quiet after another sound)
+      since: () => Date.now() - lastAt,
       setHaptics(v) { hapticOn = v; keep(HAPTIC_KEY, v); if (v) buzz('tick'); }
     };
   })();
@@ -2473,8 +2577,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (!sheet) {
         sheet = document.createElement('div');
         sheet.className = 'acct-sheet lt-sheet app-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-labelledby', 'app-h');
-        sheet.addEventListener('click', e => { const b = e.target.closest('[data-app]'); if (e.target === sheet || b) sheet.hidden = true; });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet && !sheet.hidden) sheet.hidden = true; });
+        const shut = () => { sheet.hidden = true; sfx.play('shut', { quiet: true }); };
+        sheet.addEventListener('click', e => { const b = e.target.closest('[data-app]'); if (e.target === sheet || b) shut(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet && !sheet.hidden) shut(); });
         document.body.appendChild(sheet);
       }
       sheet.innerHTML = `<div class="acct-card plate lt">
@@ -2485,7 +2590,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         <p class="app-note">It opens full screen from its own icon, without the browser around it.</p>
         <div class="row"><button class="btn primary" type="button" data-app="ok">Got it</button></div>
       </div>`;
-      sheet.hidden = false;
+      sheet.hidden = false; sfx.play('sheet', { quiet: true });
       const ok = sheet.querySelector('[data-app="ok"]'); if (ok) ok.focus();
     }
     function install() {
@@ -2977,14 +3082,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && letter && !letter.hidden) closeLetter(); });
         document.body.appendChild(letter);
       }
-      letter._g = g; letter.querySelector('.lt').innerHTML = letterHTML(g); letter.hidden = false;
+      letter._g = g; letter.querySelector('.lt').innerHTML = letterHTML(g); letter.hidden = false; sfx.play('sheet', { quiet: true });
       const f = letter.querySelector('[data-letter="wear"]') || letter.querySelector('.row [data-letter="close"]');
       if (f) try { f.focus({ preventScroll: true }); } catch (e) {}
       usage.track('letter_opened');
     }
     function closeLetter() {
       if (!letter || letter.hidden) return;
-      letter.hidden = true;
+      letter.hidden = true; sfx.play('shut', { quiet: true });
       const g = letter._g; if (g && !S.gifts[g.id]) { S.gifts[g.id] = Date.now(); save(); }
     }
     function noticeGifts() {
@@ -3597,11 +3702,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet && !sheet.hidden) close(); });
         document.body.appendChild(sheet);
       }
+      if (sheet.hidden) sfx.play('sheet', { quiet: true });
       sheet.hidden = false; paint();
       usage.track('account_opened', { signed_in: !!user });
       if (!fb) load().catch(() => {});   // warm up while they read
     }
-    function close() { if (sheet) { sheet.hidden = true; erasing = false; editing = false; msg = ''; mode = 'in'; } reason = ''; pending = null; }
+    function close() { if (sheet) { if (!sheet.hidden) sfx.play('shut', { quiet: true }); sheet.hidden = true; erasing = false; editing = false; msg = ''; mode = 'in'; } reason = ''; pending = null; }
     // the locked features (exam mode, weak spots, quests): a guest gets the sheet, then what they asked for once signed in
     function gate(why, then) {
       if (member()) return false;
@@ -3679,6 +3785,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (!wrong.length) return;
     wrong.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
     S.session = Object.assign({}, sess, { mode: 'mistakes', qids: wrong, order: wrong.slice(), shuffle: false, idx: 0, gain: null, doneSeen: 0 });
+    sfx.play('crumple');
     S.view = 'quiz'; save(); render(true, null, 'nav');
   }
   function restartSession() {
@@ -3786,7 +3893,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (a.correct) flyStars();
     if (shoot) setTimeout(() => shootingStar(shoot === 'comet' ? 'comet' : ''), 500);
   }
-  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('untick'); save(); render(false); }
+  function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('crumple'); save(); render(false); }
 
   // ---------- crossing out and marking ----------
   // Crossing out: an option ruled out is struck through (a right-click, a long press on a phone, or Shift + its letter).
@@ -3818,7 +3925,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       else { const a = S.answers[q.id]; if (a && a.sel.includes(i)) a.sel.splice(a.sel.indexOf(i), 1); }
     }
     if (!crossSeen()) { try { localStorage.setItem(CROSS_SEEN, '1'); } catch (e) {} usage.track('option_crossed_out'); }
-    sfx.play('untick', { rate: 0.8 });
+    sfx.play(crossedIn(box, q.id).includes(i) ? 'cross' : 'untick');
     save(); render(false);
   }
   function markTarget() {
@@ -3829,7 +3936,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function markToggle() {
     const q = markTarget(); if (!q) return;
     if (S.marks[q.id]) delete S.marks[q.id]; else S.marks[q.id] = Date.now();
-    sfx.play(S.marks[q.id] ? 'tick' : 'untick', { rate: 1.2 });
+    sfx.play(S.marks[q.id] ? 'mark' : 'unmark');
     usage.track('question_marked', { on: !!S.marks[q.id], exam: S.view === 'exam' });
     save(); render(false);
   }
@@ -3865,7 +3972,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function toggleShuffle() {
     const sess = S.session; const cur = sess.qids[sess.idx];
     sess.shuffle = !sess.shuffle;
-    sfx.play(sess.shuffle ? 'tick' : 'untick');
+    sfx.play('toggle');
     if (sess.shuffle) { sess.qids = shuffled(sess.order); sess.idx = 0; }
     else { sess.qids = sess.order.slice(); sess.idx = Math.max(0, sess.qids.indexOf(cur)); }
     save(); render(true, null, 'next');
@@ -3926,6 +4033,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const key = screenKey();
     const changed = lastKey !== null && key !== lastKey;
     lastKey = key;
+    if (changed && (vt === 'nav' || vt === 'back') && sfx.since() > 150) sfx.play(vt === 'nav' ? 'flip' : 'back', { quiet: true });
     const run = () => { paint(scrollTop, focusWhat); if (after) after(); };
     const animate = changed && vt && !reduceMotion();
     if (animate && document.startViewTransition) {
@@ -4557,7 +4665,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (S.view === 'exam' || !auto) {
       const t = document.getElementById('toast'); if (t) t.classList.remove('on');   // no "five minutes left" over the mark
       S.view = 'exam'; examCountUp = true; save();
-      sfx.play(e.n20 >= 10 ? 'finish' : 'nav');
+      sfx.play('stack');   // the papers squared on the desk, then the mark
+      if (e.n20 >= 10) sfx.play('finish', { delay: 0.45, quiet: true });
       render(true, null, 'nav');
     } else {
       save(); toast('Time’s up: your exam was handed in');
@@ -5228,7 +5337,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const a = S.answers[q.id] || (S.answers[q.id] = { sel: [], checked: false });
     if (a.checked) return;
     if (a.sure === v) delete a.sure; else a.sure = v;   // a second tap clears it
-    sfx.play('tick', { quiet: true }); save();
+    sfx.play('toggle', { quiet: true }); save();
     app.querySelectorAll('.sure-b').forEach(b => b.setAttribute('aria-pressed', String(a.sure === (b.dataset.sure === '1'))));
   }
   function verdictNote(q, a) {
@@ -5449,6 +5558,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope === 'quest' ? 'Reset this quest' : 'Reset this module'}</button>`;
   }
   function doReset(scope) {
+    sfx.play('erase');
     // the moon stays: it counts nights studied, not answers
     if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; S.exam = null; S.examLog = []; S.clean = {}; S.sure = {}; S.comets = {}; examStop(); }
     else {
@@ -7202,14 +7312,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (e.target.closest('a[data-ask]')) { usage.track('ask_labubu'); return; }
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
-    if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; save(); render(false); return; }
+    if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; sfx.play('toggle', { quiet: true }); save(); render(false); return; }
     if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
     if (t.dataset.start) { startSession(t.dataset.start, null); return; }
     if (t.dataset.set) { startSession(S.topicId, t.dataset.set); return; }
     if (t.dataset.lec) { startLecture(t.dataset.lec); return; }
     if (t.dataset.sure !== undefined) { setSure(t.dataset.sure === '1'); return; }
     if (t.dataset.by) {
-      if (S.topicBy !== t.dataset.by) { S.topicBy = t.dataset.by === 'lecture' ? 'lecture' : 'set'; sfx.play('nav'); usage.track('module_view', { by: S.topicBy, module: S.topicId }); save(); render(false, null, 'next'); }
+      if (S.topicBy !== t.dataset.by) { S.topicBy = t.dataset.by === 'lecture' ? 'lecture' : 'set'; sfx.play('toggle'); usage.track('module_view', { by: S.topicBy, module: S.topicId }); save(); render(false, null, 'next'); }
       return;
     }
     if (t.dataset.opt !== undefined) { if (Date.now() - crossedAt < 700) return; if (S.view === 'exam') examToggle(+t.dataset.opt); else toggle(+t.dataset.opt); return; }
@@ -7233,7 +7343,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (t.dataset.cluster !== undefined) { practiceCluster(+t.dataset.cluster, +t.dataset.rank || 1); return; }
     if (t.dataset.qtopic !== undefined) { startQuest(+t.dataset.qtopic, false, 'go'); return; }
     if (t.dataset.examSet) { openExam({ kind: 'set', id: t.dataset.examSet }); return; }
-    if (t.dataset.examN) { S.examN = +t.dataset.examN; sfx.play('tick'); save(); render(false); return; }
+    if (t.dataset.examN) { S.examN = +t.dataset.examN; sfx.play('toggle'); save(); render(false); return; }
     if (t.dataset.weakmod) { S.weakMod = t.dataset.weakmod; sfx.play('nav'); save(); render(false, null, 'next'); return; }
     if (t.dataset.diag) { openDiag(t.dataset.diag); return; }
     if (t.dataset.diagGo) { untriedTopic(t.dataset.diagGo); return; }
@@ -7283,6 +7393,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         introPref = v;
         try { localStorage.setItem(INTRO_KEY, v ? 'on' : 'off'); } catch (err) {}
         t.setAttribute('aria-checked', String(v)); t.textContent = v ? 'on' : 'off';
+        sfx.play('toggle', { quiet: true });
         break;
       }
       case 'intro-replay': replayIntro(); break;
@@ -7295,7 +7406,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         break;
       }
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
-      case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; break;
+      case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
       case 'stars': practiceStars(curQ().id); break;
       case 'exam': openExam(QUEST ? { kind: 'quest', id: QUEST.id } : null); break;
@@ -7327,6 +7438,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   let saveTimer = null, searchStatT = null;
   app.addEventListener('input', e => {
     if (e.target.id !== 'q') return;
+    const del = /^delete/.test(e.inputType || ''), last = e.target.value.slice(-1);
+    sfx.play(del ? 'untick' : last === ' ' ? 'space' : 'type', { quiet: true, gain: 0.8 });
     S.q = e.target.value; S.aspect = null; kwAll = false;
     updateSearch();
     clearTimeout(saveTimer); saveTimer = setTimeout(save, 400);
@@ -7427,11 +7540,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   let lbReturn = null;
   function openLightbox(src) {
     lbReturn = document.activeElement;
-    lbImg.src = src; lb.classList.remove('actual'); lb.hidden = false;
+    lbImg.src = src; lb.classList.remove('actual'); lb.hidden = false; sfx.play('sheet', { quiet: true });
     document.getElementById('lb-close').focus();
   }
   function closeLightbox() {
-    lb.hidden = true; lbImg.removeAttribute('src');
+    lb.hidden = true; lbImg.removeAttribute('src'); sfx.play('shut', { quiet: true });
     if (lbReturn && lbReturn.focus) lbReturn.focus({ preventScroll: true });
   }
   document.getElementById('lb-close').addEventListener('click', closeLightbox);
