@@ -88,6 +88,8 @@ const errors = [];
   await p.click('[data-act="exam-handin-yes"]'); await p.waitForTimeout(500);
   D = await docs(p); doc = D['duels/' + d1];
   check(doc.p.u2.end > 0 && doc.p.u2.n20 === 20 && Object.keys(doc.p.u2.picks).length === 20, 'handed in: my mark and picks go up (20/20)');
+  await p.waitForTimeout(1800);
+  check(/A gift for your first duel: the Blood moon/.test(await p.evaluate(() => (document.querySelector('.toast') || {}).textContent || '')), 'my first duel handed in: the Blood moon, a gift');
   check(!!(await p.$(`[data-duel="${d1}"]`)), 'the results offer the duel');
   await p.click(`[data-duel="${d1}"]`); await p.waitForTimeout(300);
   check(/You handed in: 20\/20/.test(await txt(p, '.dl-acts-row')) && !(await p.$('.dl-grid')) === false, 'its page: waiting for Amro, and my answers question by question');

@@ -295,7 +295,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Themes (cosmetics, "looks" in the code)
 
 - Earned with real study milestones (Abi's choice), never by volume: Codex = one lecture at Solid (15/20 or more on its
-  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`); Golden phase = a golden exam, 16/20
+  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`) or a first duel; Golden phase = a golden exam, 16/20
   or more in exam mode on 20 questions or more (`GOLD_MARK`, `GOLD_N`, from `S.examLog`). `themeGoal(id)` gives done,
   progress, the requirement and where you are. Wearing needs an account (`canWear`: signed in, or not on GitHub
   Pages); the account named Labubu (`LOOKS_FOR`, Abi's) has every theme. A theme not earned is never worn, even if
@@ -449,6 +449,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   their own entry, updated by a player only in their own entry and own tag (room checked), `go` by the maker only;
   colours written only by a player of the duel named in the write, for themselves or to free it, and only taken from
   someone who played that duel, a free one, or a faded one.
+- The first duel played to the end (handed in; `S.duels[id].h`, synced) is the Labubu's gift: the Blood moon theme
+  (`firstDuel()` in `themeGoal('blood')`), with a toast; the news sheet says so.
 - Test: duel.js (the fake Firestore has `arrayUnion` and array queries).
 - News sheet (`NEWS`, `noticeNews`): "Duels and parties" pops once per device on the homepage (`efm3-news` = the news id),
   after the intro, never over an exam or another sheet; skipped in automated browsers unless `window.__newsTest`. For the

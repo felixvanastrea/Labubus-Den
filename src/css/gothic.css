@@ -1695,3 +1695,5 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .news-l { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
 .news-l b { color: var(--ink); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .news-dots .dl-dot { animation: none; } }
+.news-l .news-gift { color: var(--ink); }
+.news-l .news-gift b { color: #e2475a; }

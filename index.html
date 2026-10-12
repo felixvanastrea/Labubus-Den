@@ -1834,6 +1834,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .news-l { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--ink-2); font-size: 1.06rem; line-height: 1.5; }
 .news-l b { color: var(--ink); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .news-dots .dl-dot { animation: none; } }
+.news-l .news-gift { color: var(--ink); }
+.news-l .news-gift b { color: #e2475a; }
 </style>
 </head>
 <body>
@@ -3025,6 +3027,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     return best;
   }
   // done: earned; p: how far along (0 to 1); req: what it asks; now: where you are
+  // a duel played to the end (handed in): S.duels[id].h, synced
+  const firstDuel = () => Object.values(S.duels || {}).some(e => e && e.k === 'duel' && e.h);
   function themeGoal(id) {
     if (id === 'codex') {
       const b = bestDiag();
@@ -3032,8 +3036,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         now: b === null ? `No lecture diagnosed yet: try ${DIAG_MIN} questions from one lecture to open its diagnostic.` : `Your best lecture: ${fmtPts(b)}/20.` };
     }
     if (id === 'blood') {
-      const m = S.moon || {}, done = (m.full | 0) > 0;
-      return { done, p: done ? 1 : (m.n | 0) / MOON_FULL, req: `Complete a full moon: ${MOON_FULL} study nights of ${MOON_DAY} questions or more.`,
+      // or a gift for your first duel (Abi, 12 October 2026)
+      const m = S.moon || {}, done = (m.full | 0) > 0 || firstDuel();
+      return { done, p: done ? 1 : (m.n | 0) / MOON_FULL, req: `Complete a full moon (${MOON_FULL} study nights of ${MOON_DAY} questions or more), or play your first duel.`,
         now: done ? '' : `Your moon: night ${fmtN(m.n | 0)} of ${MOON_FULL}.` };
     }
     if (id === 'klimt') {
@@ -4727,6 +4732,15 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     // handed in: my mark and picks go up (later, if the account isn't awake yet)
     function duelHanded(ex) {
+      // the first duel played to the end: the Labubu's gift, the Blood moon
+      const d = duels[ex.duel], kind = d ? d.kind : String(ex.title || '').startsWith('Party') ? 'party' : 'duel';
+      const had = canWear('blood');
+      S.duels[ex.duel] = Object.assign({ t: Date.now(), k: kind, ti: d ? d.title : ex.title }, S.duels[ex.duel] || {}, { h: 1 });
+      if (kind === 'duel' && !had && canWear('blood')) {
+        if (!S.themesSeen.includes('blood')) S.themesSeen.push('blood');
+        setTimeout(() => toast('A gift for your first duel: the Blood moon theme is yours. Wear it from Themes on the homepage.'), 1600);
+        usage.track('duel_gift');
+      }
       const picks = {}; for (const [k, v] of Object.entries(ex.picks || {})) if (Array.isArray(v) && v.length) picks[k] = v.slice();
       const s = examSummary(ex);
       S.duelSend[ex.duel] = { at: ex.start, end: ex.handed, n: Object.keys(picks).length, pts: s.points, n20: s.n20, used: s.used, picks };
@@ -7053,6 +7067,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       <ul class="news-l">
         <li><b>A duel</b> is one on one. Win it and your star in the class sky takes a colour, one of seven named after real stars. Win again to keep it, or it fades back after a week.</li>
         <li><b>A party</b> is up to 8 of you, for a ranking.</li>
+        <li class="news-gift">Play your first duel and the Labubu gifts you the exclusive <b>Blood moon</b> theme.</li>
         <li>Play within 24 hours, or <b>live</b>, all starting together. Pick people from tonight’s sky or by their name: they get the invitation on the Den, and you can share the link.</li>
       </ul>
       <div class="row"><button class="btn primary" type="button" data-news="go">${acct.member() ? ICON.hourglass : LOCK}Challenge someone ${ICON.next}</button><button class="btn" type="button" data-news="see">See the colours</button><button class="btn quiet" type="button" data-news="close">Later</button></div>
