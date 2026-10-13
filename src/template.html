@@ -24,6 +24,7 @@
   </defs>
 </svg>
 <canvas id="sky" aria-hidden="true"></canvas>
+<div class="tod" aria-hidden="true"></div>
 <div class="paper" aria-hidden="true"></div>
 <div class="km-bg" aria-hidden="true"></div>
 <div id="app"></div>
@@ -1783,9 +1784,108 @@
       const hide = !skyHidden(); store(HIDE, hide ? '1' : null);
       usage.track('sky_star', { hidden: hide });
       if (fb && user) { try { const b = fb.f.writeBatch(db); b.set(ref(), { skyHide: hide }, { merge: true }); b.commit().catch(() => {}); } catch (e) {} }
-      if (hide) cls.wrote = 'd' + dayKey();   // take it down even if this device didn't put it up
+      if (hide) { cls.wrote = 'd' + dayKey(); unhere(); }   // take it down even if this device didn't put it up
       redrawSky(); await classSync().catch(() => {});
     }
+
+    // ---- who's here now: classmates studying right now, as fireflies over the homepage ----
+    // here/d{day} = {uid: {nm, t: last seen (server time), m: what they're on, v: quiz | exam}}, one doc a day. Someone
+    // studying (a question checked, an exam answer ticked) writes their own entry, at most every 3 minutes (30 s when they
+    // switch to something else). The homepage reads the doc when it opens and every 2 minutes while it shows: a read
+    // each time, never a live watch, so it stays cheap on the free plan. Whoever was seen in the last 6 minutes is a
+    // firefly. A hidden star ("Hide my star") isn't here either. If the rules don't have "here" yet, nothing shows.
+    const HERE_GAP = 180000, HERE_SWITCH = 30000, HERE_FRESH = 360000, HERE_READ = 120000;
+    const hr = { at: 0, sig: '', doc: null, day: '', readAt: 0, busy: false, no: false, noRead: false, timer: 0, raf: 0 };
+    function beat(m, v) {
+      if (!here || state !== 'in' || !me.key || !fb || !user || skyHidden() || hr.no) return;
+      const day = 'd' + dayKey(), now = Date.now(), sig = day + '|' + m + '|' + v;
+      if (now - hr.at < (sig === hr.sig ? HERE_GAP : HERE_SWITCH)) return;
+      hr.at = now; hr.sig = sig;
+      const entry = { nm: me.name, t: fb.f.serverTimestamp(), m: String(m || '').slice(0, 60), v: v === 'exam' ? 'exam' : 'quiz' };
+      fb.f.setDoc(fb.f.doc(db, 'here', day), { [user.uid]: entry }, { merge: true })
+        .then(() => { if (hr.doc && hr.day === day) hr.doc[user.uid] = Object.assign({}, entry, { t: Date.now() }); })
+        .catch(() => { hr.no = true; });
+    }
+    async function unhere() {
+      hr.sig = ''; hr.at = 0;
+      if (!fb || !user) return;
+      try { await fb.f.setDoc(fb.f.doc(db, 'here', 'd' + dayKey()), { [user.uid]: fb.f.deleteField() }, { merge: true }); } catch (e) {}
+      if (hr.doc) delete hr.doc[user.uid];
+    }
+    async function loadHere(force) {
+      if (!here || !skyOK() || hr.busy || document.hidden) return;
+      const day = 'd' + dayKey();
+      if (!force && hr.day === day && Date.now() - hr.readAt < HERE_READ) return;
+      hr.busy = true;
+      try { const snap = await fb.f.getDoc(fb.f.doc(db, 'here', day)); hr.doc = snap.exists() ? snap.data() || {} : {}; hr.day = day; hr.noRead = false; }
+      catch (e) { hr.noRead = true; }
+      finally { hr.busy = false; hr.readAt = Date.now(); }
+      paintHere();
+    }
+    function hereList() {
+      if (!hr.doc || hr.noRead || hr.day !== 'd' + dayKey()) return [];
+      const now = Date.now(), out = [];
+      for (const [uid, v] of Object.entries(hr.doc)) {
+        if (!v || typeof v !== 'object' || !v.nm || (user && uid === user.uid)) continue;
+        const t = millis(v.t); if (!t || now - t > HERE_FRESH) continue;
+        out.push({ uid, nm: String(v.nm).slice(0, 24), m: String(v.m || '').slice(0, 60), v: v.v === 'exam' ? 'exam' : 'quiz', t });
+      }
+      return out.sort((a, b) => a.t - b.t).slice(-24);
+    }
+    const doing = f => f.v === 'exam' ? `in an exam${f.m ? `: ${f.m}` : ''}` : f.m ? `on ${f.m}` : 'studying';
+    function hereLine(list) {
+      if (!list.length) return '';
+      const nm = list.slice().reverse().map(f => `<b>${esc(f.nm)}</b>`), k = list.length;
+      const who = k === 1 ? `${nm[0]} is` : k === 2 ? `${nm[0]} and ${nm[1]} are` : k === 3 ? `${nm[0]}, ${nm[1]} and ${nm[2]} are` : `${nm[0]}, ${nm[1]} and ${fmtN(k - 2)} others are`;
+      return `<span class="here-dot" aria-hidden="true"></span><span>${who} studying right now</span>`;
+    }
+    const fliesHTML = () => here ? '<div class="flies" id="flies"></div>' : '';
+    const hereLineHTML = () => here ? `<p class="here-line" id="here-line"${hereList().length ? '' : ' hidden'}>${hereLine(hereList())}</p>` : '';
+    // each firefly has its own place (from its uid) away from the buttons, and wanders around it
+    function paintHere() {
+      const box = document.getElementById('flies'), line = document.getElementById('here-line');
+      if (!box) return;
+      const list = hereList();
+      if (line) { const h = hereLine(list); if (line.innerHTML !== h) line.innerHTML = h; line.hidden = !list.length; }
+      const keep = new Set(list.map(f => f.uid));
+      box.querySelectorAll('.fly').forEach(el => { if (!keep.has(el.dataset.uid)) { el.classList.add('gone'); setTimeout(() => el.remove(), 900); } });
+      for (const f of list) {
+        let el = box.querySelector(`.fly[data-uid="${CSS.escape(f.uid)}"]`);
+        const label = `${f.nm}, ${doing(f)}`;
+        if (!el) {
+          let x = 6 + hash(f.uid, 1) * 88, y = 20 + hash(f.uid, 2) * 66;
+          if (x > 56 && y > 62) y -= 44;   // not over the main button
+          el = document.createElement('button'); el.type = 'button'; el.className = 'fly new'; el.dataset.uid = f.uid;
+          el.style.left = x.toFixed(1) + '%'; el.style.top = y.toFixed(1) + '%';
+          el.innerHTML = '<i aria-hidden="true"></i><span class="fly-tip" role="tooltip"></span>';
+          el.addEventListener('click', () => { el.classList.toggle('on'); usage.track('firefly_opened'); });
+          box.appendChild(el); setTimeout(() => el.classList.remove('new'), 60);
+        }
+        el.setAttribute('aria-label', label);
+        el.querySelector('.fly-tip').innerHTML = `<b>${esc(f.nm)}</b><span>${esc(doing(f))}</span>`;
+      }
+      if (list.length && !hr.raf && !reduceMotion()) hr.raf = requestAnimationFrame(drift);
+    }
+    function drift(now) {
+      const box = document.getElementById('flies');
+      if (!box || !box.firstChild || document.hidden) { hr.raf = 0; return; }
+      hr.raf = requestAnimationFrame(drift);
+      if (now - (drift.last || 0) < 33) return; drift.last = now;
+      const t = now / 1000;
+      box.querySelectorAll('.fly').forEach(el => {
+        const u = el.dataset.uid, a = hash(u, 3) * 6.28, b = hash(u, 4) * 6.28, s1 = .11 + hash(u, 5) * .1, s2 = .23 + hash(u, 6) * .14;
+        const x = Math.sin(t * s1 + a) * 46 + Math.sin(t * s2 * 1.7 + b) * 16, y = Math.cos(t * s1 * .8 + b) * 28 + Math.sin(t * s2 + a) * 12;
+        const glow = .35 + .65 * Math.pow(.5 + .5 * Math.sin(t * (.9 + hash(u, 7) * .8) + a), 2);
+        el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`; el.style.setProperty('--glow', glow.toFixed(2));
+      });
+    }
+    // the homepage asks again every 2 minutes while it shows
+    function hereUp() {
+      if (!here) return;
+      paintHere(); loadHere();
+      if (!hr.timer) hr.timer = setInterval(() => { if (S.view === 'home' && !document.hidden) loadHere(); }, 30000);
+    }
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && S.view === 'home') { loadHere(); paintHere(); } });
 
     // ---- sparks: a little light sent from one classmate's star to another's, one per person per night ----
     // sparks/{d}_{to}_{from} = {d, to, from, nm, k, t}: written once by the sender, under their registered name, to someone
@@ -2552,6 +2652,7 @@
         for (const w of ['from', 'to']) { const qs = await f.getDocs(f.query(f.collection(db, 'sparks'), f.where(w, '==', user.uid))); qs.docs.forEach(d => { b.delete(f.doc(db, 'sparks', d.id)); n++; }); }
         if (n) await b.commit();
       } catch (e) {}
+      await unhere();
       try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
       catch (e) { msg = why(e); paint(); listen(); return; }
       try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
@@ -3248,7 +3349,8 @@
       classLine, paintPicks, warm: mod => { if (here && state === 'in') loadStats(mod); }, skyHTML, toggleSky, sendSpark,
       skyFocus: (uid, pin, kb) => skyView.focusStar(uid, pin, kb), skyBlur: uid => skyView.blur(uid),
       duelsHTML, renderDuel, openChallenge, duelAccept, duelDecline, duelPlay, duelGo, duelHanded, duelProgress, rematch, duelRunHTML,
-      duelCopy: () => copyLink(duelURL(S.duelId)), duelShare: () => shareLink(S.duelId), duelCount: () => Object.keys(duels).length };
+      duelCopy: () => copyLink(duelURL(S.duelId)), duelShare: () => shareLink(S.duelId), duelCount: () => Object.keys(duels).length,
+      first: () => (user || read(NAME)) ? (me.name || read(NAME) || '') : '', beat, fliesHTML, hereLineHTML, hereUp };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -3407,6 +3509,8 @@
     render(false, 'verdict');
     justChecked = false; xpGain = null; moonGain = null;
     if (a.correct) flyStars();
+    alive.react(a.correct ? (streak && streak % 7 === 0 ? 'streak' : 'right') : a.sel.some(i => q.answer.includes(i)) ? 'partial' : 'wrong');
+    acct.beat((TOPIC.get(q.topic) || {}).name || '', 'quiz');
     if (shoot) setTimeout(() => shootingStar(shoot === 'comet' ? 'comet' : ''), 500);
   }
   function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('crumple'); save(); render(false); }
@@ -3576,6 +3680,8 @@
       }
     }
     if (scrollTop) window.scrollTo(0, 0);
+    alive.mount(); breathe.after();
+    if (S.view === 'home') { skyclock.placeMoon(); acct.hereUp(); }
   }
 
   function typeTabs() {
@@ -4115,6 +4221,7 @@
     sel.sort((x, y) => x - y);
     if (sel.length) S.exam.picks[q.id] = sel; else delete S.exam.picks[q.id];
     if (S.exam.duel) acct.duelProgress();
+    acct.beat(S.exam.title || 'an exam', 'exam');
     sfx.play(k === -1 ? 'tick' : 'untick', { rate: PENTA[i % PENTA.length] });
     const back = k === -1 && uncross(S.exam.cross, q.id, i);
     save();
@@ -4305,7 +4412,7 @@
       : `<div class="actions">
           <button class="btn" type="button" data-act="exam-prev" ${ex.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
           ${markBtn(q)}
-          <span class="grow"></span>
+          <span class="grow">${alive.buddyHTML()}</span>
           <button class="btn primary" type="button" data-act="exam-next">${last ? 'Hand in' : `Next ${ICON.next}`}</button>
         </div>`;
     app.innerHTML = `
@@ -4939,8 +5046,9 @@
     const cards = BANK.topics.map((t, i) => archCard(t, i)).join('');
     app.innerHTML = `
       <header class="masthead wrap stage">
+        ${skyclock.moonHTML()}${acct.fliesHTML()}
         <nav class="topnav" aria-label="Site">
-          <button class="logo" type="button" data-act="top" aria-label="Labubu’s Den, back to top"><svg class="lb" aria-hidden="true" focusable="false"><use href="#labubu"/></svg>Labubu’s Den</button>
+          <button class="logo" type="button" data-act="top" aria-label="Labubu’s Den, back to top">${alive.svg('nav')}Labubu’s Den</button>
           <div class="navlinks">
             <button type="button" data-act="goto-modules">Modules</button>
             <button type="button" data-act="repeats">Most repeated</button>
@@ -4955,12 +5063,12 @@
         </nav>
         <div class="hero">
           ${astrolabeSVG()}${lookNow() === 'gothic' ? '' : discHTML(lookNow())}
-          <p class="caption rise-in" style="--d:0">An archive of past EFM3 exam questions, sorted by module and by exam.</p>
+          <p class="caption rise-in" style="--d:0"><span class="greet" data-greet>${esc(skyclock.greet())}</span>An archive of past EFM3 exam questions, sorted by module and by exam.</p>
           <ul class="meta mono rise-in" style="--d:1">
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
           </ul>
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
-          <div class="hero-cta rise-in" style="--d:3">${cta}</div>
+          <div class="hero-cta rise-in" style="--d:3">${cta}${acct.hereLineHTML()}</div>
         </div>${lookNow() === 'codex' ? codexStripHTML() : ''}
       </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'klimt' ? meadowHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
@@ -5058,6 +5166,7 @@
       ${acct.here ? `<p>Account: <button class="foot-btn" type="button" data-act="account">${esc(acct.label())}</button></p>` : ''}
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
+      ${reduceMotion() ? '' : `<p>Stardust: <button class="foot-btn" type="button" role="switch" aria-checked="${breathe.dustOn()}" aria-label="Stardust behind the cursor" data-act="dust-toggle">${breathe.dustOn() ? 'on' : 'off'}</button> · The Labubu under the questions: <button class="foot-btn" type="button" role="switch" aria-checked="${alive.buddyOn()}" aria-label="The Labubu under the questions" data-act="buddy-toggle">${alive.buddyOn() ? 'on' : 'off'}</button></p>`}
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       ${app_.slot('foot')}
@@ -5400,7 +5509,7 @@
         <div class="actions">
           <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
           ${markBtn(q)}
-          <span class="grow"></span>
+          <span class="grow">${alive.buddyHTML()}</span>
           <button class="btn primary" type="button" data-act="primary" ${primaryDisabled ? 'disabled' : ''}>${primaryLabel}</button>
         </div>
         <p class="kbd-hint">Keys: A–E to pick, Shift + a letter to cross it out, M to mark, Enter to check or go on, ← → to move</p>
@@ -6235,6 +6344,7 @@
   }
   function paintHome() { paintTitle(); drawMilky(); drawVortex(); }
 
+  let SKY_DIM = 1;   // the stars by day are dimmer (skyclock)
   const sky = (() => {
     const c = document.getElementById('sky');
     if (!c || !c.getContext) return { start() {}, resize() {} };
@@ -6272,7 +6382,7 @@
         const s = stars[i], [x, y] = pos(s);
         if (y < -4 || y > H + 4) continue;
         if (PAL) ctx.fillStyle = PAL[i % PAL.length];
-        ctx.globalAlpha = s.a * (.62 + .38 * Math.sin(t * s.s + s.p));
+        ctx.globalAlpha = s.a * (.62 + .38 * Math.sin(t * s.s + s.p)) * SKY_DIM;
         if (s.r > 1) { ctx.beginPath(); ctx.arc(x, y, s.r, 0, 6.2832); ctx.fill(); }
         else ctx.fillRect(x, y, s.r * 1.5, s.r * 1.5);
       }
@@ -6312,6 +6422,333 @@
     });
     return { start, resize: () => { if (!running) return; resize(); if (reduceMotion()) draw(0); },
       tint: () => { if (!running) return; tint(); if (reduceMotion()) draw(0); } };
+  })();
+
+  // ---------- the Den, alive ----------
+  // Abi, 13 October 2026: "make the Den feel more alive". Four things:
+  // - The Labubu wakes up (alive): the head in the top bar, and the one peeking up between the buttons under a question,
+  //   blink, follow the cursor or a finger with their eyes, close them happily at a right answer, wince at a wrong one,
+  //   look down at a half-right one, doze off (z's) after DOZE without a touch, and are sleepy after midnight. A tap
+  //   on the one under the question makes it giggle. The footer switch "The Labubu under the questions" takes that one away.
+  // - The sky follows the clock (skyclock): the sun's real height over Casablanca gives the time of day (day, dusk,
+  //   night, first light): a glow low in the sky at dusk and dawn, the stars dimmer by day. The real moon hangs over
+  //   the homepage where it is in the sky, in its real phase, and the greeting at the top changes with the hour.
+  // - Everything breathes (breathe): stardust trails the cursor or a finger (footer switch "Stardust"), a soft light
+  //   follows the cursor over the cards, the astrolabe and the module windows lean toward it, their stars twinkle.
+  // - Who's here now (acct, "here"): classmates studying right now drift as fireflies over the homepage's masthead.
+  // Reduced motion: no blinking, following, trail, leaning or drifting; the Labubu's faces still change.
+  const alive = (() => {
+    // the eyes of Abi's Labubu (src/labubu.svg): the white of each eye, its pupil and the glint, from the face's
+    // shapes. The lids, the happy and the wincing eyes are drawn over the left eye; the right one is 168.1 units over.
+    const EYE = [
+      { sc: 'M369.9,640.7c-6.4-11-8.9-24.9-7.1-39.1c2.9-22.5,16.7-41.4,33.7-46.4c9.2,4.1,21,8.3,32.9,9.5c10.5,11.1,15.5,29.1,13.2,47.2c-3.7,29-24.7,50.4-46.7,47.5C385.4,658.1,376.2,651.4,369.9,640.7z',
+        pu: 'M398.9,650.3c17.4,2.2,33.8-14.3,36.7-36.9c2.9-22.6-8.8-42.7-26.2-45c-17.4-2.2-33.8,14.3-36.7,36.9C369.9,627.9,381.6,648.1,398.9,650.3z',
+        gl: 'M396.3,602.9c5.2,0,9.4-4.2,9.4-9.4s-4.2-9.4-9.4-9.4c-5.2,0-9.4,4.2-9.4,9.4S391.1,602.9,396.3,602.9z' },
+      { sc: 'M547.1,564.7c11.9-1.2,23.7-5.4,32.9-9.5c17,5.1,30.8,24,33.7,46.4c1.8,14.2-0.7,28.1-7.1,39.1c-6.3,10.7-15.5,17.4-26,18.7c-1.3,0.2-2.6,0.3-3.9,0.3c-20.5,0-39.2-20.5-42.7-47.8C531.6,593.7,536.6,575.8,547.1,564.7z',
+        pu: 'M567,568.5c-17.4,2.2-29.1,22.4-26.2,45c2.9,22.6,19.4,39.1,36.7,36.9c17.4-2.2,29.1-22.4,26.2-45C600.8,582.8,584.4,566.3,567,568.5z',
+        gl: 'M580.2,602.9c5.2,0,9.4-4.2,9.4-9.4s-4.2-9.4-9.4-9.4c-5.2,0-9.4,4.2-9.4,9.4S575,602.9,580.2,602.9z' }];
+    const DOZE = 100000, BUDDY = 'efm3-buddy';
+    let n = 0;
+    function svg(cls = '') {
+      const id = 'lbe' + (++n);
+      const eye = (e, i) => `<g clip-path="url(#${id}-${i})"><path class="lbw" d="${e.sc}"/><g class="lbp"><path class="lbd" d="${e.pu}"/><path class="lbw" d="${e.gl}"/></g><g transform="translate(${i ? 168.1 : 0} 0)"><g class="lid-t"><rect class="lbw" x="350" y="430" width="110" height="118"/><path class="lash" d="M350 548Q404 562 458 548"/></g><rect class="lid-b lbw" x="350" y="666" width="110" height="110"/><path class="lbx joy" d="M380 630Q404 586 428 630"/><path class="lbx ouch" d="${i ? 'M426 590L382 611L426 632' : 'M382 590L426 611L382 632'}"/></g></g>`;
+      return `<svg class="lb lb-live ${cls}" viewBox="245 187 494 618" aria-hidden="true" focusable="false"><defs>${EYE.map((e, i) => `<clipPath id="${id}-${i}"><path d="${e.sc}"/></clipPath>`).join('')}</defs><use href="#labubu" x="245" y="187" width="494" height="618"/>${EYE.map(eye).join('')}<g class="lbz"><text x="690" y="380">z</text><text x="760" y="300">z</text><text x="840" y="210">z</text></g></svg>`;
+    }
+    const buddyOn = () => { try { return localStorage.getItem(BUDDY) !== 'off'; } catch (e) { return true; } };
+    // the one under a question: peeking up from behind the buttons, its paws on the ledge
+    const PAW = '<svg class="paws" viewBox="0 0 64 12" aria-hidden="true" focusable="false"><path d="M9 12V7.5a6 6 0 0 1 12 0V12M43 12V7.5a6 6 0 0 1 12 0V12"/><path class="pc" d="M13 6.4v2.4M17 6.4v2.4M47 6.4v2.4M51 6.4v2.4"/></svg>';
+    const buddyHTML = () => buddyOn() ? `<span class="buddy" data-buddy title="The Labubu"><span class="bd-in">${svg('bd')}</span>${PAW}</span>` : '';
+    const all = () => document.querySelectorAll('svg.lb-live');
+    let mood = '', moodT = 0, asleep = false, last = Date.now(), px = null, py = null, raf = 0, blinkT = 0, lookT = 0, lastView = '';
+    const late = () => new Date(window.__skyNow || Date.now()).getHours() < 5;
+    const rest = () => asleep ? 1 : mood === 'down' ? .32 : late() ? .3 : 0;
+    function lids(v, slow) { for (const s of all()) { s.classList.toggle('slow', !!slow); s.style.setProperty('--lid', v); } }
+    function faces() {
+      for (const s of all()) { s.classList.toggle('joy', mood === 'joy'); s.classList.toggle('ouch', mood === 'ouch'); s.classList.toggle('zz', asleep); }
+    }
+    function aim() {
+      raf = 0;
+      for (const s of all()) {
+        let x = 0, y = 0;
+        if (mood === 'down') y = 5;
+        else if (px !== null && !reduceMotion()) {
+          const r = s.getBoundingClientRect(); if (!r.width) continue;
+          const dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height * .68), d = Math.hypot(dx, dy) || 1, f = d / (d + 70);
+          x = dx / d * f * 6.5; y = dy / d * f * 5.5;
+        }
+        s.style.setProperty('--px', x.toFixed(2)); s.style.setProperty('--py', y.toFixed(2));
+      }
+    }
+    const reaim = () => { if (!raf) raf = requestAnimationFrame(aim); };
+    function blink() {
+      clearTimeout(blinkT);
+      blinkT = setTimeout(() => {
+        if (!document.hidden && !asleep && !mood && !reduceMotion() && all().length) {
+          lids(1);
+          setTimeout(() => {
+            lids(rest());
+            if (Math.random() < .15) setTimeout(() => { if (mood || asleep) return; lids(1); setTimeout(() => lids(rest()), 100); }, 170);
+          }, 105);
+        }
+        blink();
+      }, 2200 + Math.random() * 4400);
+    }
+    function play(c) {
+      if (reduceMotion()) return;
+      for (const s of all()) { s.classList.remove('hop', 'hop2', 'shake', 'nod'); void s.getBoundingClientRect(); s.classList.add(c); }
+      clearTimeout(play.t); play.t = setTimeout(() => all().forEach(s => s.classList.remove(c)), 1400);
+    }
+    function settle() { mood = ''; faces(); lids(rest()); reaim(); }
+    // after a check (or a poke): a face for a while, then back to watching
+    function react(kind) {
+      last = Date.now(); asleep = false; clearTimeout(moodT);
+      if (kind === 'right' || kind === 'streak' || kind === 'poke') {
+        mood = 'joy'; faces(); lids(1); play(kind === 'streak' ? 'hop2' : 'hop');
+        moodT = setTimeout(settle, kind === 'streak' ? 2300 : kind === 'poke' ? 1100 : 1600);
+      } else if (kind === 'wrong') {
+        mood = 'ouch'; faces(); lids(1); play('shake');
+        moodT = setTimeout(() => { mood = 'down'; faces(); lids(rest()); reaim(); moodT = setTimeout(settle, 1500); }, 950);
+      } else if (kind === 'partial') {
+        mood = 'down'; faces(); lids(rest()); reaim(); play('nod'); moodT = setTimeout(settle, 1700);
+      }
+    }
+    function stir() {
+      last = Date.now();
+      if (!asleep) return;
+      asleep = false; faces(); lids(0); play('hop'); setTimeout(() => { if (!mood) lids(rest()); }, 600);
+    }
+    function doze() { if (asleep || mood || document.hidden || !all().length) return; asleep = true; faces(); lids(1, true); }
+    setInterval(() => { if (Date.now() - last > DOZE) doze(); }, 4000);
+    document.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      px = e.clientX; py = e.clientY; stir(); reaim();
+    }, { passive: true });
+    document.addEventListener('pointerdown', e => {
+      px = e.clientX; py = e.clientY; stir(); reaim();
+      if (e.pointerType === 'touch') { clearTimeout(lookT); lookT = setTimeout(() => { px = py = null; reaim(); }, 1800); }
+    }, { passive: true });
+    for (const ev of ['keydown', 'wheel', 'touchstart']) document.addEventListener(ev, stir, { passive: true });
+    document.addEventListener('scroll', () => { stir(); reaim(); }, { passive: true });
+    document.addEventListener('pointerleave', () => { px = py = null; reaim(); });
+    document.addEventListener('click', e => { if (e.target.closest && e.target.closest('[data-buddy]')) { react('poke'); usage.track('buddy_poked'); } });
+    // after every screen is drawn: the new heads take the current face; the buddy climbs up when a quiz or an exam
+    // opens, not each time the card is redrawn
+    function mount() {
+      const list = all();
+      for (const s of list) s.style.setProperty('--lid', mood === 'joy' || mood === 'ouch' ? 1 : rest());
+      faces(); reaim();
+      const b = app.querySelector('.buddy');
+      if (b && S.view !== lastView && !reduceMotion()) b.classList.add('rise');
+      lastView = S.view;
+      if (list.length && !blinkT) blink();
+    }
+    function setBuddy(on) { try { localStorage.setItem(BUDDY, on ? 'on' : 'off'); } catch (e) {} }
+    window.__alive = () => ({ mood, asleep, lid: rest(), heads: all().length, buddy: !!app.querySelector('.buddy'), doze: () => { last = 0; doze(); } });
+    return { svg, buddyHTML, buddyOn, setBuddy, react, mount, stir };
+  })();
+
+  // the real sky over Casablanca: where the sun and the moon are, and the moon's phase (the usual low-precision formulas
+  // of positional astronomy, good to a fraction of a degree, which is plenty for a page)
+  const skyclock = (() => {
+    const LAT = 33.5731, LNG = -7.5898, rad = Math.PI / 180, ob = rad * 23.4397;
+    const toDays = t => t / 864e5 - .5 + 2440588 - 2451545;
+    const ra = (l, b) => Math.atan2(Math.sin(l) * Math.cos(ob) - Math.tan(b) * Math.sin(ob), Math.cos(l));
+    const dec = (l, b) => Math.asin(Math.sin(b) * Math.cos(ob) + Math.cos(b) * Math.sin(ob) * Math.sin(l));
+    const sid = (d, lw) => rad * (280.16 + 360.9856235 * d) - lw;
+    function sunC(d) {
+      const M = rad * (357.5291 + .98560028 * d), C = rad * (1.9148 * Math.sin(M) + .02 * Math.sin(2 * M) + .0003 * Math.sin(3 * M));
+      const L = M + C + rad * 102.9372 + Math.PI;
+      return { ra: ra(L, 0), dec: dec(L, 0) };
+    }
+    function moonC(d) {
+      const L = rad * (218.316 + 13.176396 * d), M = rad * (134.963 + 13.064993 * d), F = rad * (93.272 + 13.22935 * d);
+      const l = L + rad * 6.289 * Math.sin(M), b = rad * 5.128 * Math.sin(F);
+      return { ra: ra(l, b), dec: dec(l, b), dist: 385001 - 20905 * Math.cos(M) };
+    }
+    // altitude above the horizon and compass bearing (0 north, 90 east), in degrees
+    function where(c, d) {
+      const phi = rad * LAT, H = sid(d, rad * -LNG) - c.ra;
+      const alt = Math.asin(Math.sin(phi) * Math.sin(c.dec) + Math.cos(phi) * Math.cos(c.dec) * Math.cos(H));
+      const az = Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(phi) - Math.tan(c.dec) * Math.cos(phi));
+      return { alt: alt / rad, az: ((az / rad + 180) % 360 + 360) % 360 };
+    }
+    const nowT = () => window.__skyNow || Date.now();
+    function at(t = nowT()) {
+      const d = toDays(t), s = sunC(d), m = moonC(d);
+      const phi = Math.acos(Math.sin(s.dec) * Math.sin(m.dec) + Math.cos(s.dec) * Math.cos(m.dec) * Math.cos(s.ra - m.ra));
+      const inc = Math.atan2(149598000 * Math.sin(phi), m.dist - 149598000 * Math.cos(phi));
+      const ang = Math.atan2(Math.cos(s.dec) * Math.sin(s.ra - m.ra), Math.sin(s.dec) * Math.cos(m.dec) - Math.cos(s.dec) * Math.sin(m.dec) * Math.cos(s.ra - m.ra));
+      return { t, sun: where(s, d), moon: where(m, d), lit: (1 + Math.cos(inc)) / 2, phase: .5 + .5 * inc * (ang < 0 ? -1 : 1) / Math.PI };
+    }
+    const PHASES = [[.034, 'New moon'], [.216, 'Waxing crescent'], [.284, 'First quarter'], [.466, 'Waxing gibbous'], [.534, 'Full moon'],
+      [.716, 'Waning gibbous'], [.784, 'Last quarter'], [.966, 'Waning crescent'], [1.01, 'New moon']];
+    const phaseName = p => PHASES.find(([x]) => p < x)[1];
+    // the moon's next rising or setting, within a day
+    function nextTurn(n) {
+      const up = n.moon.alt > 0;
+      for (let k = 1; k <= 144; k++) {
+        const t = n.t + k * 600000, a = at(t).moon.alt;
+        if ((a > 0) !== up) return { up, t };
+      }
+      return null;
+    }
+    const hm = t => new Date(t).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    // the time of day from the sun: a glow at dusk and first light, peaking with the sun 4° under the horizon
+    function tod(n) {
+      const a = n.sun.alt;
+      return { name: a > 6 ? 'day' : a < -12 ? 'night' : n.sun.az < 180 ? 'dawn' : 'dusk',
+        glow: Math.max(0, 1 - Math.abs(a + 4) / 10), day: Math.min(1, Math.max(0, (a + 10) / 16)) };
+    }
+    let cur = null;
+    function tick() {
+      cur = at();
+      const td = tod(cur), root = document.documentElement;
+      root.dataset.tod = td.name;
+      root.style.setProperty('--tw', td.glow.toFixed(3));
+      root.style.setProperty('--dayness', td.day.toFixed(3));
+      SKY_DIM = 1 - .55 * td.day;
+      try { sky.tint(); } catch (e) {}
+      placeMoon();
+      const g = app.querySelector('[data-greet]'); if (g && g.textContent !== greet()) g.textContent = greet();
+    }
+    // the moon on the homepage: where it is over the city (east on the left, west on the right, as if facing south),
+    // its height above the horizon up the masthead; not in Blood moon, which has its own
+    function moonHTML() {
+      return `<button class="rmoon" type="button" data-act="rmoon" hidden><canvas aria-hidden="true"></canvas><span class="rmoon-tip" role="tooltip"></span></button>`;
+    }
+    function placeMoon() {
+      const b = app.querySelector('.rmoon'); if (!b || !cur) return;
+      const m = cur.moon, show = m.alt > -.5 && lookNow() !== 'blood';
+      b.hidden = !show; if (!show) return;
+      const x = Math.min(94, Math.max(6, 6 + (m.az - 70) / 220 * 88)), y = Math.min(84, Math.max(10, 84 - Math.max(0, m.alt) / 70 * 74));
+      b.style.setProperty('--mx', x.toFixed(1) + '%'); b.style.setProperty('--my', y.toFixed(1) + '%');
+      const turn = nextTurn(cur), name = phaseName(cur.phase);
+      const line = `${name}, ${Math.round(cur.lit * 100)}% lit${turn ? ` · ${turn.up ? 'sets' : 'rises'} at ${hm(turn.t)}` : ''}`;
+      b.setAttribute('aria-label', `The moon over Casablanca right now: ${line}`);
+      b.querySelector('.rmoon-tip').innerHTML = `<b>The moon over Casablanca</b><span>${esc(line)}</span>${tod(cur).name === 'day' ? '<span>Up in daylight</span>' : ''}`;
+      drawMoon(b.querySelector('canvas'), cur);
+    }
+    function drawMoon(c, n) {
+      const s = c.clientWidth || 34; if (!c.getContext) return;
+      const ctx = fitCanvas(c, s, s), r = s * .3, cx = s / 2, cy = s / 2, ink = rgbOf(cssVar('--moon-ink') || cssVar('--ink')), dark = rgbOf(cssVar('--night'));
+      ctx.clearRect(0, 0, s, s);
+      const g = ctx.createRadialGradient(cx, cy, r * .7, cx, cy, s / 2);
+      g.addColorStop(0, `rgba(${ink},${(.06 + .2 * n.lit).toFixed(3)})`); g.addColorStop(1, `rgba(${ink},0)`);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
+      ctx.fillStyle = `rgba(${ink},.12)`; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832); ctx.fill();   // earthshine
+      // the lit part: half the disc on the sun's side, closed by the terminator, an ellipse
+      const k = Math.cos(2 * Math.PI * n.phase);
+      ctx.save(); ctx.translate(cx, cy); if (n.phase > .5) ctx.scale(-1, 1);
+      ctx.beginPath(); ctx.arc(0, 0, r, -Math.PI / 2, Math.PI / 2, false);
+      ctx.ellipse(0, 0, Math.max(.01, r * Math.abs(k)), r, 0, Math.PI / 2, -Math.PI / 2, k > 0);
+      ctx.closePath(); ctx.fillStyle = `rgb(${ink})`; ctx.fill(); ctx.restore();
+      // a few seas
+      ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832); ctx.clip(); ctx.globalCompositeOperation = 'source-atop';
+      ctx.fillStyle = `rgba(${dark},.14)`;
+      for (const [a, b2, rr] of [[-.28, -.22, .3], [.18, -.3, .22], [.05, .2, .26], [-.32, .25, .16]]) { ctx.beginPath(); ctx.arc(cx + a * r, cy + b2 * r, rr * r, 0, 6.2832); ctx.fill(); }
+      ctx.restore();
+    }
+    // the greeting at the top of the homepage
+    function greet() {
+      const h = new Date(nowT()).getHours(), nm = acct.first(), n = nm ? `, ${nm}` : '';
+      if (QUEST && !questOver() && questDays() === 0) return `Exam day${n}. You’ve got this.`;
+      if (h < 2) return `Still up${n}?`;
+      if (h < 5) return `It’s ${h} am${n}. The Labubu is yawning.`;
+      if (h < 7) return `Up before the sun${n}.`;
+      if (h < 12) return `Good morning${n}.`;
+      if (h < 18) return `Good afternoon${n}.`;
+      if (h < 22) return `Good evening${n}.`;
+      return `A late one${n}.`;
+    }
+    function start() { tick(); setInterval(tick, 60000); document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); }); }
+    window.__skyclock = t => { const n = at(t); return Object.assign(n, { tod: tod(n), phaseName: phaseName(n.phase), turn: nextTurn(n) }); };
+    return { start, tick, moonHTML, placeMoon, greet };
+  })();
+
+  // everything breathes: stardust behind the cursor or a finger, a soft light following the cursor over the cards, the
+  // astrolabe and the module windows leaning toward it
+  const breathe = (() => {
+    const DUST = 'efm3-dust';
+    const dustOn = () => { try { return localStorage.getItem(DUST) !== 'off'; } catch (e) { return true; } };
+    let c = null, ctx = null, W = 0, H = 0, parts = [], raf = 0, lx = null, ly = null, col = '236,227,209', colAt = 0, prev = 0;
+    function canvas() {
+      if (c) return true;
+      c = document.createElement('canvas'); c.id = 'dust'; c.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(c); size(); return true;
+    }
+    function size() { if (!c) return; W = window.innerWidth; H = window.innerHeight; ctx = fitCanvas(c, W, H); }
+    window.addEventListener('resize', size);
+    function spawn(x, y, touch) {
+      if (reduceMotion() || !dustOn() || document.hidden) return;
+      if (lx !== null && Math.hypot(x - lx, y - ly) < (touch ? 22 : 11)) return;
+      const dx = lx === null ? 0 : x - lx, dy = ly === null ? 0 : y - ly;
+      lx = x; ly = y;
+      if (!canvas()) return;
+      const now = performance.now();
+      if (now - colAt > 2500) { col = rgbOf(cssVar('--star-ink') || cssVar('--ink')).join(','); colAt = now; }
+      for (let k = touch ? 2 : 1; k > 0; k--) {
+        if (parts.length > 80) parts.shift();
+        parts.push({ x: x + (Math.random() - .5) * 6, y: y + (Math.random() - .5) * 6, vx: -dx * .4 + (Math.random() - .5) * 18, vy: -dy * .4 + (Math.random() - .5) * 18 + 6,
+          age: 0, life: .7 + Math.random() * .8, r: .5 + Math.random() ** 2 * 1.9, p: Math.random() * 6.3 });
+      }
+      if (!raf) { prev = now; raf = requestAnimationFrame(step); }
+    }
+    function step(now) {
+      const dt = Math.min(.05, (now - prev) / 1000); prev = now;
+      ctx.clearRect(0, 0, W, H);
+      parts = parts.filter(p => (p.age += dt) < p.life);
+      for (const p of parts) {
+        p.vx *= .94; p.vy = p.vy * .94 + 14 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+        const f = 1 - p.age / p.life, a = f * f * (.55 + .45 * Math.sin(p.p + p.age * 14));
+        ctx.globalAlpha = Math.max(0, a); ctx.fillStyle = ctx.strokeStyle = `rgb(${col})`;
+        if (p.r > 1.35) {   // the bigger ones as little four-pointed stars
+          const L = p.r * 2.6 * f; ctx.lineWidth = .7; ctx.beginPath(); ctx.moveTo(p.x - L, p.y); ctx.lineTo(p.x + L, p.y); ctx.moveTo(p.x, p.y - L); ctx.lineTo(p.x, p.y + L); ctx.stroke();
+        }
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (.6 + .4 * f), 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      raf = parts.length ? requestAnimationFrame(step) : 0;
+      if (!raf) { ctx.clearRect(0, 0, W, H); lx = ly = null; }
+    }
+    // the light over a card, and the leaning
+    let sheen = null, lit = null, arch = null, lean = 0, ptr = null;
+    function light(plate, x, y) {
+      if (!sheen) { sheen = document.createElement('div'); sheen.id = 'sheen'; sheen.setAttribute('aria-hidden', 'true'); document.body.appendChild(sheen); }
+      if (!plate) { sheen.classList.remove('on'); lit = null; return; }
+      const r = plate.getBoundingClientRect();
+      Object.assign(sheen.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+      sheen.style.setProperty('--sx', (x - r.left).toFixed(0) + 'px'); sheen.style.setProperty('--sy', (y - r.top).toFixed(0) + 'px');
+      sheen.classList.add('on'); lit = plate;
+    }
+    function tilt(el, x, y) {
+      if (arch && arch !== el) { arch.style.removeProperty('--rx'); arch.style.removeProperty('--ry'); }
+      arch = el; if (!el) return;
+      const r = el.getBoundingClientRect(), u = (x - r.left) / r.width - .5, v = (y - r.top) / r.height - .5;
+      el.style.setProperty('--rx', (-v * 9).toFixed(2) + 'deg'); el.style.setProperty('--ry', (u * 11).toFixed(2) + 'deg');
+    }
+    function frame() {
+      lean = 0; if (!ptr) return;
+      const { x, y, t } = ptr;
+      const plate = t && t.closest ? t.closest('#app .plate') : null;
+      light(plate && !t.closest('.sky-field') ? plate : null, x, y);
+      tilt(t && t.closest ? t.closest('.arch .window') : null, x, y);
+      const a = S.view === 'home' ? app.querySelector('.astro svg') : null;
+      if (a) { a.style.setProperty('--ax', ((.5 - y / window.innerHeight) * 7).toFixed(2) + 'deg'); a.style.setProperty('--ay', ((x / window.innerWidth - .5) * 9).toFixed(2) + 'deg'); }
+    }
+    document.addEventListener('pointermove', e => {
+      const touch = e.pointerType === 'touch';
+      if (!touch) spawn(e.clientX, e.clientY, false);
+      if (touch || reduceMotion()) return;
+      ptr = { x: e.clientX, y: e.clientY, t: e.target };
+      if (!lean) lean = requestAnimationFrame(frame);
+    }, { passive: true });
+    document.addEventListener('touchmove', e => { const t = e.touches && e.touches[0]; if (t) spawn(t.clientX, t.clientY, true); }, { passive: true });
+    document.addEventListener('touchend', () => { lx = ly = null; }, { passive: true });
+    window.addEventListener('scroll', () => { if (lit) light(null); }, { passive: true });
+    document.addEventListener('pointerleave', () => { light(null); tilt(null); });
+    function setDust(on) { try { localStorage.setItem(DUST, on ? 'on' : 'off'); } catch (e) {} if (!on && c) { parts = []; ctx.clearRect(0, 0, W, H); } }
+    window.__breathe = () => ({ dust: parts.length, canvas: !!c, sheen: !!(sheen && sheen.classList.contains('on')) });
+    return { dustOn, setDust, after() { light(null); arch = null; } };
   })();
 
   // ---------- opening animation ----------
@@ -6991,6 +7428,9 @@
         app.querySelectorAll('[data-act="sound-toggle"]').forEach(b => { b.setAttribute('aria-checked', String(on)); b.textContent = on ? 'on' : 'off'; });
         break;
       }
+      case 'dust-toggle': breathe.setDust(!breathe.dustOn()); t.setAttribute('aria-checked', String(breathe.dustOn())); t.textContent = breathe.dustOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); usage.track('stardust_switched', { on: breathe.dustOn() }); break;
+      case 'buddy-toggle': alive.setBuddy(!alive.buddyOn()); t.setAttribute('aria-checked', String(alive.buddyOn())); t.textContent = alive.buddyOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); usage.track('buddy_switched', { on: alive.buddyOn() }); break;
+      case 'rmoon': t.classList.toggle('on'); usage.track('moon_opened'); break;
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
       case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
@@ -7167,6 +7607,7 @@
     // the opening animation plays when the site opens on the home page (not for automated page captures)
     const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');
     titleHold = opening;
+    skyclock.start();
     render(false);
     if (opening && intro.play()) return;   // the intro starts the sky when its star lands
     releaseTitle();

@@ -63,6 +63,7 @@ const FAKE = {
     const notify = r => { (subs[r] || []).forEach(cb => cb(snapOf(r))); qsubs.forEach(([q, cb]) => { if (r.startsWith(q.col + '/')) cb(qsnap(q)); }); };
     // the rules: a name belongs to whoever has it
     const rules = ops => { for (const [k, r, d] of ops) { if (k === 'set' && r.startsWith('names/') && fb.docs[r] && fb.docs[r].uid !== d.uid) no(); if (k === 'del' && r === 'names/labubu') no();
+      if (r.startsWith('here/') && (localStorage.getItem('fake-deny-here') || Object.keys(d || {}).some(u => !fb.user || u !== fb.user.uid))) no();
       if (r.startsWith('sparks/') && (localStorage.getItem('fake-deny-sparks') || (k === 'set' && (fb.docs[r] || !fb.user || d.from !== fb.user.uid)))) no(); } };
     // set with merge merges maps deeply, like Firestore; increment() and deleteField() resolve against what's there
     const resolve = (old, d) => { const o = Object.assign({}, old || {}); for (const [k, v] of Object.entries(d)) { if (v && v.__del) delete o[k]; else if (v && v.__inc !== undefined) o[k] = ((old && old[k]) || 0) + v.__inc; else if (v && v.__union) o[k] = [...new Set([...((old && old[k]) || []), ...v.__union])]; else if (v && typeof v === 'object' && !Array.isArray(v)) o[k] = resolve(old && old[k], v); else o[k] = v; } return o; };
@@ -70,7 +71,7 @@ const FAKE = {
     const run = ops => { rules(ops); ops.forEach(apply); keep(); ops.forEach(o => notify(o[1])); };
     export function getFirestore() { return {}; }
     export function doc(db, col, id) { return col + '/' + id; }
-    export async function getDoc(r) { fb.calls.push('get ' + r); deny(); return snapOf(r); }
+    export async function getDoc(r) { fb.calls.push('get ' + r); deny(); if (r.startsWith('here/') && localStorage.getItem('fake-deny-here')) no(); return snapOf(r); }
     export function serverTimestamp() { return 0; }
     export function increment(n) { return { __inc: n }; }
     export function deleteField() { return { __del: 1 }; }

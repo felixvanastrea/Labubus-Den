@@ -456,6 +456,38 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   after the intro, never over an exam or another sheet; skipped in automated browsers unless `window.__newsTest`. For the
   next big feature, change `NEWS.id` and the sheet's words. Test: news.js.
 
+## The Den, alive (Abi, 13 October 2026: "make the Den feel more alive")
+
+- The Labubu wakes up (`alive` in `template.html`): `alive.svg(cls)` draws Abi's head with live eyes over it (the white,
+  pupil and glint of each eye copied from `src/labubu.svg`'s face shapes, so at rest it's her art exactly; lids, happy
+  arcs and wincing chevrons on top; redo `EYE` if the art changes). Used for the homepage logo and the buddy under the
+  questions (`alive.buddyHTML()`, in the `.grow` gap of practice and running-exam `.actions`, peeking over a ledge with
+  its paws; it climbs up when a quiz opens, not on redraws). CSS vars: `--lid` (0 open, 1 shut), `--px` / `--py` (pupils).
+  It blinks, follows the cursor (a finger for 1.8 s), `react('right' | 'streak' | 'wrong' | 'partial' | 'poke')` after a
+  check (happy + hop, a double hop every 7 in a row, wince + shake then looks down, looks down), a tap makes it giggle,
+  it dozes after 100 s idle (z's) and wakes on any input, and is sleepy (lids .3) from midnight to 5 am. Footer switch
+  "The Labubu under the questions" (`efm3-buddy`). `window.__alive()` for tests.
+- The sky follows the clock (`skyclock`): low-precision positional astronomy for Casablanca (33.57 N, 7.59 W): the sun's
+  altitude sets `data-tod` on `<html>` (day above 6°, night under -12°, dawn/dusk between) with `--tw` (the horizon glow,
+  peaking 4° under the horizon) and `--dayness`; `.tod` is a fixed glow layer (dusk in the west/right, dawn east/left, a
+  cool haze by day; tokens `--tod-*` per look), and the stars are dimmer by day (`SKY_DIM` in `sky`). The real moon
+  (`.rmoon`, a canvas in its real phase) sits on the masthead by its bearing (east left, west right) and height, only
+  while it's up and not in Blood moon; hover or tap: phase, % lit, when it sets or rises. The greeting over the caption
+  (`greet`, `[data-greet]`) goes by the hour, with the name when signed in, and "Exam day" on the quest's due date.
+  Checked against known moons (tests). `window.__skyNow` fakes the time, `window.__skyclock(t)` reports.
+- Everything breathes (`breathe`): stardust behind the cursor or a finger (`#dust`, a canvas that only runs while specks
+  live; footer switch "Stardust", `efm3-dust`), a soft light following the cursor over any `.plate` (`#sheen`, fixed,
+  `--sheen` per look), the astrolabe leaning toward the cursor (`--ax`/`--ay`), module windows tilting under it
+  (`--rx`/`--ry`) with their stars twinkling, and the hero's main button breathing. `.hero` passes pointer events
+  through its decorative layers so the moon can be pointed at.
+- Who's here now (acct, "here"): `here/d{day}` = {uid: {nm, t (server time), m (module or exam title), v: quiz | exam}}.
+  `acct.beat(m, v)` on a practice check or an exam tick, at most every 3 minutes (30 s when switching). The homepage
+  reads the doc when it opens and every 2 minutes while it shows (a read each, never a live watch, to stay cheap on the
+  Spark plan) and shows classmates seen in the last 6 minutes as fireflies drifting over the masthead (`#flies`, hover
+  or tap for name and what they're on) and a line under the main button. Not yourself; a hidden star isn't here
+  either ("Hide my star" and Delete my data remove the entry). Rules: each user writes only their own key, under their
+  registered name, `t` = server time; if they refuse, nothing shows. Test: alive.js.
+
 ## The app (Add to Home Screen)
 
 - On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
@@ -479,7 +511,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, challenges (made,
   joined, declined, started, settled, link copied or shared),
-  update log, sound).
+  update log, sound, the stardust and buddy switches, the Labubu poked, the moon or a firefly opened).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log
@@ -526,7 +558,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

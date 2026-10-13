@@ -1699,3 +1699,116 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 @media (prefers-reduced-motion: reduce) { .news-dots .dl-dot { animation: none; } }
 .news-l .news-gift { color: var(--ink); }
 .news-l .news-gift b { color: #e2475a; }
+
+/* ---------- the Den, alive (template.html: alive, skyclock, breathe; acct: "here") ---------- */
+:root {
+  --fly: #f2dfa0; --fly-glow: rgba(242, 223, 160, .55); --fly-glow2: rgba(242, 223, 160, .18);
+  --sheen: rgba(236, 227, 209, .075); --sheen-blend: screen;
+  --tod-dusk-1: rgba(205, 110, 66, .34); --tod-dusk-2: rgba(118, 72, 128, .16);
+  --tod-dawn-1: rgba(222, 168, 156, .28); --tod-dawn-2: rgba(112, 134, 186, .15);
+  --tod-day: rgba(126, 146, 182, .13);
+}
+:root[data-look="blood"] { --fly: #f0b860; --fly-glow: rgba(240, 160, 80, .5); --fly-glow2: rgba(193, 18, 31, .2); --tod-dusk-1: rgba(193, 18, 31, .34); --tod-dusk-2: rgba(90, 20, 50, .2); --tod-dawn-1: rgba(160, 60, 90, .24); --tod-dawn-2: rgba(70, 40, 90, .14); }
+:root[data-look="codex"] { --fly: #f0c86a; --fly-glow: rgba(240, 200, 106, .5); --fly-glow2: rgba(240, 200, 106, .16); --tod-dusk-1: rgba(214, 120, 50, .3); --tod-dawn-1: rgba(230, 180, 120, .24); }
+:root[data-look="klimt"] { --fly: #c9962a; --fly-glow: rgba(201, 150, 42, .5); --fly-glow2: rgba(201, 150, 42, .2); --sheen: rgba(255, 236, 190, .5); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(214, 150, 60, .18); --tod-dusk-2: rgba(180, 90, 70, .08); --tod-dawn-1: rgba(230, 190, 170, .16); --tod-dawn-2: rgba(150, 170, 210, .08); --tod-day: rgba(255, 250, 235, 0); }
+
+/* the time of day: a glow low in the sky at dusk (in the west, right) and first light (east, left), a cool haze by day */
+.tod { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 8s linear;
+  background: radial-gradient(120% 58% at 86% 112%, var(--tod-dusk-1), var(--tod-dusk-2) 46%, transparent 76%); }
+:root[data-tod="dusk"] .tod { opacity: var(--tw, 0); }
+:root[data-tod="dawn"] .tod { opacity: var(--tw, 0); background: radial-gradient(120% 58% at 14% 112%, var(--tod-dawn-1), var(--tod-dawn-2) 46%, transparent 76%); }
+:root[data-tod="day"] .tod { opacity: var(--dayness, 0); background: radial-gradient(150% 75% at 50% -25%, var(--tod-day), transparent 72%); }
+
+/* the Labubu: its eyes are drawn over the art; --lid shuts them (0 open, 1 shut), --px / --py move the pupils */
+.lb-live { overflow: visible; transform-origin: 50% 85%; }
+.lb-live .lbw { fill: currentColor; }
+.lb-live .lbd { fill: var(--lb-line, #1b1a18); }
+.lb-live .lash, .lb-live .lbx { fill: none; stroke: var(--lb-line, #1b1a18); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.lb-live .lbp { transform: translate(calc(var(--px, 0) * 1px), calc(var(--py, 0) * 1px)); transition: transform .32s cubic-bezier(.2, .8, .25, 1); }
+.lb-live .lid-t { transform: translateY(calc(var(--lid, 0) * 64px)); transition: transform .075s ease-in; }
+.lb-live .lid-b { transform: translateY(calc(var(--lid, 0) * -52px)); transition: transform .075s ease-in; }
+.lb-live.slow .lid-t, .lb-live.slow .lid-b { transition-duration: 1.2s; transition-timing-function: var(--ease); }
+.lb-live .lbx { opacity: 0; }
+.lb-live.joy .joy, .lb-live.ouch .ouch { opacity: 1; }
+.lb-live.joy .lash, .lb-live.ouch .lash { opacity: 0; }
+.lb-live .lbz text { font-family: var(--f-display); font-style: italic; font-size: 150px; fill: currentColor; opacity: 0; }
+.lb-live.zz .lbz text { animation: lbz 3.6s ease-in-out infinite; }
+.lb-live.zz .lbz text:nth-child(2) { animation-delay: 1.2s; }
+.lb-live.zz .lbz text:nth-child(3) { animation-delay: 2.4s; }
+@keyframes lbz { 0% { opacity: 0; transform: translate(0, 40px); } 30% { opacity: .9; } 100% { opacity: 0; transform: translate(70px, -110px); } }
+@keyframes lbhop { 0%, 100% { transform: none; } 32% { transform: translateY(-15%) scale(1.03, .98); } 58% { transform: translateY(1.5%) scale(.98, 1.03); } 78% { transform: translateY(-3%); } }
+@keyframes lbhop2 { 0%, 100% { transform: none; } 18% { transform: translateY(-17%) rotate(-7deg); } 38% { transform: translateY(1%); } 58% { transform: translateY(-13%) rotate(7deg); } 80% { transform: translateY(0); } }
+@keyframes lbshake { 0%, 100% { transform: none; } 18% { transform: translateX(-6%) rotate(-5deg); } 38% { transform: translateX(5%) rotate(4deg); } 58% { transform: translateX(-3%) rotate(-2deg); } 78% { transform: translateX(2%); } }
+@keyframes lbnod { 0%, 100% { transform: none; } 40% { transform: rotate(-8deg) translateY(4%); } 70% { transform: rotate(3deg); } }
+.lb-live.hop { animation: lbhop .75s ease-out; }
+.lb-live.hop2 { animation: lbhop2 1.25s ease-out; }
+.lb-live.shake { animation: lbshake .55s ease-in-out; }
+.lb-live.nod { animation: lbnod .9s var(--ease); }
+
+/* the one under a question, peeking up from behind the buttons with its paws on the ledge */
+.actions .grow { position: relative; align-self: stretch; min-width: 0; }
+.buddy { position: absolute; left: 50%; bottom: 0; width: 56px; height: 60px; translate: -50% 0; overflow: hidden; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.buddy .bd-in { position: absolute; left: 0; right: 0; bottom: -10px; display: block; }
+.buddy .lb-live { display: block; width: 56px; height: auto; color: var(--ink); --lb-line: var(--night); }
+.buddy .paws { position: absolute; left: 0; bottom: 0; width: 56px; height: auto; overflow: visible; }
+.buddy .paws path { fill: var(--ink); stroke: var(--night); stroke-width: 1.6; stroke-linejoin: round; }
+.buddy .paws .pc { fill: none; stroke-linecap: round; stroke-width: 1.3; }
+.buddy::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--hair-2) 25%, var(--hair-2) 75%, transparent); }
+.buddy.rise .bd-in { animation: bdrise .95s var(--spring) .3s both; }
+.buddy.rise .paws { animation: bdpaws .5s var(--ease) .95s both; }
+@keyframes bdrise { from { transform: translateY(100%); } }
+@keyframes bdpaws { from { opacity: 0; transform: translateY(5px); } }
+@media (max-width: 640px) { .buddy { height: 54px; } }
+@media (max-width: 380px) { .buddy, .buddy .lb-live, .buddy .paws { width: 46px; } .buddy { height: 48px; } }
+
+/* the real moon over the homepage */
+.rmoon { position: absolute; z-index: 2; left: var(--mx, 70%); top: var(--my, 20%); width: 52px; height: 52px; margin: -26px 0 0 -26px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
+.rmoon canvas { display: block; width: 100%; height: 100%; transition: transform .6s var(--spring); }
+.rmoon:hover canvas, .rmoon.on canvas { transform: scale(1.12); }
+.rmoon-tip, .fly-tip {
+  position: absolute; left: 50%; top: calc(100% + 2px); z-index: 5; display: grid; gap: 1px; width: max-content; max-width: 15rem;
+  padding: 7px 11px; border: 1px solid var(--hair-2); border-radius: var(--r); background: var(--plate);
+  color: var(--ink-2); font-family: var(--f-read); font-size: .88rem; font-style: italic; line-height: 1.35; text-align: center;
+  translate: -50% 4px; opacity: 0; pointer-events: none; transition: opacity .25s var(--ease), translate .25s var(--ease);
+}
+.rmoon-tip b, .fly-tip b { color: var(--ink); font-style: normal; font-weight: 600; }
+.rmoon:hover .rmoon-tip, .rmoon:focus-visible .rmoon-tip, .rmoon.on .rmoon-tip,
+.fly:hover .fly-tip, .fly:focus-visible .fly-tip, .fly.on .fly-tip { opacity: 1; translate: -50% 0; }
+
+/* the greeting over the caption */
+.hero .caption .greet { display: block; margin-bottom: 4px; font-family: var(--f-display); font-size: 1.32rem; color: var(--ink); }
+
+/* who's here now: fireflies over the masthead, and a line under the main button */
+.flies { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.fly { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; padding: 0; border: 0; border-radius: 50%; background: none; pointer-events: auto; cursor: default; transition: opacity 1s var(--ease); }
+.fly i { position: absolute; inset: 8px; border-radius: 50%; background: var(--fly); opacity: calc(.45 + var(--glow, .6) * .55);
+  box-shadow: 0 0 calc(4px + var(--glow, .6) * 6px) calc(1px + var(--glow, .6) * 2px) var(--fly-glow), 0 0 22px 8px var(--fly-glow2); }
+.fly.new, .fly.gone { opacity: 0; }
+.fly-tip { top: auto; bottom: calc(100% + 2px); }
+.here-line { margin: 0; display: inline-flex; align-items: center; gap: 9px; max-width: 19rem; font-size: 1rem; font-style: italic; line-height: 1.4; color: var(--ink-2); text-align: inherit; }
+.here-line b { color: var(--ink); font-style: normal; font-weight: 600; }
+.here-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--fly); animation: herepulse 2.6s ease-out infinite; }
+@keyframes herepulse { 0% { box-shadow: 0 0 0 0 var(--fly-glow); } 70%, 100% { box-shadow: 0 0 0 9px rgba(0, 0, 0, 0); } }
+
+/* everything breathes: stardust, a light over the cards, the astrolabe and the windows leaning, the main button */
+#dust { display: block; position: fixed; inset: 0; width: 100%; height: 100%; z-index: 38; pointer-events: none; }
+#sheen { position: fixed; z-index: 37; pointer-events: none; border-radius: var(--r); opacity: 0; transition: opacity .6s var(--ease);
+  background: radial-gradient(380px circle at var(--sx, 50%) var(--sy, 50%), var(--sheen), transparent 66%); mix-blend-mode: var(--sheen-blend); }
+#sheen.on { opacity: 1; }
+.astro svg { transform: perspective(1400px) rotateX(var(--ax, 0deg)) rotateY(var(--ay, 0deg)); transition: transform 1.8s var(--ease); }
+.arch .window { transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+.arch:hover .window, .arch:focus-visible .window { transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px); }
+.arch:active .window { transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-2px) scale(.985); }
+.arch .window .st.lit { animation: archtw 4.2s ease-in-out infinite; }
+.arch .window .st.lit:nth-child(3n+1) { animation-delay: -1.4s; }
+.arch .window .st.lit:nth-child(3n+2) { animation-delay: -2.8s; }
+@keyframes archtw { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+.hero-cta .btn.primary:not(:hover) { animation: ctabreathe 4.8s ease-in-out infinite; }
+@keyframes ctabreathe { 0%, 100% { box-shadow: 0 0 0 0 var(--glow-soft); } 50% { box-shadow: 0 0 0 6px var(--glow-soft), 0 12px 38px -14px var(--glow-mid); } }
+@media (prefers-reduced-motion: reduce) {
+  .lb-live.zz .lbz text { opacity: .85; }
+  .lb-live.zz .lbz text:nth-child(2) { transform: translate(35px, -55px); }
+  .lb-live.zz .lbz text:nth-child(3) { transform: translate(70px, -110px); }
+}
+.hero { pointer-events: none; } .hero > * { pointer-events: auto; } .hero > .title, .hero > [aria-hidden="true"] { pointer-events: none; }   /* the moon behind can still be pointed at */
