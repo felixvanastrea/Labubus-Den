@@ -667,6 +667,14 @@
       "from": "C",
       "to": "BC",
       "why": "Same question and options as R17 (tuberculosis infection), whose key the 2026-10-07 lecture check changed to fever + erythema nodosum: the Landouzy typhoid-like form has fever at 39-40°C. R225 follows so both copies agree."
+    },
+    {
+      "q": "D150",
+      "confirmed": "2026-10-13",
+      "field": "answer",
+      "from": "C",
+      "to": "AC",
+      "why": "Abi: A is right too. Pr Bouziane's peritonitis slides list \"Avoidance of continuity restoration / Digestive stomas\" among the principles of surgery, which is the treatment of choice."
     }
   ]
 }

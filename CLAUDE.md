@@ -101,7 +101,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the lobar pneumonia management question was caught (her CAP lecture includes physio and smoking cessation).
 - On the site the lines show under "Notes & explanations" once a question is checked, labelled with the lecture.
 - 11 October 2026: the digestive surgery quest's 100 questions, written from the seven decks in Abi's Drive (Pr Bouziane,
-  Pr Benammi), 98 of them; D150 and D168 wait for Abi (the lecture disagrees with the key, see the flag rule).
+  Pr Benammi), all 100 since 13 October (D150 corrected to AC by Abi; D168 kept at C: the slides drain a collected abscess).
 
 ## Constellations
 
@@ -511,6 +511,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   it elsewhere, an explanation, and an update log entry with `questions`. D240 (12 October 2026): secondary peritonitis,
   given in class during acute appendicitis, so it sits in that lecture and the quest; its answer B is word for word on the
   peritonitis slides, so `checked.json` labels it.
+- Every question card has "Copy the question" in its foot (`reportHTML`, `copyQuestion`): the same text as a mistake
+  report, with the answer only once it's shown.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked

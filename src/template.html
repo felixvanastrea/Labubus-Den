@@ -5177,18 +5177,29 @@
   }
   // one line each for where it's from, the case, the stem, the options and the answer shown. Lines end in a space
   // so they still read apart if the form's box is a single line, which drops line breaks.
-  function reportText(q) {
+  function reportText(q, withKey = true) {
     const t = TOPIC.get(q.topic), c = CASE_OF(q);
     const lines = [`[${q.sid || q.id} · ${setLabel(q)}, Q${q.n}${t ? ' · ' + t.name : ''}]`];
     if (c) lines.push('Case: ' + clip(flat(c.html), 400));
     lines.push(flat(q.stem));
     q.options.forEach((o, i) => lines.push(`${LETTERS[i]}. ${flat(o)}`));
-    lines.push(KEY_LONG[keyOf(q)] + (q.answer.length ? ': ' + letters(q.answer) : ''));
+    if (withKey) lines.push(KEY_LONG[keyOf(q)] + (q.answer.length ? ': ' + letters(q.answer) : ''));
     return lines.join(' \n');
   }
-  function reportHTML(q) {
-    if (!FB) return '';
-    return `<div class="qfoot"><a class="report" href="${esc(formURL('mistake', reportText(q)))}" target="_blank" rel="noopener" data-report="${esc(q.id)}">${LB_ICON}Report a mistake</a></div>`;
+  // the foot of a question card: copy the question (with its answer once it's shown), report a mistake
+  const COPY_ICON = '<svg class="cp" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="8" height="8.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 10.5h-.5A1.5 1.5 0 0 1 1.5 9V3A1.5 1.5 0 0 1 3 1.5h5.5A1.5 1.5 0 0 1 10 3v.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>';
+  function reportHTML(q, withKey = true) {
+    const copy = `<button class="qcopy" type="button" data-copyq="${esc(q.id)}" data-k="${withKey ? 1 : 0}">${COPY_ICON}Copy the question</button>`;
+    return `<div class="qfoot">${copy}${FB ? `<a class="report" href="${esc(formURL('mistake', reportText(q)))}" target="_blank" rel="noopener" data-report="${esc(q.id)}">${LB_ICON}Report a mistake</a>` : ''}</div>`;
+  }
+  function copyQuestion(q, withKey) {
+    const text = reportText(q, withKey), done = () => { toast(withKey ? 'Question copied, with its answer' : 'Question copied'); sfx.play('toggle', { quiet: true }); };
+    const fall = () => {
+      const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); try { if (document.execCommand('copy')) done(); } catch (e) {} ta.remove();
+    };
+    try { navigator.clipboard.writeText(text).then(done, fall); } catch (e) { fall(); }
+    usage.track('question_copied');
   }
   function askHTML(cls, label, icon) {
     if (!FB) return '';
@@ -5384,7 +5395,7 @@
           ${checked && xpGain && xpGain.after ? xpLineHTML(xpGain) : ''}
           ${checked && moonGain ? moonLineHTML(moonGain) : ''}
           ${ex}
-          ${reportHTML(q)}
+          ${reportHTML(q, checked)}
         </article>
         <div class="actions">
           <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
@@ -6919,6 +6930,7 @@
     if (t.dataset.diagGo) { untriedTopic(t.dataset.diagGo); return; }
     if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
     if (t.dataset.theme) { acct.wear(t.dataset.theme); return; }
+    if (t.dataset.copyq) { const q = Q.get(t.dataset.copyq); if (q) copyQuestion(q, t.dataset.k === '1'); return; }
     if (t.dataset.sky) { acct.skyFocus(t.dataset.sky, true, e.detail === 0); return; }
     if (t.dataset.duel) { openDuel(t.dataset.duel); return; }
     if (t.dataset.duelYes) { acct.duelAccept(t.dataset.duelYes); return; }

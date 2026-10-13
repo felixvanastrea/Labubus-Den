@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-13-corrected",
+    "date": "2026-10-13",
+    "title": "Corrected question",
+    "kind": "Corrections",
+    "items": [
+      "One digestive surgery answer was corrected against the peritonitis lecture, and every question of the quest now explains its propositions."
+    ]
+  },
+  {
     "id": "2026-10-12-duels",
     "date": "2026-10-12",
     "title": "Duels, parties, and a living class sky",

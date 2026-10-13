@@ -503,15 +503,17 @@ a.btn { text-decoration: none; font-style: normal; }
 .why-row.k .why { color: var(--ink); }
 
 /* "Report a mistake": a quiet link at the foot of every question */
-.qfoot { display: flex; justify-content: flex-end; margin-top: -4px; }
+.qfoot { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 18px; margin-top: -4px; }
+.qcopy { border: 0; background: none; font-family: inherit; cursor: pointer; }
+.qcopy .cp { width: 15px; height: 15px; flex: none; }
 .report { --lb-line: var(--plate); }
-.report {
+.report, .qcopy {
   display: inline-flex; align-items: center; gap: 8px; padding: 6px 2px; border-radius: var(--r);
   font-style: italic; font-size: 1.02rem; color: var(--ink-3);
   text-decoration: underline; text-decoration-color: var(--hair-2); text-underline-offset: 4px;
   transition: color .3s var(--ease), text-decoration-color .3s var(--ease);
 }
-.report:hover { color: var(--ink); text-decoration-color: var(--ink-3); }
+.report:hover, .qcopy:hover { color: var(--ink); text-decoration-color: var(--ink-3); }
 .report .lb, .ask-btn .lb { width: 14px; height: 17px; flex: none; color: currentColor; transform-origin: 50% 85%; transition: transform .6s var(--spring); }
 .report:hover .lb, .ask-btn:hover .lb { transform: rotate(-10deg); }
 .ask-btn { --lb-line: var(--night); }

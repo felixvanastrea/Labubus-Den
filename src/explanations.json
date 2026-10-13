@@ -1189,6 +1189,20 @@
       "B": "Secondary peritonitis is polymicrobial, and E. coli is the germ most often involved.",
       "C": "It mostly comes from a GI perforation (perforated ulcer, burst appendix), or from a nearby septic site.",
       "D": "Mycobacteria (tuberculous peritonitis) cause primary peritonitis, with no perforation."
+    },
+    "D150": {
+      "lecture": "peritonitis",
+      "A": "The slides list it among the principles of surgery: no restoring of continuity, digestive stomas instead.",
+      "B": "Laparoscopy is an option too, unless the patient is in shock; otherwise a midline laparotomy.",
+      "C": "Surgery is the treatment, and it must be fast: treat the source, wash out the cavity, drain it.",
+      "D": "Resuscitation and antibiotics go with surgery; they don't replace it."
+    },
+    "D168": {
+      "lecture": "acute-appendicitis",
+      "A": "The collection has to be drained; the appendectomy comes a few months later, after antibiotics.",
+      "B": "Antibiotics go with drainage. Alone, they don't treat a collected abscess.",
+      "C": "A collected appendiceal abscess is drained percutaneously, under ultrasound or CT guidance.",
+      "D": "Appendectomy with a full peritoneal washout is the treatment of generalized peritonitis, not of a collected abscess."
     }
   }
 }
