@@ -56,6 +56,10 @@ const errors = [];
   await p.evaluate(() => document.getElementById('duels').scrollIntoView({ block: 'center' })); await p.waitForTimeout(200);
   check(/Duels and parties/.test(await txt(p, '#duels')) && (await p.$$('#duels .dl-c')).length === 7 && (await p.$$('#duels .dl-c.held')).length === 0, 'the card: duels and parties, the seven colours, all free');
   await (await p.$('#duels')).screenshot({ path: OUT + 'duel_card.png' });
+  // a card drawn before the account woke up (just its title) fills in on the next change
+  await p.evaluate(() => { const el = document.getElementById('duels'); el.dataset.h = '0'; el.querySelectorAll('.dl-cols, [data-act="challenge"]').forEach(x => x.remove()); });
+  await remote('colours/vega', { uid: '', nm: '', since: 1, duel: 'x' }); await p.waitForTimeout(300);
+  check((await p.$$('#duels .dl-c')).length === 7 && !!(await p.$('#duels [data-act="challenge"]')), 'a card drawn too early fills in once the account is awake');
 
   // 2. challenge Amro to the quest, from exam mode
   await p.click('#duels [data-act="challenge"]'); await p.waitForTimeout(250);

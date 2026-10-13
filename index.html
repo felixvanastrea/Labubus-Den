@@ -4546,7 +4546,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     ];
     cls.colours = {}; cls.coloursIn = false;
     const duels = {}, duelOffs = {}, settling = new Set(), liveAt = {}, fetched = new Set();
-    let invOff = null, colOff = null, invDay = '', duelTick = 0, progAt = 0, progT = 0, lastCard = '';
+    let invOff = null, colOff = null, invDay = '', duelTick = 0, progAt = 0, progT = 0;
     const tagOf = (uid, d) => uid + '@' + d;
     const held = v => !!(v && v.uid && Date.now() - (+v.since || 0) < FADE);
     function heldBy(uid) { for (const c of COLOURS) { const v = cls.colours[c.id]; if (held(v) && v.uid === uid) return c; } return null; }
@@ -4656,7 +4656,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       }
       noticeInvites();
       const el = document.getElementById('duels');
-      if (el && S.view === 'home') { const h = duelsHTML(); if (h !== lastCard) { lastCard = h; el.outerHTML = h; } }
+      // the card redraws when what it shows changes (its data-h: a hash of its contents)
+      if (el && S.view === 'home') { const h = duelsHTML(), m = /data-h="(\d+)"/.exec(h); if (m && el.dataset.h !== m[1]) el.outerHTML = h; }
       if (S.view === 'duel') {
         const a = document.activeElement;
         if (!(a && /^(INPUT|TEXTAREA)$/.test(a.tagName))) paintDuel();
@@ -4958,7 +4959,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (!here) return '';
       const head = `<div class="dl-head"><div><p class="eyebrow">Challenge the class</p><h2 class="h2" id="dl-h">Duels and parties</h2></div>${state === 'in' ? `<button class="btn primary" type="button" data-act="challenge">${ICON.hourglass}Challenge someone</button>` : ''}</div>
         <p class="dl-lead">The same exam for each of you, graded out of 20. Win a duel and your star in the class sky takes a colour, the loser’s or one from the sky; win again to keep it, or it fades back after a week. Parties are up to 8, for a ranking.</p>`;
-      const wrap = inner => `<section class="section wrap dl-wrap" id="duels" aria-labelledby="dl-h"><div class="dl plate">${inner}</div></section>`;
+      const wrap = inner => `<section class="section wrap dl-wrap" id="duels" aria-labelledby="dl-h" data-h="${hashStr(inner)}"><div class="dl plate">${inner}</div></section>`;
       if (state === 'off' || state === 'naming') return wrap(`${head}<div><button class="btn" type="button" data-act="account">${LOCK}Sign in to challenge the class</button></div>`);
       if (state !== 'in') return wrap(head);
       for (const [id, e] of Object.entries(S.duels).sort((a, b) => b[1].t - a[1].t).slice(0, 4)) if (!duels[id] && !fetched.has(id)) { fetched.add(id); watchDuel(id); }
@@ -4970,7 +4971,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         return `<li class="dl-row${st.invitedMe && st.open ? ' new' : ''}"><span class="dl-main"><span class="dl-vs">${esc(l.vs)}</span><span class="dl-meta">${esc(d.what)} · ${esc(l.state)}</span></span>${act}</li>`;
       }).join('');
       const legend = COLOURS.map(c => { const h = holderOf(c.id); return `<li class="dl-c${h ? ' held' : ''}">${dot(c)}<span><b>${c.name}</b> ${h ? `${esc(String(h.nm || 'Someone').slice(0, 24))}${h.uid === user.uid ? ' (you)' : ''} · ${daysLeft(h) === 1 ? 'fades tomorrow' : `${daysLeft(h)} days left`}` : 'in the sky, free'}</span></li>`; }).join('');
-      return (lastCard = wrap(`${head}${rows ? `<ul class="ledger dl-list">${rows}</ul>` : '<p class="dl-none">No challenges yet.</p>'}
+      return (wrap(`${head}${rows ? `<ul class="ledger dl-list">${rows}</ul>` : '<p class="dl-none">No challenges yet.</p>'}
         <div class="dl-cols"><p class="dl-ct">The colours of the sky</p><ul class="dl-legend">${legend}</ul></div>`));
     }
 
