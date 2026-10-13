@@ -1791,8 +1791,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .here-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--fly); animation: herepulse 2.6s ease-out infinite; }
 @keyframes herepulse { 0% { box-shadow: 0 0 0 0 var(--fly-glow); } 70%, 100% { box-shadow: 0 0 0 9px rgba(0, 0, 0, 0); } }
 
-/* everything breathes: stardust, a light over the cards, the astrolabe and the windows leaning, the main button */
-#dust { display: block; position: fixed; inset: 0; width: 100%; height: 100%; z-index: 38; pointer-events: none; }
+/* everything breathes: a light over the cards, the astrolabe and the windows leaning, the main button */
 #sheen { position: fixed; z-index: 37; pointer-events: none; border-radius: var(--r); opacity: 0; transition: opacity .6s var(--ease);
   background: radial-gradient(380px circle at var(--sx, 50%) var(--sy, 50%), var(--sheen), transparent 66%); mix-blend-mode: var(--sheen-blend); }
 #sheen.on { opacity: 1; }

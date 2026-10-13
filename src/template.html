@@ -5166,7 +5166,7 @@
       ${acct.here ? `<p>Account: <button class="foot-btn" type="button" data-act="account">${esc(acct.label())}</button></p>` : ''}
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
-      ${reduceMotion() ? '' : `<p>Stardust: <button class="foot-btn" type="button" role="switch" aria-checked="${breathe.dustOn()}" aria-label="Stardust behind the cursor" data-act="dust-toggle">${breathe.dustOn() ? 'on' : 'off'}</button> · The Labubu under the questions: <button class="foot-btn" type="button" role="switch" aria-checked="${alive.buddyOn()}" aria-label="The Labubu under the questions" data-act="buddy-toggle">${alive.buddyOn() ? 'on' : 'off'}</button></p>`}
+      ${reduceMotion() ? '' : `<p>The Labubu under the questions: <button class="foot-btn" type="button" role="switch" aria-checked="${alive.buddyOn()}" aria-label="The Labubu under the questions" data-act="buddy-toggle">${alive.buddyOn() ? 'on' : 'off'}</button></p>`}
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       ${app_.slot('foot')}
@@ -6433,10 +6433,10 @@
   // - The sky follows the clock (skyclock): the sun's real height over Casablanca gives the time of day (day, dusk,
   //   night, first light): a glow low in the sky at dusk and dawn, the stars dimmer by day. The real moon hangs over
   //   the homepage where it is in the sky, in its real phase, and the greeting at the top changes with the hour.
-  // - Everything breathes (breathe): stardust trails the cursor or a finger (footer switch "Stardust"), a soft light
+  // - Everything breathes (breathe): a soft light
   //   follows the cursor over the cards, the astrolabe and the module windows lean toward it, their stars twinkle.
   // - Who's here now (acct, "here"): classmates studying right now drift as fireflies over the homepage's masthead.
-  // Reduced motion: no blinking, following, trail, leaning or drifting; the Labubu's faces still change.
+  // Reduced motion: no blinking, following, leaning or drifting; the Labubu's faces still change.
   const alive = (() => {
     // the eyes of Abi's Labubu (src/labubu.svg): the white of each eye, its pupil and the glint, from the face's
     // shapes. The lids, the happy and the wincing eyes are drawn over the left eye; the right one is 168.1 units over.
@@ -6665,51 +6665,9 @@
     return { start, tick, moonHTML, placeMoon, greet };
   })();
 
-  // everything breathes: stardust behind the cursor or a finger, a soft light following the cursor over the cards, the
-  // astrolabe and the module windows leaning toward it
+  // everything breathes: a soft light following the cursor over the cards, the astrolabe and the module windows leaning
+  // toward it (the stardust trail that followed the cursor came out on 13 October 2026, Abi's call)
   const breathe = (() => {
-    const DUST = 'efm3-dust';
-    const dustOn = () => { try { return localStorage.getItem(DUST) !== 'off'; } catch (e) { return true; } };
-    let c = null, ctx = null, W = 0, H = 0, parts = [], raf = 0, lx = null, ly = null, col = '236,227,209', colAt = 0, prev = 0;
-    function canvas() {
-      if (c) return true;
-      c = document.createElement('canvas'); c.id = 'dust'; c.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(c); size(); return true;
-    }
-    function size() { if (!c) return; W = window.innerWidth; H = window.innerHeight; ctx = fitCanvas(c, W, H); }
-    window.addEventListener('resize', size);
-    function spawn(x, y, touch) {
-      if (reduceMotion() || !dustOn() || document.hidden) return;
-      if (lx !== null && Math.hypot(x - lx, y - ly) < (touch ? 22 : 11)) return;
-      const dx = lx === null ? 0 : x - lx, dy = ly === null ? 0 : y - ly;
-      lx = x; ly = y;
-      if (!canvas()) return;
-      const now = performance.now();
-      if (now - colAt > 2500) { col = rgbOf(cssVar('--star-ink') || cssVar('--ink')).join(','); colAt = now; }
-      for (let k = touch ? 2 : 1; k > 0; k--) {
-        if (parts.length > 80) parts.shift();
-        parts.push({ x: x + (Math.random() - .5) * 6, y: y + (Math.random() - .5) * 6, vx: -dx * .4 + (Math.random() - .5) * 18, vy: -dy * .4 + (Math.random() - .5) * 18 + 6,
-          age: 0, life: .7 + Math.random() * .8, r: .5 + Math.random() ** 2 * 1.9, p: Math.random() * 6.3 });
-      }
-      if (!raf) { prev = now; raf = requestAnimationFrame(step); }
-    }
-    function step(now) {
-      const dt = Math.min(.05, (now - prev) / 1000); prev = now;
-      ctx.clearRect(0, 0, W, H);
-      parts = parts.filter(p => (p.age += dt) < p.life);
-      for (const p of parts) {
-        p.vx *= .94; p.vy = p.vy * .94 + 14 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
-        const f = 1 - p.age / p.life, a = f * f * (.55 + .45 * Math.sin(p.p + p.age * 14));
-        ctx.globalAlpha = Math.max(0, a); ctx.fillStyle = ctx.strokeStyle = `rgb(${col})`;
-        if (p.r > 1.35) {   // the bigger ones as little four-pointed stars
-          const L = p.r * 2.6 * f; ctx.lineWidth = .7; ctx.beginPath(); ctx.moveTo(p.x - L, p.y); ctx.lineTo(p.x + L, p.y); ctx.moveTo(p.x, p.y - L); ctx.lineTo(p.x, p.y + L); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (.6 + .4 * f), 0, 6.2832); ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-      raf = parts.length ? requestAnimationFrame(step) : 0;
-      if (!raf) { ctx.clearRect(0, 0, W, H); lx = ly = null; }
-    }
     // the light over a card, and the leaning
     let sheen = null, lit = null, arch = null, lean = 0, ptr = null;
     function light(plate, x, y) {
@@ -6736,19 +6694,14 @@
       if (a) { a.style.setProperty('--ax', ((.5 - y / window.innerHeight) * 7).toFixed(2) + 'deg'); a.style.setProperty('--ay', ((x / window.innerWidth - .5) * 9).toFixed(2) + 'deg'); }
     }
     document.addEventListener('pointermove', e => {
-      const touch = e.pointerType === 'touch';
-      if (!touch) spawn(e.clientX, e.clientY, false);
-      if (touch || reduceMotion()) return;
+      if (e.pointerType === 'touch' || reduceMotion()) return;
       ptr = { x: e.clientX, y: e.clientY, t: e.target };
       if (!lean) lean = requestAnimationFrame(frame);
     }, { passive: true });
-    document.addEventListener('touchmove', e => { const t = e.touches && e.touches[0]; if (t) spawn(t.clientX, t.clientY, true); }, { passive: true });
-    document.addEventListener('touchend', () => { lx = ly = null; }, { passive: true });
     window.addEventListener('scroll', () => { if (lit) light(null); }, { passive: true });
     document.addEventListener('pointerleave', () => { light(null); tilt(null); });
-    function setDust(on) { try { localStorage.setItem(DUST, on ? 'on' : 'off'); } catch (e) {} if (!on && c) { parts = []; ctx.clearRect(0, 0, W, H); } }
-    window.__breathe = () => ({ dust: parts.length, canvas: !!c, sheen: !!(sheen && sheen.classList.contains('on')) });
-    return { dustOn, setDust, after() { light(null); arch = null; } };
+    window.__breathe = () => ({ sheen: !!(sheen && sheen.classList.contains('on')) });
+    return { after() { light(null); arch = null; } };
   })();
 
   // ---------- opening animation ----------
@@ -7428,7 +7381,6 @@
         app.querySelectorAll('[data-act="sound-toggle"]').forEach(b => { b.setAttribute('aria-checked', String(on)); b.textContent = on ? 'on' : 'off'; });
         break;
       }
-      case 'dust-toggle': breathe.setDust(!breathe.dustOn()); t.setAttribute('aria-checked', String(breathe.dustOn())); t.textContent = breathe.dustOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); usage.track('stardust_switched', { on: breathe.dustOn() }); break;
       case 'buddy-toggle': alive.setBuddy(!alive.buddyOn()); t.setAttribute('aria-checked', String(alive.buddyOn())); t.textContent = alive.buddyOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); usage.track('buddy_switched', { on: alive.buddyOn() }); break;
       case 'rmoon': t.classList.toggle('on'); usage.track('moon_opened'); break;
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;

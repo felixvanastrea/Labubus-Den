@@ -475,11 +475,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   while it's up and not in Blood moon; hover or tap: phase, % lit, when it sets or rises. The greeting over the caption
   (`greet`, `[data-greet]`) goes by the hour, with the name when signed in, and "Exam day" on the quest's due date.
   Checked against known moons (tests). `window.__skyNow` fakes the time, `window.__skyclock(t)` reports.
-- Everything breathes (`breathe`): stardust behind the cursor or a finger (`#dust`, a canvas that only runs while specks
-  live; footer switch "Stardust", `efm3-dust`), a soft light following the cursor over any `.plate` (`#sheen`, fixed,
+- Everything breathes (`breathe`): a soft light following the cursor over any `.plate` (`#sheen`, fixed,
   `--sheen` per look), the astrolabe leaning toward the cursor (`--ax`/`--ay`), module windows tilting under it
   (`--rx`/`--ry`) with their stars twinkling, and the hero's main button breathing. `.hero` passes pointer events
   through its decorative layers so the moon can be pointed at.
+  The stardust trail behind the cursor and its footer switch were taken out the same day (Abi didn't want it).
 - Who's here now (acct, "here"): `here/d{day}` = {uid: {nm, t (server time), m (module or exam title), v: quiz | exam}}.
   `acct.beat(m, v)` on a practice check or an exam tick, at most every 3 minutes (30 s when switching). The homepage
   reads the doc when it opens and every 2 minutes while it shows (a read each, never a live watch, to stay cheap on the
@@ -511,7 +511,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, challenges (made,
   joined, declined, started, settled, link copied or shared),
-  update log, sound, the stardust and buddy switches, the Labubu poked, the moon or a firefly opened).
+  update log, sound, the buddy switch, the Labubu poked, the moon or a firefly opened).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log

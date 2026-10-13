@@ -1,5 +1,5 @@
 // The Den, alive: the Labubu (top bar and under the questions) follows the cursor, makes faces at a right, wrong or
-// half-right answer, dozes off and wakes up; the footer switches take away the buddy and the stardust; the real sky over
+// half-right answer, dozes off and wakes up; the footer switch takes away the buddy; there's no stardust trail (taken out); the real sky over
 // Casablanca (moon phase, the sun's height, the time of day, the moon on the homepage, the greeting); the light over the
 // cards and the leaning astrolabe; who's here now, against account.js's fake Firebase (fireflies, the line under the
 // main button, the heartbeat written on a check, nothing when the rules refuse it); reduced motion; a phone.
@@ -72,15 +72,14 @@ async function nextKeyed(p, want) {
 (async () => {
   const b = await chromium.launch();
 
-  // 1. the Labubu, the stardust, the light on the cards (a desktop, no account)
+  // 1. the Labubu, the light on the cards (a desktop, no account)
   {
     const { ctx, p } = await open(b, { tag: 'desk' });
     check(await p.$('.logo svg.lb-live'), 'the logo in the top bar is the living Labubu');
     await p.mouse.move(100, 100); await p.mouse.move(900, 700, { steps: 10 }); await p.waitForTimeout(400);
     const px = parseFloat(await prop(p, '.logo svg.lb-live', '--px')), py = parseFloat(await prop(p, '.logo svg.lb-live', '--py'));
     check(px > 3 && py > 2, `its eyes follow the cursor down and right (${px}, ${py})`);
-    const bz = await p.evaluate(() => window.__breathe());
-    check(bz.canvas && bz.dust > 0, `stardust trails the cursor (${bz.dust} specks)`);
+    check(!(await p.$('#dust')), 'no stardust trail behind the cursor');
     const ay = await prop(p, '.astro svg', '--ay');
     check(ay && parseFloat(ay) > 0, `the astrolabe leans toward the cursor (${ay})`);
     await p.evaluate(() => document.querySelector('#app .plate').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);
@@ -122,13 +121,11 @@ async function nextKeyed(p, want) {
 
     // the footer switches
     await p.click('.bar [data-act="back"], [data-act="back"]'); await p.waitForTimeout(900);
-    await p.click('[data-act="buddy-toggle"]'); await p.click('[data-act="dust-toggle"]');
-    check(await txt(p, '[data-act="buddy-toggle"]') === 'off' && await txt(p, '[data-act="dust-toggle"]') === 'off', 'the footer switches turn the buddy and the stardust off');
+    check(!(await p.$('[data-act="dust-toggle"]')), 'no Stardust switch in the footer');
+    await p.click('[data-act="buddy-toggle"]');
+    check(await txt(p, '[data-act="buddy-toggle"]') === 'off', 'the footer switch turns the buddy off');
     await p.click('[data-act="resume"]').catch(() => p.click('[data-start="*"]')); await p.waitForTimeout(900);
     check(!(await p.$('.buddy')), 'no buddy under the questions once switched off');
-    await p.evaluate(() => window.__breathe()); await p.waitForTimeout(1600);
-    await p.mouse.move(200, 200); await p.mouse.move(800, 600, { steps: 10 });
-    check((await p.evaluate(() => window.__breathe())).dust === 0, 'no stardust once switched off');
     await ctx.close();
   }
 
@@ -215,7 +212,6 @@ async function nextKeyed(p, want) {
   {
     const { ctx, p } = await open(b, { tag: 'reduced', ctx: { reducedMotion: 'reduce' } });
     await p.mouse.move(100, 100); await p.mouse.move(900, 700, { steps: 10 }); await p.waitForTimeout(300);
-    check(!(await p.evaluate(() => window.__breathe())).canvas, 'reduced motion: no stardust');
     check((await prop(p, '.logo svg.lb-live', '--px')) === '0.00', 'reduced motion: the eyes stay put');
     await p.click('[data-start="*"]'); await p.waitForTimeout(900);
     check(!/rise/.test(await cls(p, '.buddy')), 'reduced motion: the buddy is just there');
