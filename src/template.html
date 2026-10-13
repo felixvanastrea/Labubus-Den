@@ -4412,7 +4412,7 @@
       : `<div class="actions">
           <button class="btn" type="button" data-act="exam-prev" ${ex.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
           ${markBtn(q)}
-          <span class="grow">${alive.buddyHTML()}</span>
+          <span class="grow"></span>
           <button class="btn primary" type="button" data-act="exam-next">${last ? 'Hand in' : `Next ${ICON.next}`}</button>
         </div>`;
     app.innerHTML = `
@@ -5166,7 +5166,6 @@
       ${acct.here ? `<p>Account: <button class="foot-btn" type="button" data-act="account">${esc(acct.label())}</button></p>` : ''}
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
-      ${reduceMotion() ? '' : `<p>The Labubu under the questions: <button class="foot-btn" type="button" role="switch" aria-checked="${alive.buddyOn()}" aria-label="The Labubu under the questions" data-act="buddy-toggle">${alive.buddyOn() ? 'on' : 'off'}</button></p>`}
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       ${app_.slot('foot')}
@@ -5509,7 +5508,7 @@
         <div class="actions">
           <button class="btn" type="button" data-act="prev" ${sess.idx === 0 ? 'disabled' : ''} aria-label="Previous question">${ICON.back}<span class="sr-label">Prev</span></button>
           ${markBtn(q)}
-          <span class="grow">${alive.buddyHTML()}</span>
+          <span class="grow"></span>
           <button class="btn primary" type="button" data-act="primary" ${primaryDisabled ? 'disabled' : ''}>${primaryLabel}</button>
         </div>
         <p class="kbd-hint">Keys: A–E to pick, Shift + a letter to cross it out, M to mark, Enter to check or go on, ← → to move</p>
@@ -6426,10 +6425,10 @@
 
   // ---------- the Den, alive ----------
   // Abi, 13 October 2026: "make the Den feel more alive". Four things:
-  // - The Labubu wakes up (alive): the head in the top bar, and the one peeking up between the buttons under a question,
-  //   blink, follow the cursor or a finger with their eyes, close them happily at a right answer, wince at a wrong one,
-  //   look down at a half-right one, doze off (z's) after DOZE without a touch, and are sleepy after midnight. A tap
-  //   on the one under the question makes it giggle. The footer switch "The Labubu under the questions" takes that one away.
+  // - The Labubu wakes up (alive): the head in the top bar blinks, follows the cursor or a finger with its eyes, closes
+  //   them happily at a right answer, winces at a wrong one, looks down at a half-right one, dozes off (z's) after DOZE
+  //   without a touch, and is sleepy after midnight. (A second one peeking up between the buttons under each question
+  //   came out the same day, Abi's call.)
   // - The sky follows the clock (skyclock): the sun's real height over Casablanca gives the time of day (day, dusk,
   //   night, first light): a glow low in the sky at dusk and dawn, the stars dimmer by day. The real moon hangs over
   //   the homepage where it is in the sky, in its real phase, and the greeting at the top changes with the hour.
@@ -6447,19 +6446,15 @@
       { sc: 'M547.1,564.7c11.9-1.2,23.7-5.4,32.9-9.5c17,5.1,30.8,24,33.7,46.4c1.8,14.2-0.7,28.1-7.1,39.1c-6.3,10.7-15.5,17.4-26,18.7c-1.3,0.2-2.6,0.3-3.9,0.3c-20.5,0-39.2-20.5-42.7-47.8C531.6,593.7,536.6,575.8,547.1,564.7z',
         pu: 'M567,568.5c-17.4,2.2-29.1,22.4-26.2,45c2.9,22.6,19.4,39.1,36.7,36.9c17.4-2.2,29.1-22.4,26.2-45C600.8,582.8,584.4,566.3,567,568.5z',
         gl: 'M580.2,602.9c5.2,0,9.4-4.2,9.4-9.4s-4.2-9.4-9.4-9.4c-5.2,0-9.4,4.2-9.4,9.4S575,602.9,580.2,602.9z' }];
-    const DOZE = 100000, BUDDY = 'efm3-buddy';
+    const DOZE = 100000;
     let n = 0;
     function svg(cls = '') {
       const id = 'lbe' + (++n);
       const eye = (e, i) => `<g clip-path="url(#${id}-${i})"><path class="lbw" d="${e.sc}"/><g class="lbp"><path class="lbd" d="${e.pu}"/><path class="lbw" d="${e.gl}"/></g><g transform="translate(${i ? 168.1 : 0} 0)"><g class="lid-t"><rect class="lbw" x="350" y="430" width="110" height="118"/><path class="lash" d="M350 548Q404 562 458 548"/></g><rect class="lid-b lbw" x="350" y="666" width="110" height="110"/><path class="lbx joy" d="M380 630Q404 586 428 630"/><path class="lbx ouch" d="${i ? 'M426 590L382 611L426 632' : 'M382 590L426 611L382 632'}"/></g></g>`;
       return `<svg class="lb lb-live ${cls}" viewBox="245 187 494 618" aria-hidden="true" focusable="false"><defs>${EYE.map((e, i) => `<clipPath id="${id}-${i}"><path d="${e.sc}"/></clipPath>`).join('')}</defs><use href="#labubu" x="245" y="187" width="494" height="618"/>${EYE.map(eye).join('')}<g class="lbz"><text x="690" y="380">z</text><text x="760" y="300">z</text><text x="840" y="210">z</text></g></svg>`;
     }
-    const buddyOn = () => { try { return localStorage.getItem(BUDDY) !== 'off'; } catch (e) { return true; } };
-    // the one under a question: peeking up from behind the buttons, its paws on the ledge
-    const PAW = '<svg class="paws" viewBox="0 0 64 12" aria-hidden="true" focusable="false"><path d="M9 12V7.5a6 6 0 0 1 12 0V12M43 12V7.5a6 6 0 0 1 12 0V12"/><path class="pc" d="M13 6.4v2.4M17 6.4v2.4M47 6.4v2.4M51 6.4v2.4"/></svg>';
-    const buddyHTML = () => buddyOn() ? `<span class="buddy" data-buddy title="The Labubu"><span class="bd-in">${svg('bd')}</span>${PAW}</span>` : '';
     const all = () => document.querySelectorAll('svg.lb-live');
-    let mood = '', moodT = 0, asleep = false, last = Date.now(), px = null, py = null, raf = 0, blinkT = 0, lookT = 0, lastView = '';
+    let mood = '', moodT = 0, asleep = false, last = Date.now(), px = null, py = null, raf = 0, blinkT = 0, lookT = 0;
     const late = () => new Date(window.__skyNow || Date.now()).getHours() < 5;
     const rest = () => asleep ? 1 : mood === 'down' ? .32 : late() ? .3 : 0;
     function lids(v, slow) { for (const s of all()) { s.classList.toggle('slow', !!slow); s.style.setProperty('--lid', v); } }
@@ -6530,21 +6525,15 @@
     for (const ev of ['keydown', 'wheel', 'touchstart']) document.addEventListener(ev, stir, { passive: true });
     document.addEventListener('scroll', () => { stir(); reaim(); }, { passive: true });
     document.addEventListener('pointerleave', () => { px = py = null; reaim(); });
-    document.addEventListener('click', e => { if (e.target.closest && e.target.closest('[data-buddy]')) { react('poke'); usage.track('buddy_poked'); } });
-    // after every screen is drawn: the new heads take the current face; the buddy climbs up when a quiz or an exam
-    // opens, not each time the card is redrawn
+    // after every screen is drawn: the new heads take the current face
     function mount() {
       const list = all();
       for (const s of list) s.style.setProperty('--lid', mood === 'joy' || mood === 'ouch' ? 1 : rest());
       faces(); reaim();
-      const b = app.querySelector('.buddy');
-      if (b && S.view !== lastView && !reduceMotion()) b.classList.add('rise');
-      lastView = S.view;
       if (list.length && !blinkT) blink();
     }
-    function setBuddy(on) { try { localStorage.setItem(BUDDY, on ? 'on' : 'off'); } catch (e) {} }
-    window.__alive = () => ({ mood, asleep, lid: rest(), heads: all().length, buddy: !!app.querySelector('.buddy'), doze: () => { last = 0; doze(); } });
-    return { svg, buddyHTML, buddyOn, setBuddy, react, mount, stir };
+    window.__alive = () => ({ mood, asleep, lid: rest(), heads: all().length, doze: () => { last = 0; doze(); } });
+    return { svg, react, mount, stir };
   })();
 
   // the real sky over Casablanca: where the sun and the moon are, and the moon's phase (the usual low-precision formulas
@@ -7381,7 +7370,6 @@
         app.querySelectorAll('[data-act="sound-toggle"]').forEach(b => { b.setAttribute('aria-checked', String(on)); b.textContent = on ? 'on' : 'off'; });
         break;
       }
-      case 'buddy-toggle': alive.setBuddy(!alive.buddyOn()); t.setAttribute('aria-checked', String(alive.buddyOn())); t.textContent = alive.buddyOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); usage.track('buddy_switched', { on: alive.buddyOn() }); break;
       case 'rmoon': t.classList.toggle('on'); usage.track('moon_opened'); break;
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
       case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); break;

@@ -1746,22 +1746,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .lb-live.shake { animation: lbshake .55s ease-in-out; }
 .lb-live.nod { animation: lbnod .9s var(--ease); }
 
-/* the one under a question, peeking up from behind the buttons with its paws on the ledge */
-.actions .grow { position: relative; align-self: stretch; min-width: 0; }
-.buddy { position: absolute; left: 50%; bottom: 0; width: 56px; height: 60px; translate: -50% 0; overflow: hidden; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.buddy .bd-in { position: absolute; left: 0; right: 0; bottom: -10px; display: block; }
-.buddy .lb-live { display: block; width: 56px; height: auto; color: var(--ink); --lb-line: var(--night); }
-.buddy .paws { position: absolute; left: 0; bottom: 0; width: 56px; height: auto; overflow: visible; }
-.buddy .paws path { fill: var(--ink); stroke: var(--night); stroke-width: 1.6; stroke-linejoin: round; }
-.buddy .paws .pc { fill: none; stroke-linecap: round; stroke-width: 1.3; }
-.buddy::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--hair-2) 25%, var(--hair-2) 75%, transparent); }
-.buddy.rise .bd-in { animation: bdrise .95s var(--spring) .3s both; }
-.buddy.rise .paws { animation: bdpaws .5s var(--ease) .95s both; }
-@keyframes bdrise { from { transform: translateY(100%); } }
-@keyframes bdpaws { from { opacity: 0; transform: translateY(5px); } }
-@media (max-width: 640px) { .buddy { height: 54px; } }
-@media (max-width: 380px) { .buddy, .buddy .lb-live, .buddy .paws { width: 46px; } .buddy { height: 48px; } }
-
 /* the real moon over the homepage */
 .rmoon { position: absolute; z-index: 2; left: var(--mx, 70%); top: var(--my, 20%); width: 52px; height: 52px; margin: -26px 0 0 -26px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
 .rmoon canvas { display: block; width: 100%; height: 100%; transition: transform .6s var(--spring); }

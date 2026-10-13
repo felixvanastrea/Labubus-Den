@@ -460,13 +460,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - The Labubu wakes up (`alive` in `template.html`): `alive.svg(cls)` draws Abi's head with live eyes over it (the white,
   pupil and glint of each eye copied from `src/labubu.svg`'s face shapes, so at rest it's her art exactly; lids, happy
-  arcs and wincing chevrons on top; redo `EYE` if the art changes). Used for the homepage logo and the buddy under the
-  questions (`alive.buddyHTML()`, in the `.grow` gap of practice and running-exam `.actions`, peeking over a ledge with
-  its paws; it climbs up when a quiz opens, not on redraws). CSS vars: `--lid` (0 open, 1 shut), `--px` / `--py` (pupils).
-  It blinks, follows the cursor (a finger for 1.8 s), `react('right' | 'streak' | 'wrong' | 'partial' | 'poke')` after a
-  check (happy + hop, a double hop every 7 in a row, wince + shake then looks down, looks down), a tap makes it giggle,
-  it dozes after 100 s idle (z's) and wakes on any input, and is sleepy (lids .3) from midnight to 5 am. Footer switch
-  "The Labubu under the questions" (`efm3-buddy`). `window.__alive()` for tests.
+  arcs and wincing chevrons on top; redo `EYE` if the art changes). Used for the homepage logo. CSS vars: `--lid` (0 open,
+  1 shut), `--px` / `--py` (pupils). It blinks, follows the cursor (a finger for 1.8 s), `react('right' | 'streak' |
+  'wrong' | 'partial')` after a check (happy + hop, a double hop every 7 in a row, wince + shake then looks down, looks
+  down), dozes after 100 s idle (z's) and wakes on any input, and is sleepy (lids .3) from midnight to 5 am.
+  `window.__alive()` for tests. A second one peeking up between the buttons under each question was taken out the
+  same day (Abi didn't want it), with its footer switch.
 - The sky follows the clock (`skyclock`): low-precision positional astronomy for Casablanca (33.57 N, 7.59 W): the sun's
   altitude sets `data-tod` on `<html>` (day above 6°, night under -12°, dawn/dusk between) with `--tw` (the horizon glow,
   peaking 4° under the horizon) and `--dayness`; `.tod` is a fixed glow layer (dusk in the west/right, dawn east/left, a
@@ -511,7 +510,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, challenges (made,
   joined, declined, started, settled, link copied or shared),
-  update log, sound, the buddy switch, the Labubu poked, the moon or a firefly opened).
+  update log, sound, the moon or a firefly opened).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log

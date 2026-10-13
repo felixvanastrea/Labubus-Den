@@ -1,5 +1,5 @@
 // The Den, alive: the Labubu (top bar and under the questions) follows the cursor, makes faces at a right, wrong or
-// half-right answer, dozes off and wakes up; the footer switch takes away the buddy; there's no stardust trail (taken out); the real sky over
+// half-right answer, dozes off and wakes up; no Labubu hanging under the questions and no stardust trail (both taken out); the real sky over
 // Casablanca (moon phase, the sun's height, the time of day, the moon on the homepage, the greeting); the light over the
 // cards and the leaning astrolabe; who's here now, against account.js's fake Firebase (fireflies, the line under the
 // main button, the heartbeat written on a check, nothing when the rules refuse it); reduced motion; a phone.
@@ -94,38 +94,29 @@ async function nextKeyed(p, want) {
     check(!a.asleep && !/zz/.test(await cls(p, '.logo svg.lb-live')), 'a move wakes it up');
     await p.screenshot({ path: OUT + 'alive_home.png' });
 
-    // a quiz: the buddy peeks up between the buttons
+    // a quiz: no Labubu hanging under the questions (taken out); the logo's Labubu still reacts to answers
     await p.click('[data-start="*"]'); await p.waitForTimeout(1300);
-    check(await p.$('.actions .grow .buddy svg.lb-live'), 'under a question, the Labubu peeks up between the buttons');
-    check(/rise/.test(await cls(p, '.buddy')), 'it climbs up when the quiz opens');
+    check(!(await p.$('.buddy, [data-buddy]')), 'no Labubu hanging between the buttons under a question');
     await nextKeyed(p);
     check(await answer(p, 'right'), 'answered a question right');
-    check(/\bjoy\b/.test(await cls(p, '.buddy svg')) && /\bhop\b/.test(await cls(p, '.buddy svg')), 'a right answer: happy eyes and a hop');
-    check(!/rise/.test(await cls(p, '.buddy')), 'redrawing the card doesn’t make it climb again');
-    await (await p.$('.buddy')).screenshot({ path: OUT + 'alive_buddy_joy.png' });
+    check((await alive(p)).mood === 'joy', 'a right answer: the Labubu is happy');
     await p.waitForTimeout(1800);
     check(!(await alive(p)).mood, 'then it goes back to watching');
     await p.click('[data-act="primary"]'); await p.waitForTimeout(150); await nextKeyed(p);
     check(await answer(p, 'wrong'), 'answered a question wrong');
-    check(/\bouch\b/.test(await cls(p, '.buddy svg')) && /\bshake\b/.test(await cls(p, '.buddy svg')), 'a wrong answer: it winces and shakes');
-    await (await p.$('.buddy')).screenshot({ path: OUT + 'alive_buddy_ouch.png' });
+    check((await alive(p)).mood === 'ouch', 'a wrong answer: it winces');
     await p.waitForTimeout(1100);
-    check((await alive(p)).mood === 'down' && parseFloat(await prop(p, '.buddy svg', '--py')) === 5, 'then it looks down for a moment');
+    check((await alive(p)).mood === 'down', 'then it looks down for a moment');
     await p.waitForTimeout(1700);
     await p.click('[data-act="primary"]'); await p.waitForTimeout(150); await nextKeyed(p, 'multi');
-    if (await answer(p, 'partial')) check((await alive(p)).mood === 'down' && /\bnod\b/.test(await cls(p, '.buddy svg')), 'a half-right answer: it looks down');
-    await p.waitForTimeout(1800);
-    await p.click('.buddy'); await p.waitForTimeout(80);
-    check((await alive(p)).mood === 'joy', 'a tap on it makes it giggle');
+    if (await answer(p, 'partial')) check((await alive(p)).mood === 'down', 'a half-right answer: it looks down');
     await p.screenshot({ path: OUT + 'alive_quiz.png' });
 
-    // the footer switches
+    // the footer
     await p.click('.bar [data-act="back"], [data-act="back"]'); await p.waitForTimeout(900);
-    check(!(await p.$('[data-act="dust-toggle"]')), 'no Stardust switch in the footer');
-    await p.click('[data-act="buddy-toggle"]');
-    check(await txt(p, '[data-act="buddy-toggle"]') === 'off', 'the footer switch turns the buddy off');
-    await p.click('[data-act="resume"]').catch(() => p.click('[data-start="*"]')); await p.waitForTimeout(900);
-    check(!(await p.$('.buddy')), 'no buddy under the questions once switched off');
+    check(!(await p.$('[data-act="dust-toggle"], [data-act="buddy-toggle"]')), 'no Stardust or buddy switch in the footer');
+    await p.waitForTimeout(400);
+    check(/\bjoy\b|\bouch\b/.test(await cls(p, '.logo svg.lb-live')) === false, 'back home, the logo has settled');
     await ctx.close();
   }
 
@@ -208,24 +199,22 @@ async function nextKeyed(p, want) {
     await deny.ctx.close();
   }
 
-  // 4. reduced motion: no trail, no climbing, eyes still; the faces still change
+  // 4. reduced motion: eyes still; the faces still change
   {
     const { ctx, p } = await open(b, { tag: 'reduced', ctx: { reducedMotion: 'reduce' } });
     await p.mouse.move(100, 100); await p.mouse.move(900, 700, { steps: 10 }); await p.waitForTimeout(300);
     check((await prop(p, '.logo svg.lb-live', '--px')) === '0.00', 'reduced motion: the eyes stay put');
     await p.click('[data-start="*"]'); await p.waitForTimeout(900);
-    check(!/rise/.test(await cls(p, '.buddy')), 'reduced motion: the buddy is just there');
     await nextKeyed(p); await answer(p, 'right');
-    check(/\bjoy\b/.test(await cls(p, '.buddy svg')) && !/\bhop\b/.test(await cls(p, '.buddy svg')), 'reduced motion: a right answer still gets happy eyes, without the hop');
+    check((await alive(p)).mood === 'joy', 'reduced motion: a right answer still gets happy eyes');
     await ctx.close();
   }
 
-  // 5. a phone: the buddy fits between the buttons
+  // 5. a phone: nothing between the buttons
   {
     const { ctx, p } = await open(b, { tag: 'phone', ctx: { viewport: { width: 375, height: 780 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 } });
     await p.click('[data-start="*"]'); await p.waitForTimeout(1500);
-    const [m, bd, pr] = await Promise.all(['.actions .mark, .actions [data-act="mark"]', '.buddy', '.actions [data-act="primary"]'].map(s => p.$eval(s, e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right }; }).catch(() => null)));
-    check(m && bd && pr && bd.l >= m.r && bd.r <= pr.l, `on a phone the buddy sits between Mark and Check answer (${JSON.stringify([m, bd, pr])})`);
+    check(!(await p.$('.buddy')), 'on a phone, nothing hangs between Mark and Check answer');
     await p.screenshot({ path: OUT + 'alive_phone.png' });
     await ctx.close();
   }
