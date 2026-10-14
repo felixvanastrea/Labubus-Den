@@ -544,6 +544,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   peritonitis slides, so `checked.json` labels it.
 - Every question card has "Copy the question" in its foot (`reportHTML`, `copyQuestion`): the same text as a mistake
   report, with the answer only once it's shown.
+- The digestive surgery midterm 2026–2027 (D241–D258, `added` 2026-10-14, so never part of the quest that ended that
+  day) came with no answers marked: they're `key: "claude"`, answered from Pr Bouziane's and Pr Benammi's decks, with an
+  explanation each. D250 (hernia predisposing factors) keys A and B: the slides list asthma, dysuria and constipation;
+  obesity and pregnancy are textbook, not on the slides (told Abi).
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked

@@ -1203,6 +1203,132 @@
       "B": "Antibiotics go with drainage. Alone, they don't treat a collected abscess.",
       "C": "A collected appendiceal abscess is drained percutaneously, under ultrasound or CT guidance.",
       "D": "Appendectomy with a full peritoneal washout is the treatment of generalized peritonitis, not of a collected abscess."
+    },
+    "D241": {
+      "lecture": "caustic-ingestion",
+      "A": "Healthcare professionals aren't a risk group for accidental ingestion.",
+      "B": "Elderly people aren't the classic group for accidental ingestion.",
+      "C": "In adolescents and adults, ingestion is usually voluntary, a suicide attempt.",
+      "D": "In children, ingestion is usually accidental."
+    },
+    "D242": {
+      "lecture": "acute-appendicitis",
+      "A": "Pain and cutaneous hyperesthesia are two of the three signs of the triad.",
+      "B": "Vomiting and fever aren't part of the triad.",
+      "C": "Fever isn't part of the triad: it's pain, guarding and cutaneous hyperesthesia.",
+      "D": "Abdominal guarding at McBurney's point is the third sign of the triad."
+    },
+    "D243": {
+      "lecture": "peritonitis",
+      "A": "Its serous fluid lets the viscera glide, and it absorbs and exchanges fluids.",
+      "B": "Insulin comes from the pancreas.",
+      "C": "The meninges protect the brain and spinal cord.",
+      "D": "Digestion happens in the gut lumen, not in the peritoneum."
+    },
+    "D244": {
+      "lecture": "esophageal-cancer",
+      "A": "A skin allergy test has no place in dysphagia.",
+      "B": "Endoscopy with biopsies is the key exam: it sees the tumor and confirms it.",
+      "C": "Lung function matters later, before surgery, not first.",
+      "D": "Kidney function isn't the priority in evaluating dysphagia."
+    },
+    "D245": {
+      "lecture": "peritonitis",
+      "A": "These aren't the usual findings in peritonitis.",
+      "B": "The infection raises the white cell count and the CRP.",
+      "C": "Glucose and LDL have nothing to do with peritonitis.",
+      "D": "Low platelets and anemia aren't the typical findings."
+    },
+    "D246": {
+      "lecture": "hydatid-liver",
+      "A": "Ultrasound shows the cyst, and serology confirms it in 80 to 95% of cases.",
+      "B": "Blood pressure and ECG don't diagnose a hydatid cyst.",
+      "C": "CT and MRI help, but not alone: ultrasound comes first and serology confirms.",
+      "D": "The exam alone can't confirm it: imaging and serology are needed."
+    },
+    "D247": {
+      "lecture": "peritonitis",
+      "A": "Antihistamines have no role in peritonitis.",
+      "B": "Physiotherapy doesn't treat peritonitis, a surgical emergency.",
+      "C": "Resuscitation keeps vital functions going while the infection and its cause are treated.",
+      "D": "Hormones and diet have no role in peritonitis."
+    },
+    "D248": {
+      "lecture": "hydatid-liver",
+      "A": "Supplements and physiotherapy don't treat a hydatid cyst.",
+      "B": "Radiotherapy has no place in treating a hydatid cyst.",
+      "C": "Surgery is the gold standard and PAIR the percutaneous option.",
+      "D": "It's a parasite: antibiotics don't treat it."
+    },
+    "D249": {
+      "lecture": "acute-appendicitis",
+      "A": "Chemotherapy and radiotherapy aren't treatments for appendicitis.",
+      "B": "It's percutaneous drainage, not a biopsy.",
+      "C": "Percutaneous drainage of an abscess and analgesics are both among the resources.",
+      "D": "Antibiotics and the appendectomy are the medical and surgical resources."
+    },
+    "D250": {
+      "lecture": "groin-hernias",
+      "A": "Obesity and pregnancy raise abdominal pressure, though the slides don't name them.",
+      "B": "Asthma (coughing) and constipation (straining) raise abdominal pressure: they're on the slides.",
+      "C": "Hyperlipidemia and smoking don't raise abdominal pressure.",
+      "D": "Hypertension and diabetes don't raise abdominal pressure."
+    },
+    "D251": {
+      "lecture": "groin-hernias",
+      "A": "That's evisceration: the early separation of a laparotomy.",
+      "B": "That's the definition: protrusion through a congenital or acquired defect of the wall.",
+      "C": "That's diastasis recti, a gap of more than 2 cm between the rectus muscles.",
+      "D": "That's an incisional hernia, through the weakness left by a previous operation."
+    },
+    "D252": {
+      "lecture": "caustic-ingestion",
+      "A": "Ammonia is a base and hydrochloric acid an acid.",
+      "B": "Bleach and potassium permanganate are the oxidants.",
+      "C": "Acids and bases are their own groups, not oxidants.",
+      "D": "Sodium hydroxide is a base and acetic acid an acid."
+    },
+    "D253": {
+      "lecture": "stomach-cancer",
+      "A": "A cough isn't a symptom of gastric cancer.",
+      "B": "Loss of appetite is one of the early, vague signs.",
+      "C": "Indigestion (dyspepsia) is one of the early, vague signs.",
+      "D": "Jaundice is a late sign, from liver metastases or biliary obstruction."
+    },
+    "D254": {
+      "lecture": "stomach-cancer",
+      "A": "Hepatitis B leads to liver cancer, not gastric cancer.",
+      "B": "EBV is found in a small share of gastric cancers, far behind H. pylori.",
+      "C": "HPV is linked to cervical and oropharyngeal cancers.",
+      "D": "H. pylori infection is the leading modifiable risk factor."
+    },
+    "D255": {
+      "lecture": "esophageal-cancer",
+      "A": "Sarcomas are rare.",
+      "B": "Squamous cell carcinoma is the most common type worldwide.",
+      "C": "Adenocarcinoma is the second type, arising on Barrett's esophagus.",
+      "D": "Small cell carcinoma of the esophagus is rare."
+    },
+    "D256": {
+      "lecture": "groin-hernias",
+      "A": "It's non-expansive on cough but painful, not painless.",
+      "B": "Expansive and reducible describe an uncomplicated hernia.",
+      "C": "Vomiting and distension are the signs of obstruction that go with it.",
+      "D": "Severe pain and irreducibility are the main signs of strangulation."
+    },
+    "D257": {
+      "lecture": "caustic-ingestion",
+      "A": "No neutralizing: nothing is given by mouth.",
+      "B": "Endoscopy of the digestive tract assesses the lesions; bronchoscopy isn't the first step.",
+      "C": "The patient is kept half seated, and the mouth is cleaned of the product.",
+      "D": "Gastric lavage is one of the mistakes to avoid."
+    },
+    "D258": {
+      "lecture": "acute-appendicitis",
+      "A": "It's the opposite: the white cells rise.",
+      "B": "Bilirubin isn't part of the work-up of appendicitis.",
+      "C": "The CRP is high, not low.",
+      "D": "Hyperleukocytosis over 10,000/mm³, mostly neutrophils."
     }
   }
 }
