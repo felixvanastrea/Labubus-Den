@@ -1934,22 +1934,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .lb-live.zz .lbz text:nth-child(3) { transform: translate(70px, -110px); }
 }
 .hero { pointer-events: none; } .hero > * { pointer-events: auto; } .hero > .title, .hero > [aria-hidden="true"] { pointer-events: none; }   /* the moon behind can still be pointed at */
-
-/* the good-luck jumpscare (14 October 2026; template.html: scare) */
-.scare { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #000; color: #f2ede4; }
-.scare .sc-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% 35%; animation: scin .18s cubic-bezier(.2, 1.4, .4, 1) both, scshake .09s linear .18s 16; }
-@keyframes scin { from { transform: scale(.25); } to { transform: scale(1.12); } }
-@keyframes scshake { 0%, 100% { transform: scale(1.12) translate(0, 0); } 25% { transform: scale(1.14) translate(-1.2%, .8%); } 50% { transform: scale(1.12) translate(1%, -1%); } 75% { transform: scale(1.15) translate(-.6%, -.8%); } }
-.scare.after .sc-face { animation: none; transform: scale(1.04); filter: brightness(.22) blur(3px); transition: filter .8s ease; }
-.sc-after { position: relative; z-index: 1; display: grid; gap: 10px; justify-items: center; padding: 24px; text-align: center; animation: scafter .6s var(--ease) both; }
-.sc-t { margin: 0; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(3rem, 12vw, 6rem); line-height: 1; }
-.sc-s { margin: 0; max-width: 22rem; font-family: "EB Garamond", Georgia, serif; font-size: 1.3rem; line-height: 1.4; }
-.sc-by { margin: 0 0 10px; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 1.1rem; opacity: .7; }
-.scare .btn.primary { background: #f2ede4; border-color: #f2ede4; color: #111; }
-@keyframes scafter { from { opacity: 0; transform: translateY(10px); } }
-.scare.gone { opacity: 0; transition: opacity .45s ease; }
-@media (prefers-reduced-motion: reduce) { .scare .sc-face { transform: scale(1.04); } }
-.scare .sc-face.sc-2 { object-fit: contain; object-position: 50% 50%; }
 </style>
 </head>
 <body>
@@ -2690,8 +2674,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       setSound(v) { soundOn = v; keep(SOUND_KEY, v); if (v) { loadSamples(); play('toggle', { quiet: true }); } },
       // how long ago something played (a screen's page turn stays quiet after another sound)
       since: () => Date.now() - lastAt,
-      // the audio graph, if a tap has started it (for one-off sounds made elsewhere, like the jumpscare's scream)
-      graph: () => (soundOn && context() && out) ? { ctx, out } : null,
       setHaptics(v) { hapticOn = v; keep(HAPTIC_KEY, v); if (v) buzz('tick'); }
     };
   })();
@@ -8645,80 +8627,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     return { after() { light(null); arch = null; } };
   })();
 
-  // ---------- the good-luck jumpscare (Abi, 14 October 2026, the digestive surgery midterm's morning) ----------
-  // Twice per device: a minute after the Den opens, the face she sent fills the screen with a scream, then "Gotcha. Good
-  // luck today"; two minutes after that, the second face she sent, then "Again. Now go ace it." Each is kept in its own
-  // localStorage key once shown. Only while SCARE.until hasn't passed; never during the opening animation or over the
-  // other one; the scream only if sounds are on and a tap has started the audio (browsers allow nothing else); no
-  // flashing. Automated browsers skip it unless window.__scareTest (__scareWait, __scareAgain shorten the waits).
-  // To retire it, delete this block, its CSS (.scare) and img/jumpscare*.jpg.
-  const SCARE = { until: new Date(2026, 9, 15), wait: 60000, again: 120000, shots: [
-    { id: 'efm3-scare-2026-10-14', img: 'img/jumpscare.jpg', alt: 'A pale face with wide black eyes and a red grin', t: 'Gotcha.', s: 'Good luck on the midterm today. You’ve got this.' },
-    { id: 'efm3-scare-2026-10-14b', img: 'img/jumpscare2.jpg', alt: 'A pale face grinning out of the dark', t: 'Again.', s: 'Now go ace it.' }] };
-  const scare = (() => {
-    const when = k => { try { return +localStorage.getItem(SCARE.shots[k].id) || 0; } catch (e) { return -1; } };
-    const next = () => SCARE.shots.findIndex((_, k) => !when(k));
-    function scream() {
-      const g = sfx.graph(); if (!g) return;
-      const { ctx, out } = g, t = ctx.currentTime, len = 1.7;
-      try {
-        const v = ctx.createGain(); v.gain.setValueAtTime(0, t); v.gain.linearRampToValueAtTime(1.1, t + .03); v.gain.setValueAtTime(1.1, t + 1.1); v.gain.exponentialRampToValueAtTime(.001, t + len);
-        v.connect(out);
-        // two shrieking voices a little apart, sliding up and wavering, through a throat-like band
-        for (const [f, d] of [[880, 0], [1245, 7]]) {
-          const o = ctx.createOscillator(), lfo = ctx.createOscillator(), lg = ctx.createGain(), bp = ctx.createBiquadFilter();
-          o.type = 'sawtooth'; o.frequency.setValueAtTime(f * .55, t); o.frequency.exponentialRampToValueAtTime(f, t + .12); o.frequency.linearRampToValueAtTime(f * 1.08, t + len);
-          o.detune.value = d; lfo.frequency.value = 9 + d; lg.gain.value = f * .04; lfo.connect(lg); lg.connect(o.frequency);
-          bp.type = 'bandpass'; bp.frequency.value = f * 1.6; bp.Q.value = 1.2;
-          const og = ctx.createGain(); og.gain.value = .32; o.connect(bp); bp.connect(og); og.connect(v);
-          o.start(t); lfo.start(t); o.stop(t + len); lfo.stop(t + len);
-        }
-        // and a burst of breathy noise
-        const n = ctx.createBuffer(1, Math.round(ctx.sampleRate * len), ctx.sampleRate), d = n.getChannelData(0);
-        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-        const ns = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), ng = ctx.createGain();
-        ns.buffer = n; hp.type = 'highpass'; hp.frequency.value = 1800; ng.gain.value = .35;
-        ns.connect(hp); hp.connect(ng); ng.connect(v); ns.start(t);
-      } catch (e) {}
-    }
-    function show(k) {
-      const sh = SCARE.shots[k];
-      if (when(k) || document.getElementById('scare')) return;
-      try { localStorage.setItem(sh.id, String(Date.now())); } catch (e) {}
-      const el = document.createElement('div');
-      el.id = 'scare'; el.className = 'scare'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'Boo');
-      el.innerHTML = `<img class="sc-face${k ? ' sc-2' : ''}" src="${sh.img}" alt="${esc(sh.alt)}">
-        <div class="sc-after" hidden><p class="sc-t">${esc(sh.t)}</p><p class="sc-s">${esc(sh.s)}</p><p class="sc-by">The Labubu</p>
-        <button class="btn primary" type="button" data-scare-close>Back to the Den</button></div>`;
-      document.body.appendChild(el);
-      scream();
-      try { if (navigator.vibrate) navigator.vibrate([400, 80, 600]); } catch (e) {}
-      usage.track('jumpscare_shown', { n: k + 1 });
-      setTimeout(() => {
-        el.classList.add('after'); el.querySelector('.sc-after').hidden = false;
-        const b = el.querySelector('[data-scare-close]'); b.focus({ preventScroll: true });
-      }, 1900);
-      const close = () => { el.classList.add('gone'); setTimeout(() => el.remove(), 500); document.removeEventListener('keydown', key); };
-      const key = e => { if (e.key === 'Escape' && el.classList.contains('after')) close(); };
-      el.addEventListener('click', e => { if (e.target.closest('[data-scare-close]')) close(); });
-      document.addEventListener('keydown', key);
-    }
-    function arm() {
-      if (next() < 0 || Date.now() >= SCARE.until.getTime() || (navigator.webdriver && !window.__scareTest)) return;
-      SCARE.shots.forEach(sh => { new Image().src = sh.img; });   // fetched now, so they're there the moment they show
-      const wait = window.__scareWait || SCARE.wait, again = window.__scareAgain || SCARE.again, t0 = Date.now();
-      const tick = () => {
-        const k = next(); if (k < 0) return;
-        const due = Date.now() - t0 >= wait && (!k || Date.now() - when(k - 1) >= again);
-        if (!due || intro.active() || document.hidden || document.getElementById('scare')) { setTimeout(tick, 1000); return; }
-        show(k); setTimeout(tick, 1000);
-      };
-      setTimeout(tick, Math.min(wait, 1000));
-    }
-    window.__scare = () => ({ next: next(), shown: !!document.getElementById('scare') });
-    return { arm };
-  })();
-
   // ---------- opening animation ----------
   // The camera starts tilted up at the night sky, where the years hang as constellations: pick yours (EFM3; the
   // others are in progress), then your semester, one of its stars (S5; S6 is in progress). That star becomes a
@@ -9574,7 +9482,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');
     titleHold = opening;
     skyclock.start();
-    scare.arm();
     render(false);
     if (opening && intro.play()) return;   // the intro starts the sky when its star lands
     releaseTitle();
