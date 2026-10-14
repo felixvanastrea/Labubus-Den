@@ -487,6 +487,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   either ("Hide my star" and Delete my data remove the entry). Rules: each user writes only their own key, under their
   registered name, `t` = server time; if they refuse, nothing shows. Test: alive.js.
 
+## The good-luck jumpscare (Abi, 14 October 2026, the morning of the digestive surgery midterm)
+
+- `scare` in `template.html`, `SCARE` = {id (localStorage key, once per device), until (stops on 15 October), wait (60 s
+  after the Den opens), img `img/jumpscare.jpg` (the image Abi sent)}. Full screen with a synthesized scream (only if
+  sounds are on and a tap started the audio; `sfx.graph()`), a shake but no flashing, then "Gotcha. Good luck on the
+  midterm today." and a button back. Never during the intro; automated browsers skip it unless `window.__scareTest`
+  (`__scareWait` shortens the wait). Test: scare.js. To retire it: delete the block, the `.scare` CSS and the image.
+
 ## The app (Add to Home Screen)
 
 - On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
@@ -557,7 +565,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node scare.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
