@@ -165,6 +165,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - `spotlight` in `quests.json` (`set`, `module`, `title`, `from`, `until`, inclusive) puts a just-added exam set on the
   homepage in the quest's place, with a hero button: Practise it, or Exam mode. Without `spotlight`, nothing shows.
   The 2026–2027 respiratory midterm had it from 7 October 2026; Abi took it down on 9 October.
+  The digestive surgery midterm 2026–2027 has it on 14 and 15 October 2026 (Abi: "for just a day"), and the digestive
+  surgery quest got `end: 2026-10-14` so it left the homepage the day of its exam.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 

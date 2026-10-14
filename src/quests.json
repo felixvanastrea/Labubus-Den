@@ -37,7 +37,8 @@
           "name": "Esophageal cancer",
           "lecture": "D-eso-cancer"
         }
-      ]
+      ],
+      "end": "2026-10-14"
     },
     {
       "id": "resp-midterm-2026",
@@ -90,5 +91,12 @@
       ],
       "end": "2026-10-07"
     }
-  ]
+  ],
+  "spotlight": {
+    "set": "s5-2627-digestive-system-disease-midterm-digestive-surgical-pathology-2026-2027",
+    "title": "Digestive surgery midterm 2026–2027",
+    "from": "2026-10-14",
+    "until": "2026-10-15",
+    "note": "Today’s digestive surgery midterm, as it was given. No answers were marked, so they’re answered from the lectures."
+  }
 }
