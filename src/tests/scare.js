@@ -1,5 +1,5 @@
-// The good-luck jumpscare (14 October 2026): once per device, a minute after the Den opens (here 1.5 s), the face
-// fills the screen, then "Gotcha" with a button back; it never shows again on that device; automated browsers skip it
+// The good-luck jumpscare (14 October 2026): a minute after the Den opens (here 1.5 s), the face fills the screen, then
+// "Gotcha" with a button back; two minutes later (here 4 s) the second face and "Again"; it never shows again on that device; automated browsers skip it
 // unless window.__scareTest. Screenshots: shots/scare_*.png.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -14,7 +14,7 @@ const errors = [];
   const b = await chromium.launch();
   for (const [tag, vp] of [['desk', { width: 1280, height: 800 }], ['phone', { width: 390, height: 780 }]]) {
     const ctx = await b.newContext({ viewport: vp });
-    await ctx.addInitScript(() => { window.__scareTest = true; window.__scareWait = 1500; });
+    await ctx.addInitScript(() => { window.__scareTest = true; window.__scareWait = 1500; window.__scareAgain = 4000; });
     const p = await ctx.newPage();
     p.on('pageerror', e => errors.push(tag + ': ' + e.message));
     await p.goto(URL); await p.waitForTimeout(600);
@@ -28,6 +28,12 @@ const errors = [];
     await p.screenshot({ path: OUT + `scare_${tag}_after.png` });
     await p.click('[data-scare-close]'); await p.waitForTimeout(700);
     check(!(await p.$('#scare')), `${tag}: the button closes it`);
+    await p.waitForTimeout(1500);
+    check(await p.isVisible('#scare .sc-face.sc-2'), `${tag}: a while later, the second face`);
+    await p.screenshot({ path: OUT + `scare_${tag}_2.png` });
+    await p.waitForTimeout(2200);
+    check(/Again/.test(await p.textContent('#scare .sc-after')), `${tag}: then "Again. Now go ace it."`);
+    await p.click('[data-scare-close]'); await p.waitForTimeout(700);
     await p.reload(); await p.waitForTimeout(2600);
     check(!(await p.$('#scare')), `${tag}: it never comes back on that device`);
     await ctx.close();

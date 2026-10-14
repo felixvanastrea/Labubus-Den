@@ -1810,3 +1810,4 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 @keyframes scafter { from { opacity: 0; transform: translateY(10px); } }
 .scare.gone { opacity: 0; transition: opacity .45s ease; }
 @media (prefers-reduced-motion: reduce) { .scare .sc-face { transform: scale(1.04); } }
+.scare .sc-face.sc-2 { object-fit: contain; object-position: 50% 50%; }

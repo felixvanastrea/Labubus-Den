@@ -489,11 +489,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## The good-luck jumpscare (Abi, 14 October 2026, the morning of the digestive surgery midterm)
 
-- `scare` in `template.html`, `SCARE` = {id (localStorage key, once per device), until (stops on 15 October), wait (60 s
-  after the Den opens), img `img/jumpscare.jpg` (the image Abi sent)}. Full screen with a synthesized scream (only if
-  sounds are on and a tap started the audio; `sfx.graph()`), a shake but no flashing, then "Gotcha. Good luck on the
-  midterm today." and a button back. Never during the intro; automated browsers skip it unless `window.__scareTest`
-  (`__scareWait` shortens the wait). Test: scare.js. To retire it: delete the block, the `.scare` CSS and the image.
+- `scare` in `template.html`, `SCARE` = {until (stops on 15 October), wait (60 s after the Den opens), again (120 s),
+  shots: two images Abi sent, `img/jumpscare.jpg` then `img/jumpscare2.jpg`, each with its own localStorage key, so once
+  per device each}. The first a minute after the Den opens ("Gotcha. Good luck on the midterm today."), the second two
+  minutes after the first ("Again. Now go ace it."), never over each other. Full screen with a synthesized scream (only
+  if sounds are on and a tap started the audio; `sfx.graph()`), a shake but no flashing, then the words and a button
+  back. Never during the intro; automated browsers skip it unless `window.__scareTest` (`__scareWait`, `__scareAgain`
+  shorten the waits). Test: scare.js. To retire it: delete the block, the `.scare` CSS and the images.
 
 ## The app (Add to Home Screen)
 

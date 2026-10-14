@@ -6642,7 +6642,7 @@
     // the greeting at the top of the homepage
     function greet() {
       const h = new Date(nowT()).getHours(), nm = acct.first(), n = nm ? `, ${nm}` : '';
-      if (QUEST && !questOver() && questDays() === 0) return `Exam day${n}. You’ve got this.`;
+      if (QUEST && !questOver() && dueDate().toDateString() === new Date(nowT()).toDateString()) return `Exam day${n}. You’ve got this.`;
       if (h < 2) return `Still up${n}?`;
       if (h < 5) return `It’s ${h} am${n}. The Labubu is yawning.`;
       if (h < 7) return `Up before the sun${n}.`;
@@ -6696,13 +6696,18 @@
   })();
 
   // ---------- the good-luck jumpscare (Abi, 14 October 2026, the digestive surgery midterm's morning) ----------
-  // Once per device, a minute after the Den opens: the face she sent fills the screen with a scream, then "Gotcha. Good
-  // luck today". Only while SCARE.until hasn't passed; never during the opening animation; the scream only if sounds are
-  // on and a tap has started the audio (browsers allow nothing else); no flashing. Automated browsers skip it unless
-  // window.__scareTest. To retire it, delete this block, its CSS (.scare) and img/jumpscare.jpg.
-  const SCARE = { id: 'efm3-scare-2026-10-14', until: new Date(2026, 9, 15), wait: 60000, img: 'img/jumpscare.jpg' };
+  // Twice per device: a minute after the Den opens, the face she sent fills the screen with a scream, then "Gotcha. Good
+  // luck today"; two minutes after that, the second face she sent, then "Again. Now go ace it." Each is kept in its own
+  // localStorage key once shown. Only while SCARE.until hasn't passed; never during the opening animation or over the
+  // other one; the scream only if sounds are on and a tap has started the audio (browsers allow nothing else); no
+  // flashing. Automated browsers skip it unless window.__scareTest (__scareWait, __scareAgain shorten the waits).
+  // To retire it, delete this block, its CSS (.scare) and img/jumpscare*.jpg.
+  const SCARE = { until: new Date(2026, 9, 15), wait: 60000, again: 120000, shots: [
+    { id: 'efm3-scare-2026-10-14', img: 'img/jumpscare.jpg', alt: 'A pale face with wide black eyes and a red grin', t: 'Gotcha.', s: 'Good luck on the midterm today. You’ve got this.' },
+    { id: 'efm3-scare-2026-10-14b', img: 'img/jumpscare2.jpg', alt: 'A pale face grinning out of the dark', t: 'Again.', s: 'Now go ace it.' }] };
   const scare = (() => {
-    const done = () => { try { return !!localStorage.getItem(SCARE.id); } catch (e) { return true; } };
+    const when = k => { try { return +localStorage.getItem(SCARE.shots[k].id) || 0; } catch (e) { return -1; } };
+    const next = () => SCARE.shots.findIndex((_, k) => !when(k));
     function scream() {
       const g = sfx.graph(); if (!g) return;
       const { ctx, out } = g, t = ctx.currentTime, len = 1.7;
@@ -6726,18 +6731,19 @@
         ns.connect(hp); hp.connect(ng); ng.connect(v); ns.start(t);
       } catch (e) {}
     }
-    function show() {
-      if (done() || document.getElementById('scare')) return;
-      try { localStorage.setItem(SCARE.id, String(Date.now())); } catch (e) {}
+    function show(k) {
+      const sh = SCARE.shots[k];
+      if (when(k) || document.getElementById('scare')) return;
+      try { localStorage.setItem(sh.id, String(Date.now())); } catch (e) {}
       const el = document.createElement('div');
       el.id = 'scare'; el.className = 'scare'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'Boo');
-      el.innerHTML = `<img class="sc-face" src="${SCARE.img}" alt="A pale face with wide black eyes and a red grin">
-        <div class="sc-after" hidden><p class="sc-t">Gotcha.</p><p class="sc-s">Good luck on the midterm today. You’ve got this.</p><p class="sc-by">The Labubu</p>
+      el.innerHTML = `<img class="sc-face${k ? ' sc-2' : ''}" src="${sh.img}" alt="${esc(sh.alt)}">
+        <div class="sc-after" hidden><p class="sc-t">${esc(sh.t)}</p><p class="sc-s">${esc(sh.s)}</p><p class="sc-by">The Labubu</p>
         <button class="btn primary" type="button" data-scare-close>Back to the Den</button></div>`;
       document.body.appendChild(el);
       scream();
       try { if (navigator.vibrate) navigator.vibrate([400, 80, 600]); } catch (e) {}
-      usage.track('jumpscare_shown');
+      usage.track('jumpscare_shown', { n: k + 1 });
       setTimeout(() => {
         el.classList.add('after'); el.querySelector('.sc-after').hidden = false;
         const b = el.querySelector('[data-scare-close]'); b.focus({ preventScroll: true });
@@ -6748,18 +6754,18 @@
       document.addEventListener('keydown', key);
     }
     function arm() {
-      if (done() || Date.now() >= SCARE.until.getTime() || (navigator.webdriver && !window.__scareTest)) return;
-      new Image().src = SCARE.img;   // fetched now, so it's there the moment it shows
-      const wait = window.__scareWait || SCARE.wait;
-      const t0 = Date.now();
+      if (next() < 0 || Date.now() >= SCARE.until.getTime() || (navigator.webdriver && !window.__scareTest)) return;
+      SCARE.shots.forEach(sh => { new Image().src = sh.img; });   // fetched now, so they're there the moment they show
+      const wait = window.__scareWait || SCARE.wait, again = window.__scareAgain || SCARE.again, t0 = Date.now();
       const tick = () => {
-        if (done()) return;
-        if (Date.now() - t0 < wait || intro.active() || document.hidden) { setTimeout(tick, 1000); return; }
-        show();
+        const k = next(); if (k < 0) return;
+        const due = Date.now() - t0 >= wait && (!k || Date.now() - when(k - 1) >= again);
+        if (!due || intro.active() || document.hidden || document.getElementById('scare')) { setTimeout(tick, 1000); return; }
+        show(k); setTimeout(tick, 1000);
       };
       setTimeout(tick, Math.min(wait, 1000));
     }
-    window.__scare = () => ({ done: done(), shown: !!document.getElementById('scare') });
+    window.__scare = () => ({ next: next(), shown: !!document.getElementById('scare') });
     return { arm };
   })();
 

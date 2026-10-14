@@ -122,7 +122,7 @@ async function nextKeyed(p, want) {
 
   // 2. the real sky: the moon's phase and the sun's height over Casablanca (known dates)
   {
-    const { ctx, p } = await open(b, { tag: 'clock', now: Date.parse('2026-10-14T01:30:00Z') });
+    const { ctx, p } = await open(b, { tag: 'clock', now: Date.parse('2026-10-16T01:30:00Z') });
     const full = await p.evaluate(() => window.__skyclock(Date.parse('2025-09-07T18:09:00Z')));
     check(Math.abs(full.phase - .5) < .02 && full.lit > .98 && full.phaseName === 'Full moon', `the full moon of 7 September 2025 (phase ${full.phase.toFixed(3)}, ${(full.lit * 100).toFixed(1)}% lit)`);
     const nw = await p.evaluate(() => window.__skyclock(Date.parse('2025-09-21T19:54:00Z')));
