@@ -153,7 +153,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
   A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
   lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
-- Current quest: the digestive surgery midterm (`dig-surg-midterm-2026`, Wednesday 14 October 2026), Abi's seven
+- Current quest: the communication midterm (`comm-midterm-2026`, Wednesday 21 October 2026): both lectures of the
+  module, Pr Fourtassi's foundations (part 1) and clinical communication (part 2), 25 questions. Before it:
+  the digestive surgery midterm (`dig-surg-midterm-2026`, Wednesday 14 October 2026), Abi's seven
   lectures: appendicitis, peritonitis, groin hernias, hydatid cyst of the liver, caustic ingestion, stomach cancer,
   esophageal cancer (100 questions; gallstones, the same professor's, isn't on it). The respiratory quest before it
   ended on 7 October.
@@ -165,7 +167,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - `spotlight` in `quests.json` (`set`, `module`, `title`, `from`, `until`, inclusive) puts a just-added exam set on the
   homepage in the quest's place, with a hero button: Practise it, or Exam mode. Without `spotlight`, nothing shows.
   The 2026–2027 respiratory midterm had it from 7 October 2026; Abi took it down on 9 October.
-  The digestive surgery midterm 2026–2027 has it on 14 and 15 October 2026 (Abi: "for just a day"), and the digestive
+  The digestive surgery midterm 2026–2027 had it on 14 October 2026 (Abi: "for just a day"; the communication quest took its place on the 15th), and the digestive
   surgery quest got `end: 2026-10-14` so it left the homepage the day of its exam.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.

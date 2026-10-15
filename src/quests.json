@@ -1,6 +1,24 @@
 {
-  "current": "dig-surg-midterm-2026",
+  "current": "comm-midterm-2026",
   "quests": [
+    {
+      "id": "comm-midterm-2026",
+      "title": "Communication midterm",
+      "module": "technical-communication",
+      "due": "2026-10-21",
+      "goal": 80,
+      "note": "Both communication lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+      "topics": [
+        {
+          "name": "Foundations of communication",
+          "lecture": "T-foundations"
+        },
+        {
+          "name": "Clinical communication",
+          "lecture": "T-clinical"
+        }
+      ]
+    },
     {
       "id": "dig-surg-midterm-2026",
       "title": "Digestive surgery midterm",
@@ -96,7 +114,7 @@
     "set": "s5-2627-digestive-system-disease-midterm-digestive-surgical-pathology-2026-2027",
     "title": "Digestive surgery midterm 2026–2027",
     "from": "2026-10-14",
-    "until": "2026-10-15",
+    "until": "2026-10-14",
     "note": "Today’s digestive surgery midterm, as it was given. No answers were marked, so they’re answered from the lectures."
   }
 }
