@@ -52,6 +52,14 @@
     "esophageal-cancer": {
       "title": "Esophageal cancer",
       "added": "2026-10-11"
+    },
+    "comm-foundations": {
+      "title": "Foundations of communication in medicine (Pr Fourtassi)",
+      "added": "2026-10-17"
+    },
+    "comm-clinical": {
+      "title": "Clinical communication (Pr Fourtassi)",
+      "added": "2026-10-17"
     }
   },
   "questions": {
@@ -1329,6 +1337,314 @@
       "B": "Bilirubin isn't part of the work-up of appendicitis.",
       "C": "The CRP is high, not low.",
       "D": "Hyperleukocytosis over 10,000/mm³, mostly neutrophils."
+    },
+    "T26": {
+      "lecture": "comm-foundations",
+      "A": "Physiological noise comes from the body: hearing, pain, fatigue.",
+      "B": "Cultural noise comes from beliefs and customs, not from one word's meaning.",
+      "C": "Psychological noise comes from emotions like fear or anxiety.",
+      "D": "A word understood differently, here \"positive\", is semantic noise."
+    },
+    "T27": {
+      "lecture": "comm-foundations",
+      "A": "Nothing here points to emotion as the obstacle.",
+      "B": "Hearing impairment is a physiological barrier, from the body itself.",
+      "C": "Nothing cultural is at play.",
+      "D": "The explanations were clear, so the words weren't the problem."
+    },
+    "T28": {
+      "lecture": "comm-foundations",
+      "A": "An open posture invites communication.",
+      "B": "Leaning slightly forward shows attention.",
+      "C": "Avoiding eye contact signals disinterest: eye contact is what shows you're listening.",
+      "D": "Affirmative nods encourage the patient to go on."
+    },
+    "T29": {
+      "lecture": "comm-foundations",
+      "A": "Feedback is the receiver's response, here the confused look, that the sender adapts to.",
+      "B": "Noise is what disturbs the message, not the response to it.",
+      "C": "Encoding is putting the idea into words before sending.",
+      "D": "The channel is the medium, speech here."
+    },
+    "T30": {
+      "lecture": "comm-foundations",
+      "A": "The sender and receiver are missing.",
+      "B": "Noise isn't a step: it can disturb any stage.",
+      "C": "That's the whole loop of the model.",
+      "D": "The order is wrong: the sender comes before the message."
+    },
+    "T31": {
+      "lecture": "comm-clinical",
+      "A": "Deleting looks like hiding something and loses trust.",
+      "B": "Sarcasm humiliates; misinformation is corrected gently.",
+      "C": "Unanswered misinformation spreads.",
+      "D": "Respectful correction with credible sources is how misinformation is managed."
+    },
+    "T32": {
+      "lecture": "comm-clinical",
+      "A": "Chronic care needs ongoing conversations, not less discussion.",
+      "B": "Decisions are shared, not imposed.",
+      "C": "Immediate decisions are the acute illness approach.",
+      "D": "The goal is long-term self-management and patient engagement."
+    },
+    "T33": {
+      "lecture": "comm-clinical",
+      "A": "Insisting on knowing everything pushes past the patient's boundary.",
+      "B": "Respecting the boundary and inviting later builds trust.",
+      "C": "Pressuring the patient can close communication entirely.",
+      "D": "Blaming pressures the patient instead of respecting their privacy."
+    },
+    "T34": {
+      "lecture": "comm-foundations",
+      "A": "Conciseness means only the essentials, no unnecessary details.",
+      "B": "Credibility is about building trust.",
+      "C": "Correctness means accuracy and professionalism.",
+      "D": "All the relevant information for an informed decision is completeness."
+    },
+    "T35": {
+      "lecture": "comm-clinical",
+      "A": "Judging closes the conversation instead of exploring the barriers.",
+      "B": "Threats and blame shut down change.",
+      "C": "Moral judgment isn't the doctor's role.",
+      "D": "It recognizes the difficulty and moves to small, shared steps."
+    },
+    "T36": {
+      "lecture": "comm-clinical",
+      "A": "Easy reassurance without details isn't honest; hope should be realistic.",
+      "B": "Changing the subject avoids the patient's question.",
+      "C": "Exact figures come later, if the patient wants that much detail.",
+      "D": "First ask what the patient already understands about their condition."
+    },
+    "T37": {
+      "lecture": "comm-clinical",
+      "A": "Bad news isn't handed over in writing to avoid the conversation.",
+      "B": "There's no warning shot and no pause for the patient's reaction.",
+      "C": "It takes away all hope, and false or no hope both go against good practice.",
+      "D": "It explores the patient's perception first, the P of SPIKES."
+    },
+    "T38": {
+      "lecture": "comm-clinical",
+      "A": "Defensiveness closes communication.",
+      "B": "Comparing with other patients dismisses her feelings.",
+      "C": "Telling her to leave ends the relationship instead of restoring trust.",
+      "D": "It acknowledges her frustration and invites clarification."
+    },
+    "T39": {
+      "lecture": "comm-foundations",
+      "A": "Speed matters less than the tone behind the words.",
+      "B": "Length isn't what changes how a message feels.",
+      "C": "An accurate message can still be received badly.",
+      "D": "Tone is the attitude in your voice, the emotional layer of your words."
+    },
+    "T40": {
+      "lecture": "comm-clinical",
+      "A": "Withholding the details isn't honest disclosure.",
+      "B": "Blunt news with pressure to decide quickly overwhelms her.",
+      "C": "It's honest and opens the discussion of what comes next.",
+      "D": "False reassurance isn't realistic hope."
+    },
+    "T41": {
+      "lecture": "comm-foundations",
+      "A": "Her concerns not being acknowledged is poor communication.",
+      "B": "Nothing physical stopped the message.",
+      "C": "The treatment was correct.",
+      "D": "Completeness is about information, not acknowledging concerns."
+    },
+    "T42": {
+      "lecture": "comm-foundations",
+      "A": "Fear is an emotion to acknowledge and normalize.",
+      "B": "That's a fact, not an emotion.",
+      "C": "That's a symptom, not an emotion.",
+      "D": "That's a measurement, not an emotion."
+    },
+    "T43": {
+      "lecture": "comm-clinical",
+      "A": "Repression pushes thoughts away; it doesn't make the event feel unreal.",
+      "B": "Rationalization is a reasonable-sounding excuse.",
+      "C": "Detachment, the event \"like a movie\", and memory gaps are dissociation.",
+      "D": "Denial rejects a reality, like a diagnosis."
+    },
+    "T44": {
+      "lecture": "comm-foundations",
+      "A": "Pauses help, but silence throughout isn't listening.",
+      "B": "Interrupting is a don't.",
+      "C": "Immediate solutions skip understanding the patient.",
+      "D": "Paraphrasing shows you understood what the patient said."
+    },
+    "T45": {
+      "lecture": "comm-foundations",
+      "A": "Silence and attention let the patient go on.",
+      "B": "Closed questions cut the patient's story short.",
+      "C": "Changing the topic ignores the patient.",
+      "D": "Finishing their sentences interrupts them."
+    },
+    "T46": {
+      "lecture": "comm-foundations",
+      "A": "Encoding is putting the idea into words before sending.",
+      "B": "The channel is the medium, speech here.",
+      "C": "Noise is what disturbs the message, not the response to it.",
+      "D": "Feedback is the receiver's response that the sender adapts to."
+    },
+    "T47": {
+      "lecture": "comm-foundations",
+      "A": "An engaged patient has an open posture and leans in.",
+      "B": "A relaxed patient doesn't close up like this.",
+      "C": "Crossed arms and leaning away suggest defensiveness or discomfort.",
+      "D": "This posture says something emotional, not just tiredness."
+    },
+    "T48": {
+      "lecture": "comm-foundations",
+      "A": "Avoided eye contact and a rushed manner are non-verbal cues.",
+      "B": "The channel, talking face to face, was fine.",
+      "C": "The information itself was accurate.",
+      "D": "The message was correct."
+    },
+    "T49": {
+      "lecture": "comm-foundations",
+      "A": "Reassurance would say it will be fine; this acknowledges the fear.",
+      "B": "No information is being asked for.",
+      "C": "It names and accepts the emotion: emotional validation.",
+      "D": "Sympathy is pity; this acknowledges her feeling."
+    },
+    "T50": {
+      "lecture": "comm-clinical",
+      "A": "He highlights his medication to cover the diet and exercise.",
+      "B": "Projection attributes your own feelings to others.",
+      "C": "Regression is a return to childlike behavior.",
+      "D": "Displacement redirects emotion toward a safer target."
+    },
+    "T51": {
+      "lecture": "comm-foundations",
+      "A": "These aren't signs of confidence.",
+      "B": "Anger looks different: tense, confrontational.",
+      "C": "Fidgeting and avoiding eyes point to anxiety or distress.",
+      "D": "With a new diagnosis, this is distress rather than disinterest."
+    },
+    "T52": {
+      "lecture": "comm-clinical",
+      "A": "She isn't angry or confrontational.",
+      "B": "She doesn't seek attention or dependence.",
+      "C": "Tension and worst-case worry are anxiety.",
+      "D": "Somatizing turns distress into physical symptoms."
+    },
+    "T53": {
+      "lecture": "comm-clinical",
+      "A": "Repression pushes thoughts away.",
+      "B": "Childlike talk and constant need for reassurance are regression.",
+      "C": "Rationalization is a reasonable-sounding excuse.",
+      "D": "Denial rejects a reality."
+    },
+    "T54": {
+      "lecture": "comm-clinical",
+      "A": "Repetition without engaging the patient doesn't work.",
+      "B": "Emotions and coping are part of chronic care.",
+      "C": "Blaming shuts change down.",
+      "D": "Setting goals together is how chronic care is built."
+    },
+    "T55": {
+      "lecture": "comm-foundations",
+      "A": "Tension isn't satisfaction.",
+      "B": "Frowning doesn't mean ready to comply.",
+      "C": "These cues suggest stress, worry or disagreement.",
+      "D": "She's reacting, not indifferent."
+    },
+    "T56": {
+      "lecture": "comm-foundations",
+      "A": "It may feel faster but loses information.",
+      "B": "Authority isn't the goal of the consultation.",
+      "C": "Less disclosure means less information, not more accuracy.",
+      "D": "Patients who are interrupted share less."
+    },
+    "T57": {
+      "lecture": "comm-clinical",
+      "A": "Staying present and allowing silence accepts the emotion without minimizing it.",
+      "B": "Sympathy is pity for someone, often from a distance.",
+      "C": "Silence with presence is recommended, not a failure.",
+      "D": "The doctor stays with the patient instead of avoiding the emotion."
+    },
+    "T58": {
+      "lecture": "comm-foundations",
+      "A": "Closed questions limit what the patient can say.",
+      "B": "Summarizing shows you heard and understood the patient.",
+      "C": "Early advice skips listening.",
+      "D": "Interrupting is a don't."
+    },
+    "T59": {
+      "lecture": "comm-clinical",
+      "A": "He doesn't reject the diagnosis.",
+      "B": "His anger about the surgery lands on the staff: displacement.",
+      "C": "Projection would attribute his own anger to the nurses.",
+      "D": "He isn't detached; he's angry."
+    },
+    "T60": {
+      "lecture": "comm-foundations",
+      "A": "Shorter visits aren't the goal of good communication.",
+      "B": "Fewer errors means safer care.",
+      "C": "More tests aren't an outcome of good communication.",
+      "D": "Authority isn't an outcome sought."
+    },
+    "T61": {
+      "lecture": "comm-clinical",
+      "A": "Regression is childlike behavior.",
+      "B": "Rationalization invents a reasonable excuse.",
+      "C": "Denial rejects the diagnosis itself; he doesn't dispute it.",
+      "D": "He pushes the topic away whenever it comes up: repression."
+    },
+    "T62": {
+      "lecture": "comm-foundations",
+      "A": "It shuts down the emotion.",
+      "B": "Telling patients you know how they feel is a don't.",
+      "C": "It recognizes how the situation affects the patient.",
+      "D": "Generalizing is impersonal and minimizes."
+    },
+    "T63": {
+      "lecture": "comm-clinical",
+      "A": "Idealization isn't one of the coping behaviors in the lecture.",
+      "B": "Sublimation channels impulses into accepted activities.",
+      "C": "Regression is childlike behavior.",
+      "D": "He models himself on the athlete: identification."
+    },
+    "T64": {
+      "lecture": "comm-foundations",
+      "A": "The nod looked like feedback, but the failure started with the words chosen.",
+      "B": "Speaking face to face was the right channel.",
+      "C": "The patient decoded badly because the message was encoded in jargon.",
+      "D": "Encoding in jargon is the failure: avoid jargon."
+    },
+    "T65": {
+      "lecture": "comm-clinical",
+      "A": "Threats and blame shut down change.",
+      "B": "It understands the difficulty and builds a plan with him.",
+      "C": "Personal life advice isn't the doctor's role.",
+      "D": "Blame closes the conversation."
+    },
+    "T66": {
+      "lecture": "comm-foundations",
+      "A": "Empathy understands the feeling without pity.",
+      "B": "Sympathy is pity; it doesn't build autonomy.",
+      "C": "Understanding emotions is empathy, not sympathy.",
+      "D": "Empathy shares the feeling while remaining aware it's the patient's emotion."
+    },
+    "T67": {
+      "lecture": "comm-clinical",
+      "A": "Humiliating correction is what to avoid.",
+      "B": "It validates, explains the current guideline and why things changed.",
+      "C": "Unaddressed misinformation can be acted on.",
+      "D": "The group heard the wrong protocol, so the group needs the correction."
+    },
+    "T68": {
+      "lecture": "comm-foundations",
+      "A": "Eye contact shows you're listening.",
+      "B": "Reflecting feelings is a tool of active listening.",
+      "C": "Planning your answer takes your attention away from the patient.",
+      "D": "Clarifying is a tool of active listening."
+    },
+    "T69": {
+      "lecture": "comm-clinical",
+      "A": "She makes an excuse for not following the plan, like the missed colonoscopy on the slides.",
+      "B": "Projection attributes her own feelings to the doctor; she offers an excuse instead.",
+      "C": "Regression is childlike behavior.",
+      "D": "Compensation over-emphasizes another behavior."
     }
   }
 }

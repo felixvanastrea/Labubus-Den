@@ -130,6 +130,14 @@
     ]
   },
   "q": {
+    "T26": "T-foundations", "T27": "T-foundations", "T28": "T-foundations", "T29": "T-foundations", "T30": "T-foundations", "T31": "T-clinical",
+    "T32": "T-clinical", "T33": "T-clinical", "T34": "T-foundations", "T35": "T-clinical", "T36": "T-clinical", "T37": "T-clinical",
+    "T38": "T-clinical", "T39": "T-foundations", "T40": "T-clinical", "T41": "T-foundations", "T42": "T-foundations", "T43": "T-clinical",
+    "T44": "T-foundations", "T45": "T-foundations", "T46": "T-foundations", "T47": "T-foundations", "T48": "T-foundations", "T49": "T-foundations",
+    "T50": "T-clinical", "T51": "T-foundations", "T52": "T-clinical", "T53": "T-clinical", "T54": "T-clinical", "T55": "T-foundations",
+    "T56": "T-foundations", "T57": "T-clinical", "T58": "T-foundations", "T59": "T-clinical", "T60": "T-foundations", "T61": "T-clinical",
+    "T62": "T-foundations", "T63": "T-clinical", "T64": "T-foundations", "T65": "T-clinical", "T66": "T-foundations", "T67": "T-clinical",
+    "T68": "T-foundations", "T69": "T-clinical",
     "R16": "R-tb-treatment", "R119": "R-tb-treatment", "R216": "R-tb-treatment", "R121": "R-tb-treatment", "R114": "R-tb-infection", "R162": "R-tb-infection",
     "R112": "R-tb-infection", "R40": "R-bronchiectasis", "R31": "R-cancer-surgery", "R45": "R-cancer-surgery", "R72": "R-cancer-surgery", "R75": "R-cancer-surgery",
     "R184": "R-cancer-surgery", "R210": "R-cancer-surgery", "C223": "C-acs", "C321": "C-cpb", "C322": "C-cpb", "C323": "C-cpb",
