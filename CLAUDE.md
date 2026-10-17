@@ -154,7 +154,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
   lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
 - Current quest: the communication midterm (`comm-midterm-2026`, Wednesday 21 October 2026): both lectures of the
-  module, Pr Fourtassi's foundations (part 1) and clinical communication (part 2), 69 questions since the 2025–2026 final
+  module, Pr Fourtassi's foundations (part 1) and clinical communication (part 2), 75 questions since the 2025–2026 final
   came in (17 October). Before it:
   the digestive surgery midterm (`dig-surg-midterm-2026`, Wednesday 14 October 2026), Abi's seven
   lectures: appendicitis, peritonitis, groin hernias, hydatid cyst of the liver, caustic ingestion, stomach cancer,
@@ -554,8 +554,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   part of the quest that ended then) are `key: "official"` since 15 October 2026: Abi's real grades matched the grades
   these keys gave her (the digestive keys were worked out from Pr Bouziane's and Pr Benammi's decks, D249 = CD, D250 = AB),
   and she asked for no Claude or AI label on them.
-- The communication finals 2025–2026 (T26–T69, `added` 2026-10-17): Q1–44 of its 50, from a Gmail copy clipped at Q45
-  (Q45–50 still to come from Abi). No answers were marked: `key: "claude"`, answered from Pr Fourtassi's two decks (part 2
+- The communication finals 2025–2026 (T26–T75, `added` 2026-10-17): all 50 (Q1–44 first from a Gmail copy clipped at
+  Q45, then Q45–50 = T70–T75 from the full copy). No answers were marked: `key: "claude"`, answered from Pr Fourtassi's two decks (part 2
   also holds group communication), each placed in its lecture by a `lectures.json` `q` entry, with explanations. Q4 and
   Q21 are the same question with the options shuffled, as the exam had them. Least sure: Q36 (repression, as the mock's
   key for the same idea), Q39 (encoding), Q32, Q44.

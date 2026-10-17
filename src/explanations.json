@@ -1645,6 +1645,48 @@
       "B": "Projection attributes her own feelings to the doctor; she offers an excuse instead.",
       "C": "Regression is childlike behavior.",
       "D": "Compensation over-emphasizes another behavior."
+    },
+    "T70": {
+      "lecture": "comm-clinical",
+      "A": "Communication shouldn't wait: a frightened patient needs it now.",
+      "B": "Reassurance alone leaves out what's happening and what comes next.",
+      "C": "Simple, direct words and a calm tone fit acute care.",
+      "D": "A frightened patient in pain can't take in details now."
+    },
+    "T71": {
+      "lecture": "comm-clinical",
+      "A": "Empathy names what the patient feels.",
+      "B": "It's easy reassurance, not realistic reassurance based on evidence.",
+      "C": "Clarifying is asking a question to understand better.",
+      "D": "Validation acknowledges the emotion; this skips over it."
+    },
+    "T72": {
+      "lecture": "comm-foundations",
+      "A": "Much of it is unintentional.",
+      "B": "It goes with words; it doesn't replace them.",
+      "C": "Facial expressions, posture and eye contact often say more about emotions than words.",
+      "D": "Its meaning varies across cultures."
+    },
+    "T73": {
+      "lecture": "comm-clinical",
+      "A": "Information is given in small pieces, not all at once.",
+      "B": "Telling the patient to stay positive dismisses their emotion.",
+      "C": "It takes away all hope; hope should be realistic, not false or none.",
+      "D": "It's honest and empathic, a warning shot before difficult news."
+    },
+    "T74": {
+      "lecture": "comm-foundations",
+      "A": "It isn't about authority.",
+      "B": "Paraphrasing checks that you understood correctly.",
+      "C": "It isn't meant to save time.",
+      "D": "It follows the patient, not controls them."
+    },
+    "T75": {
+      "lecture": "comm-clinical",
+      "A": "Rapid, clear information about immediate treatment is the acute approach.",
+      "B": "Long-term lifestyle talk is for chronic illness.",
+      "C": "Self-management barriers belong to chronic care.",
+      "D": "In acute illness the doctor guides; the patient usually follows short-term advice."
     }
   }
 }
