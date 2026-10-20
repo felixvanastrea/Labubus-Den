@@ -321,7 +321,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   gets it until Abi says so. Sent 7 October 2026: Nada ("étoile filante" on the Den, `to: 'etoilefilante'`), the Golden
   phase, no message (Abi's wish). Sent 16 October 2026: Linatoon (`to: 'linaton'`, spelling unsure, so it also fits
   Lina Toon, Linnatoon...), the Golden phase, no message. Sent 20 October 2026: Lina L (`to: 'linal'`), the Golden phase, no message (kept as its own
-  entry in case she isn't Linatoon). Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
+  entry in case she isn't Linatoon). Same day: Labubu's handler (`to: 'labubushandler'`), every theme, no message. Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
   the lectures and finding 7 missing questions; Abi will send his name on the Den, then set `to` and drop `held`.
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
