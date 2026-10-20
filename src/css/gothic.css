@@ -1503,6 +1503,179 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 }
 @media (prefers-reduced-motion: reduce) { .km-leaves { display: none; } }
 
+/* =====================================================================================================================
+   Birth of Venus (a theme only ever given, October 2026: first for Labubu's handler). Botticelli's painting (about
+   1485, public domain, img/venus.webp) stands behind every screen, Venus right of the words, Zephyr's side fading into
+   a baby-blue ground (Abi: baby blue as the main colour, a light theme). Cormorant Garamond for display, Alegreya to
+   read, Alegreya Sans for small labels; the title in ultramarine hatched with gold; cards white-blue under a band of
+   Botticelli's v-shaped waves; answers are pearls; roses blown in from the left; under the hero the sea, with swans.
+   Sounds: a harp for a right answer, a small wave for the next question, surf and a harp run in the intro.
+   ===================================================================================================================== */
+:root[data-look="venus"] {
+  --night: #e2eff8; --deep: #c6e0f2; --plate: rgba(251, 253, 255, .93); --plate-2: #eef6fc;
+  --ink: #1f3247; --ink-hi: #10213a; --ink-2: #47607a; --ink-3: #6b8198;
+  --hair: rgba(62, 112, 156, .22); --hair-2: rgba(62, 112, 156, .42); --glass: rgba(234, 244, 251, .86);
+  --right: #2b7a5e; --wrong: #c03a4e; --half: #a5761a;
+  --right-wash: rgba(43, 122, 94, .09); --wrong-wash: rgba(192, 58, 78, .07); --half-wash: rgba(165, 118, 26, .09);
+  --sel-wash: rgba(110, 175, 222, .14); --glow-soft: rgba(120, 186, 232, .2); --glow-mid: rgba(110, 176, 226, .45);
+  --title-glow: rgba(255, 255, 255, .85); --mottle-1: rgba(255, 255, 255, .55); --mottle-2: rgba(233, 169, 177, .12); --shade: rgba(60, 110, 160, .14);
+  --k-official: #4a4f9c; --k-checked: #2f6f7a; --k-proposed: #2c6a4b; --k-claude: #8a6417; --k-none: #5d6a78;
+  --k-official-line: rgba(74, 79, 156, .45); --k-checked-line: rgba(47, 111, 122, .45); --k-proposed-line: rgba(44, 106, 75, .45);
+  --k-claude-line: rgba(138, 100, 23, .45); --k-none-line: rgba(93, 106, 120, .45); --k-flag-line: rgba(192, 58, 78, .45);
+  --fig-bg: #fbfdff;
+  --wax-hi: #f6cfd5; --wax-mid: #d47e8c; --wax-edge: #8a3242; --scrim: rgba(16, 33, 58, .45);
+  --f-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --f-read: "Alegreya", "EB Garamond", Georgia, serif;
+  --f-mono: "Alegreya Sans", "Gill Sans", system-ui, sans-serif;
+  --t-label: .86rem;
+  --gold: #c49a3c; --gold-hi: #e6c46a; --gold-deep: #8d6a1e; --gold-ink: #86651a; --gold-txt: #e6c46a;
+  --blue: #9fd0f0; --blue-deep: #5d9fcf; --blue-ink: #2f5f8f; --lapis: #2a4f9e; --rose: #e9a9b1; --rose-deep: #c46a7a;
+  --star-pal: #c49a3c #d99aa6 #7fb8e0 #b48a2c #e7b0b9 #6fa8d6 #a5761a;
+  --intro-ink: #f2ede6; --intro-ink-hi: #fffaf4;
+  --fx: #ffd3da; --fx-hi: #fff6f7;
+  --pearl: radial-gradient(circle at 33% 27%, #fff 0 8%, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 38% 34%, #fff8fa 0, #f7e1e9 22%, #e9d3ea 42%, #c7dbf2 66%, #9cbadb 88%, #7d9dc3 100%);
+  --waves: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='8' viewBox='0 0 48 8'%3E%3Crect width='48' height='8' fill='%23a9d6f3'/%3E %3Cpath d='M3 2.4L6 5L9 2.4M15 2.4L18 5L21 2.4M27 2.4L30 5L33 2.4M39 2.4L42 5L45 2.4' fill='none' stroke='%23fff' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round' opacity='.92'/%3E %3Crect y='7.1' width='48' height='.9' fill='%23c49a3c' opacity='.75'/%3E%3C/svg%3E");
+  --shellmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E %3Cpath d='M12 19.6L2.4 10Q2 7 3.8 5.6Q4.6 3.4 7 3Q8.8 1.6 10.6 1.9Q12 .9 13.4 1.9Q15.2 1.6 17 3Q19.4 3.4 20.2 5.6Q22 7 21.6 10Z' fill='%23f7e6ca' stroke='%23c49a3c' stroke-width='1.1' stroke-linejoin='round'/%3E %3Cpath d='M12 19.6L4.2 6.6M12 19.6L7.6 3.4M12 19.6V1.6M12 19.6L16.4 3.4M12 19.6L19.8 6.6' stroke='%23c49a3c' stroke-width='.8' fill='none'/%3E %3Cpath d='M9.4 19.2h5.2l-.9 2.2h-3.4z' fill='%23ead0a4' stroke='%23c49a3c' stroke-width='.7' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --rosemark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='%23efb5bd' stroke='%23c46a7a' stroke-width='.55'%3E %3Ccircle cx='8' cy='4.7' r='3'/%3E%3Ccircle cx='11.2' cy='7' r='3'/%3E%3Ccircle cx='10' cy='10.8' r='3'/%3E%3Ccircle cx='6' cy='10.8' r='3'/%3E%3Ccircle cx='4.8' cy='7' r='3'/%3E%3C/g%3E %3Ccircle cx='8' cy='8.2' r='2.3' fill='%23f7d3d8' stroke='%23c46a7a' stroke-width='.5'/%3E%3Ccircle cx='8' cy='8.2' r='1' fill='%23d9a640'/%3E%3C/svg%3E");
+  font-synthesis: none; scrollbar-color: #8ec4ea #e2eff8; color-scheme: light;
+}
+/* the ground: the painting's sky, baby blue, a blush of dawn low on the left, paler toward the sea */
+:root[data-look="venus"] .paper {
+  background:
+    radial-gradient(70% 50% at 85% 0%, rgba(255, 255, 255, .6), transparent 70%),
+    radial-gradient(60% 45% at 6% 100%, rgba(233, 169, 177, .18), transparent 70%),
+    radial-gradient(55% 45% at 14% 12%, rgba(160, 208, 240, .45), transparent 70%),
+    linear-gradient(180deg, #d5e9f7, #e2eff8 45%, #e8f3f5);
+  transition: opacity .8s var(--ease);
+}
+/* the intro looks up into the night (drawn under the paper): the day's ground waits until the star lands */
+:root[data-look="venus"].intro-on .paper { opacity: 0; transition: none; }
+:root[data-look="venus"] .grain { opacity: .05; }
+/* the painting: Venus (53% across it) at 70% of the screen, the full height; Zephyr's side fades under the words */
+.vn-bg { display: none; }
+:root[data-look="venus"] .vn-bg {
+  display: block; position: fixed; z-index: 1; pointer-events: none; top: 0; height: 100vh; width: calc(100vh * 1.592);
+  left: calc(70vw - 84.4vh); background: url("img/venus.webp") center / 100% 100% no-repeat;
+  /* its sides fade (Zephyr under the words), and its top under the bar */
+  -webkit-mask-image: linear-gradient(90deg, transparent 3%, rgba(0, 0, 0, .3) 22%, #000 44%, #000 92%, transparent), linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .35) 5%, #000 12%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 3%, rgba(0, 0, 0, .3) 22%, #000 44%, #000 92%, transparent), linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .35) 5%, #000 12%);
+  mask-composite: intersect;
+  transition: opacity .9s var(--ease);
+}
+/* full in the hero, a watermark once you scroll into the page (--km-scroll: 1 at the top, 0 a screen down); faint
+   beside the questions */
+:root[data-look="venus"] body[data-view="home"] .vn-bg { opacity: calc(.2 + .8 * var(--km-scroll, 1)); transition: none; }
+:root[data-look="venus"] body[data-view]:not([data-view="home"]) .vn-bg { opacity: .24; }
+/* the real moon would only be a smudge on the painting's sky */
+:root[data-look="venus"] .rmoon { display: none; }
+.intro-on .vn-bg { opacity: 0 !important; transition: none; }
+:root[data-look="venus"] :is(.h1, .h2, .h3) { font-style: italic; font-weight: 600; letter-spacing: 0; }
+:root[data-look="venus"] :is(.qmeta, .otag, .le-mod, .alsoin, .qp-stats, .mono:not(.navstat)) { font-size: max(.84rem, 1em); letter-spacing: .01em; }
+:root[data-look="venus"] .eyebrow { color: var(--blue-ink); letter-spacing: .02em; }
+:root[data-look="venus"] .eyebrow::before { content: ""; display: inline-block; width: 15px; height: 15px; margin-right: 8px; vertical-align: -3px; background: var(--rosemark) center / contain no-repeat; }
+:root[data-look="venus"] .navlinks button::after { background: var(--blue-deep); height: 2px; }
+:root[data-look="venus"] ::selection { background: #cbe8fa; color: #10213a; }
+:root[data-look="venus"] .logo { font-style: italic; }
+:root[data-look="venus"] .logo .lb { color: #fffdf8; --lb-line: #1f3247; }
+/* every card: white with a breath of blue, a band of Botticelli's waves along its top over a gold line */
+:root[data-look="venus"] .plate {
+  border-color: rgba(93, 159, 207, .34);
+  background: var(--waves) left top / 48px 8px repeat-x, linear-gradient(180deg, rgba(252, 254, 255, .97), rgba(243, 249, 253, .95));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6), 0 30px 60px -40px rgba(40, 90, 140, .4);
+}
+:root[data-look="venus"] .acct-card { background: var(--waves) left top / 48px 8px repeat-x, #f8fbfe; }
+:root[data-look="venus"] .btn.primary { background: linear-gradient(180deg, #d4ecfb, #a6d4f2 50%, #86c1ea); border-color: #6aa8d6; color: #10213a; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 -2px 0 rgba(40, 90, 140, .18), 0 8px 20px -10px rgba(50, 110, 170, .55); }
+:root[data-look="venus"] .btn.primary:hover { background: linear-gradient(180deg, #e2f2fc, #b5dcf5 50%, #93c9ee); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -2px 0 rgba(40, 90, 140, .18), 0 0 0 5px rgba(126, 190, 234, .22), 0 10px 26px -10px rgba(50, 110, 170, .6); }
+:root[data-look="venus"] .moon .mn-lit { fill: var(--gold); }
+:root[data-look="venus"] .moon.full, :root[data-look="venus"] .moon.big { filter: drop-shadow(0 0 12px var(--glow-mid)); }
+:root[data-look="venus"] .astro { display: none; }
+/* the questions: her shell over the card, an ultramarine initial; the answers are pearls, plain until picked, a pearl
+   as they're picked; a right one catches the light, a wrong one goes grey */
+:root[data-look="venus"] .qcard::before { content: ""; top: -12px; width: 28px; height: 24px; padding: 0 5px; background: var(--shellmark) center / 24px no-repeat, var(--night); background-origin: content-box; }
+:root[data-look="venus"] .stem::first-letter { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 700; color: var(--lapis); font-size: 1.6em; line-height: .8; }
+:root[data-look="venus"] .bub { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 700; font-size: 1.18rem; color: var(--lapis); border: 1.5px solid #8ec4ea; background: radial-gradient(circle at 35% 30%, #ffffff, #eaf4fb 75%); box-shadow: inset 0 0 0 3px rgba(142, 196, 234, .14); }
+:root[data-look="venus"] .opt:hover .bub { border-color: var(--blue-deep); }
+:root[data-look="venus"] .opts:not(.checked) .opt[aria-pressed="true"] .bub, :root[data-look="venus"] .opt.is-hit .bub {
+  background: var(--pearl); border-color: #b994a6; color: #1f3247;
+  box-shadow: inset -2px -3px 5px rgba(90, 120, 160, .28), inset 2px 2px 4px rgba(255, 255, 255, .9), 0 0 0 4px rgba(233, 169, 177, .2), 0 3px 10px rgba(60, 100, 150, .28);
+}
+:root[data-look="venus"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { animation: pearlpop .55s var(--spring); }
+:root[data-look="venus"] .opt.is-hit .bub { background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, .95) 50%, transparent 62%) -160% 0 / 260% 100% no-repeat, var(--pearl); border-color: var(--right); box-shadow: inset -2px -3px 5px rgba(90, 120, 160, .28), inset 2px 2px 4px rgba(255, 255, 255, .9), 0 0 0 4px rgba(43, 122, 94, .16), 0 0 14px rgba(255, 255, 255, .9); animation: coinshine 1.5s var(--ease) .15s both; }
+:root[data-look="venus"] .opt.is-miss .bub { background: radial-gradient(circle at 35% 30%, #b7c1cc, #6d7a88 80%); border-color: var(--wrong); color: #fff; box-shadow: 0 0 0 4px rgba(192, 58, 78, .1); }
+@keyframes pearlpop { 0% { transform: scale(.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+/* the class sky stays a window of night, at the hour before her dawn: rose and blue nebulae, pale stars */
+:root[data-look="venus"] .sky-field { --sky-star: #fff3ea; --sky-neb: #e9a9b1 #6f9fd0; --sky-hill: #1d3a4a #0f2230; background: radial-gradient(130% 120% at 78% 0%, #2b4a72 0%, #0e1a30 75%); }
+:root[data-look="venus"] .sky-field::after { box-shadow: inset 0 0 0 2px #9fd0f0, inset 0 0 0 4px #0e1a30, inset 0 0 60px rgba(0, 0, 0, .5); }
+/* the intro's sky is still night: its words keep the night's colours */
+:root[data-look="venus"] :is(.pick, .intro-hint) { --ink: #f2ede6; --ink-hi: #fffaf4; --ink-2: #d6d4dc; --ink-3: #a9b3c4; --hair: #2c3d55; --hair-2: #4a6385; --glow-mid: rgba(233, 169, 177, .42); --glow-soft: rgba(233, 169, 177, .16); --title-glow: rgba(160, 200, 240, .4); }
+@media (prefers-reduced-motion: reduce) {
+  :root[data-look="venus"] .opts .opt .bub { animation: none; }
+}
+/* the hero: the facts under the caption on the left, Venus has the right */
+:root[data-look="venus"] .title canvas { filter: drop-shadow(0 1px 1px rgba(16, 33, 58, .3)) drop-shadow(0 0 22px var(--title-glow)); }
+:root[data-look="venus"] .hero :is(.caption, .meta, .cta-note) { text-shadow: 0 0 8px var(--night), 0 0 16px var(--night), 0 0 2px var(--night); }
+@media (min-width: 641px) {
+  :root[data-look="venus"] .hero .caption { grid-row: 1; }
+  :root[data-look="venus"] .hero .meta { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: 0 18px; text-align: left; line-height: 1.6; color: var(--ink-3); }
+  :root[data-look="venus"] .hero .title { grid-row: 3; margin-top: 18px; }
+  :root[data-look="venus"] .hero .hero-cta { grid-column: 1; grid-row: 4; justify-items: start; text-align: left; }
+  :root[data-look="venus"] .hero .hero-cta .cta-note { max-width: 26rem; }
+}
+/* roses blown in from the left (Zephyr's side), drifting right and down, turning as they go */
+.vn-roses { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.vn-roses i { position: absolute; left: var(--x); top: -30px; width: calc(20px * var(--k)); height: calc(20px * var(--k)); opacity: 0; animation: rosedrift 26s linear infinite; animation-delay: calc(1.8s + var(--d)); }
+.vn-roses b { display: block; width: 100%; height: 100%; background: var(--rosemark) center / contain no-repeat; animation: roseturn var(--f) ease-in-out infinite alternate; }
+@keyframes roseturn { from { transform: rotateY(0) rotate(-20deg); filter: brightness(1.05); } to { transform: rotateY(150deg) rotate(30deg); filter: brightness(.86); } }
+@keyframes rosedrift {
+  0% { transform: translate3d(0, 0, 0) rotate(0); opacity: 0; }
+  3% { opacity: .95; }
+  44% { transform: translate3d(min(42vw, 500px), 540px, 0) rotate(160deg); opacity: .85; }
+  48%, 100% { transform: translate3d(min(44vw, 525px), 590px, 0) rotate(175deg); opacity: 0; }
+}
+.intro-on .vn-roses { opacity: 0; }
+/* under the hero: the sea, with bulrushes at its edges and swans gliding up and down it. A lane holds a swan at its
+   depth (--y, --k: size); .vn-swim carries it from one end to the other and back (--t), easing into each turn, and
+   .vn-turn turns it round there; --d sets where it starts */
+.vn-sea { position: relative; z-index: 0; height: clamp(128px, 14vw, 210px); margin-top: calc(-1 * clamp(26px, 3.4vw, 56px)); margin-bottom: -6px; pointer-events: none; overflow: hidden; }
+.vn-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* the sea melts into the page at both edges: the painting behind shows through as you scroll past */
+.vn-water { position: absolute; inset: 0; width: 100%; height: 100%; display: block; -webkit-mask-image: linear-gradient(180deg, transparent, #000 16%, #000 66%, transparent); mask-image: linear-gradient(180deg, transparent, #000 16%, #000 66%, transparent); }
+.vn-reeds .vn-stem { fill: none; stroke: #6d8a5a; stroke-width: 1.6; stroke-linecap: round; }
+.vn-reeds .vn-head { fill: #8a5a32; }
+.vn-reeds .vn-blade { fill: none; stroke: #86a36a; stroke-width: 1.3; stroke-linecap: round; }
+.vn-lane { position: absolute; left: 0; right: 0; top: var(--y); height: 0; }
+.vn-swim { position: absolute; left: 0; top: 0; width: 100%; animation: vn-swim var(--t) ease-in-out var(--d) infinite; }
+.vn-turn { position: absolute; left: 0; top: 0; width: calc(96px * var(--k)); animation: vn-turn var(--t) linear var(--d) infinite; }
+.vn-swan { display: block; width: 100%; height: auto; overflow: visible; pointer-events: auto; cursor: pointer; animation: vn-bob 3.4s ease-in-out infinite alternate; -webkit-tap-highlight-color: transparent; }
+.vn-lane:nth-child(odd) .vn-swan { animation-duration: 2.9s; animation-delay: -1.2s; }
+.vn-swan .wk { fill: none; stroke: #fff; stroke-width: .9; stroke-linecap: round; stroke-dasharray: 3 4; opacity: .8; animation: vn-wake 1.4s linear infinite; }
+.vn-swan .rf { opacity: .16; }
+.vn-swan .rg { fill: none; stroke: #fff; stroke-width: 1; opacity: 0; transform-origin: 24px 36px; }
+.vn-swan .bd { transform-origin: 22px 34px; }
+.vn-swan.ruffle .bd { animation: vn-ruffle .9s var(--ease); }
+.vn-swan.ruffle .rg { animation: vn-ring 1.2s var(--ease); }
+@keyframes vn-swim { 0% { transform: translateX(3%); } 50% { transform: translateX(calc(97% - 96px * var(--k))); } 100% { transform: translateX(3%); } }
+@keyframes vn-turn { 0% { transform: rotateY(90deg); } 1.6%, 48.4% { transform: rotateY(0); } 51.6%, 98.4% { transform: rotateY(180deg); } 100% { transform: rotateY(270deg); } }
+@keyframes vn-bob { from { transform: translateY(-1.2px) rotate(-1.2deg); } to { transform: translateY(1.2px) rotate(1deg); } }
+@keyframes vn-wake { to { stroke-dashoffset: -14; } }
+@keyframes vn-ruffle { 0% { transform: none; } 22% { transform: translateY(-3px) rotate(-6deg); } 48% { transform: translateY(.5px) rotate(3deg); } 72% { transform: rotate(-1.5deg); } 100% { transform: none; } }
+@keyframes vn-ring { 0% { opacity: .95; transform: scale(.3); } 100% { opacity: 0; transform: scale(1.7); } }
+@media (max-width: 640px) {
+  :root[data-look="venus"] .vn-bg { top: 46px; height: min(62vh, 520px); width: calc(min(62vh, 520px) * 1.592); left: calc(64vw - min(62vh, 520px) * .844); }
+  :root[data-look="venus"] body[data-view="home"] .vn-bg { opacity: calc(.16 + .34 * var(--km-scroll, 1)); }
+  :root[data-look="venus"] body[data-view]:not([data-view="home"]) .vn-bg { opacity: .18; }
+  .vn-turn { width: calc(66px * var(--k)); }
+  @keyframes vn-swim { 0% { transform: translateX(3%); } 50% { transform: translateX(calc(97% - 66px * var(--k))); } 100% { transform: translateX(3%); } }
+}
+/* without motion the swans keep still, spread along the water (--rx: where, --ry: which way they face) */
+@media (prefers-reduced-motion: reduce) {
+  .vn-roses { display: none; }
+  .vn-swim { animation: none !important; transform: translateX(var(--rx, 40%)); }
+  .vn-turn { animation: none !important; transform: rotateY(var(--ry, 0deg)); }
+  .vn-swan, .vn-swan .wk { animation: none !important; }
+}
+
 
 /* ---------- the class: how everyone did on a question, and the class sky ---------- */
 .v-class { flex-basis: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0 0; font-size: 1rem; color: var(--ink-2); }
@@ -1583,6 +1756,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="blood"] { --star-ink: #e8c47c; }
 :root[data-look="codex"] { --star-ink: #e0b867; }
 :root[data-look="klimt"] { --star-ink: #c9962a; }
+:root[data-look="venus"] { --star-ink: #c49a3c; }
 .flystar { position: fixed; z-index: 70; width: 24px; height: 24px; color: var(--star-ink); pointer-events: none; filter: drop-shadow(0 0 5px var(--star-ink)) drop-shadow(0 0 14px var(--glow-mid)); }
 .flystar svg { display: block; width: 100%; height: 100%; }
 .cell.twinkle { animation: cell-twinkle .75s var(--spring); }
@@ -1712,6 +1886,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="codex"] { --fly: #f0c86a; --fly-glow: rgba(240, 200, 106, .5); --fly-glow2: rgba(240, 200, 106, .16); --tod-dusk-1: rgba(214, 120, 50, .3); --tod-dawn-1: rgba(230, 180, 120, .24); }
 :root[data-look="klimt"] { --fly: #c9962a; --fly-glow: rgba(201, 150, 42, .5); --fly-glow2: rgba(201, 150, 42, .2); --sheen: rgba(255, 236, 190, .5); --sheen-blend: soft-light;
   --tod-dusk-1: rgba(214, 150, 60, .18); --tod-dusk-2: rgba(180, 90, 70, .08); --tod-dawn-1: rgba(230, 190, 170, .16); --tod-dawn-2: rgba(150, 170, 210, .08); --tod-day: rgba(255, 250, 235, 0); }
+:root[data-look="venus"] { --fly: #d98a98; --fly-glow: rgba(217, 138, 152, .5); --fly-glow2: rgba(233, 169, 177, .2); --sheen: rgba(255, 255, 255, .55); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(233, 150, 140, .2); --tod-dusk-2: rgba(170, 120, 190, .08); --tod-dawn-1: rgba(240, 190, 190, .2); --tod-dawn-2: rgba(150, 190, 230, .1); --tod-day: rgba(255, 255, 255, 0); }
 
 /* the time of day: a glow low in the sky at dusk (in the west, right) and first light (east, left), a cool haze by day */
 .tod { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 8s linear;

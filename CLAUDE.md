@@ -321,7 +321,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   gets it until Abi says so. Sent 7 October 2026: Nada ("étoile filante" on the Den, `to: 'etoilefilante'`), the Golden
   phase, no message (Abi's wish). Sent 16 October 2026: Linatoon (`to: 'linaton'`, spelling unsure, so it also fits
   Lina Toon, Linnatoon...), the Golden phase, no message. Sent 20 October 2026: Lina L (`to: 'linal'`), the Golden phase, no message (kept as its own
-  entry in case she isn't Linatoon). Same day: Labubu's handler (`to: 'labubushandler'`), every theme, no message. Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
+  entry in case she isn't Linatoon). Same day: Labubu's handler (`to: 'labubushandler'`), every theme and the Birth of Venus made for them,
+  no message: one letter (`handler-venus-2026-10`, Venus first) that replaced their first one (every theme but Venus). Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
   the lectures and finding 7 missing questions; Abi will send his name on the Den, then set `to` and drop `held`.
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
@@ -362,7 +363,23 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   keep night colours, `--intro-ink`; the picker's tokens are scoped dark): the painting hangs dim behind the picker,
   lights up as the gold star falls shedding leaf (`drawLeaf`), and lands in its place on the page. Sounds: `coins` (a
   right answer), `brush` (the next question), `shimmer` (the intro). The disc is a gold coin with his spirals (`goldCoin`).
-- `src/tests/review_looks.js [blood|codex|klimt]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+- Birth of Venus (`:root[data-look="venus"]`), made for Labubu's handler (20 October 2026), a theme only ever given:
+  `gift: true` in `THEMES`, so the list only shows it to those who can wear it (the Labubu and its gift's holder), and
+  `themeGoal` never grants it. Abi asked for baby blue as the main colour, light, the title in gold, and swans. Botticelli's
+  painting (about 1485, public domain; `img/venus.webp`, 1280×804 from her image) is a fixed layer behind every screen
+  (`.vn-bg`, Venus at 70% across the screen, Zephyr's side and the top fading by a mask; full on the homepage, fading
+  as you scroll like the Golden phase, `BG_OF`, `--km-scroll`; faint elsewhere). Cormorant Garamond for display, Alegreya
+  to read, Alegreya Sans for labels; the title in shell gold with hatched light, an umber edge and an ultramarine shadow
+  (`lapis`, `lapisText`, `LAPIS`: the names stayed from its first, blue version). Cards white-blue under a band of
+  Botticelli's v-shaped waves (`--waves`), a shell over the question card, roses on the labels; answers are pearls (right
+  green, wrong rose-crimson, half gold). On the homepage roses blow in from the left (`rosesHTML`) and under the hero the
+  sea (`seaHTML`): v-waves, bulrushes, five swans gliding up and down it at different depths, a pair among them, turning at
+  the ends (`.vn-swim` / `.vn-turn`, CSS only; still and spread out with reduced motion, `--rx`/`--ry`); tap one and it
+  ruffles, with a ring on the water and a drop (`ripple`). The disc is her scallop shell with a pearl (`venusShell`).
+  Sounds: `harp` (right), `wave` (next question), `surf` (the intro), levels checked A-weighted against coins/brush/shimmer.
+  The intro: the painting hangs dim in the night behind the picker, lights up as the star falls shedding rose petals
+  (`drawPetal`), and lands in its place; the day's ground (`.paper`) waits until it lands. The real moon is hidden on it.
+- `src/tests/review_looks.js [blood|codex|klimt|venus]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.

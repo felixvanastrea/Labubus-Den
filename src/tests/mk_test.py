@@ -32,6 +32,15 @@ for w in (400, 500, 600, 700):
 for w in (400, 500, 600):
     for st in ('normal', 'italic'):
         faces.append(f"@font-face{{font-family:'Jost';font-style:{st};font-weight:{w};src:url({F}/jost/files/jost-latin-{w}-{st}.woff2) format('woff2')}}")
+# Birth of Venus: Cormorant Garamond, Alegreya, Alegreya Sans
+for w in (500, 600, 700):
+    for st in ('normal', 'italic'):
+        faces.append(f"@font-face{{font-family:'Cormorant Garamond';font-style:{st};font-weight:{w};src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-{w}-{st}.woff2) format('woff2')}}")
+for w in (400, 500, 600, 700):
+    for st in ('normal', 'italic'):
+        faces.append(f"@font-face{{font-family:'Alegreya';font-style:{st};font-weight:{w};src:url({F}/alegreya/files/alegreya-latin-{w}-{st}.woff2) format('woff2')}}")
+for w, st in ((400, 'normal'), (500, 'normal'), (400, 'italic')):
+    faces.append(f"@font-face{{font-family:'Alegreya Sans';font-style:{st};font-weight:{w};src:url({F}/alegreya-sans/files/alegreya-sans-latin-{w}-{st}.woff2) format('woff2')}}")
 head = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>'
         + ''.join(faces) + '</style></head><body>')

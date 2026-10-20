@@ -95,13 +95,45 @@ async function as(b, who, viewport) {
   check(await ns.evaluate(() => document.documentElement.dataset.look) === 'klimt', 'she wears it');
   await c6.close();
 
-  // anyone else: no letter, no Blood moon
+  // Labubu's handler: the Birth of Venus first (a theme only ever given), then every other theme, one letter per visit
+  const c7 = await as(b, { uid: 'u8', name: 'Labubu’s handler', key: 'labubushandler' });
+  const hd = await c7.newPage(); hd.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await hd.goto(URL, { waitUntil: 'load' }); await hd.waitForTimeout(1500);
+  check(await hd.isVisible('.lt-sheet') && /^A gift for you$/.test(await txt(hd, '#lt-h')) && /Birth of Venus.*Blood moon.*Codex.*Golden phase/.test(await txt(hd, '.lt')) && !!(await hd.$('[data-letter="wear"][data-id="venus"]')),
+    'Labubu’s handler: one gift, the Birth of Venus first and every other theme, Venus to wear');
+  await hd.screenshot({ path: OUT + 'gift_venus.png' });
+  await hd.click('[data-letter="wear"]'); await hd.waitForTimeout(1500);
+  check(!(await hd.isVisible('.lt-sheet')), 'no other letter follows');
+  const vn = await hd.evaluate(() => { const e = document.querySelector('.vn-bg'), cs = getComputedStyle(e); return { look: document.documentElement.dataset.look, d: cs.display, img: cs.backgroundImage, h: getComputedStyle(document.querySelector('.h2, .h1')).fontFamily, swans: document.querySelectorAll('.vn-sea .vn-swan').length, roses: !!document.querySelector('.vn-roses') }; });
+  check(vn.look === 'venus' && vn.d === 'block' && /venus\.webp/.test(vn.img) && /Cormorant/.test(vn.h) && vn.swans === 5 && vn.roses, 'wearing it: the painting behind the page, Cormorant, five swans on the sea, roses ' + JSON.stringify(vn));
+  await hd.evaluate(() => document.querySelector('.vn-sea').scrollIntoView({ block: 'center' })); await hd.waitForTimeout(200);
+  await hd.click('.vn-lane:nth-of-type(4) .vn-swan', { force: true }); await hd.waitForTimeout(100);
+  check(await hd.evaluate(() => !!document.querySelector('.vn-swan.ruffle')), 'tap a swan: it ruffles');
+  await hd.evaluate(() => document.querySelector('.th-wrap').scrollIntoView({ block: 'center' })); await hd.waitForTimeout(300);
+  const hrows = await hd.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
+  check(hrows.some(r => /Birth of Venus.*A gift from the Labubu.*Wearing/.test(r)), 'Themes: the Birth of Venus is theirs, worn');
+  check(['Blood moon', 'Codex', 'Golden phase'].every(n => hrows.some(r => new RegExp(n + '.*A gift from the Labubu').test(r))), 'every other theme is theirs too, a gift');
+  await hd.reload({ waitUntil: 'load' }); await hd.waitForTimeout(1500);
+  check(!(await hd.isVisible('.lt-sheet')) && await hd.evaluate(() => document.documentElement.dataset.look) === 'venus', 'next visit: no letter, still the Birth of Venus');
+  await c7.close();
+
+  // anyone else: no letter, no Blood moon, and no Birth of Venus at all, even saved on the device
   const c2 = await as(b, { uid: 'u6', name: 'Sara', key: 'sara' });
+  await c2.addInitScript(() => { if (location.protocol !== 'about:') localStorage.setItem('efm3-look', 'venus'); });
   const s = await c2.newPage(); s.on('pageerror', e => errors.push('pageerror: ' + e.message));
   await s.goto(URL, { waitUntil: 'load' }); await s.waitForTimeout(1500);
   const srows = await s.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
   check(!(await s.isVisible('.lt-sheet')) && /Complete a full moon/.test(srows[2]) && !/gift/.test(srows.join(' ')), 'Sara: no letter, and the Blood moon still asks for a full moon');
+  check(!/Birth of Venus/.test(srows.join(' ')) && srows.length === 4 && await s.evaluate(() => !document.documentElement.dataset.look), 'Sara: the Birth of Venus isn’t listed, and isn’t worn even saved on her device');
   await c2.close();
+
+  // the Labubu has every theme, the Birth of Venus too
+  const c8 = await as(b, { uid: 'u9', name: 'Labubu', key: 'labubu' });
+  const lb = await c8.newPage(); lb.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await lb.goto(URL, { waitUntil: 'load' }); await lb.waitForTimeout(1200);
+  const lrows = await lb.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
+  check(lrows.length === 5 && /Birth of Venus.*Wear it/.test(lrows[4]), 'the Labubu: the Birth of Venus listed, to wear');
+  await c8.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');
   console.log(fails ? `${fails} FAILED` : 'all passed');

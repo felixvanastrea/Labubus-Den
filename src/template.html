@@ -27,6 +27,7 @@
 <div class="tod" aria-hidden="true"></div>
 <div class="paper" aria-hidden="true"></div>
 <div class="km-bg" aria-hidden="true"></div>
+<div class="vn-bg" aria-hidden="true"></div>
 <div id="app"></div>
 <div class="grain" aria-hidden="true"></div>
 
@@ -326,14 +327,14 @@
     // and the pencil are synthesized below; the paper, cards, swishes and clicks are CC0 recordings in snd/ (SAMPLES,
     // made by src/pipeline/sounds.py, credits in snd/CREDITS.md), loaded once the sound starts, each played from a few
     // takes at random. Where a recording can't load (the claude.ai copy), a sound with a recipe falls back to it.
-    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2,
+    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17,
       key0: .27, key1: .27, key2: .27, key3: .27, keyup0: .4, keyup1: .4, space: .3, cross: .3,
       flip: .43, back: .39, sheet: .49, shut: .43, crumple: .62, erase: .69, stack: .62, mark: .48, unmark: .39, toggle: .45 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03 };
-    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12 };
+    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
       flip: 1, back: 1, sheet: 1, shut: 1, crumple: 1, mark: 1, unmark: 1, toggle: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24],
-      mark: 10, cross: 6, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
+      mark: 10, cross: 6, ripple: 6, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
     // a sound played from one of its takes: the keys (four keys, two releases), and the recordings
     const VOICES = { tick: ['key0', 'key1', 'key2', 'key3'], type: ['key0', 'key1', 'key2', 'key3'], untick: ['keyup0', 'keyup1'] };
     const SAMPLES = { nav: 6, flip: 3, back: 3, sheet: 2, shut: 2, crumple: 4, erase: 1, stack: 1, mark: 2, unmark: 1, toggle: 3 };
@@ -403,6 +404,12 @@
         mode(buf, t0, f * 2.756, a * 0.24 * bright, decay * 0.16, { att: 0.0012 });
         mode(buf, t0, f * 5.404, a * 0.07 * bright, decay * 0.06, { att: 0.0008 });
         mix(buf, bandpass(burst(0.01, 0.0009, Math.round(f)), Math.min(f * 4, sr * 0.4), 1.2), t0, a * 0.18 * bright);
+      };
+      // a harp string: harmonic partials (the plucking point near the end lets the upper ones speak), each dying faster
+      // than the one below, and the finger's soft snap
+      const harpString = (buf, t0, f, a, len) => {
+        [[1, 1, 1.1], [2, .42, .6], [3, .22, .38], [4, .12, .26], [5, .06, .18]].forEach(([h, m, d]) => mode(buf, t0, f * h, a * m, d * len * (1046.5 / f) ** .35, { att: 0.002 }));
+        mix(buf, bandpass(burst(0.008, 0.0012, Math.round(f)), Math.min(f * 3, sr * 0.4), 1), t0, a * 0.12);
       };
       // a block of wood: low, dry, short
       const wood = (buf, t0, f, a) => {
@@ -628,6 +635,46 @@
           }
           return done(lowpass(bandpass(b, 1500, 0.55), 4200, 0.7), 0.5);
         },
+        // Birth of Venus, a right answer: a harp, four strings plucked upward (a string's partials are harmonic, the
+        // high ones dying first, over the soft snap of the finger)
+        harp() {
+          const b = make(1.7);
+          [[1046.5, .5, 0], [1318.5, .44, .055], [1568, .42, .11], [2093, .3, .17]].forEach(([f, a, t0]) => harpString(b, t0, f, a, 1));
+          return done(b, 0.8);
+        },
+        // Birth of Venus, the next question: a small wave lapping at the shore, its foam fizzing as it draws back
+        wave() {
+          const b = make(0.6), r = mulberry(1485);
+          let lp = 0;
+          for (let i = 0; i < b.length; i++) {
+            const t = i / sr, e = t < 0.16 ? Math.sin(Math.PI / 2 * t / 0.16) ** 2 : Math.exp(-(t - 0.16) / 0.13);
+            lp += 0.32 * ((r() * 2 - 1) - lp); b[i] = lp * e;
+          }
+          const out = lowpass(bandpass(b, 1100, 0.5), 3200, 0.7), foam = make(0.6);
+          for (let i = Math.round(0.14 * sr); i < foam.length; i++) if (r() < 0.012) foam[i] = (r() * 2 - 1) * Math.exp(-(i / sr - 0.14) / 0.12);
+          mix(out, bandpass(foam, 5200, 1.1), 0, 0.5);
+          return done(out, 0.5);
+        },
+        // Birth of Venus, the opening: the sea breathing in, and a harp running up the strings as the star falls
+        surf() {
+          const b = make(2.8), r = mulberry(1486);
+          let lp = 0;
+          for (let i = 0; i < b.length; i++) {
+            const t = i / sr, e = t < 0.6 ? Math.sin(Math.PI / 2 * t / 0.6) ** 2 : Math.exp(-(t - 0.6) / 0.55);
+            lp += 0.22 * ((r() * 2 - 1) - lp); b[i] = lp * e * 0.55;
+          }
+          const sea = lowpass(bandpass(b, 800, 0.45), 2400, 0.7);
+          [784, 880, 1046.5, 1174.7, 1318.5, 1568, 1760, 2093, 2349.3].forEach((f, i) => harpString(sea, 0.1 + i * 0.07, f, 0.34 - i * 0.015, 1.1));
+          return done(sea, 0.78);
+        },
+        // Birth of Venus, a swan tapped: a drop on the water, two small bubbles
+        ripple() {
+          const b = make(0.3);
+          mode(b, 0, 1250, 0.6, 0.045, { att: 0.0008, bend: 0.5, bendT: 0.018 });
+          mode(b, 0.07, 1650, 0.32, 0.035, { att: 0.0008, bend: 0.55, bendT: 0.014 });
+          mix(b, bandpass(burst(0.01, 0.002, 1484), 2600, 1), 0, 0.2);
+          return done(b, 0.5);
+        },
         // the end of a session that went well: an arpeggio
         finish() {
           const b = make(2.2);
@@ -696,7 +743,7 @@
     }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
     // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
-    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' } };
+    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' } };
     // o.gain scales it (typing is a little quieter than picking)
     function play(name, o = {}) {
       const base = name;   // the haptic follows what happened, whatever the theme's voice for it
@@ -863,13 +910,14 @@
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
-  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2' };
+  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8' };
   function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
   // a look's own typefaces, from Google Fonts, fetched the first time it's worn
   const LOOK_FONTS = {
     blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
-    klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500'
+    klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
+    venus: 'Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -935,7 +983,7 @@
   }
   // each look's disc (the blood moon, the gilded halo), painted once and kept
   const discs = {};
-  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : bloodMoon(px);
+  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : bloodMoon(px);
   function discURL(look, px = 560) {
     const k = look + '@' + px;
     if (!(k in discs)) { try { discs[k] = discPaint(look, px).toDataURL(px > 200 ? 'image/png' : 'image/jpeg', .9); } catch (e) { discs[k] = ''; } }
@@ -972,6 +1020,7 @@
   // on the homepage: the moon (smaller than in the intro), the castles on the horizon, and a flock now and then
   function discHTML(look) {
     if (look === 'klimt') return klimtHTML();
+    if (look === 'venus') return rosesHTML();
     const src = discURL(look);
     return src ? `<div class="bm bm-${look}" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
   }
@@ -1108,10 +1157,10 @@
   let kmRaf = 0;
   function kmScroll() {
     kmRaf = 0;
-    const el = document.querySelector('.km-bg'); if (!el || lookNow() !== 'klimt') return;
+    const sel = BG_OF[lookNow()], el = sel && document.querySelector(sel); if (!el) return;
     el.style.setProperty('--km-scroll', Math.max(0, 1 - window.scrollY / (window.innerHeight * .75)).toFixed(3));
   }
-  window.addEventListener('scroll', () => { if (!kmRaf && lookNow() === 'klimt') kmRaf = requestAnimationFrame(kmScroll); }, { passive: true });
+  window.addEventListener('scroll', () => { if (!kmRaf && BG_OF[lookNow()]) kmRaf = requestAnimationFrame(kmScroll); }, { passive: true });
   // gold leaf drifting down through the hero now and then, turning as it falls
   function leavesHTML() {
     const L = [[72, 0, 1], [58, 3.4, .7], [84, 7.9, .85], [64, 12.2, .6], [90, 16.8, .75], [77, 21, .9], [52, 25.5, .65]];
@@ -1148,6 +1197,155 @@
     }
     return `<div class="km-meadow" aria-hidden="true">${meadowSVG}</div>`;
   }
+  // ---------- the Birth of Venus look (Botticelli, about 1485, public domain), baby blue and light ----------
+  // The painting (img/venus.webp) is a fixed layer behind every screen (.vn-bg, its image set in CSS so it's only
+  // fetched when worn), Venus at 70% across the screen, Zephyr's side fading into the page under the words. Its disc is
+  // her scallop shell on Botticelli's sea; the hero has roses blown in from the left, and under it the sea with swans.
+  const VENUS_IMG = 'img/venus.webp';
+  // the backdrop that fades as you scroll, per look (--km-scroll on it)
+  const BG_OF = { klimt: '.km-bg', venus: '.vn-bg' };
+  function venusShell(px) {
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), R = px / 2, u = px / 600, rnd = mulberry(1485);
+    g.save(); g.beginPath(); g.arc(R, R, R, 0, 6.2832); g.clip();
+    // a pale sky over a baby-blue sea, the horizon a third of the way down
+    let gr = g.createLinearGradient(0, 0, 0, px);
+    gr.addColorStop(0, '#eaf4fa'); gr.addColorStop(.3, '#d3eaf8'); gr.addColorStop(.31, '#b9dff5'); gr.addColorStop(1, '#78b8e2');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    // the waves as Botticelli drew them: little v's, smaller and closer toward the horizon
+    g.lineCap = 'round'; g.lineJoin = 'round';
+    for (let row = 0; row < 15; row++) {
+      const f = row / 14, y = px * (.34 + .64 * Math.pow(f, 1.35)), s = (4 + 13 * f) * u, step = (24 + 46 * f) * u;
+      g.strokeStyle = `rgba(255,255,255,${(.45 + .35 * f).toFixed(2)})`; g.lineWidth = (1.1 + 1.6 * f) * u;
+      for (let x = (rnd() - .5) * step; x < px + step; x += step * (.8 + rnd() * .4)) {
+        g.beginPath(); g.moveTo(x - s, y - s * .42); g.lineTo(x, y); g.lineTo(x + s, y - s * .42); g.stroke();
+      }
+    }
+    // roses blown across the sky
+    const rose = (x, y, r) => {
+      for (let k = 0; k < 5; k++) {
+        const a = k / 5 * 6.2832 - 1.57, cx = x + Math.cos(a) * r * .55, cy = y + Math.sin(a) * r * .55;
+        const pg = g.createRadialGradient(cx, cy, 0, cx, cy, r * .62);
+        pg.addColorStop(0, '#fbe3e6'); pg.addColorStop(1, '#e49aa6');
+        g.fillStyle = pg; g.beginPath(); g.arc(cx, cy, r * .58, 0, 6.2832); g.fill();
+      }
+      g.fillStyle = '#d9a640'; g.beginPath(); g.arc(x, y, r * .26, 0, 6.2832); g.fill();
+    };
+    rose(px * .2, px * .16, 15 * u); rose(px * .8, px * .12, 12 * u); rose(px * .66, px * .25, 9 * u); rose(px * .33, px * .27, 8 * u);
+    // the shell: a fan of ribs from its hinge, ivory with peach in the grooves and gold at the rim, ears at the hinge
+    const hx = R, hy = px * .92, rs = px * .5, a0 = Math.PI * 1.06, a1 = Math.PI * 1.94, n = 15;
+    const shellPath = () => {
+      g.beginPath(); g.moveTo(hx, hy);
+      for (let i = 0; i < n; i++) {
+        const p = a0 + (a1 - a0) * i / n, q = a0 + (a1 - a0) * (i + 1) / n, m = (p + q) / 2;
+        if (!i) g.lineTo(hx + Math.cos(p) * rs, hy + Math.sin(p) * rs);
+        g.quadraticCurveTo(hx + Math.cos(m) * rs * 1.08, hy + Math.sin(m) * rs * 1.08, hx + Math.cos(q) * rs, hy + Math.sin(q) * rs);
+      }
+      g.closePath();
+    };
+    g.save(); g.shadowColor = 'rgba(40,80,120,.35)'; g.shadowBlur = 18 * u; g.shadowOffsetY = 6 * u;
+    shellPath(); g.fillStyle = '#f6e6cc'; g.fill(); g.restore();
+    shellPath(); g.save(); g.clip();
+    gr = g.createRadialGradient(hx, hy, rs * .05, hx, hy, rs * 1.05);
+    gr.addColorStop(0, '#d9a868'); gr.addColorStop(.35, '#f1d6ad'); gr.addColorStop(.75, '#fbf0dc'); gr.addColorStop(1, '#f3dcb4');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    for (let i = 0; i < n; i++) {
+      // each rib: a lit side and a shaded groove
+      const p = a0 + (a1 - a0) * (i + .5) / n, w = (a1 - a0) / n;
+      const sg = g.createLinearGradient(hx + Math.cos(p - w / 2) * rs * .6, hy + Math.sin(p - w / 2) * rs * .6, hx + Math.cos(p + w / 2) * rs * .6, hy + Math.sin(p + w / 2) * rs * .6);
+      sg.addColorStop(0, 'rgba(255,250,238,.55)'); sg.addColorStop(.55, 'rgba(255,250,238,0)'); sg.addColorStop(1, 'rgba(176,120,60,.35)');
+      g.fillStyle = sg; g.beginPath(); g.moveTo(hx, hy); g.arc(hx, hy, rs * 1.1, p - w / 2, p + w / 2); g.closePath(); g.fill();
+    }
+    g.strokeStyle = 'rgba(150,104,52,.55)'; g.lineWidth = 1.6 * u;
+    for (let i = 1; i < n; i++) { const p = a0 + (a1 - a0) * i / n; g.beginPath(); g.moveTo(hx, hy); g.lineTo(hx + Math.cos(p) * rs, hy + Math.sin(p) * rs); g.stroke(); }
+    g.strokeStyle = 'rgba(150,104,52,.18)'; g.lineWidth = 1.2 * u;
+    for (const k of [.32, .52, .7, .86]) { g.beginPath(); g.arc(hx, hy, rs * k, a0, a1); g.stroke(); }
+    g.restore();
+    shellPath(); g.strokeStyle = '#c9a052'; g.lineWidth = 2.6 * u; g.stroke();
+    g.fillStyle = '#e8c999'; g.strokeStyle = '#b8894a'; g.lineWidth = 1.6 * u;
+    g.beginPath(); g.moveTo(hx - rs * .2, hy - rs * .04); g.lineTo(hx + rs * .2, hy - rs * .04); g.lineTo(hx + rs * .12, hy + rs * .1); g.lineTo(hx - rs * .12, hy + rs * .1); g.closePath(); g.fill(); g.stroke();
+    // a pearl in the shell
+    const pr = 24 * u, px0 = hx, py0 = hy - rs * .3;
+    gr = g.createRadialGradient(px0 - pr * .35, py0 - pr * .4, pr * .05, px0, py0, pr);
+    gr.addColorStop(0, '#ffffff'); gr.addColorStop(.35, '#fbeef1'); gr.addColorStop(.75, '#dfe6f3'); gr.addColorStop(1, '#a9bfd8');
+    g.fillStyle = gr; g.beginPath(); g.arc(px0, py0, pr, 0, 6.2832); g.fill();
+    // the rim: a thin gold edge and a soft vignette
+    gr = g.createRadialGradient(R, R, R * .6, R, R, R);
+    gr.addColorStop(0, 'rgba(30,70,110,0)'); gr.addColorStop(1, 'rgba(30,70,110,.28)');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    g.strokeStyle = 'rgba(201,160,82,.85)'; g.lineWidth = 5 * u; g.beginPath(); g.arc(R, R, R * .985, 0, 6.2832); g.stroke();
+    g.restore();
+    return cv;
+  }
+  // roses blown in from Zephyr's side (the left), drifting right and down, turning as they fall
+  function rosesHTML() {
+    const L = [[4, 0, 1], [16, 3.4, .72], [28, 7.1, .9], [9, 10.6, .62], [22, 14.2, .84], [34, 17.9, .68], [12, 21.3, .78]];
+    return `<div class="vn-roses" aria-hidden="true">${L.map(([x, d, k], i) => `<i style="--x:${x}%;--d:${d}s;--k:${k};--f:${(2.2 + i * .27).toFixed(2)}s"><b></b></i>`).join('')}</div>`;
+  }
+  // under the hero: the sea, its waves Botticelli's little v's (smaller and closer toward the horizon), bulrushes as in
+  // the painting's corner, and swans gliding up and down it, a pair among them, turning at the ends. Tap one: it ruffles.
+  // A swan is drawn facing right; .vn-turn flips it on the way back. Made once
+  let seaSVG = '';
+  const SWAN_DEF = `<svg class="vn-defs" width="0" height="0" focusable="false"><defs><g id="vn-sw">
+      <path d="M38.6 28C43 23 42.6 16 40.6 11.2C38.9 6.8 40 3.2 43.6 3.3" fill="none" stroke="#a9bccd" stroke-width="4.6" stroke-linecap="round"/>
+      <path d="M1 25.5C4.6 28 8 29 11 28C16 21 26 19 34 22C39 24 42 28 43.8 31C44.8 34 43 36 39 36H9C5 35 2 31 1 25.5Z" fill="#fdfcf8" stroke="#a9bccd" stroke-width=".9"/>
+      <path d="M10 28C15 18.5 27 15.5 35 21C31 22 27.4 24.4 24.4 28C20.4 30.4 14.4 31 10 28Z" fill="#f1f3f4" stroke="#b8c7d4" stroke-width=".7"/>
+      <path d="M15 27.4C19 24 23 22.6 27 22.4M18 29.2C22 26.6 25 25.4 29 25" fill="none" stroke="#c3d0db" stroke-width=".6" stroke-linecap="round"/>
+      <path d="M38.6 28C43 23 42.6 16 40.6 11.2C38.9 6.8 40 3.2 43.6 3.3" fill="none" stroke="#fdfcf8" stroke-width="3.2" stroke-linecap="round"/>
+      <ellipse cx="45" cy="3.9" rx="3.3" ry="2.3" transform="rotate(14 45 3.9)" fill="#fdfcf8" stroke="#a9bccd" stroke-width=".6"/>
+      <path d="M47.3 3.1L53.4 6.5L47.5 6Z" fill="#e8873a"/><path d="M46.2 2.2Q47.9 1.4 48.6 2.9L47.1 3.8Z" fill="#1d2430"/>
+      <circle cx="45.4" cy="3.5" r=".6" fill="#1d2430"/>
+    </g></defs></svg>`;
+  const swanHTML = () => `<svg class="vn-swan" viewBox="-26 -3 82 52" focusable="false">
+      <path class="wk" d="M3 36.2Q-8 37.6 -24 41M3 35.6Q-9 34 -24 32.2"/>
+      <ellipse class="rg" cx="24" cy="36" rx="21" ry="4.2"/>
+      <use class="rf" href="#vn-sw" transform="translate(0 72) scale(1 -1)"/>
+      <g class="bd"><use href="#vn-sw"/></g></svg>`;
+  function seaHTML() {
+    if (!seaSVG) {
+      const r = mulberry(1484), f = n => n.toFixed(1), parts = [];
+      for (let row = 0; row < 11; row++) {
+        const k = row / 10, y = 30 + 124 * Math.pow(k, 1.3), s = 3 + 8.5 * k, step = 22 + 46 * k;
+        for (let x = r() * step; x < 1440 + step; x += step * (.75 + r() * .5)) {
+          const yy = y + (r() - .5) * 4 * (.4 + k);
+          parts.push(`<path d="M${f(x - s)} ${f(yy - s * .42)}L${f(x)} ${f(yy)}L${f(x + s)} ${f(yy - s * .42)}" stroke-width="${f(.7 + 1.1 * k)}" opacity="${(.4 + .4 * k + r() * .15).toFixed(2)}"/>`);
+        }
+      }
+      // bulrushes on the left: thin blades, and the brown heads on their stems
+      const reeds = [];
+      for (const [x, top, lean] of [[18, 26, -4], [30, 12, 3], [44, 38, -2], [56, 22, 6], [70, 50, 2], [1402, 44, -5], [1418, 28, 3]]) {
+        reeds.push(`<path class="vn-stem" d="M${x} 170Q${x + lean * .4} ${(170 + top) / 2} ${x + lean} ${top}"/>`);
+        reeds.push(`<ellipse class="vn-head" cx="${x + lean * .92}" cy="${top + 13}" rx="2.6" ry="8" transform="rotate(${lean} ${x + lean * .92} ${top + 13})"/>`);
+        reeds.push(`<path class="vn-blade" d="M${x + 2} 170Q${x + 14 + lean * 2} ${top + 60} ${x + 26 + lean * 3} ${top + 36}"/>`);
+      }
+      seaSVG = `<svg class="vn-water" viewBox="0 0 1440 170" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <defs><linearGradient id="vn-deep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd0f0" stop-opacity="0"/><stop offset=".22" stop-color="#9fd0f0" stop-opacity=".36"/><stop offset=".7" stop-color="#7fbde6" stop-opacity=".4"/><stop offset="1" stop-color="#7fbde6" stop-opacity="0"/></linearGradient></defs>
+        <path d="M0 22C320 18 620 26 900 21S1300 17 1440 22V170H0Z" fill="url(#vn-deep)"/>
+        <g class="vn-v" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">${parts.join('')}</g>
+        <g class="vn-reeds">${reeds.join('')}</g></svg>`;
+    }
+    // lanes from the horizon (far: small, slow) to the front: [top %, size, seconds there and back, phase, and where it
+    // sits and which way it faces when nothing moves]. The pair swim together, the second a breath behind, a little nearer
+    const SW = [[4, .5, 92, -20, 18, 0], [19, .64, 70, -52, 33, 180], [25, .68, 70, -50.4, 26, 180], [42, .84, 58, -9, 62, 0], [58, 1.02, 50, -31, 80, 180]];
+    return `<div class="vn-sea" aria-hidden="true">${SWAN_DEF}${seaSVG}${SW.map(([y, k, t, d, rx, ry]) => `<div class="vn-lane" style="--y:${y}%;--k:${k};--t:${t}s;--d:${d}s;--rx:${rx}%;--ry:${ry}deg"><div class="vn-swim"><div class="vn-turn">${swanHTML()}</div></div></div>`).join('')}</div>`;
+  }
+  // tap a swan: it ruffles, rings spread on the water, a drop
+  document.addEventListener('click', e => {
+    const s = e.target && e.target.closest ? e.target.closest('.vn-swan') : null; if (!s) return;
+    s.classList.remove('ruffle'); void s.getBoundingClientRect(); s.classList.add('ruffle');
+    clearTimeout(s._rf); s._rf = setTimeout(() => s.classList.remove('ruffle'), 1300);
+    sfx.play('ripple');
+  });
+  // a rose petal in the air, for canvas (the intro): it turns (ph), pinker as it faces you
+  function drawPetal(ctx, x, y, s, ph, a) {
+    const flip = Math.cos(ph), lit = .5 + .5 * Math.sin(ph * 1.3 + 1);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ph * .5); ctx.scale(Math.max(.18, Math.abs(flip)), 1);
+    ctx.globalAlpha = a;
+    ctx.fillStyle = `rgb(${Math.round(222 + 30 * lit)},${Math.round(146 + 66 * lit)},${Math.round(160 + 56 * lit)})`;
+    ctx.beginPath(); ctx.moveTo(0, .5 * s);
+    ctx.bezierCurveTo(-.66 * s, .12 * s, -.52 * s, -.52 * s, 0, -.3 * s); ctx.bezierCurveTo(.52 * s, -.52 * s, .66 * s, .12 * s, 0, .5 * s);
+    ctx.fill(); ctx.restore();
+  }
   function batsHTML() {
     const flock = [[0, 0, 1], [.5, -26, .78], [.9, 18, .7], [.25, 36, .88], [1.4, -10, .6], [1.1, 30, .72], [1.8, 8, .55]];
     return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
@@ -1158,7 +1356,9 @@
     { id: 'gothic', name: 'Constellation gothic', sub: 'Bone ink on charcoal, the stars' },
     { id: 'codex', name: 'Codex', sub: 'Parchment, gold leaf, old masters' },
     { id: 'blood', name: 'Blood moon', sub: 'Crimson, castles and bats' },
-    { id: 'klimt', name: 'Golden phase', sub: 'Klimt’s lovers in gold leaf, in daylight' }
+    { id: 'klimt', name: 'Golden phase', sub: 'Klimt’s lovers in gold leaf, in daylight' },
+    // only ever a gift: listed only for those who can wear it
+    { id: 'venus', name: 'Birth of Venus', sub: 'Botticelli’s sea in baby blue, roses and swans', gift: true }
   ];
   // the Golden phase: a golden exam, the top marks on a real-sized one
   const GOLD_MARK = 16, GOLD_N = 20;
@@ -1183,8 +1383,10 @@
     // Lina L (20 October 2026): the Golden phase, no message (canon "linal": Lina L, lina-l, Lina.L...). Kept apart from
     // the Linatoon one in case they're two people; if they're the same, the Linatoon entry can go.
     { id: 'linal-2026-10', to: 'linal', looks: ['klimt'], date: '20 October 2026', title: 'A gift for you', lines: [] },
-    // Labubu's handler (20 October 2026): every theme, no message (canon "labubushandler").
-    { id: 'handler-2026-10', to: 'labubushandler', looks: ['blood', 'codex', 'klimt'], date: '20 October 2026', title: 'A gift for you', lines: [] },
+    // Labubu's handler (20 October 2026, canon "labubushandler"): every theme, and one made for them, the Birth of Venus
+    // (only ever a gift), first. No message. One letter, a new id: it replaced the first one (every theme but Venus) the
+    // same day, so it opens even for someone who had read that one
+    { id: 'handler-venus-2026-10', to: 'labubushandler', looks: ['venus', 'blood', 'codex', 'klimt'], date: '20 October 2026', title: 'A gift for you', lines: [] },
     // Rayane checked the doubtful answers against the lectures and found 7 missing questions (7 October 2026). Held until
     // Abi has his name on the Den: then set `to` to its canon key and drop `held`.
     { id: 'rayane-2026-10', to: 'rayane', held: true, looks: ['blood', 'codex', 'klimt'], date: '7 October 2026', title: 'Thank you, Rayane',
@@ -1219,11 +1421,12 @@
       return { done: b !== null && b >= GOLD_MARK, p: b === null ? 0 : Math.min(1, b / GOLD_MARK), req: `Hand in a golden exam: ${GOLD_MARK}/20 or more in exam mode, on ${GOLD_N} questions or more.`,
         now: b === null ? `No exam of ${GOLD_N} questions or more yet.` : `Your best: ${fmtPts(b)}/20.` };
     }
+    if (THEMES.some(t => t.id === id && t.gift)) return { done: false, p: 0, req: 'Only ever a gift from the Labubu.', now: '' };
     return { done: true, p: 1, req: 'Yours from the start.', now: '' };
   }
   function themeListHTML(compact) {
     const cur = lookNow();
-    return `<div class="th-list${compact ? ' compact' : ''}">${THEMES.map(t => {
+    return `<div class="th-list${compact ? ' compact' : ''}">${THEMES.filter(t => !t.gift || acct.canWear(t.id)).map(t => {
       const g = themeGoal(t.id), wear = acct.canWear(t.id), on = cur === t.id && !acct.previewing();
       const art = t.id === 'gothic' ? '<span class="th-art sw-gothic" aria-hidden="true"></span>'
         : `<span class="th-art" aria-hidden="true"><img alt="" src="${discURL(t.id, 140)}"></span>`;
@@ -5029,7 +5232,7 @@
   // a masthead with the pixel title over a turning astrolabe, search across the Milky Way, modules as arched windows
   function renderHome() {
     acct.noticeUnlocks();
-    if (lookNow() === 'klimt') requestAnimationFrame(kmScroll);
+    if (BG_OF[lookNow()]) requestAnimationFrame(kmScroll);
     const allQs = questionsFor(S.type, '*');
     const all = stats(allQs);
     const sess = S.session;
@@ -5078,7 +5281,7 @@
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}${acct.hereLineHTML()}</div>
         </div>${lookNow() === 'codex' ? codexStripHTML() : ''}
-      </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'klimt' ? meadowHTML() : ''}
+      </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'klimt' ? meadowHTML() : lookNow() === 'venus' ? seaHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
@@ -6197,7 +6400,10 @@
     gothic: { lines: ['LABUBU’S', 'DEN'], weight: 'italic 400', family: '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif' },
     blood: { lines: ['Labubu’s', 'Den'], weight: '700', family: '"Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif', drip: .3 },
     codex: { lines: ['Labubu’s', 'Den'], weight: 'italic 400', family: '"IM Fell English", "EB Garamond", Georgia, serif', gild: true },
-    klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 }
+    klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 },
+    // Birth of Venus (Abi: the title in gold): Cormorant italic in shell gold, hatched with light the way Botticelli lit
+    // hair and leaves, a thin umber edge over an ultramarine shadow; drawn smooth once resolved, ending before Venus
+    venus: { lines: ['Labubu’s', 'Den'], weight: 'italic 700', family: '"Cormorant Garamond", "EB Garamond", Georgia, serif', lapis: true, span: .56 }
   };
   const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
   function shadeTitle(T, on, d, block, ink) {
@@ -6249,6 +6455,21 @@
           const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
           if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [92, 62, 10]);
         }
+      } else if (T.lapis) {
+        // while it resolves: shell gold, pale at the top of each line, light hatching in its upper half, an umber edge,
+        // an ultramarine shadow down and right
+        if (v) {
+          const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
+          const t = Math.min(1, Math.max(0, (y - (d.s * .78 + li * d.lineH - d.s * .72)) / (d.s * .82)));
+          let c = LAPIS[LAPIS.length - 1][1];
+          for (let j = 1; j < LAPIS.length; j++) if (t <= LAPIS[j][0]) { const [a0, c0] = LAPIS[j - 1], [a1, c1] = LAPIS[j]; c = mixc(c0, c1, (t - a0) / (a1 - a0)); break; }
+          if (t < .5 && (x * 2 + y) % 5 === 0) c = mixc(c, [255, 246, 214], .8 - t);
+          put(k, c.map(q => q + (hash(x, y) - .5) * 14));
+        } else {
+          const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
+          if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [104, 70, 14]);
+          else if (at(x - 2, y - 2) || at(x - 1, y - 2)) put(k, [42, 79, 158]);
+        }
       } else if (T.mosaic) {
         if (v) {
           // gold leaf laid as a mosaic: mostly gold, then Klimt's black oblongs with a cream eye, cream and silver-blue
@@ -6292,12 +6513,42 @@
     ctx.lineWidth = Math.max(1, d.s / 150); ctx.strokeStyle = 'rgba(92,62,10,.7)';
     lines.forEach((l, i) => ctx.strokeText(l, x0, d.s * .78 + i * d.lineH));
   }
+  // the Birth of Venus title's shell gold, down a line of text (the name LAPIS stayed from its first, blue version)
+  const LAPIS = [[0, [252, 234, 168]], [.3, [228, 188, 88]], [.56, [170, 124, 32]], [.76, [218, 174, 74]], [.9, [186, 140, 46]], [1, [132, 94, 22]]];
+  function lapisText(ctx, T, lines, d, x0) {
+    ctx.clearRect(0, 0, d.w, d.h);
+    ctx.font = `${T.weight} ${d.s}px ${T.family}`; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+    lines.forEach((l, i) => {
+      const y = d.s * .78 + i * d.lineH, g = ctx.createLinearGradient(0, y - d.s * .72, 0, y + d.s * .12);
+      LAPIS.forEach(([o, c]) => g.addColorStop(o, `rgb(${c})`));
+      ctx.fillStyle = g; ctx.fillText(l, x0, y);
+    });
+    // gold hatching on the letters only: fine strokes leaning with the italic, in the light from above
+    ctx.globalCompositeOperation = 'source-atop';
+    const u = d.s / 200, r = mulberry(1485);
+    ctx.lineCap = 'round';
+    lines.forEach((l, i) => {
+      const top = d.s * .78 + i * d.lineH - d.s * .74;
+      for (let x = -d.s * .3; x < d.w; x += (4.6 + r() * 2.2) * u) {
+        const len = d.s * (.2 + r() * .26), y0 = top + r() * d.s * .08, g = ctx.createLinearGradient(0, y0, 0, y0 + len);
+        g.addColorStop(0, `rgba(255,248,222,${(.5 + r() * .3).toFixed(2)})`); g.addColorStop(1, 'rgba(255,248,222,0)');
+        ctx.strokeStyle = g; ctx.lineWidth = (.8 + r() * .8) * u;
+        ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x - len * .28, y0 + len); ctx.stroke();
+      }
+    });
+    // an ultramarine shadow behind, down and to the right, so the gold holds on the pale sky
+    ctx.globalCompositeOperation = 'destination-over'; ctx.fillStyle = 'rgba(42,79,158,.85)';
+    lines.forEach((l, i) => ctx.fillText(l, x0 + d.s * .016, d.s * .78 + i * d.lineH + d.s * .018));
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.lineWidth = Math.max(1, d.s / 170); ctx.strokeStyle = 'rgba(104,70,14,.8)';
+    lines.forEach((l, i) => ctx.strokeText(l, x0, d.s * .78 + i * d.lineH));
+  }
   function drawTitle(animate) {
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
     const box = c.parentElement, W = box.clientWidth; if (!W) return;
     const ink = rgbOf(cssVar('--ink'));
     const T = titleLook(), lines = T.lines;
-    const fin = T.leaf ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf ends smooth
+    const fin = T.leaf || T.lapis ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf and the lapis end smooth
     const family = T.family;
     const ctx = c.getContext('2d', { willReadFrequently: true });
     ctx.font = `${T.weight} 100px ${family}`;
@@ -6312,10 +6563,10 @@
     const draw = block => {
       const d = dims(block);
       c.width = d.w; c.height = d.h;
-      if (T.leaf && block === fin) { leafText(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
+      if ((T.leaf || T.lapis) && block === fin) { (T.lapis ? lapisText : leafText)(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
       ctx.font = `${T.weight} ${d.s}px ${family}`;
       ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
-      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild || T.mosaic || T.leaf ? 2 : 0), d.s * .78 + i * d.lineH));
+      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild || T.mosaic || T.leaf || T.lapis ? 2 : 0), d.s * .78 + i * d.lineH));
       const img = ctx.getImageData(0, 0, d.w, d.h), px = img.data, on = new Uint8Array(d.w * d.h);
       for (let i = 0, j = 0; i < px.length; i += 4, j++) on[j] = px[i + 3] > 105 ? 1 : 0;
       img.data.set(shadeTitle(T, on, d, block, ink));
@@ -6747,12 +6998,22 @@
       const u = clamp01((t - T_STAR) / (T_LAND - T_STAR));
       return clamp01((t - T_STAR) / 110) * (1 - .3 * u) * (.93 + .07 * Math.sin(t * .05));
     }
-    // the page's painting as a texture, at the size it's drawn. Null until the image has loaded
-    function paintingTex(img, hpx) {
+    // the page's painting as a texture, at the size it's drawn. Null until the image has loaded. fade: the Birth of
+    // Venus fades at its sides as on the page (.vn-bg's mask), so it lands without a jump
+    function paintingTex(img, hpx, fade) {
       if (!img || !img.complete || !img.naturalWidth) return null;
       const h = Math.max(64, hpx), w = Math.round(h * img.naturalWidth / img.naturalHeight);
       const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
-      cv.getContext('2d').drawImage(img, 0, 0, w, h);
+      const c = cv.getContext('2d');
+      c.drawImage(img, 0, 0, w, h);
+      if (fade) {
+        const g = c.createLinearGradient(0, 0, w, 0);
+        [[0, 0], [.03, 0], [.22, .3], [.44, 1], [.92, 1], [1, 0]].forEach(([o, a]) => g.addColorStop(o, `rgba(0,0,0,${a})`));
+        c.globalCompositeOperation = 'destination-in'; c.fillStyle = g; c.fillRect(0, 0, w, h);
+        const v = c.createLinearGradient(0, 0, 0, h);
+        [[0, 0], [.05, .35], [.12, 1], [1, 1]].forEach(([o, a]) => v.addColorStop(o, `rgba(0,0,0,${a})`));
+        c.fillStyle = v; c.fillRect(0, 0, w, h);
+      }
       return cv;
     }
     function makeGlow(C = INK) {
@@ -6939,7 +7200,7 @@
             }
           }
           if (a <= 0) continue;
-          if (b.leaf) { drawLeaf(ctx, x, y, b.s, t * b.fq + b.ph, a); continue; }
+          if (b.leaf) { (b.petal ? drawPetal : drawLeaf)(ctx, x, y, b.s, t * b.fq + b.ph, a); continue; }
           ctx.globalAlpha = a;
           drawBat(ctx, x, y, b.s, Math.sin(t * b.fq + b.ph), tilt);
         }
@@ -7080,16 +7341,18 @@
         try {
           BLOOD = rgbOf(cssVar(lk === 'blood' ? '--blood' : '--gold'));
           const small = W < 640, bm = document.querySelector('.bm-img'), br = bm ? bm.getBoundingClientRect() : null, dpr = Math.min(2, window.devicePixelRatio || 1);
-          if (lk === 'klimt') {
-            // the lovers, big behind the picker, come down into their place on the page (r: half their height)
-            const kb = document.querySelector('.km-bg'), kr = kb ? kb.getBoundingClientRect() : null, img = new Image();
-            MA = 964 / 1500;
-            MS = { x: W * (small ? .5 : .64), y: H * (small ? .44 : .5), r: H * (small ? .38 : .5) };
+          if (lk === 'klimt' || lk === 'venus') {
+            // the lovers, big behind the picker, come down into their place on the page (r: half their height); Venus
+            // the same, the whole painting across the sky
+            const vn = lk === 'venus', kb = document.querySelector(BG_OF[lk]), kr = kb ? kb.getBoundingClientRect() : null, img = new Image();
+            MA = vn ? 1280 / 804 : 964 / 1500;
+            MS = vn ? { x: W * .5, y: H * (small ? .4 : .46), r: small ? H * .2 : Math.min(W * .94 / (2 * MA), H * .42) }
+              : { x: W * (small ? .5 : .64), y: H * (small ? .44 : .5), r: H * (small ? .38 : .5) };
             ME = kr && kr.height ? { x: kr.left + kr.width / 2, y: kr.top + kr.height / 2, r: kr.height / 2 } : { x: MS.x, y: H + MS.r, r: MS.r };
             const hpx = Math.min(1500, Math.round(MS.r * 2 * dpr));
-            img.decoding = 'async'; img.src = KLIMT_IMG;
-            moonTex = paintingTex(img, hpx);
-            if (!moonTex) img.addEventListener('load', () => { if (on && !moonTex) { moonTex = paintingTex(img, hpx); texAt = performance.now(); } }, { once: true });
+            img.decoding = 'async'; img.src = vn ? VENUS_IMG : KLIMT_IMG;
+            moonTex = paintingTex(img, hpx, vn);
+            if (!moonTex) img.addEventListener('load', () => { if (on && !moonTex) { moonTex = paintingTex(img, hpx, vn); texAt = performance.now(); } }, { once: true });
           } else {
             MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
             ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
@@ -7103,6 +7366,8 @@
           if (lk === 'blood') flock = Array.from({ length: 9 }, (_, i) => ({ lag: 120 + i * 78 + rnd() * 50, off: (rnd() - .5) * 150, bob: rnd() * 6.28, s: 11 + rnd() * 9, fq: .042 + rnd() * .02, ph: rnd() * 6.28, sp: 240 + rnd() * 200, last: null, v: null }));
           // the gold star sheds leaf as it falls
           if (lk === 'klimt') flock = Array.from({ length: 16 }, (_, i) => ({ leaf: true, lag: 50 + i * 48 + rnd() * 40, off: (rnd() - .5) * 120, bob: rnd() * 6.28, s: 5 + rnd() * 7, fq: .005 + rnd() * .008, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
+          // Venus: the star sheds rose petals as it falls
+          if (lk === 'venus') flock = Array.from({ length: 18 }, (_, i) => ({ leaf: true, petal: true, lag: 50 + i * 44 + rnd() * 40, off: (rnd() - .5) * 130, bob: rnd() * 6.28, s: 6 + rnd() * 7, fq: .004 + rnd() * .007, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
         } catch (e) { moonTex = null; flock = []; }
       }
       fglow = null;
@@ -7218,6 +7483,7 @@
       if (lk === 'blood' && flock.length) sfx.play('bats', { delay: .28, quiet: true });
       else if (lk === 'codex') sfx.play('bell', { delay: .2, quiet: true });
       else if (lk === 'klimt') sfx.play('shimmer', { delay: .15, quiet: true });
+      else if (lk === 'venus') sfx.play('surf', { delay: .1, quiet: true });
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();
