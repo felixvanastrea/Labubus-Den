@@ -320,8 +320,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `lines: []` is a gift with no message ("A gift from the Labubu", no signature). `held: true` = written, not sent: no one
   gets it until Abi says so. Sent 7 October 2026: Nada ("étoile filante" on the Den, `to: 'etoilefilante'`), the Golden
   phase, no message (Abi's wish). Sent 16 October 2026: Linatoon (`to: 'linaton'`, spelling unsure, so it also fits
-  Lina Toon, Linnatoon...), the Golden phase, no message. Sent 20 October 2026: Lina L (`to: 'linal'`), the Golden phase, no message (kept as its own
-  entry in case she isn't Linatoon). Same day: Labubu's handler (`to: 'labubushandler'`), every theme and the Birth of Venus made for them,
+  Lina Toon, Linnatoon...), the Golden phase, no message. Sent 20 October 2026: Lina L (`to: 'linal'`), the Golden phase, then every theme the same day
+  (one letter, `linal-all-2026-10`, replacing the first; not the Birth of Venus), no message (kept as its own entry in
+  case she isn't Linatoon). Same day: Labubu's handler (`to: 'labubushandler'`), every theme and the Birth of Venus made for them,
   no message: one letter (`handler-venus-2026-10`, Venus first) that replaced their first one (every theme but Venus). Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
   the lectures and finding 7 missing questions; Abi will send his name on the Den, then set `to` and drop `held`.
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
