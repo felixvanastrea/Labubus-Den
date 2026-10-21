@@ -386,7 +386,18 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Sounds: `harp` (right), `wave` (next question), `surf` (the intro), levels checked A-weighted against coins/brush/shimmer.
   The intro: the painting hangs dim in the night behind the picker, lights up as the star falls shedding rose petals
   (`drawPetal`), and lands in its place; the day's ground (`.paper`) waits until it lands. The real moon is hidden on it.
-- `src/tests/review_looks.js [blood|codex|klimt|venus]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+- Water lilies (`:root[data-look="monet"]`, Abi, 21 October 2026: cutesy, the painting's colours, the Venus title's
+  face), also only ever given (`gift: true`; for now only the Labubu and the secret code have it, no gift sent yet).
+  Monet's pond (about 1916–1919, public domain; `img/monet.webp`, 1200×899 from her image) covers every screen (`.ml-bg`,
+  sized to the painting and centred so the intro lands on it; a lilac veil fixed to the screen on the left, top and
+  bottom under the words; fades as you scroll, `BG_OF`). Quicksand for display, Nunito to read; the title typewritten
+  like Venus's in periwinkle (`pal` in `TITLE_LOOKS`, read by `lapisText`); cards under a band of lily pads
+  (`--padband`), a lily over the question card; round lily-pink buttons; answers turn into a notched lily pad when picked,
+  a pink bloom's glow when right (wrong raspberry, half ochre). On the homepage (`pondHTML`) lily pads drift on the water,
+  some in flower, seen at a slant, rings spreading round them, and free ripples here and there (CSS only); tap a pad: it
+  bobs, rings, a drop (`ripple`). Disc: a round of the pond (`monetPond`). Sounds: `kalimba` (right), `ripple` (next
+  question), `surf` (intro, with rose-pink petals from the star like Venus's).
+- `src/tests/review_looks.js [blood|codex|klimt|venus|monet]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.

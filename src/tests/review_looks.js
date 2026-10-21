@@ -1,4 +1,4 @@
-// Screenshots of each theme for a design review (not a pass/fail test): node review_looks.js [blood|codex|klimt|venus]
+// Screenshots of each theme for a design review (not a pass/fail test): node review_looks.js [blood|codex|klimt|venus|monet]
 const { chromium } = require('playwright');
 const path = require('path'), fs = require('fs');
 const OUT = path.join(__dirname, 'shots') + '/';

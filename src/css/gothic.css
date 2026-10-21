@@ -1684,6 +1684,138 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .vn-swan, .vn-swan .wk { animation: none !important; }
 }
 
+/* =====================================================================================================================
+   Water lilies (Monet, about 1916–1919, public domain; Abi, 21 October 2026: cutesy, the painting's colours, the Venus
+   title's face). A theme only ever given (the Labubu, the secret code). The pond covers every screen (img/monet.webp,
+   .ml-bg, sized to the painting), veiled in lilac under the words. Quicksand for display, Nunito to read, both rounded;
+   the title typewritten in periwinkle; cards under a band of lily pads; buttons lily pink; answers turn into lily pads
+   when picked, a pink bloom when right. On the homepage lily pads drift and rings spread on the water; tap a pad.
+   Sounds: a kalimba for a right answer, a drop for the next question, surf and harp in the intro.
+   ===================================================================================================================== */
+:root[data-look="monet"] {
+  --night: #ebe8f7; --deep: #d6d1f0; --plate: rgba(252, 251, 255, .93); --plate-2: #f2f0fb;
+  --ink: #262a55; --ink-hi: #171a40; --ink-2: #4b4f86; --ink-3: #6f75a6;
+  --hair: rgba(90, 90, 170, .22); --hair-2: rgba(70, 140, 110, .45); --glass: rgba(240, 238, 251, .86);
+  --right: #2f7d5b; --wrong: #c0395a; --half: #b8832a;
+  --right-wash: rgba(47, 125, 91, .09); --wrong-wash: rgba(192, 57, 90, .07); --half-wash: rgba(184, 131, 42, .09);
+  --sel-wash: rgba(130, 130, 210, .14); --glow-soft: rgba(150, 150, 225, .2); --glow-mid: rgba(140, 140, 220, .45);
+  --title-glow: rgba(255, 255, 255, .8); --mottle-1: rgba(255, 255, 255, .5); --mottle-2: rgba(240, 163, 196, .14); --shade: rgba(80, 80, 160, .14);
+  --k-official: #4a4f9c; --k-checked: #2f6f7a; --k-proposed: #2c6a4b; --k-claude: #8a6417; --k-none: #5d6a78;
+  --k-official-line: rgba(74, 79, 156, .45); --k-checked-line: rgba(47, 111, 122, .45); --k-proposed-line: rgba(44, 106, 75, .45);
+  --k-claude-line: rgba(138, 100, 23, .45); --k-none-line: rgba(93, 106, 120, .45); --k-flag-line: rgba(192, 57, 90, .45);
+  --fig-bg: #fdfcff;
+  --wax-hi: #fbd3e4; --wax-mid: #ea8db6; --wax-edge: #8a3a62; --scrim: rgba(23, 26, 64, .45);
+  --f-display: "Quicksand", "Nunito", system-ui, sans-serif;
+  --f-read: "Nunito", "Quicksand", system-ui, sans-serif;
+  --f-mono: "Nunito", "Quicksand", system-ui, sans-serif;
+  --t-label: .84rem;
+  --gold: #c9a24a; --gold-hi: #e6c46a; --gold-deep: #8d6a1e; --gold-ink: #86651a; --gold-txt: #e6c46a;
+  --lily: #ee93ba; --lily-deep: #c9668f; --pad: #4f9a7e; --willow: #2f6b4f; --peri: #6c70c4;
+  --star-pal: #7e80cc #ee93ba #5fae9a #a9a6e2 #f6b3cf #3f8f70 #c9a24a;
+  --intro-ink: #f2ede6; --intro-ink-hi: #fffaf4;
+  --fx: #ffd3e6; --fx-hi: #fff6fa;
+  --padband: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='9' viewBox='0 0 48 9'%3E%3Crect width='48' height='9' fill='%23cfcbf1'/%3E %3Cpath d='M8 4.5L12.5 3A5 2.6 0 1 0 12.6 5.4Z' fill='%235fae8c'/%3E%3Cpath d='M32 4.6L36 3.3A4.4 2.3 0 1 0 36.2 5.6Z' fill='%237cc4a4'/%3E %3Ccircle cx='22' cy='4.4' r='1.6' fill='%23ee93ba'/%3E%3Ccircle cx='44' cy='4.6' r='1.2' fill='%23f6b3cf'/%3E%3Crect y='8.2' width='48' height='.8' fill='%237cc4a4' opacity='.8'/%3E%3C/svg%3E");
+  --lilymark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%23ee93ba'%3E%3Cellipse cy='-6' rx='3' ry='6'/%3E%3Cellipse cy='-6' rx='3' ry='6' transform='rotate(60)'/%3E%3Cellipse cy='-6' rx='3' ry='6' transform='rotate(120)'/%3E%3Cellipse cy='-6' rx='3' ry='6' transform='rotate(180)'/%3E%3Cellipse cy='-6' rx='3' ry='6' transform='rotate(240)'/%3E%3Cellipse cy='-6' rx='3' ry='6' transform='rotate(300)'/%3E%3C/g%3E %3Cg fill='%23fbd3e4'%3E%3Cellipse cy='-4' rx='2' ry='4' transform='rotate(30)'/%3E%3Cellipse cy='-4' rx='2' ry='4' transform='rotate(150)'/%3E%3Cellipse cy='-4' rx='2' ry='4' transform='rotate(270)'/%3E%3C/g%3E%3Ccircle r='2' fill='%23f2c94c'/%3E%3C/svg%3E");
+  --padmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cpath d='M0 0L10.5 -4.4A11.4 11.4 0 1 0 11.2 2Z' fill='%235fae8c' stroke='%233f8f70' stroke-width='.8'/%3E%3Cpath d='M0 0L-7 -5M0 0L-8 3M0 0L-2 -9M0 0L-3 8' stroke='%23bfe8d2' stroke-width='.7'/%3E%3C/svg%3E");
+  font-synthesis: none; scrollbar-color: #b7b4e6 #ebe8f7; color-scheme: light;
+}
+:root[data-look="monet"] .paper {
+  background:
+    radial-gradient(70% 50% at 85% 0%, rgba(255, 255, 255, .55), transparent 70%),
+    radial-gradient(60% 45% at 6% 100%, rgba(238, 147, 186, .16), transparent 70%),
+    radial-gradient(55% 45% at 14% 12%, rgba(169, 166, 226, .4), transparent 70%);
+  transition: opacity .8s var(--ease);
+}
+:root[data-look="monet"].intro-on .paper { opacity: 0; transition: none; }
+:root[data-look="monet"] .grain { opacity: .05; }
+/* the pond, sized to the painting and centred, covering the screen; a lilac veil under the words (the veil is fixed to
+   the screen: its parent has no transform) */
+.ml-bg { display: none; }
+:root[data-look="monet"] .ml-bg {
+  display: block; position: fixed; z-index: 1; pointer-events: none;
+  width: max(100vw, 133.5vh); height: max(100vh, 74.92vw); left: calc(50vw - max(50vw, 66.75vh)); top: calc(50vh - max(50vh, 37.46vw));
+  background: url("img/monet.webp") center / 100% 100% no-repeat; transition: opacity .9s var(--ease);
+}
+:root[data-look="monet"] .ml-bg::after { content: ""; position: fixed; inset: 0; background: linear-gradient(180deg, rgba(235, 232, 247, .85) 0, rgba(235, 232, 247, 0) 13%, rgba(235, 232, 247, 0) 70%, rgba(235, 232, 247, .7) 100%), linear-gradient(90deg, rgba(235, 232, 247, .9) 0, rgba(235, 232, 247, .66) 34%, rgba(235, 232, 247, .14) 68%, rgba(235, 232, 247, .04)); }
+:root[data-look="monet"] body[data-view="home"] .ml-bg { opacity: calc(.3 + .7 * var(--km-scroll, 1)); transition: none; }
+:root[data-look="monet"] body[data-view]:not([data-view="home"]) .ml-bg { opacity: .22; }
+.intro-on .ml-bg { opacity: 0 !important; transition: none; }
+:root[data-look="monet"] .rmoon, :root[data-look="monet"] .astro { display: none; }
+:root[data-look="monet"] :is(.h1, .h2, .h3) { font-weight: 700; letter-spacing: -.01em; }
+:root[data-look="monet"] :is(.qmeta, .otag, .le-mod, .alsoin, .qp-stats, .mono:not(.navstat)) { font-size: max(.82rem, 1em); }
+:root[data-look="monet"] .eyebrow { color: #3f8f70; letter-spacing: .01em; }
+:root[data-look="monet"] .eyebrow::before { content: ""; display: inline-block; width: 15px; height: 15px; margin-right: 8px; vertical-align: -3px; background: var(--lilymark) center / contain no-repeat; }
+:root[data-look="monet"] .navlinks button::after { background: var(--lily); height: 2px; }
+:root[data-look="monet"] ::selection { background: #f6c6da; color: #171a40; }
+:root[data-look="monet"] .logo .lb { color: #fffdf8; --lb-line: #262a55; }
+:root[data-look="monet"] .plate {
+  border-color: rgba(120, 120, 200, .32);
+  background: var(--padband) left top / 48px 9px repeat-x, linear-gradient(180deg, rgba(253, 252, 255, .97), rgba(246, 244, 253, .95));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6), 0 30px 60px -40px rgba(70, 70, 150, .4); border-radius: 14px;
+}
+:root[data-look="monet"] .acct-card { background: var(--padband) left top / 48px 9px repeat-x, #fbfaff; }
+/* lily pink buttons, round and soft */
+:root[data-look="monet"] .btn { border-radius: 999px; }
+:root[data-look="monet"] .btn.primary { background: linear-gradient(180deg, #fcd9e8, #f4afcc 50%, #ec95bb); border: 1.5px solid #d77aa3; color: #3a1630; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 -2px 0 rgba(150, 50, 100, .15), 0 8px 20px -10px rgba(200, 90, 140, .55); }
+:root[data-look="monet"] .btn.primary:hover { background: linear-gradient(180deg, #fde3ee, #f6bdd6 50%, #efa2c4); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 0 0 5px rgba(238, 147, 186, .25), 0 10px 26px -10px rgba(200, 90, 140, .6); }
+:root[data-look="monet"] .btn.primary svg { color: #8a3a62; }
+:root[data-look="monet"] .btn:not(.primary):not(.danger) { border-color: rgba(120, 120, 200, .45); }
+:root[data-look="monet"] .btn:not(.primary):not(.danger):hover { border-color: var(--peri); box-shadow: 0 0 0 3px rgba(150, 150, 225, .18); }
+:root[data-look="monet"] .moon .mn-lit { fill: var(--lily); }
+:root[data-look="monet"] .qcard::before { content: ""; top: -12px; width: 26px; height: 24px; padding: 0 5px; background: var(--lilymark) center / 22px no-repeat, var(--night); background-origin: content-box; }
+:root[data-look="monet"] .stem::first-letter { font-family: "Quicksand", sans-serif; font-weight: 700; color: var(--peri); font-size: 1.45em; line-height: .8; }
+/* the answers: plain lilac rounds; picked, a lily pad (its notch, a little bloom of light); right, a pink lily's glow */
+:root[data-look="monet"] .bub { font-family: "Quicksand", sans-serif; font-weight: 700; font-size: 1.02rem; color: #4b4f86; border: 1.5px solid #b7b4e6; background: radial-gradient(circle at 35% 30%, #ffffff, #f1effb 75%); }
+:root[data-look="monet"] .opt:hover .bub { border-color: var(--peri); }
+:root[data-look="monet"] .opts:not(.checked) .opt[aria-pressed="true"] .bub, :root[data-look="monet"] .opt.is-hit .bub {
+  background: conic-gradient(from 58deg at 50% 50%, var(--night) 0 26deg, transparent 26deg), radial-gradient(circle at 38% 34%, #b2e3c8, #5fae8c 62%, #3f8f70);
+  border-color: #3f8f70; color: #fff; text-shadow: 0 1px 1px rgba(0, 60, 40, .5);
+  box-shadow: inset 0 -2px 3px rgba(20, 70, 50, .3), 0 3px 8px rgba(40, 110, 80, .3);
+}
+:root[data-look="monet"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { animation: pearlpop .55s var(--spring); }
+:root[data-look="monet"] .opt.is-hit .bub { border-color: var(--right); box-shadow: inset 0 -2px 3px rgba(20, 70, 50, .3), 0 0 0 4px rgba(238, 147, 186, .35), 0 0 14px rgba(238, 147, 186, .65); }
+:root[data-look="monet"] .opt.is-miss .bub { background: radial-gradient(circle at 35% 30%, #c4bfd2, #7a7390 80%); border-color: var(--wrong); color: #fff; box-shadow: 0 0 0 4px rgba(192, 57, 90, .1); }
+:root[data-look="monet"] .sky-field { --sky-star: #fff4fa; --sky-neb: #ee93ba #6c70c4; --sky-hill: #23304a #121a2c; background: radial-gradient(130% 120% at 78% 0%, #33356e 0%, #12142e 75%); }
+:root[data-look="monet"] .sky-field::after { box-shadow: inset 0 0 0 2px #b7b4e6, inset 0 0 0 4px #12142e, inset 0 0 60px rgba(0, 0, 0, .5); }
+:root[data-look="monet"] :is(.pick, .intro-hint) { --ink: #f2ede6; --ink-hi: #fffaf4; --ink-2: #d6d4e6; --ink-3: #aab0d0; --hair: #2e3060; --hair-2: #4f538f; --glow-mid: rgba(238, 147, 186, .42); --glow-soft: rgba(238, 147, 186, .16); --title-glow: rgba(180, 180, 240, .4); }
+@media (prefers-reduced-motion: reduce) { :root[data-look="monet"] .opts .opt .bub { animation: none; } }
+:root[data-look="monet"] .title canvas { filter: none; }
+:root[data-look="monet"] .hero :is(.caption, .meta, .cta-note) { text-shadow: 0 0 8px var(--night), 0 0 16px var(--night), 0 0 2px var(--night); }
+@media (min-width: 641px) {
+  :root[data-look="monet"] .hero .caption { grid-row: 1; }
+  :root[data-look="monet"] .hero .meta { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: 0 18px; text-align: left; line-height: 1.6; color: var(--ink-3); }
+  :root[data-look="monet"] .hero .title { grid-row: 3; margin-top: 18px; }
+  :root[data-look="monet"] .hero .hero-cta { grid-column: 1; grid-row: 4; justify-items: start; text-align: left; }
+  :root[data-look="monet"] .hero .hero-cta .cta-note { max-width: 26rem; }
+}
+/* lily pads drifting on the pond, seen at a slant (squashed after they turn), rings spreading round them; free ripples */
+.ml-pond { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.intro-on .ml-pond { opacity: 0; }
+.ml-pad { --ws0: 1.3; position: absolute; width: calc(var(--w) * var(--ws, 1) * var(--ws0)); height: calc(var(--w) * var(--ws, 1) * var(--ws0)); margin: calc(var(--w) * var(--ws, 1) * var(--ws0) / -2) 0 0 calc(var(--w) * var(--ws, 1) * var(--ws0) / -2); pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; animation: ml-drift var(--t) ease-in-out var(--d) infinite alternate; }
+.ml-pad svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ml-pad .ring { fill: none; stroke: rgba(255, 255, 255, .75); stroke-width: 1; transform-box: fill-box; transform-origin: center; opacity: 0; animation: ml-ring 5s ease-out infinite; animation-delay: calc(var(--d) * .4); }
+.ml-pad .ring.r2 { animation-delay: calc(var(--d) * .4 - 2.5s); }
+.ml-pad.tap svg { animation: ml-bob .9s var(--spring); }
+.ml-pad.tap .ring { animation: ml-ring 1.1s ease-out; }
+.ml-pad.tap .ring.r2 { animation: ml-ring 1.1s ease-out .25s both; }
+.ml-ripple { position: absolute; width: 110px; height: 40px; margin: -20px 0 0 -55px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .8); opacity: 0; animation: ml-rip 9s ease-out var(--d) infinite; }
+.ml-ripple::after { content: ""; position: absolute; inset: 22%; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .7); }
+@keyframes ml-drift {
+  0% { transform: translate(0, 0) scaleY(.6) rotate(0deg); }
+  50% { transform: translate(16px, -7px) scaleY(.6) rotate(10deg); }
+  100% { transform: translate(-12px, 6px) scaleY(.6) rotate(-8deg); }
+}
+@keyframes ml-ring { 0% { opacity: .8; transform: scale(.92); } 100% { opacity: 0; transform: scale(1.7); } }
+@keyframes ml-bob { 0% { transform: scale(1); } 30% { transform: scale(.84); } 65% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes ml-rip { 0% { opacity: 0; transform: scale(.15); } 6% { opacity: .9; } 55%, 100% { opacity: 0; transform: scale(1.5); } }
+@media (max-width: 640px) {
+  .ml-pad { --ws: .68; opacity: .9; }
+  :root[data-look="monet"] .ml-bg::after { background: rgba(235, 232, 247, .62); }
+  :root[data-look="monet"] body[data-view="home"] .ml-bg { opacity: calc(.25 + .45 * var(--km-scroll, 1)); }
+  :root[data-look="monet"] body[data-view]:not([data-view="home"]) .ml-bg { opacity: .16; }
+}
+@media (prefers-reduced-motion: reduce) { .ml-ripple { display: none; } }
+
 
 /* ---------- the class: how everyone did on a question, and the class sky ---------- */
 .v-class { flex-basis: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0 0; font-size: 1rem; color: var(--ink-2); }
@@ -1765,6 +1897,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="codex"] { --star-ink: #e0b867; }
 :root[data-look="klimt"] { --star-ink: #c9962a; }
 :root[data-look="venus"] { --star-ink: #c49a3c; }
+:root[data-look="monet"] { --star-ink: #6c70c4; }
 .flystar { position: fixed; z-index: 70; width: 24px; height: 24px; color: var(--star-ink); pointer-events: none; filter: drop-shadow(0 0 5px var(--star-ink)) drop-shadow(0 0 14px var(--glow-mid)); }
 .flystar svg { display: block; width: 100%; height: 100%; }
 .cell.twinkle { animation: cell-twinkle .75s var(--spring); }
@@ -1896,6 +2029,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   --tod-dusk-1: rgba(214, 150, 60, .18); --tod-dusk-2: rgba(180, 90, 70, .08); --tod-dawn-1: rgba(230, 190, 170, .16); --tod-dawn-2: rgba(150, 170, 210, .08); --tod-day: rgba(255, 250, 235, 0); }
 :root[data-look="venus"] { --fly: #d98a98; --fly-glow: rgba(217, 138, 152, .5); --fly-glow2: rgba(233, 169, 177, .2); --sheen: rgba(255, 255, 255, .55); --sheen-blend: soft-light;
   --tod-dusk-1: rgba(233, 150, 140, .2); --tod-dusk-2: rgba(170, 120, 190, .08); --tod-dawn-1: rgba(240, 190, 190, .2); --tod-dawn-2: rgba(150, 190, 230, .1); --tod-day: rgba(255, 255, 255, 0); }
+:root[data-look="monet"] { --fly: #ee93ba; --fly-glow: rgba(238, 147, 186, .5); --fly-glow2: rgba(238, 147, 186, .2); --sheen: rgba(255, 255, 255, .55); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(238, 160, 170, .2); --tod-dusk-2: rgba(150, 120, 200, .08); --tod-dawn-1: rgba(246, 190, 210, .2); --tod-dawn-2: rgba(160, 160, 230, .1); --tod-day: rgba(255, 255, 255, 0); }
 
 /* the time of day: a glow low in the sky at dusk (in the west, right) and first light (east, left), a cool haze by day */
 .tod { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 8s linear;
@@ -1979,3 +2114,5 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .lb-live.zz .lbz text:nth-child(3) { transform: translate(70px, -110px); }
 }
 .hero { pointer-events: none; } .hero > * { pointer-events: auto; } .hero > .title, .hero > [aria-hidden="true"] { pointer-events: none; }   /* the moon behind can still be pointed at */
+:root[data-look="monet"] .logo { white-space: nowrap; }
+@media (max-width: 640px) { :root[data-look="monet"] .logo { font-size: .92em; letter-spacing: -.01em; } }

@@ -28,6 +28,7 @@
 <div class="paper" aria-hidden="true"></div>
 <div class="km-bg" aria-hidden="true"></div>
 <div class="vn-bg" aria-hidden="true"></div>
+<div class="ml-bg" aria-hidden="true"></div>
 <div id="app"></div>
 <div class="grain" aria-hidden="true"></div>
 
@@ -328,10 +329,10 @@
     // and the pencil are synthesized below; the paper, cards, swishes and clicks are CC0 recordings in snd/ (SAMPLES,
     // made by src/pipeline/sounds.py, credits in snd/CREDITS.md), loaded once the sound starts, each played from a few
     // takes at random. Where a recording can't load (the claude.ai copy), a sound with a recipe falls back to it.
-    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17,
+    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17, kalimba: .26,
       key0: .27, key1: .27, key2: .27, key3: .27, keyup0: .4, keyup1: .4, space: .3, cross: .3,
       flip: .43, back: .39, sheet: .49, shut: .43, crumple: .62, erase: .69, stack: .62, mark: .48, unmark: .39, toggle: .45 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12 };
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12, kalimba: .3 };
     const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
       flip: 1, back: 1, sheet: 1, shut: 1, crumple: 1, mark: 1, unmark: 1, toggle: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24],
@@ -668,7 +669,17 @@
           [784, 880, 1046.5, 1174.7, 1318.5, 1568, 1760, 2093, 2349.3].forEach((f, i) => harpString(sea, 0.1 + i * 0.07, f, 0.34 - i * 0.015, 1.1));
           return done(sea, 0.78);
         },
-        // Birth of Venus, a swan tapped: a drop on the water, two small bubbles
+        // Water lilies, a right answer: a kalimba, three tines plucked upward (a tine rings in its fundamental, an octave
+        // above it faintly and a high inharmonic overtone that dies at once)
+        kalimba() {
+          const b = make(1.4);
+          [[1318.5, .5, 0], [1661.2, .42, .07], [1975.5, .38, .14]].forEach(([f, a, t]) => {
+            mode(b, t, f, a, .42, { att: .0015 }); mode(b, t, f * 2, a * .12, .12, { att: .001 }); mode(b, t, f * 5.6, a * .08, .03, { att: .0008 });
+            mix(b, bandpass(burst(.006, .0008, Math.round(f)), 3000, 1), t, a * .25);
+          });
+          return done(b, .8);
+        },
+        // Birth of Venus, a swan tapped (and Water lilies, the next question and a pad tapped): a drop, two small bubbles
         ripple() {
           const b = make(0.3);
           mode(b, 0, 1250, 0.6, 0.045, { att: 0.0008, bend: 0.5, bendT: 0.018 });
@@ -744,7 +755,7 @@
     }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
     // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
-    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' } };
+    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' }, monet: { right: 'kalimba', nav: 'ripple' } };
     // o.gain scales it (typing is a little quieter than picking)
     function play(name, o = {}) {
       const base = name;   // the haptic follows what happened, whatever the theme's voice for it
@@ -911,13 +922,14 @@
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
-  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8' };
+  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8', monet: '#ebe8f7' };
   function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
   // a look's own typefaces, from Google Fonts, fetched the first time it's worn
   const LOOK_FONTS = {
     blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
+    monet: 'Special+Elite&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
     venus: 'Special+Elite&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
@@ -984,7 +996,7 @@
   }
   // each look's disc (the blood moon, the gilded halo), painted once and kept
   const discs = {};
-  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : bloodMoon(px);
+  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : look === 'monet' ? monetPond(px) : bloodMoon(px);
   function discURL(look, px = 560) {
     const k = look + '@' + px;
     if (!(k in discs)) { try { discs[k] = discPaint(look, px).toDataURL(px > 200 ? 'image/png' : 'image/jpeg', .9); } catch (e) { discs[k] = ''; } }
@@ -1022,6 +1034,7 @@
   function discHTML(look) {
     if (look === 'klimt') return klimtHTML();
     if (look === 'venus') return rosesHTML();
+    if (look === 'monet') return pondHTML();
     const src = discURL(look);
     return src ? `<div class="bm bm-${look}" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
   }
@@ -1204,7 +1217,7 @@
   // her scallop shell on Botticelli's sea; the hero has roses blown in from the left, and under it the sea with swans.
   const VENUS_IMG = 'img/venus.webp';
   // the backdrop that fades as you scroll, per look (--km-scroll on it)
-  const BG_OF = { klimt: '.km-bg', venus: '.vn-bg' };
+  const BG_OF = { klimt: '.km-bg', venus: '.vn-bg', monet: '.ml-bg' };
   function venusShell(px) {
     const cv = document.createElement('canvas'); cv.width = cv.height = px;
     const g = cv.getContext('2d'), R = px / 2, u = px / 600, rnd = mulberry(1485);
@@ -1337,6 +1350,78 @@
     clearTimeout(s._rf); s._rf = setTimeout(() => s.classList.remove('ruffle'), 1300);
     sfx.play('ripple');
   });
+  // ---------- the Water lilies look (Monet, about 1916–1919, public domain), lilac and green, cutesy ----------
+  // The pond (img/monet.webp) covers every screen (.ml-bg, sized to the painting so the intro lands on it exactly), veiled
+  // in lilac under the words; the hero has lily pads drifting on it, some in flower, rings spreading round them and here
+  // and there on the water. Tap a pad: it bobs, a ring spreads, a drop
+  const MONET_IMG = 'img/monet.webp';
+  const padSVG = (bloom, hue) => {
+    const g = ['#7cc4a4 #3f8f70', '#93cfa0 #4f9466', '#6fb7b0 #357f7a'][hue];
+    const [c1, c2] = g.split(' ');
+    const petals = bloom ? `<g class="lily">${[0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => `<ellipse cx="0" cy="-7" rx="3.4" ry="7" transform="rotate(${a + (i % 2) * 8})" fill="${i % 2 ? '#f6b3cf' : '#ee93ba'}"/>`).join('')}${[20, 80, 140, 200, 260, 320].map(a => `<ellipse cx="0" cy="-4.4" rx="2.4" ry="4.6" transform="rotate(${a})" fill="#fbd3e4"/>`).join('')}<circle r="2.4" fill="#f2c94c"/></g>` : '';
+    return `<svg viewBox="-30 -30 60 60" focusable="false"><defs><radialGradient id="ml-g${hue}" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></radialGradient></defs>
+      <ellipse class="ring" rx="27" ry="27"/><ellipse class="ring r2" rx="27" ry="27"/>
+      <path d="M0 0L23.5 -9.8A25.5 25.5 0 1 0 25.2 4.1Z" fill="url(#ml-g${hue})" stroke="${c2}" stroke-width="1"/>
+      <path d="M0 0L-16 -12M0 0L-19 6M0 0L-4 -19M0 0L-6 18M0 0L12 15M0 0L9 -17" stroke="rgba(230,255,240,.45)" stroke-width="1" stroke-linecap="round"/>${petals}</svg>`;
+  };
+  function pondHTML() {
+    // [left %, top %, size px, bloom, hue, drift s, phase s]
+    const P = [[62, 12, 54, 1, 0, 26, -3], [84, 30, 72, 0, 1, 31, -11], [71, 58, 46, 0, 2, 23, -7], [90, 70, 60, 1, 0, 29, -15], [56, 80, 40, 0, 1, 21, -5],
+      [78, 4, 34, 0, 2, 24, -18], [96, 46, 38, 1, 1, 27, -2], [4, 92, 44, 0, 0, 25, -9], [40, 96, 36, 1, 2, 22, -13]];
+    const R = [[67, 40, 0], [88, 88, 2.3], [50, 64, 4.1], [80, 18, 6.2], [20, 86, 7.4]];
+    return `<div class="ml-pond" aria-hidden="true">${R.map(([x, y, d]) => `<i class="ml-ripple" style="left:${x}%;top:${y}%;--d:${d}s"></i>`).join('')}
+      ${P.map(([x, y, w, b, h, t, d]) => `<span class="ml-pad" style="left:${x}%;top:${y}%;--w:${w}px;--t:${t}s;--d:${d}s">${padSVG(b, h)}</span>`).join('')}</div>`;
+  }
+  document.addEventListener('click', e => {
+    const s = e.target && e.target.closest ? e.target.closest('.ml-pad') : null; if (!s) return;
+    s.classList.remove('tap'); void s.getBoundingClientRect(); s.classList.add('tap');
+    clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('tap'), 1300);
+    sfx.play('ripple');
+  });
+  // its disc: a round of the pond, lilac water, pads and a pink lily
+  function monetPond(px) {
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), R = px / 2, u = px / 600, rnd = mulberry(1916);
+    g.save(); g.beginPath(); g.arc(R, R, R, 0, 6.2832); g.clip();
+    let gr = g.createLinearGradient(0, 0, 0, px);
+    gr.addColorStop(0, '#d9d4f3'); gr.addColorStop(.5, '#a9a6e2'); gr.addColorStop(1, '#6c70c4');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    // dabs of light and colour on the water
+    for (let i = 0; i < 900; i++) {
+      const x = rnd() * px, y = rnd() * px, w = (6 + rnd() * 22) * u, cols = ['rgba(255,250,240,.35)', 'rgba(120,124,210,.35)', 'rgba(190,160,220,.35)', 'rgba(90,170,160,.28)'];
+      g.fillStyle = cols[Math.floor(rnd() * cols.length)]; g.beginPath(); g.ellipse(x, y, w, w * .32, (rnd() - .5) * .4, 0, 6.2832); g.fill();
+    }
+    // willow strands at the sides
+    g.lineCap = 'round';
+    for (let i = 0; i < 26; i++) {
+      const x = (i < 13 ? rnd() * .22 : .78 + rnd() * .22) * px, len = (.3 + rnd() * .5) * px;
+      g.strokeStyle = rnd() < .5 ? 'rgba(46,110,80,.75)' : 'rgba(70,150,110,.7)'; g.lineWidth = (3 + rnd() * 4) * u;
+      g.beginPath(); g.moveTo(x, -10); g.bezierCurveTo(x + (rnd() - .5) * 30 * u, len * .4, x + (rnd() - .5) * 40 * u, len * .7, x + (rnd() - .5) * 20 * u, len); g.stroke();
+    }
+    const pad = (x, y, r, c1, c2, rot) => {
+      g.save(); g.translate(x, y); g.scale(1, .55); g.rotate(rot);
+      const pg = g.createRadialGradient(-r * .2, -r * .2, r * .1, 0, 0, r);
+      pg.addColorStop(0, c1); pg.addColorStop(1, c2);
+      g.fillStyle = pg; g.beginPath(); g.moveTo(0, 0); g.arc(0, 0, r, .35, 6.2832 - .05); g.closePath(); g.fill();
+      g.restore();
+    };
+    pad(px * .3, px * .74, 120 * u, '#8fd0b0', '#3f8f70', .3); pad(px * .72, px * .82, 95 * u, '#9ad6a6', '#4f9466', 2.2);
+    pad(px * .62, px * .6, 70 * u, '#7cc4bc', '#357f7a', 4); pad(px * .22, px * .5, 55 * u, '#8fd0b0', '#3f8f70', 1.2);
+    // a pink lily on the big pad
+    const lx = px * .34, ly = px * .7;
+    for (let k = 0; k < 10; k++) {
+      const a = k / 10 * 6.2832; g.save(); g.translate(lx, ly); g.rotate(a);
+      const pg = g.createLinearGradient(0, 0, 0, -50 * u); pg.addColorStop(0, '#fbd6e6'); pg.addColorStop(1, '#ea8db6');
+      g.fillStyle = pg; g.beginPath(); g.ellipse(0, -26 * u, 13 * u, 28 * u, 0, 0, 6.2832); g.fill(); g.restore();
+    }
+    g.fillStyle = '#f2c94c'; g.beginPath(); g.arc(lx, ly, 10 * u, 0, 6.2832); g.fill();
+    gr = g.createRadialGradient(R, R, R * .6, R, R, R);
+    gr.addColorStop(0, 'rgba(60,50,120,0)'); gr.addColorStop(1, 'rgba(60,50,120,.3)');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    g.strokeStyle = 'rgba(240,180,210,.9)'; g.lineWidth = 5 * u; g.beginPath(); g.arc(R, R, R * .985, 0, 6.2832); g.stroke();
+    g.restore();
+    return cv;
+  }
   // a rose petal in the air, for canvas (the intro): it turns (ph), pinker as it faces you
   function drawPetal(ctx, x, y, s, ph, a) {
     const flip = Math.cos(ph), lit = .5 + .5 * Math.sin(ph * 1.3 + 1);
@@ -1359,7 +1444,8 @@
     { id: 'blood', name: 'Blood moon', sub: 'Crimson, castles and bats' },
     { id: 'klimt', name: 'Golden phase', sub: 'Klimt’s lovers in gold leaf, in daylight' },
     // only ever a gift: listed only for those who can wear it
-    { id: 'venus', name: 'Birth of Venus', sub: 'Botticelli’s sea in baby blue, roses and swans', gift: true }
+    { id: 'venus', name: 'Birth of Venus', sub: 'Botticelli’s sea in baby blue, roses and swans', gift: true },
+    { id: 'monet', name: 'Water lilies', sub: 'Monet’s pond in lilac and green, lily pads afloat', gift: true }
   ];
   // the Golden phase: a golden exam, the top marks on a real-sized one
   const GOLD_MARK = 16, GOLD_N = 20;
@@ -6425,9 +6511,10 @@
     blood: { lines: ['Labubu’s', 'Den'], weight: '700', family: '"Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif', drip: .3 },
     codex: { lines: ['Labubu’s', 'Den'], weight: 'italic 400', family: '"IM Fell English", "EB Garamond", Georgia, serif', gild: true },
     klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 },
-    // Birth of Venus (Abi: the title in gold): Cormorant italic in shell gold, hatched with light the way Botticelli lit
-    // hair and leaves, a thin umber edge over an ultramarine shadow; drawn smooth once resolved, ending before Venus
-    venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 }
+    // Birth of Venus: typewritten in matte bronze (lapisText); Water lilies: the same, in the pond's periwinkle (pal)
+    venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 },
+    monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56,
+      pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] }
   };
   const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
   function shadeTitle(T, on, d, block, ink) {
@@ -6484,8 +6571,9 @@
         if (v) {
           const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
           const t = Math.min(1, Math.max(0, (y - (d.s * .78 + li * d.lineH - d.s * .72)) / (d.s * .82)));
-          let c = LAPIS[LAPIS.length - 1][1];
-          for (let j = 1; j < LAPIS.length; j++) if (t <= LAPIS[j][0]) { const [a0, c0] = LAPIS[j - 1], [a1, c1] = LAPIS[j]; c = mixc(c0, c1, (t - a0) / (a1 - a0)); break; }
+          const P = T.pal || LAPIS;
+          let c = P[P.length - 1][1];
+          for (let j = 1; j < P.length; j++) if (t <= P[j][0]) { const [a0, c0] = P[j - 1], [a1, c1] = P[j]; c = mixc(c0, c1, (t - a0) / (a1 - a0)); break; }
           put(k, c.map(q => q + (hash(x, y) - .5) * 16));
         }
       } else if (T.mosaic) {
@@ -6541,7 +6629,7 @@
     const r = mulberry(1485);
     lines.forEach((l, i) => {
       const y = d.s * .78 + i * d.lineH, g = ctx.createLinearGradient(0, y - d.s * .72, 0, y + d.s * .12);
-      LAPIS.forEach(([o, c]) => g.addColorStop(o, `rgb(${c})`));
+      (T.pal || LAPIS).forEach(([o, c]) => g.addColorStop(o, `rgb(${c})`));
       ctx.fillStyle = g;
       let x = x0;
       for (const ch of l) {   // each key strikes a little high or low, a little tilted
@@ -7359,16 +7447,16 @@
         try {
           BLOOD = rgbOf(cssVar(lk === 'blood' ? '--blood' : '--gold'));
           const small = W < 640, bm = document.querySelector('.bm-img'), br = bm ? bm.getBoundingClientRect() : null, dpr = Math.min(2, window.devicePixelRatio || 1);
-          if (lk === 'klimt' || lk === 'venus') {
+          if (lk === 'klimt' || lk === 'venus' || lk === 'monet') {
             // the lovers, big behind the picker, come down into their place on the page (r: half their height); Venus
             // the same, the whole painting across the sky
-            const vn = lk === 'venus', kb = document.querySelector(BG_OF[lk]), kr = kb ? kb.getBoundingClientRect() : null, img = new Image();
-            MA = vn ? 1280 / 804 : 964 / 1500;
-            MS = vn ? { x: W * .5, y: H * (small ? .4 : .46), r: small ? H * .2 : Math.min(W * .94 / (2 * MA), H * .42) }
+            const vn = lk === 'venus', mn = lk === 'monet', kb = document.querySelector(BG_OF[lk]), kr = kb ? kb.getBoundingClientRect() : null, img = new Image();
+            MA = vn ? 1280 / 804 : mn ? 1200 / 899 : 964 / 1500;
+            MS = vn || mn ? { x: W * .5, y: H * (small ? .4 : .46), r: small ? H * .2 : Math.min(W * .94 / (2 * MA), H * .42) }
               : { x: W * (small ? .5 : .64), y: H * (small ? .44 : .5), r: H * (small ? .38 : .5) };
             ME = kr && kr.height ? { x: kr.left + kr.width / 2, y: kr.top + kr.height / 2, r: kr.height / 2 } : { x: MS.x, y: H + MS.r, r: MS.r };
             const hpx = Math.min(1500, Math.round(MS.r * 2 * dpr));
-            img.decoding = 'async'; img.src = vn ? VENUS_IMG : KLIMT_IMG;
+            img.decoding = 'async'; img.src = vn ? VENUS_IMG : mn ? MONET_IMG : KLIMT_IMG;
             moonTex = paintingTex(img, hpx, vn);
             if (!moonTex) img.addEventListener('load', () => { if (on && !moonTex) { moonTex = paintingTex(img, hpx, vn); texAt = performance.now(); } }, { once: true });
           } else {
@@ -7385,7 +7473,7 @@
           // the gold star sheds leaf as it falls
           if (lk === 'klimt') flock = Array.from({ length: 16 }, (_, i) => ({ leaf: true, lag: 50 + i * 48 + rnd() * 40, off: (rnd() - .5) * 120, bob: rnd() * 6.28, s: 5 + rnd() * 7, fq: .005 + rnd() * .008, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
           // Venus: the star sheds rose petals as it falls
-          if (lk === 'venus') flock = Array.from({ length: 18 }, (_, i) => ({ leaf: true, petal: true, lag: 50 + i * 44 + rnd() * 40, off: (rnd() - .5) * 130, bob: rnd() * 6.28, s: 6 + rnd() * 7, fq: .004 + rnd() * .007, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
+          if (lk === 'venus' || lk === 'monet') flock = Array.from({ length: 18 }, (_, i) => ({ leaf: true, petal: true, lag: 50 + i * 44 + rnd() * 40, off: (rnd() - .5) * 130, bob: rnd() * 6.28, s: 6 + rnd() * 7, fq: .004 + rnd() * .007, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
         } catch (e) { moonTex = null; flock = []; }
       }
       fglow = null;
@@ -7501,7 +7589,7 @@
       if (lk === 'blood' && flock.length) sfx.play('bats', { delay: .28, quiet: true });
       else if (lk === 'codex') sfx.play('bell', { delay: .2, quiet: true });
       else if (lk === 'klimt') sfx.play('shimmer', { delay: .15, quiet: true });
-      else if (lk === 'venus') sfx.play('surf', { delay: .1, quiet: true });
+      else if (lk === 'venus' || lk === 'monet') sfx.play('surf', { delay: .1, quiet: true });
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();
