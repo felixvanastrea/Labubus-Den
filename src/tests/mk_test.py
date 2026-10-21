@@ -33,6 +33,7 @@ for w in (400, 500, 600):
     for st in ('normal', 'italic'):
         faces.append(f"@font-face{{font-family:'Jost';font-style:{st};font-weight:{w};src:url({F}/jost/files/jost-latin-{w}-{st}.woff2) format('woff2')}}")
 # Birth of Venus: Cormorant Garamond, Alegreya, Alegreya Sans
+faces.append(f"@font-face{{font-family:'Special Elite';font-style:normal;font-weight:400;src:url({F}/special-elite/files/special-elite-latin-400-normal.woff2) format('woff2')}}")
 for w in (500, 600, 700):
     for st in ('normal', 'italic'):
         faces.append(f"@font-face{{font-family:'Cormorant Garamond';font-style:{st};font-weight:{w};src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-{w}-{st}.woff2) format('woff2')}}")

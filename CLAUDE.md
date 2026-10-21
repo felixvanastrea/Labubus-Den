@@ -374,7 +374,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   painting (about 1485, public domain; `img/venus.webp`, 1280×804 from her image) is a fixed layer behind every screen
   (`.vn-bg`, Venus at 70% across the screen, Zephyr's side and the top fading by a mask; full on the homepage, fading
   as you scroll like the Golden phase, `BG_OF`, `--km-scroll`; faint elsewhere). Cormorant Garamond for display, Alegreya
-  to read, Alegreya Sans for labels; the title in shell gold with hatched light, an umber edge and an ultramarine shadow
+  to read, Alegreya Sans for labels; the title (Abi, 21 October: cuter, no shadow, a typewriter face, bronze
+  not metallic) in Special Elite, matte bronze, each letter struck a little off its line, the ink a touch uneven
   (`lapis`, `lapisText`, `LAPIS`: the names stayed from its first, blue version). Cards white-blue under a band of
   Botticelli's v-shaped waves (`--waves`), a shell over the question card, roses on the labels; answers are pearls (right
   green, wrong rose-crimson, half gold). On the homepage roses blow in from the left (`rosesHTML`) and under the hero the

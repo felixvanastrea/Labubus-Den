@@ -918,7 +918,7 @@
     blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
-    venus: 'Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
+    venus: 'Special+Elite&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -6427,7 +6427,7 @@
     klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 },
     // Birth of Venus (Abi: the title in gold): Cormorant italic in shell gold, hatched with light the way Botticelli lit
     // hair and leaves, a thin umber edge over an ultramarine shadow; drawn smooth once resolved, ending before Venus
-    venus: { lines: ['Labubu’s', 'Den'], weight: 'italic 700', family: '"Cormorant Garamond", "EB Garamond", Georgia, serif', lapis: true, span: .56 }
+    venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 }
   };
   const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
   function shadeTitle(T, on, d, block, ink) {
@@ -6480,19 +6480,13 @@
           if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [92, 62, 10]);
         }
       } else if (T.lapis) {
-        // while it resolves: shell gold, pale at the top of each line, light hatching in its upper half, an umber edge,
-        // an ultramarine shadow down and right
+        // while it resolves: matte bronze, no edge, no shadow
         if (v) {
           const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
           const t = Math.min(1, Math.max(0, (y - (d.s * .78 + li * d.lineH - d.s * .72)) / (d.s * .82)));
           let c = LAPIS[LAPIS.length - 1][1];
           for (let j = 1; j < LAPIS.length; j++) if (t <= LAPIS[j][0]) { const [a0, c0] = LAPIS[j - 1], [a1, c1] = LAPIS[j]; c = mixc(c0, c1, (t - a0) / (a1 - a0)); break; }
-          if (t < .5 && (x * 2 + y) % 5 === 0) c = mixc(c, [255, 246, 214], .8 - t);
-          put(k, c.map(q => q + (hash(x, y) - .5) * 14));
-        } else {
-          const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
-          if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [104, 70, 14]);
-          else if (at(x - 2, y - 2) || at(x - 1, y - 2)) put(k, [42, 79, 158]);
+          put(k, c.map(q => q + (hash(x, y) - .5) * 16));
         }
       } else if (T.mosaic) {
         if (v) {
@@ -6537,35 +6531,35 @@
     ctx.lineWidth = Math.max(1, d.s / 150); ctx.strokeStyle = 'rgba(92,62,10,.7)';
     lines.forEach((l, i) => ctx.strokeText(l, x0, d.s * .78 + i * d.lineH));
   }
-  // the Birth of Venus title's shell gold, down a line of text (the name LAPIS stayed from its first, blue version)
-  const LAPIS = [[0, [252, 234, 168]], [.3, [228, 188, 88]], [.56, [170, 124, 32]], [.76, [218, 174, 74]], [.9, [186, 140, 46]], [1, [132, 94, 22]]];
+  // the Birth of Venus title (Abi, 21 October 2026: cuter, no shadow, a typewriter face, bronze but not metallic): Special
+  // Elite, typed in a soft matte bronze, each letter struck a little off its line like a real typewriter, the ink a touch
+  // uneven. LAPIS (the name stayed from its first, blue version) is the bronze down a line of text
+  const LAPIS = [[0, [184, 128, 82]], [.55, [160, 106, 64]], [1, [138, 88, 52]]];
   function lapisText(ctx, T, lines, d, x0) {
     ctx.clearRect(0, 0, d.w, d.h);
-    ctx.font = `${T.weight} ${d.s}px ${T.family}`; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+    ctx.font = `${T.weight} ${d.s}px ${T.family}`; ctx.textBaseline = 'alphabetic';
+    const r = mulberry(1485);
     lines.forEach((l, i) => {
       const y = d.s * .78 + i * d.lineH, g = ctx.createLinearGradient(0, y - d.s * .72, 0, y + d.s * .12);
       LAPIS.forEach(([o, c]) => g.addColorStop(o, `rgb(${c})`));
-      ctx.fillStyle = g; ctx.fillText(l, x0, y);
-    });
-    // gold hatching on the letters only: fine strokes leaning with the italic, in the light from above
-    ctx.globalCompositeOperation = 'source-atop';
-    const u = d.s / 200, r = mulberry(1485);
-    ctx.lineCap = 'round';
-    lines.forEach((l, i) => {
-      const top = d.s * .78 + i * d.lineH - d.s * .74;
-      for (let x = -d.s * .3; x < d.w; x += (4.6 + r() * 2.2) * u) {
-        const len = d.s * (.2 + r() * .26), y0 = top + r() * d.s * .08, g = ctx.createLinearGradient(0, y0, 0, y0 + len);
-        g.addColorStop(0, `rgba(255,248,222,${(.5 + r() * .3).toFixed(2)})`); g.addColorStop(1, 'rgba(255,248,222,0)');
-        ctx.strokeStyle = g; ctx.lineWidth = (.8 + r() * .8) * u;
-        ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x - len * .28, y0 + len); ctx.stroke();
+      ctx.fillStyle = g;
+      let x = x0;
+      for (const ch of l) {   // each key strikes a little high or low, a little tilted
+        const w = ctx.measureText(ch).width;
+        ctx.save(); ctx.translate(x + w / 2, y + (r() - .5) * d.s * .035); ctx.rotate((r() - .5) * .045);
+        ctx.globalAlpha = .9 + r() * .1; ctx.fillText(ch, -w / 2, 0); ctx.restore();
+        x += w;
       }
     });
-    // an ultramarine shadow behind, down and to the right, so the gold holds on the pale sky
-    ctx.globalCompositeOperation = 'destination-over'; ctx.fillStyle = 'rgba(42,79,158,.85)';
-    lines.forEach((l, i) => ctx.fillText(l, x0 + d.s * .016, d.s * .78 + i * d.lineH + d.s * .018));
+    // the ribbon's ink, a little uneven: lighter and darker flecks on the letters only
+    ctx.globalCompositeOperation = 'source-atop';
+    const n = Math.round(d.w * d.h / 60), u = d.s / 200;
+    for (let k = 0; k < n; k++) {
+      const q = (1 + r() * 3) * u;
+      ctx.fillStyle = r() < .55 ? `rgba(246,226,204,${(r() * .22).toFixed(2)})` : `rgba(96,58,30,${(r() * .16).toFixed(2)})`;
+      ctx.fillRect(r() * d.w, r() * d.h, q, q);
+    }
     ctx.globalCompositeOperation = 'source-over';
-    ctx.lineWidth = Math.max(1, d.s / 170); ctx.strokeStyle = 'rgba(104,70,14,.8)';
-    lines.forEach((l, i) => ctx.strokeText(l, x0, d.s * .78 + i * d.lineH));
   }
   function drawTitle(animate) {
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;

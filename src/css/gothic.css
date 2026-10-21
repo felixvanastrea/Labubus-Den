@@ -1613,7 +1613,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   :root[data-look="venus"] .opts .opt .bub { animation: none; }
 }
 /* the hero: the facts under the caption on the left, Venus has the right */
-:root[data-look="venus"] .title canvas { filter: drop-shadow(0 1px 1px rgba(16, 33, 58, .3)) drop-shadow(0 0 22px var(--title-glow)); }
+:root[data-look="venus"] .title canvas { filter: none; }
 :root[data-look="venus"] .hero :is(.caption, .meta, .cta-note) { text-shadow: 0 0 8px var(--night), 0 0 16px var(--night), 0 0 2px var(--night); }
 @media (min-width: 641px) {
   :root[data-look="venus"] .hero .caption { grid-row: 1; }
