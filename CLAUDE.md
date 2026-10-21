@@ -332,7 +332,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   clears, a toast, a seal and a comet (`elPsyKongroo`); a guest is told to sign in. Test: gift.js.
 - A second code (Abi, 21 October 2026): "RedaReda" in the search swaps the Birth of Venus painting for Reda's photo
   (`img/reda.webp`; Abi confirmed he agreed to it being on the Den), on that device only (`efm3-reda`, `data-reda` on
-  `<html>`); typed again, the painting comes back. Its own geometry and mask (his face stays clear), and the intro uses it too.
+  `<html>`); typed again, the painting comes back. The title then reads "Reda's Den", typewritten in matte bronze
+  (`REDA_TITLE`, read by `titleLook`), resolving again when the code is typed. Its own geometry and mask (his face stays clear), and the intro uses it too.
   Only its hash is in the page (`secretCode(q, 8, ...)`, `redaSwap`). Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first

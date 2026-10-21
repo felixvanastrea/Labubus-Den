@@ -3269,7 +3269,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
     monet: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
-    venus: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
+    venus: 'Great+Vibes&family=Special+Elite&family=Dancing+Script:wght@400..700&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -8299,7 +8299,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function redaSwap() {
     const on = !redaOn(); redaSet(on);
     sfx.play(on ? 'sparkle' : 'shut', { quiet: true });
-    if (lookNow() === 'venus') toast(on ? 'The painting has changed.' : 'The painting is back.');
+    if (lookNow() === 'venus') { toast(on ? 'The painting has changed.' : 'The painting is back.'); if (S.view === 'home') paintTitle(true); }
   }
   function elPsyKongroo() {
     const had = !!S.unlocks.psy;
@@ -8867,7 +8867,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56,
       pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] }
   };
-  const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
+  // with the RedaReda code on, the Venus title reads Reda's Den, typewritten in matte bronze (Abi, 21 October 2026)
+  const REDA_TITLE = { lines: ['Reda’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 };
+  const titleLook = () => lookNow() === 'venus' && redaOn() ? REDA_TITLE : TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
   function shadeTitle(T, on, d, block, ink) {
     const { w, h } = d, out = new Uint8ClampedArray(w * h * 4), hash = (x, y) => ((x * 73856093 ^ y * 19349663) >>> 0) % 1000 / 1000;
     const put = (k, c, a = 255) => { out[k * 4] = c[0]; out[k * 4 + 1] = c[1]; out[k * 4 + 2] = c[2]; out[k * 4 + 3] = a; };

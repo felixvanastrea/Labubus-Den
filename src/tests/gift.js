@@ -155,6 +155,7 @@ async function as(b, who, viewport) {
   await lb.fill('#q', 'RedaRed'); await lb.type('#q', 'a'); await lb.waitForTimeout(300);
   const rd = await lb.evaluate(() => ({ img: getComputedStyle(document.querySelector('.vn-bg')).backgroundImage, t: (document.querySelector('.toast') || {}).textContent || '', q: document.getElementById('q').value, ls: localStorage.getItem('efm3-reda') }));
   check(/reda\.webp/.test(rd.img) && /painting has changed/.test(rd.t) && rd.q === '' && rd.ls === '1', 'RedaReda: the painting becomes the photo ' + JSON.stringify(rd));
+  await lb.evaluate(() => window.scrollTo(0, 0)); await lb.waitForTimeout(1200);
   await lb.screenshot({ path: OUT + 'gift_reda.png' });
   await lb.fill('#q', 'redareda'); await lb.waitForTimeout(300);
   check(await lb.evaluate(() => /venus\.webp/.test(getComputedStyle(document.querySelector('.vn-bg')).backgroundImage) && !localStorage.getItem('efm3-reda')), 'typed again: the painting is back');
