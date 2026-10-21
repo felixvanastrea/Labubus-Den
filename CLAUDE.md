@@ -404,6 +404,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   The question card's top-right and bottom-left corners are folded over (a clip-path cut, the flap drawn back as a
   background; the clip starts 24 px above the card so the shell stays), the answer letters are pearls, and rose petals lie
   on the card and around the page (`.paper::after`, not on phones).
+  No red anywhere in Venus (Abi): wrong is a dark pink (`--wrong`), with dusty pink (`--dust`) and bronze (`--bronze`)
+  accents on the parchment: option and button edges in bronze, dusty pink hovers and picks, a bronze and pink frame.
 - Venus and Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the
   font tokens change on `body[data-view="home"]`, text 8% larger), and both titles in Great Vibes (`joined`; Venus's in its
   matte bronze, no more typewriter). The questions and every other screen keep the theme's own faces.

@@ -1515,14 +1515,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   --night: #e2eff8; --deep: #c6e0f2; --plate: rgba(251, 253, 255, .93); --plate-2: #eef6fc;
   --ink: #1f3247; --ink-hi: #10213a; --ink-2: #47607a; --ink-3: #6b8198;
   --hair: rgba(62, 112, 156, .22); --hair-2: rgba(176, 138, 64, .5); --glass: rgba(234, 244, 251, .86);
-  --right: #2b7a5e; --wrong: #c03a4e; --half: #a5761a;
-  --right-wash: rgba(43, 122, 94, .09); --wrong-wash: rgba(192, 58, 78, .07); --half-wash: rgba(165, 118, 26, .09);
+  --right: #2b7a5e; --wrong: #a3486b; --half: #a5761a;
+  --right-wash: rgba(43, 122, 94, .09); --wrong-wash: rgba(163, 72, 107, .08); --half-wash: rgba(165, 118, 26, .09);
   --sel-wash: rgba(110, 175, 222, .14); --glow-soft: rgba(120, 186, 232, .2); --glow-mid: rgba(110, 176, 226, .45);
   --title-glow: rgba(255, 255, 255, .85); --mottle-1: rgba(255, 255, 255, .55); --mottle-2: rgba(233, 169, 177, .12); --shade: rgba(60, 110, 160, .14);
   --k-official: #4a4f9c; --k-checked: #2f6f7a; --k-proposed: #2c6a4b; --k-claude: #8a6417; --k-none: #5d6a78;
   --k-official-line: rgba(74, 79, 156, .45); --k-checked-line: rgba(47, 111, 122, .45); --k-proposed-line: rgba(44, 106, 75, .45);
-  --k-claude-line: rgba(138, 100, 23, .45); --k-none-line: rgba(93, 106, 120, .45); --k-flag-line: rgba(192, 58, 78, .45);
-  --fig-bg: #fbfdff;
+  --k-claude-line: rgba(138, 100, 23, .45); --k-none-line: rgba(93, 106, 120, .45); --k-flag-line: rgba(163, 72, 107, .45);
+  --fig-bg: #fbfdff; --dust: #d4a5ae; --dust-deep: #b97a8a; --bronze: #a87b4f;
   --wax-hi: #f6cfd5; --wax-mid: #d47e8c; --wax-edge: #8a3242; --scrim: rgba(16, 33, 58, .45);
   --f-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
   --f-read: "Alegreya", "EB Garamond", Georgia, serif;
@@ -1610,7 +1610,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 }
 :root[data-look="venus"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { animation: pearlpop .55s var(--spring); }
 :root[data-look="venus"] .opt.is-hit .bub { background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, .95) 50%, transparent 62%) -160% 0 / 260% 100% no-repeat, var(--pearl); border-color: var(--right); box-shadow: inset -2px -3px 5px rgba(90, 120, 160, .28), inset 2px 2px 4px rgba(255, 255, 255, .9), 0 0 0 4px rgba(43, 122, 94, .16), 0 0 14px rgba(255, 255, 255, .9); animation: coinshine 1.5s var(--ease) .15s both; }
-:root[data-look="venus"] .opt.is-miss .bub { background: radial-gradient(circle at 35% 30%, #b7c1cc, #6d7a88 80%); border-color: var(--wrong); color: #fff; box-shadow: 0 0 0 4px rgba(192, 58, 78, .1); }
+:root[data-look="venus"] .opt.is-miss .bub { background: radial-gradient(circle at 35% 30%, #b7c1cc, #6d7a88 80%); border-color: var(--wrong); color: #fff; box-shadow: 0 0 0 4px rgba(163, 72, 107, .12); }
 @keyframes pearlpop { 0% { transform: scale(.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
 /* the class sky stays a window of night, at the hour before her dawn: rose and blue nebulae, pale stars */
 :root[data-look="venus"] .sky-field { --sky-star: #fff3ea; --sky-neb: #e9a9b1 #6f9fd0; --sky-hill: #1d3a4a #0f2230; background: radial-gradient(130% 120% at 78% 0%, #2b4a72 0%, #0e1a30 75%); }
@@ -2137,8 +2137,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) { --glass: rgba(240, 230, 204, .9); }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .plate {
   --ink: #33230f; --ink-hi: #1f1407; --ink-2: #5a4326; --ink-3: #85694a; --hair: rgba(110, 76, 34, .26); --hair-2: rgba(110, 76, 34, .48);
-  --plate: #efe2c2; --plate-2: #e8d7b0; --sel-wash: rgba(160, 120, 50, .1); --glow-soft: rgba(160, 120, 50, .14); --glow-mid: rgba(160, 120, 50, .3);
-  --right: #3d6b3a; --wrong: #9e2f24; --half: #8a6514; --right-wash: rgba(61, 107, 58, .1); --wrong-wash: rgba(158, 47, 36, .08); --half-wash: rgba(138, 101, 20, .1);
+  --plate: #efe2c2; --plate-2: #e8d7b0; --sel-wash: rgba(212, 165, 174, .22); --glow-soft: rgba(212, 165, 174, .25); --glow-mid: rgba(185, 122, 138, .35);
+  --right: #3d6b3a; --wrong: #96405f; --half: #8a6514; --right-wash: rgba(61, 107, 58, .1); --wrong-wash: rgba(150, 64, 95, .09); --half-wash: rgba(138, 101, 20, .1);
+  --hair-2: rgba(150, 106, 62, .55); --k-flag-line: rgba(150, 64, 95, .45);
   --lapis: #6b4a1e; color: var(--ink);
   background: var(--vn-parch); border: 0; border-radius: 0; box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 0 0 0 6px rgba(239, 226, 194, .4), inset 0 0 0 7px rgba(120, 84, 34, .35);
 }
@@ -2146,7 +2147,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::before { background: var(--shellmark) center / 24px no-repeat, #efe2c2; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .bub { border-color: rgba(120, 84, 34, .5); background: radial-gradient(circle at 35% 30%, #fbf3df, #ecdcb8 75%); color: #6b4a1e; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .opt { background: rgba(255, 250, 236, .35); border-color: rgba(120, 84, 34, .28); }
-:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .stem::first-letter { color: #8a3a22; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .stem::first-letter { color: #8e3d5c; }
+/* dusty pink and bronze accents on the parchment (Abi, 21 October 2026: no red, a dark pink) */
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .opt { border-color: rgba(168, 123, 79, .42); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .opt:hover { background: rgba(212, 165, 174, .16); border-color: var(--dust-deep); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .btn:not(.primary):not(.danger) { border-color: rgba(168, 123, 79, .65); color: #5a4326; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .btn:not(.primary):not(.danger):hover { border-color: var(--dust-deep); box-shadow: 0 0 0 3px rgba(212, 165, 174, .3); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) :is(.eyebrow, .qmeta a, .linkish) { color: #9c5a6c; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard { box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 0 0 0 6px rgba(239, 226, 194, .4), inset 0 0 0 7px rgba(168, 123, 79, .55), inset 0 0 0 9px rgba(212, 165, 174, .35); }
 /* the question card's corners folded over (top right, bottom left: cut off by the clip, the flap drawn back on the card;
    the clip starts above the card so the shell over it stays), the letters as pearls, rose petals strewn about */
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard {
