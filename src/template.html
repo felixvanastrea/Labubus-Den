@@ -148,11 +148,11 @@
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
     sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {},
-    duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null };
+    duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null, unlocks: {} };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks', 'duels', 'rivals', 'duelSet'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks', 'duels', 'rivals', 'duelSet', 'unlocks'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -203,6 +203,7 @@
     if (!S.days || typeof S.days !== 'object' || Array.isArray(S.days)) S.days = {};
     if (!S.statSent || typeof S.statSent !== 'object' || Array.isArray(S.statSent)) S.statSent = {};
     if (!S.gifts || typeof S.gifts !== 'object' || Array.isArray(S.gifts)) S.gifts = {};
+    if (!S.unlocks || typeof S.unlocks !== 'object' || Array.isArray(S.unlocks)) S.unlocks = {};
     // marks (synced), crossed-out options and first-try picks waiting to be counted for the class (this device only)
     for (const k of ['marks', 'cross', 'firstSel']) {
       if (!S[k] || typeof S[k] !== 'object' || Array.isArray(S[k])) S[k] = {};
@@ -1483,7 +1484,8 @@
     const giftOf = id => myGifts().find(g => (g.looks || []).includes(id)) || null;
     // a theme can be worn once earned (signed in: themes belong to accounts); the Labubu account has them all, and a
     // gift from her brings its themes
-    const canWear = id => id === 'gothic' || vip() || !!giftOf(id) || (member() && (here ? state !== 'off' : true) && themeGoal(id).done);
+    // El Psy Kongroo (the secret code, S.unlocks.psy, synced): every theme, the ones to come and the given ones too
+    const canWear = id => id === 'gothic' || vip() || !!giftOf(id) || (member() && (here ? state !== 'off' : true) && (!!S.unlocks.psy || themeGoal(id).done));
     let pv = null;   // a preview running
     function applyLook() {
       if (pv) return false;
@@ -5854,6 +5856,26 @@
     const label = `${streak} right in a row${full ? ': the Great Bear is complete' : ''}`;
     return `<span class="streak${full ? ' full' : ''}" title="${label}" role="img" aria-label="${label}"><svg viewBox="0 0 29 14.5" aria-hidden="true"><g class="sl">${lines}</g>${stars}</svg>${streak >= 3 ? `<b class="num">${streak}</b>` : ''}</span>`;
   }
+  // a secret code typed in the search (Abi, 21 October 2026, a Steins;Gate reference): "El Psy Kongroo" unlocks every
+  // theme for good, the ones to come too. Kept on the account (S.unlocks.psy, synced), so a reset doesn't take it back.
+  // Only its hash is in the page: any case, spaces or punctuation
+  function secretCode(q) {
+    const t = String(q || '').toLowerCase().replace(/[^a-z]/g, '');
+    if (t.length !== 12) return false;
+    let h = 0x811c9dc5; for (const c of t) { h ^= c.charCodeAt(0); h = Math.imul(h, 0x01000193) >>> 0; }
+    return h.toString(36) === 'sm6qv7';
+  }
+  function elPsyKongroo() {
+    const had = !!S.unlocks.psy;
+    if (!had) { S.unlocks.psy = Date.now(); THEMES.forEach(t => { if (!S.themesSeen.includes(t.id)) S.themesSeen.push(t.id); }); save(); }
+    sfx.play('seal'); shootingStar('comet');
+    const guest = acct.here && !acct.member();
+    toast(had ? 'El Psy Kongroo. Every theme is already yours.'
+      : guest ? 'El Psy Kongroo. Sign in, and every theme is yours, the ones to come too.'
+      : 'El Psy Kongroo. Every theme is yours now, and every one to come. Wear them from Themes.');
+    usage.track('secret_code');
+    if (S.view === 'home') render(false);
+  }
   function shootingStar(kind) {
     if (reduceMotion() || !document.body.animate) return;
     const el = document.createElement('span'); el.className = 'shoot' + (kind ? ' ' + kind : '');
@@ -7690,6 +7712,7 @@
     const del = /^delete/.test(e.inputType || ''), last = e.target.value.slice(-1);
     sfx.play(del ? 'untick' : last === ' ' ? 'space' : 'type', { quiet: true, gain: 0.8 });
     S.q = e.target.value; S.aspect = null; kwAll = false;
+    if (secretCode(S.q)) { S.q = ''; e.target.value = ''; e.target.blur(); updateSearch(); elPsyKongroo(); return; }
     updateSearch();
     clearTimeout(saveTimer); saveTimer = setTimeout(save, 400);
     // what people look for (once they stop typing), to see which searches come up empty

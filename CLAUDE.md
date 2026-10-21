@@ -326,6 +326,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   no message: one letter (`handler-venus-2026-10`, Venus first) that replaced their first one (every theme but Venus). Held: Rayane (`rayane-2026-10`), every theme, thanks for checking the answers against
   the lectures and finding 7 missing questions; Abi will send his name on the Den, then set `to` and drop `held`.
   If the person renames, the gift stays with the old name: change `to`. Test: gift.js.
+- The secret code (Abi, 21 October 2026, a Steins;Gate reference): typing "El Psy Kongroo" in the search (any case,
+  spaces or punctuation; only its hash is in the page, `secretCode`) unlocks every theme for good, the ones to come and
+  the given ones (the Birth of Venus) too: `S.unlocks.psy` (synced, untouched by Reset), read by `canWear`. The search
+  clears, a toast, a seal and a comet (`elPsyKongroo`); a guest is told to sign in. Test: gift.js.
 - The pick is kept in `efm3-look` and in her account (`look` on `users/{uid}`); `<html data-look="blood">` switches it.
 - Each theme changes everything, not just colours: its own typefaces (`LOOK_FONTS`, loaded from Google Fonts the first
   time it's worn; the test copy has them locally from @fontsource), its own title (`TITLE_LOOKS`, `shadeTitle`: the
@@ -533,7 +537,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
-  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, challenges (made,
+  searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, the secret code typed, challenges (made,
   joined, declined, started, settled, link copied or shared),
   update log, sound, the moon or a firefly opened).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.

@@ -127,6 +127,23 @@ async function as(b, who, viewport) {
   check(!/Birth of Venus/.test(srows.join(' ')) && srows.length === 4 && await s.evaluate(() => !document.documentElement.dataset.look), 'Sara: the Birth of Venus isn’t listed, and isn’t worn even saved on her device');
   await c2.close();
 
+  // El Psy Kongroo in the search: every theme for good, the Birth of Venus too, kept on the account
+  const c9 = await as(b, { uid: 'u3', name: 'Okabe', key: 'okabe' });
+  const ok = await c9.newPage(); ok.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  await ok.goto(URL, { waitUntil: 'load' }); await ok.waitForTimeout(1500);
+  await ok.fill('#q', 'el psy'); await ok.type('#q', ' Kongroo'); await ok.waitForTimeout(400);
+  const t9 = await ok.evaluate(() => ({ toast: (document.querySelector('.toast') || {}).textContent || '', q: document.getElementById('q') ? document.getElementById('q').value : '?' }));
+  check(/El Psy Kongroo\. Every theme is yours now/.test(t9.toast) && t9.q === '', 'El Psy Kongroo: every theme unlocked, the search cleared ' + JSON.stringify(t9));
+  await ok.evaluate(() => document.querySelector('.th-wrap').scrollIntoView({ block: 'center' })); await ok.waitForTimeout(300);
+  const orows = await ok.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
+  check(orows.length === 5 && orows.slice(1).every(r => /Wear it/.test(r)) && /Birth of Venus/.test(orows[4]), 'Themes: all five to wear');
+  await ok.click('.th-wrap [data-theme="codex"]'); await ok.waitForTimeout(400);
+  await ok.evaluate(() => window.dispatchEvent(new Event('pagehide'))); await ok.waitForTimeout(400);
+  check(await ok.evaluate(() => document.documentElement.dataset.look) === 'codex' && await ok.evaluate(() => /"unlocks"/.test(window.__fb.docs['users/u3'].s || '')), 'wears the Codex, and the unlock is on the account');
+  await ok.reload({ waitUntil: 'load' }); await ok.waitForTimeout(1200);
+  check(await ok.evaluate(() => document.documentElement.dataset.look) === 'codex', 'still hers after a reload');
+  await c9.close();
+
   // the Labubu has every theme, the Birth of Venus too
   const c8 = await as(b, { uid: 'u9', name: 'Labubu', key: 'labubu' });
   const lb = await c8.newPage(); lb.on('pageerror', e => errors.push('pageerror: ' + e.message));
