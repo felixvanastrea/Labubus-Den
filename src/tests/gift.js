@@ -105,7 +105,7 @@ async function as(b, who, viewport) {
   await hd.click('[data-letter="wear"]'); await hd.waitForTimeout(1500);
   check(!(await hd.isVisible('.lt-sheet')), 'no other letter follows');
   const vn = await hd.evaluate(() => { const e = document.querySelector('.vn-bg'), cs = getComputedStyle(e); return { look: document.documentElement.dataset.look, d: cs.display, img: cs.backgroundImage, h: getComputedStyle(document.querySelector('.h2, .h1')).fontFamily, swans: document.querySelectorAll('.vn-sea .vn-swan').length, roses: !!document.querySelector('.vn-roses') }; });
-  check(vn.look === 'venus' && vn.d === 'block' && /venus\.webp/.test(vn.img) && /Cormorant/.test(vn.h) && vn.swans === 5 && vn.roses, 'wearing it: the painting behind the page, Cormorant, five swans on the sea, roses ' + JSON.stringify(vn));
+  check(vn.look === 'venus' && vn.d === 'block' && /venus\.webp/.test(vn.img) && /Dancing Script/.test(vn.h) && vn.swans === 5 && vn.roses, 'wearing it: the painting behind the page, the homepage in calligraphy, five swans on the sea, roses ' + JSON.stringify(vn));
   await hd.evaluate(() => document.querySelector('.vn-sea').scrollIntoView({ block: 'center' })); await hd.waitForTimeout(200);
   await hd.click('.vn-lane:nth-of-type(4) .vn-swan', { force: true }); await hd.waitForTimeout(100);
   check(await hd.evaluate(() => !!document.querySelector('.vn-swan.ruffle')), 'tap a swan: it ruffles');
