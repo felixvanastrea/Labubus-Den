@@ -1687,6 +1687,146 @@
       "B": "Long-term lifestyle talk is for chronic illness.",
       "C": "Self-management barriers belong to chronic care.",
       "D": "In acute illness the doctor guides; the patient usually follows short-term advice."
+    },
+    "T76": {
+      "lecture": "comm-foundations",
+      "A": "A dismissive manner costs satisfaction and trust, whatever the medicine.",
+      "B": "Feeling dismissed lowers adherence, it doesn't improve it.",
+      "C": "The manner doesn't make the diagnosis more accurate.",
+      "D": "Too strong: poor communication makes failure likelier, not certain."
+    },
+    "T77": {
+      "lecture": "comm-clinical",
+      "A": "Time and attention let a hesitant patient say it in their own words.",
+      "B": "Changing the topic drops what they were trying to say.",
+      "C": "Finishing their sentences puts your words in their mouth.",
+      "D": "Closed questions too early cut the story short."
+    },
+    "T78": {
+      "lecture": "comm-clinical",
+      "A": "An open question explores their own options and keeps them in charge.",
+      "B": "Direct personal advice to resign isn't the physician's place.",
+      "C": "Telling them to manage it better blames them and explores nothing.",
+      "D": "Normalizing it dismisses the concern."
+    },
+    "T79": {
+      "lecture": "comm-clinical",
+      "A": "It names what the patient is living through: empathy.",
+      "B": "Comparing them to others minimizes how they feel.",
+      "C": "Easy reassurance and positivity skip over the feeling.",
+      "D": "Normal results don't answer the exhaustion they describe."
+    },
+    "T80": {
+      "lecture": "comm-foundations",
+      "A": "Jumping to solutions comes before really listening.",
+      "B": "Silence helps, but on its own it shows nothing back.",
+      "C": "Paraphrasing shows you heard and checks you understood.",
+      "D": "Interrupting breaks the patient's account."
+    },
+    "T81": {
+      "lecture": "comm-foundations",
+      "A": "Face to face was the right channel.",
+      "B": "The words themselves were accurate.",
+      "C": "The message was correct.",
+      "D": "Avoided eye contact and a rushed manner are non-verbal cues."
+    },
+    "T82": {
+      "lecture": "comm-foundations",
+      "A": "It may feel caring, but its aim is to check understanding.",
+      "B": "Paraphrasing checks that you understood correctly.",
+      "C": "It has nothing to do with authority.",
+      "D": "It hands the floor back to the patient, it doesn't take it."
+    },
+    "T83": {
+      "lecture": "comm-clinical",
+      "A": "The impact on family and work is the patient's perspective, and it was skipped.",
+      "B": "No summary was missing here; the problem came before that.",
+      "C": "The complaint itself, the pain, was acknowledged.",
+      "D": "Nothing was explained yet whose understanding needed checking."
+    },
+    "T84": {
+      "lecture": "comm-foundations",
+      "A": "Nothing here comes from culture.",
+      "B": "No hearing or physical problem got in the way.",
+      "C": "It isn't fear or emotion that blocked the message.",
+      "D": "The same word meant different things to each: a semantic barrier."
+    },
+    "T85": {
+      "lecture": "comm-clinical",
+      "A": "It deepens the dependence instead of hearing the hesitation.",
+      "B": "It takes the yes at face value and ignores the hesitation.",
+      "C": "Pushing your advice leaves their doubts unspoken.",
+      "D": "Asking their thoughts and concerns brings the hesitation out."
+    },
+    "T86": {
+      "lecture": "comm-foundations",
+      "A": "Reflecting it back checks you understood correctly.",
+      "B": "It opens the topic rather than closing it.",
+      "C": "It doesn't argue for the treatment.",
+      "D": "It has nothing to do with authority."
+    },
+    "T87": {
+      "lecture": "comm-clinical",
+      "A": "Ideas, Concerns, Expectations: ICE.",
+      "B": "SOAP structures clinical notes.",
+      "C": "The Cs describe a good message, not the patient's view.",
+      "D": "SBAR is for handing over between professionals."
+    },
+    "T88": {
+      "lecture": "comm-foundations",
+      "A": "Good communication isn't measured by shorter visits.",
+      "B": "Fewer misunderstandings mean fewer errors: safer care.",
+      "C": "Authority isn't the aim.",
+      "D": "It doesn't mean ordering more tests."
+    },
+    "T89": {
+      "lecture": "comm-foundations",
+      "A": "Leaving out the complications makes the information incomplete.",
+      "B": "Nothing suggests the doctor wasn't believed.",
+      "C": "Brevity wasn't the problem; something was missing.",
+      "D": "What was said wasn't wrong, it was incomplete."
+    },
+    "T90": {
+      "lecture": "comm-clinical",
+      "A": "A blanket \"everything will be fine\" is easy reassurance.",
+      "B": "Nothing is being clarified.",
+      "C": "It skips over the feeling instead of understanding it.",
+      "D": "It doesn't acknowledge the distress."
+    },
+    "T91": {
+      "lecture": "comm-clinical",
+      "A": "Exploring their concerns first keeps the decision shared.",
+      "B": "Your experience doesn't answer their concern.",
+      "C": "It shuts the question down.",
+      "D": "An appeal to authority closes the discussion."
+    },
+    "T92": {
+      "lecture": "comm-foundations",
+      "A": "It helps adherence but guarantees nothing.",
+      "B": "A summary invites questions, it doesn't stop them.",
+      "C": "Follow-up is still needed.",
+      "D": "Summing up checks you both understood the same thing."
+    },
+    "T93": {
+      "lecture": "comm-foundations",
+      "A": "The information may have been complete; the concerns weren't heard.",
+      "B": "No physical noise got in the way.",
+      "C": "The treatment was correct, so no misdiagnosis.",
+      "D": "Unacknowledged concerns are a failure of communication."
+    },
+    "T94": {
+      "lecture": "comm-foundations",
+      "A": "The information was accurate and clearly sequenced: encoding was fine.",
+      "B": "Nothing points to the wrong channel.",
+      "C": "There was feedback: the patient repeated the purpose back.",
+      "D": "Part of the message, the timing, wasn't decoded by the patient."
+    },
+    "T95": {
+      "lecture": "comm-foundations",
+      "A": "It doesn't promise that things will be fine.",
+      "B": "It asks nothing.",
+      "C": "Sympathy is feeling sorry for; this acknowledges their fear.",
+      "D": "Naming and accepting the fear is emotional validation."
     }
   }
 }

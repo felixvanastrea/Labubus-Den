@@ -613,6 +613,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   also holds group communication), each placed in its lecture by a `lectures.json` `q` entry, with explanations. Q4 and
   Q21 are the same question with the options shuffled, as the exam had them. Least sure: Q36 (repression, as the mock's
   key for the same idea), Q39 (encoding), Q32, Q44.
+- The communication midterm 2026–2027 (T76–T95, `added` 2026-10-21, the day it was sat, so never part of the communication
+  quest): all 20, one answer each, from the exam's own Evalbox page. No answers marked: `key: "claude"`, answered from Pr
+  Fourtassi's two decks and the finals' copies of the same questions (Q5, Q7, Q13, Q15, Q18, Q20 are finals questions
+  word for word), placed by `lectures.json` `q` entries, with explanations. Least sure: Q19 (decoding, not feedback: the
+  patient did repeat the purpose back).
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
