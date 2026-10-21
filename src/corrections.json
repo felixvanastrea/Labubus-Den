@@ -347,12 +347,12 @@
     },
     {
       "q": "S165",
-      "confirmed": "2026-10-07",
+      "confirmed": "2026-10-21",
       "proposed": "2026-10-07, lecture check",
       "field": "answer",
       "from": "BC",
-      "to": "BCDE",
-      "why": "Lecture check: adds D (Nodular acne or acne conglobata): Slide 22, severe forms: '1.Nodular acne'. [lecture]; adds E (Fulminant acne): Slide 24: '3-Acne fulminans or acne maligna'. [lecture]"
+      "to": "ABCDE",
+      "why": "Lecture check: adds D (Nodular acne or acne conglobata): Slide 22, severe forms: '1.Nodular acne'. [lecture]; adds E (Fulminant acne): Slide 24: '3-Acne fulminans or acne maligna'. [lecture] Then A too (Abi, 21 October 2026, not sure): 'childhood acne' is probably the slides' 'Juvenile acne', the first clinical form, mistranslated; she isn't sure, so it stays a proposed answer without the lecture label."
     },
     {
       "q": "S19",

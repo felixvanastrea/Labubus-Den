@@ -3790,13 +3790,13 @@
     },
     "S165": {
       "where": "Professor's questions Q74",
-      "label": true,
-      "key": "BCDE",
+      "label": false,
+      "key": "ABCDE",
       "options": {
         "A": {
           "status": "unsure",
           "basis": "none",
-          "why": "Lecture has 'Juvenile acne', neonatal acne, child acne from adrenal tumor; 'childhood acne' translation unclear."
+          "why": "Lecture has 'Juvenile acne', neonatal acne, child acne from adrenal tumor; 'childhood acne' translation unclear. Abi (21 October 2026): count it right, not sure; so no label."
         },
         "B": {
           "status": "tick",
@@ -3822,7 +3822,7 @@
       "lecture": [
         "Acne"
       ],
-      "note": "Retentional, inflammatory, nodular and fulminant acne are all named clinical forms; 'childhood acne' is ambiguous."
+      "note": "Retentional, inflammatory, nodular and fulminant acne are all named clinical forms; 'childhood acne' is ambiguous. A added on 21 October 2026, unsure: no label."
     },
     "S170": {
       "where": "Professor's questions Q79",
