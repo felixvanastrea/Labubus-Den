@@ -2324,6 +2324,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23f9cfd8'/%3E%3Cstop offset='1' stop-color='%23d9808f'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(-55)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") 92% 24% / 28px 28px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23f7c6cf'/%3E%3Cstop offset='1' stop-color='%23d47585'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(-140)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") 87% 58% / 22px 22px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23fbd9df'/%3E%3Cstop offset='1' stop-color='%23e597a6'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(20)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") 95% 80% / 26px 26px no-repeat,
   radial-gradient(130% 95% at 50% 40%, transparent 58%, rgba(110, 80, 40, .22) 100%); }
 @media (max-width: 640px) { :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .paper::after { background: radial-gradient(130% 95% at 50% 40%, transparent 58%, rgba(110, 80, 40, .22) 100%); } }
+:root[data-look="venus"][data-reda] .vn-bg {
+  background-image: url("img/reda.webp"); width: calc(100vh * 1.836); left: calc(62vw - 100vh * .606); filter: sepia(.12) saturate(.95);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 92%, transparent), linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .35) 5%, #000 12%);
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 92%, transparent), linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .35) 5%, #000 12%);
+}
+@media (max-width: 640px) {
+  :root[data-look="venus"][data-reda] .vn-bg { width: calc(min(62vh, 520px) * 1.836); left: calc(60vw - min(62vh, 520px) * .606); }
+}
 /* Birth of Venus and Water lilies: the homepage all in an easy calligraphy (Abi, 21 October 2026), the questions and
    every other screen as they were. The tokens change on the homepage's body only */
 :root:is([data-look="venus"], [data-look="monet"]) body[data-view="home"] {
@@ -8276,11 +8284,22 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // a secret code typed in the search (Abi, 21 October 2026, a Steins;Gate reference): "El Psy Kongroo" unlocks every
   // theme for good, the ones to come too. Kept on the account (S.unlocks.psy, synced), so a reset doesn't take it back.
   // Only its hash is in the page: any case, spaces or punctuation
-  function secretCode(q) {
+  function secretCode(q, len = 12, hash = 'sm6qv7') {
     const t = String(q || '').toLowerCase().replace(/[^a-z]/g, '');
-    if (t.length !== 12) return false;
+    if (t.length !== len) return false;
     let h = 0x811c9dc5; for (const c of t) { h ^= c.charCodeAt(0); h = Math.imul(h, 0x01000193) >>> 0; }
-    return h.toString(36) === 'sm6qv7';
+    return h.toString(36) === hash;
+  }
+  // a second code (Abi, 21 October 2026): "RedaReda" in the search swaps the Birth of Venus painting for Reda's photo
+  // (img/reda.webp, with his agreement), on this device (efm3-reda); typed again, the painting comes back
+  const REDA_KEY = 'efm3-reda', REDA_IMG = 'img/reda.webp';
+  const redaOn = () => document.documentElement.hasAttribute('data-reda');
+  function redaSet(on) { document.documentElement.toggleAttribute('data-reda', on); try { if (on) localStorage.setItem(REDA_KEY, '1'); else localStorage.removeItem(REDA_KEY); } catch (e) {} }
+  try { if (localStorage.getItem(REDA_KEY) === '1') document.documentElement.setAttribute('data-reda', ''); } catch (e) {}
+  function redaSwap() {
+    const on = !redaOn(); redaSet(on);
+    sfx.play(on ? 'sparkle' : 'shut', { quiet: true });
+    if (lookNow() === 'venus') toast(on ? 'The painting has changed.' : 'The painting is back.');
   }
   function elPsyKongroo() {
     const had = !!S.unlocks.psy;
@@ -9447,7 +9466,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       c.drawImage(img, 0, 0, w, h);
       if (fade) {
         const g = c.createLinearGradient(0, 0, w, 0);
-        [[0, 0], [.03, 0], [.22, .3], [.44, 1], [.92, 1], [1, 0]].forEach(([o, a]) => g.addColorStop(o, `rgba(0,0,0,${a})`));
+        (fade === 'reda' ? [[0, 0], [.16, 1], [.92, 1], [1, 0]] : [[0, 0], [.03, 0], [.22, .3], [.44, 1], [.92, 1], [1, 0]]).forEach(([o, a]) => g.addColorStop(o, `rgba(0,0,0,${a})`));
         c.globalCompositeOperation = 'destination-in'; c.fillStyle = g; c.fillRect(0, 0, w, h);
         const v = c.createLinearGradient(0, 0, 0, h);
         [[0, 0], [.05, .35], [.12, 1], [1, 1]].forEach(([o, a]) => v.addColorStop(o, `rgba(0,0,0,${a})`));
@@ -9784,14 +9803,16 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             // the lovers, big behind the picker, come down into their place on the page (r: half their height); Venus
             // the same, the whole painting across the sky
             const vn = lk === 'venus', mn = lk === 'monet', kb = document.querySelector(BG_OF[lk]), kr = kb ? kb.getBoundingClientRect() : null, img = new Image();
-            MA = vn ? 1280 / 804 : mn ? 1200 / 899 : 964 / 1500;
+            const rd = vn && redaOn();
+            MA = rd ? 1179 / 642 : vn ? 1280 / 804 : mn ? 1200 / 899 : 964 / 1500;
             MS = vn || mn ? { x: W * .5, y: H * (small ? .4 : .46), r: small ? H * .2 : Math.min(W * .94 / (2 * MA), H * .42) }
               : { x: W * (small ? .5 : .64), y: H * (small ? .44 : .5), r: H * (small ? .38 : .5) };
             ME = kr && kr.height ? { x: kr.left + kr.width / 2, y: kr.top + kr.height / 2, r: kr.height / 2 } : { x: MS.x, y: H + MS.r, r: MS.r };
             const hpx = Math.min(1500, Math.round(MS.r * 2 * dpr));
-            img.decoding = 'async'; img.src = vn ? VENUS_IMG : mn ? MONET_IMG : KLIMT_IMG;
-            moonTex = paintingTex(img, hpx, vn);
-            if (!moonTex) img.addEventListener('load', () => { if (on && !moonTex) { moonTex = paintingTex(img, hpx, vn); texAt = performance.now(); } }, { once: true });
+            img.decoding = 'async'; img.src = rd ? REDA_IMG : vn ? VENUS_IMG : mn ? MONET_IMG : KLIMT_IMG;
+            const fd = rd ? 'reda' : vn;
+            moonTex = paintingTex(img, hpx, fd);
+            if (!moonTex) img.addEventListener('load', () => { if (on && !moonTex) { moonTex = paintingTex(img, hpx, fd); texAt = performance.now(); } }, { once: true });
           } else {
             MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
             ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
@@ -10128,6 +10149,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     sfx.play(del ? 'untick' : last === ' ' ? 'space' : 'type', { quiet: true, gain: 0.8 });
     S.q = e.target.value; S.aspect = null; kwAll = false;
     if (secretCode(S.q)) { S.q = ''; e.target.value = ''; e.target.blur(); updateSearch(); elPsyKongroo(); return; }
+    if (secretCode(S.q, 8, '1lvs78d')) { S.q = ''; e.target.value = ''; e.target.blur(); updateSearch(); redaSwap(); return; }
     updateSearch();
     clearTimeout(saveTimer); saveTimer = setTimeout(save, 400);
     // what people look for (once they stop typing), to see which searches come up empty

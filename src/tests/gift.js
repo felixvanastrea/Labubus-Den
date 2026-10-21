@@ -149,6 +149,15 @@ async function as(b, who, viewport) {
   const lb = await c8.newPage(); lb.on('pageerror', e => errors.push('pageerror: ' + e.message));
   await lb.goto(URL, { waitUntil: 'load' }); await lb.waitForTimeout(1200);
   const lrows = await lb.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
+  // RedaReda in the search: the Venus painting becomes Reda's photo, on this device; again, and it's back
+  await lb.click('.th-wrap [data-theme="venus"]'); await lb.waitForTimeout(500);
+  await lb.evaluate(() => window.scrollTo(0, 0));
+  await lb.fill('#q', 'RedaRed'); await lb.type('#q', 'a'); await lb.waitForTimeout(300);
+  const rd = await lb.evaluate(() => ({ img: getComputedStyle(document.querySelector('.vn-bg')).backgroundImage, t: (document.querySelector('.toast') || {}).textContent || '', q: document.getElementById('q').value, ls: localStorage.getItem('efm3-reda') }));
+  check(/reda\.webp/.test(rd.img) && /painting has changed/.test(rd.t) && rd.q === '' && rd.ls === '1', 'RedaReda: the painting becomes the photo ' + JSON.stringify(rd));
+  await lb.screenshot({ path: OUT + 'gift_reda.png' });
+  await lb.fill('#q', 'redareda'); await lb.waitForTimeout(300);
+  check(await lb.evaluate(() => /venus\.webp/.test(getComputedStyle(document.querySelector('.vn-bg')).backgroundImage) && !localStorage.getItem('efm3-reda')), 'typed again: the painting is back');
   check(lrows.length === 6 && /Birth of Venus.*Wear it/.test(lrows[4]) && /Water lilies.*Wear it/.test(lrows[5]), 'the Labubu: the Birth of Venus and Water lilies listed, to wear');
   await c8.close();
 
