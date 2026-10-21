@@ -1586,9 +1586,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 }
 :root[data-look="venus"] .acct-card { background: var(--waves) left top / 48px 8px repeat-x, #f8fbfe; }
 /* buttons: baby blue, rimmed in gold (Abi, 21 October 2026: gold accents on the buttons and everything) */
-:root[data-look="venus"] .btn.primary { background: linear-gradient(180deg, #d4ecfb, #a6d4f2 50%, #86c1ea); border: 1.5px solid #c49a3c; color: #10213a; box-shadow: inset 0 0 0 1px rgba(255, 240, 200, .75), inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 -2px 0 rgba(40, 90, 140, .18), 0 0 0 3px rgba(214, 178, 96, .18), 0 8px 20px -10px rgba(50, 110, 170, .55); }
-:root[data-look="venus"] .btn.primary:hover { background: linear-gradient(180deg, #e2f2fc, #b5dcf5 50%, #93c9ee); border-color: #d4ab4c; box-shadow: inset 0 0 0 1px rgba(255, 244, 210, .85), inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -2px 0 rgba(40, 90, 140, .18), 0 0 0 5px rgba(214, 178, 96, .28), 0 10px 26px -10px rgba(170, 130, 50, .5); }
-:root[data-look="venus"] .btn.primary svg { color: #9a7428; }
+:root[data-look="venus"] .btn.primary { background: linear-gradient(180deg, #f6e2a8, #e2bf6a 50%, #cfa34c); border: 1.5px solid #b48c3c; color: #33240a; box-shadow: inset 0 1px 0 rgba(255, 248, 225, .85), inset 0 -2px 0 rgba(120, 84, 20, .2), 0 8px 20px -10px rgba(150, 110, 40, .55); }
+:root[data-look="venus"] .btn.primary:hover { background: linear-gradient(180deg, #f9eabd, #e8c97a 50%, #d6ad57); border-color: #c09644; box-shadow: inset 0 1px 0 rgba(255, 250, 232, .9), inset 0 -2px 0 rgba(120, 84, 20, .2), 0 0 0 5px rgba(214, 178, 96, .25), 0 10px 26px -10px rgba(160, 118, 40, .6); }
+:root[data-look="venus"] .btn.primary svg { color: #6e4f16; }
 :root[data-look="venus"] .btn:not(.primary):not(.danger) { border-color: rgba(196, 154, 60, .55); }
 :root[data-look="venus"] .btn:not(.primary):not(.danger):hover { border-color: #c49a3c; box-shadow: 0 0 0 3px rgba(214, 178, 96, .16); }
 :root[data-look="venus"] .navlinks button::after { background: linear-gradient(90deg, #d9b45a, #c49a3c); }

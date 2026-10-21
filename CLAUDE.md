@@ -376,7 +376,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   as you scroll like the Golden phase, `BG_OF`, `--km-scroll`; faint elsewhere). Cormorant Garamond for display, Alegreya
   to read, Alegreya Sans for labels; the title (Abi, 21 October: cuter, no shadow, a typewriter face, bronze
   not metallic) in Special Elite, matte bronze, each letter struck a little off its line, the ink a touch uneven
-  (`lapis`, `lapisText`, `LAPIS`: the names stayed from its first, blue version). Gold accents (Abi, 21 October): buttons rimmed in gold, the
+  (`lapis`, `lapisText`, `LAPIS`: the names stayed from its first, blue version). Gold accents (Abi, 21 October): the main buttons gold, the others rimmed in gold, the
   stronger hairlines, card edges, labels and the nav underline. Cards white-blue under a band of
   Botticelli's v-shaped waves (`--waves`), a shell over the question card, roses on the labels; answers are pearls (right
   green, wrong rose-crimson, half gold). On the homepage roses blow in from the left (`rosesHTML`) and under the hero the
