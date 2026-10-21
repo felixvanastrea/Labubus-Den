@@ -17,7 +17,8 @@
           "name": "Clinical communication",
           "lecture": "T-clinical"
         }
-      ]
+      ],
+      "end": "2026-10-21"
     },
     {
       "id": "dig-surg-midterm-2026",
@@ -111,10 +112,10 @@
     }
   ],
   "spotlight": {
-    "set": "s5-2627-digestive-system-disease-midterm-digestive-surgical-pathology-2026-2027",
-    "title": "Digestive surgery midterm 2026–2027",
-    "from": "2026-10-14",
-    "until": "2026-10-14",
-    "note": "Today’s digestive surgery midterm, as it was given, with the official answers."
+    "set": "s5-2627-technical-communication-midterm-technical-communication-2026-2027",
+    "title": "Communication midterm 2026–2027",
+    "from": "2026-10-21",
+    "until": "2026-10-27",
+    "note": "Today’s communication midterm, as it was given, answered from Pr Fourtassi’s lectures."
   }
 }

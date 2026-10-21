@@ -170,6 +170,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   The 2026–2027 respiratory midterm had it from 7 October 2026; Abi took it down on 9 October.
   The digestive surgery midterm 2026–2027 had it on 14 October 2026 (Abi: "for just a day"; the communication quest took its place on the 15th), and the digestive
   surgery quest got `end: 2026-10-14` so it left the homepage the day of its exam.
+  The communication midterm 2026–2027 has it from 21 October 2026 (Abi: on the front page instead of the quest), until 27
+  October unless she says otherwise, and the communication quest got `end: 2026-10-21`.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
