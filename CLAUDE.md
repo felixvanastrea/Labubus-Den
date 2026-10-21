@@ -622,6 +622,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Fourtassi's two decks and the finals' copies of the same questions (Q5, Q7, Q13, Q15, Q18, Q20 are finals questions
   word for word), placed by `lectures.json` `q` entries, with explanations. Least sure: Q19 (decoding, not feedback: the
   patient did repeat the purpose back).
+  Since the evening of 21 October 2026 they're `key: "official"` (Abi asked), Claude's notes dropped, explanations kept.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
