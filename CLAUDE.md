@@ -397,6 +397,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   some in flower, seen at a slant, rings spreading round them, and free ripples here and there (CSS only); tap a pad: it
   bobs, rings, a drop (`ripple`). Disc: a round of the pond (`monetPond`). Sounds: `kalimba` (right), `ripple` (next
   question), `surf` (intro, with rose-pink petals from the star like Venus's).
+- Venus and Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the
+  font tokens change on `body[data-view="home"]`, text 8% larger), and both titles in Great Vibes (`joined`; Venus's in its
+  matte bronze, no more typewriter). The questions and every other screen keep the theme's own faces.
 - `src/tests/review_looks.js [blood|codex|klimt|venus|monet]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.

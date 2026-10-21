@@ -929,8 +929,8 @@
     blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
-    monet: 'Great+Vibes&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
-    venus: 'Special+Elite&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
+    monet: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
+    venus: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -6511,9 +6511,9 @@
     blood: { lines: ['Labubu’s', 'Den'], weight: '700', family: '"Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif', drip: .3 },
     codex: { lines: ['Labubu’s', 'Den'], weight: 'italic 400', family: '"IM Fell English", "EB Garamond", Georgia, serif', gild: true },
     klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 },
-    // Birth of Venus: typewritten in matte bronze (lapisText); Water lilies: calligraphy (Abi), in the pond's periwinkle
-    // (pal), each line written in one stroke (joined: no letter jitter, so the script's joins hold)
-    venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 },
+    // Birth of Venus and Water lilies: calligraphy (Abi), matte bronze (LAPIS) and the pond's periwinkle (pal), each line
+    // written in one stroke (joined: no letter jitter, so the script's joins hold; the jitter was for the typewriter)
+    venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56 },
     monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56,
       pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] }
   };

@@ -33,6 +33,8 @@ for w in (400, 500, 600):
     for st in ('normal', 'italic'):
         faces.append(f"@font-face{{font-family:'Jost';font-style:{st};font-weight:{w};src:url({F}/jost/files/jost-latin-{w}-{st}.woff2) format('woff2')}}")
 # Water lilies: Quicksand, Nunito
+for w in (400, 500, 600, 700):
+    faces.append(f"@font-face{{font-family:'Dancing Script';font-style:normal;font-weight:{w};src:url({F}/dancing-script/files/dancing-script-latin-{w}-normal.woff2) format('woff2')}}")
 faces.append(f"@font-face{{font-family:'Great Vibes';font-style:normal;font-weight:400;src:url({F}/great-vibes/files/great-vibes-latin-400-normal.woff2) format('woff2')}}")
 for w in (500, 600, 700):
     faces.append(f"@font-face{{font-family:'Quicksand';font-style:normal;font-weight:{w};src:url({F}/quicksand/files/quicksand-latin-{w}-normal.woff2) format('woff2')}}")
