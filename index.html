@@ -1895,9 +1895,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="monet"] .acct-card { background: var(--padband) left top / 48px 9px repeat-x, #fbfaff; }
 /* lily pink buttons, round and soft */
 :root[data-look="monet"] .btn { border-radius: 999px; }
-:root[data-look="monet"] .btn.primary { background: linear-gradient(180deg, #fcd9e8, #f4afcc 50%, #ec95bb); border: 1.5px solid #d77aa3; color: #3a1630; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 -2px 0 rgba(150, 50, 100, .15), 0 8px 20px -10px rgba(200, 90, 140, .55); }
-:root[data-look="monet"] .btn.primary:hover { background: linear-gradient(180deg, #fde3ee, #f6bdd6 50%, #efa2c4); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 0 0 5px rgba(238, 147, 186, .25), 0 10px 26px -10px rgba(200, 90, 140, .6); }
-:root[data-look="monet"] .btn.primary svg { color: #8a3a62; }
+:root[data-look="monet"] .btn.primary { background: linear-gradient(180deg, #f6e2a8, #e2bf6a 50%, #cfa34c); border: 1.5px solid #b48c3c; color: #33240a; box-shadow: inset 0 1px 0 rgba(255, 248, 225, .85), inset 0 -2px 0 rgba(120, 84, 20, .2), 0 8px 20px -10px rgba(150, 110, 40, .55); }
+:root[data-look="monet"] .btn.primary:hover { background: linear-gradient(180deg, #f9eabd, #e8c97a 50%, #d6ad57); border-color: #c09644; box-shadow: inset 0 1px 0 rgba(255, 250, 232, .9), inset 0 -2px 0 rgba(120, 84, 20, .2), 0 0 0 5px rgba(214, 178, 96, .25), 0 10px 26px -10px rgba(160, 118, 40, .6); }
+:root[data-look="monet"] .btn.primary svg { color: #6e4f16; }
 :root[data-look="monet"] .btn:not(.primary):not(.danger) { border-color: rgba(120, 120, 200, .45); }
 :root[data-look="monet"] .btn:not(.primary):not(.danger):hover { border-color: var(--peri); box-shadow: 0 0 0 3px rgba(150, 150, 225, .18); }
 :root[data-look="monet"] .moon .mn-lit { fill: var(--lily); }
@@ -3184,7 +3184,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     blood: 'Grenze+Gotisch:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400..600;1,400..600',
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
-    monet: 'Special+Elite&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
+    monet: 'Great+Vibes&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
     venus: 'Special+Elite&family=Cormorant+Garamond:ital,wght@0,500..700;1,500..700&family=Alegreya:ital,wght@0,400..700;1,400..600&family=Alegreya+Sans:ital,wght@0,400;0,500;1,400'
   };
   function lookFonts(id) {
@@ -8766,9 +8766,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     blood: { lines: ['Labubu’s', 'Den'], weight: '700', family: '"Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif', drip: .3 },
     codex: { lines: ['Labubu’s', 'Den'], weight: 'italic 400', family: '"IM Fell English", "EB Garamond", Georgia, serif', gild: true },
     klimt: { lines: ['Labubu’s', 'Den'], weight: 'italic 600', family: '"Playfair Display", "Bodoni Moda", Didot, Georgia, serif', leaf: true, span: .66 },
-    // Birth of Venus: typewritten in matte bronze (lapisText); Water lilies: the same, in the pond's periwinkle (pal)
+    // Birth of Venus: typewritten in matte bronze (lapisText); Water lilies: calligraphy (Abi), in the pond's periwinkle
+    // (pal), each line written in one stroke (joined: no letter jitter, so the script's joins hold)
     venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 },
-    monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56,
+    monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56,
       pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] }
   };
   const titleLook = () => TITLE_LOOKS[lookNow()] || TITLE_LOOKS.gothic;
@@ -8886,6 +8887,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       const y = d.s * .78 + i * d.lineH, g = ctx.createLinearGradient(0, y - d.s * .72, 0, y + d.s * .12);
       (T.pal || LAPIS).forEach(([o, c]) => g.addColorStop(o, `rgb(${c})`));
       ctx.fillStyle = g;
+      if (T.joined) { ctx.fillText(l, x0, y); return; }
       let x = x0;
       for (const ch of l) {   // each key strikes a little high or low, a little tilted
         const w = ctx.measureText(ch).width;

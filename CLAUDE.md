@@ -390,9 +390,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   face), also only ever given (`gift: true`; for now only the Labubu and the secret code have it, no gift sent yet).
   Monet's pond (about 1916–1919, public domain; `img/monet.webp`, 1200×899 from her image) covers every screen (`.ml-bg`,
   sized to the painting and centred so the intro lands on it; a lilac veil fixed to the screen on the left, top and
-  bottom under the words; fades as you scroll, `BG_OF`). Quicksand for display, Nunito to read; the title typewritten
-  like Venus's in periwinkle (`pal` in `TITLE_LOOKS`, read by `lapisText`); cards under a band of lily pads
-  (`--padband`), a lily over the question card; round lily-pink buttons; answers turn into a notched lily pad when picked,
+  bottom under the words; fades as you scroll, `BG_OF`). Quicksand for display, Nunito to read; the title in calligraphy
+  (Great Vibes, Abi) in periwinkle (`pal`, `joined` in `TITLE_LOOKS`, read by `lapisText`); cards under a band of lily pads
+  (`--padband`), a lily over the question card; round gold buttons (Abi: gold, not pink); answers turn into a notched lily pad when picked,
   a pink bloom's glow when right (wrong raspberry, half ochre). On the homepage (`pondHTML`) lily pads drift on the water,
   some in flower, seen at a slant, rings spreading round them, and free ripples here and there (CSS only); tap a pad: it
   bobs, rings, a drop (`ripple`). Disc: a round of the pond (`monetPond`). Sounds: `kalimba` (right), `ripple` (next
