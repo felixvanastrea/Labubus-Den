@@ -401,8 +401,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   and a noise layer), browned page edges, cards like old ivory paper in a ruled frame with square corners; in practice,
   exams and the end of a session (`body[data-view=quiz|exam|done]`) every card is parchment (`--vn-parch`, deckled with
   `--deckle` like the Codex, not the question card), written in sepia ink (the plate scope redefines the colour tokens).
-  The question card's top-right and bottom-left corners are folded over (a clip-path cut, the flap drawn back as a
-  background; the clip starts 24 px above the card so the shell stays), the answer letters are pearls, and rose petals lie
+  The question card is rolled like a scroll (Abi: rolling, not folding): a parchment rod wider than the sheet at its top
+  (`::after`, the shell on it) and bottom (`::before`), lit on top, darker at its ends; the answer letters are pearls, and rose petals lie
   on the card and around the page (`.paper::after`, not on phones).
   No red anywhere in Venus (Abi): wrong is a dark pink (`--wrong`), with dusty pink (`--dust`) and bronze (`--bronze`)
   accents on the parchment: option and button edges in bronze, dusty pink hovers and picks, a bronze and pink frame.

@@ -2283,7 +2283,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   background: var(--vn-parch); border: 0; border-radius: 0; box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 0 0 0 6px rgba(239, 226, 194, .4), inset 0 0 0 7px rgba(120, 84, 34, .35);
 }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .plate:not(.qcard):not(.acct-card) { clip-path: var(--deckle); }
-:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::before { background: var(--shellmark) center / 24px no-repeat, #efe2c2; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::before, :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::after {
+  content: ""; position: absolute; left: -12px; right: -12px; height: 26px; width: auto; padding: 0; transform: none; border-radius: 13px;
+  background: linear-gradient(90deg, rgba(80, 52, 18, .5), rgba(80, 52, 18, 0) 3%, rgba(80, 52, 18, 0) 97%, rgba(80, 52, 18, .5)), linear-gradient(180deg, #9b7745 0, #d6bd8a 20%, #f7ecd3 44%, #dcc395 72%, #94713f 100%); box-shadow: inset 0 0 0 1px rgba(110, 78, 36, .4), 0 7px 12px -6px rgba(70, 45, 15, .5); z-index: 1; pointer-events: none;
+}
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::after { top: -14px; background: var(--shellmark) center / 22px no-repeat, linear-gradient(90deg, rgba(80, 52, 18, .5), rgba(80, 52, 18, 0) 3%, rgba(80, 52, 18, 0) 97%, rgba(80, 52, 18, .5)), linear-gradient(180deg, #9b7745 0, #d6bd8a 20%, #f7ecd3 44%, #dcc395 72%, #94713f 100%); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::before { top: auto; bottom: -12px; box-shadow: inset 0 0 0 1px rgba(110, 78, 36, .4), 0 8px 14px -6px rgba(70, 45, 15, .55); }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .bub { border-color: rgba(120, 84, 34, .5); background: radial-gradient(circle at 35% 30%, #fbf3df, #ecdcb8 75%); color: #6b4a1e; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .opt { background: rgba(255, 250, 236, .35); border-color: rgba(120, 84, 34, .28); }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .stem::first-letter { color: #8e3d5c; }
@@ -2293,14 +2298,16 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .btn:not(.primary):not(.danger) { border-color: rgba(168, 123, 79, .65); color: #5a4326; }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .btn:not(.primary):not(.danger):hover { border-color: var(--dust-deep); box-shadow: 0 0 0 3px rgba(212, 165, 174, .3); }
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) :is(.eyebrow, .qmeta a, .linkish) { color: #9c5a6c; }
-:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard { box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 0 0 0 6px rgba(239, 226, 194, .4), inset 0 0 0 7px rgba(168, 123, 79, .55), inset 0 0 0 9px rgba(212, 165, 174, .35); }
-/* the question card's corners folded over (top right, bottom left: cut off by the clip, the flap drawn back on the card;
-   the clip starts above the card so the shell over it stays), the letters as pearls, rose petals strewn about */
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard { box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 1px 0 0 rgba(168, 123, 79, .55), inset -1px 0 0 rgba(168, 123, 79, .55), inset 4px 0 0 rgba(212, 165, 174, .3), inset -4px 0 0 rgba(212, 165, 174, .3); }
+/* the question card rolled like a scroll at its top and bottom (Abi: rolling, not folding): each roll a cylinder of
+   the same parchment wider than the sheet, lit on top, darker at its ends, a shadow where the sheet leaves it (::after on
+   top, with the shell on it; ::before below); the letters as pearls, rose petals strewn about */
 :root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard {
-  clip-path: polygon(0 -24px, calc(100% - 30px) -24px, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  padding-top: calc(clamp(20px, 4.2vw, 36px) + 12px); padding-bottom: calc(clamp(20px, 4.2vw, 36px) + 12px);
+  overflow: visible; margin-top: 22px; margin-bottom: 14px;
   background:
-    linear-gradient(45deg, #dcc596 0 44%, #c9ad74 49.5%, rgba(90, 60, 20, .35) 50%, transparent 53%) right top / 30px 30px no-repeat,
-    linear-gradient(225deg, #dcc596 0 44%, #c9ad74 49.5%, rgba(90, 60, 20, .35) 50%, transparent 53%) left bottom / 30px 30px no-repeat,
+    linear-gradient(180deg, rgba(90, 60, 20, .3), rgba(90, 60, 20, 0)) left 10px / 100% 14px no-repeat,
+    linear-gradient(0deg, rgba(90, 60, 20, .3), rgba(90, 60, 20, 0)) left bottom 10px / 100% 14px no-repeat,
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23fbd9df'/%3E%3Cstop offset='1' stop-color='%23e597a6'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(20)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") right 46px top 38px / 26px 26px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23f9cfd8'/%3E%3Cstop offset='1' stop-color='%23d9808f'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(-55)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") left 22px bottom 52px / 22px 22px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 40 40'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.45' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23fde4e8'/%3E%3Cstop offset='1' stop-color='%23ec9fae'/%3E%3C/radialGradient%3E%3C/defs%3E %3Cg transform='rotate(110)'%3E%3Cpath d='M0 15C-9 12 -14 3 -12 -5C-10 -12 -4 -15 0 -10C4 -15 10 -12 12 -5C14 3 9 12 0 15Z' fill='url(%23g)'/%3E %3Cpath d='M0 13C-3 6 -3 -2 0 -9' stroke='rgba(170,70,90,.28)' stroke-width='.9' fill='none'/%3E%3Cpath d='M-9 -4C-6 -9 -3 -10 0 -8' stroke='rgba(255,255,255,.45)' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") right 30px bottom 26px / 24px 24px no-repeat,
     var(--vn-parch);
 }
