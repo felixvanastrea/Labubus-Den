@@ -21,7 +21,7 @@ const looks = process.argv.slice(2).length ? process.argv.slice(2) : ['blood', '
     await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(1500);
     await p.screenshot({ path: `${OUT}rv_${lk}_${tag}_home.png` });
     if (tag === 'd') {
-      await p.evaluate(() => document.getElementById('quest').scrollIntoView()); await p.waitForTimeout(300);
+      await p.evaluate(() => (document.getElementById('quest') || document.querySelector('.plate')).scrollIntoView()); await p.waitForTimeout(300);
       await p.screenshot({ path: `${OUT}rv_${lk}_${tag}_cards.png` });
       const bank = await p.evaluate(() => JSON.parse(document.getElementById('bank').textContent));
       await p.evaluate(() => window.scrollTo(0, 0));

@@ -414,9 +414,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   on the card and around the page (`.paper::after`, not on phones).
   No red anywhere in Venus (Abi): wrong is a dark pink (`--wrong`), with dusty pink (`--dust`) and bronze (`--bronze`)
   accents on the parchment: option and button edges in bronze, dusty pink hovers and picks, a bronze and pink frame.
-- Venus and Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the
-  font tokens change on `body[data-view="home"]`, text 8% larger), and both titles in Great Vibes (`joined`; Venus's in its
-  matte bronze, no more typewriter). The questions and every other screen keep the theme's own faces.
+- Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the font tokens
+  change on `body[data-view="home"]`, text 8% larger), the title in Great Vibes. Venus had the same for a few hours, then
+  (Abi, same day) the typewriter everywhere instead: Special Elite for every text on every screen and for the title
+  (bronze, letters struck off their line), Reda's Den included; no italic or bold asked of it, text 4% smaller.
 - `src/tests/review_looks.js [blood|codex|klimt|venus|monet]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.

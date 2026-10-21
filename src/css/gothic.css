@@ -2195,8 +2195,15 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 }
 /* Birth of Venus and Water lilies: the homepage all in an easy calligraphy (Abi, 21 October 2026), the questions and
    every other screen as they were. The tokens change on the homepage's body only */
-:root:is([data-look="venus"], [data-look="monet"]) body[data-view="home"] {
+:root[data-look="monet"] body[data-view="home"] {
   --f-display: "Dancing Script", "Great Vibes", cursive; --f-read: "Dancing Script", cursive; --f-mono: "Dancing Script", cursive;
 }
-:root:is([data-look="venus"], [data-look="monet"]) body[data-view="home"] #app { font-size: 1.08em; }
-:root:is([data-look="venus"], [data-look="monet"]) body[data-view="home"] :is(.h1, .h2, .h3) { font-style: normal; font-weight: 700; }
+:root[data-look="monet"] body[data-view="home"] #app { font-size: 1.08em; }
+:root[data-look="monet"] body[data-view="home"] :is(.h1, .h2, .h3) { font-style: normal; font-weight: 700; }
+/* Birth of Venus (and Reda's Den): the typewriter everywhere (Abi, 21 October 2026), on every screen and in the title.
+   Special Elite has one weight and no italic, so nothing asks for them */
+:root[data-look="venus"] { --f-display: "Special Elite", "Courier Prime", "Courier New", monospace; --f-read: "Special Elite", "Courier Prime", "Courier New", monospace; --f-mono: "Special Elite", "Courier Prime", "Courier New", monospace; }
+:root[data-look="venus"] :is(.h1, .h2, .h3, .logo, .stem::first-letter, .bub, em, i, .mono, .eyebrow, .caption, .greet) { font-style: normal; }
+:root[data-look="venus"] :is(.h1, .h2, .h3) { font-weight: 400; letter-spacing: -.01em; }
+:root[data-look="venus"] :is(.bub, .stem::first-letter) { font-family: "Special Elite", "Courier Prime", monospace; font-weight: 400; }
+:root[data-look="venus"] #app { font-size: .96em; }
