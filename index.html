@@ -2255,6 +2255,37 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .hero { pointer-events: none; } .hero > * { pointer-events: auto; } .hero > .title, .hero > [aria-hidden="true"] { pointer-events: none; }   /* the moon behind can still be pointed at */
 :root[data-look="monet"] .logo { white-space: nowrap; }
 @media (max-width: 640px) { :root[data-look="monet"] .logo { font-size: .92em; letter-spacing: -.01em; } }
+/* Birth of Venus, aged (Abi, 21 October 2026): a Renaissance feel rather than a modern one. The painting under old
+   varnish, the page's edges browned and foxed, cards like old ivory paper in a ruled frame; where you do the questions
+   (practice, exams, the end of a session), every card is a leaf of parchment, deckled, written in sepia ink */
+:root[data-look="venus"] { --night: #dfe9ee; --vn-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42  0 0 0 0 .29  0 0 0 0 .13  0 0 0 .55 -.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --vn-parch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42  0 0 0 0 .29  0 0 0 0 .13  0 0 0 .55 -.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"), radial-gradient(30px 22px at 10% 20%, rgba(150, 100, 40, .14), transparent), radial-gradient(40px 30px at 88% 76%, rgba(150, 100, 40, .12), transparent),
+    radial-gradient(22px 18px at 70% 12%, rgba(150, 100, 40, .1), transparent), radial-gradient(140% 120% at 50% 35%, transparent 50%, rgba(130, 88, 36, .3) 100%), linear-gradient(172deg, #f5ead0, #eadbb8); }
+:root[data-look="venus"] .vn-bg { filter: sepia(.28) saturate(.82) contrast(.95); }
+:root[data-look="venus"] .vn-bg::after { content: ""; position: absolute; inset: 0; background: var(--vn-noise), linear-gradient(180deg, rgba(196, 160, 90, .16), rgba(150, 110, 50, .14)); mix-blend-mode: multiply; opacity: .9; }
+:root[data-look="venus"] .paper { box-shadow: inset 0 0 140px rgba(120, 88, 44, .28); }
+:root[data-look="venus"] .paper::after { content: ""; position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(130% 95% at 50% 40%, transparent 58%, rgba(110, 80, 40, .22) 100%); }
+:root[data-look="venus"] .grain { opacity: .09; }
+:root[data-look="venus"] .plate { border-radius: 2px; border-color: rgba(150, 118, 62, .5);
+  background: var(--waves) left top / 48px 8px repeat-x, var(--vn-noise), linear-gradient(180deg, rgba(250, 245, 232, .97), rgba(241, 233, 214, .96));
+  box-shadow: inset 0 0 0 4px rgba(250, 245, 232, .9), inset 0 0 0 5px rgba(160, 126, 62, .45), inset 0 0 40px rgba(150, 110, 50, .12), 0 26px 50px -36px rgba(90, 60, 20, .45); }
+:root[data-look="venus"] .btn { border-radius: 2px; }
+:root[data-look="venus"] .btn.primary { background: linear-gradient(180deg, #ead39a, #d6b465 50%, #c29a4a); box-shadow: inset 0 0 0 1px rgba(255, 244, 210, .55), inset 0 -2px 0 rgba(110, 76, 20, .25), 0 6px 16px -10px rgba(110, 76, 20, .6); }
+/* the questions: parchment, sepia ink, a ruled frame; deckled leaves round the card */
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) { --glass: rgba(240, 230, 204, .9); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .plate {
+  --ink: #33230f; --ink-hi: #1f1407; --ink-2: #5a4326; --ink-3: #85694a; --hair: rgba(110, 76, 34, .26); --hair-2: rgba(110, 76, 34, .48);
+  --plate: #efe2c2; --plate-2: #e8d7b0; --sel-wash: rgba(160, 120, 50, .1); --glow-soft: rgba(160, 120, 50, .14); --glow-mid: rgba(160, 120, 50, .3);
+  --right: #3d6b3a; --wrong: #9e2f24; --half: #8a6514; --right-wash: rgba(61, 107, 58, .1); --wrong-wash: rgba(158, 47, 36, .08); --half-wash: rgba(138, 101, 20, .1);
+  --lapis: #6b4a1e; color: var(--ink);
+  background: var(--vn-parch); border: 0; border-radius: 0; box-shadow: inset 0 0 48px rgba(120, 80, 28, .28), inset 0 0 0 6px rgba(239, 226, 194, .4), inset 0 0 0 7px rgba(120, 84, 34, .35);
+}
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .plate:not(.qcard):not(.acct-card) { clip-path: var(--deckle); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .qcard::before { background: var(--shellmark) center / 24px no-repeat, #efe2c2; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .bub { border-color: rgba(120, 84, 34, .5); background: radial-gradient(circle at 35% 30%, #fbf3df, #ecdcb8 75%); color: #6b4a1e; }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .opt { background: rgba(255, 250, 236, .35); border-color: rgba(120, 84, 34, .28); }
+:root[data-look="venus"] body:is([data-view="quiz"], [data-view="exam"], [data-view="done"]) .stem::first-letter { color: #8a3a22; }
 /* Birth of Venus and Water lilies: the homepage all in an easy calligraphy (Abi, 21 October 2026), the questions and
    every other screen as they were. The tokens change on the homepage's body only */
 :root:is([data-look="venus"], [data-look="monet"]) body[data-view="home"] {
@@ -3214,7 +3245,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const r = document.documentElement;
     if (id in LOOK_NIGHT && id !== 'gothic') r.dataset.look = id; else delete r.dataset.look;
     lookFonts(id);
-    if (id === 'codex' && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
+    if ((id === 'codex' || id === 'venus') && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
     const m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
     try { sky.tint(); } catch (e) {}   // the stars take the look's colours (before the sky exists, it reads them when it starts)

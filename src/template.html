@@ -952,7 +952,7 @@
     const r = document.documentElement;
     if (id in LOOK_NIGHT && id !== 'gothic') r.dataset.look = id; else delete r.dataset.look;
     lookFonts(id);
-    if (id === 'codex' && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
+    if ((id === 'codex' || id === 'venus') && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
     const m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
     try { sky.tint(); } catch (e) {}   // the stars take the look's colours (before the sky exists, it reads them when it starts)

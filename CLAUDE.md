@@ -397,6 +397,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   some in flower, seen at a slant, rings spreading round them, and free ripples here and there (CSS only); tap a pad: it
   bobs, rings, a drop (`ripple`). Disc: a round of the pond (`monetPond`). Sounds: `kalimba` (right), `ripple` (next
   question), `surf` (intro, with rose-pink petals from the star like Venus's).
+- Venus, aged (Abi, 21 October 2026: a Renaissance feel, not modern): the painting under old varnish (`.vn-bg` sepia filter
+  and a noise layer), browned page edges, cards like old ivory paper in a ruled frame with square corners; in practice,
+  exams and the end of a session (`body[data-view=quiz|exam|done]`) every card is parchment (`--vn-parch`, deckled with
+  `--deckle` like the Codex, not the question card), written in sepia ink (the plate scope redefines the colour tokens).
 - Venus and Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the
   font tokens change on `body[data-view="home"]`, text 8% larger), and both titles in Great Vibes (`joined`; Venus's in its
   matte bronze, no more typewriter). The questions and every other screen keep the theme's own faces.
