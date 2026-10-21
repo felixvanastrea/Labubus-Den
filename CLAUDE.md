@@ -401,6 +401,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   and a noise layer), browned page edges, cards like old ivory paper in a ruled frame with square corners; in practice,
   exams and the end of a session (`body[data-view=quiz|exam|done]`) every card is parchment (`--vn-parch`, deckled with
   `--deckle` like the Codex, not the question card), written in sepia ink (the plate scope redefines the colour tokens).
+  The question card's top-right and bottom-left corners are folded over (a clip-path cut, the flap drawn back as a
+  background; the clip starts 24 px above the card so the shell stays), the answer letters are pearls, and rose petals lie
+  on the card and around the page (`.paper::after`, not on phones).
 - Venus and Water lilies, homepage only (Abi, 21 October 2026): everything in an easy calligraphy, Dancing Script (the
   font tokens change on `body[data-view="home"]`, text 8% larger), and both titles in Great Vibes (`joined`; Venus's in its
   matte bronze, no more typewriter). The questions and every other screen keep the theme's own faces.
