@@ -418,6 +418,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   change on `body[data-view="home"]`, text 8% larger), the title in Great Vibes. Venus had the same for a few hours, then
   (Abi, same day) the typewriter everywhere instead: Special Elite for every text on every screen and for the title
   (bronze, letters struck off their line), Reda's Den included; no italic or bold asked of it, text 4% smaller.
+  The text is a dark dusty pink instead of navy or sepia black (Abi, same day: `--ink` tokens in the venus block and its parchment scope).
 - `src/tests/review_looks.js [blood|codex|klimt|venus|monet]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
