@@ -153,7 +153,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
   A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
   lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
-- Current quest: the communication midterm (`comm-midterm-2026`, Wednesday 21 October 2026): both lectures of the
+- Current quest: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
+  on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
+  the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of
+  the lecture (S110, a leishmaniasis case tagged tuberculosis too, dropped; S25, gummas, kept). No dermatology
+  explanations yet. Its arrival ended the communication spotlight early (`until` set to 21 October).
+  Before it: the communication midterm (`comm-midterm-2026`, Wednesday 21 October 2026): both lectures of the
   module, Pr Fourtassi's foundations (part 1) and clinical communication (part 2), 75 questions since the 2025–2026 final
   came in (17 October). Before it:
   the digestive surgery midterm (`dig-surg-midterm-2026`, Wednesday 14 October 2026), Abi's seven

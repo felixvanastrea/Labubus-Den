@@ -1,6 +1,41 @@
 {
-  "current": "comm-midterm-2026",
+  "current": "derm-midterm-2026",
   "quests": [
+    {
+      "id": "derm-midterm-2026",
+      "title": "Dermatology midterm",
+      "module": "dermatology",
+      "due": "2026-10-28",
+      "goal": 80,
+      "note": "The five dermatology lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+      "topics": [
+        {
+          "name": "Acne",
+          "lecture": "S-acne"
+        },
+        {
+          "name": "Common bacterial infections",
+          "lecture": "S-bacterial"
+        },
+        {
+          "name": "Cutaneous tuberculosis",
+          "concepts": [
+            "S.tb"
+          ],
+          "drop": [
+            "S110"
+          ]
+        },
+        {
+          "name": "Eczema",
+          "lecture": "S-eczema"
+        },
+        {
+          "name": "Urticaria",
+          "lecture": "S-urticaria"
+        }
+      ]
+    },
     {
       "id": "comm-midterm-2026",
       "title": "Communication midterm",
@@ -115,7 +150,7 @@
     "set": "s5-2627-technical-communication-midterm-technical-communication-2026-2027",
     "title": "Communication midterm 2026–2027",
     "from": "2026-10-21",
-    "until": "2026-10-27",
+    "until": "2026-10-21",
     "note": "Today’s communication midterm, as it was given, answered from Pr Fourtassi’s lectures."
   }
 }
