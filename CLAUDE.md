@@ -436,8 +436,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   crisp edge, pigment pooled dark at the rim, granulation, a thin white paper edge; no gloss; Abi wanted "painted bubbles" like a picture she liked, not that picture),
   made once when the look is worn (`wcPaint`, CSS `--wc0`…`--wc5`, `--wcL`, `--wcD`, `--wcG`, `--wcR`);
   Open Sans, upright, light headings; the title thin white letters with a blue glow (`gloss`, `glossText`). On the
-  homepage a bloom of light, bubbles to pop (`.ae-bub`, `pop` sound) and a cluster of painted bubbles glazed over one another (`aeroBubble`, its disc), where
-  the intro's star lands, leaving bubbles behind it (`drawBubble`). Sounds: `bubbles` (right), `bloop` (next), `fizz` (intro).
+  homepage a bloom of light, bubbles to pop (`.ae-bub`, `pop` sound) and no disc (a cluster of painted bubbles there was taken out the same day: Abi
+  didn't like it; `aeroBubble` is now one bubble, only the theme list's picture); in the intro the star falls alone, leaving
+  bubbles behind it (`drawBubble`). Sounds: `bubbles` (right), `bloop` (next), `fizz` (intro).
   No JoJo art in it: Abi's pictures were Araki's official art and other people's edits, and can't go on the Den. The
   slot for a fanart she has the artist's yes for is `.ae-bg` (a fixed layer on the right, `--ae-wall` and `data-ae-wall`);
   the Labubu stays the logo until she draws a Soft & Wet head herself.

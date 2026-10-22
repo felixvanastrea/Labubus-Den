@@ -1473,8 +1473,8 @@
   // ---------- the Glass sky look (Abi, 22 October 2026): Frutiger Aero after Windows 7, not cartoony ----------
   // A deep blue wallpaper with soft ribbons of light and a few bubbles climbing over every screen (.ae-sky, in the
   // page's markup); every card a white window in a frosted blue glass frame, the top bar a glass taskbar, glossy orb
-  // buttons. On the homepage a bloom of light, a few bubbles that pop when tapped (a pop and a blip), and the big bubble
-  // on the right (its disc), where the intro's star lands. .ae-bg is the slot for Abi's wallpaper (a
+  // buttons. On the homepage a bloom of light and a few bubbles that pop when tapped (a pop and a blip); no big bubble
+  // (Abi didn't like the cluster there), the disc is only the theme list's picture. .ae-bg is the slot for Abi's wallpaper (a
   // Gappy fanart she has the artist's yes for): give it its image in gothic.css and add it to BG_OF to fade as you scroll.
   // a watercolour bubble, painted for the Den pixel by pixel (Abi, 22 October 2026: "more aesthetic, more artsy"): a
   // wash mottled wet-in-wet, its colour drifting between two pigments, a pale patch lifted out toward the light with a
@@ -1531,22 +1531,14 @@
     } catch (e) {}
   }
   // its disc: one big painted bubble
-  // its disc: a cluster of painted bubbles, pale to deep, glazed over one another where they meet
-  function aeroBubble(px) {
-    const cv = document.createElement('canvas'); cv.width = cv.height = px;
-    const g = cv.getContext('2d');
-    // [x, y, radius] as parts of the disc, and the tone
-    [[.4, .5, .27, 'pale'], [.63, .3, .18, 'mid'], [.66, .58, .2, 'light'], [.4, .2, .14, 'pale'], [.64, .82, .13, 'deep'], [.42, .8, .14, 'light'], [.24, .7, .08, 'deep'], [.8, .44, .07, 'pale']]
-      .forEach(([x, y, r, t], i) => { const d = r * 2 * px / .9, im = wcBubble(Math.round(d), t, 1907 + i * 13); g.globalCompositeOperation = i ? 'multiply' : 'source-over'; g.drawImage(im, x * px - d / 2, y * px - d / 2, d, d); });
-    return cv;
-  }
+  // its disc (the theme list's picture): one painted bubble; no cluster on the homepage (Abi didn't like it)
+  function aeroBubble(px) { return wcBubble(px, 'mid', 1907); }
   function aeroHTML() {
     // [left %, size px, seconds to rise, phase s, sway px, where it rests with reduced motion (top %)]
     const B = [[56, 46, 14, -2, 18, 66], [64, 22, 10, -7, 10, 22], [73, 64, 18, -11, 24, 80], [82, 30, 12, -4, 12, 12], [91, 40, 15, -9, 16, 46],
       [60, 16, 9, -3, 8, 40], [78, 18, 11, -6, 9, 58], [96, 26, 13, -12, 10, 30]];
     return `<div class="ae-air" aria-hidden="true"><i class="ae-bloom"></i>
-      ${B.map(([x, w, t, d, sx, ry]) => `<span class="ae-bub" style="left:${x}%;--w:${w}px;--t:${t}s;--d:${d}s;--sx:${sx}px;--ry:${ry}%"></span>`).join('')}</div>
-      <div class="bm bm-aero" aria-hidden="true"><img class="bm-img" alt="" src="${discURL('aero')}"></div>`;
+      ${B.map(([x, w, t, d, sx, ry]) => `<span class="ae-bub" style="left:${x}%;--w:${w}px;--t:${t}s;--d:${d}s;--sx:${sx}px;--ry:${ry}%"></span>`).join('')}</div>`;
   }
   // tap a bubble: it pops (a ring, a blip), then a new one rises from below
   document.addEventListener('click', e => {
@@ -7633,7 +7625,7 @@
           } else {
             MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
             ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
-            moonTex = discPaint(lk, Math.min(1400, Math.round(MS.r * 2 * dpr)));
+            moonTex = lk === 'aero' ? null : discPaint(lk, Math.min(1400, Math.round(MS.r * 2 * dpr)));   // Glass sky: no disc, only the star and its bubbles
           }
           moonGlow = document.createElement('canvas'); moonGlow.width = moonGlow.height = 256;
           const gc = moonGlow.getContext('2d'), gg = gc.createRadialGradient(128, 128, 0, 128, 128, 128);
