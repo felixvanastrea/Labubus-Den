@@ -424,7 +424,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (Abi, same day) the typewriter everywhere instead: Special Elite for every text on every screen and for the title
   (bronze, letters struck off their line), Reda's Den included; no italic or bold asked of it, text 4% smaller.
   The text is a dark dusty pink instead of navy or sepia black (Abi, same day: `--ink` tokens in the venus block and its parchment scope).
-- Glass sky (`:root[data-look="aero"]`, Abi, 22 October 2026: a JoJolion / Gappy theme, Frutiger Aero "after Windows 7",
+- Frutiger aero (`:root[data-look="aero"]`, named so by Abi; "Glass sky" for its first hour; Abi, 22 October 2026: a JoJolion / Gappy theme, Frutiger Aero "after Windows 7",
   not cartoony; a first bubbly, sailor-striped, goldfish-and-katakana version was dropped the same hour as too cartoony).
   Only ever given (`gift: true`) for now. A deep blue wallpaper with ribbons of light breathing and a few bubbles climbing
   over every screen (`.ae-sky`, static markup at the top of the page); every `.plate` a window: white inside, a 7 px frosted
