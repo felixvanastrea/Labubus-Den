@@ -2346,6 +2346,177 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="venus"] :is(.h1, .h2, .h3) { font-weight: 400; letter-spacing: -.01em; }
 :root[data-look="venus"] :is(.bub, .stem::first-letter) { font-family: "Special Elite", "Courier Prime", monospace; font-weight: 400; }
 :root[data-look="venus"] #app { font-size: .96em; }
+
+
+/* ---------- Glass sky (Abi, 22 October 2026): Frutiger Aero after Windows 7, glass and light, not cartoony ----------
+   The ground is a deep blue wallpaper with ribbons of light; the words on it are white with a soft shadow, like desktop
+   icons. Every card is a window: white inside, in a frosted blue glass frame with a glossy caption edge; inside a
+   card the ink is dark (the plate scope redefines the colour tokens). The top bars are glass taskbars. */
+:root[data-look="aero"] {
+  --night: #0f4f8f; --deep: #0b3d73; --plate: #ffffff; --plate-2: #f3f8fd;
+  --ink: #f4f9ff; --ink-hi: #ffffff; --ink-2: #d8e9fa; --ink-3: #a9c9ea;
+  --hair: rgba(255, 255, 255, .22); --hair-2: rgba(255, 255, 255, .42); --glass: rgba(30, 80, 140, .45);
+  --right: #7fe0a0; --wrong: #ff8f9c; --half: #ffd27a;
+  --right-wash: rgba(127, 224, 160, .14); --wrong-wash: rgba(255, 143, 156, .12); --half-wash: rgba(255, 210, 122, .12);
+  --sel-wash: rgba(140, 210, 255, .16); --glow-soft: rgba(140, 210, 255, .22); --glow-mid: rgba(140, 210, 255, .5);
+  --title-glow: rgba(140, 210, 255, .6); --mottle-1: rgba(255, 255, 255, .1); --mottle-2: rgba(120, 200, 255, .1); --shade: rgba(0, 20, 50, .3);
+  --k-official: #c6d4ff; --k-checked: #a8ecf2; --k-proposed: #b4f0c8; --k-claude: #ffe0a0; --k-none: #d0dbe6;
+  --k-official-line: rgba(198, 212, 255, .5); --k-checked-line: rgba(168, 236, 242, .5); --k-proposed-line: rgba(180, 240, 200, .5);
+  --k-claude-line: rgba(255, 224, 160, .5); --k-none-line: rgba(208, 219, 230, .5); --k-flag-line: rgba(255, 143, 156, .5);
+  --fig-bg: #ffffff;
+  --wax-hi: #d6f0ff; --wax-mid: #4aa8ee; --wax-edge: #0d4f9a; --scrim: rgba(4, 22, 48, .5);
+  --f-display: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --f-read: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --t-label: .8rem;
+  --gold: #ffd27a; --gold-hi: #ffe6a8; --gold-deep: #c9962a; --gold-ink: #8a6417; --gold-txt: #ffd27a;
+  --aqua: #3aa6f0; --aqua-deep: #1667c2; --navy: #0d3a78;
+  --star-pal: #ffffff #d6f0ff #9fdcff #ffffff #bfe8ff #e6f6ff #7fd0ff;
+  --intro-ink: #f2f8ff; --intro-ink-hi: #ffffff;
+  --fx: #d8f3ff; --fx-hi: #ffffff;
+  --gloss: linear-gradient(180deg, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .25) 49%, rgba(255, 255, 255, 0) 50%);
+  --frame: rgba(170, 210, 245, .38);
+  --bubmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3' r='.8'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.5' stop-color='%2387cff8'/%3E%3Cstop offset='1' stop-color='%231667c2'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='12' cy='12' r='9' fill='url(%23g)' stroke='%230d4f9a' stroke-width='.8'/%3E%3Cellipse cx='12' cy='7.6' rx='6' ry='3.4' fill='%23fff' opacity='.7'/%3E%3C/svg%3E");
+  font-synthesis: none; scrollbar-color: #7fbbe8 #0b3d73; color-scheme: dark;
+}
+:root[data-look="aero"] body { background: #0b3d73; }
+/* the wallpaper: deep blue, brighter toward the centre, a bloom low on the right */
+:root[data-look="aero"] .paper {
+  background:
+    radial-gradient(60% 50% at 70% 68%, rgba(120, 210, 255, .55), rgba(120, 210, 255, 0) 70%),
+    radial-gradient(40% 30% at 18% 12%, rgba(90, 170, 240, .35), transparent 70%),
+    linear-gradient(170deg, #06274f 0%, #0d4b8c 38%, #1771c0 66%, #0a3f7a 100%);
+  transition: opacity .8s var(--ease);
+}
+:root[data-look="aero"].intro-on .paper { opacity: 0; transition: none; }
+:root[data-look="aero"] .grain { opacity: .04; }
+:root[data-look="aero"] :is(.rmoon, .astro) { display: none; }
+/* the wallpaper slot (Abi's fanart, once she has the artist's yes): a fixed layer on the right */
+.ae-bg { display: none; }
+:root[data-look="aero"] .ae-bg { position: fixed; z-index: 1; pointer-events: none; right: 0; bottom: 0; width: min(46vw, 680px); height: 100vh; background: var(--ae-wall, none) right bottom / contain no-repeat; }
+:root[data-look="aero"][data-ae-wall] .ae-bg { display: block; }
+.intro-on .ae-bg { opacity: 0 !important; }
+/* over every screen: the ribbons of light, slowly breathing, and a few bubbles climbing */
+.ae-sky { display: none; }
+:root[data-look="aero"] .ae-sky { display: block; position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.ae-rib { position: absolute; inset: 0; width: 100%; height: 100%; filter: blur(10px); mix-blend-mode: screen; opacity: .9; }
+.ae-rib g { transform-box: view-box; transform-origin: 50% 70%; animation: ae-breathe 26s ease-in-out infinite alternate; }
+.ae-rib .r2 { animation-duration: 34s; animation-delay: -12s; }
+.ae-rib .r3 { animation-duration: 40s; animation-delay: -20s; }
+@keyframes ae-breathe { from { transform: translateY(0) scaleY(1); opacity: .75; } to { transform: translateY(-26px) scaleY(1.12); opacity: 1; } }
+:root[data-look="aero"] .ae-sky i { position: absolute; bottom: -60px; opacity: .7; animation: ae-rise var(--t) linear var(--d) infinite; }
+.intro-on .ae-sky { opacity: 0; }
+/* a bubble: painted in watercolour (wcBubble, --wc0…--wc5), a different one by turns */
+:root[data-look="aero"] .ae-sky i, .ae-bub { width: var(--w); height: var(--w); background: var(--wc1) center / 100% 100% no-repeat; }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+1), .ae-air .ae-bub:nth-of-type(6n+1) { background-image: var(--wc0); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+3), .ae-air .ae-bub:nth-of-type(6n+3) { background-image: var(--wc2); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+4), .ae-air .ae-bub:nth-of-type(6n+4) { background-image: var(--wc3); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+5), .ae-air .ae-bub:nth-of-type(6n+5) { background-image: var(--wc4); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n), .ae-air .ae-bub:nth-of-type(6n) { background-image: var(--wc5); }
+@keyframes ae-rise {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(var(--sx), -27vh); }
+  50% { transform: translate(0, -55vh); }
+  75% { transform: translate(calc(-1 * var(--sx)), -82vh); }
+  100% { transform: translate(0, -112vh); }
+}
+/* the homepage: a bloom of light, bubbles to pop, the big bubble where the star lands */
+.ae-air { position: absolute; inset: -40px -6vw -30px; z-index: 0; overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.intro-on .ae-air { opacity: 0; }
+.ae-bloom { position: absolute; right: 4%; top: 14%; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(170, 225, 255, .45), rgba(120, 200, 255, .12) 45%, transparent 70%); }
+.ae-air .ae-bub { position: absolute; top: 108%; pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; animation: ae-rise var(--t) linear var(--d) infinite; }
+.ae-bub.pop { animation: ae-pop .4s ease-out forwards !important; }
+@keyframes ae-pop { 0% { scale: 1; opacity: 1; } 40% { scale: 1.3; opacity: .8; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .8), 0 0 0 9px rgba(255, 255, 255, .22); } 100% { scale: 1.6; opacity: 0; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0), 0 0 0 24px rgba(255, 255, 255, 0); } }
+:root[data-look="aero"] .bm-aero { --aw: min(760px, 88vw); top: 44%; transform: none; animation: ae-float 8s ease-in-out infinite; opacity: .95; }
+:root[data-look="aero"] .bm-aero .bm-img { border-radius: 0; filter: drop-shadow(0 20px 50px rgba(0, 20, 60, .4)); }
+@keyframes ae-float { 0%, 100% { translate: 0 -50%; } 50% { translate: 0 calc(-50% - 12px); } }
+/* words on the wallpaper: white with a soft dark shadow, like desktop icons */
+:root[data-look="aero"] #app { text-shadow: 0 1px 2px rgba(0, 20, 50, .45); }
+:root[data-look="aero"] .title canvas { filter: none; }
+@media (min-width: 641px) {
+  :root[data-look="aero"] .hero .caption { grid-row: 1; }
+  :root[data-look="aero"] .hero .meta { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: 0 18px; text-align: left; line-height: 1.6; color: var(--ink-2); }
+  :root[data-look="aero"] .hero .title { grid-row: 3; margin-top: 18px; }
+  :root[data-look="aero"] .hero .hero-cta { grid-column: 1; grid-row: 4; justify-items: start; text-align: left; }
+  :root[data-look="aero"] .hero .hero-cta .cta-note { max-width: 26rem; }
+}
+:root[data-look="aero"] :is(.h1, .h2, .h3) { font-weight: 300; letter-spacing: -.01em; }
+/* Windows 7 wrote upright: no italic but where the text itself asks for it */
+:root[data-look="aero"] :not(em, i, cite) { font-style: normal; }
+:root[data-look="aero"] .lede::first-letter { font-weight: 300; font-style: normal; }
+:root[data-look="aero"] .eyebrow { color: #bfe6ff; letter-spacing: .01em; }
+:root[data-look="aero"] .eyebrow::before { content: ""; display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; background: var(--bubmark) center / contain no-repeat; }
+:root[data-look="aero"] ::selection { background: #3399ff; color: #fff; }
+/* the top bar and the quiz bar: glass taskbars */
+:root[data-look="aero"] .topnav { padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .28);
+  background: var(--gloss), linear-gradient(180deg, rgba(40, 90, 150, .5), rgba(10, 40, 80, .55));
+  -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 10px 30px -14px rgba(0, 10, 30, .6); }
+:root[data-look="aero"] .navlinks button::after { background: linear-gradient(90deg, rgba(160, 225, 255, 0), #bfe8ff, rgba(160, 225, 255, 0)); height: 2px; }
+:root[data-look="aero"] .bar { background: var(--gloss), linear-gradient(180deg, rgba(40, 90, 150, .55), rgba(10, 40, 80, .6)) !important; border-bottom: 1px solid rgba(255, 255, 255, .25);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); }
+/* the Labubu in a glass orb (till Abi's own Soft & Wet head drawing comes) */
+:root[data-look="aero"] .logo .lb { color: #ffffff; --lb-line: #0d3263; border-radius: 50%; background: radial-gradient(circle at 34% 26%, #fff 0 8%, rgba(255, 255, 255, 0) 22%), radial-gradient(circle, rgba(190, 230, 255, .6) 50%, rgba(80, 160, 230, .9) 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), 0 0 10px rgba(120, 200, 255, .5); }
+/* inside a window: dark ink on white */
+:root[data-look="aero"] .plate {
+  --ink: #1b2b3f; --ink-hi: #0b1a2c; --ink-2: #3b526d; --ink-3: #607893;
+  --hair: rgba(30, 70, 120, .16); --hair-2: rgba(30, 70, 120, .32); --plate: #ffffff; --plate-2: #f3f8fd; --night: #ffffff; --deep: #e3eef8;
+  --right: #1d8a4a; --wrong: #d23b4e; --half: #c27c0e;
+  --right-wash: rgba(29, 138, 74, .08); --wrong-wash: rgba(210, 59, 78, .07); --half-wash: rgba(194, 124, 14, .08);
+  --sel-wash: rgba(51, 153, 255, .1); --glow-soft: rgba(51, 153, 255, .18); --glow-mid: rgba(51, 153, 255, .4);
+  --k-official: #2d4fb0; --k-checked: #157a8a; --k-proposed: #1e7a48; --k-claude: #a26a10; --k-none: #4f6a85;
+  --k-official-line: rgba(45, 79, 176, .45); --k-checked-line: rgba(21, 122, 138, .45); --k-proposed-line: rgba(30, 122, 72, .45);
+  --k-claude-line: rgba(162, 106, 16, .45); --k-none-line: rgba(79, 106, 133, .45); --k-flag-line: rgba(210, 59, 78, .45);
+  --gold-txt: #a26a10; --shade: rgba(20, 60, 110, .12);
+  color: var(--ink); text-shadow: none;
+  border: 7px solid var(--frame); border-radius: 10px; background-clip: padding-box;
+  background-color: #fff; background-image: linear-gradient(180deg, #ffffff, #f4f9fe);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .55), inset 0 0 0 1px rgba(10, 50, 100, .35), 0 24px 60px -24px rgba(0, 12, 40, .75);
+}
+/* the glass frame's gloss on its top edge */
+:root[data-look="aero"] .plate::after { content: ""; position: absolute; left: -7px; right: -7px; top: -7px; height: 7px; border-radius: 10px 10px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, .15)); pointer-events: none; }
+:root[data-look="aero"] .qcard::before { content: ""; top: -18px; width: 22px; height: 22px; background: var(--bubmark) center / 20px no-repeat; }
+:root[data-look="aero"] .eyebrow:is(.plate *) { color: var(--aqua-deep); }
+:root[data-look="aero"] .stem::first-letter { color: var(--aqua-deep); }
+/* buttons: Windows 7 glass, the main one blue and lit */
+:root[data-look="aero"] .btn { border-radius: 4px; }
+:root[data-look="aero"] .btn.primary { background: linear-gradient(180deg, #7cc4f5 0, #3b97e3 49%, #1f78cf 50%, #3d9be6 100%); border: 1px solid #0d5ca8; color: #fff; text-shadow: 0 1px 1px rgba(0, 40, 90, .55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), inset 0 0 0 1px rgba(255, 255, 255, .2), 0 0 12px rgba(80, 180, 255, .45); }
+:root[data-look="aero"] .btn.primary:hover { background: linear-gradient(180deg, #9ad6fb 0, #52aaee 49%, #2e8be0 50%, #5ab0f0 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 18px rgba(110, 200, 255, .7); }
+:root[data-look="aero"] .btn.primary svg { color: #fff; }
+:root[data-look="aero"] .btn:not(.primary):not(.danger) { background: linear-gradient(180deg, rgba(255, 255, 255, .28) 0, rgba(255, 255, 255, .14) 49%, rgba(255, 255, 255, .06) 50%, rgba(255, 255, 255, .14) 100%); border: 1px solid rgba(255, 255, 255, .45); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35); }
+:root[data-look="aero"] .btn:not(.primary):not(.danger):hover { background: linear-gradient(180deg, rgba(200, 235, 255, .45) 0, rgba(160, 215, 255, .3) 49%, rgba(120, 195, 255, .22) 50%, rgba(160, 215, 255, .32) 100%); border-color: rgba(200, 235, 255, .8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 0 12px rgba(120, 200, 255, .45); }
+:root[data-look="aero"] .plate .btn:not(.primary):not(.danger) { background: linear-gradient(180deg, #f2f2f2 0, #ebebeb 49%, #dddddd 50%, #cfcfcf 100%); border-color: #8e8f8f; color: #1b2b3f; text-shadow: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7); }
+:root[data-look="aero"] .plate .btn:not(.primary):not(.danger):hover { background: linear-gradient(180deg, #eaf6fd 0, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%); border-color: #3c7fb1; }
+/* the answers: glass orbs; lit blue when picked, green when right, red when wrong */
+:root[data-look="aero"] .bub { font-weight: 600; font-size: .98rem; color: #0d3a78; border: 0; background: var(--wcL) center / 116% 116% no-repeat; box-shadow: none; }
+:root[data-look="aero"] .opt:hover .bub { filter: brightness(.96) saturate(1.2); }
+:root[data-look="aero"] :is(.opts:not(.checked) .opt[aria-pressed="true"], .opt.is-hit, .opt.is-miss) .bub { color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+:root[data-look="aero"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { background-image: var(--wcD); animation: pearlpop .55s var(--spring); }
+:root[data-look="aero"] .opt.is-hit .bub { background-image: var(--wcG); animation: ae-glow 1s ease-out; border-radius: 50%; }
+:root[data-look="aero"] .opt.is-miss .bub { background-image: var(--wcR); }
+:root[data-look="aero"] .opt.is-missed .bub { box-shadow: 0 0 0 1.5px var(--right); border-radius: 50%; }
+@keyframes ae-glow { 0% { box-shadow: 0 0 0 0 rgba(90, 230, 140, .7); } 100% { box-shadow: 0 0 0 12px rgba(90, 230, 140, 0); } }
+:root[data-look="aero"] .moon .mn-lit { fill: #ffffff; }
+:root[data-look="aero"] .sky-field { --sky-star: #f2fbff; --sky-neb: #6fc6ff #8f9cff; --sky-hill: #0b2d55 #061a35; background: radial-gradient(130% 120% at 78% 0%, #1a5a9e 0%, #061a3a 75%); }
+:root[data-look="aero"] .sky-field::after { box-shadow: inset 0 0 0 2px rgba(170, 210, 245, .5), inset 0 0 0 4px #061a3a, inset 0 0 60px rgba(0, 0, 0, .45); }
+:root[data-look="aero"] :is(.pick, .intro-hint) { --ink: #f2f8ff; --ink-hi: #ffffff; --ink-2: #cfe4f7; --ink-3: #9fc0e0; --hair: #24486e; --hair-2: #3f6d9c; --glow-mid: rgba(120, 210, 255, .45); --glow-soft: rgba(120, 210, 255, .16); --title-glow: rgba(160, 220, 255, .45); }
+:root[data-look="aero"] { --star-ink: #ffffff; --fly: #ffffff; --fly-glow: rgba(160, 225, 255, .7); --fly-glow2: rgba(120, 210, 255, .25); --sheen: rgba(255, 255, 255, .5); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(120, 140, 255, .14); --tod-dusk-2: rgba(80, 60, 160, .08); --tod-dawn-1: rgba(150, 210, 255, .14); --tod-dawn-2: rgba(80, 140, 220, .08); --tod-day: rgba(255, 255, 255, 0); }
+:root[data-look="aero"] .plate { --star-ink: #1667c2; }
+@media (max-width: 640px) {
+  .ae-air .ae-bub { width: calc(var(--w) * .7); height: calc(var(--w) * .7); }
+  :root[data-look="aero"] .ae-sky i { opacity: .3; }
+  :root[data-look="aero"] .bm-aero { right: -18vw; top: 74%; width: 48vw; opacity: .6; }
+  :root[data-look="aero"] .logo { white-space: nowrap; font-size: .92em; letter-spacing: -.01em; }
+  :root[data-look="aero"] .plate { border-width: 5px; }
+  :root[data-look="aero"] .plate::after { left: -5px; right: -5px; top: -5px; height: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ae-air .ae-bub { animation: none; top: var(--ry); }
+  :root[data-look="aero"] .ae-sky i { animation: none; bottom: auto; top: var(--ry); }
+  .ae-rib g, :root[data-look="aero"] .bm-aero { animation: none; }
+  :root[data-look="aero"] .opts .opt .bub { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -2375,6 +2546,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 <div class="km-bg" aria-hidden="true"></div>
 <div class="vn-bg" aria-hidden="true"></div>
 <div class="ml-bg" aria-hidden="true"></div>
+<div class="ae-bg" aria-hidden="true"></div>
+<div class="ae-sky" aria-hidden="true"><svg class="ae-rib" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false"><defs><linearGradient id="ae-r1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#bfe8ff" stop-opacity=".55"/><stop offset=".7" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="ae-r2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7fd4ff" stop-opacity="0"/><stop offset=".5" stop-color="#7fd4ff" stop-opacity=".45"/><stop offset="1" stop-color="#b7f0d0" stop-opacity="0"/></linearGradient></defs><g class="r1"><path d="M-100 760C300 560 700 640 1000 520S1500 300 1720 360L1720 410C1480 360 1100 600 960 640S300 660 -100 820Z" fill="url(#ae-r1)"/></g><g class="r2"><path d="M-100 860C380 700 760 760 1060 640S1500 470 1720 500L1720 530C1500 510 1150 700 1000 740S360 780 -100 900Z" fill="url(#ae-r2)"/></g><g class="r3"><path d="M-100 640C260 520 640 560 900 470S1400 250 1720 260L1720 280C1420 290 1000 480 860 520S300 560 -100 670Z" fill="url(#ae-r1)" opacity=".6"/></g></svg><i style="left:4%;--w:26px;--t:34s;--d:-6s;--sx:14px;--ry:70%"></i><i style="left:13%;--w:12px;--t:26s;--d:-19s;--sx:8px;--ry:30%"></i><i style="left:22%;--w:40px;--t:41s;--d:-30s;--sx:20px;--ry:82%"></i><i style="left:31%;--w:16px;--t:29s;--d:-11s;--sx:9px;--ry:18%"></i><i style="left:47%;--w:10px;--t:24s;--d:-3s;--sx:6px;--ry:55%"></i><i style="left:61%;--w:30px;--t:38s;--d:-24s;--sx:16px;--ry:40%"></i><i style="left:72%;--w:14px;--t:27s;--d:-15s;--sx:8px;--ry:88%"></i><i style="left:83%;--w:44px;--t:44s;--d:-36s;--sx:22px;--ry:24%"></i><i style="left:92%;--w:18px;--t:31s;--d:-8s;--sx:10px;--ry:62%"></i><i style="left:97%;--w:11px;--t:23s;--d:-20s;--sx:6px;--ry:12%"></i></div>
 <div id="app"></div>
 <div class="grain" aria-hidden="true"></div>
 
@@ -2675,14 +2848,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // and the pencil are synthesized below; the paper, cards, swishes and clicks are CC0 recordings in snd/ (SAMPLES,
     // made by src/pipeline/sounds.py, credits in snd/CREDITS.md), loaded once the sound starts, each played from a few
     // takes at random. Where a recording can't load (the claude.ai copy), a sound with a recipe falls back to it.
-    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17, kalimba: .26,
+    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17, kalimba: .26, bubbles: .26, bloop: .22, pop: .16, fizz: .21,
       key0: .27, key1: .27, key2: .27, key3: .27, keyup0: .4, keyup1: .4, space: .3, cross: .3,
       flip: .43, back: .39, sheet: .49, shut: .43, crumple: .62, erase: .69, stack: .62, mark: .48, unmark: .39, toggle: .45 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12, kalimba: .3 };
-    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12, kalimba: .3, bubbles: .3, bloop: .12, pop: .06, fizz: .4 };
+    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, bloop: 1, pop: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
       flip: 1, back: 1, sheet: 1, shut: 1, crumple: 1, mark: 1, unmark: 1, toggle: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24],
-      mark: 10, cross: 6, ripple: 6, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
+      mark: 10, cross: 6, ripple: 6, pop: 6, bloop: 5, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
     // a sound played from one of its takes: the keys (four keys, two releases), and the recordings
     const VOICES = { tick: ['key0', 'key1', 'key2', 'key3'], type: ['key0', 'key1', 'key2', 'key3'], untick: ['keyup0', 'keyup1'] };
     const SAMPLES = { nav: 6, flip: 3, back: 3, sheet: 2, shut: 2, crumple: 4, erase: 1, stack: 1, mark: 2, unmark: 1, toggle: 3 };
@@ -3033,6 +3206,39 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           mix(b, bandpass(burst(0.01, 0.002, 1484), 2600, 1), 0, 0.2);
           return done(b, 0.5);
         },
+        // Glass sky, a right answer: four bubbles rising (a bubble's note climbs as it frees itself), then a bright glassy
+        // chord, happy
+        bubbles() {
+          const b = make(1.3);
+          [[880, .42, 0], [1174.7, .38, .055], [1480, .35, .11], [1975.5, .3, .17]].forEach(([f, a, t]) => mode(b, t, f, a, .05, { att: .0008, bend: .55, bendT: .02 }));
+          [[1568, .3, .2], [1975.5, .25, .25], [2349.3, .23, .3], [3136, .12, .34]].forEach(([f, a, t]) => { mode(b, t, f, a, .42, { att: .002 }); mode(b, t, f * 2.76, a * .14, .1, { att: .001 }); });
+          return done(b, .8);
+        },
+        // Glass sky, the next question: one round bloop, its pitch climbing
+        bloop() {
+          const b = make(.26);
+          mode(b, 0, 640, .72, .06, { att: .0008, bend: .48, bendT: .026 });
+          mode(b, .045, 980, .22, .03, { att: .0008, bend: .6, bendT: .012 });
+          mix(b, bandpass(burst(.008, .0015, 641), 1800, 1), 0, .14);
+          return done(b, .5);
+        },
+        // a bubble tapped on the homepage: a soft pop and a tiny blip
+        pop() {
+          const b = make(.18);
+          mix(b, bandpass(burst(.012, .0012, 77), 3400, 1.4), 0, .75);
+          mode(b, .004, 1760, .3, .028, { att: .0005, bend: .7, bendT: .01 });
+          return done(b, .5);
+        },
+        // Glass sky, the opening: a glass of soda fizzing, bubbles climbing out, a chime running up as the star falls
+        fizz() {
+          const b = make(2.6), r = mulberry(2011);
+          for (let i = 0; i < b.length; i++) { const t = i / sr; if (r() < .02 * Math.exp(-t / 1.1)) b[i] = (r() * 2 - 1) * .5; }
+          const out = bandpass(b, 6000, .9);
+          let t = .05;
+          for (let k = 0; k < 14 && t < 1.6; k++) { mode(out, t, 600 + r() * 1400, .22 * Math.exp(-t / 1.2), .045, { att: .0008, bend: .5, bendT: .02 }); t += .05 + r() * .1; }
+          [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => { mode(out, .15 + i * .08, f, .3 - i * .03, .5, { att: .002 }); mode(out, .15 + i * .08, f * 2.76, .03, .1, { att: .001 }); });
+          return done(out, .78);
+        },
         // the end of a session that went well: an arpeggio
         finish() {
           const b = make(2.2);
@@ -3101,7 +3307,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
     // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
-    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' }, monet: { right: 'kalimba', nav: 'ripple' } };
+    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' }, monet: { right: 'kalimba', nav: 'ripple' }, aero: { right: 'bubbles', nav: 'bloop' } };
     // o.gain scales it (typing is a little quieter than picking)
     function play(name, o = {}) {
       const base = name;   // the haptic follows what happened, whatever the theme's voice for it
@@ -3268,7 +3474,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
-  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8', monet: '#ebe8f7' };
+  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8', monet: '#ebe8f7', aero: '#5ebdf2' };
   function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
   // a look's own typefaces, from Google Fonts, fetched the first time it's worn
   const LOOK_FONTS = {
@@ -3276,7 +3482,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     codex: 'IM+Fell+English:ital@0;1&family=UnifrakturMaguntia',
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
     monet: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
-    venus: 'Special+Elite'
+    venus: 'Special+Elite',
+    aero: 'Open+Sans:ital,wght@0,300..700;1,400..600'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -3299,6 +3506,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (id in LOOK_NIGHT && id !== 'gothic') r.dataset.look = id; else delete r.dataset.look;
     lookFonts(id);
     if ((id === 'codex' || id === 'venus') && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
+    if (id === 'aero') wcPaint();
     const m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
     try { sky.tint(); } catch (e) {}   // the stars take the look's colours (before the sky exists, it reads them when it starts)
@@ -3342,7 +3550,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   }
   // each look's disc (the blood moon, the gilded halo), painted once and kept
   const discs = {};
-  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : look === 'monet' ? monetPond(px) : bloodMoon(px);
+  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : look === 'monet' ? monetPond(px) : look === 'aero' ? aeroBubble(px) : bloodMoon(px);
   function discURL(look, px = 560) {
     const k = look + '@' + px;
     if (!(k in discs)) { try { discs[k] = discPaint(look, px).toDataURL(px > 200 ? 'image/png' : 'image/jpeg', .9); } catch (e) { discs[k] = ''; } }
@@ -3381,6 +3589,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (look === 'klimt') return klimtHTML();
     if (look === 'venus') return rosesHTML();
     if (look === 'monet') return pondHTML();
+    if (look === 'aero') return aeroHTML();
     const src = discURL(look);
     return src ? `<div class="bm bm-${look}" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
   }
@@ -3778,6 +3987,87 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     ctx.bezierCurveTo(-.66 * s, .12 * s, -.52 * s, -.52 * s, 0, -.3 * s); ctx.bezierCurveTo(.52 * s, -.52 * s, .66 * s, .12 * s, 0, .5 * s);
     ctx.fill(); ctx.restore();
   }
+  // ---------- the Glass sky look (Abi, 22 October 2026): Frutiger Aero after Windows 7, not cartoony ----------
+  // A deep blue wallpaper with soft ribbons of light and a few bubbles climbing over every screen (.ae-sky, in the
+  // page's markup); every card a white window in a frosted blue glass frame, the top bar a glass taskbar, glossy orb
+  // buttons. On the homepage a bloom of light, a few bubbles that pop when tapped (a pop and a blip), and the big bubble
+  // on the right (its disc), where the intro's star lands. .ae-bg is the slot for Abi's wallpaper (a
+  // Gappy fanart she has the artist's yes for): give it its image in gothic.css and add it to BG_OF to fade as you scroll.
+  // a watercolour bubble, painted for the Den (Abi, 22 October 2026: "use painted bubbles"): a pale wash, the pigment
+  // pooled darker at the rim, blooms where the water dried unevenly, a patch of bare paper for the light, the paper's
+  // grain, and a thin white paper edge so it reads on the blue (cut out, as in the picture she liked)
+  function wcBubble(px, tone, seed) {
+    const WC_TONES = { pale: [178, 206, 236], light: [122, 166, 220], mid: [78, 124, 192], deep: [34, 70, 132], green: [58, 156, 100], red: [212, 78, 98] };
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), r = mulberry(seed), R = px / 2, rr = R * .9, c = WC_TONES[tone] || WC_TONES.light;
+    const wob = Array.from({ length: 9 }, (_, i) => [r() * 6.28, (r() - .5) * (i < 3 ? .012 : .006)]);
+    const edge = (k, a) => k * rr * (1 + wob.reduce((s, [ph, am], i) => s + am * Math.sin(a * (i + 2) + ph), 0));
+    const path = k => { g.beginPath(); for (let i = 0; i <= 96; i++) { const a = i / 96 * 6.2832, e = edge(k, a); g[i ? 'lineTo' : 'moveTo'](R + Math.cos(a) * e, R + Math.sin(a) * e); } g.closePath(); };
+    const rgba = (col, a) => `rgba(${col[0]},${col[1]},${col[2]},${a})`;
+    g.fillStyle = '#fbfdff'; path(1.025); g.fill();
+    g.save(); path(1); g.clip();
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, px, px);
+    // the wash, uneven
+    g.fillStyle = rgba(c, .62); g.fillRect(0, 0, px, px);
+    for (let i = 0; i < 34; i++) {
+      const x = R + (r() - .5) * rr * 1.6, y = R + (r() - .5) * rr * 1.6, s = rr * (.2 + r() * .5), dark = r() < .55;
+      const gr = g.createRadialGradient(x, y, 0, x, y, s);
+      gr.addColorStop(0, dark ? rgba(c.map(v => v * .72), .32) : 'rgba(255,255,255,.34)'); gr.addColorStop(1, dark ? rgba(c, 0) : 'rgba(255,255,255,0)');
+      g.fillStyle = gr; g.fillRect(x - s, y - s, s * 2, s * 2);
+    }
+    // bare paper where the light falls
+    const hx = R - rr * (.18 + r() * .2), hy = R - rr * (.1 + r() * .25), hs = rr * (.45 + r() * .2), hg = g.createRadialGradient(hx, hy, 0, hx, hy, hs);
+    hg.addColorStop(0, 'rgba(255,255,255,.9)'); hg.addColorStop(.55, 'rgba(255,255,255,.45)'); hg.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = hg; g.fillRect(0, 0, px, px);
+    // pigment pooled at the rim as it dried
+    const pg = g.createRadialGradient(R, R, rr * .6, R, R, rr * 1.02);
+    pg.addColorStop(0, rgba(c, 0)); pg.addColorStop(.6, rgba(c.map(v => v * .85), .22)); pg.addColorStop(.9, rgba(c.map(v => v * .7), .62)); pg.addColorStop(.97, rgba(c.map(v => v * .55), .9)); pg.addColorStop(1, rgba(c.map(v => v * .6), .5));
+    g.fillStyle = pg; g.fillRect(0, 0, px, px);
+    // the paper's grain
+    const n = Math.round(px * px / 14);
+    for (let i = 0; i < n; i++) { const q = r() < .5; g.fillStyle = q ? 'rgba(255,255,255,.12)' : rgba(c.map(v => v * .6), .09); g.fillRect(r() * px, r() * px, 1 + r() * 1.4, 1 + r() * 1.4); }
+    g.restore();
+    return cv;
+  }
+  // the painted bubbles the page uses, made once when the look is first worn (CSS reads them as --wc0…--wc5, --wcD, --wcG, --wcR)
+  function wcPaint() {
+    if (wcPaint.done) return; wcPaint.done = true;
+    try {
+      const st = document.documentElement.style, put = (k, cv) => st.setProperty(k, `url("${cv.toDataURL('image/png')}")`);
+      ['pale', 'light', 'mid', 'pale', 'light', 'deep'].forEach((t, i) => put('--wc' + i, wcBubble(140, t, 31 + i * 17)));
+      put('--wcL', wcBubble(96, 'pale', 7)); put('--wcD', wcBubble(96, 'mid', 8)); put('--wcG', wcBubble(96, 'green', 9)); put('--wcR', wcBubble(96, 'red', 10));
+    } catch (e) {}
+  }
+  // its disc: one big painted bubble
+  // its disc: a cluster of painted bubbles, pale to deep, glazed over one another where they meet
+  function aeroBubble(px) {
+    const cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d');
+    // [x, y, radius] as parts of the disc, and the tone
+    [[.4, .5, .27, 'pale'], [.63, .3, .18, 'mid'], [.66, .58, .2, 'light'], [.4, .2, .14, 'pale'], [.64, .82, .13, 'deep'], [.42, .8, .14, 'light'], [.24, .7, .08, 'deep'], [.8, .44, .07, 'pale']]
+      .forEach(([x, y, r, t], i) => { const d = r * 2 * px / .9, im = wcBubble(Math.round(d), t, 1907 + i * 13); g.globalCompositeOperation = i ? 'multiply' : 'source-over'; g.drawImage(im, x * px - d / 2, y * px - d / 2, d, d); });
+    return cv;
+  }
+  function aeroHTML() {
+    // [left %, size px, seconds to rise, phase s, sway px, where it rests with reduced motion (top %)]
+    const B = [[56, 46, 14, -2, 18, 66], [64, 22, 10, -7, 10, 22], [73, 64, 18, -11, 24, 80], [82, 30, 12, -4, 12, 12], [91, 40, 15, -9, 16, 46],
+      [60, 16, 9, -3, 8, 40], [78, 18, 11, -6, 9, 58], [96, 26, 13, -12, 10, 30]];
+    return `<div class="ae-air" aria-hidden="true"><i class="ae-bloom"></i>
+      ${B.map(([x, w, t, d, sx, ry]) => `<span class="ae-bub" style="left:${x}%;--w:${w}px;--t:${t}s;--d:${d}s;--sx:${sx}px;--ry:${ry}%"></span>`).join('')}</div>
+      <div class="bm bm-aero" aria-hidden="true"><img class="bm-img" alt="" src="${discURL('aero')}"></div>`;
+  }
+  // tap a bubble: it pops (a ring, a blip), then a new one rises from below
+  document.addEventListener('click', e => {
+    const s = e.target && e.target.closest ? e.target.closest('.ae-bub:not(.rest)') : null; if (!s || s.classList.contains('pop')) return;
+    s.classList.add('pop'); sfx.play('pop');
+    setTimeout(() => { s.style.setProperty('--d', '0s'); s.classList.remove('pop'); }, 420);
+  });
+  // a painted bubble in the air, for canvas (the intro): one of four, a little rocking
+  function drawBubble(ctx, x, y, s, ph, a) {
+    const set = drawBubble.set || (drawBubble.set = ['pale', 'light', 'mid', 'light'].map((t, i) => wcBubble(64, t, 70 + i)));
+    const im = set[Math.abs(Math.round(ph * 3)) % set.length], r = s * 1.1;
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(x, y); ctx.rotate(Math.sin(ph) * .3); ctx.drawImage(im, -r, -r, r * 2, r * 2); ctx.restore();
+  }
   function batsHTML() {
     const flock = [[0, 0, 1], [.5, -26, .78], [.9, 18, .7], [.25, 36, .88], [1.4, -10, .6], [1.1, 30, .72], [1.8, 8, .55]];
     return `<div class="bats" aria-hidden="true">${flock.map(([d, y, k], i) => `<svg class="bat" viewBox="-12 -6 24 12" style="--d:${d}s;--y:${y}px;--k:${k};--f:${(.16 + i * .013).toFixed(3)}s" focusable="false"><use href="#bat"/></svg>`).join('')}</div>`;
@@ -3791,7 +4081,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     { id: 'klimt', name: 'Golden phase', sub: 'Klimt’s lovers in gold leaf, in daylight' },
     // only ever a gift: listed only for those who can wear it
     { id: 'venus', name: 'Birth of Venus', sub: 'Botticelli’s sea in baby blue, roses and swans', gift: true },
-    { id: 'monet', name: 'Water lilies', sub: 'Monet’s pond in lilac and green, lily pads afloat', gift: true }
+    { id: 'monet', name: 'Water lilies', sub: 'Monet’s pond in lilac and green, lily pads afloat', gift: true },
+    { id: 'aero', name: 'Glass sky', sub: 'Aero glass in deep blue, ribbons of light, a few bubbles', gift: true }
   ];
   // the Golden phase: a golden exam, the top marks on a real-sized one
   const GOLD_MARK = 16, GOLD_N = 20;
@@ -8872,7 +9163,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // written in one stroke (joined: no letter jitter, so the script's joins hold; the jitter was for the typewriter)
     venus: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 },
     monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56,
-      pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] }
+      pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] },
+    // Glass sky: thin white letters lit from within, a cool glow, glass catching the light on their upper half
+    aero: { lines: ['Labubu’s', 'Den'], weight: '300', family: '"Open Sans", "Segoe UI", system-ui, sans-serif', gloss: true, span: .56, drip: .12 }
   };
   // with the RedaReda code on, the Venus title reads Reda's Den, typewritten in matte bronze (Abi, 21 October 2026)
   const REDA_TITLE = { lines: ['Reda’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 };
@@ -8935,6 +9228,16 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           let c = P[P.length - 1][1];
           for (let j = 1; j < P.length; j++) if (t <= P[j][0]) { const [a0, c0] = P[j - 1], [a1, c1] = P[j]; c = mixc(c0, c1, (t - a0) / (a1 - a0)); break; }
           put(k, c.map(q => q + (hash(x, y) - .5) * 16));
+        }
+      } else if (T.gloss) {
+        // while it resolves: white pixels, pale blue below the glass line, a soft blue edge
+        if (v) {
+          const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
+          const t = Math.min(1, Math.max(0, (y - (d.s * .78 + li * d.lineH - d.s * .72)) / (d.s * .8)));
+          put(k, (t < .5 ? [255, 255, 255] : [207, 233, 255]).map(q => q + (hash(x, y) - .5) * 10));
+        } else {
+          const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
+          if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [120, 196, 250]);
         }
       } else if (T.mosaic) {
         if (v) {
@@ -9010,12 +9313,25 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     ctx.globalCompositeOperation = 'source-over';
   }
+  // the Glass sky title: thin white letters with a cool blue glow, brightest at the top as if glass caught the light
+  function glossText(ctx, T, lines, d, x0) {
+    ctx.clearRect(0, 0, d.w, d.h);
+    const font = `${T.weight} ${d.s}px ${T.family}`, xo = x0 + d.s * .03, ys = lines.map((l, i) => d.s * .8 + i * d.lineH);
+    ctx.font = font; ctx.textBaseline = 'alphabetic';
+    ctx.save(); ctx.shadowColor = 'rgba(120,200,255,.85)'; ctx.shadowBlur = d.s * .12; ctx.fillStyle = 'rgba(190,230,255,.55)';
+    lines.forEach((l, i) => ctx.fillText(l, xo, ys[i])); ctx.restore();
+    lines.forEach((l, i) => {
+      const y = ys[i], g = ctx.createLinearGradient(0, y - d.s * .74, 0, y + d.s * .06);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(.48, '#f2f9ff'); g.addColorStop(.52, '#cfe9ff'); g.addColorStop(1, '#e6f4ff');
+      ctx.fillStyle = g; ctx.fillText(l, xo, y);
+    });
+  }
   function drawTitle(animate) {
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
     const box = c.parentElement, W = box.clientWidth; if (!W) return;
     const ink = rgbOf(cssVar('--ink'));
     const T = titleLook(), lines = T.lines;
-    const fin = T.leaf || T.lapis ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf and the lapis end smooth
+    const fin = T.leaf || T.lapis || T.gloss ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf and the lapis end smooth
     const family = T.family;
     const ctx = c.getContext('2d', { willReadFrequently: true });
     ctx.font = `${T.weight} 100px ${family}`;
@@ -9030,10 +9346,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const draw = block => {
       const d = dims(block);
       c.width = d.w; c.height = d.h;
-      if ((T.leaf || T.lapis) && block === fin) { (T.lapis ? lapisText : leafText)(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
+      if ((T.leaf || T.lapis || T.gloss) && block === fin) { (T.gloss ? glossText : T.lapis ? lapisText : leafText)(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
       ctx.font = `${T.weight} ${d.s}px ${family}`;
       ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
-      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild || T.mosaic || T.leaf || T.lapis ? 2 : 0), d.s * .78 + i * d.lineH));
+      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild || T.mosaic || T.leaf || T.lapis ? 2 : T.gloss ? 2 + d.s * .05 : 0), d.s * .78 + i * d.lineH));
       const img = ctx.getImageData(0, 0, d.w, d.h), px = img.data, on = new Uint8Array(d.w * d.h);
       for (let i = 0, j = 0; i < px.length; i += 4, j++) on[j] = px[i + 3] > 105 ? 1 : 0;
       img.data.set(shadeTitle(T, on, d, block, ink));
@@ -9667,7 +9983,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             }
           }
           if (a <= 0) continue;
-          if (b.leaf) { (b.petal ? drawPetal : drawLeaf)(ctx, x, y, b.s, t * b.fq + b.ph, a); continue; }
+          if (b.leaf) { (b.bubble ? drawBubble : b.petal ? drawPetal : drawLeaf)(ctx, x, y, b.s, t * b.fq + b.ph, a); continue; }
           ctx.globalAlpha = a;
           drawBat(ctx, x, y, b.s, Math.sin(t * b.fq + b.ph), tilt);
         }
@@ -9836,6 +10152,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           // the gold star sheds leaf as it falls
           if (lk === 'klimt') flock = Array.from({ length: 16 }, (_, i) => ({ leaf: true, lag: 50 + i * 48 + rnd() * 40, off: (rnd() - .5) * 120, bob: rnd() * 6.28, s: 5 + rnd() * 7, fq: .005 + rnd() * .008, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
           // Venus: the star sheds rose petals as it falls
+          // Glass sky: the star leaves bubbles behind it
+          if (lk === 'aero') flock = Array.from({ length: 20 }, (_, i) => ({ leaf: true, bubble: true, lag: 40 + i * 40 + rnd() * 40, off: (rnd() - .5) * 140, bob: rnd() * 6.28, s: 4 + rnd() * 9, fq: .003 + rnd() * .005, ph: rnd() * 6.28, sp: 30 + rnd() * 60, last: null, v: null }));
           if (lk === 'venus' || lk === 'monet') flock = Array.from({ length: 18 }, (_, i) => ({ leaf: true, petal: true, lag: 50 + i * 44 + rnd() * 40, off: (rnd() - .5) * 130, bob: rnd() * 6.28, s: 6 + rnd() * 7, fq: .004 + rnd() * .007, ph: rnd() * 6.28, sp: 40 + rnd() * 80, last: null, v: null }));
         } catch (e) { moonTex = null; flock = []; }
       }
@@ -9953,6 +10271,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       else if (lk === 'codex') sfx.play('bell', { delay: .2, quiet: true });
       else if (lk === 'klimt') sfx.play('shimmer', { delay: .15, quiet: true });
       else if (lk === 'venus' || lk === 'monet') sfx.play('surf', { delay: .1, quiet: true });
+      else if (lk === 'aero') sfx.play('fizz', { delay: .1, quiet: true });
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();

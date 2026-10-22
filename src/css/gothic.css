@@ -2207,3 +2207,174 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 :root[data-look="venus"] :is(.h1, .h2, .h3) { font-weight: 400; letter-spacing: -.01em; }
 :root[data-look="venus"] :is(.bub, .stem::first-letter) { font-family: "Special Elite", "Courier Prime", monospace; font-weight: 400; }
 :root[data-look="venus"] #app { font-size: .96em; }
+
+
+/* ---------- Glass sky (Abi, 22 October 2026): Frutiger Aero after Windows 7, glass and light, not cartoony ----------
+   The ground is a deep blue wallpaper with ribbons of light; the words on it are white with a soft shadow, like desktop
+   icons. Every card is a window: white inside, in a frosted blue glass frame with a glossy caption edge; inside a
+   card the ink is dark (the plate scope redefines the colour tokens). The top bars are glass taskbars. */
+:root[data-look="aero"] {
+  --night: #0f4f8f; --deep: #0b3d73; --plate: #ffffff; --plate-2: #f3f8fd;
+  --ink: #f4f9ff; --ink-hi: #ffffff; --ink-2: #d8e9fa; --ink-3: #a9c9ea;
+  --hair: rgba(255, 255, 255, .22); --hair-2: rgba(255, 255, 255, .42); --glass: rgba(30, 80, 140, .45);
+  --right: #7fe0a0; --wrong: #ff8f9c; --half: #ffd27a;
+  --right-wash: rgba(127, 224, 160, .14); --wrong-wash: rgba(255, 143, 156, .12); --half-wash: rgba(255, 210, 122, .12);
+  --sel-wash: rgba(140, 210, 255, .16); --glow-soft: rgba(140, 210, 255, .22); --glow-mid: rgba(140, 210, 255, .5);
+  --title-glow: rgba(140, 210, 255, .6); --mottle-1: rgba(255, 255, 255, .1); --mottle-2: rgba(120, 200, 255, .1); --shade: rgba(0, 20, 50, .3);
+  --k-official: #c6d4ff; --k-checked: #a8ecf2; --k-proposed: #b4f0c8; --k-claude: #ffe0a0; --k-none: #d0dbe6;
+  --k-official-line: rgba(198, 212, 255, .5); --k-checked-line: rgba(168, 236, 242, .5); --k-proposed-line: rgba(180, 240, 200, .5);
+  --k-claude-line: rgba(255, 224, 160, .5); --k-none-line: rgba(208, 219, 230, .5); --k-flag-line: rgba(255, 143, 156, .5);
+  --fig-bg: #ffffff;
+  --wax-hi: #d6f0ff; --wax-mid: #4aa8ee; --wax-edge: #0d4f9a; --scrim: rgba(4, 22, 48, .5);
+  --f-display: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --f-read: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --t-label: .8rem;
+  --gold: #ffd27a; --gold-hi: #ffe6a8; --gold-deep: #c9962a; --gold-ink: #8a6417; --gold-txt: #ffd27a;
+  --aqua: #3aa6f0; --aqua-deep: #1667c2; --navy: #0d3a78;
+  --star-pal: #ffffff #d6f0ff #9fdcff #ffffff #bfe8ff #e6f6ff #7fd0ff;
+  --intro-ink: #f2f8ff; --intro-ink-hi: #ffffff;
+  --fx: #d8f3ff; --fx-hi: #ffffff;
+  --gloss: linear-gradient(180deg, rgba(255, 255, 255, .7) 0, rgba(255, 255, 255, .25) 49%, rgba(255, 255, 255, 0) 50%);
+  --frame: rgba(170, 210, 245, .38);
+  --bubmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3' r='.8'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.5' stop-color='%2387cff8'/%3E%3Cstop offset='1' stop-color='%231667c2'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='12' cy='12' r='9' fill='url(%23g)' stroke='%230d4f9a' stroke-width='.8'/%3E%3Cellipse cx='12' cy='7.6' rx='6' ry='3.4' fill='%23fff' opacity='.7'/%3E%3C/svg%3E");
+  font-synthesis: none; scrollbar-color: #7fbbe8 #0b3d73; color-scheme: dark;
+}
+:root[data-look="aero"] body { background: #0b3d73; }
+/* the wallpaper: deep blue, brighter toward the centre, a bloom low on the right */
+:root[data-look="aero"] .paper {
+  background:
+    radial-gradient(60% 50% at 70% 68%, rgba(120, 210, 255, .55), rgba(120, 210, 255, 0) 70%),
+    radial-gradient(40% 30% at 18% 12%, rgba(90, 170, 240, .35), transparent 70%),
+    linear-gradient(170deg, #06274f 0%, #0d4b8c 38%, #1771c0 66%, #0a3f7a 100%);
+  transition: opacity .8s var(--ease);
+}
+:root[data-look="aero"].intro-on .paper { opacity: 0; transition: none; }
+:root[data-look="aero"] .grain { opacity: .04; }
+:root[data-look="aero"] :is(.rmoon, .astro) { display: none; }
+/* the wallpaper slot (Abi's fanart, once she has the artist's yes): a fixed layer on the right */
+.ae-bg { display: none; }
+:root[data-look="aero"] .ae-bg { position: fixed; z-index: 1; pointer-events: none; right: 0; bottom: 0; width: min(46vw, 680px); height: 100vh; background: var(--ae-wall, none) right bottom / contain no-repeat; }
+:root[data-look="aero"][data-ae-wall] .ae-bg { display: block; }
+.intro-on .ae-bg { opacity: 0 !important; }
+/* over every screen: the ribbons of light, slowly breathing, and a few bubbles climbing */
+.ae-sky { display: none; }
+:root[data-look="aero"] .ae-sky { display: block; position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.ae-rib { position: absolute; inset: 0; width: 100%; height: 100%; filter: blur(10px); mix-blend-mode: screen; opacity: .9; }
+.ae-rib g { transform-box: view-box; transform-origin: 50% 70%; animation: ae-breathe 26s ease-in-out infinite alternate; }
+.ae-rib .r2 { animation-duration: 34s; animation-delay: -12s; }
+.ae-rib .r3 { animation-duration: 40s; animation-delay: -20s; }
+@keyframes ae-breathe { from { transform: translateY(0) scaleY(1); opacity: .75; } to { transform: translateY(-26px) scaleY(1.12); opacity: 1; } }
+:root[data-look="aero"] .ae-sky i { position: absolute; bottom: -60px; opacity: .7; animation: ae-rise var(--t) linear var(--d) infinite; }
+.intro-on .ae-sky { opacity: 0; }
+/* a bubble: painted in watercolour (wcBubble, --wc0…--wc5), a different one by turns */
+:root[data-look="aero"] .ae-sky i, .ae-bub { width: var(--w); height: var(--w); background: var(--wc1) center / 100% 100% no-repeat; }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+1), .ae-air .ae-bub:nth-of-type(6n+1) { background-image: var(--wc0); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+3), .ae-air .ae-bub:nth-of-type(6n+3) { background-image: var(--wc2); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+4), .ae-air .ae-bub:nth-of-type(6n+4) { background-image: var(--wc3); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n+5), .ae-air .ae-bub:nth-of-type(6n+5) { background-image: var(--wc4); }
+:root[data-look="aero"] .ae-sky i:nth-of-type(6n), .ae-air .ae-bub:nth-of-type(6n) { background-image: var(--wc5); }
+@keyframes ae-rise {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(var(--sx), -27vh); }
+  50% { transform: translate(0, -55vh); }
+  75% { transform: translate(calc(-1 * var(--sx)), -82vh); }
+  100% { transform: translate(0, -112vh); }
+}
+/* the homepage: a bloom of light, bubbles to pop, the big bubble where the star lands */
+.ae-air { position: absolute; inset: -40px -6vw -30px; z-index: 0; overflow: hidden; pointer-events: none; transition: opacity 1s var(--ease); }
+.intro-on .ae-air { opacity: 0; }
+.ae-bloom { position: absolute; right: 4%; top: 14%; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(170, 225, 255, .45), rgba(120, 200, 255, .12) 45%, transparent 70%); }
+.ae-air .ae-bub { position: absolute; top: 108%; pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; animation: ae-rise var(--t) linear var(--d) infinite; }
+.ae-bub.pop { animation: ae-pop .4s ease-out forwards !important; }
+@keyframes ae-pop { 0% { scale: 1; opacity: 1; } 40% { scale: 1.3; opacity: .8; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .8), 0 0 0 9px rgba(255, 255, 255, .22); } 100% { scale: 1.6; opacity: 0; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0), 0 0 0 24px rgba(255, 255, 255, 0); } }
+:root[data-look="aero"] .bm-aero { --aw: min(760px, 88vw); top: 44%; transform: none; animation: ae-float 8s ease-in-out infinite; opacity: .95; }
+:root[data-look="aero"] .bm-aero .bm-img { border-radius: 0; filter: drop-shadow(0 20px 50px rgba(0, 20, 60, .4)); }
+@keyframes ae-float { 0%, 100% { translate: 0 -50%; } 50% { translate: 0 calc(-50% - 12px); } }
+/* words on the wallpaper: white with a soft dark shadow, like desktop icons */
+:root[data-look="aero"] #app { text-shadow: 0 1px 2px rgba(0, 20, 50, .45); }
+:root[data-look="aero"] .title canvas { filter: none; }
+@media (min-width: 641px) {
+  :root[data-look="aero"] .hero .caption { grid-row: 1; }
+  :root[data-look="aero"] .hero .meta { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: 0 18px; text-align: left; line-height: 1.6; color: var(--ink-2); }
+  :root[data-look="aero"] .hero .title { grid-row: 3; margin-top: 18px; }
+  :root[data-look="aero"] .hero .hero-cta { grid-column: 1; grid-row: 4; justify-items: start; text-align: left; }
+  :root[data-look="aero"] .hero .hero-cta .cta-note { max-width: 26rem; }
+}
+:root[data-look="aero"] :is(.h1, .h2, .h3) { font-weight: 300; letter-spacing: -.01em; }
+/* Windows 7 wrote upright: no italic but where the text itself asks for it */
+:root[data-look="aero"] :not(em, i, cite) { font-style: normal; }
+:root[data-look="aero"] .lede::first-letter { font-weight: 300; font-style: normal; }
+:root[data-look="aero"] .eyebrow { color: #bfe6ff; letter-spacing: .01em; }
+:root[data-look="aero"] .eyebrow::before { content: ""; display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; background: var(--bubmark) center / contain no-repeat; }
+:root[data-look="aero"] ::selection { background: #3399ff; color: #fff; }
+/* the top bar and the quiz bar: glass taskbars */
+:root[data-look="aero"] .topnav { padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .28);
+  background: var(--gloss), linear-gradient(180deg, rgba(40, 90, 150, .5), rgba(10, 40, 80, .55));
+  -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 10px 30px -14px rgba(0, 10, 30, .6); }
+:root[data-look="aero"] .navlinks button::after { background: linear-gradient(90deg, rgba(160, 225, 255, 0), #bfe8ff, rgba(160, 225, 255, 0)); height: 2px; }
+:root[data-look="aero"] .bar { background: var(--gloss), linear-gradient(180deg, rgba(40, 90, 150, .55), rgba(10, 40, 80, .6)) !important; border-bottom: 1px solid rgba(255, 255, 255, .25);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); }
+/* the Labubu in a glass orb (till Abi's own Soft & Wet head drawing comes) */
+:root[data-look="aero"] .logo .lb { color: #ffffff; --lb-line: #0d3263; border-radius: 50%; background: radial-gradient(circle at 34% 26%, #fff 0 8%, rgba(255, 255, 255, 0) 22%), radial-gradient(circle, rgba(190, 230, 255, .6) 50%, rgba(80, 160, 230, .9) 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), 0 0 10px rgba(120, 200, 255, .5); }
+/* inside a window: dark ink on white */
+:root[data-look="aero"] .plate {
+  --ink: #1b2b3f; --ink-hi: #0b1a2c; --ink-2: #3b526d; --ink-3: #607893;
+  --hair: rgba(30, 70, 120, .16); --hair-2: rgba(30, 70, 120, .32); --plate: #ffffff; --plate-2: #f3f8fd; --night: #ffffff; --deep: #e3eef8;
+  --right: #1d8a4a; --wrong: #d23b4e; --half: #c27c0e;
+  --right-wash: rgba(29, 138, 74, .08); --wrong-wash: rgba(210, 59, 78, .07); --half-wash: rgba(194, 124, 14, .08);
+  --sel-wash: rgba(51, 153, 255, .1); --glow-soft: rgba(51, 153, 255, .18); --glow-mid: rgba(51, 153, 255, .4);
+  --k-official: #2d4fb0; --k-checked: #157a8a; --k-proposed: #1e7a48; --k-claude: #a26a10; --k-none: #4f6a85;
+  --k-official-line: rgba(45, 79, 176, .45); --k-checked-line: rgba(21, 122, 138, .45); --k-proposed-line: rgba(30, 122, 72, .45);
+  --k-claude-line: rgba(162, 106, 16, .45); --k-none-line: rgba(79, 106, 133, .45); --k-flag-line: rgba(210, 59, 78, .45);
+  --gold-txt: #a26a10; --shade: rgba(20, 60, 110, .12);
+  color: var(--ink); text-shadow: none;
+  border: 7px solid var(--frame); border-radius: 10px; background-clip: padding-box;
+  background-color: #fff; background-image: linear-gradient(180deg, #ffffff, #f4f9fe);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .55), inset 0 0 0 1px rgba(10, 50, 100, .35), 0 24px 60px -24px rgba(0, 12, 40, .75);
+}
+/* the glass frame's gloss on its top edge */
+:root[data-look="aero"] .plate::after { content: ""; position: absolute; left: -7px; right: -7px; top: -7px; height: 7px; border-radius: 10px 10px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, .15)); pointer-events: none; }
+:root[data-look="aero"] .qcard::before { content: ""; top: -18px; width: 22px; height: 22px; background: var(--bubmark) center / 20px no-repeat; }
+:root[data-look="aero"] .eyebrow:is(.plate *) { color: var(--aqua-deep); }
+:root[data-look="aero"] .stem::first-letter { color: var(--aqua-deep); }
+/* buttons: Windows 7 glass, the main one blue and lit */
+:root[data-look="aero"] .btn { border-radius: 4px; }
+:root[data-look="aero"] .btn.primary { background: linear-gradient(180deg, #7cc4f5 0, #3b97e3 49%, #1f78cf 50%, #3d9be6 100%); border: 1px solid #0d5ca8; color: #fff; text-shadow: 0 1px 1px rgba(0, 40, 90, .55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), inset 0 0 0 1px rgba(255, 255, 255, .2), 0 0 12px rgba(80, 180, 255, .45); }
+:root[data-look="aero"] .btn.primary:hover { background: linear-gradient(180deg, #9ad6fb 0, #52aaee 49%, #2e8be0 50%, #5ab0f0 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 18px rgba(110, 200, 255, .7); }
+:root[data-look="aero"] .btn.primary svg { color: #fff; }
+:root[data-look="aero"] .btn:not(.primary):not(.danger) { background: linear-gradient(180deg, rgba(255, 255, 255, .28) 0, rgba(255, 255, 255, .14) 49%, rgba(255, 255, 255, .06) 50%, rgba(255, 255, 255, .14) 100%); border: 1px solid rgba(255, 255, 255, .45); color: #fff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35); }
+:root[data-look="aero"] .btn:not(.primary):not(.danger):hover { background: linear-gradient(180deg, rgba(200, 235, 255, .45) 0, rgba(160, 215, 255, .3) 49%, rgba(120, 195, 255, .22) 50%, rgba(160, 215, 255, .32) 100%); border-color: rgba(200, 235, 255, .8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 0 12px rgba(120, 200, 255, .45); }
+:root[data-look="aero"] .plate .btn:not(.primary):not(.danger) { background: linear-gradient(180deg, #f2f2f2 0, #ebebeb 49%, #dddddd 50%, #cfcfcf 100%); border-color: #8e8f8f; color: #1b2b3f; text-shadow: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7); }
+:root[data-look="aero"] .plate .btn:not(.primary):not(.danger):hover { background: linear-gradient(180deg, #eaf6fd 0, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%); border-color: #3c7fb1; }
+/* the answers: glass orbs; lit blue when picked, green when right, red when wrong */
+:root[data-look="aero"] .bub { font-weight: 600; font-size: .98rem; color: #0d3a78; border: 0; background: var(--wcL) center / 116% 116% no-repeat; box-shadow: none; }
+:root[data-look="aero"] .opt:hover .bub { filter: brightness(.96) saturate(1.2); }
+:root[data-look="aero"] :is(.opts:not(.checked) .opt[aria-pressed="true"], .opt.is-hit, .opt.is-miss) .bub { color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+:root[data-look="aero"] .opts:not(.checked) .opt[aria-pressed="true"] .bub { background-image: var(--wcD); animation: pearlpop .55s var(--spring); }
+:root[data-look="aero"] .opt.is-hit .bub { background-image: var(--wcG); animation: ae-glow 1s ease-out; border-radius: 50%; }
+:root[data-look="aero"] .opt.is-miss .bub { background-image: var(--wcR); }
+:root[data-look="aero"] .opt.is-missed .bub { box-shadow: 0 0 0 1.5px var(--right); border-radius: 50%; }
+@keyframes ae-glow { 0% { box-shadow: 0 0 0 0 rgba(90, 230, 140, .7); } 100% { box-shadow: 0 0 0 12px rgba(90, 230, 140, 0); } }
+:root[data-look="aero"] .moon .mn-lit { fill: #ffffff; }
+:root[data-look="aero"] .sky-field { --sky-star: #f2fbff; --sky-neb: #6fc6ff #8f9cff; --sky-hill: #0b2d55 #061a35; background: radial-gradient(130% 120% at 78% 0%, #1a5a9e 0%, #061a3a 75%); }
+:root[data-look="aero"] .sky-field::after { box-shadow: inset 0 0 0 2px rgba(170, 210, 245, .5), inset 0 0 0 4px #061a3a, inset 0 0 60px rgba(0, 0, 0, .45); }
+:root[data-look="aero"] :is(.pick, .intro-hint) { --ink: #f2f8ff; --ink-hi: #ffffff; --ink-2: #cfe4f7; --ink-3: #9fc0e0; --hair: #24486e; --hair-2: #3f6d9c; --glow-mid: rgba(120, 210, 255, .45); --glow-soft: rgba(120, 210, 255, .16); --title-glow: rgba(160, 220, 255, .45); }
+:root[data-look="aero"] { --star-ink: #ffffff; --fly: #ffffff; --fly-glow: rgba(160, 225, 255, .7); --fly-glow2: rgba(120, 210, 255, .25); --sheen: rgba(255, 255, 255, .5); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(120, 140, 255, .14); --tod-dusk-2: rgba(80, 60, 160, .08); --tod-dawn-1: rgba(150, 210, 255, .14); --tod-dawn-2: rgba(80, 140, 220, .08); --tod-day: rgba(255, 255, 255, 0); }
+:root[data-look="aero"] .plate { --star-ink: #1667c2; }
+@media (max-width: 640px) {
+  .ae-air .ae-bub { width: calc(var(--w) * .7); height: calc(var(--w) * .7); }
+  :root[data-look="aero"] .ae-sky i { opacity: .3; }
+  :root[data-look="aero"] .bm-aero { right: -18vw; top: 74%; width: 48vw; opacity: .6; }
+  :root[data-look="aero"] .logo { white-space: nowrap; font-size: .92em; letter-spacing: -.01em; }
+  :root[data-look="aero"] .plate { border-width: 5px; }
+  :root[data-look="aero"] .plate::after { left: -5px; right: -5px; top: -5px; height: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ae-air .ae-bub { animation: none; top: var(--ry); }
+  :root[data-look="aero"] .ae-sky i { animation: none; bottom: auto; top: var(--ry); }
+  .ae-rib g, :root[data-look="aero"] .bm-aero { animation: none; }
+  :root[data-look="aero"] .opts .opt .bub { animation: none; }
+}

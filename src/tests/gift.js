@@ -136,7 +136,7 @@ async function as(b, who, viewport) {
   check(/El Psy Kongroo\. Every theme is yours now/.test(t9.toast) && t9.q === '', 'El Psy Kongroo: every theme unlocked, the search cleared ' + JSON.stringify(t9));
   await ok.evaluate(() => document.querySelector('.th-wrap').scrollIntoView({ block: 'center' })); await ok.waitForTimeout(300);
   const orows = await ok.$$eval('.th-wrap .th-card', cs => cs.map(c => c.textContent.replace(/\s+/g, ' ').trim()));
-  check(orows.length === 6 && orows.slice(1).every(r => /Wear it/.test(r)) && /Birth of Venus/.test(orows[4]) && /Water lilies/.test(orows[5]), 'Themes: all six to wear');
+  check(orows.length === 7 && orows.slice(1).every(r => /Wear it/.test(r)) && /Birth of Venus/.test(orows[4]) && /Water lilies/.test(orows[5]) && /Glass sky/.test(orows[6]), 'Themes: all seven to wear');
   await ok.click('.th-wrap [data-theme="codex"]'); await ok.waitForTimeout(400);
   await ok.evaluate(() => window.dispatchEvent(new Event('pagehide'))); await ok.waitForTimeout(400);
   check(await ok.evaluate(() => document.documentElement.dataset.look) === 'codex' && await ok.evaluate(() => /"unlocks"/.test(window.__fb.docs['users/u3'].s || '')), 'wears the Codex, and the unlock is on the account');
@@ -159,7 +159,7 @@ async function as(b, who, viewport) {
   await lb.screenshot({ path: OUT + 'gift_reda.png' });
   await lb.fill('#q', 'redareda'); await lb.waitForTimeout(300);
   check(await lb.evaluate(() => /venus\.webp/.test(getComputedStyle(document.querySelector('.vn-bg')).backgroundImage) && !localStorage.getItem('efm3-reda')), 'typed again: the painting is back');
-  check(lrows.length === 6 && /Birth of Venus.*Wear it/.test(lrows[4]) && /Water lilies.*Wear it/.test(lrows[5]), 'the Labubu: the Birth of Venus and Water lilies listed, to wear');
+  check(lrows.length === 7 && /Birth of Venus.*Wear it/.test(lrows[4]) && /Water lilies.*Wear it/.test(lrows[5]) && /Glass sky.*Wear it/.test(lrows[6]), 'the Labubu: the Birth of Venus, Water lilies and Glass sky listed, to wear');
   await c8.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');

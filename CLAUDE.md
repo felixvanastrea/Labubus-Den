@@ -424,7 +424,23 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (Abi, same day) the typewriter everywhere instead: Special Elite for every text on every screen and for the title
   (bronze, letters struck off their line), Reda's Den included; no italic or bold asked of it, text 4% smaller.
   The text is a dark dusty pink instead of navy or sepia black (Abi, same day: `--ink` tokens in the venus block and its parchment scope).
-- `src/tests/review_looks.js [blood|codex|klimt|venus|monet]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+- Glass sky (`:root[data-look="aero"]`, Abi, 22 October 2026: a JoJolion / Gappy theme, Frutiger Aero "after Windows 7",
+  not cartoony; a first bubbly, sailor-striped, goldfish-and-katakana version was dropped the same hour as too cartoony).
+  Only ever given (`gift: true`) for now. A deep blue wallpaper with ribbons of light breathing and a few bubbles climbing
+  over every screen (`.ae-sky`, static markup at the top of the page); every `.plate` a window: white inside, a 7 px frosted
+  blue glass frame with a gloss on its top edge, dark ink (the plate scope redefines the tokens; outside, the ink is white
+  with a soft shadow like desktop icons); the top nav and the quiz bar are glass taskbars; Windows 7 buttons (blue lit
+  primary, glass on the wallpaper, grey inside a window); answers are painted bubbles (pale; deep blue picked, green right, red wrong);
+  every bubble is watercolour, painted in code (`wcBubble`: a wash, pigment pooled at the rim, blooms, bare paper for
+  the light, grain, a thin white paper edge; Abi wanted "painted bubbles" like a picture she liked, not that picture),
+  made once when the look is worn (`wcPaint`, CSS `--wc0`…`--wc5`, `--wcL`, `--wcD`, `--wcG`, `--wcR`);
+  Open Sans, upright, light headings; the title thin white letters with a blue glow (`gloss`, `glossText`). On the
+  homepage a bloom of light, bubbles to pop (`.ae-bub`, `pop` sound) and a cluster of painted bubbles glazed over one another (`aeroBubble`, its disc), where
+  the intro's star lands, leaving bubbles behind it (`drawBubble`). Sounds: `bubbles` (right), `bloop` (next), `fizz` (intro).
+  No JoJo art in it: Abi's pictures were Araki's official art and other people's edits, and can't go on the Den. The
+  slot for a fanart she has the artist's yes for is `.ae-bg` (a fixed layer on the right, `--ae-wall` and `data-ae-wall`);
+  the Labubu stays the logo until she draws a Soft & Wet head herself.
+- `src/tests/review_looks.js [blood|codex|klimt|venus|monet|aero]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.
