@@ -431,8 +431,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   blue glass frame with a gloss on its top edge, dark ink (the plate scope redefines the tokens; outside, the ink is white
   with a soft shadow like desktop icons); the top nav and the quiz bar are glass taskbars; Windows 7 buttons (blue lit
   primary, glass on the wallpaper, grey inside a window); answers are painted bubbles (pale; deep blue picked, green right, red wrong);
-  every bubble is watercolour, painted in code (`wcBubble`: a wash, pigment pooled at the rim, blooms, bare paper for
-  the light, grain, a thin white paper edge; Abi wanted "painted bubbles" like a picture she liked, not that picture),
+  every bubble is watercolour, painted in code pixel by pixel (`wcBubble`, Abi: "more aesthetic, more artsy": a wash
+  mottled wet-in-wet with value noise, its colour drifting between two pigments, a pale patch lifted toward the light with a
+  crisp edge, pigment pooled dark at the rim, granulation, a thin white paper edge; no gloss; Abi wanted "painted bubbles" like a picture she liked, not that picture),
   made once when the look is worn (`wcPaint`, CSS `--wc0`…`--wc5`, `--wcL`, `--wcD`, `--wcG`, `--wcR`);
   Open Sans, upright, light headings; the title thin white letters with a blue glow (`gloss`, `glossText`). On the
   homepage a bloom of light, bubbles to pop (`.ae-bub`, `pop` sound) and a cluster of painted bubbles glazed over one another (`aeroBubble`, its disc), where

@@ -1476,40 +1476,49 @@
   // buttons. On the homepage a bloom of light, a few bubbles that pop when tapped (a pop and a blip), and the big bubble
   // on the right (its disc), where the intro's star lands. .ae-bg is the slot for Abi's wallpaper (a
   // Gappy fanart she has the artist's yes for): give it its image in gothic.css and add it to BG_OF to fade as you scroll.
-  // a watercolour bubble, painted for the Den (Abi, 22 October 2026: "use painted bubbles"): a pale wash, the pigment
-  // pooled darker at the rim, blooms where the water dried unevenly, a patch of bare paper for the light, the paper's
-  // grain, and a thin white paper edge so it reads on the blue (cut out, as in the picture she liked)
+  // a watercolour bubble, painted for the Den pixel by pixel (Abi, 22 October 2026: "more aesthetic, more artsy"): a
+  // wash mottled wet-in-wet, its colour drifting between two pigments, a pale patch lifted out toward the light with a
+  // crisp edge where the water stopped, pigment pooled dark at the rim, granulation, and a thin white paper edge so it
+  // reads on the blue (cut out, as in the picture Abi liked)
   function wcBubble(px, tone, seed) {
-    const WC_TONES = { pale: [178, 206, 236], light: [122, 166, 220], mid: [78, 124, 192], deep: [34, 70, 132], green: [58, 156, 100], red: [212, 78, 98] };
+    const T = { pale: [[118, 168, 226], [150, 178, 236], .5], light: [[74, 128, 204], [98, 118, 206], .66], mid: [[46, 92, 176], [70, 74, 170], .8],
+      deep: [[22, 46, 112], [38, 34, 108], .92], green: [[36, 136, 84], [50, 140, 120], .66], red: [[200, 56, 82], [196, 64, 120], .62] }[tone] || [[74, 128, 204], [98, 118, 206], .66];
+    const [P1, P2, depth] = T;
     const cv = document.createElement('canvas'); cv.width = cv.height = px;
-    const g = cv.getContext('2d'), r = mulberry(seed), R = px / 2, rr = R * .9, c = WC_TONES[tone] || WC_TONES.light;
-    const wob = Array.from({ length: 9 }, (_, i) => [r() * 6.28, (r() - .5) * (i < 3 ? .012 : .006)]);
-    const edge = (k, a) => k * rr * (1 + wob.reduce((s, [ph, am], i) => s + am * Math.sin(a * (i + 2) + ph), 0));
-    const path = k => { g.beginPath(); for (let i = 0; i <= 96; i++) { const a = i / 96 * 6.2832, e = edge(k, a); g[i ? 'lineTo' : 'moveTo'](R + Math.cos(a) * e, R + Math.sin(a) * e); } g.closePath(); };
-    const rgba = (col, a) => `rgba(${col[0]},${col[1]},${col[2]},${a})`;
-    g.fillStyle = '#fbfdff'; path(1.025); g.fill();
-    g.save(); path(1); g.clip();
-    g.fillStyle = '#ffffff'; g.fillRect(0, 0, px, px);
-    // the wash, uneven
-    g.fillStyle = rgba(c, .62); g.fillRect(0, 0, px, px);
-    for (let i = 0; i < 34; i++) {
-      const x = R + (r() - .5) * rr * 1.6, y = R + (r() - .5) * rr * 1.6, s = rr * (.2 + r() * .5), dark = r() < .55;
-      const gr = g.createRadialGradient(x, y, 0, x, y, s);
-      gr.addColorStop(0, dark ? rgba(c.map(v => v * .72), .32) : 'rgba(255,255,255,.34)'); gr.addColorStop(1, dark ? rgba(c, 0) : 'rgba(255,255,255,0)');
-      g.fillStyle = gr; g.fillRect(x - s, y - s, s * 2, s * 2);
+    const g = cv.getContext('2d'), r = mulberry(seed), R = px / 2, rr = R * .9;
+    // value noise on a seeded grid, smoothed, summed over octaves
+    const GS = 64, grid = new Float32Array(GS * GS).map(() => r());
+    const vn = (x, y) => { const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, sx = xf * xf * (3 - 2 * xf), sy = yf * yf * (3 - 2 * yf);
+      const at = (i, j) => grid[((j & 63) * GS) + (i & 63)];
+      const a = at(xi, yi) + (at(xi + 1, yi) - at(xi, yi)) * sx, b = at(xi, yi + 1) + (at(xi + 1, yi + 1) - at(xi, yi + 1)) * sx; return a + (b - a) * sy; };
+    const fbm = (x, y, o) => { let v = 0, amp = .5, f = 1, t = 0; for (let k = 0; k < o; k++) { v += amp * vn(x * f, y * f); t += amp; amp *= .5; f *= 2.03; } return v / t; };
+    const wob = Array.from({ length: 9 }, (_, i) => [r() * 6.28, (r() - .5) * (i < 3 ? .016 : .006)]);
+    const rad = a => rr * (1 + wob.reduce((s, [ph, am], i) => s + am * Math.sin(a * (i + 2) + ph), 0));
+    const la = -2.25 + (r() - .5) * .7, lx = Math.cos(la), ly = Math.sin(la), off = r() * 40, cut = .5 + r() * .08;
+    const img = g.createImageData(px, px), D = img.data, sc = 3.2 / rr;
+    for (let y = 0; y < px; y++) for (let x = 0; x < px; x++) {
+      const dx = x - R, dy = y - R, dist = Math.hypot(dx, dy), a = Math.atan2(dy, dx), e = rad(a), d = dist / e, k = (y * px + x) * 4;
+      if (d > 1.024) continue;
+      if (d > 1) { D[k] = 253; D[k + 1] = 254; D[k + 2] = 255; D[k + 3] = d > 1.016 ? Math.round(255 * (1.024 - d) / .008) : 248; continue; }
+      const nx = x * sc + off, ny = y * sc + off;
+      const m = fbm(nx, ny, 4), h = fbm(nx * .5 + 9, ny * .5 + 3, 3), grain = vn(x * .9 + off, y * .9 - off);
+      const side = (dx * lx + dy * ly) / e;              // 1 toward the light, -1 away
+      let p = depth * (.62 + .7 * (m - .5) * 1.6) * (1 - .22 * side);
+      // the lifted patch: pale inside, a crisp darker line on its edge
+      const lift = (1 - d) * .9 + side * .45 + (fbm(nx * .9 + 4, ny * .9 - 2, 3) - .5) * .32;
+      const t = Math.min(1, Math.max(0, (lift - cut + .02) / .09)), tt = t * t * (3 - 2 * t);
+      p *= 1 - tt * (.72 - .22 * m);
+      p += .12 * depth * Math.exp(-(((lift - cut + .02) / .012) ** 2));
+      // pooled at the rim, darkest in a fine line at the very edge
+      const pool = Math.max(0, (d - .8) / .2); p += pool * pool * .38 * (1.15 - .3 * side);
+      if (d > .975) p += .22;
+      p *= .86 + .28 * grain;
+      p = Math.max(0, Math.min(1, p));
+      const hh = Math.min(1, Math.max(0, (h - .3) * 1.8)), col = [0, 1, 2].map(i => P1[i] + (P2[i] - P1[i]) * hh);
+      D[k] = 253 + (col[0] - 253) * p; D[k + 1] = 254 + (col[1] - 254) * p; D[k + 2] = 255 + (col[2] - 255) * p;
+      D[k + 3] = d > .992 ? Math.round(255 * Math.min(1, .6 + (1 - d) * 50)) : 255;
     }
-    // bare paper where the light falls
-    const hx = R - rr * (.18 + r() * .2), hy = R - rr * (.1 + r() * .25), hs = rr * (.45 + r() * .2), hg = g.createRadialGradient(hx, hy, 0, hx, hy, hs);
-    hg.addColorStop(0, 'rgba(255,255,255,.9)'); hg.addColorStop(.55, 'rgba(255,255,255,.45)'); hg.addColorStop(1, 'rgba(255,255,255,0)');
-    g.fillStyle = hg; g.fillRect(0, 0, px, px);
-    // pigment pooled at the rim as it dried
-    const pg = g.createRadialGradient(R, R, rr * .6, R, R, rr * 1.02);
-    pg.addColorStop(0, rgba(c, 0)); pg.addColorStop(.6, rgba(c.map(v => v * .85), .22)); pg.addColorStop(.9, rgba(c.map(v => v * .7), .62)); pg.addColorStop(.97, rgba(c.map(v => v * .55), .9)); pg.addColorStop(1, rgba(c.map(v => v * .6), .5));
-    g.fillStyle = pg; g.fillRect(0, 0, px, px);
-    // the paper's grain
-    const n = Math.round(px * px / 14);
-    for (let i = 0; i < n; i++) { const q = r() < .5; g.fillStyle = q ? 'rgba(255,255,255,.12)' : rgba(c.map(v => v * .6), .09); g.fillRect(r() * px, r() * px, 1 + r() * 1.4, 1 + r() * 1.4); }
-    g.restore();
+    g.putImageData(img, 0, 0);
     return cv;
   }
   // the painted bubbles the page uses, made once when the look is first worn (CSS reads them as --wc0…--wc5, --wcD, --wcG, --wcR)
