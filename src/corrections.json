@@ -675,6 +675,22 @@
       "from": "C",
       "to": "AC",
       "why": "Abi: A is right too. Pr Bouziane's peritonitis slides list \"Avoidance of continuity restoration / Digestive stomas\" among the principles of surgery, which is the treatment of choice."
+    },
+    {
+      "q": "S66",
+      "confirmed": "2026-10-25",
+      "field": "answer",
+      "from": "D",
+      "to": "CD",
+      "why": "Pr Kelati's common bacterial infections lecture lists carbuncles with folliculitis and boils under II. Superficial bacterial infections (follicular); cellulitis is under III. Deep infections. Abi: correct it."
+    },
+    {
+      "q": "S136",
+      "confirmed": "2026-10-25",
+      "field": "answer",
+      "from": "BD",
+      "to": "ABD",
+      "why": "Same lecture: carbuncle is a superficial (follicular) bacterial infection, like folliculitis; impetigo is superficial non-follicular. Aligned with S66."
     }
   ]
 }
