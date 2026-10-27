@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
 require('fs').mkdirSync(OUT, { recursive: true });
-const URL = (process.env.BASE || 'http://127.0.0.1:8765') + '/index.html#intro';
+const URL = (process.env.BASE || 'http://127.0.0.1:8765') + '/index.html#pick#intro';
 let fails = 0;
 const check = (ok, what) => { console.log((ok ? 'ok   ' : 'FAIL ') + what); if (!ok) fails++; };
 const st = pg => pg.evaluate(() => ({

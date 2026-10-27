@@ -24,7 +24,7 @@ const URL = 'http://127.0.0.1:8765/index.html';
   await pg.clock.pauseAt(1000);
 
   // 1. the picker first (EFM3, then S5), then a click skips: the page lands at once, the title shows, the layers clear
-  await pg.goto(URL + '#intro', { waitUntil: 'load' });
+  await pg.goto(URL + '#pick#intro', { waitUntil: 'load' });
   await pg.clock.runFor(1200);
   console.log('picking       ', JSON.stringify(await state(pg)), 'picker:', await pg.$$eval('.pk-year', b => b.map(x => x.textContent.replace(/\s+/g, ' ').trim()).join(' | ')));
   await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800);
@@ -95,7 +95,7 @@ const URL = 'http://127.0.0.1:8765/index.html';
   const rctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
   const rp = await rctx.newPage();
   watch(rp, 'reduced');
-  await rp.goto(URL + '#intro', { waitUntil: 'load' });
+  await rp.goto(URL + '#pick#intro', { waitUntil: 'load' });
   await rp.waitForTimeout(400);
   console.log('reduced       ', JSON.stringify(await state(rp)), 'switch:', await rp.$$eval('[data-act="intro-toggle"]', b => b.length));
   await rctx.close();

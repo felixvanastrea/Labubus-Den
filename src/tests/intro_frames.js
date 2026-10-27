@@ -15,7 +15,7 @@ const TIMES = (process.env.TIMES || '0,250,500,850,1250,1650,2050,2450,2800,3000
     pg.on('console', m => { if (m.type() === 'error' && !/fonts\.googleapis|ERR_TUNNEL|Failed to load resource/.test(m.text())) errors.push(tag + ' console: ' + m.text()); });
     await pg.clock.install({ time: 0 });
     await pg.clock.pauseAt(1000);
-    await pg.goto('http://127.0.0.1:8765/index.html#intro', { waitUntil: 'load' });
+    await pg.goto('http://127.0.0.1:8765/index.html#pick#intro', { waitUntil: 'load' });
     await pg.evaluate(() => document.fonts.ready);
     await pg.clock.runFor(1200); await pg.waitForTimeout(1800);
     await pg.screenshot({ path: `${OUT}in_${tag}_pick_years.png` });

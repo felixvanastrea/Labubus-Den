@@ -10176,13 +10176,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       window.addEventListener('scroll', onMoved, { passive: true });
       t0 = performance.now();
       drawSky(0, 0, 1, true);
-      try { openPick(); } catch (e) {
-        // never stuck on the sky: without the picker, the classic star falls from the corner
-        picking = false; closePick(true);
-        hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
-        hint.textContent = 'Click anywhere to skip';
-        app.parentNode.appendChild(hint);
-      }
+      // the year and semester picker is parked (Abi, 27 October 2026: start straight with the falling star); its code stays,
+      // and window.__introPick or a URL ending in #pick#intro brings it back (the intro tests). Without it, the star falls from the corner at once
+      if (!PICKER()) fall();
+      else try { openPick(); } catch (e) { picking = false; closePick(true); fall(); }   // never stuck on the sky
       raf = requestAnimationFrame(frame);
       return true;
     }
@@ -10259,6 +10256,27 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (b.classList.contains('pk-back')) { sfx.play('untick'); stage(yearsHTML(), 'out'); return; }
       if (b.dataset.sem) fire(b);
     }
+    const PICKER = () => !!window.__introPick || /#pick#intro$/.test(location.href);
+    // the classic intro: the star leaves its corner of the sky and falls to the page
+    function fall() {
+      picking = false; fireAt = performance.now();
+      fallSounds(T_STAR / 1000);
+      skipHint();
+    }
+    function fallSounds(d) {
+      sfx.play('sparkle', d ? { delay: d } : undefined);
+      const lk = lookNow();
+      if (lk === 'blood' && flock.length) sfx.play('bats', { delay: .28 + d, quiet: true });
+      else if (lk === 'codex') sfx.play('bell', { delay: .2 + d, quiet: true });
+      else if (lk === 'klimt') sfx.play('shimmer', { delay: .15 + d, quiet: true });
+      else if (lk === 'venus' || lk === 'monet') sfx.play('surf', { delay: .1 + d, quiet: true });
+      else if (lk === 'aero') sfx.play('fizz', { delay: .1 + d, quiet: true });
+    }
+    function skipHint() {
+      hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
+      hint.textContent = (window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap' : 'Click') + ' anywhere to skip';
+      app.parentNode.appendChild(hint);
+    }
     // the chosen star leaves the sky and falls to the page
     function fire(b) {
       const r = b.querySelector('.pk-dot').getBoundingClientRect();
@@ -10266,19 +10284,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       P1 = { x: P0.x - (P0.x - P2.x) * .38, y: P2.y };
       makeMinors();
       b.classList.add('fire'); fireAt = performance.now();
-      sfx.play('sparkle');
-      const lk = lookNow();
-      if (lk === 'blood' && flock.length) sfx.play('bats', { delay: .28, quiet: true });
-      else if (lk === 'codex') sfx.play('bell', { delay: .2, quiet: true });
-      else if (lk === 'klimt') sfx.play('shimmer', { delay: .15, quiet: true });
-      else if (lk === 'venus' || lk === 'monet') sfx.play('surf', { delay: .1, quiet: true });
-      else if (lk === 'aero') sfx.play('fizz', { delay: .1, quiet: true });
+      fallSounds(0);
       usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
       picking = false;
       closePick();
-      hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');
-      hint.textContent = (window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap' : 'Click') + ' anywhere to skip';
-      app.parentNode.appendChild(hint);
+      skipHint();
       t0 = performance.now() - T_STAR;   // the story starts as the star leaves
     }
     return { play, skip, active: () => on, picking: () => picking };
@@ -10610,7 +10620,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (dh && acct.member()) { S.view = 'duel'; S.duelId = dh; }
     else if (dh) setTimeout(() => openDuel(dh), 400);
     // the opening animation plays when the site opens on the home page (not for automated page captures)
-    const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || location.hash === '#intro');
+    const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || /#intro$/.test(location.hash));
     titleHold = opening;
     skyclock.start();
     render(false);

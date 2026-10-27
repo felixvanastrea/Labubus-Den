@@ -43,6 +43,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   a year its `sems`). While picking, only Escape, a real scroll or swipe, or "Skip the intro" skip it; once the star
   falls, any tap or key. Home page only; the footer has an on/off switch and "replay". It skips itself in automated
   browsers unless the URL ends in `#intro`. If the picker fails to build, the classic star falls from the corner.
+  Since 27 October 2026 the picker is parked (Abi: start straight with the falling star): `PICKER()` is false, so the
+  star falls from the corner of the sky at once (`fall`, with the theme's sounds and the skip hint) and the themes' moons
+  and paintings play as before. Its code stays; `window.__introPick` or a URL ending in `#pick#intro` brings it back
+  (intro_pick.js, intro_controls.js, intro_frames.js and looks.js use that; intro_star.js tests the plain opening).
 - A theme switcher (gothic + the original "classic" answer-sheet look) was started and parked at Abi's request.
   The work is in `src/wip_themes/` if she asks for it again.
 
@@ -659,7 +663,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local fonts
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
-node intro_controls.js; node intro_frames.js; node intro_pick.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
+node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
 node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```

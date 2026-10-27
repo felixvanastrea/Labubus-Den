@@ -60,7 +60,7 @@ async function context(b, size, user, docs) {
   check(navBg === 'rgb(16, 8, 9)' && /Grenze Gotisch/.test(h2f), 'Blood moon: the crimson night, blackletter headings: ' + navBg);
 
   // a new visit keeps it (from the account, before Firebase wakes up too); the intro with the moon and the bats
-  await p.goto('about:blank'); await p.goto(URL + '#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
+  await p.goto('about:blank'); await p.goto(URL + '#pick#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
   check(await look(p) === 'blood' && !!(await p.$('.pick')), 'next visit: still the blood moon, intro playing');
   await p.screenshot({ path: OUT + 'look_intro_pick.png' });
   await p.click('.pk-year.on'); await p.waitForTimeout(900);
@@ -80,7 +80,7 @@ async function context(b, size, user, docs) {
   check(await look(p) === 'codex' && await p.evaluate(() => window.__fb.docs['users/u9'].look) === 'codex' && !!(await p.$('.bm-codex .bm-img')) && !!(await p.$('.masthead .cx-strip .cx-snail')) && !!(await p.$('.cx-motto')) && !(await p.$('.bm-land')) && await p.evaluate(() => getComputedStyle(document.querySelector('.quest-plate')).clipPath.startsWith('polygon')), 'Codex: the halo, the folio with its motto and snail, parchment leaves with deckled edges, saved');
   await p.click('[data-acct="close"]'); await p.waitForTimeout(400);
   await p.screenshot({ path: OUT + 'look_codex_home.png' });
-  await p.goto('about:blank'); await p.goto(URL + '#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
+  await p.goto('about:blank'); await p.goto(URL + '#pick#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
   await p.screenshot({ path: OUT + 'look_codex_pick.png' });
   await p.click('.pk-year.on'); await p.waitForTimeout(900); await p.click('.pk-sem.on');
   await wait(1200); await p.screenshot({ path: OUT + 'look_codex_fall.png' });
@@ -109,7 +109,7 @@ async function context(b, size, user, docs) {
   await p.screenshot({ path: OUT + 'look_klimt_home.png' });
   await p.evaluate(() => window.scrollTo(0, innerHeight * 1.2)); await p.waitForTimeout(300);
   check(await p.evaluate(() => +getComputedStyle(document.querySelector('.km-bg')).opacity) < .4, 'scrolled into the page, the painting is a watermark');
-  await p.goto('about:blank'); await p.goto(URL + '#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
+  await p.goto('about:blank'); await p.goto(URL + '#pick#intro', { waitUntil: 'load' }); await p.waitForTimeout(1300);
   check(!!(await p.$('.pick')) && await p.evaluate(() => getComputedStyle(document.querySelector('.pk-t')).color) !== 'rgb(43, 30, 14)', 'the intro picker keeps the night\'s colours on a light theme');
   await p.click('.pk-year.on'); await p.waitForTimeout(900); await p.click('.pk-sem.on');
   await wait(1200); await p.screenshot({ path: OUT + 'look_klimt_fall.png' });
