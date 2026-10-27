@@ -60,6 +60,26 @@
     "comm-clinical": {
       "title": "Clinical communication (Pr Fourtassi)",
       "added": "2026-10-17"
+    },
+    "derm-acne": {
+      "title": "Acne vulgaris (Pr Kelati)",
+      "added": "2026-10-27"
+    },
+    "derm-bacterial": {
+      "title": "Common bacterial infections (Pr Kelati)",
+      "added": "2026-10-27"
+    },
+    "derm-tb": {
+      "title": "Cutaneous tuberculosis (Pr Kelati)",
+      "added": "2026-10-27"
+    },
+    "derm-eczema": {
+      "title": "Eczema (Pr Kelati)",
+      "added": "2026-10-27"
+    },
+    "derm-urticaria": {
+      "title": "Urticaria (Pr Kelati)",
+      "added": "2026-10-27"
     }
   },
   "questions": {
@@ -1827,6 +1847,706 @@
       "B": "It asks nothing.",
       "C": "Sympathy is feeling sorry for; this acknowledges their fear.",
       "D": "Naming and accepting the fear is emotional validation."
+    },
+    "S14": {
+      "lecture": "derm-acne",
+      "A": "Yes: papules are among acne's inflammatory lesions (papules, pustules, nodules).",
+      "B": "Yes: open comedones (blackheads) are its non-inflammatory lesions.",
+      "C": "No: there are no vesicles in acne. Vesicles belong to eczema or herpes.",
+      "D": "Yes: closed comedones (whiteheads, microcysts) are its non-inflammatory lesions."
+    },
+    "S58": {
+      "lecture": "derm-acne",
+      "A": "No: pustules are inflammatory lesions that come later, not the first ones.",
+      "B": "Yes: the first lesions are retentional, the comedones; blackheads are open comedones.",
+      "C": "No: papules are inflammatory and follow the comedones. The word to watch is initial.",
+      "D": "Yes: microcysts (closed comedones, whiteheads) come first, right after the invisible microcomedone."
+    },
+    "S129": {
+      "lecture": "derm-acne",
+      "A": "No: pustules are inflammatory lesions that follow the comedones.",
+      "B": "Yes: whiteheads (closed comedones, microcysts) are among the first visible lesions.",
+      "C": "Yes: blackheads (open comedones) are among the first visible lesions.",
+      "D": "No: papules are inflammatory and come after the comedones."
+    },
+    "S75": {
+      "lecture": "derm-acne",
+      "A": "No: acne is a disease of the pilosebaceous follicle, not of the eccrine sweat gland.",
+      "B": "Yes: excess sebum (hyperseborrhea, driven by androgens) is the first mechanism.",
+      "C": "Yes: hyperkeratinization plugs the follicle and forms the comedone.",
+      "D": "No: the bacterium is Cutibacterium (Propionibacterium) acnes, not Malassezia, which is a yeast."
+    },
+    "S109": {
+      "lecture": "derm-acne",
+      "A": "Yes: Propionibacterium (Cutibacterium) acnes thrives in the excess sebum and drives the inflammation.",
+      "B": "Yes: hyperkeratinization of the infundibulum plugs the follicle.",
+      "C": "Yes: sebaceous hypersecretion (hyperseborrhea) is the first mechanism.",
+      "D": "No: vasomotor disorder is the mechanism of rosacea, not acne."
+    },
+    "S131": {
+      "lecture": "derm-acne",
+      "A": "Yes: hyperkeratinization of the pilosebaceous duct plugs the follicle.",
+      "B": "Yes: hyperseborrhea, driven by androgens, starts it all.",
+      "C": "No: acne isn't an IgE-mediated allergy.",
+      "D": "No: Malassezia is a yeast; the bacterium in acne is Cutibacterium acnes."
+    },
+    "S151": {
+      "lecture": "derm-acne",
+      "A": "Involved: a family history of acne raises the risk.",
+      "B": "Involved: the keratinization disorder plugs the follicle.",
+      "C": "Involved: stress can make acne worse.",
+      "D": "Involved: androgens stimulate the sebaceous glands.",
+      "E": "The odd one out: the sun's effect is contradictory on the slides, sometimes better, sometimes worse."
+    },
+    "S153": {
+      "lecture": "derm-acne",
+      "A": "Yes: Cutibacterium (Propionibacterium) acnes drives the inflammation.",
+      "B": "No: Staphylococcus aureus causes folliculitis and boils, not acne.",
+      "C": "Yes: the keratinization disorder plugs the follicle.",
+      "D": "Yes: hyperseborrhea is the first mechanism.",
+      "E": "No: hypersudation (sweating) isn't one of acne's mechanisms."
+    },
+    "S162": {
+      "lecture": "derm-acne",
+      "A": "Yes: hyperkeratinization of the pilosebaceous canal plugs the follicle.",
+      "B": "Yes: hyperseborrhea, driven by androgens, is the first mechanism.",
+      "C": "Yes: Propionibacterium acnes proliferates in the excess sebum and inflames the follicle.",
+      "D": "No: the eccrine sweat gland isn't involved; acne is a disease of the pilosebaceous follicle.",
+      "E": "No: acne isn't an IgE-mediated allergy."
+    },
+    "S15": {
+      "lecture": "derm-acne",
+      "A": "No: poor hygiene doesn't cause or worsen acne; blackheads are oxidised sebum and keratin, not dirt.",
+      "B": "Yes: stress can make acne worse.",
+      "C": "Yes: fluctuating androgens (and PCOS) worsen acne.",
+      "D": "Yes: occlusive cosmetics clog the follicles."
+    },
+    "S101": {
+      "lecture": "derm-acne",
+      "A": "No: eating meat isn't among the factors; the diets on the slides are high glycemic load and high-fat foods.",
+      "B": "Yes: fluctuations in androgen levels are a risk factor.",
+      "C": "Yes: stress can make acne worse.",
+      "D": "Yes: a high glycemic load diet is a risk factor."
+    },
+    "S158": {
+      "lecture": "derm-acne",
+      "A": "Yes: stress can make acne worse.",
+      "B": "Yes: dairy products are linked to acne in studies (not on the slides, which name high glycemic and fatty diets).",
+      "C": "Yes: smoking is on the list of risk factors.",
+      "D": "No: a high-protein diet isn't one of the factors.",
+      "E": "Yes: hormonal imbalances (androgens, PCOS) promote acne."
+    },
+    "S161": {
+      "lecture": "derm-acne",
+      "A": "Yes: some cosmetics clog the follicles.",
+      "B": "Yes: high glycemic and high-fat diets are risk factors.",
+      "C": "Yes: stress can make acne worse.",
+      "D": "Yes: androgen fluctuations and PCOS cause acne in women.",
+      "E": "Yes: corticosteroids are among the drugs that trigger acne."
+    },
+    "S164": {
+      "lecture": "derm-acne",
+      "A": "Yes: unsuitable (comedogenic) cosmetics clog the follicles.",
+      "B": "Yes: some drugs, corticosteroids above all, trigger acne.",
+      "C": "Yes: smoking is on the list of risk factors.",
+      "D": "No: screens don't give off ultraviolet light, and they don't cause acne.",
+      "E": "Yes: stress can make acne worse."
+    },
+    "S61": {
+      "lecture": "derm-acne",
+      "A": "No: the aim isn't to open inflammatory lesions; squeezing is advised against.",
+      "B": "No: the aim is the opposite, to unclog the follicle and remove the sebum retention.",
+      "C": "Yes: reducing the inflammation is one of the three goals.",
+      "D": "Yes: reducing seborrhea is one of the three goals."
+    },
+    "S99": {
+      "lecture": "derm-acne",
+      "A": "No: juvenile acne is polymorphic, a mix of blackheads, whiteheads and red spots, not mainly inflammatory.",
+      "B": "No: it's the acne of puberty and adolescence; acne in a young child points to a hormonal cause.",
+      "C": "Yes: the skin is often oily, with dilated pores.",
+      "D": "Yes: it's the most frequent form, at puberty."
+    },
+    "S100": {
+      "lecture": "derm-acne",
+      "A": "Yes: blackheads and whiteheads are the lesions of retentional acne.",
+      "B": "Yes: rosacea has no comedones or microcysts, so comedones point to acne.",
+      "C": "Yes: retentional acne is early acne.",
+      "D": "No: inflammatory acne has papules and pustules plus some retentional lesions."
+    },
+    "S146": {
+      "lecture": "derm-acne",
+      "A": "No: comedones are retentional (non-inflammatory) lesions.",
+      "B": "Yes: pustules are superficial inflammatory lesions.",
+      "C": "Yes: nodules are the deep inflammatory lesions.",
+      "D": "No: microcysts are retentional lesions (closed comedones).",
+      "E": "Yes: red papules are superficial inflammatory lesions."
+    },
+    "S147": {
+      "lecture": "derm-acne",
+      "A": "No: neonatal acne needs no workup; it comes from maternal hormones and fades by itself.",
+      "B": "Yes: neonatal acne resolves spontaneously within a few weeks, so no treatment.",
+      "C": "No: it clears by itself, so no antibiotics.",
+      "D": "Yes: reassure the mother that it goes away on its own.",
+      "E": "No: no treatment is needed."
+    },
+    "S148": {
+      "lecture": "derm-acne",
+      "A": "No: folliculitis gives pustules centred by a hair, with no comedones and no link to oils.",
+      "B": "No: a mechanic with lesions on the trunk and thighs, where oily clothes rub, points to an occupational cause.",
+      "C": "Yes: oily clothes from work give acne on the covered areas (trunk, thighs): mineral oil acne.",
+      "D": "No: acne conglobata is a severe nodular form with abscesses and scars.",
+      "E": "No: Demodex folliculitis is mainly on the face."
+    },
+    "S149": {
+      "lecture": "derm-acne",
+      "A": "Yes: blackheads are retentional lesions.",
+      "B": "Yes: microcysts (whiteheads) are retentional lesions.",
+      "C": "No: papules and pustules are inflammatory lesions.",
+      "D": "No: nodules are deep inflammatory lesions.",
+      "E": "No: scars are a consequence of inflammatory lesions, not a retention lesion."
+    },
+    "S150": {
+      "lecture": "derm-acne",
+      "A": "No: acne at 3 years isn't normal, so reassurance would miss the cause.",
+      "B": "No: look for the cause before treating.",
+      "C": "Yes: acne in a young child points to a virilizing adrenal tumour, so image the adrenals.",
+      "D": "No: extraction treats nothing and misses the cause.",
+      "E": "No: diet doesn't explain acne at 3 years."
+    },
+    "S152": {
+      "lecture": "derm-acne",
+      "A": "Yes: acne conglobata (nodulocystic) is a severe form.",
+      "B": "Yes: acne fulminans is the rare, acute, ulcerating and haemorrhagic severe form.",
+      "C": "No: inflammatory acne (papules, pustules) isn't one of the severe forms.",
+      "D": "No: juvenile acne is the common form of puberty.",
+      "E": "No: retentional acne is early, mild acne."
+    },
+    "S154": {
+      "lecture": "derm-acne",
+      "A": "No: maternal hormones cause neonatal acne in the first weeks, not at 4 years.",
+      "B": "No: juvenile acne starts at puberty, not at 4 years.",
+      "C": "Yes: acne in a young child points to a virilizing (adrenal) tumour.",
+      "D": "No: atopic dermatitis gives itchy eczema, not comedones.",
+      "E": "No: impetigo gives honey-coloured crusts, not comedones."
+    },
+    "S155": {
+      "lecture": "derm-acne",
+      "A": "Yes: acne conglobata (nodulocystic) is a severe form.",
+      "B": "Yes: acne fulminans is the rare acute severe form.",
+      "C": "No: inflammatory acne isn't one of the severe forms.",
+      "D": "No: juvenile acne is the common form of puberty.",
+      "E": "No: retentional acne is early, mild acne."
+    },
+    "S156": {
+      "lecture": "derm-acne",
+      "A": "No: comedones are retentional (non-inflammatory) lesions.",
+      "B": "Yes: pustules are superficial inflammatory lesions.",
+      "C": "Yes: nodules are the deep inflammatory lesions.",
+      "D": "No: microcysts are retentional lesions (closed comedones).",
+      "E": "Yes: red papules are superficial inflammatory lesions."
+    },
+    "S159": {
+      "lecture": "derm-acne",
+      "A": "No: microcysts are retentional lesions.",
+      "B": "No: there are no vesicles in acne.",
+      "C": "Yes: papules are one of the two superficial inflammatory lesions.",
+      "D": "Yes: pustules are the other superficial inflammatory lesion.",
+      "E": "No: seborrhea is the oily background, not an inflammatory lesion."
+    },
+    "S160": {
+      "lecture": "derm-acne",
+      "A": "No: juvenile acne is the common form of puberty.",
+      "B": "Yes: acne conglobata (nodulocystic) is a severe form.",
+      "C": "Yes: acne fulminans is the rare acute severe form.",
+      "D": "No: retentional acne is early, mild acne.",
+      "E": "No: mixed acne is juvenile acne, not a severe form."
+    },
+    "S163": {
+      "lecture": "derm-acne",
+      "A": "No: NSAIDs aren't an acne treatment.",
+      "B": "Yes: oral isotretinoin is the treatment of severe acne (by the dermatologist).",
+      "C": "Yes: oral antibiotics (lymecycline, doxycycline) for moderate inflammatory acne, 3 months at most.",
+      "D": "Yes: benzoyl peroxide kills C. acnes and helps unclog the pores.",
+      "E": "No: corticosteroids trigger acne; they don't treat it."
+    },
+    "S165": {
+      "lecture": "derm-acne",
+      "A": "Yes: acne in children is one of the subtypes (neonatal, or from an adrenal tumour).",
+      "B": "Yes: retentional acne, early acne.",
+      "C": "Yes: inflammatory acne, papules and pustules.",
+      "D": "Yes: nodular acne and acne conglobata are the severe forms.",
+      "E": "Yes: acne fulminans is the rare acute severe form."
+    },
+    "S166": {
+      "lecture": "derm-acne",
+      "A": "No: benzoyl peroxide targets C. acnes and inflammation; retentional acne calls for a retinoid.",
+      "B": "Yes: retentional acne is treated with a topical retinoid, vitamin A acid (tretinoin).",
+      "C": "No: antibiotics are for inflammatory acne, not retentional acne.",
+      "D": "No: urea isn't an acne treatment.",
+      "E": "No: corticosteroids worsen acne."
+    },
+    "S244": {
+      "lecture": "derm-acne",
+      "A": "Yes: that's the definition, a chronic inflammatory disease of the pilosebaceous follicle.",
+      "B": "No: it isn't contagious; C. acnes normally lives on the skin.",
+      "C": "No: it mainly affects adolescents and young adults; adult forms (persistent or late-onset) are the minority.",
+      "D": "Yes: it carries real physical and psychological morbidity (scars, poor self-image, anxiety, depression).",
+      "E": "No: it can leave permanent scars, especially severe, long-lasting acne."
+    },
+    "S8": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: impetigo is a common superficial bacterial infection.",
+      "B": "No: syphilis is a sexually transmitted infection, with its own lecture.",
+      "C": "Yes: erysipelas is a common deep bacterial infection.",
+      "D": "No: tuberculosis is a mycobacterial infection, with its own lecture."
+    },
+    "S66": {
+      "lecture": "derm-bacterial",
+      "A": "No: leishmaniasis is a parasite, not a bacterium.",
+      "B": "No: cellulitis is a deep infection (dermo-hypodermatitis).",
+      "C": "Yes: carbuncles are follicular infections, which the lecture classes as superficial.",
+      "D": "Yes: impetigo is a superficial, non-follicular infection of the epidermis."
+    },
+    "S136": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: carbuncles are follicular infections, classed as superficial.",
+      "B": "Yes: folliculitis is a superficial follicular infection.",
+      "C": "No: leishmaniasis is a parasite, not a bacterium.",
+      "D": "Yes: impetigo is a superficial non-follicular infection."
+    },
+    "S88": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: it's an acute dermo-hypodermatitis.",
+      "B": "Yes: it's non-necrotizing; necrosis is a sign of severity.",
+      "C": "Yes: it's usually due to beta-haemolytic group A streptococcus.",
+      "D": "No: it's acute, of sudden onset with fever and chills."
+    },
+    "S124": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: it's an acute non-necrotizing dermo-hypodermatitis.",
+      "B": "No: it's usually group A streptococcus, not S. aureus.",
+      "C": "Yes: necrotizing fasciitis is one of its local complications.",
+      "D": "No: NSAIDs are to be avoided; they favour necrotizing forms."
+    },
+    "S6": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: skin necrosis is a local sign of severity.",
+      "B": "No: white scales aren't a sign of erysipelas.",
+      "C": "Yes: sensory disorders (hypo- or anaesthesia) are a local sign of severity.",
+      "D": "No: gums belong to syphilis and tuberculosis."
+    },
+    "S119": {
+      "lecture": "derm-bacterial",
+      "A": "No: headache isn't one of the signs of severity.",
+      "B": "No: fever is part of ordinary erysipelas; only 39 °C or more with chills counts as severe.",
+      "C": "Yes: subcutaneous crepitus (emphysema) means gas-forming germs: severe.",
+      "D": "Yes: sensory disorders (hypo- or anaesthesia) are a sign of severity."
+    },
+    "S47": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: it involves the epidermis.",
+      "B": "Yes: it's highly contagious, with small epidemics in schools and nurseries.",
+      "C": "No: it's bacterial (S. aureus, streptococcus), not fungal.",
+      "D": "Yes: it's a superficial bacterial infection."
+    },
+    "S105": {
+      "lecture": "derm-bacterial",
+      "A": "No: it's most common in children under 10.",
+      "B": "Yes: blisters that ooze and dry into honey-coloured (melicerous) crusts.",
+      "C": "No: it's S. aureus and streptococcus, not Pseudomonas.",
+      "D": "Yes: it's typically periorificial."
+    },
+    "S176": {
+      "lecture": "derm-bacterial",
+      "A": "No: impetigo is a non-follicular infection.",
+      "B": "No: it's most common in children under 10.",
+      "C": "Yes: it's typically periorificial.",
+      "D": "Yes: streptococcal impetigo can be followed by post-streptococcal glomerulonephritis.",
+      "E": "No: regional lymph nodes in 90%, but no general signs, so no fever."
+    },
+    "S45": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: a furuncle is a deep infection of the hair follicle.",
+      "B": "Yes: it's a deep necrotizing folliculitis due to S. aureus.",
+      "C": "No: it's a follicular infection.",
+      "D": "No: it's due to S. aureus."
+    },
+    "S175": {
+      "lecture": "derm-bacterial",
+      "A": "No: a furuncle is deeper than folliculitis.",
+      "B": "Yes: squeezing a facial boil risks malignant staphylococcal disease of the face.",
+      "C": "Yes: it evolves toward necrosis and elimination of the follicle (the core).",
+      "D": "No: many rupture and drain by themselves; incision is for carbuncles and larger furuncles.",
+      "E": "No: it's caused by S. aureus."
+    },
+    "S28": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: that's the definition.",
+      "B": "No: it's the hair follicle, not the sebaceous gland.",
+      "C": "Yes: pustules centred by a hair.",
+      "D": "No: it's a bacterial infection; acne is a separate disease."
+    },
+    "S44": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: topical antibiotics (fusidic acid, mupirocin) when lesions are few (under 5).",
+      "B": "No: corticosteroids don't treat a bacterial infection.",
+      "C": "Yes: oral antibiotics when it's widespread (over 5 lesions), with fever or lymph nodes.",
+      "D": "No: it's bacterial, so antifungals don't help."
+    },
+    "S114": {
+      "lecture": "derm-bacterial",
+      "A": "No: cellulitis doesn't follow squeezing a boil, and isn't the facial emergency here.",
+      "B": "Yes: squeezing a facial furuncle can cause malignant staphylococcal disease of the face (septic thrombophlebitis).",
+      "C": "No: angioedema has no fever and no infected boil.",
+      "D": "No: erysipelas is streptococcal, without a manipulated boil."
+    },
+    "S173": {
+      "lecture": "derm-bacterial",
+      "A": "No: molluscum gives small pearly umbilicated papules.",
+      "B": "No: a wart is a slow keratotic papule, not an acute lesion.",
+      "C": "No: herpes gives grouped vesicles, often recurrent.",
+      "D": "Yes: a child, an acute periorificial crusted lesion, no fever: impetigo.",
+      "E": "No: a boil is a painful red nodule centred by a hair."
+    },
+    "S174": {
+      "lecture": "derm-bacterial",
+      "A": "Do it: local antiseptic care is part of the treatment.",
+      "B": "Avoid: picking or manipulating spreads it (it self-inoculates).",
+      "C": "Do it: compresses help remove the crusts.",
+      "D": "Avoid: a localized lesion needs local treatment; oral antibiotics are for widespread disease.",
+      "E": "Do it: topical antibiotics (fusidic acid, mupirocin) are the treatment of choice."
+    },
+    "S42": {
+      "lecture": "derm-tb",
+      "A": "Yes: a real public health problem in Morocco.",
+      "B": "Yes: gums and scrofulodermas are 73% of cases.",
+      "C": "Yes: its lipid-rich wall makes it resistant to many antiseptics and antibiotics.",
+      "D": "No: it's hard to stain with Gram; Ziehl-Neelsen stains it red."
+    },
+    "S52": {
+      "lecture": "derm-tb",
+      "A": "Yes: a real public health problem in Morocco.",
+      "B": "No: it's due to Mycobacterium tuberculosis (Koch's bacillus).",
+      "C": "Yes: it's an infectious, contagious disease.",
+      "D": "No: it's known for its clinical polymorphism."
+    },
+    "S130": {
+      "lecture": "derm-tb",
+      "A": "No: it's uncommon, 5th among extrapulmonary forms in Morocco.",
+      "B": "Yes: it's infectious and contagious.",
+      "C": "Yes: a real public health problem.",
+      "D": "No: it's due to Mycobacterium tuberculosis."
+    },
+    "S182": {
+      "lecture": "derm-tb",
+      "A": "Yes: Mycobacterium tuberculosis, Koch's bacillus.",
+      "B": "Yes: it's known for its anatomo-clinical polymorphism.",
+      "C": "No: it ranks 5th among extrapulmonary forms in Morocco.",
+      "D": "Yes: a real public health problem.",
+      "E": "No: the clinical suspicion must be confirmed by bacteriology and histology."
+    },
+    "S87": {
+      "lecture": "derm-tb",
+      "A": "Yes: promiscuity (crowding) is an environmental factor.",
+      "B": "No: cold and humidity are the factors, not heat.",
+      "C": "Yes: immunosuppression (HIV) is an endogenous factor.",
+      "D": "No: poor hygiene is the factor."
+    },
+    "S68": {
+      "lecture": "derm-tb",
+      "A": "Yes: PCR helps in paucibacillary forms (high specificity, low sensitivity).",
+      "B": "No: the granuloma has central caseous necrosis; that's what suggests tuberculosis.",
+      "C": "Yes: direct examination (Ziehl) and culture (Löwenstein-Jensen) are the bacteriological diagnosis.",
+      "D": "No: serology isn't a diagnostic tool for tuberculosis."
+    },
+    "S183": {
+      "lecture": "derm-tb",
+      "A": "Yes: direct examination (Ziehl) and culture (Löwenstein-Jensen).",
+      "B": "No: the granuloma has central caseous necrosis.",
+      "C": "Yes: the tuberculin skin test is one of the tools, though a negative one doesn't rule tuberculosis out.",
+      "D": "Yes: PCR helps in paucibacillary forms.",
+      "E": "No: serology isn't a diagnostic tool for tuberculosis."
+    },
+    "S25": {
+      "lecture": "derm-tb",
+      "A": "Yes: gums are the lesion of tertiary syphilis.",
+      "B": "Yes: tuberculous gums are, with scrofuloderma, the most common forms in Morocco.",
+      "C": "No: primary syphilis is the chancre.",
+      "D": "No: herpes gives vesicles."
+    },
+    "S106": {
+      "lecture": "derm-tb",
+      "A": "Yes: few bacilli, so culture is often negative.",
+      "B": "No: immunity is strong, so the tuberculin test is strongly positive.",
+      "C": "Yes: they occur in subjects with good immunity (lupus vulgaris, verrucous tuberculosis, tuberculids).",
+      "D": "No: the most frequent in Morocco are gums and scrofulodermas, multibacillary forms."
+    },
+    "S177": {
+      "lecture": "derm-tb",
+      "A": "No: the chancre is exogenous inoculation.",
+      "B": "No: verrucous tuberculosis is exogenous re-inoculation.",
+      "C": "Yes: scrofuloderma spreads by contiguity from a lymph node or bone.",
+      "D": "No: miliary tuberculosis is haematogenous.",
+      "E": "Yes: periorificial tuberculosis is auto-inoculation from an internal focus."
+    },
+    "S178": {
+      "lecture": "derm-tb",
+      "A": "No: lupus vulgaris isn't the most common form in Morocco.",
+      "B": "No: verrucous tuberculosis isn't the most common.",
+      "C": "No: tuberculids aren't the most common.",
+      "D": "Yes: gums and scrofulodermas are 73% of cases.",
+      "E": "No: periorificial tuberculosis is rarer."
+    },
+    "S179": {
+      "lecture": "derm-tb",
+      "A": "No: the chancre is exogenous inoculation.",
+      "B": "No: verrucous tuberculosis is exogenous re-inoculation.",
+      "C": "Yes: scrofuloderma spreads by contiguity from a lymph node or bone.",
+      "D": "No: miliary tuberculosis is haematogenous.",
+      "E": "Yes: periorificial tuberculosis is auto-inoculation from an internal focus."
+    },
+    "S180": {
+      "lecture": "derm-tb",
+      "A": "No: gums are haematogenous nodules, not fistulized lymph nodes.",
+      "B": "Yes: fever, weight loss and a cervical lymph node fistulizing to the skin: scrofuloderma.",
+      "C": "No: a fistula is a feature, not a diagnosis.",
+      "D": "No: fissures aren't the lesion here.",
+      "E": "No: lupus vulgaris gives lupoma plaques on the face."
+    },
+    "S181": {
+      "lecture": "derm-tb",
+      "A": "No: anthrax (carbuncle) is acute and painful, not 4 months long.",
+      "B": "No: a boil is acute, healing in 5 to 10 days.",
+      "C": "No: syphilitic gumma is possible, but at 14 in Morocco tuberculosis is far more likely.",
+      "D": "Yes: a slow nodule over months that softens, necroses and fistulizes: tuberculous gumma.",
+      "E": "No: leishmaniasis gives an ulcero-crusted lesion, not a fistulized nodule."
+    },
+    "S184": {
+      "lecture": "derm-tb",
+      "A": "Yes: scrofuloderma is multibacillary.",
+      "B": "Yes: periorificial tuberculosis is multibacillary.",
+      "C": "Yes: tuberculous gumma is multibacillary.",
+      "D": "Yes: the chancre, in a subject never exposed, is multibacillary.",
+      "E": "No: lichen scrofulosorum is a tuberculid, paucibacillary."
+    },
+    "S13": {
+      "lecture": "derm-eczema",
+      "A": "Yes: 10 to 20% of cases persist into adulthood, and up to 10% of adults have it.",
+      "B": "No: it comes from immune dysregulation, a weak skin barrier and the environment, not bacteria.",
+      "C": "Yes: atopic dermatitis is the most common form of eczema.",
+      "D": "Yes: dry, itchy, inflamed skin."
+    },
+    "S64": {
+      "lecture": "derm-eczema",
+      "A": "No: it mainly affects children.",
+      "B": "Yes: it's the most common form of eczema.",
+      "C": "No: it's a chronic disease with flares and remissions.",
+      "D": "Yes: it's a chronic relapsing inflammatory skin disease."
+    },
+    "S134": {
+      "lecture": "derm-eczema",
+      "A": "Yes: a chronic relapsing inflammatory skin disease.",
+      "B": "Yes: the most common form of eczema.",
+      "C": "Yes: eczema is often the first sign of atopy (before asthma, rhinitis).",
+      "D": "No: it's chronic, with flares."
+    },
+    "S23": {
+      "lecture": "derm-eczema",
+      "A": "No: gums belong to syphilis and tuberculosis.",
+      "B": "No: eczema doesn't ulcerate deeply.",
+      "C": "Yes: dry skin.",
+      "D": "Yes: itchy, inflamed skin."
+    },
+    "S62": {
+      "lecture": "derm-eczema",
+      "A": "No: it affects people of any age.",
+      "B": "No: it isn't exceptional in older people.",
+      "C": "Yes: any age.",
+      "D": "Yes: dry, itchy, inflamed skin."
+    },
+    "S135": {
+      "lecture": "derm-eczema",
+      "A": "No: any age, mainly children.",
+      "B": "Yes: dry, itchy, inflamed skin.",
+      "C": "No: no deep ulcerations.",
+      "D": "Yes: any age."
+    },
+    "S51": {
+      "lecture": "derm-eczema",
+      "A": "No: lesions sit where the allergen touched the skin.",
+      "B": "No: it's a type IV (delayed) hypersensitivity.",
+      "C": "Yes: patch testing is the gold standard.",
+      "D": "Yes: red itchy skin where the allergen touched."
+    },
+    "S94": {
+      "lecture": "derm-eczema",
+      "A": "No: it's a type IV (delayed) hypersensitivity.",
+      "B": "No: lesions sit where the allergen touched the skin.",
+      "C": "Yes: red itchy skin where the allergen touched.",
+      "D": "Yes: patch testing is the gold standard."
+    },
+    "S107": {
+      "lecture": "derm-eczema",
+      "A": "Yes: the patch test is the gold standard.",
+      "B": "No: specific IgE is for immediate (type I) allergy.",
+      "C": "No: the prick test is for immediate allergy (contact urticaria).",
+      "D": "No: a biopsy shows eczema but not which allergen."
+    },
+    "S108": {
+      "lecture": "derm-eczema",
+      "A": "No: type III is immune complexes.",
+      "B": "No: type II is cytotoxic.",
+      "C": "Yes: allergic contact dermatitis is type IV, delayed and cell-mediated.",
+      "D": "No: immediate IgE allergy gives urticaria, not eczema."
+    },
+    "S60": {
+      "lecture": "derm-eczema",
+      "A": "No: the skin barrier is weakened (filaggrin mutations).",
+      "B": "Yes: a complex interaction of immune dysregulation, gene mutations and environment.",
+      "C": "Yes: flares are triggered by environmental factors (stress, heat, sweat, allergens, irritants).",
+      "D": "No: not immune dysregulation alone; the barrier and the environment count too."
+    },
+    "S55": {
+      "lecture": "derm-eczema",
+      "A": "Yes: identify and limit exposure to triggers.",
+      "B": "No: it's chronic and relapsing; the aim is control, not a definitive cure.",
+      "C": "No: antifungals treat fungal infections; first line is topical corticosteroids.",
+      "D": "Yes: reducing the inflammation is the first goal."
+    },
+    "S113": {
+      "lecture": "derm-eczema",
+      "A": "No: lichen planus gives purple polygonal papules.",
+      "B": "No: psoriasis sits on the extensor surfaces (outer elbows, knees).",
+      "C": "Yes: a child, itchy lesions in the elbow and knee creases since age 2, lichenified: atopic dermatitis.",
+      "D": "No: seborrheic dermatitis is in the scalp and the face's oily areas."
+    },
+    "S137": {
+      "lecture": "derm-eczema",
+      "A": "No: atopic dermatitis isn't triggered by one contact.",
+      "B": "No: impetigo gives honey-coloured crusts.",
+      "C": "Yes: itchy vesicles exactly where metal earrings touched: contact eczema (nickel).",
+      "D": "No: psoriasis gives scaly plaques.",
+      "E": "No: a fungal infection gives a ring with a scaly edge."
+    },
+    "S138": {
+      "lecture": "derm-eczema",
+      "A": "No: natural henna rarely sensitizes.",
+      "B": "Yes: black henna is mixed with PPD (paraphenylenediamine), a strong contact allergen.",
+      "C": "No: lice are in the scalp, not the hands.",
+      "D": "No: ringworm isn't tied to the wedding henna.",
+      "E": "No: scabies gives burrows, and the family itches too."
+    },
+    "S139": {
+      "lecture": "derm-eczema",
+      "A": "Yes: the first phase is erythematous.",
+      "B": "Yes: then vesicles.",
+      "C": "No: there's no nodular phase.",
+      "D": "Yes: the vesicles burst and ooze.",
+      "E": "Yes: it ends with desquamation."
+    },
+    "S140": {
+      "lecture": "derm-eczema",
+      "A": "Yes: a metal; metals are among the usual contact allergens.",
+      "B": "Yes: chromium (cement, leather) is a classic allergen.",
+      "C": "Yes: nickel is the most common one.",
+      "D": "Yes: a metal.",
+      "E": "No: latex mainly gives contact urticaria (immediate, IgE), not eczema."
+    },
+    "S141": {
+      "lecture": "derm-eczema",
+      "A": "Yes: it's a delayed, cell-mediated hypersensitivity (type IV).",
+      "B": "No: the first contact only sensitizes; the eczema comes on later contacts.",
+      "C": "No: light can give a photoallergic eczema; phototoxicity isn't an eczema.",
+      "D": "Yes: occupational eczema may need a change of job.",
+      "E": "Yes: avoiding the allergen is the treatment."
+    },
+    "S142": {
+      "lecture": "derm-eczema",
+      "A": "Yes: erythematous, vesicular, oozing, then desquamative.",
+      "B": "No: it's itchy.",
+      "C": "No: the lesions last; fleeting lesions belong to urticaria.",
+      "D": "No: it doesn't necrose.",
+      "E": "Yes: it can become chronic if the contact goes on."
+    },
+    "S143": {
+      "lecture": "derm-eczema",
+      "A": "Yes: a metal; metals are among the usual contact allergens.",
+      "B": "Yes: chromium is a classic allergen.",
+      "C": "Yes: nickel is the most common.",
+      "D": "Yes: a metal.",
+      "E": "No: latex mainly gives contact urticaria (immediate, IgE), not eczema."
+    },
+    "S144": {
+      "lecture": "derm-eczema",
+      "A": "No: it's delayed type IV, not IgE.",
+      "B": "No: lichenification is chronic, not acute.",
+      "C": "Yes: contact with an allergen triggers it.",
+      "D": "No: it isn't contagious.",
+      "E": "Yes: avoiding the cause is the treatment."
+    },
+    "S145": {
+      "lecture": "derm-eczema",
+      "A": "Yes: topical corticosteroids are first line for eczema.",
+      "B": "No: it isn't fungal.",
+      "C": "No: it isn't infected.",
+      "D": "No: a keratolytic irritates oozing skin.",
+      "E": "No: moisturizer is for maintenance, not for an acute oozing flare."
+    },
+    "S56": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: it can occur at any age.",
+      "B": "Yes: angioedema and anaphylactic shock can make it severe.",
+      "C": "Yes: acute means under 6 weeks.",
+      "D": "Yes: angioedema of the larynx can asphyxiate."
+    },
+    "S127": {
+      "lecture": "derm-urticaria",
+      "A": "No: severe forms can be life-threatening.",
+      "B": "Yes: laryngeal angioedema can threaten life.",
+      "C": "Yes: under 6 weeks.",
+      "D": "Yes: most acute urticaria is the superficial kind (wheals); angioedema is the deep form."
+    },
+    "S59": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: in angioedema the edema is subcutaneous or submucosal.",
+      "B": "No: it can be wheals, angioedema, or both.",
+      "C": "Yes: superficial urticaria is dermal edema.",
+      "D": "No: it's common; 15 to 20% have at least one flare."
+    },
+    "S132": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: superficial urticaria is dermal edema.",
+      "B": "Yes: a mast cell-driven disease.",
+      "C": "No: it's common.",
+      "D": "Yes: angioedema is subcutaneous or submucosal edema."
+    },
+    "S92": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: food allergy.",
+      "B": "Yes: drugs.",
+      "C": "No: physical factors give chronic inducible urticaria.",
+      "D": "Yes: infections."
+    },
+    "S102": {
+      "lecture": "derm-urticaria",
+      "A": "No: itching is part of all urticaria.",
+      "B": "Yes: dysphagia warns of throat angioedema.",
+      "C": "No: headache isn't a sign of severity.",
+      "D": "Yes: difficulty breathing warns of laryngeal angioedema or anaphylaxis."
+    },
+    "S111": {
+      "lecture": "derm-urticaria",
+      "A": "No: it's treated with antihistamines.",
+      "B": "Yes: tiny itchy wheals under 5 mm.",
+      "C": "Yes: triggered by a rise in body temperature (exercise, hot shower, stress).",
+      "D": "No: cold gives cold urticaria."
+    },
+    "S121": {
+      "lecture": "derm-urticaria",
+      "A": "No: antihistamines are its first-line treatment.",
+      "B": "Yes: often linked to autoimmunity, which is why the workup checks anti-thyroperoxidase antibodies.",
+      "C": "No: chronic means over 6 weeks.",
+      "D": "No: physical triggers make it inducible, not spontaneous."
     }
   }
 }
