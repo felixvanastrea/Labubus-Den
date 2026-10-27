@@ -108,7 +108,7 @@ async function answer(p, q, right) {
   const e = await ec.newPage(); watch(e, 'exp');
   await e.goto(URL, { waitUntil: 'load' });
   const share = await e.evaluate(() => { const B = JSON.parse(document.getElementById('bank').textContent); const Q = new Map(B.questions.map(q => [q.id, q])); return [B.quest.q.filter(id => Q.get(id).exp).length, B.quest.q.length]; });
-  check(share[0] >= 98, `the quest's questions with explanations: ${share[0]} of ${share[1]}`);
+  check(share[0] === share[1], `the quest's questions with explanations: ${share[0]} of ${share[1]}`);
   await ec.close();
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');
