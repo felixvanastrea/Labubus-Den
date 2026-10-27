@@ -156,9 +156,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Current quest: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
   on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
   the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of
-  the lecture (S110, a leishmaniasis case tagged tuberculosis too, dropped; S25, gummas, kept). Explanations for 94 of
-  its 96 (27 October 2026, from Pr Kelati's five decks in Abi's Drive, lectures `derm-*`); S116 and S242 held, their keys
-  flagged to Abi (S116 B: the TB slides say the anogenital chancre can be sexual; S242 E: isotretinoin with tetracyclines). Its arrival ended the communication spotlight early (`until` set to 21 October).
+  the lecture (S110, a leishmaniasis case tagged tuberculosis too, dropped; S25, gummas, kept). Explanations for all 96
+  (27 October 2026, from Pr Kelati's five decks in Abi's Drive, lectures `derm-*`), after two keys Abi confirmed the same
+  night: S116 to ABCD (the TB slides: the anogenital chancre can be sexual), S242 to BDE (isotretinoin with tetracyclines). Its arrival ended the communication spotlight early (`until` set to 21 October).
   Before it: the communication midterm (`comm-midterm-2026`, Wednesday 21 October 2026): both lectures of the
   module, Pr Fourtassi's foundations (part 1) and clinical communication (part 2), 75 questions since the 2025–2026 final
   came in (17 October). Before it:

@@ -2547,6 +2547,21 @@
       "B": "Yes: often linked to autoimmunity, which is why the workup checks anti-thyroperoxidase antibodies.",
       "C": "No: chronic means over 6 weeks.",
       "D": "No: physical triggers make it inducible, not spontaneous."
+    },
+    "S116": {
+      "lecture": "derm-tb",
+      "A": "Yes: scrofuloderma spreads by contiguity from a lymph node or bone.",
+      "B": "Yes: the anogenital chancre can be sexual (with epididymitis, salpingitis).",
+      "C": "Yes: from a visceral focus by the blood: gums, miliary tuberculosis, some lupus vulgaris.",
+      "D": "Yes: auto-inoculation from the lungs or gut gives periorificial tuberculosis."
+    },
+    "S242": {
+      "lecture": "derm-acne",
+      "A": "No: acitretin is oral only (used in psoriasis).",
+      "B": "Yes: isotretinoin exists by mouth (severe acne) and as a gel.",
+      "C": "No: adapalene (Differine) is a topical gel or cream, applied in the evening.",
+      "D": "Yes: oral isotretinoin is teratogenic, so contraception is mandatory; retinoids are contraindicated in pregnancy.",
+      "E": "Yes: oral isotretinoin with a tetracycline is contraindicated (intracranial hypertension). A topical retinoid with oral antibiotics is fine."
     }
   }
 }

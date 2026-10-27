@@ -691,6 +691,31 @@
       "from": "BD",
       "to": "ABD",
       "why": "Same lecture: carbuncle is a superficial (follicular) bacterial infection, like folliculitis; impetigo is superficial non-follicular. Aligned with S66."
+    },
+    {
+      "q": "S116",
+      "confirmed": "2026-10-27",
+      "field": "answer",
+      "from": "ACD",
+      "to": "ABCD",
+      "why": "Pr Kelati's cutaneous tuberculosis slides: \"Anogenital chancre: sexual (epididymitis, salpingitis)\", so sexual inoculation is one of the routes. Abi: yes."
+    },
+    {
+      "q": "S242",
+      "confirmed": "2026-10-27",
+      "field": "answer",
+      "from": "BD",
+      "to": "BDE",
+      "also": {
+        "qNotes": [
+          {
+            "by": "claude",
+            "anchor": null,
+            "html": "<p>Isotretinoin is used orally and topically, and oral isotretinoin is teratogenic. Acitretin is oral only and adapalene is a topical gel. E is the classic contraindication: oral isotretinoin with a tetracycline (risk of intracranial hypertension).</p>"
+          }
+        ]
+      },
+      "why": "E is the classic contraindication (oral isotretinoin + tetracyclines, intracranial hypertension), surely meant as true in the professor's question. Claude had left it out; Abi: yes."
     }
   ]
 }
