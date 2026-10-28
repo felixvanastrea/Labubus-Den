@@ -2378,3 +2378,39 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .ae-rib g, :root[data-look="aero"] .bm-aero { animation: none; }
   :root[data-look="aero"] .opts .opt .bub { animation: none; }
 }
+
+/* ---------- the extra tick: the Labubu's word (Abi, 28 October 2026) ---------- */
+.lb-say { position: fixed; z-index: 60; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: min(440px, calc(100vw - 32px));
+  display: grid; grid-template-columns: 64px 1fr; align-items: end; gap: 6px; pointer-events: none;
+  opacity: 0; transform: translateY(18px) scale(.97); transform-origin: 10% 100%; transition: opacity .35s var(--ease), transform .5s var(--spring); }
+.lb-say.on { opacity: 1; transform: none; }
+.lb-say > * { pointer-events: auto; }
+.lb-say-head { width: 64px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .35)); }
+.lb-say-head .lb, .tk-head .lb { display: block; width: 100%; height: auto; color: var(--ink-hi); }
+.lb-say-bub, .tk-bub { position: relative; background: var(--plate); color: var(--ink); border: 1px solid var(--hair-2); border-radius: 16px; padding: 14px 16px 12px;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .6); font-family: var(--f-read); line-height: 1.45; }
+.lb-say-bub { margin-bottom: 26px; }
+.lb-say-bub::before { content: ""; position: absolute; left: -9px; bottom: 18px; width: 16px; height: 16px; background: inherit; border-left: 1px solid var(--hair-2); border-bottom: 1px solid var(--hair-2); transform: rotate(45deg); }
+.lb-say-bub p { margin: 0 0 8px; }
+.lb-say-who { font-family: var(--f-mono); font-size: var(--t-label, .8rem); color: var(--ink-3); margin-bottom: 4px !important; }
+.lb-say-tip { color: var(--ink-2); font-style: italic; }
+.lb-say-act { display: flex; justify-content: flex-end; }
+.tk-wrap .tk { display: grid; grid-template-columns: 96px 1fr; gap: 18px; align-items: start; padding: 22px; }
+.tk .tk-bub { border: 0; box-shadow: none; padding: 0; background: none; }
+.tk .tk-bub p { margin: 0 0 10px; max-width: 62ch; }
+.tk .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.tk-head { width: 96px; }
+@media (max-width: 640px) {
+  .tk-wrap .tk { grid-template-columns: 56px 1fr; gap: 12px; padding: 18px; }
+  .tk-head { width: 56px; }
+  .lb-say { grid-template-columns: 48px 1fr; bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  .lb-say-head { width: 48px; }
+}
+/* wide screens: in the margin beside the question, so the verdict stays in view; the Labubu under its word */
+@media (min-width: 1260px) {
+  .lb-say { grid-template-columns: 1fr; width: min(400px, calc(50vw - 380px)); bottom: calc(24px + env(safe-area-inset-bottom, 0px)); left: 24px; gap: 4px; transform-origin: 12% 100%; }
+  .lb-say-bub { margin-bottom: 12px; order: 0; }
+  .lb-say-bub::before { left: 30px; bottom: -9px; border-left: 0; border-right: 1px solid var(--hair-2); }
+  .lb-say-head { order: 1; width: 72px; }
+}
+@media (prefers-reduced-motion: reduce) { .lb-say { transition: none; transform: none; } }

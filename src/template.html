@@ -3934,6 +3934,7 @@
     alive.react(a.correct ? (streak && streak % 7 === 0 ? 'streak' : 'right') : a.sel.some(i => q.answer.includes(i)) ? 'partial' : 'wrong');
     acct.beat((TOPIC.get(q.topic) || {}).name || '', 'quiz');
     if (shoot) setTimeout(() => shootingStar(shoot === 'comet' ? 'comet' : ''), 500);
+    if (!a.correct) setTimeout(() => tickSay(q, a.sel), 700);
   }
   function tryAgain() { const q = curQ(); keepFirst(q.id); delete S.answers[q.id]; delete S.cross[q.id]; sfx.play('crumple'); save(); render(false); }
 
@@ -4051,6 +4052,7 @@
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
   function render(scrollTop, focusWhat, vt, after) {
     if (lockedView() && !acct.member()) S.view = 'home';
+    if (sayEl && (S.view !== 'quiz' || !S.session || !curQ() || curQ().id !== sayEl.dataset.q)) sayClose();   // the Labubu's word stays with its question
     const key = screenKey();
     const changed = lastKey !== null && key !== lastKey;
     lastKey = key;
@@ -5504,6 +5506,7 @@
       </section>
       ${spotlightHTML()}
       ${questHTML(qi)}
+      ${tickCardHTML()}
       ${tonightHTML()}
       ${acct.skyHTML()}
       ${acct.duelsHTML()}
@@ -5784,6 +5787,82 @@
   }
   function closeNews() { if (newsEl && !newsEl.hidden) { newsEl.hidden = true; sfx.play('shut', { quiet: true }); } }
 
+  // ---------- the extra tick (Abi, 28 October 2026) ----------
+  // Under the exam's rule one wrong tick makes the whole question 0, even with the right answers ticked. tickHabit()
+  // reads the last TICK_N clean tries that kept their picks (first tries, exam answers, comets: S.clean) and counts the
+  // ones lost that way: the right answers (or enough of them to score) were ticked, plus a wrong one. Once that's a habit
+  // (TICK_MIN of them or more, a fifth of the wrong answers or more, costing 1.5 points out of 20 or more), the Labubu
+  // says so: in a speech bubble right after a question lost that way (at most every TICK_GAP, `efm3-tick-pop`), and on
+  // the homepage for a day (TICK_DAY from the first time it shows, `efm3-tick-home`; again a week later if it's still true).
+  const TICK_N = 40, TICK_MIN = 4, TICK_GAP = 6 * 3600e3, TICK_DAY = 24 * 3600e3, TICK_AGAIN = 7 * 24 * 3600e3;
+  function tickHabit() {
+    const tries = Object.entries(S.clean).filter(([id, e]) => e && Array.isArray(e.s) && e.s.length && Q.has(id) && Q.get(id).answer.length)
+      .sort((x, y) => y[1].t - x[1].t).slice(0, TICK_N);
+    let pts = 0, cost = 0, wrong = 0;
+    const ids = [];
+    for (const [id, e] of tries) {
+      const q = Q.get(id), hit = e.s.filter(k => q.answer.includes(k));
+      pts += examPoints(q, e.s);
+      if (!isCorrect(q, e.s)) wrong++;
+      const could = hit.length < e.s.length ? examPoints(q, hit) : 0;   // what it would have scored without the extra ticks
+      if (could > 0) { ids.push(id); cost += could; }
+    }
+    const n = tries.length, mark = n ? pts / n * 20 : 0, without = n ? (pts + cost) / n * 20 : 0;
+    return { n, over: ids.length, ids, wrong, mark, without, on: n >= 15 && ids.length >= TICK_MIN && ids.length >= wrong * .2 && without - mark >= 1.5 };
+  }
+  const tickGet = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
+  const tickSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const tickStats = h => `It’s happened on <b>${fmtN(h.over)}</b> of your last ${fmtN(h.n)} questions. Without those extra ticks you’d be at <b>${fmtPts(Math.min(20, h.without))}/20</b> instead of ${fmtPts(h.mark)}.`;
+  const TICK_TIP = 'When you’re not sure of a proposition, leave it out: on the exam, half a point beats zero.';
+  // in practice, right after a question lost to an extra tick
+  let sayEl = null;
+  function sayClose() { if (!sayEl) return; const el = sayEl; sayEl = null; el.classList.remove('on'); setTimeout(() => el.remove(), reduceMotion() ? 0 : 400); }
+  function tickSay(q, sel) {
+    if (S.view !== 'quiz' || !S.session) return;
+    const hit = sel.filter(k => q.answer.includes(k)), bad = sel.filter(k => !q.answer.includes(k));
+    if (!bad.length || !(examPoints(q, hit) > 0)) return;
+    const last = tickGet('efm3-tick-pop') || 0;
+    if (Date.now() - last < TICK_GAP && !window.__tickTest) return;
+    const h = tickHabit(); if (!h.on) return;
+    tickSet('efm3-tick-pop', Date.now());
+    sayClose();
+    const el = document.createElement('div');
+    el.className = 'lb-say'; el.setAttribute('role', 'status'); el.dataset.q = q.id;
+    el.innerHTML = `<div class="lb-say-head">${alive.svg('say')}</div>
+      <div class="lb-say-bub"><p class="lb-say-who">The Labubu</p>
+        <p><b>You had ${letters(hit)}.</b> Then ${letters(bad)}, and on the exam that one wrong tick makes the whole question 0.</p>
+        <p>${tickStats(h)}</p><p class="lb-say-tip">${TICK_TIP}</p>
+        <div class="lb-say-act"><button class="btn quiet" type="button" data-say="ok">Got it</button></div></div>`;
+    document.body.appendChild(el); sayEl = el;
+    el.addEventListener('click', e => { if (e.target.closest('[data-say="ok"]')) { sfx.play('untick', { quiet: true }); sayClose(); } });
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('on')));
+    sfx.play('sheet', { quiet: true });
+    usage.track('tick_habit_shown', { where: 'question' });
+  }
+  // on the homepage, for a day
+  function tickCardHTML() {
+    const now = Date.now(), h = tickHabit();
+    let rec = tickGet('efm3-tick-home');
+    if (h.on && (!rec || now - rec.at > TICK_AGAIN)) { rec = { at: now }; tickSet('efm3-tick-home', rec); usage.track('tick_habit_shown', { where: 'home' }); }
+    if (!rec || rec.gone || now - rec.at > TICK_DAY || !h.over) return '';
+    return `<section class="section wrap tk-wrap" aria-labelledby="tk-h">
+      <div class="tk plate">
+        <div class="tk-head">${alive.svg('say')}</div>
+        <div class="tk-bub"><p class="eyebrow">A word from the Labubu</p><h2 class="h2" id="tk-h">One tick too many</h2>
+          <p>You often have the right answers, then tick one more. On the exam, that one wrong tick makes the whole question 0.</p>
+          <p>${tickStats(h)}</p><p class="lb-say-tip">${TICK_TIP}</p>
+          <div class="row"><button class="btn primary" type="button" data-act="tick-practise">Redo those ${fmtN(h.over)} ${ICON.next}</button>
+            <button class="btn quiet" type="button" data-act="tick-gone">Got it</button></div></div>
+      </div>
+    </section>`;
+  }
+  function tickPractise() {
+    const ids = tickHabit().ids; if (!ids.length) return;
+    ids.forEach(id => { keepFirst(id); delete S.answers[id]; delete S.cross[id]; });
+    usage.track('tick_habit_practised', { questions: ids.length });
+    startList(ids, 0, { from: 'home', topic: '*', title: 'One tick too many' });
+  }
+  function tickGone() { const rec = tickGet('efm3-tick-home') || { at: Date.now() }; rec.gone = 1; tickSet('efm3-tick-home', rec); sfx.play('untick', { quiet: true }); render(false); }
   function toast(msg) {
     let el = document.getElementById('toast');
     if (!el) {
@@ -7895,6 +7974,8 @@
       case 'install-app': app_.install(); break;
       case 'mark': markToggle(); break;
       case 'practice-marked': practiseMarked(S.view === 'topic' ? S.topicId : null); break;
+      case 'tick-practise': tickPractise(); break;
+      case 'tick-gone': tickGone(); break;
       case 'quest-repeated': startQuest(null, true, 'go'); break;
       case 'home': goHome(); break;
       case 'back': goBack(); break;

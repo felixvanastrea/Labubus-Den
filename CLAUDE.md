@@ -309,6 +309,20 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
   quest) shows the moon and tonight's comets. Tests: tonight.js, weak.js.
 
+## One tick too many (Abi, 28 October 2026)
+
+- `tickHabit()` reads the last `TICK_N` (40) clean tries with picks (`S.clean[id].s`) and counts the ones lost to an extra
+  tick: some right answers ticked plus a wrong one, where leaving the wrong one out would have scored on the exam's rule
+  (`examPoints(q, hit) > 0`). The habit is on with 15+ tries, `TICK_MIN` (4)+ such questions, at least a fifth of the
+  wrong ones, and 1.5+ points out of 20 lost (`mark` vs `without`).
+- The Labubu says so (`alive.svg('say')`, live eyes): a speech bubble (`tickSay`, `.lb-say`) 0.7 s after a practice
+  question lost that way, at most every 6 hours (`efm3-tick-pop`; `window.__tickTest` skips the gap), naming the right
+  letters and the extra one, with the numbers and the tip; "Got it", Next or leaving the question closes it. On wide
+  screens it sits in the left margin so the verdict stays visible. And a homepage card after the quest (`tickCardHTML`,
+  "One tick too many") for 24 hours from the first time the habit shows (`efm3-tick-home`), at most once a week, with
+  "Redo those N" (`tickPractise`, a fresh session of exactly those) and "Got it" (`tickGone`). Guests too; this device
+  only. Test: tick.js.
+
 ## Themes (cosmetics, "looks" in the code)
 
 - Earned with real study milestones (Abi's choice), never by volume: Codex = one lecture at Solid (15/20 or more on its
@@ -664,7 +678,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
