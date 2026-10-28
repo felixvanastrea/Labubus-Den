@@ -80,6 +80,18 @@
     "derm-urticaria": {
       "title": "Urticaria (Pr Kelati)",
       "added": "2026-10-27"
+    },
+    "derm-herpes": {
+      "title": "Herpes virus infections (Pr Kelati)",
+      "added": "2026-10-28"
+    },
+    "derm-syphilis": {
+      "title": "Syphilis (Pr Kelati)",
+      "added": "2026-10-28"
+    },
+    "derm-leprosy": {
+      "title": "Leprosy (Pr Kelati)",
+      "added": "2026-10-28"
     }
   },
   "questions": {
@@ -2562,6 +2574,146 @@
       "C": "No: adapalene (Differine) is a topical gel or cream, applied in the evening.",
       "D": "Yes: oral isotretinoin is teratogenic, so contraception is mandatory; retinoids are contraindicated in pregnancy.",
       "E": "Yes: oral isotretinoin with a tetracycline is contraindicated (intracranial hypertension). A topical retinoid with oral antibiotics is fine."
+    },
+    "S246": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: lack of hygiene is a predisposing factor.",
+      "B": "No: food allergies play no part in impetigo.",
+      "C": "No: tuberculosis isn't a risk factor for impetigo.",
+      "D": "Yes: warm, humid environments favour it."
+    },
+    "S247": {
+      "lecture": "derm-herpes",
+      "A": "Yes: HSV1 spreads by direct contact with lesions or saliva.",
+      "B": "No: HSV isn't airborne; that's varicella.",
+      "C": "Yes: HSV2 is a sexually transmitted infection.",
+      "D": "No: it isn't spread by food."
+    },
+    "S248": {
+      "lecture": "derm-herpes",
+      "A": "Yes: encephalitis, meningitis and myelitis are its neurological complications.",
+      "B": "No: blindness only threatens ophthalmic zona.",
+      "C": "No: severity and complications grow with age.",
+      "D": "Yes: postherpetic pain is the main complication."
+    },
+    "S249": {
+      "lecture": "derm-acne",
+      "A": "Yes: a chronic inflammatory disease of the pilosebaceous follicle.",
+      "B": "Yes: it's the acne of puberty and adolescence.",
+      "C": "No: it isn't contagious; C. acnes normally lives on the skin.",
+      "D": "No: sebum, keratinization and hormones drive it, not infection alone."
+    },
+    "S250": {
+      "lecture": "derm-syphilis",
+      "A": "No: Neisseria gonorrhoeae causes gonorrhoea.",
+      "B": "No: Chlamydia trachomatis causes chlamydia and lymphogranuloma venereum.",
+      "C": "Yes: Treponema pallidum is a spirochaete, a spiral-shaped bacterium.",
+      "D": "Yes: Treponema pallidum subspecies pallidum."
+    },
+    "S251": {
+      "lecture": "derm-leprosy",
+      "A": "No: it's due to Mycobacterium leprae (Hansen's bacillus).",
+      "B": "Yes: a chronic infection.",
+      "C": "Yes: a chronic granulomatous infection.",
+      "D": "No: it's known for its clinical polymorphism (five Ridley-Jopling forms)."
+    },
+    "S252": {
+      "lecture": "derm-leprosy",
+      "A": "Yes: peripheral nerves, with sensory loss and thickened nerves.",
+      "B": "No: the nerve damage is peripheral, not central.",
+      "C": "Yes: the skin, with macules, plaques or lepromas.",
+      "D": "No: lymph nodes aren't its target."
+    },
+    "S253": {
+      "lecture": "derm-syphilis",
+      "A": "No: primary syphilis is the chancre.",
+      "B": "Yes: tuberculous gummas are, with scrofuloderma, the most common forms in Morocco.",
+      "C": "No: herpes gives vesicles.",
+      "D": "Yes: gummas are the lesion of tertiary syphilis."
+    },
+    "S254": {
+      "lecture": "derm-syphilis",
+      "A": "No: a generalized rash is secondary syphilis.",
+      "B": "Yes: a solitary, painless, indurated chancre.",
+      "C": "Yes: satellite lymphadenopathy, unilateral and painless.",
+      "D": "No: untreated, the chancre heals by itself in 3 to 6 weeks."
+    },
+    "S255": {
+      "lecture": "derm-herpes",
+      "A": "No: varicella isn't a sexually transmitted infection.",
+      "B": "No: it isn't spread by food.",
+      "C": "Yes: airborne transmission is the main route.",
+      "D": "Yes: direct contact with skin lesions."
+    },
+    "S256": {
+      "lecture": "derm-bacterial",
+      "A": "Yes: papules, pustules and blisters come first.",
+      "B": "No: deep painful abscesses aren't impetigo, which stays in the epidermis.",
+      "C": "No: no general signs.",
+      "D": "Yes: the classic honey-coloured crust."
+    },
+    "S257": {
+      "lecture": "derm-syphilis",
+      "A": "No: Treponema pallidum can't be cultured.",
+      "B": "Yes: TPHA, a treponemal test, sensitive and specific.",
+      "C": "No: imaging has no place in diagnosing it.",
+      "D": "Yes: VDRL, a non-treponemal test, sensitive but not specific, and used to follow treatment."
+    },
+    "S258": {
+      "lecture": "derm-herpes",
+      "A": "No: EBV causes infectious mononucleosis.",
+      "B": "Yes: varicella is the primary infection with VZV, zona its reactivation.",
+      "C": "No: HSV-2 causes mostly genital herpes.",
+      "D": "No: HSV-1 causes mostly orofacial herpes."
+    },
+    "S259": {
+      "lecture": "derm-acne",
+      "A": "No: the bacterium is Cutibacterium acnes, not tuberculosis.",
+      "B": "No: androgens stimulate sebum; it's their rise or fluctuation that matters.",
+      "C": "Yes: hyperseborrhea, driven by androgens, is the first mechanism.",
+      "D": "Yes: hyperkeratinization plugs the follicle and forms the comedone."
+    },
+    "S260": {
+      "lecture": "derm-acne",
+      "A": "No: acne isn't a fungal infection.",
+      "B": "Yes: topical retinoids treat comedones and are the base of treatment.",
+      "C": "No: antibiotics are combined with a topical and kept short, to avoid resistance.",
+      "D": "No: tranexamic acid is used for melasma, not acne."
+    },
+    "S261": {
+      "lecture": "derm-herpes",
+      "A": "Yes: daily shower, nail clipping and clean laundry.",
+      "B": "No: NSAIDs are avoided, they favour necrotizing fasciitis.",
+      "C": "No: salicylates are banned, they cause Reye's syndrome.",
+      "D": "No: topical corticosteroids aren't part of it."
+    },
+    "S262": {
+      "lecture": "derm-tb",
+      "A": "No: cold and humidity are the factors, not heat.",
+      "B": "Yes: immunosuppression (HIV) is an endogenous factor.",
+      "C": "Yes: promiscuity (crowding) is an environmental factor.",
+      "D": "No: poor hygiene is the factor."
+    },
+    "S263": {
+      "lecture": "derm-herpes",
+      "A": "Yes: stress, fever, sun and immunosuppression trigger recurrences.",
+      "B": "No: HSV1 mostly affects the face; HSV2 the genitals.",
+      "C": "Yes: latent for life in the sensory ganglia (trigeminal or sacral).",
+      "D": "No: recurrences are the rule, it's a chronic disease."
+    },
+    "S264": {
+      "lecture": "derm-herpes",
+      "A": "No: VZV causes varicella and zona.",
+      "B": "No: EBV causes infectious mononucleosis.",
+      "C": "Yes: HSV-2, mostly genital herpes.",
+      "D": "Yes: HSV-1, mostly orofacial herpes."
+    },
+    "S265": {
+      "lecture": "derm-syphilis",
+      "A": "Yes: penicillin G is the treatment of choice.",
+      "B": "Yes: one injection for early syphilis, three for late latent, IV for neurosyphilis.",
+      "C": "No: amoxicillin isn't used; benzathine penicillin G is.",
+      "D": "No: the alternative in allergy is a cyclin (doxycycline), not a macrolide."
     }
   }
 }

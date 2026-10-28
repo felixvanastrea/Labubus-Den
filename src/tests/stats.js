@@ -39,6 +39,7 @@ const names = async p => (await captured(p)).map(c => c.name);
     await ctx.route(/posthog\.com/, r => r.abort());   // nothing real goes out
     await ctx.route('https://eu-assets.i.posthog.com/static/array.js', r => r.fulfill({ contentType: 'application/javascript', body: FAKE }));
     const p = await ctx.newPage(); watch(p, (opts && opts.isMobile ? 'phone' : 'desk') + (flag ? '' : ' (no flag)'));
+    await p.clock.install({ time: new Date(2026, 9, 26, 12, 0) });   // a day the quest card is on the homepage (no spotlight)
     await p.goto(URL, { waitUntil: 'load' }); await p.evaluate(() => localStorage.clear());
     await p.reload({ waitUntil: 'load' });
     return { ctx, p };

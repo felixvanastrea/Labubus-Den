@@ -182,6 +182,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   surgery quest got `end: 2026-10-14` so it left the homepage the day of its exam.
   The communication midterm 2026–2027 has it from 21 October 2026 (Abi: on the front page instead of the quest), until 27
   October unless she says otherwise, and the communication quest got `end: 2026-10-21`.
+  The dermatology midterm 2026–2027 has it from 28 October 2026 (Abi: "put it in the main page"), until 3 November unless
+  she says otherwise, and the dermatology quest got `end: 2026-10-28`.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
@@ -666,6 +668,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   word for word), placed by `lectures.json` `q` entries, with explanations. Least sure: Q19 (decoding, not feedback: the
   patient did repeat the purpose back).
   Since the evening of 21 October 2026 they're `key: "official"` (Abi asked), Claude's notes dropped, explanations kept.
+- The dermatology midterm 2026–2027 (S246–S265, `added` 2026-10-28, the day it was sat): all 20, from the Evalbox page
+  Abi pasted (the student's name in its header left out). No answers marked: `key: "claude"`, answered from Pr Kelati's
+  decks (herpes, syphilis, leprosy, bacterial infections, acne, tuberculosis; lectures `derm-herpes`, `derm-syphilis`,
+  `derm-leprosy` added to explanations), with explanations. Placed by concept, no `q` entries needed. Copies of older
+  questions: Q3 = S41, Q6 = S79, Q7 = S53, Q8 = S25, Q10 = S9, Q12 = S48, Q17 = S87, Q19 = S4 (same keys). Q5 (syphilis
+  agent) is keyed CD (Treponema pallidum and "spirochete bacterium", the slides call it a spirochaete) while its older
+  copy S32 is keyed D only: flagged to Abi, S32 unchanged until she says. Least sure: Q20 D (macrolides; the slides only
+  give cyclins as the alternative), Q11 A.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
