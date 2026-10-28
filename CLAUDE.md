@@ -200,13 +200,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - A right answer sends a star from each right pick to its square on the strip, which twinkles (`flyStars`; to the
   streak if the strip is out of view). The streak grows in the bar as the Great Bear (`streakHTML`, `BEAR`), from 2 in a
-  row, complete and glowing at 7. Shooting stars (`shootingStar`): every 7 in a row, a diagnostic opening, a comet caught
-  (a bigger one), a session ending at 80% or more.
+  row, complete and glowing at 7. Shooting stars (`shootingStar`): every 7 in a row, a diagnostic opening, the secret
+  code (a bigger one), a session ending at 80% or more.
 - The end of a session (`renderDone`) draws it as a constellation (`sessionSky`): one star per question with a key, up
   to 24 a row, seeded by the questions so a session keeps its shape; right ones lit and joined while they came in a row,
   the others dim; the score counts up with it (`playSessionSky`), a tap draws it at once, and it plays only once per
   session (`sess.doneSeen`). Under it, what the session added (`sess.gain`, `gainsHTML`): longest line, diagnostics fed,
-  tonight's moon, comets caught and new. Star colour `--star-ink` per theme. Reduced motion: none of the motion.
+  tonight's moon. Star colour `--star-ink` per theme. Reduced motion: none of the motion.
   Test: stars.js.
 
 ## Exam mode
@@ -293,21 +293,22 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Rules Abi pasted in Firestore: a user reads/writes/deletes only their own `users` doc (`s` a string under 900 kB; if
   it has a `key`, `names/{key}` must be theirs); `names` docs: any signed-in user can read one, create one for
   themselves only if it doesn't exist (key `[a-z]{2,24}`), update or delete only their own.
-- Comets need an account too (`startComets`); sure / not sure and the moon are open to guests. The game parts sync
-  like the rest (`sure`, `comets`, `moon` in `SYNCED`).
+- Sure / not sure and the moon are open to guests. The game parts sync like the rest (`sure`, `moon` in `SYNCED`;
+  `comets` stays there, unused).
 - Signed in: Sign out, Delete my data (the doc and the name, then the account; if Firebase wants a fresh sign-in, the
   data goes and they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
 
-## Tonight: sure / not sure, comets and the moon
+## Tonight: sure / not sure and the moon
 
-- Three study habits, explained in the comment block "tonight" in `template.html`. Sure / not sure: an optional pick
-  before checking (first tries and comet catches go to `S.sure`), for the "Your instinct" line on the weak spots page.
-- Comets: a question missed (practice or exam) comes back the next day, then after 3, 7 and 14 days (`COMET_STEPS`) until
-  it sticks; missed again, it starts over. `S.comets` = {canon id: {l, d}}; at most `COMET_MAX` (20) a night. Catching
-  one is a clean try for the diagnostic: "Catch its N comets" replaced the drill on the diagnostic page.
+- Two study habits, explained in the comment block "tonight" in `template.html`. Sure / not sure: an optional pick
+  before checking (first tries go to `S.sure`), for the "Your instinct" line on the weak spots page.
+- Comets (a missed question coming back the next day, then after 3, 7 and 14 days) were taken out on 28 October 2026
+  (Abi: "remove the comet stuff"): no verdict line, no Tonight half, no "Catch its N comets" on a diagnostic, nothing at
+  the end of a session, exams make none. `S.comets` stays in the state and `SYNCED` so old saves load; nothing reads it.
+  Without them (and with no drill), a diagnostic gets new evidence from first tries and exams only.
 - The moon: a night counts once `MOON_DAY` (5) different questions are checked that day; it grows to full at
   `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
-  quest) shows the moon and tonight's comets. Tests: tonight.js, weak.js.
+  quest) shows the moon and the marked questions. Tests: tonight.js, weak.js.
 
 ## One tick too many (Abi, 28 October 2026)
 
@@ -355,7 +356,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - The secret code (Abi, 21 October 2026, a Steins;Gate reference): typing "El Psy Kongroo" in the search (any case,
   spaces or punctuation; only its hash is in the page, `secretCode`) unlocks every theme for good, the ones to come and
   the given ones (the Birth of Venus) too: `S.unlocks.psy` (synced, untouched by Reset), read by `canWear`. The search
-  clears, a toast, a seal and a comet (`elPsyKongroo`); a guest is told to sign in. Test: gift.js.
+  clears, a toast, a seal and a big shooting star (`elPsyKongroo`); a guest is told to sign in. Test: gift.js.
 - A second code (Abi, 21 October 2026): "RedaReda" in the search swaps the Birth of Venus painting for Reda's photo
   (`img/reda.webp`; Abi confirmed he agreed to it being on the Den), on that device only (`efm3-reda`, `data-reda` on
   `<html>`); typed again, the painting comes back. The title then reads "Reda's Den", typewritten in matte bronze

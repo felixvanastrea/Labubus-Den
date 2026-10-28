@@ -1,7 +1,7 @@
-// Weak spots: every question in exactly one lecture (in course order); the stars fill with clean tries only (a first try, an exam, a comet
-// a day later; never a retry), the diagnostic unlocks at 8 tries (all of a smaller lecture) with a star line under the
+// Weak spots: every question in exactly one lecture (in course order); the stars fill with clean tries only (a first try, an exam;
+// never a retry), the diagnostic unlocks at 8 tries (all of a smaller lecture) with a star line under the
 // verdict; the diagnostic's mark by the exam's rule, what wrong ticks cost, every proposition got wrong with its why;
-// comets (no drill), untried and lecture-exam actions; answers from before the update count; Reset all clears it; phone layout.
+// untried and lecture-exam actions; answers from before the update count; Reset all clears it; phone layout.
 const { chromium } = require('playwright');
 const path = require('path');
 const OUT = process.env.OUT || path.join(__dirname, 'shots') + '/';
@@ -99,26 +99,8 @@ const fmt = v => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
   check((await p.$$('.fx .fx-why')).length > 0, 'with the lecture\'s why');
   await p.screenshot({ path: OUT + 'wk_diag.png', fullPage: true });
 
-  // the missed ones come back as comets the next day (no drill); catching one then counts as a clean try
-  const missed = plan.filter(x => pts(Q.get(x.id), x.sel) < 1).map(x => x.id);
-  S = await state(p);
-  check(!(await p.$('[data-act="drill"]')) && !(await p.$('[data-act="diag-comets"]')) && missed.every(id => S.comets[canon(id)]), `no drill: the ${missed.length} missed are comets, due tomorrow`);
-  await p.clock.fastForward(DAY + 3600e3);
-  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(250);
-  // the first question was retried wrong right after: any miss makes a comet, a retry's too
-  const cq = [...new Set([...missed, plan[0].id].map(canon))], nc = cq.length;
-  check((await txt(p, '[data-act="diag-comets"]')) === `Catch its ${nc} ${nc === 1 ? 'comet' : 'comets'}`, 'a day later: ' + await txt(p, '[data-act="diag-comets"]'));
-  await p.click('[data-act="diag-comets"]'); await p.waitForTimeout(200);
-  S = await state(p);
-  const m1 = S.session.qids[0], before = S.clean[m1];
-  check(S.session.comets && S.session.qids.slice().sort().join() === cq.slice().sort().join() && !S.answers[m1], 'its comets: the missed questions, cleared');
-  for (const i of Q.get(m1).answer) await p.click(`.opt[data-opt="${i}"]`);
-  await p.click('[data-act="primary"]'); await p.waitForTimeout(80);
-  const after = (await state(p)).clean[m1];
-  check(JSON.stringify(after.s) === JSON.stringify(Q.get(m1).answer.slice().sort((a, c) => a - c)) && after.t > before.t, 'a comet caught a day later counts');
-  await p.click('.bar [data-act="back"]'); await p.waitForTimeout(200);
-  check(await p.evaluate(() => document.body.dataset.view) === 'diag', 'Back from the comets: the diagnostic');
-
+  // no drill and no comets: what's left is the questions not tried and an exam on the lecture
+  check(!(await p.$('[data-act="drill"]')) && !(await p.$('[data-act="diag-comets"]')) && !/comet/i.test(await txt(p, 'main')), 'no drill, no comets');
   // an exam on the lecture: all its questions, its answers count, Back to the diagnostic
   await p.click('[data-act="diag-exam"]'); await p.waitForTimeout(200);
   check((await txt(p, '.ph-lead')).startsWith(`All ${groups.size} of its questions`) && (await txt(p, '.bar .back')) === 'Diagnostic', 'lecture exam rules: ' + await txt(p, '.ph-lead'));

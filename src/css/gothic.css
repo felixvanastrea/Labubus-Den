@@ -838,7 +838,7 @@ details.case[open] .case-b { margin-top: 6px; }
 .wsc-row .xp { grid-area: xp; }
 @media (max-width: 760px) { .wsc { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- tonight: how sure you were, comets, the moon ---------- */
+/* ---------- tonight: how sure you were, the moon ---------- */
 .sure { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: -4px; }
 .sure-t { margin-right: 2px; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
 .sure-b {
@@ -850,7 +850,6 @@ details.case[open] .case-b { margin-top: 6px; }
 .sure-b:active { transform: scale(.96); }
 .sure-b[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--night); }
 .verdict .v-note { flex-basis: 100%; display: block; font-style: italic; font-size: 1.04rem; line-height: 1.4; color: var(--ink-2); }
-.v-note .comet-i { width: 15px; height: 15px; margin: 0 6px 0 3px; vertical-align: -2px; color: var(--ink-hi); }
 .moon { flex: none; overflow: visible; }
 .moon .mn-dark { fill: var(--plate-2); stroke: var(--hair-2); stroke-width: .6; }
 .moon .mn-lit { fill: var(--ink); }
@@ -858,14 +857,12 @@ details.case[open] .case-b { margin-top: 6px; }
 .moon.full { filter: drop-shadow(0 0 16px var(--glow-mid)); }
 .moonl .moon { margin-block: -3px; }
 .tn-wrap { padding-top: 48px; }
-.tn { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 26px 44px; padding: clamp(22px, 4vw, 40px); }
+.tn { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px 44px; padding: clamp(22px, 4vw, 40px); }
 .tn-moon { display: flex; align-items: flex-start; gap: 22px; min-width: 0; }
 .tn-mt { display: grid; gap: 10px; min-width: 0; }
-.tn-mt p, .tn-comets p { margin: 0; }
+.tn-mt p { margin: 0; }
 .tn-sub { font-size: 1.06rem; line-height: 1.45; color: var(--ink-2); }
 .tn-how { max-width: 30rem; font-style: italic; font-size: 1rem; line-height: 1.45; color: var(--ink-3); }
-.tn-comets { display: grid; gap: 10px; align-content: center; justify-items: start; min-width: 0; padding-left: 34px; border-left: 1px solid var(--hair); }
-.tn-comets > .comet-i { width: 30px; height: 30px; color: var(--ink-hi); filter: drop-shadow(0 0 6px var(--glow-soft)); }
 .tn-big { font-family: var(--f-display); font-style: italic; font-size: 1.9rem; line-height: 1.05; color: var(--ink); }
 .tn-big b { margin-right: 6px; font-weight: 400; font-size: 2.6rem; }
 .ins { display: grid; gap: 4px; max-width: 40rem; margin: 16px 0 0; }
@@ -876,10 +873,6 @@ p.ins { margin-top: 16px; }
 .ins .n { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); }
 .ins .ins-tip { font-style: italic; font-size: 1rem; color: var(--ink-3); }
 p.ins.quiet { font-size: 1rem; color: var(--ink-3); }
-@media (max-width: 760px) {
-  .tn { grid-template-columns: minmax(0, 1fr); }
-  .tn-comets { padding-left: 0; border-left: 0; padding-top: 22px; border-top: 1px solid var(--hair); }
-}
 @media (max-width: 640px) {
   .tn-wrap { padding-top: 36px; }
   .tn-moon { gap: 16px; }

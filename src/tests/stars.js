@@ -71,7 +71,7 @@ async function answer(p, q, right) {
   check(+early < 8 && late === '8', `the score counts up (${early} → ${late})`);
   check(/A constellation of 8 stars, its longest line 7 in a row/.test(await txt(p, '.dc-name')), 'its name: ' + await txt(p, '.dc-name'));
   const gains = await p.$$eval('.dc-gains li', l => l.map(x => x.textContent.trim()));
-  check(gains.some(t => /Longest line: 7 right in a row/.test(t)) && gains.some(t => /toward its diagnostic|diagnostic is open/.test(t)) && gains.some(t => /comet comes back tomorrow/.test(t)) && gains.some(t => /moon/.test(t)),
+  check(gains.some(t => /Longest line: 7 right in a row/.test(t)) && gains.some(t => /toward its diagnostic|diagnostic is open/.test(t)) && !gains.some(t => /comet/.test(t)) && gains.some(t => /moon/.test(t)),
     'what it added: ' + gains.join(' | '));
   await p.screenshot({ path: OUT + 'stars_done.png' });
   // a redraw doesn't replay it
