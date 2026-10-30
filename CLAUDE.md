@@ -161,8 +161,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
   A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
   lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
-- Two quests at once since 30 October 2026: `current` can be a list; the build makes each (`bank.quests`, by due date)
-  and the page shows the first whose due date hasn't passed, else the last (`QUEST` in `template.html`). Now: the
+- Two quests at once since 30 October 2026: `current` can be a list; the build makes each (`bank.quests`, by due date).
+  The homepage shows a card for every quest whose due date hasn't passed (`questsLive`; else the last one, ended), the
+  nearest first (Abi wanted the GI one on the homepage too, not only after the redo). `QUEST` is a `let`: the nearest on
+  the homepage and in the hero, a card's own while its buttons run (`data-quest` on the card, `useQuest` in the click
+  handler; the second card's ids get `-1`), the session's (`S.session.qid`) or the quest exam's scope while practising
+  (`questFor`, at the top of `render`). Seals per card (`data-sq`), reset per quest (scope `quest:<id>`). Now: the
   dermatology redo (Monday 2 November, the same five lectures, Abi's choice; it now also takes the on-topic questions of
   the 28 October midterm, added before the new due date), then the gastroenterology midterm (`gi-midterm-2026`, Thursday
   5 November): GERD, achalasia, gastritis, gastroduodenal ulcers, chronic pancreatitis (`D.pancreas`, minus D177

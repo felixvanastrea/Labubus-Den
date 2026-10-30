@@ -72,7 +72,7 @@ const KEY = 'efm3-mcq-bank-v1';
   await p.screenshot({ path: OUT + 'q_card_done.png' });
 
   // reset the quest
-  await p.click('[data-act="reset"][data-scope="quest"]');
+  await p.click('#quest [data-act="reset"]');
   console.log('confirm:', (await p.textContent('.quest .confirm')).replace(/\s+/g, ' ').trim());
   await p.click('.quest [data-act="reset-yes"]');
   await p.waitForTimeout(300);

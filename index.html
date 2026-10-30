@@ -6597,6 +6597,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   const VT_MAX = 1200;
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
   function render(scrollTop, focusWhat, vt, after) {
+    questFor();
     if (lockedView() && !acct.member()) S.view = 'home';
     if (sayEl && (S.view !== 'quiz' || !S.session || !curQ() || curQ().id !== sayEl.dataset.q)) sayClose();   // the Labubu's word stays with its question
     const key = screenKey();
@@ -6749,14 +6750,26 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // It's done when every question is answered and at least goal% are right; retries count, so fixing mistakes is how
   // you finish it. The "clean run" seal needs goal% right on the first try.
   // with two exams a few days apart there are two (BANK.quests, by due date): the first one not past, else the last
-  const QUEST = (() => {
-    const all = (BANK.quests || [BANK.quest]).filter(x => x && x.q && x.q.length);
-    if (!all.length) return null;
-    const d = new Date(window.__skyNow || Date.now()), p = n => String(n).padStart(2, '0');
-    const today = `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
-    return all.find(x => x.due >= today) || all[all.length - 1];
-  })();
-  const QUEST_SET = new Set(QUEST ? QUEST.q : []);
+  // Every quest whose due date hasn't passed has its own card on the homepage (else the last one, ended); QUEST is the
+  // one being shown or played: the nearest on the homepage, a card's own while its buttons run (data-quest), and the
+  // session's or the exam's (S.session.qid, a quest exam's scope) while practising (questFor, at the top of render).
+  const QUESTS = (BANK.quests || [BANK.quest]).filter(x => x && x.q && x.q.length);
+  const questToday = () => { const d = new Date(window.__skyNow || Date.now()), p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`; };
+  function questsLive() {
+    const t = questToday(), live = QUESTS.filter(x => x.due >= t && !(x.end && t >= x.end));
+    return live.length ? live : QUESTS.slice(-1);
+  }
+  let QUEST = questsLive()[0] || null;
+  const questById = id => QUESTS.find(x => x.id === id) || null;
+  const useQuest = id => { const x = questById(id); if (x) QUEST = x; return x; };
+  function withQuest(x, f) { const was = QUEST; QUEST = x; try { return f(); } finally { QUEST = was; } }
+  function questFor() {
+    let id = null;
+    if (S.view === 'exam') { const sc = (examScreen() === 'intro' ? S.examScope : S.exam && S.exam.scope) || S.examScope; if (sc && sc.kind === 'quest') id = sc.id; }
+    else if (['quiz', 'done'].includes(S.view) && S.session && S.session.from === 'quest') id = S.session.qid;
+    QUEST = (id && questById(id)) || questsLive()[0] || QUEST;
+  }
+  const QUEST_SET = new Set(QUESTS.flatMap(x => x.q));
   const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
   const isLeft = id => ['todo', 'draft'].includes(result(Q.get(id)));
   function firstTry(q) {
@@ -6797,7 +6810,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     let ids = t ? t.q : QUEST.q;
     if (repeatedOnly) ids = ids.filter(id => repOf(Q.get(id)));
     if (!ids.length) return;
-    const meta = { topic: QUEST.module, from: 'quest', qall: !t && !repeatedOnly,
+    const meta = { topic: QUEST.module, from: 'quest', qid: QUEST.id, qall: !t && !repeatedOnly,
       title: t ? `${QUEST.title} · ${t.name}` : repeatedOnly ? `${QUEST.title} · repeated` : `${QUEST.title} quest` };
     if (mode === 'retry') {
       const wrong = ids.filter(id => result(Q.get(id)) === 'wrong');
@@ -6818,7 +6831,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function questGo() {
     const qi = questInfo(); if (!qi || acct.gate('Quests need an account', questGo)) return;
     const nx = questNext(qi), s = S.session;
-    if (nx.act === 'go' && s && s.from === 'quest' && s.qall && s.qids.some(isLeft)) resume();   // keeps your place and shuffle
+    if (nx.act === 'go' && s && s.from === 'quest' && (s.qid || QUESTS[0].id) === QUEST.id && s.qall && s.qids.some(isLeft)) resume();   // keeps your place and shuffle
     else startQuest(null, false, nx.act);
   }
 
@@ -6857,24 +6870,27 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function sealsHTML(qi) {
     const due = k => qi[k] && !(S.seals[QUEST.id] || {})[k];
     return `<div class="qp-seals">
-      <figure class="seal-wrap${qi.done ? ' earned' : ''}"${due('done') ? ' data-stamp="done"' : ''}>${sealSVG(qi)}
+      <figure class="seal-wrap${qi.done ? ' earned' : ''}" data-sq="${esc(QUEST.id)}"${due('done') ? ' data-stamp="done"' : ''}>${sealSVG(qi)}
         <figcaption>${qi.done ? 'Seal earned' : `Seal at ${QUEST.goal}% right`}</figcaption></figure>
-      <figure class="seal-wrap small${qi.clean ? ' earned' : ''}"${due('clean') ? ' data-stamp="clean"' : ''}>${cleanSVG()}
+      <figure class="seal-wrap small${qi.clean ? ' earned' : ''}" data-sq="${esc(QUEST.id)}"${due('clean') ? ' data-stamp="clean"' : ''}>${cleanSVG()}
         <figcaption>${qi.clean ? 'Clean run' : `Clean run: ${QUEST.goal}% on the first try`}</figcaption></figure>
     </div>`;
   }
   let stampObs = null;
   function stampSeals(qi) {
     if (!QUEST || !qi) return;
-    const rec = S.seals[QUEST.id] || (S.seals[QUEST.id] = {});
     let changed = false;
-    for (const k of ['done', 'clean']) if (!qi[k] && rec[k]) { delete rec[k]; changed = true; }   // lost it: it can stamp again later
+    for (const x of S.view === 'home' ? questsLive() : [QUEST]) withQuest(x, () => {
+      const q2 = x === QUEST ? qi : questInfo(), r = S.seals[x.id] || {};
+      for (const k of ['done', 'clean']) if (!q2[k] && r[k]) { delete r[k]; changed = true; }   // lost it: it can stamp again later
+    });
     if (changed) save();
+    const recOf = el => { const id = el.closest('[data-sq]') ? el.closest('[data-sq]').dataset.sq : QUEST.id; return S.seals[id] || (S.seals[id] = {}); };
     const els = [...app.querySelectorAll('[data-stamp]')];
     if (!els.length) return;
     const fire = el => {
       usage.track('quest_seal', { seal: el.dataset.stamp });
-      el.classList.add('stamp'); rec[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save();
+      el.classList.add('stamp'); recOf(el)[el.dataset.stamp] = true; el.removeAttribute('data-stamp'); save();
       sfx.play('seal', { delay: reduceMotion() ? 0 : 0.44 });
     };
     if (stampObs) stampObs.disconnect();
@@ -6917,8 +6933,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       </div>
     </section>`;
   }
-  function questHTML(qi) {
+  function questHTML(qi, k = 0) {
     if (!qi || questOver()) return '';
+    const hid = k ? `quest-h-${k}` : 'quest-h';
     const nx = questNext(qi), ended = qi.days < 0;
     const repN = QUEST.q.filter(id => repOf(Q.get(id))).length;
     const topics = QUEST.topics.map((t, i) => {
@@ -6937,18 +6954,18 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       ? `<p class="qp-count today"><b>Today</b><span>exam day, good luck</span></p>`
       : `<p class="qp-count"><b class="num">${qi.days}</b><span>${qi.days === 1 ? 'day left' : 'days left'}</span></p>`;
     const exam = examCardHTML();
-    return `<section class="quest wrap" id="quest" aria-labelledby="quest-h">
+    return `<section class="quest wrap" id="${k ? `quest-${k}` : 'quest'}" data-quest="${esc(QUEST.id)}" aria-labelledby="${hid}">
       <div class="quest-plate plate${qi.done ? ' is-done' : ''}">
         <div class="qp-main">
           <p class="eyebrow">${ended ? 'Quest ended' : 'Current quest'} · ${esc(dueLabel())}</p>
-          <h2 class="h2" id="quest-h">${esc(QUEST.title)}</h2>
+          <h2 class="h2" id="${hid}">${esc(QUEST.title)}</h2>
           <p class="qp-note">${esc(QUEST.note)} Answer all ${fmtN(qi.st.keyed)} and get ${QUEST.goal}% right to earn the seal.</p>
           <div class="qp-progress">${barLine(qi.st)}<p class="qp-stats">${line}</p></div>
           <div class="qp-actions">
             <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${lockMark()}${nx.label} ${ICON.next}</button>
             ${exam.btn}
             ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
-            ${resetHTML('quest')}
+            ${resetHTML('quest:' + QUEST.id)}
           </div>
           ${exam.line}
         </div>
@@ -6986,10 +7003,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function scopeInfo(sc) {
     if (!sc) return null;
     if (sc.kind === 'quest') {
-      if (!QUEST || sc.id !== QUEST.id) return null;
-      const pool = QUEST.q.filter(keyedId), groups = QUEST.topics.map(t => t.q.filter(keyedId));
+      const QX = questById(sc.id); if (!QX) return null;
+      const pool = QX.q.filter(keyedId), groups = QX.topics.map(t => t.q.filter(keyedId));
       const sizes = QUEST_SIZES.filter(([k]) => k < pool.length).concat([[pool.length, 'the whole quest']]);
-      return { kind: 'quest', title: QUEST.title, what: `${QUEST.title} quest`, pool, groups, sizes, mod: QUEST.module,
+      return { kind: 'quest', title: QX.title, what: `${QX.title} quest`, pool, groups, sizes, mod: QX.module,
         lead: sizes.length > 1 ? `Questions drawn from the quest’s ${fmtN(pool.length)}, every topic in proportion, or all of them. Against the clock, graded out of 20.`
           : `The quest’s ${fmtN(pool.length)} questions as one timed exam, graded out of 20.` };
     }
@@ -7474,8 +7491,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const when = new Date(ex.handed);
     // by the quest's topics, or else by lecture (none for an exam on a single lecture)
     let groups;
-    const byQuest = ex.scope.kind === 'quest' && QUEST && ex.scope.id === QUEST.id;
-    if (byQuest) groups = QUEST.topics.map(t => ({ name: t.name, ids: t.q.filter(id => ex.qids.includes(id)) }));
+    const QX = ex.scope.kind === 'quest' ? questById(ex.scope.id) : null;
+    if (QX) groups = QX.topics.map(t => ({ name: t.name, ids: t.q.filter(id => ex.qids.includes(id)) }));
     else {
       const m = new Map();
       for (const id of ex.qids) { const i = DIAG_OF.get(id), k = i === undefined ? 'Other questions' : DIAG[i].n; if (!m.has(k)) m.set(k, []); m.get(k).push(id); }
@@ -7519,7 +7536,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           ${unlockHTML}
           <nav class="strip" aria-label="Questions">${cells}</nav>
         </section>
-        ${topics ? `<section class="ex-topics" aria-labelledby="xt-h"><h2 class="h3" id="xt-h">${byQuest ? 'By topic' : 'By lecture'}</h2><ul class="ledger">${topics}</ul></section>` : ''}
+        ${topics ? `<section class="ex-topics" aria-labelledby="xt-h"><h2 class="h3" id="xt-h">${QX ? 'By topic' : 'By lecture'}</h2><ul class="ledger">${topics}</ul></section>` : ''}
         ${examPastHTML(log)}
         ${footHTML()}
       </main>`;
@@ -7986,7 +8003,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         </div>
       </section>
       ${spotlightHTML()}
-      ${questHTML(qi)}
+      ${questsLive().map((x, k) => x === QUEST ? questHTML(qi, k) : withQuest(x, () => questHTML(questInfo(), k))).join('')}
       ${tickCardHTML()}
       ${tonightHTML()}
       ${acct.skyHTML()}
@@ -8081,31 +8098,32 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // scope: 'all', 'quest' or a module id
   function resetIds(scope) {
     if (scope === 'all') return Object.keys(S.answers);
-    if (scope === 'quest') return Object.keys(S.answers).filter(id => QUEST_SET.has(id));
+    if (scope.startsWith('quest:')) { const x = questById(scope.slice(6)), set = new Set(x ? x.q : []); return Object.keys(S.answers).filter(id => set.has(id)); }
     return Object.keys(S.answers).filter(id => (Q.get(id) || {}).topic === scope);
   }
   function resetHTML(scope) {
     const ids = resetIds(scope);
     if (!ids.length) return '';
     if (confirmReset === scope) {
-      const what = scope === 'all' ? 'every answer saved on this device' : `your ${fmtN(ids.length)} saved ${ids.length === 1 ? 'answer' : 'answers'} in this ${scope === 'quest' ? 'quest' : 'module'}`;
+      const what = scope === 'all' ? 'every answer saved on this device' : `your ${fmtN(ids.length)} saved ${ids.length === 1 ? 'answer' : 'answers'} in this ${scope.startsWith('quest:') ? 'quest' : 'module'}`;
       return `<span class="confirm" role="alert">Erase ${what}? <button class="btn danger" type="button" data-act="reset-yes">Erase</button><button class="btn quiet" type="button" data-act="reset-no">Cancel</button></span>`;
     }
-    return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope === 'quest' ? 'Reset this quest' : 'Reset this module'}</button>`;
+    return `<button class="btn danger reset" type="button" data-act="reset" data-scope="${esc(scope)}">${scope === 'all' ? 'Reset all answers' : scope.startsWith('quest:') ? 'Reset this quest' : 'Reset this module'}</button>`;
   }
   function doReset(scope) {
     sfx.play('erase');
     // the moon stays: it counts nights studied, not answers
     if (scope === 'all') { S.answers = {}; S.first = {}; S.seals = {}; S.session = null; S.exam = null; S.examLog = []; S.clean = {}; S.sure = {}; S.comets = {}; examStop(); }
     else {
-      const hit = id => scope === 'quest' ? QUEST_SET.has(id) : (Q.get(id) || {}).topic === scope;
+      const QX = scope.startsWith('quest:') ? questById(scope.slice(6)) : null, qset = new Set(QX ? QX.q : []);
+      const hit = id => QX ? qset.has(id) : (Q.get(id) || {}).topic === scope;
       for (const id of Object.keys(S.answers)) if (hit(id)) delete S.answers[id];
       for (const id of Object.keys(S.first)) if (hit(id)) delete S.first[id];
       for (const id of Object.keys(S.clean)) if (hit(id)) delete S.clean[id];
       for (const id of Object.keys(S.sure)) if (hit(id)) delete S.sure[id];
       for (const id of Object.keys(S.comets)) if (hit(id)) delete S.comets[id];
-      if (QUEST && QUEST.q.some(hit)) delete S.seals[QUEST.id];
-      if (S.session && (scope === 'quest' ? S.session.from === 'quest' : (S.session.topic === scope || S.session.qids.some(hit)))) S.session = null;
+      for (const x of QUESTS) if (x.q.some(hit)) delete S.seals[x.id];
+      if (S.session && (QX ? S.session.from === 'quest' && (S.session.qid || QUESTS[0].id) === QX.id : (S.session.topic === scope || S.session.qids.some(hit)))) S.session = null;
     }
     confirmReset = false; save(); render(false);
   }
@@ -10386,6 +10404,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (e.target.closest('a[data-ask]')) { usage.track('ask_labubu'); return; }
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
+    { const qc = t.closest('[data-quest]'); if (qc) useQuest(qc.dataset.quest); }   // a quest card's buttons act on its own quest
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; sfx.play('toggle', { quiet: true }); save(); render(false); return; }
     if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
     if (t.dataset.start) { startSession(t.dataset.start, null); return; }
