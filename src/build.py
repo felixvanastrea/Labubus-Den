@@ -236,8 +236,13 @@ bank['diag'] = diag
 # ("lecture": a lectures.json topic id) and take exactly that lecture's questions. Word-for-word copies are left
 # out, and a constellation counts once, as its lead. Within a topic, versions of the most repeated questions come first.
 quests = json.load(open('quests.json', encoding='utf8'))
-cur = next((x for x in quests['quests'] if x['id'] == quests.get('current')), None)
-if cur:
+# "current" is one quest id, or a list of them (two exams a few days apart): the page shows the first one whose due
+# date hasn't passed, else the last one
+cur_ids = quests.get('current') or []
+cur_ids = [cur_ids] if isinstance(cur_ids, str) else list(cur_ids)
+
+
+def build_quest(cur):
     rank = lambda q: (Q[q['id']].get('rep', 10 ** 6), order[q['id']])
     # a set added on or after the quest's due date (the exam itself, typed up afterwards) isn't part of it
     after = {s['id'] for s in bank['sources'] if s.get('added', '') >= cur['due']}
@@ -259,12 +264,24 @@ if cur:
         topics.append({k: v for k, v in {'name': t['name'], 'q': ids, 'lec': t.get('lecture')}.items() if v})
         flat += [i for i in ids if i not in seen]
         seen.update(ids)
-    bank['quest'] = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note', 'end') if k in cur}
-    bank['quest'].update(topics=topics, q=flat)
-    print('quest', cur['id'], '|', len(flat), 'questions |',
+    out = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note', 'end') if k in cur}
+    out.update(topics=topics, q=flat)
+    print('quest', cur['id'], cur['due'], '|', len(flat), 'questions |',
           ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),
           '| without a key:', sum(1 for i in flat if not Q[i]['answer']),
           '| constellations:', sum(1 for i in flat if 'cst' in Q[i]), f'(of {len(cst)} in the bank)')
+    return out
+
+
+built = []
+for qid in cur_ids:
+    cur = next((x for x in quests['quests'] if x['id'] == qid), None)
+    assert cur, f'quests.json: current names {qid!r}, which is not a quest'
+    built.append(build_quest(cur))
+built.sort(key=lambda x: x['due'])
+if built:
+    bank['quest'] = built[0]
+    bank['quests'] = built
 
 # the spotlight (quests.json "spotlight"): a set just added, today's exam, on the homepage in the quest's place from
 # "from" to "until" (inclusive), with its practice and its timed exam

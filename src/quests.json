@@ -1,13 +1,65 @@
 {
-  "current": "derm-midterm-2026",
+  "current": [
+    "derm-midterm-2026",
+    "gi-midterm-2026"
+  ],
   "quests": [
+    {
+      "id": "gi-midterm-2026",
+      "title": "Gastroenterology midterm",
+      "module": "digestive-system-disease",
+      "due": "2026-11-05",
+      "goal": 80,
+      "note": "The nine gastroenterology lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+      "topics": [
+        {
+          "name": "GERD",
+          "lecture": "D-gerd"
+        },
+        {
+          "name": "Achalasia",
+          "lecture": "D-achalasia"
+        },
+        {
+          "name": "Gastritis",
+          "lecture": "D-gastritis"
+        },
+        {
+          "name": "Gastroduodenal ulcers",
+          "lecture": "D-ulcer"
+        },
+        {
+          "name": "Chronic pancreatitis",
+          "concepts": [
+            "D.pancreas"
+          ],
+          "drop": [
+            "D177",
+            "D184"
+          ]
+        },
+        {
+          "name": "Inflammatory bowel diseases",
+          "lecture": "D-ibd"
+        },
+        {
+          "name": "Hepatitis A, C and E",
+          "concepts": [
+            "D.hepatitis",
+            "D.hav",
+            "D.hcv",
+            "D.hev"
+          ]
+        }
+      ]
+    },
     {
       "id": "derm-midterm-2026",
       "title": "Dermatology midterm",
       "module": "dermatology",
-      "due": "2026-10-28",
+      "due": "2026-11-02",
       "goal": 80,
-      "note": "The five dermatology lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+      "note": "The redo of the dermatology midterm: the same five lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
       "topics": [
         {
           "name": "Acne",
@@ -34,8 +86,7 @@
           "name": "Urticaria",
           "lecture": "S-urticaria"
         }
-      ],
-      "end": "2026-10-28"
+      ]
     },
     {
       "id": "comm-midterm-2026",
@@ -151,7 +202,7 @@
     "set": "s5-2627-dermatology-midterm-dermatology-2026-2027",
     "title": "Dermatology midterm 2026–2027",
     "from": "2026-10-28",
-    "until": "2026-11-03",
+    "until": "2026-10-29",
     "note": "Today’s dermatology midterm, as it was given, answered from Pr Kelati’s lectures."
   }
 }

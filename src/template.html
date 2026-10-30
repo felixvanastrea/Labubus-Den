@@ -4045,6 +4045,9 @@
     if (S.view === 'duel') return 'duel:' + S.duelId;
     return S.view;
   }
+  // Safari (and every iPhone and iPad browser, all WebKit) gets the CSS fallback below instead of view transitions
+  const NO_VT = (() => { try { const u = navigator.userAgent; return /AppleWebKit/.test(u) && (/iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1) || !/Chrome|Chromium|CriOS|Edg|OPR|Android/.test(u)); } catch (e) { return false; } })();
+  const VT_MAX = 1200;
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
   function render(scrollTop, focusWhat, vt, after) {
     if (lockedView() && !acct.member()) S.view = 'home';
@@ -4055,17 +4058,22 @@
     if (changed && (vt === 'nav' || vt === 'back') && sfx.since() > 150) sfx.play(vt === 'nav' ? 'flip' : 'back', { quiet: true });
     const run = () => { paint(scrollTop, focusWhat); if (after) after(); };
     const animate = changed && vt && !reduceMotion();
-    if (animate && document.startViewTransition) {
+    // a transition still running is cut short first, and none may outlive VT_MAX: a stuck one leaves its snapshot on
+    // screen and the page seems frozen (an iPad's Next "doing nothing", October 2026). Safari doesn't get them at all.
+    if (render.vt) { try { render.vt.skipTransition(); } catch (e) {} render.vt = null; }
+    if (animate && document.startViewTransition && !NO_VT) {
       const root = document.documentElement;
       root.dataset.vt = vt;
       try {
         const t = document.startViewTransition(run);
+        render.vt = t;
         const quiet = () => {};
+        const dog = setTimeout(() => { try { t.skipTransition(); } catch (e) {} }, VT_MAX);
         if (t.ready) t.ready.catch(quiet);
         if (t.updateCallbackDone) t.updateCallbackDone.catch(quiet);
-        t.finished.catch(quiet).finally(() => { if (root.dataset.vt === vt) delete root.dataset.vt; });
+        t.finished.catch(quiet).finally(() => { clearTimeout(dog); if (render.vt === t) render.vt = null; if (root.dataset.vt === vt) delete root.dataset.vt; });
         return;
-      } catch (e) { delete root.dataset.vt; }
+      } catch (e) { delete root.dataset.vt; render.vt = null; }
     }
     run();
     if (animate) {
@@ -4193,7 +4201,14 @@
   // The topics of an upcoming exam, gathered from every past exam (quests.json, resolved at build time).
   // It's done when every question is answered and at least goal% are right; retries count, so fixing mistakes is how
   // you finish it. The "clean run" seal needs goal% right on the first try.
-  const QUEST = BANK.quest && BANK.quest.q && BANK.quest.q.length ? BANK.quest : null;
+  // with two exams a few days apart there are two (BANK.quests, by due date): the first one not past, else the last
+  const QUEST = (() => {
+    const all = (BANK.quests || [BANK.quest]).filter(x => x && x.q && x.q.length);
+    if (!all.length) return null;
+    const d = new Date(window.__skyNow || Date.now()), p = n => String(n).padStart(2, '0');
+    const today = `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+    return all.find(x => x.due >= today) || all[all.length - 1];
+  })();
   const QUEST_SET = new Set(QUEST ? QUEST.q : []);
   const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
   const isLeft = id => ['todo', 'draft'].includes(result(Q.get(id)));

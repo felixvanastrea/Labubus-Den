@@ -36,6 +36,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `favicon.svg` from it and a `<symbol id="labubu">` for the top bar. `favicon-32.png` and `icon-180.png` were
   rendered once from `favicon.svg` (redo them if the art changes); `og.jpg` is the hero at 1400×735 scaled to 1200×630.
 - Motion should feel smooth (view transitions between screens, spring easing). Always respect `prefers-reduced-motion`.
+  Safari and every iPhone/iPad browser (WebKit, `NO_VT`) get the CSS fallback instead of view transitions, and elsewhere a
+  transition is skipped after `VT_MAX` (1.2 s) or when the next one starts: an iPad user's Next "did nothing" when pressed
+  (30 October 2026, couldn't be reproduced here; a stuck transition keeps its snapshot on screen). Buttons and options have
+  `touch-action: manipulation` so quick taps aren't taken for a double-tap zoom.
 - Opening animation (`intro` in `template.html`): the camera looks up at the sky, where the years hang as constellations
   (`YEARS`: EFM3 open; EFM2 and EFM4 "in progress", unlit and locked). Picking EFM3 zooms into it: its semesters are
   two of its stars (S5 open, S6 in progress). The picked star becomes the shooting star: the camera follows it down
@@ -157,7 +161,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   per constellation, puts the most repeated first, and prints the counts per topic: check them before shipping.
   A topic can instead name a lecture (`"lecture": "D-appendicitis"`, a `lectures.json` topic id) and take exactly that
   lecture's questions, so the quest and the module's lecture list always agree (lectures.js checks it).
-- Current quest: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
+- Two quests at once since 30 October 2026: `current` can be a list; the build makes each (`bank.quests`, by due date)
+  and the page shows the first whose due date hasn't passed, else the last (`QUEST` in `template.html`). Now: the
+  dermatology redo (Monday 2 November, the same five lectures, Abi's choice; it now also takes the on-topic questions of
+  the 28 October midterm, added before the new due date), then the gastroenterology midterm (`gi-midterm-2026`, Thursday
+  5 November): GERD, achalasia, gastritis, gastroduodenal ulcers, chronic pancreatitis (`D.pancreas`, minus D177
+  cholangitis and D184 malabsorption), IBD, hepatitis A, C and E (`D.hepatitis` + `D.hav`/`D.hcv`/`D.hev`, no hepatitis B
+  questions), 72 questions, none with explanations yet. The dermatology spotlight was cut to 29 October for the redo.
+- Before: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
   on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
   the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of
   the lecture (S110, a leishmaniasis case tagged tuberculosis too, dropped; S25, gummas, kept). Explanations for all 96

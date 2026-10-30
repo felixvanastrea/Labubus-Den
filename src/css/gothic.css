@@ -13,6 +13,7 @@ body {
 button { font: inherit; color: inherit; }
 a { color: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }   /* the buttons press in themselves; no flash over them */
+button, a, .opt { touch-action: manipulation; }   /* quick taps on an iPad aren't taken for a double-tap zoom and lost */
 ::selection { background: var(--ink); color: var(--night); }
 :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 3px; }
 .mono { font-family: var(--f-mono); font-size: var(--t-label); font-weight: 400; letter-spacing: .01em; }
