@@ -171,7 +171,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the 28 October midterm, added before the new due date), then the gastroenterology midterm (`gi-midterm-2026`, Thursday
   5 November): GERD, achalasia, gastritis, gastroduodenal ulcers, chronic pancreatitis (`D.pancreas`, minus D177
   cholangitis and D184 malabsorption), IBD, hepatitis A, C and E (`D.hepatitis` + `D.hav`/`D.hcv`/`D.hev`, no hepatitis B
-  questions), 72 questions, none with explanations yet. The dermatology spotlight was cut to 29 October for the redo.
+  questions), 72 questions, all with explanations (30 October 2026, from Pr Khannoussi's and Pr Bahlaoui's decks in
+  Abi's Drive, lectures `gi-*`; no key contradicted the slides). The dermatology spotlight was cut to 29 October for the redo.
 - Before: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
   on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
   the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of

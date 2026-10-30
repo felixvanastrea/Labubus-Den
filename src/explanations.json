@@ -92,6 +92,34 @@
     "derm-leprosy": {
       "title": "Leprosy (Pr Kelati)",
       "added": "2026-10-28"
+    },
+    "gi-gerd": {
+      "title": "Gastroesophageal reflux disease (Pr Khannoussi)",
+      "added": "2026-10-30"
+    },
+    "gi-achalasia": {
+      "title": "Esophageal motility disorders (Pr Khannoussi)",
+      "added": "2026-10-30"
+    },
+    "gi-gastritis": {
+      "title": "Acute and chronic gastritis (Pr Bahlaoui)",
+      "added": "2026-10-30"
+    },
+    "gi-ulcer": {
+      "title": "Gastroduodenal ulcers (Pr Khannoussi)",
+      "added": "2026-10-30"
+    },
+    "gi-pancreatitis": {
+      "title": "Chronic pancreatitis (Pr Khannoussi)",
+      "added": "2026-10-30"
+    },
+    "gi-ibd": {
+      "title": "Inflammatory bowel diseases (Pr Bahlaoui)",
+      "added": "2026-10-30"
+    },
+    "gi-hepatitis": {
+      "title": "Acute hepatitis, viral hepatitis A and C (Pr Bahlaoui)",
+      "added": "2026-10-30"
     }
   },
   "questions": {
@@ -2714,6 +2742,512 @@
       "B": "Yes: one injection for early syphilis, three for late latent, IV for neurosyphilis.",
       "C": "No: amoxicillin isn't used; benzathine penicillin G is.",
       "D": "No: the alternative in allergy is a cyclin (doxycycline), not a macrolide."
+    },
+    "D13": {
+      "lecture": "gi-gerd",
+      "A": "No: gluten isn't on the slides' list of risk factors.",
+      "B": "Yes: a high BMI, overweight and obesity are risk factors.",
+      "C": "No: weight lifting isn't one of the lecture's risk factors.",
+      "D": "Yes: calcium channel blockers are among the medications (with anticholinergics and NSAIDs)."
+    },
+    "D57": {
+      "lecture": "gi-gerd",
+      "A": "Yes: pregnancy is a risk factor (heartburn before pregnancy, parity, duration).",
+      "B": "No: it's a high fat intake that counts, not protein.",
+      "C": "Yes: overweight and obesity are risk factors.",
+      "D": "No: GERD affects all ages; age isn't on the list."
+    },
+    "D79": {
+      "lecture": "gi-gerd",
+      "A": "No: antibiotics aren't among the medications listed (calcium channel blockers, anticholinergics, NSAIDs).",
+      "B": "No: a past gastroenteritis isn't a risk factor.",
+      "C": "Yes: obesity is a risk factor.",
+      "D": "Yes: pregnancy is a risk factor."
+    },
+    "D130": {
+      "lecture": "gi-gerd",
+      "A": "No: salty food isn't on the list; fat, carbonated drinks, coffee and alcohol are.",
+      "B": "Yes: metabolic syndrome is listed, with obesity, diabetes and sleep apnea.",
+      "C": "Yes: NSAIDs are among the medications that favour reflux.",
+      "D": "No: smoked food isn't a listed risk factor."
+    },
+    "D224": {
+      "lecture": "gi-gerd",
+      "A": "Yes: pregnancy is a risk factor.",
+      "B": "Yes: obesity is a risk factor.",
+      "C": "No: spicy food isn't on the slides' list.",
+      "D": "Yes: a high fat intake is a risk factor."
+    },
+    "D181": {
+      "lecture": "gi-gerd",
+      "A": "Yes: regurgitation is one of the two typical symptoms.",
+      "B": "No: ENT signs of reflux are hoarseness, pharyngeal pain and globus, and they're atypical.",
+      "C": "No: cough and wheeze are atypical, respiratory symptoms.",
+      "D": "Yes: heartburn is the other typical symptom."
+    },
+    "D233": {
+      "lecture": "gi-gerd",
+      "A": "No: precordial chest pain is an atypical symptom.",
+      "B": "Yes: regurgitation is typical.",
+      "C": "No: pharyngeal pain is an atypical, ENT symptom.",
+      "D": "Yes: pyrosis (heartburn) is typical."
+    },
+    "D15": {
+      "lecture": "gi-gerd",
+      "A": "Yes: PPIs can be continued as long as they're needed; there's no set limit.",
+      "B": "Yes: test for H. pylori and eradicate it first, since chronic PPI use changes the course of H. pylori gastritis.",
+      "C": "Yes: the need for PPIs is reassessed at each follow-up, aiming for the lowest effective dose.",
+      "D": "No: long-term treatment goes down to the lowest dose that controls symptoms."
+    },
+    "D85": {
+      "lecture": "gi-gerd",
+      "A": "No: headache isn't a reflux symptom.",
+      "B": "No: diarrhea isn't a reflux symptom.",
+      "C": "Yes: epigastric pain is an atypical digestive symptom.",
+      "D": "Yes: precordial chest pain is an atypical, cardiac-like symptom."
+    },
+    "D113": {
+      "lecture": "gi-gerd",
+      "A": "Yes: unintentional weight loss is an alarm symptom, so endoscopy is needed.",
+      "B": "No: young age isn't an indication; GERD is a clinical diagnosis.",
+      "C": "Yes: upper GI bleeding is an alarm symptom.",
+      "D": "No: typical symptoms are enough to diagnose GERD; endoscopy doesn't make the diagnosis."
+    },
+    "D126": {
+      "lecture": "gi-gerd",
+      "A": "No: respiratory symptoms can be atypical signs of reflux, but respiratory failure isn't a complication.",
+      "B": "Yes: adenocarcinoma, through Barrett's esophagus.",
+      "C": "Yes: erosive esophagitis is a complication.",
+      "D": "No: heart failure isn't a complication of GERD."
+    },
+    "D135": {
+      "lecture": "gi-gerd",
+      "A": "Yes: avoid fatty meals.",
+      "B": "Yes: lose weight if overweight or obese.",
+      "C": "No: physical activity isn't to be avoided.",
+      "D": "Yes: no meals in the 3 hours before bedtime."
+    },
+    "D140": {
+      "lecture": "gi-gerd",
+      "A": "Yes: Barrett's is metaplasia of the esophageal mucosa, squamous to columnar, a precancerous lesion.",
+      "B": "No: inflammation from persistent reflux is esophagitis.",
+      "C": "No: it's acquired, from chronic reflux, not hereditary.",
+      "D": "No: drug-induced inflammation is pill esophagitis, not Barrett's."
+    },
+    "D227": {
+      "lecture": "gi-gerd",
+      "A": "Yes: unintentional weight loss is an alarm symptom.",
+      "B": "Yes: iron deficiency anemia is an alarm symptom.",
+      "C": "No: fever isn't one of the alarm symptoms.",
+      "D": "Yes: dysphagia (and odynophagia) is an alarm symptom."
+    },
+    "D56": {
+      "lecture": "gi-achalasia",
+      "A": "No: in achalasia it's worse for liquids than solids; solids then liquids points to cancer.",
+      "B": "Yes: chronic, for at least 6 months.",
+      "C": "No: there's no weight loss at the initial stage, only in advanced cases.",
+      "D": "Yes: it's sensitive to temperature, often eased by hot drinks."
+    },
+    "D172": {
+      "lecture": "gi-achalasia",
+      "A": "Yes: it worsens slowly over months or years.",
+      "B": "No: solids then liquids is the cancer pattern; achalasia is worse for liquids.",
+      "C": "No: it's chronic; a recent, progressive dysphagia is an alarm symptom.",
+      "D": "Yes: intermittent and heat sensitive."
+    },
+    "D234": {
+      "lecture": "gi-achalasia",
+      "A": "No: it's chronic; a recent dysphagia is an alarm symptom.",
+      "B": "No: solids then liquids is the cancer pattern.",
+      "C": "Yes: intermittent and heat sensitive.",
+      "D": "Yes: it worsens slowly over months or years."
+    },
+    "D4": {
+      "lecture": "gi-achalasia",
+      "A": "Yes: any dysphagia means upper GI endoscopy with biopsies first, to rule out cancer.",
+      "B": "No: CT isn't first line.",
+      "C": "No: symptoms suggest it, but manometry must confirm it.",
+      "D": "Yes: high-resolution manometry confirms the diagnosis."
+    },
+    "D229": {
+      "lecture": "gi-achalasia",
+      "A": "No: CT isn't the diagnostic test.",
+      "B": "No: endoscopy rules out other causes; it's often normal in achalasia.",
+      "C": "Yes: high-resolution manometry confirms it.",
+      "D": "No: 24h pH monitoring rules out GERD, it doesn't diagnose achalasia."
+    },
+    "D78": {
+      "lecture": "gi-achalasia",
+      "A": "No: abdominal ultrasound doesn't explore the esophagus.",
+      "B": "No: pH monitoring rules out GERD later; it isn't first line.",
+      "C": "No: chest CT isn't first line.",
+      "D": "Yes: dysphagia means upper GI endoscopy with esophageal biopsies first."
+    },
+    "D87": {
+      "lecture": "gi-achalasia",
+      "A": "No: endoscopic myotomy (POEM) is an intervention to spare in a frail patient.",
+      "B": "Yes: botulinum toxin injection is the least invasive option for high-risk patients.",
+      "C": "No: Heller's myotomy is surgery, not for high surgical risk patients.",
+      "D": "No: balloon dilation carries a risk of perforation, which may then need surgery."
+    },
+    "D17": {
+      "lecture": "gi-gastritis",
+      "A": "No: the mucosa looks normal in half the cases, so biopsies are always needed.",
+      "B": "Yes: it's often asymptomatic, found on endoscopy done for another reason.",
+      "C": "No: the examination is often normal.",
+      "D": "Yes: endoscopy is normal in about 50%."
+    },
+    "D84": {
+      "lecture": "gi-gastritis",
+      "A": "Yes: H. pylori gastritis can lead to ulcers, atrophy and adenocarcinoma (and lymphoma).",
+      "B": "No: multifocal atrophic gastritis involves the antrum and the fundus.",
+      "C": "Yes: autoimmune gastritis gives achlorhydria and vitamin B12 deficiency.",
+      "D": "No: autoimmune gastritis is driven by antibodies, not NSAIDs."
+    },
+    "D218": {
+      "lecture": "gi-gastritis",
+      "A": "No: it carries a risk of adenocarcinoma and lymphoma.",
+      "B": "No: ultrasound doesn't make the diagnosis; endoscopy with biopsies does.",
+      "C": "Yes: its definition is histological, a chronic inflammatory infiltrate.",
+      "D": "Yes: H. pylori is the main cause."
+    },
+    "D228": {
+      "lecture": "gi-gastritis",
+      "A": "Yes: it can lead to adenocarcinoma.",
+      "B": "No: it's often asymptomatic.",
+      "C": "No: H. pylori is the most frequent cause.",
+      "D": "Yes: confirmed by endoscopy with biopsies."
+    },
+    "D90": {
+      "lecture": "gi-gastritis",
+      "A": "No: caustic gastritis is often severe, with hematemesis and early complications.",
+      "B": "Yes: NSAIDs, aspirin and alcohol are common causes.",
+      "C": "No: lesions are often diffuse.",
+      "D": "Yes: phlegmonous gastritis is a fulminant bacterial form, mainly in the immunocompromised."
+    },
+    "D231": {
+      "lecture": "gi-gastritis",
+      "A": "No: unlike chronic gastritis, symptoms are usually intense.",
+      "B": "No: the diagnosis rests on endoscopy and histology.",
+      "C": "Yes: NSAIDs and aspirin are common causes.",
+      "D": "No: acute H. pylori gastritis exists; untreated, it becomes chronic."
+    },
+    "D25": {
+      "lecture": "gi-gastritis",
+      "A": "No: PCR isn't the test used to check eradication.",
+      "B": "No: the lecture checks eradication with the urea breath test.",
+      "C": "Yes: urea breath test, 4 weeks after the antibiotics (PPIs stopped 2 weeks before).",
+      "D": "No: serology stays positive after cure, so it can't check eradication."
+    },
+    "D125": {
+      "lecture": "gi-gastritis",
+      "A": "Yes: bismuth quadruple therapy (Pylera with a PPI) for 10 days.",
+      "B": "No: a PPI alone doesn't eradicate H. pylori.",
+      "C": "Yes: concomitant quadruple therapy for 14 days.",
+      "D": "No: 7 days of a triple therapy isn't one of the two protocols."
+    },
+    "D232": {
+      "lecture": "gi-gastritis",
+      "A": "No: parietal cell antibodies are found in 90%, intrinsic factor antibodies in 70%.",
+      "B": "Yes: it causes vitamin B12 deficiency (Biermer).",
+      "C": "No: the fundus is atrophic, the antrum is spared.",
+      "D": "No: there's no etiological treatment; it's lifelong vitamin B12."
+    },
+    "D235": {
+      "lecture": "gi-gastritis",
+      "A": "Yes: H. pylori infection can cause gastric lymphoma.",
+      "B": "No: treatment combines antibiotics with a PPI.",
+      "C": "Yes: it's the main cause of gastritis.",
+      "D": "No: serology stays positive; eradication is checked by urea breath test."
+    },
+    "D58": {
+      "lecture": "gi-ulcer",
+      "A": "Yes: H. pylori is one of the two main causes.",
+      "B": "Yes: NSAIDs are the other main cause.",
+      "C": "No: diet isn't a cause.",
+      "D": "No: genetic factors aren't a main cause."
+    },
+    "D132": {
+      "lecture": "gi-ulcer",
+      "A": "No: diet isn't a cause.",
+      "B": "Yes: NSAIDs are a main cause.",
+      "C": "No: spicy food doesn't cause ulcers.",
+      "D": "Yes: H. pylori is a main cause."
+    },
+    "D111": {
+      "lecture": "gi-ulcer",
+      "A": "No: pain made worse by meals is the gastric ulcer pattern.",
+      "B": "Yes: duodenal ulcer pain increases when fasting and is relieved by food.",
+      "C": "No: relief by leaning forward suggests the pancreas.",
+      "D": "No: duodenal ulcer pain doesn't radiate."
+    },
+    "D170": {
+      "lecture": "gi-ulcer",
+      "A": "No: PPI relief is asked about in the history, but it isn't how the typical pain is described.",
+      "B": "No: it's relieved by food, not by fasting.",
+      "C": "Yes: it increases when fasting.",
+      "D": "No: it doesn't radiate."
+    },
+    "D9": {
+      "lecture": "gi-ulcer",
+      "A": "No: the regimen is a bolus, then a continuous infusion.",
+      "B": "No: a single dose isn't enough.",
+      "C": "Yes: omeprazole 80 mg IV, then 8 mg per hour.",
+      "D": "No: the 80 mg bolus is followed by an 8 mg/h infusion."
+    },
+    "D21": {
+      "lecture": "gi-ulcer",
+      "A": "No: H. pylori is eradicated, not covered with long-term PPIs.",
+      "B": "Yes: NSAIDs or aspirin with a PPI in patients at risk.",
+      "C": "No: probiotics aren't part of prevention.",
+      "D": "Yes: screen for H. pylori, treat it, then check eradication."
+    },
+    "D81": {
+      "lecture": "gi-ulcer",
+      "A": "No: endoscopy is for diagnosis, and treatment depends on the Forrest class.",
+      "B": "No: hematochezia happens in severe bleeding with hemodynamic instability.",
+      "C": "Yes: mortality is 5 to 10%.",
+      "D": "Yes: emergency management comes first: volemia, oxygen, monitoring, PPIs."
+    },
+    "D82": {
+      "lecture": "gi-ulcer",
+      "A": "No: diet isn't a defense factor of the mucosa.",
+      "B": "No: bile reflux is an aggressive factor.",
+      "C": "Yes: mucosal blood flow is a defense factor.",
+      "D": "Yes: mucus and bicarbonate protect the mucosa."
+    },
+    "D117": {
+      "lecture": "gi-ulcer",
+      "A": "Yes: active smoking.",
+      "B": "Yes: NSAIDs.",
+      "C": "No: diet isn't a bleeding risk factor.",
+      "D": "Yes: anticoagulants (and antiplatelet drugs)."
+    },
+    "D123": {
+      "lecture": "gi-ulcer",
+      "A": "No: pH monitoring is for reflux.",
+      "B": "No: H. pylori tests find the cause, not the ulcer.",
+      "C": "Yes: upper GI endoscopy is the gold standard.",
+      "D": "No: ultrasound can't see an ulcer."
+    },
+    "D216": {
+      "lecture": "gi-ulcer",
+      "A": "Yes: a gastric ulcer can be a cancer.",
+      "B": "Yes: double-dose PPIs and H. pylori eradication if positive.",
+      "C": "Yes: biopsies are taken every time.",
+      "D": "No: a gastric ulcer's healing is checked by endoscopy, with biopsies."
+    },
+    "D219": {
+      "lecture": "gi-ulcer",
+      "A": "Yes: H. pylori is an aggressive factor.",
+      "B": "No: mucus and bicarbonate are defense factors.",
+      "C": "Yes: smoking is an aggressive factor.",
+      "D": "Yes: NSAIDs are an aggressive factor."
+    },
+    "D230": {
+      "lecture": "gi-ulcer",
+      "A": "No: endoscopy comes after resuscitation.",
+      "B": "Yes: oxygen therapy.",
+      "C": "Yes: high-dose PPIs (80 mg, then 8 mg/h).",
+      "D": "Yes: an IV line and restoring volemia."
+    },
+    "D239": {
+      "lecture": "gi-ulcer",
+      "A": "No: a duodenal ulcer isn't a cancer risk; a gastric ulcer must be biopsied.",
+      "B": "Yes: perforation, 20% mortality.",
+      "C": "No: lymphoma is a differential diagnosis, not a complication.",
+      "D": "Yes: upper GI bleeding."
+    },
+    "D59": {
+      "lecture": "gi-pancreatitis",
+      "A": "No: MRCP details the ducts but isn't first line.",
+      "B": "Yes: contrast CT shows atrophy, duct irregularity and calcifications.",
+      "C": "No: ultrasound can show calcifications but isn't enough to confirm it.",
+      "D": "No: endoscopic ultrasound is for early stages or a suspected cancer."
+    },
+    "D176": {
+      "lecture": "gi-pancreatitis",
+      "A": "No: post-prandial epigastric pain with steatorrhea isn't coronary.",
+      "B": "Yes: weight loss in a smoker and drinker: rule out pancreatic cancer.",
+      "C": "Yes: alcohol, smoking, pain, weight loss and steatorrhea fit chronic pancreatitis.",
+      "D": "No: steatorrhea points to the pancreas, not the colon."
+    },
+    "D12": {
+      "lecture": "gi-ibd",
+      "A": "No: transmural involvement with fistulas is Crohn's disease.",
+      "B": "Yes: the small bowel is spared (except possible backwash ileitis).",
+      "C": "Yes: it always involves the rectum and extends continuously.",
+      "D": "No: skip lesions are Crohn's disease."
+    },
+    "D88": {
+      "lecture": "gi-ibd",
+      "A": "No: transmural inflammation with fistulas and strictures is Crohn's.",
+      "B": "Yes: continuous mucosal inflammation from the rectum.",
+      "C": "Yes: crypt abscesses in the mucosa.",
+      "D": "No: segmental lesions with skip areas are Crohn's."
+    },
+    "D114": {
+      "lecture": "gi-ibd",
+      "A": "No: fistulas belong to Crohn's.",
+      "B": "No: damage through every layer (transmural) is Crohn's; UC stays in the mucosa.",
+      "C": "Yes: the rectum is always involved.",
+      "D": "Yes: continuous, with no healthy mucosa between lesions."
+    },
+    "D171": {
+      "lecture": "gi-ibd",
+      "A": "No: UC is limited to the rectum and colon.",
+      "B": "No: UC is mucosal.",
+      "C": "Yes: it always involves the rectum.",
+      "D": "No: lesions are continuous, not patchy."
+    },
+    "D22": {
+      "lecture": "gi-ibd",
+      "A": "Yes: fistulas, abscesses and stenosis with obstruction are classic complications.",
+      "B": "Yes: abdominal pain, chronic diarrhea and weight loss are common.",
+      "C": "No: the extra-digestive manifestations of Crohn's are the same as in UC.",
+      "D": "No: ano-perineal disease is common in Crohn's (20 to 50%)."
+    },
+    "D121": {
+      "lecture": "gi-ibd",
+      "A": "No: Crohn's is transmural.",
+      "B": "No: continuous lesions from the rectum describe UC.",
+      "C": "Yes: stenosis and fistulas are possible.",
+      "D": "Yes: it can affect any part, from the mouth to the anus."
+    },
+    "D80": {
+      "lecture": "gi-ibd",
+      "A": "Yes: 5-ASA is first line for mild to moderate UC.",
+      "B": "Yes: anti-TNF for refractory or severe disease.",
+      "C": "No: corticosteroids are for induction only, and must be tapered.",
+      "D": "No: NSAIDs are avoided, they can trigger flares."
+    },
+    "D119": {
+      "lecture": "gi-ibd",
+      "A": "No: colonic only is 15 to 25%.",
+      "B": "No: ano-perineal disease is 20 to 50%, but not the most frequent location.",
+      "C": "No: ileal only is 30 to 40%.",
+      "D": "Yes: ileocolic is the most frequent, 30 to 50%."
+    },
+    "D124": {
+      "lecture": "gi-ibd",
+      "A": "Yes: perforation is a complication of severe UC.",
+      "B": "Yes: colectasis (toxic megacolon, transverse colon over 6 cm).",
+      "C": "No: ano-perineal lesions are rare in UC; they belong to Crohn's.",
+      "D": "No: fistulas are rare in UC."
+    },
+    "D175": {
+      "lecture": "gi-ibd",
+      "A": "No: the esophagus is rarely involved.",
+      "B": "No: gastroduodenal involvement is about 4%.",
+      "C": "No: ano-perineal disease is common, but not the most frequent location.",
+      "D": "Yes: the ileocaecal region is the most frequent."
+    },
+    "D217": {
+      "lecture": "gi-ibd",
+      "A": "No: abdominal pain is often mild in UC.",
+      "B": "Yes: hematochezia is the hallmark symptom of UC.",
+      "C": "No: abscesses belong to Crohn's.",
+      "D": "No: fistulas belong to Crohn's."
+    },
+    "D2": {
+      "lecture": "gi-hepatitis",
+      "A": "No: 50% overstates it.",
+      "B": "No: 10% understates it.",
+      "C": "No: 1% is closer to fulminant hepatitis A or B.",
+      "D": "Yes: fulminant hepatitis E kills about 30% of pregnant women."
+    },
+    "D116": {
+      "lecture": "gi-hepatitis",
+      "A": "Yes: it's severe in pregnancy.",
+      "B": "Yes: like hepatitis A, it's self-limiting, with no chronicity.",
+      "C": "Yes: transmission is fecal-oral, and the virus is found in stool.",
+      "D": "No: blood transmission is hepatitis B, C and D."
+    },
+    "D215": {
+      "lecture": "gi-hepatitis",
+      "A": "No: healthcare work isn't a severity factor.",
+      "B": "Yes: in the immunocompromised it can become chronic and severe.",
+      "C": "No: smoking isn't a severity factor.",
+      "D": "Yes: pregnant women risk fulminant hepatitis."
+    },
+    "D8": {
+      "lecture": "gi-hepatitis",
+      "A": "No: spontaneous recovery is under 20%; chronicity is the rule.",
+      "B": "Yes: 80 to 85% become chronic, with cirrhosis in 20 to 30% after 20 years.",
+      "C": "Yes: acute infection is often asymptomatic or mild.",
+      "D": "No: arthralgia, cryoglobulinemia, glomerulonephritis and vasculitis are extrahepatic manifestations."
+    },
+    "D128": {
+      "lecture": "gi-hepatitis",
+      "A": "No: antibodies appear after 12 weeks; PCR is positive from week 1.",
+      "B": "Yes: about 80% become chronic.",
+      "C": "No: there's no vaccine against hepatitis C.",
+      "D": "Yes: direct-acting antivirals cure over 95%."
+    },
+    "D164": {
+      "lecture": "gi-hepatitis",
+      "A": "No: chronicity is 80%, not 20%.",
+      "B": "No: antibodies may be negative early; PCR confirms active infection.",
+      "C": "Yes: direct-acting antivirals.",
+      "D": "Yes: HCC, 2 to 4% a year once cirrhosis develops.",
+      "E": "Yes: there's no vaccine."
+    },
+    "D163": {
+      "lecture": "gi-hepatitis",
+      "A": "No: hepatitis A never becomes chronic.",
+      "B": "No: IgM anti-HAV makes the diagnosis; IgG means past infection or vaccination.",
+      "C": "No: there's no antiviral treatment, only supportive care.",
+      "D": "Yes: incubation, prodromal phase, icteric phase, convalescence.",
+      "E": "No: there's an inactivated vaccine, two doses 6 months apart."
+    },
+    "D221": {
+      "lecture": "gi-hepatitis",
+      "A": "No: IgG means past infection or vaccination; IgM makes the diagnosis.",
+      "B": "Yes: it can be revealed by jaundice.",
+      "C": "No: hepatitis A never becomes chronic.",
+      "D": "No: there's no antiviral treatment."
+    },
+    "D19": {
+      "lecture": "gi-hepatitis",
+      "A": "Yes: transaminases 10 to 100 times normal mean cytolysis, acute hepatitis.",
+      "B": "Yes: a normal biliary ultrasound rules out obstruction.",
+      "C": "No: ALP over 3 times normal with dilated ducts means obstruction.",
+      "D": "No: months of pruritus and pale stools before jaundice suggest chronic cholestasis."
+    },
+    "D24": {
+      "lecture": "gi-hepatitis",
+      "A": "No: hepatitis A isn't transmitted by blood.",
+      "B": "Yes: person to person in households, day-care, schools and barracks.",
+      "C": "Yes: fecal-oral, through contaminated food or water.",
+      "D": "No: it's contagious from 2 weeks before to 1 week after the jaundice."
+    },
+    "D60": {
+      "lecture": "gi-hepatitis",
+      "A": "Yes: HCV RNA is detectable from week 1 and confirms active infection.",
+      "B": "Yes: IgM anti-HAV means acute hepatitis A.",
+      "C": "No: anti-HCV antibodies appear after about 12 weeks.",
+      "D": "No: hepatitis A never becomes chronic."
+    },
+    "D62": {
+      "lecture": "gi-hepatitis",
+      "A": "No: causes include viruses, drugs, toxins and autoimmunity.",
+      "B": "Yes: diffuse inflammatory liver injury lasting under 6 months.",
+      "C": "No: cholestasis enzymes are only slightly raised; cytolysis dominates.",
+      "D": "Yes: transaminases typically over 10 times normal."
+    },
+    "D112": {
+      "lecture": "gi-hepatitis",
+      "A": "Yes: hygiene and clean water.",
+      "B": "No: health workers are vaccinated, not screened.",
+      "C": "Yes: vaccination.",
+      "D": "No: pregnant women aren't screened for hepatitis A."
+    },
+    "D115": {
+      "lecture": "gi-hepatitis",
+      "A": "Yes: sexual transmission is possible, though less common.",
+      "B": "No: contaminated water is hepatitis A and E.",
+      "C": "Yes: mother-to-child transmission happens in about 5%.",
+      "D": "Yes: blood is the main route."
     }
   }
 }
