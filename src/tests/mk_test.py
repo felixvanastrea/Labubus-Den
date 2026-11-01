@@ -8,6 +8,7 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 page = open(os.path.join(HERE, '..', 'out', 'artifact.html'), encoding='utf8').read()
+page = page.replace('__DEN_VERSION__', 'test00000001')   # a version, so fresh.js can check for a newer one
 F = 'node_modules/@fontsource'
 faces = []
 for st in ('normal', 'italic'):

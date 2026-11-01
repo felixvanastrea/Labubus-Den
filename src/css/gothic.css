@@ -2408,3 +2408,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .lb-say-head { order: 1; width: 72px; }
 }
 @media (prefers-reduced-motion: reduce) { .lb-say { transition: none; transform: none; } }
+
+/* ---------- a new version of the Den (fresh) ---------- */
+.fresh-note { position: fixed; z-index: 70; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px); padding: 8px 8px 8px 16px; border-radius: 999px;
+  background: var(--plate); color: var(--ink); border: 1px solid var(--hair-2); box-shadow: 0 14px 34px -14px rgba(0, 0, 0, .6);
+  font-family: var(--f-read); font-size: .98rem; animation: rise .5s var(--ease) both; }
+.fresh-note .btn { padding: 6px 14px; }
+@media (prefers-reduced-motion: reduce) { .fresh-note { animation: none; } }

@@ -618,6 +618,20 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   either ("Hide my star" and Delete my data remove the entry). Rules: each user writes only their own key, under their
   registered name, `t` = server time; if they refuse, nothing shows. Test: alive.js.
 
+## New versions reach open tabs (Abi, 1 November 2026)
+
+- An iPad tab kept a days-old Den, so fixes didn't reach it. The build puts a version (a hash of `index.html`) in the
+  page (`'__DEN_VERSION__'` in `fresh`) and writes `version.json` at the root: commit it with `index.html`. On GitHub
+  Pages the page fetches `version.json` past the cache (`no-store`, `?t=`) when it comes back to the front, every 15
+  minutes, 4 s after loading, and after a screen at most once a minute (`fresh.after()` in `render`).
+- Newer: it reloads itself when nothing would be lost (no input focused, no `aria-modal` sheet, no lightbox, no intro),
+  to `?v=<new>` so a cached copy can't answer, then tidies the address (`history.replaceState`) and skips the opening
+  animation (`fresh.reloaded`). Everything is saved, so it lands back on the same screen. Otherwise a pill at the
+  bottom ("A new version of the Den is here. Refresh", `.fresh-note`), and the next safe screen takes it. One try per
+  version (`efm3-fresh` in sessionStorage), so a CDN still serving the old page can't loop it. PostHog: `new_version`.
+- The test copy gets the version `test00000001` (mk_test.py); `window.__freshTest` turns it on off GitHub Pages and
+  exposes `window.__fresh`. Test: fresh.js.
+
 ## The app (Add to Home Screen)
 
 - On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
@@ -641,7 +655,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, the secret code typed, challenges (made,
   joined, declined, started, settled, link copied or shared),
-  update log, sound, the moon or a firefly opened, and `page_error`: a script error's message and where, no answers).
+  update log, sound, the moon or a firefly opened, `new_version` (a tab reloading itself), and `page_error`: a script error's message and where, no answers).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log
@@ -711,7 +725,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

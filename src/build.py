@@ -399,6 +399,13 @@ doc = f'''<!doctype html>
 </body>
 </html>
 '''
+# its version, for open tabs to notice a newer Den (fresh in template.html): a hash of the page, also in version.json
+import hashlib
+ver = hashlib.sha1(doc.encode()).hexdigest()[:12]
+assert doc.count('__DEN_VERSION__') == 1
+doc = doc.replace('__DEN_VERSION__', ver)
 open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf8').write(doc)
+open(os.path.join(ROOT, 'version.json'), 'w', encoding='utf8').write(json.dumps({'v': ver}) + '\n')
+print('version', ver)
 print('questions', len(bank['questions']), '| repeated clusters', len(repeats),
       '| dups', sum(1 for q in bank['questions'] if q.get('dupOf')), '| index.html bytes', len(doc.encode()))

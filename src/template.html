@@ -905,6 +905,63 @@
     window.addEventListener('unhandledrejection', e => report(e.reason));
     return { report };
   })();
+  // A new version of the Den reaches open tabs (Abi, 1 November 2026: an iPad tab ran a days-old Den). The build puts
+  // its version in the page and in version.json; an open page checks it when it comes back to the front, every 15
+  // minutes and after each screen, past the browser's cache. A newer one: the page reloads itself when nothing would be
+  // lost (no typing, no sheet or picture open, no opening animation), with ?v= so the cache can't serve the old copy,
+  // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
+  // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
+  const fresh = (() => {
+    const V = '__DEN_VERSION__', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
+    let newer = null, last = 0, note = null;
+    const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+    // came back from such a reload: tidy the address, and no opening animation this time
+    const reloaded = /[?&]v=/.test(location.search);
+    if (reloaded) { try { history.replaceState(history.state, '', location.pathname + location.hash); } catch (e) {} }
+    async function check(force) {
+      if (!here || newer || (!force && Date.now() - last < 30e3)) return;
+      last = Date.now();
+      try {
+        const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!r.ok) return;
+        const j = await r.json();
+        if (j && typeof j.v === 'string' && j.v && j.v !== V && ss.get(TRY) !== j.v) { newer = j.v; maybe(); }
+      } catch (e) {}
+    }
+    function safe() {
+      const a = document.activeElement;
+      if (a && (/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) || a.isContentEditable)) return false;
+      if ([...document.querySelectorAll('[aria-modal="true"]')].some(d => d.getClientRects().length)) return false;
+      const lb = document.getElementById('lightbox'); if (lb && !lb.hidden) return false;
+      try { if (intro.active()) return false; } catch (e) {}
+      return true;
+    }
+    function go() {
+      ss.set(TRY, newer);
+      try { save(true); } catch (e) {}
+      usage.track('new_version', { to: newer });
+      location.replace(location.pathname + '?v=' + encodeURIComponent(newer) + location.hash);
+    }
+    function maybe() {
+      if (!newer) return;
+      if (safe()) { go(); return; }
+      if (note) return;
+      note = document.createElement('div'); note.className = 'fresh-note'; note.setAttribute('role', 'status');
+      note.innerHTML = `<span>A new version of the Den is here.</span><button class="btn quiet" type="button">Refresh</button>`;
+      note.querySelector('button').addEventListener('click', go);
+      document.body.appendChild(note);
+    }
+    if (here) {
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(true); });
+      window.addEventListener('pageshow', e => { if (e.persisted) check(true); });
+      setInterval(() => { if (document.visibilityState === 'visible') check(true); }, EVERY);
+      setTimeout(() => check(true), 4000);
+    }
+    const api = { reloaded, check, after() { if (newer) setTimeout(maybe, 0); else if (here && Date.now() - last > 60e3) check(); } };
+    if (window.__freshTest) window.__fresh = api;
+    return api;
+  })();
 
   // ---------- the app (Add to Home Screen) ----------
   // On GitHub Pages the Den installs like an app (manifest.webmanifest and its icons, from the build): it opens full
@@ -4077,6 +4134,7 @@
   // vt: how the screen changes ('nav' forward, 'back', 'next' / 'prev' question); after: runs once the new screen is in place
   function render(scrollTop, focusWhat, vt, after) {
     questFor();
+    fresh.after();
     if (lockedView() && !acct.member()) S.view = 'home';
     if (sayEl && (S.view !== 'quiz' || !S.session || !curQ() || curQ().id !== sayEl.dataset.q)) sayClose();   // the Labubu's word stays with its question
     const key = screenKey();
@@ -8159,7 +8217,7 @@
     if (dh && acct.member()) { S.view = 'duel'; S.duelId = dh; }
     else if (dh) setTimeout(() => openDuel(dh), 400);
     // the opening animation plays when the site opens on the home page (not for automated page captures)
-    const opening = !dh && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || /#intro$/.test(location.hash));
+    const opening = !dh && !fresh.reloaded && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || /#intro$/.test(location.hash));
     titleHold = opening;
     skyclock.start();
     render(false);
