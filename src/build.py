@@ -332,6 +332,17 @@ if fb.get('prefilled'):
     bank['feedback'] = {'form': f'https://{u.netloc}{u.path}', 'kind': kind[0], 'question': asked[0], 'kinds': fb['kinds']}
 print('feedback form:', bank['feedback']['form'] if bank.get('feedback') else 'none yet, buttons hidden')
 
+# a short readable name per exam set, for links to it (#set-dermatology-midterm-2026-2027)
+SHORT = {'digestive-system-disease': 'digestive', 'respiratory-system-diseases': 'respiratory', 'cardio-vascular-system-disease': 'cardio', 'technical-communication': 'communication'}
+_seen = set()
+for _s in bank['sources']:
+    words = [SHORT.get(_s['topic'], _s['topic'])] + re.findall(r'[a-z0-9]+', _s['label'].lower().replace("'", ''))
+    out = []
+    for w in words:
+        if w not in out and not (w in ('digestive', 'respiratory', 'cardio', 'dermatology', 'endocrinology', 'communication') and w in out): out.append(w)
+    slug = '-'.join(dict.fromkeys(out))
+    if slug in _seen: slug = _s['id']
+    _seen.add(slug); _s['slug'] = slug
 payload = json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 tpl = open('template.html', encoding='utf8').read()
 assert '__BANK_JSON__' in tpl and '/*__CSS__*/' in tpl

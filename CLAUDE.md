@@ -632,6 +632,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - The test copy gets the version `test00000001` (mk_test.py); `window.__freshTest` turns it on off GitHub Pages and
   exposes `window.__fresh`. Test: fresh.js.
 
+## Links to one part of the Den (Abi, 1 November 2026)
+
+- `#set-<slug>` opens an exam set's practice (Back to its module), `#module-<id>`, `#lecture-<id>`, `#quest-<id>` (`readLink`,
+  `openLink`; at start, no intro, and on `hashchange`; the hash is tidied away). Slugs come from the build (`slug` on each
+  source: module short name + label, e.g. `dermatology-midterm-2026-2027`). Share buttons (`shareLink`, `data-share`): a
+  link icon on every set and lecture row, "Share" in the module header and on each quest card; the share sheet on touch
+  devices, else copied with a toast. PostHog: `link_shared`, `link_opened`. Test: links.js.
+
 ## The app (Add to Home Screen)
 
 - On GitHub Pages the Den installs like an app: the build writes `manifest.webmanifest` (standalone, charcoal) and the
@@ -725,7 +733,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

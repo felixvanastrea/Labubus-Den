@@ -720,7 +720,10 @@ details.case[open] .case-b { margin-top: 6px; }
 /* exam mode on every module and set: how long a module's mock is, an exam button on each past exam */
 .ex-size { display: grid; gap: 10px; margin: 4px 0 26px; }
 .ex-size-t { margin: 0; font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); }
-.set-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 6px; }
+.set-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: 6px; }
+.set-share { display: inline-grid; place-items: center; width: 34px; min-height: 38px; border: 0; background: none; color: var(--ink-3); cursor: pointer; border-radius: 2px; }
+.set-share:hover { color: var(--ink); background: var(--plate-2); }
+.set-share svg, .btn > svg[viewBox='0 0 20 20'] { width: 16px; height: 16px; }
 .set-exam {
   display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 12px; margin-right: 4px;
   border: 1px solid var(--hair-2); border-radius: 2px; background: transparent; color: var(--ink-2); cursor: pointer; white-space: nowrap;

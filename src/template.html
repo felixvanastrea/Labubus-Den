@@ -4502,6 +4502,7 @@
             <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${lockMark()}${nx.label} ${ICON.next}</button>
             ${exam.btn}
             ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
+            <button class="btn" type="button" data-share="quest:${esc(QUEST.id)}">${LINK}Share</button>
             ${resetHTML('quest:' + QUEST.id)}
           </div>
           ${exam.line}
@@ -5687,7 +5688,7 @@
         return `<li class="set-row"><button type="button" class="entry" data-lec="${esc(d.id)}">
           <span class="e-main"><span class="e-name">${esc(d.n)}</span>${lecsHTML(d, 'e-lecs')}${barLine(ls)}<span class="e-meta">${metaLine(ls)}</span></span>
           <span class="e-side"><span class="e-count num">${fmtN(lq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
-        </button>${dg}</li>`;
+        </button>${dg}${shareBtn('lecture', d.id, d.n)}</li>`;
       }).join('');
       if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. On the right, each lecture’s diagnostic: the questions tried toward it, then your mark once it opens.</p><ul class="ledger">${rows}</ul></section>`);
     }
@@ -5700,7 +5701,7 @@
         return `<li class="set-row"><button type="button" class="entry" data-set="${esc(s.id)}">
           <span class="e-main"><span class="e-name">${esc(s.label)}</span>${barLine(ss)}<span class="e-meta">${metaLine(ss)}</span><span class="keys">${chipsFor(sq)}</span></span>
           <span class="e-side"><span class="e-count num">${fmtN(sq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
-        </button>${canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-set="${esc(s.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(s.label)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${acct.member() ? ICON.hourglass : LOCK}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : ''}</li>`;
+        </button>${canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-set="${esc(s.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(s.label)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${acct.member() ? ICON.hourglass : LOCK}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : ''}${shareBtn('set', s.id, s.label)}</li>`;
       }).join('');
       if (rows) groups.push(`<section class="group"><h2>${esc(TYPE_GROUP[ty] || ty)}</h2><ul class="ledger">${rows}</ul></section>`);
     }
@@ -5718,6 +5719,7 @@
               <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
               ${markedIn(t.id).length ? `<button class="btn" type="button" data-act="practice-marked" title="The questions you marked in this module">${ICON.mark}Marked <span class="n">${fmtN(markedIn(t.id).length)}</span></button>` : ''}
               ${DIAG.some(d => d.m === t.id) ? `<button class="btn" type="button" data-act="weak-module">${lockMark()}Weak spots</button>` : ''}
+              <button class="btn" type="button" data-share="module:${esc(t.id)}">${LINK}Share</button>
               ${resetHTML(t.id)}
             </div>
           </div>
@@ -5899,6 +5901,42 @@
     startList(ids, 0, { from: 'home', topic: '*', title: 'One tick too many' });
   }
   function tickGone() { const rec = tickGet('efm3-tick-home') || { at: Date.now() }; rec.gone = 1; tickSet('efm3-tick-home', rec); sfx.play('untick', { quiet: true }); render(false); }
+  // ---------- links to one part of the Den (Abi, 1 November 2026: "my colleague wants the 2026 dermatology midterm") ----------
+  // #set-<slug> opens an exam set's practice, #module-<id> a module, #lecture-<id> a lecture's practice, #quest-<id> a quest.
+  // The share buttons (set and lecture rows, the module header, the quest card) open the phone's share sheet, else copy it.
+  const LINK = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M8.5 11.5a3.2 3.2 0 0 0 4.5 0l2.6-2.6a3.2 3.2 0 0 0-4.5-4.5l-1 1"/><path d="M11.5 8.5a3.2 3.2 0 0 0-4.5 0l-2.6 2.6a3.2 3.2 0 0 0 4.5 4.5l1-1"/></svg>';
+  function linkOf(kind, id) {
+    const h = kind === 'set' ? SRC.get(id).slug : id;
+    return { url: location.origin + location.pathname + '#' + kind + '-' + h,
+      title: kind === 'set' ? `${TOPIC.get(SRC.get(id).topic).name} · ${SRC.get(id).label}` : kind === 'module' ? TOPIC.get(id).name
+        : kind === 'lecture' ? DIAG[DIAG_INDEX.get(id)].n : (questById(id) || {}).title + ' quest' };
+  }
+  function shareLink(kind, id) {
+    const l = linkOf(kind, id);
+    usage.track('link_shared', { kind });
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) { navigator.share({ title: l.title + ' · Labubu’s Den', url: l.url }).catch(() => {}); return; }
+    try {
+      navigator.clipboard.writeText(l.url).then(() => toast('Link copied: ' + l.title), () => toast(l.url));
+    } catch (e) { toast(l.url); }
+  }
+  function readLink() {
+    const m = /^#(set|module|lecture|quest)-([A-Za-z0-9_.-]+)$/.exec(location.hash || ''); if (!m) return null;
+    try { history.replaceState(history.state, '', location.pathname + location.search); } catch (e) {}
+    const [, kind, v] = m, lv = v.toLowerCase();
+    if (kind === 'set') { const s = BANK.sources.find(x => x.slug === lv || x.id === lv); return s ? { kind, id: s.id } : null; }
+    if (kind === 'module') return TOPIC.has(lv) ? { kind, id: lv } : null;
+    if (kind === 'lecture') { const d = DIAG.find(x => x.id.toLowerCase() === lv); return d ? { kind, id: d.id } : null; }
+    return questById(lv) ? { kind, id: lv } : null;
+  }
+  function openLink(l) {
+    if (!l) return;
+    usage.track('link_opened', { kind: l.kind });
+    if (l.kind === 'set') { S.topicId = SRC.get(l.id).topic; S.view = 'topic'; startSession(S.topicId, l.id); }
+    else if (l.kind === 'module') openTopic(l.id);
+    else if (l.kind === 'lecture') { const d = DIAG[DIAG_INDEX.get(l.id)]; S.topicId = d.m; S.topicBy = 'lecture'; S.view = 'topic'; startLecture(l.id); }
+    else { useQuest(l.id); questGo(); }
+  }
+  const shareBtn = (kind, id, label) => `<button type="button" class="set-share" data-share="${kind}:${esc(id)}" title="Share a link to it" aria-label="Share a link to ${esc(label)}">${LINK}</button>`;
   function toast(msg) {
     let el = document.getElementById('toast');
     if (!el) {
@@ -7941,7 +7979,8 @@
     if (e.target.closest('a[data-ask]')) { usage.track('ask_labubu'); return; }
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
-    { const qc = t.closest('[data-quest]'); if (qc) useQuest(qc.dataset.quest); }   // a quest card's buttons act on its own quest
+    { const qc = t.closest('[data-quest]'); if (qc) useQuest(qc.dataset.quest); }
+    if (t.dataset.share) { const i = t.dataset.share.indexOf(':'); shareLink(t.dataset.share.slice(0, i), t.dataset.share.slice(i + 1)); return; }   // a quest card's buttons act on its own quest
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; sfx.play('toggle', { quiet: true }); save(); render(false); return; }
     if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
     if (t.dataset.start) { startSession(t.dataset.start, null); return; }
@@ -8203,7 +8242,7 @@
     S.duelId = id; S.view = 'duel'; confirmReset = false; save(); render(true, null, 'nav');
   }
   const duelHash = () => { const m = /^#duel-([a-z0-9]{6,24})$/.exec(location.hash || ''); if (m) try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} return m ? m[1] : null; };
-  window.addEventListener('hashchange', () => { const id = duelHash(); if (id) openDuel(id); });
+  window.addEventListener('hashchange', () => { const id = duelHash(); if (id) openDuel(id); else openLink(readLink()); });
 
   // ---------- boot ----------
   function start(data) {
@@ -8216,8 +8255,9 @@
     const dh = duelHash();
     if (dh && acct.member()) { S.view = 'duel'; S.duelId = dh; }
     else if (dh) setTimeout(() => openDuel(dh), 400);
+    const lk = !dh && readLink();
     // the opening animation plays when the site opens on the home page (not for automated page captures)
-    const opening = !dh && !fresh.reloaded && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || /#intro$/.test(location.hash));
+    const opening = !dh && !lk && !fresh.reloaded && S.view === 'home' && introOn() && !reduceMotion() && (!navigator.webdriver || /#intro$/.test(location.hash));
     titleHold = opening;
     skyclock.start();
     render(false);
@@ -8226,6 +8266,7 @@
     app.classList.add('first');
     setTimeout(() => app.classList.remove('first'), 1800);
     sky.start();
+    if (lk) openLink(lk);
   }
   const hot = window.claude && window.claude.hot;
   if (hot && typeof hot.snapshot === 'function') { try { hot.snapshot(() => ({ S })); } catch (e) {} }
