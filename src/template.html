@@ -889,6 +889,22 @@
     }
     return { here, on, track, set, boot() { if (on()) load(); } };
   })();
+  // a script error is sent as page_error (its message, where, the screen and whether it's Safari), at most 5 a visit,
+  // so a bug only some devices hit (an iPad's Check or Next "doing nothing", November 2026) can be found. No answers.
+  const oops = (() => {
+    let n = 0;
+    function report(err, where) {
+      if (n++ >= 5) return;
+      try {
+        const m = String((err && (err.message || err.reason && err.reason.message)) || err || '').slice(0, 200);
+        const at = String((err && err.stack) || where || '').split('\n').slice(0, 3).join(' | ').slice(0, 300);
+        usage.track('page_error', { message: m, at, view: (S && S.view) || '', safari: /AppleWebKit/.test(navigator.userAgent) && !/Chrome|CriOS|Android/.test(navigator.userAgent), touch: navigator.maxTouchPoints || 0 });
+      } catch (e) {}
+    }
+    window.addEventListener('error', e => report(e.error || e.message, (e.filename || '') + ':' + e.lineno + ':' + e.colno));
+    window.addEventListener('unhandledrejection', e => report(e.reason));
+    return { report };
+  })();
 
   // ---------- the app (Add to Home Screen) ----------
   // On GitHub Pages the Den installs like an app (manifest.webmanifest and its icons, from the build): it opens full
@@ -4018,8 +4034,18 @@
   }
   function primaryAction() {
     const q = curQ(); const a = S.answers[q.id];
-    if (!q.answer.length || (a && a.checked)) go(1);
-    else if (a && a.sel.length) check();
+    // checked, but its verdict never reached the screen (a render that failed): show it, don't skip the question
+    if (a && a.checked && q.answer.length && !app.querySelector('#verdict')) { safely(() => render(false, 'verdict')); return; }
+    if (!q.answer.length || (a && a.checked)) safely(() => go(1));
+    else if (a && a.sel.length) safely(check);
+  }
+  // if anything in a step throws, what was done is saved and the screen is redrawn plainly, so a button never goes dead
+  function safely(f) {
+    try { f(); } catch (e) {
+      oops.report(e);
+      try { save(); } catch (x) {}
+      try { delete document.documentElement.dataset.vt; paint(false); } catch (x) { oops.report(x); }
+    }
   }
 
   // ---------- rendering ----------

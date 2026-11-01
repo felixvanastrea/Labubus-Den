@@ -40,6 +40,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   transition is skipped after `VT_MAX` (1.2 s) or when the next one starts: an iPad user's Next "did nothing" when pressed
   (30 October 2026, couldn't be reproduced here; a stuck transition keeps its snapshot on screen). Buttons and options have
   `touch-action: manipulation` so quick taps aren't taken for a double-tap zoom.
+  1 November 2026, the classmate's video (iPad with a trackpad, Water lilies theme): Check answer clicked, nothing; after a
+  reload one more click jumped to the next question without the verdict, so the check was saved but its screen never
+  came. Not reproducible in Chromium. Since then Check and Next run through `safely`: an error saves and redraws plainly
+  (`paint`), and Next on a checked question with no `#verdict` on screen shows the verdict instead of skipping it. Every
+  script error goes to PostHog as `page_error` (message, stack top, view, `safari`, `touch`; 5 a visit, `oops`): look
+  there to find the real cause.
 - Opening animation (`intro` in `template.html`): the camera looks up at the sky, where the years hang as constellations
   (`YEARS`: EFM3 open; EFM2 and EFM4 "in progress", unlit and locked). Picking EFM3 zooms into it: its semesters are
   two of its stars (S5 open, S6 in progress). The picked star becomes the shooting star: the camera follows it down
@@ -635,7 +641,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, the secret code typed, challenges (made,
   joined, declined, started, settled, link copied or shared),
-  update log, sound, the moon or a firefly opened).
+  update log, sound, the moon or a firefly opened, and `page_error`: a script error's message and where, no answers).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 
 ## Update log
