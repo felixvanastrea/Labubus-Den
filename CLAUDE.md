@@ -720,6 +720,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   agent) is keyed CD (Treponema pallidum and "spirochete bacterium", the slides call it a spirochaete) while its older
   copy S32 is keyed D only: flagged to Abi, S32 unchanged until she says. Least sure: Q20 D (macrolides; the slides only
   give cyclins as the alternative), Q11 A.
+- The dermatology retake midterm 2026–2027 (S266–S285, `added` 2026-11-02, label "Retake midterm 2026–2027 · Dermatology",
+  slug `dermatology-retake-midterm-2026-2027`): from Abi's screenshots, some questions as given with missing options (Q13
+  one option, Q19 and Q20 two; Abi: "don't bother about the questions"). The highlights in her copy weren't trusted (Q20 had
+  immune complexes): `key: "claude"`, answered by Claude from Pr Kelati's decks, with explanations. Differs from her copy's
+  highlights: Q11 BC (daily emollients keep remission), Q19 AB, Q20 B.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked

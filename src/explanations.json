@@ -3248,6 +3248,139 @@
       "B": "No: contaminated water is hepatitis A and E.",
       "C": "Yes: mother-to-child transmission happens in about 5%.",
       "D": "Yes: blood is the main route."
+    },
+    "S266": {
+      "lecture": "derm-eczema",
+      "A": "No: prick tests look for immediate (IgE) allergy, as in urticaria.",
+      "B": "No: a biopsy shows eczema, not its allergen.",
+      "C": "No: total IgE doesn't name a contact allergen.",
+      "D": "Yes: patch tests, read at 48 and 72 hours, on skin without active eczema."
+    },
+    "S267": {
+      "lecture": "derm-urticaria",
+      "A": "No: granulomatous cheilitis is a lasting swelling, not a sudden one.",
+      "B": "Yes: angioedema is the deep form of urticaria, sudden and non-pitting.",
+      "C": "No: contact cheilitis is an eczema, with vesicles and scaling.",
+      "D": "No: erysipelas is red, hot and painful, with fever."
+    },
+    "S268": {
+      "lecture": "derm-acne",
+      "A": "No: papules are inflammatory.",
+      "B": "Yes: blackheads are open comedones.",
+      "C": "Yes: whiteheads are closed comedones (microcysts).",
+      "D": "No: nodules are deep inflammatory lesions."
+    },
+    "S269": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: a 2nd generation H1 antihistamine, daily.",
+      "B": "No: long-term corticosteroids are avoided (rebound, side effects).",
+      "C": "No: cyclins have no place in urticaria.",
+      "D": "No: 1st generation antihistamines sedate; they aren't first line."
+    },
+    "S270": {
+      "lecture": "derm-urticaria",
+      "A": "No: a delayed eczematous reaction is contact eczema.",
+      "B": "No: it isn't granulomatous.",
+      "C": "Yes: mast cells release histamine, giving wheals and/or angioedema.",
+      "D": "No: that's urticarial vasculitis, with lasting lesions and purpura."
+    },
+    "S271": {
+      "lecture": "derm-acne",
+      "A": "No: gentle cleansing is part of acne care.",
+      "B": "Yes: corticosteroids cause or worsen acne.",
+      "C": "No: non-comedogenic moisturizers are recommended.",
+      "D": "Yes: occlusive or comedogenic cosmetics block the follicle."
+    },
+    "S272": {
+      "lecture": "derm-tb",
+      "A": "Yes: acid-alcohol fast, red on Ziehl-Neelsen.",
+      "B": "No: it grows slowly, weeks on Löwenstein-Jensen.",
+      "C": "No: it's hard to stain with Gram.",
+      "D": "No: mycobacteria don't form spores."
+    },
+    "S273": {
+      "lecture": "derm-acne",
+      "A": "No: it is follicular.",
+      "B": "No: it isn't contagious.",
+      "C": "Yes: a chronic inflammatory disease of the pilosebaceous unit.",
+      "D": "No: eccrine sweat glands aren't involved."
+    },
+    "S274": {
+      "lecture": "derm-acne",
+      "A": "No: papules and pustules occur in both.",
+      "B": "Yes: comedones belong to acne, never to rosacea.",
+      "C": "No: flushing points to rosacea.",
+      "D": "No: persistent erythema and telangiectasia point to rosacea."
+    },
+    "S275": {
+      "lecture": "derm-urticaria",
+      "A": "No: 72 hours is far too short.",
+      "B": "No: the threshold is 6 weeks.",
+      "C": "No: the threshold is 6 weeks.",
+      "D": "Yes: more than 6 weeks."
+    },
+    "S276": {
+      "lecture": "derm-eczema",
+      "A": "No: it's chronic; there's no definitive cure.",
+      "B": "Yes: topical corticosteroids control inflammation and itch.",
+      "C": "Yes: daily emollients restore the barrier and keep remission.",
+      "D": "No: antihistamines don't treat the eczema."
+    },
+    "S277": {
+      "lecture": "derm-eczema",
+      "A": "No: the diaper area is spared even in infants.",
+      "B": "No: not exclusively palms and soles.",
+      "C": "No: greasy yellow scales are seborrheic dermatitis.",
+      "D": "Yes: flexural folds, neck and face."
+    },
+    "S278": {
+      "lecture": "derm-tb",
+      "A": "Yes: Mycobacterium tuberculosis, Koch's bacillus."
+    },
+    "S279": {
+      "lecture": "derm-tb",
+      "A": "Yes: culture on Löwenstein-Jensen.",
+      "B": "Yes: an epithelioid and giant cell granuloma with caseous necrosis.",
+      "C": "No: the bacillus stains poorly with Gram.",
+      "D": "No: Wood's lamp is for fungal infections and erythrasma."
+    },
+    "S280": {
+      "lecture": "derm-urticaria",
+      "A": "Yes: pruritic, fugacious, under 24 hours, no mark.",
+      "B": "No: necrosis isn't urticaria.",
+      "C": "No: fixed lesions with purpura suggest urticarial vasculitis.",
+      "D": "No: wheals don't scale."
+    },
+    "S281": {
+      "lecture": "derm-eczema",
+      "A": "No: psoriasis is rare in infants and dry and scaly.",
+      "B": "Yes: infantile atopic dermatitis, oozing and itchy (cheeks, convexities).",
+      "C": "No: scabies gives burrows and vesicles, palms and soles in infants.",
+      "D": "No: seborrheic dermatitis isn't itchy, with greasy scales."
+    },
+    "S282": {
+      "lecture": "derm-tb",
+      "A": "No: leishmaniasis gives an ulcero-crusted lesion.",
+      "B": "Yes: scrofuloderma spreads from a cervical node.",
+      "C": "No: acne isn't a cervical swelling.",
+      "D": "No: hidradenitis affects the folds, painful."
+    },
+    "S283": {
+      "lecture": "derm-eczema",
+      "A": "No: umbilicated pearly papules are molluscum.",
+      "B": "Yes: dry, thickened skin in the chronic phase.",
+      "C": "No: that's psoriasis.",
+      "D": "Yes: erythema, vesicles and oozing in the acute phase."
+    },
+    "S284": {
+      "lecture": "derm-acne",
+      "A": "Yes: excess sebum, driven by androgens.",
+      "B": "Yes: hyperkeratinization plugs the follicle into a microcomedone."
+    },
+    "S285": {
+      "lecture": "derm-urticaria",
+      "A": "No: immune complexes belong to vasculitis.",
+      "B": "Yes: vasodilation and permeability give dermal edema."
     }
   }
 }
