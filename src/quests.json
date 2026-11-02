@@ -1,6 +1,5 @@
 {
   "current": [
-    "derm-midterm-2026",
     "gi-midterm-2026"
   ],
   "quests": [
@@ -86,7 +85,8 @@
           "name": "Urticaria",
           "lecture": "S-urticaria"
         }
-      ]
+      ],
+      "end": "2026-11-02"
     },
     {
       "id": "comm-midterm-2026",
