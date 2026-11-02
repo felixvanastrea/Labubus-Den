@@ -2422,7 +2422,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 
 /* the Labubu's jumpscare (SCARE) */
 .jump { position: fixed; inset: 0; z-index: 999; display: grid; place-items: center; background: #000; cursor: pointer; }
-.jump-face { width: 30vmin; animation: jump-in .22s cubic-bezier(.2,1.6,.4,1) forwards, jump-shake .08s linear .22s 14; }
+.jump-face { position: absolute; left: 50%; top: 50%; margin: -15vmin 0 0 -15vmin; width: 30vmin; animation: jump-in .22s cubic-bezier(.2,1.6,.4,1) forwards, jump-shake .08s linear .22s 14; }
 .jump-face img { display: block; width: 100%; height: auto; }
 .jump-t { position: absolute; bottom: 12%; margin: 0; font-family: var(--f-display); font-style: italic; font-size: 2rem; color: #ece3d1; opacity: 0; transition: opacity .4s; }
 .jump.done .jump-t { opacity: 1; }
