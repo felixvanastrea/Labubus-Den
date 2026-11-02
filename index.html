@@ -2558,6 +2558,16 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   font-family: var(--f-read); font-size: .98rem; animation: rise .5s var(--ease) both; }
 .fresh-note .btn { padding: 6px 14px; }
 @media (prefers-reduced-motion: reduce) { .fresh-note { animation: none; } }
+
+/* the Labubu's jumpscare (SCARE) */
+.jump { position: fixed; inset: 0; z-index: 999; display: grid; place-items: center; background: #000; cursor: pointer; }
+.jump-face { width: 30vmin; animation: jump-in .22s cubic-bezier(.2,1.6,.4,1) forwards, jump-shake .08s linear .22s 14; }
+.jump-face svg { width: 100%; height: auto; color: #ece3d1; filter: drop-shadow(0 0 40px #b0102a); }
+.jump-t { position: absolute; bottom: 12%; margin: 0; font-family: var(--f-display); font-style: italic; font-size: 2rem; color: #ece3d1; opacity: 0; transition: opacity .4s; }
+.jump.done .jump-t { opacity: 1; }
+.jump.off { opacity: 0; transition: opacity .35s; }
+@keyframes jump-in { from { transform: scale(.2); } to { transform: scale(3.2); } }
+@keyframes jump-shake { 0% { translate: -14px 6px; } 50% { translate: 12px -8px; } 100% { translate: 0 0; } }
 </style>
 </head>
 <body>
@@ -3470,7 +3480,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '0ffd6f3ac4bb', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'a48feb124045', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -4398,6 +4408,42 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       letter.hidden = true; sfx.play('shut', { quiet: true });
       const g = letter._g; if (g && !S.gifts[g.id]) { S.gifts[g.id] = Date.now(); save(); }
     }
+    // a jumpscare from the Labubu (Abi, 2 November 2026): for étoile filante only, twice, from 11:52 that day; the first a
+    // minute after she's on the Den, the second 4 minutes after it; on any screen but a running exam or an open sheet.
+    // Marked in S.gifts (synced) so each fires once across her devices. Remove SCARE when it's done.
+    const SCARE = { to: 'etoilefilante', from: new Date(2026, 10, 2, 11, 52).getTime(), ids: ['scare-1-2026-11', 'scare-2-2026-11'], first: 60e3, gap: 240e3 };
+    let scareSeen = 0, scareLast = 0;
+    function scare() {
+      const el = document.createElement('div'); el.className = 'jump'; el.setAttribute('role', 'alert');
+      el.innerHTML = `<div class="jump-face">${alive.svg('jump')}</div><p class="jump-t">Got you ✦ from the Labubu</p>`;
+      document.body.appendChild(el);
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext, c = new AC(), t = c.currentTime, d = 1.3;
+        const o = c.createOscillator(), o2 = c.createOscillator(), g = c.createGain(), n = c.createBufferSource();
+        const b = c.createBuffer(1, c.sampleRate * d, c.sampleRate), x = b.getChannelData(0);
+        for (let i = 0; i < x.length; i++) x[i] = (Math.random() * 2 - 1) * (1 - i / x.length);
+        n.buffer = b; o.type = 'sawtooth'; o2.type = 'square';
+        o.frequency.setValueAtTime(900, t); o.frequency.exponentialRampToValueAtTime(2400, t + .25); o.frequency.exponentialRampToValueAtTime(1300, t + d);
+        o2.frequency.setValueAtTime(1350, t); o2.frequency.exponentialRampToValueAtTime(3100, t + .3); o2.frequency.exponentialRampToValueAtTime(1800, t + d);
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.55, t + .03); g.gain.setValueAtTime(.55, t + d - .3); g.gain.linearRampToValueAtTime(0, t + d);
+        [o, o2, n].forEach(s_ => { s_.connect(g); s_.start(t); s_.stop(t + d); }); g.connect(c.destination);
+        setTimeout(() => c.close().catch(() => {}), (d + .5) * 1000);
+      } catch (e) {}
+      try { navigator.vibrate && navigator.vibrate([300, 80, 300]); } catch (e) {}
+      const close = () => { el.classList.add('off'); setTimeout(() => el.remove(), 400); };
+      setTimeout(() => el.classList.add('done'), 1400);
+      el.addEventListener('click', () => { if (el.classList.contains('done')) close(); });
+      setTimeout(close, 6000);
+    }
+    setInterval(() => {
+      if (keyNow() !== SCARE.to || Date.now() < SCARE.from || document.visibilityState !== 'visible') { scareSeen = 0; return; }
+      const next = SCARE.ids.find(id => !S.gifts[id]); if (!next) return;
+      if (!scareSeen) scareSeen = Date.now();
+      const wait = next === SCARE.ids[0] ? SCARE.first : SCARE.gap;
+      if (Date.now() - Math.max(scareSeen, scareLast) < wait) return;
+      if (examRunning() || document.querySelector('[aria-modal="true"]') || document.querySelector('.intro-fx')) return;
+      S.gifts[next] = Date.now(); scareLast = Date.now(); save(); scare();
+    }, 3000);
     function noticeGifts() {
       if (!here || state !== 'in') return;
       const g = myGifts().find(x => !S.gifts[x.id]); if (!g) return;
