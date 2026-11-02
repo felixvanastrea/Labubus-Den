@@ -1843,7 +1843,7 @@
     // a jumpscare from the Labubu (Abi, 2 November 2026): for étoile filante only, twice, from 11:52 that day; the first a
     // minute after she's on the Den, the second 4 minutes after it; on any screen but a running exam or an open sheet.
     // Marked in S.gifts (synced) so each fires once across her devices. Remove SCARE when it's done.
-    const SCARE = { to: 'etoilefilante', from: new Date(2026, 10, 2, 11, 52).getTime(), ids: ['scare-1-2026-11', 'scare-2-2026-11'], first: 2e3, gap: 240e3 };
+    const SCARE = { on: false, to: 'etoilefilante', from: new Date(2026, 10, 2, 11, 52).getTime(), ids: ['scare-1-2026-11', 'scare-2-2026-11'], first: 2e3, gap: 240e3 };
     let scareSeen = 0, scareLast = 0;
     function scare() {
       const el = document.createElement('div'); el.className = 'jump'; el.setAttribute('role', 'alert');
@@ -1867,7 +1867,7 @@
       el.addEventListener('click', () => { if (el.classList.contains('done')) close(); });
       setTimeout(close, 6000);
     }
-    setInterval(() => {
+    if (SCARE.on) setInterval(() => {
       if (keyNow() !== SCARE.to || Date.now() < SCARE.from || document.visibilityState !== 'visible') { scareSeen = 0; return; }
       const next = SCARE.ids.find(id => !S.gifts[id]); if (!next) return;
       if (!scareSeen) scareSeen = Date.now();
