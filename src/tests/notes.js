@@ -43,7 +43,7 @@ async function open(b, opts = {}) {
   });
   const GIF = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
   await ctx.route(/media\.giphy\.com/, r => r.fulfill({ status: 200, contentType: 'image/gif', body: GIF }));
-  await ctx.route(/api\.giphy\.com/, r => r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ data: [{ id: 'gifOne12345' }, { id: 'gifTwo12345' }] }) }));
+  await ctx.route(/api\.giphy\.com/, r => r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify((() => { const u = new (require('url').URL)(r.request().url()), off = +u.searchParams.get('offset') || 0, q = u.searchParams.get('q'); return { data: q === 'cat' || off ? Array.from({ length: off >= 48 ? 5 : 24 }, (_, i) => ({ id: 'gif' + (off + i) + 'abcde' })) : [{ id: 'gifOne12345' }, { id: 'gifTwo12345' }], pagination: { total_count: 53 } }; })()) }));
   const p = await ctx.newPage();
   p.on('pageerror', e => errors.push((opts.tag || 'page') + ' pageerror: ' + e.message));
   await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(1500);
@@ -91,11 +91,17 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   await p.click('.ff-gifbtn'); await p.waitForTimeout(500);
   check((await p.$$('.ff-g')).length === 2, 'GIPHY results show');
   await p.fill('.ff-gq', 'cat'); await p.waitForTimeout(700);
+  check((await p.$$('.ff-g')).length === 24, 'a search shows 24');
+  for (let k = 0; k < 3; k++) { await p.$eval('.ff-grid', g => { g.scrollTop = g.scrollHeight; }); await p.waitForTimeout(500); }
+  const deep = (await p.$$('.ff-g')).length;
+  check(deep === 53, `scrolling loads more, to the end (${deep})`);
+  check(await p.$eval('.ff-grid', g => { const a = g.children[0].getBoundingClientRect(), b = g.children[3].getBoundingClientRect(); return b.top >= a.bottom; }), 'the GIFs don’t overlap');
+  await p.$eval('.ff-grid', g => { g.scrollTop = 0; });
   await p.click('.ff-g >> nth=0'); await p.waitForTimeout(200);
   check(await p.isVisible('.ff-chosen img') && !(await p.$eval('.ff-pop button[type="submit"]', e => e.disabled)), 'a GIF picked: shown, Let it fly ready without text');
   await p.fill('#ff-in', 'look at this'); await p.click('.ff-pop button[type="submit"]'); await p.waitForTimeout(500);
   d = await fdoc(p, 'notes/u1');
-  check(d && d.gif === 'gifOne12345' && d.txt === 'look at this', 'written with its GIF id only');
+  check(d && d.gif === 'gif0abcde' && d.txt === 'look at this', 'written with its GIF id only');
   await p.click('.ff-open'); await p.waitForTimeout(300);
   check(!(await p.isVisible('.ff-chosen')), 'the GIF is cleared after sending');
   await p.keyboard.press('Escape');

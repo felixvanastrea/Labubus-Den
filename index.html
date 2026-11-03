@@ -3719,7 +3719,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '2e77a93716b0', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '951c771b00e2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5465,17 +5465,31 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       fm.querySelector('button[type="submit"]').disabled = !(nt.draft.trim() || nt.gif);
       const ch = fm.querySelector('.ff-chosen'); if (ch) { ch.hidden = !nt.gif; ch.innerHTML = nt.gif ? gifChip() : ''; }
     };
-    async function gifSearch(q) {
+    // 24 at a time; scrolling near the end of the grid loads the next 24 (up to GIF_MAX), so a search goes deep
+    // without spending the key's hourly calls on GIFs nobody scrolls to
+    const GIF_PAGE = 24, GIF_MAX = 240;
+    async function gifSearch(q, more) {
       const grid = document.querySelector('.ff-grid'); if (!grid || !GIPHY_KEY) return;
-      const mine = nt.gifQ = {}; grid.setAttribute('aria-busy', 'true');
+      if (more && (nt.gifBusy || nt.gifEnd || nt.gifOff >= GIF_MAX)) return;
+      if (!more) { nt.gifOff = 0; nt.gifEnd = false; nt.gifQs = q; }
+      const mine = nt.gifQ = more ? nt.gifQ : {}; nt.gifBusy = true; grid.setAttribute('aria-busy', 'true');
       try {
-        const r = await fetch(`https://api.giphy.com/v1/gifs/${q ? 'search' : 'trending'}?api_key=${encodeURIComponent(GIPHY_KEY)}&limit=18&rating=pg&lang=en${q ? '&q=' + encodeURIComponent(q) : ''}`);
+        const r = await fetch(`https://api.giphy.com/v1/gifs/${q ? 'search' : 'trending'}?api_key=${encodeURIComponent(GIPHY_KEY)}&limit=${GIF_PAGE}&offset=${nt.gifOff}&rating=pg&lang=en${q ? '&q=' + encodeURIComponent(q) : ''}`);
         const j = await r.json(); if (mine !== nt.gifQ) return;
         const ids = (j.data || []).map(g => String(g.id || '')).filter(id => GIF_ID.test(id));
-        grid.innerHTML = ids.length ? ids.map(id => `<button type="button" class="ff-g" role="listitem" data-note="gif" data-id="${id}" aria-label="Use this GIF"><img src="https://media.giphy.com/media/${id}/100w.gif" alt="" loading="lazy" decoding="async"></button>`).join('') : '<p class="ff-none">Nothing found. Try another word.</p>';
-      } catch (e) { if (mine === nt.gifQ) grid.innerHTML = '<p class="ff-none">GIPHY can’t be reached right now.</p>'; }
-      grid.removeAttribute('aria-busy'); placePop();
+        const tot = j.pagination && +j.pagination.total_count;
+        nt.gifOff += GIF_PAGE; if (ids.length < GIF_PAGE || (tot && nt.gifOff >= tot)) nt.gifEnd = true;
+        const html = ids.map(id => `<button type="button" class="ff-g" role="listitem" data-note="gif" data-id="${id}" aria-label="Use this GIF"><img src="https://media.giphy.com/media/${id}/100w.gif" alt="" loading="lazy" decoding="async"></button>`).join('');
+        if (more) grid.insertAdjacentHTML('beforeend', html);
+        else grid.innerHTML = html || '<p class="ff-none">Nothing found. Try another word.</p>';
+      } catch (e) { if (mine === nt.gifQ && !more) grid.innerHTML = '<p class="ff-none">GIPHY can’t be reached right now.</p>'; }
+      finally { if (mine === nt.gifQ) { nt.gifBusy = false; grid.removeAttribute('aria-busy'); } }
+      if (!more) placePop();
     }
+    document.addEventListener('scroll', e => {
+      const g = e.target; if (!g.classList || !g.classList.contains('ff-grid')) return;
+      if (g.scrollTop + g.clientHeight > g.scrollHeight - 220) gifSearch(nt.gifQs || '', true);
+    }, true);
     function paintNotes() {
       const box = document.getElementById('ffs'); if (!box) return;
       const list = skyOK() && !nt.no && notesOn() ? notesNow().slice(0, spots().length) : [];

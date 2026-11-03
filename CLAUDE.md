@@ -582,7 +582,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Stars make it sparkle (`NOTE_TIERS` 1/3/6/10: t1 brighter, t2 halo, t3 rays, t4 circling glints). Only `spots().length`
   fly at once, the most starred first. Separate from the who's-here lights (`.fly`); the "N is studying right now" line under
   the main button was taken off the same day (Abi; `hereLineHTML` stays exported, unused).
-- GIFs from GIPHY (Instagram's): a "GIF" button in the form, trending then search (`gifSearch`, 18, rating pg), "Powered by
+- GIFs from GIPHY (Instagram's): a "GIF" button in the form, trending then search (`gifSearch`, rating pg, 24 at a time, the next 24
+  loaded as the grid scrolls near its end, up to `GIF_MAX` 240; fixed square rows, `grid-auto-rows`), "Powered by
   GIPHY" shown. Only the GIF's id is stored (`gif`, `GIF_ID` letters/digits, checked on every read), the address built from it
   (`gifURL`, 200w, the still `200w_s` with reduced motion). `GIPHY_KEY` in `template.html` is Abi's (3 November 2026, a
   beta key, about 100 searches an hour; empty = no GIF button). The test copy sets `TESTKEY` (mk_test.py) and fakes the API.
