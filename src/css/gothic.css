@@ -2182,8 +2182,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-gifs { grid-column: 1 / -1; display: grid; gap: 8px; }
 .ff-gq { min-width: 0; min-height: 38px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .95rem; }
 .ff-gq:focus { outline: none; border-color: var(--ink-3); }
-.ff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 13rem; overflow-y: auto; overscroll-behavior: contain; }
-.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); aspect-ratio: 1; cursor: pointer; transition: transform .25s var(--spring); }
+/* fixed rows: without them the rows shrank into the panel's height and the GIFs piled up like sardines */
+.ff-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 104px; gap: 8px; max-height: 15rem; overflow-y: auto; overscroll-behavior: contain; padding: 2px; }
+.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); height: 100%; min-height: 0; cursor: pointer; transition: transform .25s var(--spring); }
 .ff-g:hover, .ff-g:focus-visible { transform: scale(1.05); outline: 2px solid var(--fly); }
 .ff-g img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ff-none { grid-column: 1 / -1; margin: 6px 0; font-size: .9rem; font-style: italic; color: var(--ink-3); }
@@ -2197,6 +2198,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .ff-bub { max-width: 8.8rem; padding: 6px 13px 7px; border-radius: 20px; }
   .ff-txt { font-size: .8rem; }
   .ff-gif { max-width: 7.5rem; max-height: 7rem; border-radius: 13px; }
+  .ff-grid { grid-auto-rows: 88px; max-height: 17rem; }
   .ff-send { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -2321,8 +2321,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-gifs { grid-column: 1 / -1; display: grid; gap: 8px; }
 .ff-gq { min-width: 0; min-height: 38px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .95rem; }
 .ff-gq:focus { outline: none; border-color: var(--ink-3); }
-.ff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 13rem; overflow-y: auto; overscroll-behavior: contain; }
-.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); aspect-ratio: 1; cursor: pointer; transition: transform .25s var(--spring); }
+/* fixed rows: without them the rows shrank into the panel's height and the GIFs piled up like sardines */
+.ff-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 104px; gap: 8px; max-height: 15rem; overflow-y: auto; overscroll-behavior: contain; padding: 2px; }
+.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); height: 100%; min-height: 0; cursor: pointer; transition: transform .25s var(--spring); }
 .ff-g:hover, .ff-g:focus-visible { transform: scale(1.05); outline: 2px solid var(--fly); }
 .ff-g img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ff-none { grid-column: 1 / -1; margin: 6px 0; font-size: .9rem; font-style: italic; color: var(--ink-3); }
@@ -2336,6 +2337,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   .ff-bub { max-width: 8.8rem; padding: 6px 13px 7px; border-radius: 20px; }
   .ff-txt { font-size: .8rem; }
   .ff-gif { max-width: 7.5rem; max-height: 7rem; border-radius: 13px; }
+  .ff-grid { grid-auto-rows: 88px; max-height: 17rem; }
   .ff-send { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3717,7 +3719,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'e6864f2ef192', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '2e77a93716b0', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5519,8 +5521,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // the form sits fixed on the screen next to its button (under it, or over it when there's no room below)
     function placePop() {
       const pop = document.querySelector('.ff-pop'), btn = document.querySelector('.ff-open'); if (!pop || pop.hidden || !btn) return;
-      const r = btn.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight, W = innerWidth, H = innerHeight;
-      const x = Math.max(16, Math.min(W - w - 16, r.right - w)), below = H - r.bottom - 24 >= h || r.top < h + 24;
+      pop.style.maxHeight = '';
+      const r = btn.getBoundingClientRect(), w = pop.offsetWidth, h0 = pop.offsetHeight, W = innerWidth, H = innerHeight;
+      // the side with room for it, else the roomier side, and never taller than that room (it scrolls inside)
+      const roomB = H - r.bottom - 24, roomA = r.top - 24, below = roomB >= h0 || (roomA < h0 && roomB >= roomA);
+      const h = Math.min(h0, Math.max(160, below ? roomB : roomA)); pop.style.maxHeight = h + 'px';
+      const x = Math.max(16, Math.min(W - w - 16, r.right - w));
       pop.style.setProperty('--pop-x', x + 'px');
       pop.style.setProperty('--pop-y', (below ? r.bottom + 12 : Math.max(12, r.top - h - 12)) + 'px');
       pop.style.setProperty('--pop-a', Math.max(16, Math.min(w - 28, r.left + r.width / 2 - x - 6)) + 'px');

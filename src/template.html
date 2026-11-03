@@ -2747,8 +2747,12 @@
     // the form sits fixed on the screen next to its button (under it, or over it when there's no room below)
     function placePop() {
       const pop = document.querySelector('.ff-pop'), btn = document.querySelector('.ff-open'); if (!pop || pop.hidden || !btn) return;
-      const r = btn.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight, W = innerWidth, H = innerHeight;
-      const x = Math.max(16, Math.min(W - w - 16, r.right - w)), below = H - r.bottom - 24 >= h || r.top < h + 24;
+      pop.style.maxHeight = '';
+      const r = btn.getBoundingClientRect(), w = pop.offsetWidth, h0 = pop.offsetHeight, W = innerWidth, H = innerHeight;
+      // the side with room for it, else the roomier side, and never taller than that room (it scrolls inside)
+      const roomB = H - r.bottom - 24, roomA = r.top - 24, below = roomB >= h0 || (roomA < h0 && roomB >= roomA);
+      const h = Math.min(h0, Math.max(160, below ? roomB : roomA)); pop.style.maxHeight = h + 'px';
+      const x = Math.max(16, Math.min(W - w - 16, r.right - w));
       pop.style.setProperty('--pop-x', x + 'px');
       pop.style.setProperty('--pop-y', (below ? r.bottom + 12 : Math.max(12, r.top - h - 12)) + 'px');
       pop.style.setProperty('--pop-a', Math.max(16, Math.min(w - 28, r.left + r.width / 2 - x - 6)) + 'px');
