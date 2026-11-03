@@ -2167,6 +2167,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-pop.up::before { display: none; }
 /* while writing, the other bubbles step back so they don't drift over the form */
 .ff-writing .ffs { opacity: .12; pointer-events: none; }
+/* Birth of Venus: no message fireflies and no button, so nothing floats over the painting (Abi, 3 November 2026) */
+:root[data-look="venus"] .ffs, :root[data-look="venus"] .ff-send { display: none !important; }
 .ffs { transition: opacity .4s var(--ease); }
 .ff-pop::before { content: ""; position: absolute; top: -7px; left: var(--pop-a, 28px); width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
 .ff-in { grid-column: 1 / -1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-family: var(--f-read); font-size: 1rem; }

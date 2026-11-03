@@ -2306,6 +2306,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-pop.up::before { display: none; }
 /* while writing, the other bubbles step back so they don't drift over the form */
 .ff-writing .ffs { opacity: .12; pointer-events: none; }
+/* Birth of Venus: no message fireflies and no button, so nothing floats over the painting (Abi, 3 November 2026) */
+:root[data-look="venus"] .ffs, :root[data-look="venus"] .ff-send { display: none !important; }
 .ffs { transition: opacity .4s var(--ease); }
 .ff-pop::before { content: ""; position: absolute; top: -7px; left: var(--pop-a, 28px); width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
 .ff-in { grid-column: 1 / -1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-family: var(--f-read); font-size: 1rem; }
@@ -3719,7 +3721,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '951c771b00e2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'cbd927b3ae0e', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };

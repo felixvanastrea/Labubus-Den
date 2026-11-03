@@ -112,6 +112,12 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   await p.click('[data-act="notes-toggle"]', { force: true }); await p.waitForTimeout(900);
   check((await flies(p)).length >= 4 && !!(await p.$('.ff-send')), 'Messages on again: they are back');
 
+  // Birth of Venus hides them
+  await p.evaluate(() => { document.documentElement.dataset.look = 'venus'; }); await p.waitForTimeout(200);
+  check(!(await p.isVisible('#ffs')) && !(await p.isVisible('.ff-send')), 'Birth of Venus: no messages, no button');
+  await p.evaluate(() => { delete document.documentElement.dataset.look; }); await p.waitForTimeout(200);
+  check(await p.isVisible('.ff-send'), 'back in the usual look: they show again');
+
   // writing one: 80 characters at most
   const long = 'x'.repeat(120);
   await p.click('.ff-open'); await p.waitForTimeout(300);
