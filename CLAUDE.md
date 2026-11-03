@@ -584,8 +584,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the main button was taken off the same day (Abi; `hereLineHTML` stays exported, unused).
 - GIFs from GIPHY (Instagram's): a "GIF" button in the form, trending then search (`gifSearch`, 18, rating pg), "Powered by
   GIPHY" shown. Only the GIF's id is stored (`gif`, `GIF_ID` letters/digits, checked on every read), the address built from it
-  (`gifURL`, 200w, the still `200w_s` with reduced motion). **Needs `GIPHY_KEY`** in `template.html` (free key from
-  developers.giphy.com; empty = no GIF button). The test copy sets `TESTKEY` (mk_test.py) and fakes the API.
+  (`gifURL`, 200w, the still `200w_s` with reduced motion). `GIPHY_KEY` in `template.html` is Abi's (3 November 2026, a
+  beta key, about 100 searches an hour; empty = no GIF button). The test copy sets `TESTKEY` (mk_test.py) and fakes the API.
 - Footer "Messages: on / off" (`efm3-notes-off`, this device; `notesOn`, `setNotes`): off = no message fireflies, no button,
   no reads.
 - News sheet "Fireflies with messages" (`NEWS.id` `fireflies-2026-11`): once per device, "Write a message" opens the form (a

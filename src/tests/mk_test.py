@@ -4,11 +4,11 @@
     cd src/tests && npm install && python3 -m http.server 8765    # then, in another shell:
     node src/tests/search_repeats.js     (and the other *.js files; screenshots land in src/tests/shots/)
 """
-import os
+import os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 page = open(os.path.join(HERE, '..', 'out', 'artifact.html'), encoding='utf8').read()
-page = page.replace("const GIPHY_KEY = '';", "const GIPHY_KEY = 'TESTKEY';")   # the GIF picker is on in the test copy (its API is faked)
+page = re.sub(r"const GIPHY_KEY = '[^']*';", "const GIPHY_KEY = 'TESTKEY';", page)   # the GIF picker is on in the test copy (its API is faked)
 page = page.replace('__DEN_VERSION__', 'test00000001')   # a version, so fresh.js can check for a newer one
 F = 'node_modules/@fontsource'
 faces = []

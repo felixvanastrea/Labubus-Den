@@ -3717,7 +3717,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '4a36ddb2c17e', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'e6864f2ef192', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5386,7 +5386,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // GIFs (Abi, 3 November 2026): the ones Instagram uses, from GIPHY. A note keeps only the GIF's id (letters and digits,
     // checked on every read), never a link, and the address is built here from it. Without a GIPHY key the picker is
     // hidden: get a free key at developers.giphy.com (create an app, API), paste it in GIPHY_KEY.
-    const GIPHY_KEY = '';
+    const GIPHY_KEY = 'zMaSKWR838uQbtfaJBrTqYOT4ooaXm0J';
     const GIF_ID = /^[A-Za-z0-9]{5,32}$/;
     const gifURL = (id, still) => `https://media.giphy.com/media/${id}/${still ? '200w_s' : '200w'}.gif`;
     // "Messages: on / off" in the footer (this device, `efm3-notes-off`): off = no fireflies with messages, no button, no reads
