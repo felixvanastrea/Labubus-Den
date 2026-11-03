@@ -3604,7 +3604,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '037eedb74473', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '9fb3106dc7b2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -4510,6 +4510,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // (only ever a gift), first. No message. One letter, a new id: it replaced the first one (every theme but Venus) the
     // same day, so it opens even for someone who had read that one
     { id: 'handler-venus-2026-10', to: 'labubushandler', looks: ['venus', 'blood', 'codex', 'klimt'], date: '20 October 2026', title: 'A gift for you', lines: [] },
+    // Narjis, Externe Evil (3 November 2026; Abi wasn't sure of the spelling: the key fits Narjis, Narjiss, NARJIS...,
+    // not Narjes, Nargis or a name with a surname: change `to` if her name on the Den is different)
+    { id: 'narjis-evil-2026-11', to: 'narjis', looks: ['evil'], date: '3 November 2026', title: 'A gift for you', lines: [] },
     // Rayane checked the doubtful answers against the lectures and found 7 missing questions (7 October 2026). Held until
     // Abi has his name on the Den: then set `to` to its canon key and drop `held`.
     { id: 'rayane-2026-10', to: 'rayane', held: true, looks: ['blood', 'codex', 'klimt'], date: '7 October 2026', title: 'Thank you, Rayane',

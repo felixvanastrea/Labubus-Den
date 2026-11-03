@@ -504,6 +504,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   star falls through the night, no disc, the `wind` sound (a far bell tolls once); the scene fades in as it lands.
   Sounds: `knell` (right, a bell in the fog with a smaller one a fifth above), `creak` (next question, a door), levels
   checked against harp/ripple/surf. Theme list picture: the castle cropped from a full-size scene (`evil.disc`).
+  Given to Narjis on 3 November 2026 (`narjis-evil-2026-11`, `to: 'narjis'`, no message; Abi wasn't sure of the spelling).
 - `src/tests/review_looks.js [blood|codex|klimt|venus|monet|aero|evil]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
