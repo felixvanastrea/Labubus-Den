@@ -573,19 +573,31 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Message fireflies (Abi, 3 November 2026)
 
-- Signed-in members write one message (80 characters, `NOTE_MAX`) that floats over the homepage masthead as a firefly with a
-  cartoon speech bubble (bone bubble, two-dot tail, bobbing; not a box: Abi asked for it less boxy). "Release a firefly" under
-  the main button opens the form. A new message replaces the old one; it fades after 24 h (`NOTE_LIFE`). Hover or tap a bubble:
-  a tab under it shows who wrote it, when, a star button (one per person, not on your own) and Delete (own, or any for the
-  Labubu). Stars make it sparkle (`NOTE_TIERS` 1/3/6/10 stars: t1 brighter, t2 halo, t3 rays, t4 circling glints). Only
-  `spots().length` fly at once, the most starred first. Separate from the who's-here lights (`.fly`).
-- Firestore `notes/{uid}` = `{nm, k, txt, t (server time), up: {voterUid: true}}`, read as one query (newest 80), re-read every
-  20 s while the homepage shows (`notesUp`); no live watch (Spark plan). Delete my data removes the note.
+- Signed-in members write one message (80 characters, `NOTE_MAX`, and/or a GIF) that floats over the homepage masthead as a
+  firefly with a cartoon speech bubble (bone bubble, two-dot tail, bobbing; not a box: Abi asked for it less boxy). The
+  "Write a message" button (a full `.btn`, under the main button) opens the form; the form is `position: fixed`, placed by
+  `placePop` under or over the button (the masthead clips with `overflow: hidden`), and the other bubbles fade while it's open
+  (`body.ff-writing`). A new message replaces the old one; it fades after 24 h (`NOTE_LIFE`). Hover or tap a bubble: a tab
+  under it shows who wrote it, when, a star button (one per person, not on your own) and Delete (own, or any for the Labubu).
+  Stars make it sparkle (`NOTE_TIERS` 1/3/6/10: t1 brighter, t2 halo, t3 rays, t4 circling glints). Only `spots().length`
+  fly at once, the most starred first. Separate from the who's-here lights (`.fly`); the "N is studying right now" line under
+  the main button was taken off the same day (Abi; `hereLineHTML` stays exported, unused).
+- GIFs from GIPHY (Instagram's): a "GIF" button in the form, trending then search (`gifSearch`, 18, rating pg), "Powered by
+  GIPHY" shown. Only the GIF's id is stored (`gif`, `GIF_ID` letters/digits, checked on every read), the address built from it
+  (`gifURL`, 200w, the still `200w_s` with reduced motion). **Needs `GIPHY_KEY`** in `template.html` (free key from
+  developers.giphy.com; empty = no GIF button). The test copy sets `TESTKEY` (mk_test.py) and fakes the API.
+- Footer "Messages: on / off" (`efm3-notes-off`, this device; `notesOn`, `setNotes`): off = no message fireflies, no button,
+  no reads.
+- News sheet "Fireflies with messages" (`NEWS.id` `fireflies-2026-11`): once per device, "Write a message" opens the form (a
+  guest is asked to sign in first).
+- Firestore `notes/{uid}` = `{nm, k, txt, gif?, t (server time), up: {voterUid: true}}`, read as one query (newest 80),
+  re-read every 20 s while the homepage shows (`notesUp`); no live watch (Spark plan). Delete my data removes the note.
   **Needs Firestore rules** (Abi must paste her current file; return the whole file): signed-in read; create/replace only at
-  `notes/{own uid}` with `nm`/`k` matching `names/{k}`, `txt` 1 to 80 chars, `t == request.time`, `up == {}`; update only to
-  add or remove the voter's own key in `up` (value true); delete by the owner or the owner of `names/labubu`. Until then the
-  section stays quiet (`nt.no`).
-- PostHog events: `firefly_sent`, `firefly_upvoted`. Test: notes.js.
+  `notes/{own uid}` with `nm`/`k` matching `names/{k}`, `txt` 0 to 80 chars, `gif` absent or `^[A-Za-z0-9]{5,32}$`, text or
+  GIF present, `t == request.time`, `up == {}`; update only to add or remove the voter's own key in `up` (value true); delete
+  by the owner or the owner of `names/labubu`. Until then nothing shows (`nt.no`).
+- PostHog events: `firefly_sent` (with `gif`), `firefly_upvoted`, `firefly_deleted`, `messages_switched`. Tests: notes.js,
+  news.js.
 
 ## Duels and parties (Abi, 12 October 2026)
 
@@ -618,7 +630,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - The first duel played to the end (handed in; `S.duels[id].h`, synced) is the Labubu's gift: the Blood moon theme
   (`firstDuel()` in `themeGoal('blood')`), with a toast; the news sheet says so.
 - Test: duel.js (the fake Firestore has `arrayUnion` and array queries).
-- News sheet (`NEWS`, `noticeNews`): "Duels and parties" pops once per device on the homepage (`efm3-news` = the news id),
+- News sheet (`NEWS`, `noticeNews`): "Duels and parties" popped once per device (now "Fireflies with messages", see above) on the homepage (`efm3-news` = the news id),
   after the intro, never over an exam or another sheet; skipped in automated browsers unless `window.__newsTest`. For the
   next big feature, change `NEWS.id` and the sheet's words. Test: news.js.
 
@@ -697,7 +709,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
   events are sent (module and practice opened, a module listed by lecture, questions checked with their module only,
   searches, exam mode opened / started / handed in, review, install the app opened / chosen / installed, option crossed out (first time), question marked, marked practised, sign-in sheet, locked feature clicked, sign in / sign up, report a mistake, Ask the Labubu, constellations, seals, class sky dragged (first time), spark sent, the secret code typed, challenges (made,
-  joined, declined, started, settled, link copied or shared),
+  joined, declined, started, settled, link copied or shared), message fireflies (sent, starred, deleted, switched off),
   update log, sound, the moon or a firefly opened, `new_version` (a tab reloading itself), and `page_error`: a script error's message and where, no answers).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
 

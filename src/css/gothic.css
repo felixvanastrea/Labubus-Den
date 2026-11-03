@@ -2156,25 +2156,48 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff.swap .ff-bub { animation: none; }
 /* under the main button: release your own, in a bubble that opens */
 .ff-send { position: relative; justify-self: end; }
-.ff-open { display: inline-flex; align-items: center; gap: 9px; padding: 4px 2px; border: 0; background: none; color: var(--ink-2); font: inherit; font-family: var(--f-read); font-size: 1rem; cursor: pointer; }
-.ff-open:hover { color: var(--ink); }
-.ff-mini { width: 8px; height: 8px; border-radius: 50%; background: var(--fly); box-shadow: 0 0 8px 2px var(--fly-glow); animation: ff-pulse 2.4s ease-in-out infinite; }
-.ff-pop { position: absolute; right: 0; top: calc(100% + 12px); z-index: 8; width: min(22rem, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
-  padding: 14px; border-radius: 22px; border: 1px solid var(--hair-2); background: var(--plate); box-shadow: 0 0 30px -8px var(--fly-glow), 0 20px 40px -20px var(--deep); text-align: left;
+.ff-open { gap: 9px; }
+.ff-open svg { width: 18px; height: 18px; flex: none; }
+.ff-open[aria-expanded="true"] { border-color: var(--ink-3); }
+/* fixed, placed by openPop under (or over) the button: the masthead clips anything that hangs out of it */
+.ff-pop { position: fixed; left: var(--pop-x, 16px); top: var(--pop-y, 16px); z-index: 60; max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; width: min(22rem, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+  padding: 14px; border-radius: 22px; border: 1px solid var(--hair-2); background: var(--plate); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1); box-shadow: 0 0 30px -8px var(--fly-glow), 0 20px 40px -20px var(--deep); text-align: left;
   animation: ff-in .5s var(--spring) both; transform-origin: 90% 0; }
 .ff-pop[hidden] { display: none; }
-.ff-pop::before { content: ""; position: absolute; top: -7px; right: 28px; width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
+.ff-pop.up::before { display: none; }
+/* while writing, the other bubbles step back so they don't drift over the form */
+.ff-writing .ffs { opacity: .12; pointer-events: none; }
+.ffs { transition: opacity .4s var(--ease); }
+.ff-pop::before { content: ""; position: absolute; top: -7px; left: var(--pop-a, 28px); width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
 .ff-in { grid-column: 1 / -1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-family: var(--f-read); font-size: 1rem; }
 .ff-in:focus { outline: none; border-color: var(--ink-3); box-shadow: 0 0 0 4px var(--glow-soft); }
+.ff-gifrow { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; }
+.ff-gifbtn { min-height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--hair-2); font-family: var(--f-mono, inherit); font-size: .82rem; }
+.ff-gifbtn[aria-expanded="true"] { border-color: var(--ink-3); color: var(--ink); }
+.ff-chosen { position: relative; display: inline-flex; }
+.ff-chosen[hidden], .ff-gifs[hidden] { display: none; }
+.ff-chosen img { height: 44px; width: auto; max-width: 96px; object-fit: cover; border-radius: 12px; border: 1px solid var(--hair-2); display: block; }
+.ff-unpick { position: absolute; right: -8px; top: -8px; width: 22px; height: 22px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--hair-2); background: var(--plate); color: var(--ink-2); cursor: pointer; }
+.ff-unpick svg { width: 11px; height: 11px; }
+.ff-gifs { grid-column: 1 / -1; display: grid; gap: 8px; }
+.ff-gq { min-width: 0; min-height: 38px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .95rem; }
+.ff-gq:focus { outline: none; border-color: var(--ink-3); }
+.ff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 13rem; overflow-y: auto; overscroll-behavior: contain; }
+.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); aspect-ratio: 1; cursor: pointer; transition: transform .25s var(--spring); }
+.ff-g:hover, .ff-g:focus-visible { transform: scale(1.05); outline: 2px solid var(--fly); }
+.ff-g img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ff-none { grid-column: 1 / -1; margin: 6px 0; font-size: .9rem; font-style: italic; color: var(--ink-3); }
+.ff-pow { margin: 0; font-size: .72rem; color: var(--ink-3); text-align: right; }
+.ff-gif { display: block; width: auto; max-width: 10rem; max-height: 9rem; border-radius: 16px; background: rgba(0, 0, 0, .08); }
+.ff-gif + .ff-txt { margin-top: 6px; }
 .ff-count { font-size: .78rem; color: var(--ink-3); }
 .ff-pop .btn { min-height: 40px; border-radius: 999px; }
 .ff-note { grid-column: 1 / -1; margin: 0; font-size: .82rem; font-style: italic; color: var(--ink-3); }
 @media (max-width: 640px) {
   .ff-bub { max-width: 8.8rem; padding: 6px 13px 7px; border-radius: 20px; }
   .ff-txt { font-size: .8rem; }
+  .ff-gif { max-width: 7.5rem; max-height: 7rem; border-radius: 13px; }
   .ff-send { justify-self: start; }
-  .ff-pop { left: 0; right: auto; transform-origin: 10% 0; }
-  .ff-pop::before { left: 28px; right: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ff, .ff-dot i, .ff-dot::before, .ff-dot::after, .ff-bub, .ff-mini, .ff-pop { animation: none !important; }

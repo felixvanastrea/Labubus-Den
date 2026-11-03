@@ -2295,25 +2295,48 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff.swap .ff-bub { animation: none; }
 /* under the main button: release your own, in a bubble that opens */
 .ff-send { position: relative; justify-self: end; }
-.ff-open { display: inline-flex; align-items: center; gap: 9px; padding: 4px 2px; border: 0; background: none; color: var(--ink-2); font: inherit; font-family: var(--f-read); font-size: 1rem; cursor: pointer; }
-.ff-open:hover { color: var(--ink); }
-.ff-mini { width: 8px; height: 8px; border-radius: 50%; background: var(--fly); box-shadow: 0 0 8px 2px var(--fly-glow); animation: ff-pulse 2.4s ease-in-out infinite; }
-.ff-pop { position: absolute; right: 0; top: calc(100% + 12px); z-index: 8; width: min(22rem, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
-  padding: 14px; border-radius: 22px; border: 1px solid var(--hair-2); background: var(--plate); box-shadow: 0 0 30px -8px var(--fly-glow), 0 20px 40px -20px var(--deep); text-align: left;
+.ff-open { gap: 9px; }
+.ff-open svg { width: 18px; height: 18px; flex: none; }
+.ff-open[aria-expanded="true"] { border-color: var(--ink-3); }
+/* fixed, placed by openPop under (or over) the button: the masthead clips anything that hangs out of it */
+.ff-pop { position: fixed; left: var(--pop-x, 16px); top: var(--pop-y, 16px); z-index: 60; max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; width: min(22rem, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+  padding: 14px; border-radius: 22px; border: 1px solid var(--hair-2); background: var(--plate); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1); box-shadow: 0 0 30px -8px var(--fly-glow), 0 20px 40px -20px var(--deep); text-align: left;
   animation: ff-in .5s var(--spring) both; transform-origin: 90% 0; }
 .ff-pop[hidden] { display: none; }
-.ff-pop::before { content: ""; position: absolute; top: -7px; right: 28px; width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
+.ff-pop.up::before { display: none; }
+/* while writing, the other bubbles step back so they don't drift over the form */
+.ff-writing .ffs { opacity: .12; pointer-events: none; }
+.ffs { transition: opacity .4s var(--ease); }
+.ff-pop::before { content: ""; position: absolute; top: -7px; left: var(--pop-a, 28px); width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
 .ff-in { grid-column: 1 / -1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-family: var(--f-read); font-size: 1rem; }
 .ff-in:focus { outline: none; border-color: var(--ink-3); box-shadow: 0 0 0 4px var(--glow-soft); }
+.ff-gifrow { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; }
+.ff-gifbtn { min-height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--hair-2); font-family: var(--f-mono, inherit); font-size: .82rem; }
+.ff-gifbtn[aria-expanded="true"] { border-color: var(--ink-3); color: var(--ink); }
+.ff-chosen { position: relative; display: inline-flex; }
+.ff-chosen[hidden], .ff-gifs[hidden] { display: none; }
+.ff-chosen img { height: 44px; width: auto; max-width: 96px; object-fit: cover; border-radius: 12px; border: 1px solid var(--hair-2); display: block; }
+.ff-unpick { position: absolute; right: -8px; top: -8px; width: 22px; height: 22px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--hair-2); background: var(--plate); color: var(--ink-2); cursor: pointer; }
+.ff-unpick svg { width: 11px; height: 11px; }
+.ff-gifs { grid-column: 1 / -1; display: grid; gap: 8px; }
+.ff-gq { min-width: 0; min-height: 38px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: .95rem; }
+.ff-gq:focus { outline: none; border-color: var(--ink-3); }
+.ff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 13rem; overflow-y: auto; overscroll-behavior: contain; }
+.ff-g { padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--hair); aspect-ratio: 1; cursor: pointer; transition: transform .25s var(--spring); }
+.ff-g:hover, .ff-g:focus-visible { transform: scale(1.05); outline: 2px solid var(--fly); }
+.ff-g img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ff-none { grid-column: 1 / -1; margin: 6px 0; font-size: .9rem; font-style: italic; color: var(--ink-3); }
+.ff-pow { margin: 0; font-size: .72rem; color: var(--ink-3); text-align: right; }
+.ff-gif { display: block; width: auto; max-width: 10rem; max-height: 9rem; border-radius: 16px; background: rgba(0, 0, 0, .08); }
+.ff-gif + .ff-txt { margin-top: 6px; }
 .ff-count { font-size: .78rem; color: var(--ink-3); }
 .ff-pop .btn { min-height: 40px; border-radius: 999px; }
 .ff-note { grid-column: 1 / -1; margin: 0; font-size: .82rem; font-style: italic; color: var(--ink-3); }
 @media (max-width: 640px) {
   .ff-bub { max-width: 8.8rem; padding: 6px 13px 7px; border-radius: 20px; }
   .ff-txt { font-size: .8rem; }
+  .ff-gif { max-width: 7.5rem; max-height: 7rem; border-radius: 13px; }
   .ff-send { justify-self: start; }
-  .ff-pop { left: 0; right: auto; transform-origin: 10% 0; }
-  .ff-pop::before { left: 28px; right: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ff, .ff-dot i, .ff-dot::before, .ff-dot::after, .ff-bub, .ff-mini, .ff-pop { animation: none !important; }
@@ -2816,6 +2839,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   };
   const STORE_KEY = 'efm3-mcq-bank-v1';
   const ICON = {
+    bubble: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h12a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 16 13.5H9.5L6 16.5v-3H4A1.5 1.5 0 0 1 2.5 12V6A1.5 1.5 0 0 1 4 4.5z"/></svg>',
     lock: '<svg class="lk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="1.6"/><path d="M7 9V6.6a3 3 0 0 1 6 0V9"/></svg>',
     check:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>',
     cross: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>',
@@ -3693,7 +3717,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '54a04aaaa1f6', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '6bdf21f7d3eb', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5358,17 +5382,33 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // else); the more votes, the more it sparkles (NOTE_TIERS). The author deletes theirs, the Labubu anyone's.
     // Read when the homepage opens and every NOTE_READ while it shows (never a live watch: the free plan).
     const NOTE_MAX = 80, NOTE_LIFE = 864e5, NOTE_READ = 60000, NOTE_SHOW = 24, NOTE_TIERS = [1, 3, 6, 10];
-    const nt = { list: null, readAt: 0, busy: false, no: false, noWrite: false, timer: 0, draft: '' };
+    const nt = { list: null, readAt: 0, busy: false, no: false, noWrite: false, timer: 0, draft: '', gif: '', gifT: 0, gifQ: null };
+    // GIFs (Abi, 3 November 2026): the ones Instagram uses, from GIPHY. A note keeps only the GIF's id (letters and digits,
+    // checked on every read), never a link, and the address is built here from it. Without a GIPHY key the picker is
+    // hidden: get a free key at developers.giphy.com (create an app, API), paste it in GIPHY_KEY.
+    const GIPHY_KEY = '';
+    const GIF_ID = /^[A-Za-z0-9]{5,32}$/;
+    const gifURL = (id, still) => `https://media.giphy.com/media/${id}/${still ? '200w_s' : '200w'}.gif`;
+    // "Messages: on / off" in the footer (this device, `efm3-notes-off`): off = no fireflies with messages, no button, no reads
+    const notesOn = () => { try { return localStorage.getItem('efm3-notes-off') !== '1'; } catch (e) { return true; } };
+    function setNotes(on) {
+      try { on ? localStorage.removeItem('efm3-notes-off') : localStorage.setItem('efm3-notes-off', '1'); } catch (e) {}
+      usage.track('messages_switched', { on });
+      if (!on) { const o = document.querySelector('.ff-send'); if (o) o.remove(); paintNotes(); return; }
+      const cta = document.querySelector('.hero-cta');
+      if (cta && !cta.querySelector('.ff-send') && me.key && !nt.no) cta.insertAdjacentHTML('beforeend', noteBtnHTML());
+      nt.readAt = 0; paintNotes(); loadNotes(true);
+    }
     const noteTier = n => NOTE_TIERS.filter(v => n >= v).length;
     const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
     function notesNow() {
       const now = Date.now();
-      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => v.up[u] === true) }))
-        .filter(x => x.txt && x.t && now - x.t < NOTE_LIFE)
+      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => v.up[u] === true) }))
+        .filter(x => (x.txt || x.gif) && x.t && now - x.t < NOTE_LIFE)
         .sort((a, b) => b.up.length - a.up.length || b.t - a.t).slice(0, NOTE_SHOW);
     }
     async function loadNotes(force) {
-      if (!here || !skyOK() || nt.busy || document.hidden) return;
+      if (!here || !skyOK() || nt.busy || document.hidden || !notesOn()) return;
       if (!force && nt.list && Date.now() - nt.readAt < NOTE_READ) return;
       nt.busy = true;
       try {
@@ -5397,7 +5437,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       const del = mine || vip() ? `<button class="ff-del" type="button" data-note="del" data-uid="${esc(x.uid)}">${mine ? 'Delete mine' : 'Delete'}</button>` : '';
       return `<div class="ff t${tier} ${side === 'l' ? 'to-l' : 'to-r'}${mine ? ' mine' : ''}" data-uid="${esc(x.uid)}" style="left:${left}%;top:${top}%;--dx:${((hash(x.uid, 13) - .5) * 90).toFixed(0)}px;--dy:${((hash(x.uid, 14) - .5) * 56).toFixed(0)}px;--dur:${(11 + hash(x.uid, 15) * 8).toFixed(1)}s;--bob:${(3.2 + hash(x.uid, 17) * 2).toFixed(1)}s;--del:${(-hash(x.uid, 16) * 8).toFixed(1)}s">
         <span class="ff-dot" aria-hidden="true"><i></i></span>
-        <div class="ff-bub" tabindex="0"><p class="ff-txt">${esc(x.txt)}</p>${n ? `<span class="ff-n num" aria-hidden="true">✦ ${n}</span>` : ''}
+        <div class="ff-bub" tabindex="0">${x.gif ? `<img class="ff-gif" src="${gifURL(x.gif, reduceMotion())}" alt="A GIF" loading="lazy" decoding="async">` : ''}${x.txt ? `<p class="ff-txt">${esc(x.txt)}</p>` : ''}${n ? `<span class="ff-n num" aria-hidden="true">✦ ${n}</span>` : ''}
           <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>
           <div class="ff-foot"><button class="ff-up" type="button" data-note="up" data-uid="${esc(x.uid)}" aria-pressed="${voted ? 'true' : 'false'}"${mine ? ' disabled' : ''} aria-label="${voted ? 'Take back your star' : 'Give it a star'}, ${n} so far">✦ <span class="num">${n}</span></button>${del}</div></div></div></div>`;
     }
@@ -5405,18 +5445,38 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const notesHTML = () => here ? '<div class="ffs" id="ffs" aria-label="Messages from the class"></div>' : '';
     // under the main button: release your own
     function noteBtnHTML() {
-      if (!here || !skyOK() || !me.key || nt.no) return '';
-      return `<div class="ff-send"><button class="ff-open" type="button" data-note="open" aria-expanded="false"><span class="ff-mini" aria-hidden="true"></span>Release a firefly</button>
+      if (!here || !skyOK() || !me.key || nt.no || !notesOn()) return '';
+      const gifs = GIPHY_KEY ? `<div class="ff-gifrow"><button class="btn quiet ff-gifbtn" type="button" data-note="gifs" aria-expanded="false">GIF</button><span class="ff-chosen"${nt.gif ? '' : ' hidden'}>${nt.gif ? gifChip() : ''}</span></div>
+          <div class="ff-gifs" hidden><input class="ff-gq" type="search" placeholder="Search GIPHY" autocomplete="off" aria-label="Search GIFs"><div class="ff-grid" role="list"></div><p class="ff-pow">Powered by GIPHY</p></div>` : '';
+      return `<div class="ff-send"><button class="btn ff-open" type="button" data-note="open" aria-expanded="false">${ICON.bubble}Write a message</button>
         <form class="ff-pop" data-note="form" hidden>
           <label class="sr-label" for="ff-in">Your message, for 24 hours</label>
           <input id="ff-in" class="ff-in" type="text" maxlength="${NOTE_MAX}" autocomplete="off" placeholder="Say something to the class" value="${esc(nt.draft)}">
+          ${gifs}
           <span class="ff-count num" aria-live="polite">${nt.draft.length}/${NOTE_MAX}</span>
-          <button class="btn primary" type="submit"${nt.draft.trim() ? '' : ' disabled'}>Let it fly</button>
+          <button class="btn primary" type="submit"${nt.draft.trim() || nt.gif ? '' : ' disabled'}>Let it fly</button>
           <p class="ff-note">Everyone signed in sees it for 24 hours. A new one replaces yours.</p></form></div>`;
+    }
+    const gifChip = () => `<img src="${gifURL(nt.gif, true)}" alt="Your GIF"><button type="button" class="ff-unpick" data-note="ungif" aria-label="Remove the GIF">${ICON.cross}</button>`;
+    const syncSend = () => {
+      const fm = document.querySelector('.ff-pop'); if (!fm) return;
+      fm.querySelector('button[type="submit"]').disabled = !(nt.draft.trim() || nt.gif);
+      const ch = fm.querySelector('.ff-chosen'); if (ch) { ch.hidden = !nt.gif; ch.innerHTML = nt.gif ? gifChip() : ''; }
+    };
+    async function gifSearch(q) {
+      const grid = document.querySelector('.ff-grid'); if (!grid || !GIPHY_KEY) return;
+      const mine = nt.gifQ = {}; grid.setAttribute('aria-busy', 'true');
+      try {
+        const r = await fetch(`https://api.giphy.com/v1/gifs/${q ? 'search' : 'trending'}?api_key=${encodeURIComponent(GIPHY_KEY)}&limit=18&rating=pg&lang=en${q ? '&q=' + encodeURIComponent(q) : ''}`);
+        const j = await r.json(); if (mine !== nt.gifQ) return;
+        const ids = (j.data || []).map(g => String(g.id || '')).filter(id => GIF_ID.test(id));
+        grid.innerHTML = ids.length ? ids.map(id => `<button type="button" class="ff-g" role="listitem" data-note="gif" data-id="${id}" aria-label="Use this GIF"><img src="https://media.giphy.com/media/${id}/100w.gif" alt="" loading="lazy" decoding="async"></button>`).join('') : '<p class="ff-none">Nothing found. Try another word.</p>';
+      } catch (e) { if (mine === nt.gifQ) grid.innerHTML = '<p class="ff-none">GIPHY can’t be reached right now.</p>'; }
+      grid.removeAttribute('aria-busy'); placePop();
     }
     function paintNotes() {
       const box = document.getElementById('ffs'); if (!box) return;
-      const list = skyOK() && !nt.no ? notesNow().slice(0, spots().length) : [];
+      const list = skyOK() && !nt.no && notesOn() ? notesNow().slice(0, spots().length) : [];
       // one firefly at a time, so the others keep flying (a new bubble pops in, a changed one is swapped in place)
       const keep = new Set(list.map(x => x.uid));
       box.querySelectorAll('.ff').forEach(el => { if (!keep.has(el.dataset.uid)) el.remove(); });
@@ -5431,12 +5491,13 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     async function sendNote(txt) {
       txt = String(txt || '').replace(/\s+/g, ' ').trim().slice(0, NOTE_MAX);
-      if (!txt || !skyOK() || !me.key) return;
-      const f = fb.f, mine = { nm: me.name, k: me.key, txt, t: f.serverTimestamp(), up: {} };
+      const gif = GIF_ID.test(nt.gif) ? nt.gif : '';
+      if ((!txt && !gif) || !skyOK() || !me.key) return;
+      const f = fb.f, mine = { nm: me.name, k: me.key, txt, t: f.serverTimestamp(), up: {} }; if (gif) mine.gif = gif;
       const before = nt.list && nt.list[user.uid];
       nt.list = nt.list || {}; nt.list[user.uid] = Object.assign({}, mine, { t: Date.now(), pending: true });
-      nt.draft = ''; const inp = document.getElementById('ff-in'); if (inp) inp.value = ''; openPop(false);
-      paintNotes(); sfx.play('sparkle'); usage.track('firefly_sent', { replaced: !!before });
+      nt.draft = ''; nt.gif = ''; const inp = document.getElementById('ff-in'); if (inp) inp.value = ''; syncSend(); openPop(false);
+      paintNotes(); sfx.play('sparkle'); usage.track('firefly_sent', { replaced: !!before, gif: !!gif });
       try { await f.setDoc(f.doc(db, 'notes', user.uid), mine); delete nt.list[user.uid].pending; }
       catch (e) { if (before) nt.list[user.uid] = before; else delete nt.list[user.uid]; paintNotes(); toast('Your firefly couldn’t fly off. Try again in a moment.'); }
     }
@@ -5455,9 +5516,23 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, 'notes', uid)); await b.commit(); usage.track('firefly_deleted', { own: uid === user.uid }); }
       catch (e) { if (before) nt.list[uid] = before; paintNotes(); toast('It couldn’t be deleted. Try again in a moment.'); }
     }
+    // the form sits fixed on the screen next to its button (under it, or over it when there's no room below)
+    function placePop() {
+      const pop = document.querySelector('.ff-pop'), btn = document.querySelector('.ff-open'); if (!pop || pop.hidden || !btn) return;
+      const r = btn.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight, W = innerWidth, H = innerHeight;
+      const x = Math.max(16, Math.min(W - w - 16, r.right - w)), below = H - r.bottom - 24 >= h || r.top < h + 24;
+      pop.style.setProperty('--pop-x', x + 'px');
+      pop.style.setProperty('--pop-y', (below ? r.bottom + 12 : Math.max(12, r.top - h - 12)) + 'px');
+      pop.style.setProperty('--pop-a', Math.max(16, Math.min(w - 28, r.left + r.width / 2 - x - 6)) + 'px');
+      pop.classList.toggle('up', !below);
+    }
+    window.addEventListener('scroll', () => { if (document.querySelector('.ff-pop:not([hidden])')) placePop(); }, { passive: true });
+    window.addEventListener('resize', placePop);
     function openPop(on) {
       const pop = document.querySelector('.ff-pop'), btn = document.querySelector('.ff-open'); if (!pop || !btn) return;
       pop.hidden = !on; btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      document.body.classList.toggle('ff-writing', !!on);
+      if (on) placePop();
       if (on) { const inp = pop.querySelector('.ff-in'); inp.focus(); pop.querySelector('.ff-count').textContent = `${inp.value.length}/${NOTE_MAX}`; }
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.ff-pop:not([hidden])')) openPop(false); });
@@ -5466,6 +5541,13 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       const ff = e.target.closest && e.target.closest('.ff');
       if (!(e.target.closest && e.target.closest('.ff-send'))) openPop(false);
       if (b && b.dataset.note === 'open') { openPop(document.querySelector('.ff-pop').hidden); return; }
+      if (b && b.dataset.note === 'gifs') {
+        const pn = document.querySelector('.ff-gifs'), on = pn.hidden; pn.hidden = !on; b.setAttribute('aria-expanded', on ? 'true' : 'false');
+        if (on) { const q = pn.querySelector('.ff-gq'); q.focus(); if (!pn.querySelector('.ff-g')) gifSearch(q.value.trim()); }
+        placePop(); return;
+      }
+      if (b && b.dataset.note === 'gif') { if (GIF_ID.test(b.dataset.id || '')) { nt.gif = b.dataset.id; const pn = document.querySelector('.ff-gifs'); if (pn) pn.hidden = true; const gb = document.querySelector('.ff-gifbtn'); if (gb) gb.setAttribute('aria-expanded', 'false'); syncSend(); placePop(); sfx.play('mark', { quiet: true }); } return; }
+      if (b && b.dataset.note === 'ungif') { nt.gif = ''; syncSend(); return; }
       document.querySelectorAll('.ff.on').forEach(x => { if (x !== ff) x.classList.remove('on'); });
       if (ff && !b) ff.classList.toggle('on');
       if (!b || b.tagName === 'FORM') return;
@@ -5477,10 +5559,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       e.preventDefault(); sendNote(fm.querySelector('.ff-in').value);
     });
     document.addEventListener('input', e => {
+      if (e.target.classList && e.target.classList.contains('ff-gq')) { clearTimeout(nt.gifT); const v = e.target.value.trim(); nt.gifT = setTimeout(() => gifSearch(v), 350); return; }
       if (!e.target.classList || !e.target.classList.contains('ff-in')) return;
       nt.draft = e.target.value.slice(0, NOTE_MAX);
       const fm = e.target.form; fm.querySelector('.ff-count').textContent = `${nt.draft.length}/${NOTE_MAX}`;
-      fm.querySelector('button[type="submit"]').disabled = !nt.draft.trim();
+      syncSend();
     });
     function notesUp() {
       if (!here) return;
@@ -6954,7 +7037,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       skyFocus: (uid, pin, kb) => skyView.focusStar(uid, pin, kb), skyBlur: uid => skyView.blur(uid),
       duelsHTML, renderDuel, openChallenge, duelAccept, duelDecline, duelPlay, duelGo, duelHanded, duelProgress, rematch, duelRunHTML,
       duelCopy: () => copyLink(duelURL(S.duelId)), duelShare: () => shareLink(S.duelId), duelCount: () => Object.keys(duels).length,
-      first: () => (user || read(NAME)) ? (me.name || read(NAME) || '') : '', beat, fliesHTML, hereLineHTML, hereUp, notesHTML, noteBtnHTML, notesUp };
+      first: () => (user || read(NAME)) ? (me.name || read(NAME) || '') : '', beat, fliesHTML, hereLineHTML, hereUp, notesHTML, noteBtnHTML, notesUp, gifsOn: !!GIPHY_KEY, notesOn, setNotes, canNotes: !!here };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -8637,7 +8720,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
           </ul>
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
-          <div class="hero-cta rise-in" style="--d:3">${cta}${acct.hereLineHTML()}${acct.noteBtnHTML()}</div>
+          <div class="hero-cta rise-in" style="--d:3">${cta}${acct.noteBtnHTML()}</div>
         </div>${lookNow() === 'codex' ? codexStripHTML() : ''}
       </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'klimt' ? meadowHTML() : lookNow() === 'venus' ? seaHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">
@@ -8736,6 +8819,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       ${acct.here ? `<p>Account: <button class="foot-btn" type="button" data-act="account">${esc(acct.label())}</button></p>` : ''}
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
+      ${acct.canNotes ? `<p>Messages: <button class="foot-btn" type="button" role="switch" aria-checked="${acct.notesOn()}" aria-label="Messages" data-act="notes-toggle" title="The fireflies with messages from the class on the homepage">${acct.notesOn() ? 'on' : 'off'}</button></p>` : ''}
       ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
       <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
       ${app_.slot('foot')}
@@ -8888,7 +8972,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   let toastTimer = null;
   // news: a sheet shown once per device on the homepage when something big arrives (NEWS.id). It waits for the intro,
   // a running exam and any other sheet; automated browsers skip it unless window.__newsTest is set.
-  const NEWS = { id: 'duels-2026-10', key: 'efm3-news' };
+  const NEWS = { id: 'fireflies-2026-11', key: 'efm3-news' };
   let newsEl = null;
   function noticeNews() {
     let seen = null; try { seen = localStorage.getItem(NEWS.key); } catch (e) { return; }
@@ -8906,8 +8990,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       newsEl.addEventListener('click', e => {
         const b = e.target.closest('[data-news]');
         if (e.target === newsEl || (b && b.dataset.news === 'close')) closeNews();
-        else if (b && b.dataset.news === 'go') { closeNews(); usage.track('news_go', { news: NEWS.id }); acct.openChallenge('duel'); }
-        else if (b && b.dataset.news === 'see') { closeNews(); const d = document.getElementById('duels'); if (d) d.scrollIntoView({ behavior: smooth(), block: 'start' }); }
+        else if (b && b.dataset.news === 'write') {
+          closeNews(); usage.track('news_go', { news: NEWS.id });
+          const open = () => { const o = document.querySelector('.ff-open'); if (o) { o.scrollIntoView({ behavior: smooth(), block: 'center' }); o.click(); } };
+          if (document.querySelector('.ff-open')) open(); else acct.gate('write a message to the class', () => setTimeout(open, 1500));
+        }
       });
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && newsEl && !newsEl.hidden) closeNews(); });
       document.body.appendChild(newsEl);
@@ -8917,16 +9004,15 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     newsEl.innerHTML = `<div class="acct-card plate news">
       <button class="btn quiet acct-x" type="button" data-news="close" aria-label="Close">${ICON.cross}</button>
       <p class="eyebrow">New on the Den</p>
-      <h2 class="h2" id="news-h">Duels and parties</h2>
+      <h2 class="h2" id="news-h">Fireflies with messages</h2>
       <div class="news-dots" aria-hidden="true">${dots}</div>
-      <p class="acct-p">Challenge your classmates to the same exam: the quest, or anything you can open in exam mode. Same questions, same clock, graded out of 20.</p>
+      <p class="acct-p">You can now write a message that floats over the homepage as a firefly, in a little speech bubble, for the whole class to see. Have fun with it.</p>
       <ul class="news-l">
-        <li><b>A duel</b> is one on one. Win it and your star in the class sky takes a colour, one of seven named after real stars. Win again to keep it, or it fades back after a week.</li>
-        <li><b>A party</b> is up to 8 of you, for a ranking.</li>
-        <li class="news-gift">Play your first duel and the Labubu gifts you the exclusive <b>Blood moon</b> theme.</li>
-        <li>Play within 24 hours, or <b>live</b>, all starting together. Pick people from tonight’s sky or by their name: they get the invitation on the Den, and you can share the link.</li>
+        <li>Up to <b>80 characters</b>${acct.gifsOn ? ', or a <b>GIF</b> from GIPHY, the ones Instagram uses' : ''}. It stays for 24 hours, and a new one replaces yours.</li>
+        <li>Hover or tap a bubble to see who wrote it, and give it a <b>✦ star</b>: the more stars, the more it sparkles.</li>
+        <li class="news-gift">Keep it kind: the Labubu can delete anything.</li>
       </ul>
-      <div class="row"><button class="btn primary" type="button" data-news="go">${acct.member() ? ICON.hourglass : LOCK}Challenge someone ${ICON.next}</button><button class="btn" type="button" data-news="see">See the colours</button><button class="btn quiet" type="button" data-news="close">Later</button></div>
+      <div class="row"><button class="btn primary" type="button" data-news="write">${acct.member() ? ICON.bubble : LOCK}Write a message ${ICON.next}</button><button class="btn quiet" type="button" data-news="close">Later</button></div>
     </div>`;
     newsEl.hidden = false; sfx.play('sheet', { quiet: true });
     usage.track('news_shown', { news: NEWS.id });
@@ -11258,6 +11344,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       }
       case 'rmoon': t.classList.toggle('on'); usage.track('moon_opened'); break;
       case 'haptic-toggle': sfx.setHaptics(!sfx.haptics()); t.setAttribute('aria-checked', String(sfx.haptics())); t.textContent = sfx.haptics() ? 'on' : 'off'; break;
+      case 'notes-toggle': acct.setNotes(!acct.notesOn()); t.setAttribute('aria-checked', String(acct.notesOn())); t.textContent = acct.notesOn() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); break;
       case 'stats-toggle': usage.set(!usage.on()); t.setAttribute('aria-checked', String(usage.on())); t.textContent = usage.on() ? 'on' : 'off'; sfx.play('toggle', { quiet: true }); break;
       case 'cst': { const card = document.getElementById('cst-card'); cstOpen(canHover() || !(card && card.classList.contains('on')), true); break; }
       case 'stars': practiceStars(curQ().id); break;

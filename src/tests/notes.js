@@ -14,13 +14,15 @@ let fails = 0;
 const check = (ok, what) => { console.log((ok ? 'ok   ' : 'FAIL ') + what); if (!ok) fails++; };
 const errors = [];
 const H = 36e5, now = Date.now();
-const people = { u1: 'Abi', u2: 'Zeineb', u3: 'Amro', u4: 'Nada', u5: 'Old', u9: 'Labubu' };
+const people = { u1: 'Abi', u2: 'Zeineb', u3: 'Amro', u4: 'Nada', u5: 'Old', u6: 'Gifman', u7: 'Evil', u9: 'Labubu' };
 function docs(extra = {}) {
   const d = {};
   for (const [u, nm] of Object.entries(people)) { const k = nm.toLowerCase(); d['names/' + k] = { uid: u, name: nm }; d['users/' + u] = { name: nm, key: k, s: '{}' }; }
   d['notes/u2'] = { nm: 'Zeineb', k: 'zeineb', txt: 'Good luck for Thursday everyone!', t: now - 2 * H, up: { u3: true, u4: true, u9: true } };
   d['notes/u3'] = { nm: 'Amro', k: 'amro', txt: 'Who else is doing hepatitis tonight?', t: now - 30 * 6e4, up: {} };
   d['notes/u4'] = { nm: 'Nada', k: 'nada', txt: 'The achalasia slides are on the Drive', t: now - 5 * H, up: { u2: true, u3: true, u5: true, u9: true, u1: true, a: true, b: true, c: true, d: true, e: true } };
+  d['notes/u6'] = { nm: 'Gifman', k: 'gifman', txt: '', gif: 'abc123XYZ', t: now - 10 * 6e4, up: {} };
+  d['notes/u7'] = { nm: 'Evil', k: 'evil', txt: 'bad id', gif: '../x?y=1', t: now - 10 * 6e4, up: {} };
   d['notes/u5'] = { nm: 'Old', k: 'old', txt: 'This one is from yesterday', t: now - 26 * H, up: {} };
   return Object.assign(d, extra);
 }
@@ -39,12 +41,15 @@ async function open(b, opts = {}) {
   await ctx.route(/gstatic\.com\/firebasejs\/12\.19\.0\/firebase-(app|auth|firestore)\.js$/, (route, req) => {
     route.fulfill({ status: 200, contentType: 'application/javascript', headers: { 'access-control-allow-origin': '*' }, body: FAKE[req.url().match(/firebase-(\w+)\.js$/)[1]] });
   });
+  const GIF = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
+  await ctx.route(/media\.giphy\.com/, r => r.fulfill({ status: 200, contentType: 'image/gif', body: GIF }));
+  await ctx.route(/api\.giphy\.com/, r => r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ data: [{ id: 'gifOne12345' }, { id: 'gifTwo12345' }] }) }));
   const p = await ctx.newPage();
   p.on('pageerror', e => errors.push((opts.tag || 'page') + ' pageerror: ' + e.message));
   await p.goto(URL, { waitUntil: 'load' }); await p.waitForTimeout(1500);
   return { ctx, p };
 }
-const flies = p => p.$$eval('#ffs .ff', els => els.map(e => ({ uid: e.dataset.uid, cls: e.className, txt: e.querySelector('.ff-txt').textContent, n: +e.querySelector('.ff-up .num').textContent, pressed: e.querySelector('.ff-up').getAttribute('aria-pressed'), del: !!e.querySelector('.ff-del') })));
+const flies = p => p.$$eval('#ffs .ff', els => els.map(e => ({ uid: e.dataset.uid, cls: e.className, txt: (e.querySelector('.ff-txt') || {}).textContent || '', n: +e.querySelector('.ff-up .num').textContent, pressed: e.querySelector('.ff-up').getAttribute('aria-pressed'), del: !!e.querySelector('.ff-del') })));
 const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
 
 (async () => {
@@ -55,9 +60,10 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   await p.waitForTimeout(500);
   await p.screenshot({ path: OUT + 'notes_desk0.png' });
   let f = await flies(p);
-  check(f.length === 3, `the last 24 hours only (${f.map(x => x.uid)})`);
-  check(f[0].uid === 'u4' && f[1].uid === 'u2' && f[2].uid === 'u3', 'the most starred first');
-  check(/\bt4\b/.test(f[0].cls) && /\bt2\b/.test(f[1].cls) && /\bt0\b/.test(f[2].cls), `sparkle by stars (${f.map(x => x.cls)})`);
+  check(f.length === 5 && f.some(x => x.uid === 'u6') && !f.some(x => x.uid === 'u5') && !(await p.$('.ff[data-uid="u7"] .ff-gif')), `the last 24 hours only, a bad GIF id dropped but its text kept (${f.map(x => x.uid)})`);
+  check(f[0].uid === 'u4' && f[1].uid === 'u2', 'the most starred first');
+  check(await p.$eval('.ff[data-uid="u6"] .ff-gif', e => /media\.giphy\.com\/media\/abc123XYZ\/200w\.gif$/.test(e.src)) && !(await p.$('.ff[data-uid="u6"] .ff-txt')), 'a GIF-only firefly shows just the GIF');
+  check(/\bt4\b/.test(f[0].cls) && /\bt2\b/.test(f[1].cls), `sparkle by stars (${f.map(x => x.cls)})`);
   check(f[0].pressed === 'true' && f[1].pressed === 'false', 'my own star shows as given');
   check(!f.some(x => x.del), 'no delete on other people’s');
   const who0 = await p.$eval('.ff[data-uid="u3"] .ff-more', e => getComputedStyle(e).opacity);
@@ -77,6 +83,28 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   await p.click('.ff[data-uid="u3"] .ff-up', { force: true }); await p.waitForTimeout(300);
   d = await fdoc(p, 'notes/u3');
   check(d && !d.up.u1, 'a second tap takes it back');
+
+  // a GIF with the message
+  await p.click('.ff-open'); await p.waitForTimeout(300);
+  check((await p.textContent('.ff-open')).includes('Write a message'), 'the button says Write a message');
+  check(!(await p.$('.here-line')) || !(await p.isVisible('.here-line')), 'no who’s-studying line');
+  await p.click('.ff-gifbtn'); await p.waitForTimeout(500);
+  check((await p.$$('.ff-g')).length === 2, 'GIPHY results show');
+  await p.fill('.ff-gq', 'cat'); await p.waitForTimeout(700);
+  await p.click('.ff-g >> nth=0'); await p.waitForTimeout(200);
+  check(await p.isVisible('.ff-chosen img') && !(await p.$eval('.ff-pop button[type="submit"]', e => e.disabled)), 'a GIF picked: shown, Let it fly ready without text');
+  await p.fill('#ff-in', 'look at this'); await p.click('.ff-pop button[type="submit"]'); await p.waitForTimeout(500);
+  d = await fdoc(p, 'notes/u1');
+  check(d && d.gif === 'gifOne12345' && d.txt === 'look at this', 'written with its GIF id only');
+  await p.click('.ff-open'); await p.waitForTimeout(300);
+  check(!(await p.isVisible('.ff-chosen')), 'the GIF is cleared after sending');
+  await p.keyboard.press('Escape');
+
+  // the footer switch turns the messages off, and back on
+  await p.click('[data-act="notes-toggle"]', { force: true }); await p.waitForTimeout(400);
+  check((await flies(p)).length === 0 && !(await p.$('.ff-send')), 'Messages off: no fireflies, no button');
+  await p.click('[data-act="notes-toggle"]', { force: true }); await p.waitForTimeout(900);
+  check((await flies(p)).length >= 4 && !!(await p.$('.ff-send')), 'Messages on again: they are back');
 
   // writing one: 80 characters at most
   const long = 'x'.repeat(120);
@@ -106,7 +134,7 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   ({ ctx, p } = await open(b, { who: { uid: 'u9', displayName: 'Labubu', email: 'l@x' }, tag: 'labubu' }));
   await p.waitForTimeout(400);
   f = await flies(p);
-  check(f.length === 3 && f.every(x => x.del), 'the Labubu can delete every one');
+  check(f.length === 5 && f.every(x => x.del), 'the Labubu can delete every one');
   await p.hover('.ff[data-uid="u3"] .ff-bub', { force: true }); await p.waitForTimeout(400);
   await p.click('.ff[data-uid="u3"] .ff-del', { force: true }); await p.waitForTimeout(500);
   check(!(await fdoc(p, 'notes/u3')), 'the Labubu deleted one');

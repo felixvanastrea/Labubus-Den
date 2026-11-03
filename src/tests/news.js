@@ -1,4 +1,4 @@
-// The news sheet (duels and parties): shown once per device on the homepage, after a moment; Later closes it and it
+// The news sheet (fireflies with messages): shown once per device on the homepage, after a moment; Later closes it and it
 // doesn't come back; "See the colours" scrolls to the duels card; never in automated browsers unless __newsTest.
 const { chromium, devices } = require('playwright');
 const path = require('path');
@@ -16,10 +16,11 @@ const errors = [];
   await p.waitForTimeout(500);
   check(!(await p.isVisible('.news-sheet')), 'not at once');
   await p.waitForTimeout(1200);
-  check(await p.isVisible('.news-sheet') && /Duels and parties/.test(await p.textContent('.news-sheet')), 'after a moment: the news');
+  check(await p.isVisible('.news-sheet') && /Fireflies with messages/.test(await p.textContent('.news-sheet')), 'after a moment: the news');
   await (await p.$('.news-sheet .acct-card')).screenshot({ path: OUT + 'news.png' });
-  await p.click('.news-sheet [data-news="see"]'); await p.waitForTimeout(800);
-  check(!(await p.isVisible('.news-sheet')) && await p.evaluate(() => Math.abs(document.getElementById('duels').getBoundingClientRect().top) < 120), 'See the colours: closed, at the duels card');
+  check(/GIF/.test(await p.textContent('.news-sheet')), 'it mentions GIFs (the picker is on)');
+  await p.click('.news-sheet [data-news="close"] >> nth=-1'); await p.waitForTimeout(300);
+  check(!(await p.isVisible('.news-sheet')), 'Later closes it');
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2000);
   check(!(await p.isVisible('.news-sheet')), 'once only');
   const m = await (await b.newContext({ ...devices['iPhone 13'] })).newPage();

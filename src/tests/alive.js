@@ -174,7 +174,7 @@ async function nextKeyed(p, want) {
     await p.waitForTimeout(800);
     const flies = await p.$$eval('#flies .fly', els => els.map(e => e.getAttribute('aria-label')));
     check(flies.length === 2 && flies.some(l => /^Amro, on Digestive System Disease/.test(l)) && flies.some(l => /^Zeineb, in an exam/.test(l)), `two fireflies, for the two classmates seen in the last minutes (${flies.join(' | ')})`);
-    check(await txt(p, '#here-line') === 'Zeineb and Amro are studying right now', `the line under the main button: “${await txt(p, '#here-line')}”`);
+    check(!(await p.$('#here-line')), 'no “studying right now” line under the main button (Abi hid it)');
     check(/Good \w+, Rim\./.test(await txt(p, '[data-greet]')) || /Rim/.test(await txt(p, '[data-greet]')), `the greeting has her name (“${await txt(p, '[data-greet]')}”)`);
     const fly = await p.$('#flies .fly');
     await fly.hover(); await p.waitForTimeout(350);
@@ -193,7 +193,7 @@ async function nextKeyed(p, want) {
     await ctx.close();
     const deny = await open(b, { tag: 'here-deny', acct: true, who: RIM, docs, denyHere: true });
     await deny.p.waitForTimeout(800);
-    check(!(await deny.p.$$('#flies .fly')).length && await deny.p.isHidden('#here-line'), 'without the rules for "here", no fireflies and no line');
+    check(!(await deny.p.$$('#flies .fly')).length, 'without the rules for "here", no fireflies');
     await deny.p.click('[data-start="*"]'); await deny.p.waitForTimeout(900); await nextKeyed(deny.p); await answer(deny.p, 'right');
     check(true, 'and studying still works');
     await deny.ctx.close();
