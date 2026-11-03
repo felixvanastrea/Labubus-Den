@@ -31,6 +31,8 @@
 <div class="ml-bg" aria-hidden="true"></div>
 <div class="ae-bg" aria-hidden="true"></div>
 <div class="ae-sky" aria-hidden="true"><svg class="ae-rib" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false"><defs><linearGradient id="ae-r1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#bfe8ff" stop-opacity=".55"/><stop offset=".7" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="ae-r2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7fd4ff" stop-opacity="0"/><stop offset=".5" stop-color="#7fd4ff" stop-opacity=".45"/><stop offset="1" stop-color="#b7f0d0" stop-opacity="0"/></linearGradient></defs><g class="r1"><path d="M-100 760C300 560 700 640 1000 520S1500 300 1720 360L1720 410C1480 360 1100 600 960 640S300 660 -100 820Z" fill="url(#ae-r1)"/></g><g class="r2"><path d="M-100 860C380 700 760 760 1060 640S1500 470 1720 500L1720 530C1500 510 1150 700 1000 740S360 780 -100 900Z" fill="url(#ae-r2)"/></g><g class="r3"><path d="M-100 640C260 520 640 560 900 470S1400 250 1720 260L1720 280C1420 290 1000 480 860 520S300 560 -100 670Z" fill="url(#ae-r1)" opacity=".6"/></g></svg><i style="left:4%;--w:26px;--t:34s;--d:-6s;--sx:14px;--ry:70%"></i><i style="left:13%;--w:12px;--t:26s;--d:-19s;--sx:8px;--ry:30%"></i><i style="left:22%;--w:40px;--t:41s;--d:-30s;--sx:20px;--ry:82%"></i><i style="left:31%;--w:16px;--t:29s;--d:-11s;--sx:9px;--ry:18%"></i><i style="left:47%;--w:10px;--t:24s;--d:-3s;--sx:6px;--ry:55%"></i><i style="left:61%;--w:30px;--t:38s;--d:-24s;--sx:16px;--ry:40%"></i><i style="left:72%;--w:14px;--t:27s;--d:-15s;--sx:8px;--ry:88%"></i><i style="left:83%;--w:44px;--t:44s;--d:-36s;--sx:22px;--ry:24%"></i><i style="left:92%;--w:18px;--t:31s;--d:-8s;--sx:10px;--ry:62%"></i><i style="left:97%;--w:11px;--t:23s;--d:-20s;--sx:6px;--ry:12%"></i></div>
+<canvas class="ev-bg" aria-hidden="true"></canvas>
+<canvas class="ev-air" aria-hidden="true"></canvas>
 <div id="app"></div>
 <div class="grain" aria-hidden="true"></div>
 
@@ -331,11 +333,11 @@
     // and the pencil are synthesized below; the paper, cards, swishes and clicks are CC0 recordings in snd/ (SAMPLES,
     // made by src/pipeline/sounds.py, credits in snd/CREDITS.md), loaded once the sound starts, each played from a few
     // takes at random. Where a recording can't load (the claude.ai copy), a sound with a recipe falls back to it.
-    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17, kalimba: .26, bubbles: .26, bloop: .22, pop: .16, fizz: .21,
+    const LEVEL = { tick: .6, untick: .45, nav: .38, right: .3, wrong: .5, partial: .45, seal: .42, sparkle: .2, finish: .34, bats: .34, bell: .3, organ: .24, handbell: .26, page: .16, coins: .24, shimmer: .26, brush: .2, harp: .26, wave: .23, surf: .26, ripple: .17, kalimba: .26, bubbles: .26, bloop: .22, pop: .16, fizz: .21, knell: .28, creak: .2, wind: .32,
       key0: .27, key1: .27, key2: .27, key3: .27, keyup0: .4, keyup1: .4, space: .3, cross: .3,
       flip: .43, back: .39, sheet: .49, shut: .43, crumple: .62, erase: .69, stack: .62, mark: .48, unmark: .39, toggle: .45 };
-    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12, kalimba: .3, bubbles: .3, bloop: .12, pop: .06, fizz: .4 };
-    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, bloop: 1, pop: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
+    const WET = { right: .22, seal: .2, sparkle: .3, finish: .25, wrong: .05, partial: .05, bats: .4, bell: .38, organ: .5, handbell: .3, page: .04, coins: .22, shimmer: .45, brush: .03, harp: .34, wave: .05, surf: .4, ripple: .12, kalimba: .3, bubbles: .3, bloop: .12, pop: .06, fizz: .4, knell: .45, creak: .05, wind: .4 };
+    const JITTER = { tick: 1, untick: 1, nav: 1, page: 1, brush: 1, wave: 1, ripple: 1, bloop: 1, pop: 1, creak: 1, key0: 1, key1: 1, key2: 1, key3: 1, keyup0: 1, keyup1: 1, space: 1, cross: 1,
       flip: 1, back: 1, sheet: 1, shut: 1, crumple: 1, mark: 1, unmark: 1, toggle: 1 };
     const BUZZ = { tick: 8, untick: 5, nav: 5, right: [12, 70, 18], partial: 16, wrong: [22, 70, 22], seal: [10, 30, 45], finish: [10, 60, 10, 60, 24],
       mark: 10, cross: 6, ripple: 6, pop: 6, bloop: 5, crumple: [6, 30, 6], erase: [8, 30, 8, 30, 8], stack: [12, 40, 12], toggle: 5 };
@@ -722,6 +724,36 @@
           [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => { mode(out, .15 + i * .08, f, .3 - i * .03, .5, { att: .002 }); mode(out, .15 + i * .08, f * 2.76, .03, .1, { att: .001 }); });
           return done(out, .78);
         },
+        // Externe Evil, a right answer: a bell answering out of the fog, low and slow, a smaller one a fifth above it
+        knell() {
+          const b = make(1.9), f = 329.6;
+          [[.5, .34, 1.15], [1, .55, .85], [1.2, .3, .66], [1.5, .2, .52], [2, .36, .42], [2.5, .12, .28], [3, .07, .2]].forEach(([k, a, d]) => mode(b, 0, f * k, a, d, { att: .002 }));
+          [[1, .26, .55], [2, .12, .26], [2.4, .06, .16]].forEach(([k, a, d]) => mode(b, .13, f * 1.5 * k, a, d, { att: .002 }));
+          mix(b, bandpass(burst(.02, .004, 666), 2200, 1.2), 0, .18);
+          return done(b, .8);
+        },
+        // Externe Evil, the next question: an old door creaking open, wood catching and slipping on its hinge
+        creak() {
+          const b = make(.5), r = mulberry(1890), len = .44;
+          for (let t = .01; t < len;) {
+            const u = t / len, a = .5 * Math.sin(Math.PI * u) ** .7 * (.7 + .3 * r()), f = 820 + 380 * u, n0 = Math.round(t * sr);
+            for (let i = 0; i < Math.round(.007 * sr) && n0 + i < b.length; i++) { const q = i / sr; b[n0 + i] += a * Math.exp(-q / .0016) * Math.sin(TAU * f * q); }
+            t += (.85 + .3 * r()) / (60 + 170 * Math.sin(Math.PI * u));
+          }
+          return done(lowpass(bandpass(b, 1000, .8), 3600, .7), .5);
+        },
+        // Externe Evil, the opening: wind through the valley, and a bell tolling once far off
+        wind() {
+          const b = make(3), r = mulberry(1428), n = make(3);
+          for (let i = 0; i < n.length; i++) n[i] = r() * 2 - 1;
+          const lo = bandpass(n, 420, 3), hi = bandpass(n, 880, 4);
+          for (let i = 0; i < b.length; i++) {
+            const t = i / sr, e = Math.min(1, t / .7) * (t < 2.1 ? 1 : Math.exp(-(t - 2.1) / .35));
+            b[i] = e * (lo[i] * (.6 + .4 * Math.sin(TAU * .42 * t)) + .6 * hi[i] * (.5 + .5 * Math.sin(TAU * .27 * t + 1)));
+          }
+          [[.5, .22, 1.3], [1, .3, 1], [1.2, .16, .8], [2, .16, .5]].forEach(([k, a, d]) => mode(b, .45, 196 * k, a, d, { att: .003 }));
+          return done(b, .78);
+        },
         // the end of a session that went well: an arpeggio
         finish() {
           const b = make(2.2);
@@ -790,7 +822,7 @@
     }
     // o.rate shifts the pitch (option notes, the streak), o.delay waits (seconds), o.quiet skips the haptic
     // a theme can have its own voice for a sound (lookNow is hoisted; the looks are defined further down)
-    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' }, monet: { right: 'kalimba', nav: 'ripple' }, aero: { right: 'bubbles', nav: 'bloop' } };
+    const THEME_SOUND = { blood: { right: 'organ' }, codex: { right: 'handbell', nav: 'page' }, klimt: { right: 'coins', nav: 'brush' }, venus: { right: 'harp', nav: 'wave' }, monet: { right: 'kalimba', nav: 'ripple' }, aero: { right: 'bubbles', nav: 'bloop' }, evil: { right: 'knell', nav: 'creak' } };
     // o.gain scales it (typing is a little quieter than picking)
     function play(name, o = {}) {
       const base = name;   // the haptic follows what happened, whatever the theme's voice for it
@@ -1023,6 +1055,150 @@
     return { here, can, slot, install, standalone };
   })();
 
+  // ---------- Externe Evil (Abi, 3 November 2026): a castle in the fog over a snowy valley, painted in code ----------
+  // Inspired by the wallpapers she liked (game art, which can't go on the Den), so the scene is our own: a castle of
+  // spires on its crag in the fog, far mountains, rows of pines, a chapel spire, a snowy slope, a bare tree leaning in
+  // and brush on the right. Painted once per size into .ev-bg (a phone gets its own composition: the castle in the
+  // middle, the tree low on the left); .ev-air on top has the falling snow and the fog drifting through the valley,
+  // only while the look is worn and the page shows. Reduced motion: the snow stands still.
+  const evil = (() => {
+    let bg = null, air = null, ax = null, on = false, raf = 0, snow = [], W = 0, H = 0, dpr = 1, painted = '', t0 = 0, resizeT = 0;
+    const n1 = n => { let s = 0, a = 1, f = 1; for (let k = 0; k < 5; k++) { s += a * Math.sin(n * f * 1.7 + k * 13.1) * Math.cos(n * f * .9 + k * 7.3); a *= .5; f *= 2.1; } return s; };
+    function scene(g, W, H, o = {}) {
+      const R = mulberry(7), phone = o.phone, cx = W * (o.cx || (phone ? .5 : .62)), hz = H * (phone ? .47 : .5);
+      const S = phone ? W / 420 : Math.min(W / 1400, H / 800) * 1.1;
+      const fog = (y, h, a) => {
+        for (let i = 0; i < 26; i++) {
+          const px = R() * W, py = y + (R() - .5) * h, r = 80 + R() * 220, rg = g.createRadialGradient(px, py, 0, px, py, r);
+          rg.addColorStop(0, `rgba(176,186,198,${a * (.4 + R() * .6)})`); rg.addColorStop(1, 'rgba(176,186,198,0)');
+          g.fillStyle = rg; g.fillRect(px - r, py - r, 2 * r, 2 * r);
+        }
+        const lg = g.createLinearGradient(0, y - h, 0, y + h);
+        lg.addColorStop(0, 'rgba(150,160,172,0)'); lg.addColorStop(.5, `rgba(150,160,172,${a * .6})`); lg.addColorStop(1, 'rgba(150,160,172,0)');
+        g.fillStyle = lg; g.fillRect(0, y - h, W, 2 * h);
+      };
+      const ridge = (base, amp, col, fr, off) => {
+        g.fillStyle = col; g.beginPath(); g.moveTo(0, H);
+        for (let X = 0; X <= W; X += 4) g.lineTo(X, base - amp * (.5 + .5 * n1(X / W * fr + off)) - amp * .4 * Math.exp(-(((X - cx) / (W * .3)) ** 2)));
+        g.lineTo(W, H); g.fill();
+      };
+      let gr = g.createLinearGradient(0, 0, 0, H);
+      gr.addColorStop(0, '#141a22'); gr.addColorStop(.45, '#2c3541'); gr.addColorStop(.7, '#47515d'); gr.addColorStop(1, '#1d232b');
+      g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      for (let i = 0; i < 70; i++) {   // heavy clouds
+        const px = R() * W, py = R() * hz * .9, r = (60 + R() * 180) * S, rg = g.createRadialGradient(px, py, 0, px, py, r), l = R() < .5 ? '20,26,34' : '120,130,142';
+        rg.addColorStop(0, `rgba(${l},${.1 + R() * .12})`); rg.addColorStop(1, `rgba(${l},0)`); g.fillStyle = rg; g.fillRect(px - r, py - r, 2 * r, 2 * r);
+      }
+      ridge(hz - 20 * S, 120 * S, '#3d4652', 3, 1);
+      fog(hz - 60 * S, 90 * S, .35);
+      ridge(hz + 10 * S, 70 * S, '#2c333c', 5, 4);
+      g.save(); g.translate(cx, hz + 10 * S); g.scale(S * 1.15, S * 1.15); castle(g); g.restore();
+      fog(hz + 10 * S, 60 * S, .42);
+      for (let row = 0; row < 4; row++) {   // the forest, row behind row
+        const y0 = hz + (40 + row * 38) * S; g.fillStyle = ['#2a3139', '#222830', '#1b2128', '#151a20'][row];
+        for (let X = -20; X < W + 20; X += (6 + R() * 10) * S) {
+          const h = (18 + R() * 26 + row * 8) * S, w = h * .32, y = y0 + n1(X / W * 6 + row) * 10 * S;
+          g.beginPath(); g.moveTo(X, y - h); g.lineTo(X - w, y); g.lineTo(X + w, y); g.fill();
+        }
+        g.fillRect(0, y0, W, H); fog(y0 - 10 * S, 40 * S, .22);
+      }
+      const sx = cx + 150 * S, sy = hz + 105 * S;   // a chapel spire in the trees
+      g.fillStyle = '#1c2229'; g.beginPath(); g.moveTo(sx, sy - 70 * S); g.lineTo(sx - 6 * S, sy - 20 * S); g.lineTo(sx - 9 * S, sy + 10 * S); g.lineTo(sx + 9 * S, sy + 10 * S); g.lineTo(sx + 6 * S, sy - 20 * S); g.fill();
+      fog(hz + 150 * S, 90 * S, .3);
+      g.fillStyle = '#5f6973'; g.beginPath(); g.moveTo(0, H);   // the snowy slope
+      for (let X = 0; X <= W; X += 6) g.lineTo(X, H * .84 - (X / W) * H * .12 + n1(X / W * 8 + 9) * 12 * S);
+      g.lineTo(W, H); g.fill();
+      gr = g.createLinearGradient(0, H * .7, 0, H); gr.addColorStop(0, 'rgba(20,24,30,0)'); gr.addColorStop(1, 'rgba(14,17,22,.75)'); g.fillStyle = gr; g.fillRect(0, H * .7, W, H * .3);
+      g.strokeStyle = 'rgba(10,12,16,.7)'; g.lineWidth = .8;
+      for (let i = 0; i < 70; i++) {   // dead brush on the snow
+        const X = R() * W, Y = H * .84 - (X / W) * H * .12 + R() * H * .14, s = (6 + R() * 14) * S;
+        for (let k = 0; k < 9; k++) { const a = -Math.PI / 2 + (R() - .5) * 2.2; g.beginPath(); g.moveTo(X, Y); g.lineTo(X + Math.cos(a) * s, Y + Math.sin(a) * s); g.stroke(); }
+      }
+      if (!o.noTree) {
+        g.strokeStyle = '#07090c'; g.fillStyle = '#07090c'; g.lineCap = 'round';
+        const branch = (X, Y, a, len, w, d) => {
+          if (d > 9 || len < 4 || w < .35) return;
+          const ex = X + Math.cos(a) * len, ey = Y + Math.sin(a) * len;
+          g.lineWidth = w; g.beginPath(); g.moveTo(X, Y); g.quadraticCurveTo(X + Math.cos(a + .25) * len * .5, Y + Math.sin(a + .25) * len * .5, ex, ey); g.stroke();
+          if (d > 4 && R() < .55) for (let k = 0; k < 3; k++) { g.save(); g.translate(ex + (R() - .5) * 8, ey + (R() - .5) * 8); g.rotate(R() * 6.3); g.beginPath(); g.ellipse(0, 0, 4.5, 1.8, 0, 0, 7); g.fill(); g.restore(); }
+          for (let i = 0, n = d < 2 ? 3 : 2; i < n; i++) branch(ex, ey, a + (R() - .5) * 1.3 + (d < 1 ? .25 : 0), len * (.55 + R() * .25), w * .62, d + 1);
+        };
+        branch(-30 * S, phone ? H * .9 : H * .62, phone ? -1.2 : -1.05, phone ? 170 * S : 330 * S, phone ? 16 * S : 22 * S, 0);
+        for (let i = 0; i < 7; i++) branch(W * (.78 + R() * .22), H + 5, -Math.PI / 2 + (R() - .5) * .6, (120 + R() * 160) * S, 2.4 * S, 3);
+      }
+      const vg = g.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .3, W / 2, H / 2, Math.max(W, H) * .75);
+      vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.55)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+    }
+    function castle(g) {
+      g.fillStyle = '#161b22';
+      g.beginPath(); g.moveTo(-210, 40); g.lineTo(-150, -10); g.lineTo(-60, -25); g.lineTo(40, -30); g.lineTo(140, -12); g.lineTo(220, 40); g.fill();
+      g.fillRect(-150, -70, 300, 60); g.fillRect(-110, -110, 90, 50); g.fillRect(10, -105, 110, 50);
+      const tower = (X, base, w, h, sp) => { g.fillRect(X - w / 2, base - h, w, h); g.beginPath(); g.moveTo(X - w / 2 - 3, base - h); g.lineTo(X, base - h - sp); g.lineTo(X + w / 2 + 3, base - h); g.fill(); g.fillRect(X - 1, base - h - sp - 14, 2, 14); };
+      tower(-125, -40, 22, 70, 48); tower(-85, -90, 26, 90, 70); tower(-45, -100, 20, 60, 46); tower(-60, -110, 34, 120, 105);
+      tower(5, -90, 18, 50, 40); tower(45, -100, 30, 110, 86); tower(85, -90, 22, 80, 60); tower(120, -60, 18, 60, 44); tower(150, -40, 14, 40, 30);
+      [[-100, -150], [-20, -160], [65, -170], [100, -140]].forEach(([X, Y]) => { g.fillRect(X - 4, Y, 8, 20); g.beginPath(); g.moveTo(X - 6, Y); g.lineTo(X, Y - 22); g.lineTo(X + 6, Y); g.fill(); });
+      g.fillStyle = 'rgba(214,170,98,.55)';   // a few lit windows
+      [[-62, -170], [-58, -150], [44, -150], [86, -120], [-88, -120], [0, -75]].forEach(([X, Y]) => g.fillRect(X, Y, 2.4, 5));
+    }
+    function paint() {
+      if (!bg) return;
+      const r = bg.getBoundingClientRect(), w = Math.round(r.width) || window.innerWidth, h = Math.round(r.height) || window.innerHeight;
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      const key = w + 'x' + h + '@' + dpr;
+      // phones change height as the address bar comes and goes: the scene is painted for the tallest and kept
+      if (painted && w === W && h <= H * 1.15 && painted.endsWith('@' + dpr)) return;
+      W = w; H = Math.max(h, H && w === W ? H : 0); painted = key;
+      bg.width = Math.round(W * dpr); bg.height = Math.round(H * dpr);
+      const g = bg.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      try { scene(g, W, H, { phone: W < 600 }); } catch (e) {}
+      air.width = bg.width; air.height = bg.height; ax = air.getContext('2d');
+      const r2 = mulberry(31);
+      snow = Array.from({ length: W < 600 ? 90 : 180 }, () => ({ x: r2() * W, y: r2() * H, z: .3 + r2() * .7, p: r2() * 6 }));
+      frame(performance.now(), true);
+    }
+    function frame(t, once) {
+      raf = 0;
+      if (!on || !ax) return;
+      const s = (t - t0) / 1000, still = reduceMotion();
+      ax.setTransform(1, 0, 0, 1, 0, 0); ax.clearRect(0, 0, air.width, air.height); ax.setTransform(dpr, 0, 0, dpr, 0, 0);
+      for (let i = 0; i < 5; i++) {   // fog drifting through the valley
+        const y = H * (.5 + i * .07), off = still ? W * (.2 + i * .25) : (s * (6 + i * 3)) % (W * 1.5), g = ax.createRadialGradient(W - off, y, 0, W - off, y, W * .45);
+        g.addColorStop(0, 'rgba(170,180,192,.1)'); g.addColorStop(1, 'rgba(170,180,192,0)'); ax.fillStyle = g; ax.fillRect(0, y - H * .2, W, H * .4);
+      }
+      ax.fillStyle = 'rgba(235,238,242,.8)';
+      for (const f of snow) {
+        if (!still && !once) { f.y += f.z * .9; f.x += Math.sin(s + f.p) * .3 * f.z - .15; if (f.y > H) { f.y = -4; f.x = Math.random() * W; } if (f.x < -4) f.x = W + 2; }
+        ax.globalAlpha = .25 + f.z * .5; ax.beginPath(); ax.arc(f.x, f.y, f.z * 1.7, 0, 6.2832); ax.fill();
+      }
+      ax.globalAlpha = 1;
+      if (!still && !document.hidden) raf = requestAnimationFrame(frame);
+    }
+    function onResize() { clearTimeout(resizeT); resizeT = setTimeout(paint, 180); }
+    function onVis() { if (on && !document.hidden && !raf) raf = requestAnimationFrame(frame); }
+    return {
+      start() {
+        bg = document.querySelector('.ev-bg'); air = document.querySelector('.ev-air'); if (!bg || !air || on) return;
+        on = true; t0 = performance.now();
+        window.addEventListener('resize', onResize); document.addEventListener('visibilitychange', onVis);
+        paint();
+      },
+      stop() {
+        if (!on) return;
+        on = false; cancelAnimationFrame(raf); raf = 0;
+        window.removeEventListener('resize', onResize); document.removeEventListener('visibilitychange', onVis);
+        if (bg) { bg.width = bg.height = 0; air.width = air.height = 0; } painted = ''; W = H = 0; ax = null;
+      },
+      // the theme list's picture: the castle in a round window
+      disc(px) {
+        const cv = document.createElement('canvas'); cv.width = cv.height = px;
+        const g = cv.getContext('2d'); g.save(); g.beginPath(); g.arc(px / 2, px / 2, px / 2, 0, 6.2832); g.clip();
+        const big = document.createElement('canvas'); big.width = 1400; big.height = 800;
+        scene(big.getContext('2d'), 1400, 800, { cx: .5, noTree: true });
+        g.drawImage(big, 480, 30, 440, 440, 0, 0, px, px); g.restore();
+        return cv;
+      }
+    };
+  })();
   // ---------- accounts (Firebase project labubu-s-den): sign in to keep your progress on every device ----------
   // Only on the GitHub Pages site (the claude.ai link can't reach outside servers). Guests keep the whole site; an
   // account adds the sync: the progress in S (answers, first tries, clean tries, seals, exam marks) is merged with its
@@ -1030,7 +1206,7 @@
   // page is hidden. Sign in with Google (pop-up, redirect if blocked) or a link by email. Firebase loads only when
   // someone signs in, or on visits after signing in (efm3-acct). Any failure leaves the site working as a guest.
   // ---------- looks (cosmetics): the blood moon. Only the Labubu account has them for now (acct.applyLook) ----------
-  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8', monet: '#ebe8f7', aero: '#5ebdf2' };
+  const LOOK_KEY = 'efm3-look', LOOK_NIGHT = { gothic: '#1b1a18', blood: '#120a0b', codex: '#171410', klimt: '#f3e9d2', venus: '#e2eff8', monet: '#ebe8f7', aero: '#5ebdf2', evil: '#11151b' };
   function lookNow() { const v = document.documentElement.dataset.look; return v && v in LOOK_NIGHT ? v : 'gothic'; }
   // a look's own typefaces, from Google Fonts, fetched the first time it's worn
   const LOOK_FONTS = {
@@ -1039,7 +1215,8 @@
     klimt: 'Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,400..600;1,400..500',
     monet: 'Great+Vibes&family=Dancing+Script:wght@400..700&family=Quicksand:wght@500..700&family=Nunito:ital,wght@0,400..700;1,400..600',
     venus: 'Special+Elite',
-    aero: 'Open+Sans:ital,wght@0,300..700;1,400..600'
+    aero: 'Open+Sans:ital,wght@0,300..700;1,400..600',
+    evil: 'Cinzel:wght@600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400'
   };
   function lookFonts(id) {
     if (!LOOK_FONTS[id] || document.getElementById('lf-' + id)) return;
@@ -1063,6 +1240,7 @@
     lookFonts(id);
     if ((id === 'codex' || id === 'venus') && !r.style.getPropertyValue('--deckle')) r.style.setProperty('--deckle', deckle());
     if (id === 'aero') wcPaint();
+    if (id === 'evil') evil.start(); else evil.stop();
     const m = document.querySelector('meta[name="theme-color"]');
     if (m) m.setAttribute('content', LOOK_NIGHT[lookNow()]);
     try { sky.tint(); } catch (e) {}   // the stars take the look's colours (before the sky exists, it reads them when it starts)
@@ -1106,7 +1284,7 @@
   }
   // each look's disc (the blood moon, the gilded halo), painted once and kept
   const discs = {};
-  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : look === 'monet' ? monetPond(px) : look === 'aero' ? aeroBubble(px) : bloodMoon(px);
+  const discPaint = (look, px) => look === 'codex' ? goldHalo(px) : look === 'klimt' ? goldCoin(px) : look === 'venus' ? venusShell(px) : look === 'monet' ? monetPond(px) : look === 'aero' ? aeroBubble(px) : look === 'evil' ? evil.disc(px) : bloodMoon(px);
   function discURL(look, px = 560) {
     const k = look + '@' + px;
     if (!(k in discs)) { try { discs[k] = discPaint(look, px).toDataURL(px > 200 ? 'image/png' : 'image/jpeg', .9); } catch (e) { discs[k] = ''; } }
@@ -1146,6 +1324,7 @@
     if (look === 'venus') return rosesHTML();
     if (look === 'monet') return pondHTML();
     if (look === 'aero') return aeroHTML();
+    if (look === 'evil') return '';
     const src = discURL(look);
     return src ? `<div class="bm bm-${look}" aria-hidden="true"><img class="bm-img" alt="" src="${src}"></div>` : '';
   }
@@ -1639,7 +1818,8 @@
     // only ever a gift: listed only for those who can wear it
     { id: 'venus', name: 'Birth of Venus', sub: 'Botticelli’s sea in baby blue, roses and swans', gift: true },
     { id: 'monet', name: 'Water lilies', sub: 'Monet’s pond in lilac and green, lily pads afloat', gift: true },
-    { id: 'aero', name: 'Frutiger aero', sub: 'Aero glass in deep blue, ribbons of light, a few bubbles', gift: true }
+    { id: 'aero', name: 'Frutiger aero', sub: 'Aero glass in deep blue, ribbons of light, a few bubbles', gift: true },
+    { id: 'evil', name: 'Externe Evil', sub: 'A castle in the fog, falling snow, blood-red initials', gift: true }
   ];
   // the Golden phase: a golden exam, the top marks on a real-sized one
   const GOLD_MARK = 16, GOLD_N = 20;
@@ -6836,7 +7016,10 @@
     monet: { lines: ['Labubu’s', 'Den'], weight: '400', family: '"Great Vibes", "Pinyon Script", cursive', lapis: true, joined: true, span: .56,
       pal: [[0, [112, 112, 190]], [.55, [90, 90, 168]], [1, [74, 74, 146]]] },
     // Glass sky: thin white letters lit from within, a cool glow, glass catching the light on their upper half
-    aero: { lines: ['Labubu’s', 'Den'], weight: '300', family: '"Open Sans", "Segoe UI", system-ui, sans-serif', gloss: true, span: .56, drip: .12 }
+    aero: { lines: ['Labubu’s', 'Den'], weight: '300', family: '"Open Sans", "Segoe UI", system-ui, sans-serif', gloss: true, span: .56, drip: .12 },
+    // Externe Evil: one line of bone-white capitals, the first letter of each word in blood red, the paint worn away
+    // (pitted, chipped, scratched, a little grime): Cinzel, close to the flared serif Abi showed
+    evil: { lines: ['LABUBU’S DEN'], weight: '700', family: 'Cinzel, "Trajan Pro", Georgia, serif', decay: true, span: .62 }
   };
   // with the RedaReda code on, the Venus title reads Reda's Den, typewritten in matte bronze (Abi, 21 October 2026)
   const REDA_TITLE = { lines: ['Reda’s', 'Den'], weight: '400', family: '"Special Elite", "Courier Prime", "Courier New", monospace', lapis: true, span: .56 };
@@ -6909,6 +7092,12 @@
         } else {
           const at = (xx, yy) => xx >= 0 && yy >= 0 && xx < w && yy < h && on[yy * w + xx];
           if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) put(k, [120, 196, 250]);
+        }
+      } else if (T.decay) {
+        if (v) {
+          const li = Math.min(T.lines.length - 1, Math.max(0, Math.floor((y - d.s * .06) / d.lineH)));
+          const red = (d.red || []).some(q => q.li === li && x >= q.a && x < q.b), n = (hash(x, y) - .5) * 18;
+          put(k, (red ? [200, 20, 28] : [236, 232, 224]).map(q => q + n));
         }
       } else if (T.mosaic) {
         if (v) {
@@ -6997,12 +7186,66 @@
       ctx.fillStyle = g; ctx.fillText(l, xo, y);
     });
   }
+  // Externe Evil's title, once resolved: bone with blood-red initials, then worn as old paint is. A coarse field decides
+  // where it's worn most; there the letters are pitted, chipped at the edges and scratched, with grime in what's left
+  const EVIL_BONE = '#ece8e0', EVIL_RED = '#c8141c';
+  function initials(ctx, line, x0) {
+    const out = []; let start = true;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === ' ') { start = true; continue; }
+      if (start) { const a = x0 + ctx.measureText(line.slice(0, i)).width; out.push({ i, a, b: a + ctx.measureText(ch).width }); }
+      start = false;
+    }
+    return out;
+  }
+  function decayText(ctx, T, lines, d, x0) {
+    ctx.clearRect(0, 0, d.w, d.h);
+    ctx.font = `${T.weight} ${d.s}px ${T.family}`; ctx.textBaseline = 'alphabetic';
+    lines.forEach((l, i) => {
+      const y = d.s * .78 + i * d.lineH;
+      ctx.fillStyle = EVIL_BONE; ctx.fillText(l, x0, y);
+      ctx.fillStyle = EVIL_RED;
+      initials(ctx, l, x0).forEach(q => { ctx.clearRect(q.a, y - d.s, q.b - q.a, d.s * 1.25); ctx.fillText(l[q.i], q.a, y); });
+    });
+    const r = mulberry(1666), u = d.s / 100, GW = 28, GH = 8, grid = Array.from({ length: (GW + 1) * (GH + 1) }, () => r());
+    const field = (x, y) => {
+      const gx = Math.min(GW - .001, x / d.w * GW), gy = Math.min(GH - .001, y / d.h * GH), ix = gx | 0, iy = gy | 0, fx = gx - ix, fy = gy - iy;
+      const at = (a, b) => grid[b * (GW + 1) + a], sx = fx * fx * (3 - 2 * fx), sy = fy * fy * (3 - 2 * fy);
+      return (at(ix, iy) * (1 - sx) + at(ix + 1, iy) * sx) * (1 - sy) + (at(ix, iy + 1) * (1 - sx) + at(ix + 1, iy + 1) * sx) * sy;
+    };
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = '#000';
+    for (let k = 0, n = Math.round(d.w * d.h / (6 * u * u)); k < n; k++) {   // pits, where the paint flaked off
+      const x = r() * d.w, y = r() * d.h, f = field(x, y);
+      if (r() > f * f * .9) continue;
+      const q = (.25 + r() * r() * 1.3) * u;
+      ctx.beginPath(); ctx.ellipse(x, y, q * (.6 + r() * .9), q * (.5 + r() * .6), r() * 3.14, 0, 6.2832); ctx.fill();
+    }
+    ctx.lineCap = 'round';
+    for (let k = 0, n = Math.round(d.w / (9 * u)); k < n; k++) {   // scratches
+      const x = r() * d.w, y = r() * d.h; if (r() > field(x, y)) continue;
+      const a = (r() - .5) * 1.2 + (r() < .5 ? 0 : 1.57), len = (2 + r() * 9) * u;
+      ctx.lineWidth = (.12 + r() * .22) * u; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a) * len, y + Math.sin(a) * len); ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-atop';
+    for (let k = 0, n = Math.round(d.w * d.h / (3 * u * u)); k < n; k++) {   // grime and stains in what's left
+      const x = r() * d.w, y = r() * d.h, f = field(x, y), q = (.3 + r() * 1.2) * u;
+      ctx.fillStyle = `rgba(${r() < .7 ? '38,32,30' : '92,70,52'},${(r() * .3 * f).toFixed(3)})`;
+      ctx.fillRect(x, y, q, q * (.5 + r()));
+    }
+    for (let k = 0; k < 10; k++) {
+      const x = r() * d.w, y = r() * d.h, q = (6 + r() * 16) * u, g = ctx.createRadialGradient(x, y, 0, x, y, q);
+      g.addColorStop(0, 'rgba(70,52,40,.22)'); g.addColorStop(1, 'rgba(70,52,40,0)'); ctx.fillStyle = g; ctx.fillRect(x - q, y - q, 2 * q, 2 * q);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
   function drawTitle(animate) {
     const c = document.getElementById('title-canvas'); if (!c || !c.getContext) return;
     const box = c.parentElement, W = box.clientWidth; if (!W) return;
     const ink = rgbOf(cssVar('--ink'));
     const T = titleLook(), lines = T.lines;
-    const fin = T.leaf || T.lapis || T.gloss ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf and the lapis end smooth
+    const fin = T.leaf || T.lapis || T.gloss || T.decay ? 1 / Math.min(2, window.devicePixelRatio || 1) : W < 520 ? 3 : W < 900 ? 4 : 5;   // the leaf and the lapis end smooth
     const family = T.family;
     const ctx = c.getContext('2d', { willReadFrequently: true });
     ctx.font = `${T.weight} 100px ${family}`;
@@ -7017,10 +7260,12 @@
     const draw = block => {
       const d = dims(block);
       c.width = d.w; c.height = d.h;
-      if ((T.leaf || T.lapis || T.gloss) && block === fin) { (T.gloss ? glossText : T.lapis ? lapisText : leafText)(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
+      if ((T.leaf || T.lapis || T.gloss || T.decay) && block === fin) { (T.decay ? decayText : T.gloss ? glossText : T.lapis ? lapisText : leafText)(ctx, T, lines, d, d.s * .03 + 2); c.style.width = cssW + 'px'; c.style.height = cssH + 'px'; return; }
       ctx.font = `${T.weight} ${d.s}px ${family}`;
       ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic';
-      lines.forEach((l, i) => ctx.fillText(l, d.s * .03 + (T.gild || T.mosaic || T.leaf || T.lapis ? 2 : T.gloss ? 2 + d.s * .05 : 0), d.s * .78 + i * d.lineH));
+      const lx = d.s * .03 + (T.gild || T.mosaic || T.leaf || T.lapis || T.decay ? 2 : T.gloss ? 2 + d.s * .05 : 0);
+      lines.forEach((l, i) => ctx.fillText(l, lx, d.s * .78 + i * d.lineH));
+      if (T.decay) d.red = lines.flatMap((l, li) => initials(ctx, l, lx).map(q => ({ li, a: Math.floor(q.a), b: Math.ceil(q.b) })));
       const img = ctx.getImageData(0, 0, d.w, d.h), px = img.data, on = new Uint8Array(d.w * d.h);
       for (let i = 0, j = 0; i < px.length; i += 4, j++) on[j] = px[i + 3] > 105 ? 1 : 0;
       img.data.set(shadeTitle(T, on, d, block, ink));
@@ -7793,7 +8038,7 @@
       FX = fxc ? rgbOf(fxc) : INK; FX_HI = fxc ? rgbOf(cssVar('--fx-hi') || fxc) : INK_HI;
       if (lk !== 'gothic') {
         try {
-          BLOOD = rgbOf(cssVar(lk === 'blood' ? '--blood' : '--gold'));
+          BLOOD = rgbOf(cssVar(lk === 'blood' || lk === 'evil' ? '--blood' : '--gold'));
           const small = W < 640, bm = document.querySelector('.bm-img'), br = bm ? bm.getBoundingClientRect() : null, dpr = Math.min(2, window.devicePixelRatio || 1);
           if (lk === 'klimt' || lk === 'venus' || lk === 'monet') {
             // the lovers, big behind the picker, come down into their place on the page (r: half their height); Venus
@@ -7812,7 +8057,7 @@
           } else {
             MS = { x: W * (small ? .64 : .7), y: H * (small ? .24 : .33), r: Math.min(W, H) * (small ? .4 : .34) };
             ME = br && br.width ? { x: br.left + br.width / 2, y: br.top + br.height / 2, r: br.width / 2 } : { x: MS.x, y: -MS.r, r: MS.r * .6 };
-            moonTex = lk === 'aero' ? null : discPaint(lk, Math.min(1400, Math.round(MS.r * 2 * dpr)));   // Glass sky: no disc, only the star and its bubbles
+            moonTex = lk === 'aero' || lk === 'evil' ? null : discPaint(lk, Math.min(1400, Math.round(MS.r * 2 * dpr)));   // Glass sky: no disc, only the star and its bubbles
           }
           moonGlow = document.createElement('canvas'); moonGlow.width = moonGlow.height = 256;
           const gc = moonGlow.getContext('2d'), gg = gc.createRadialGradient(128, 128, 0, 128, 128, 128);
@@ -7941,6 +8186,7 @@
       else if (lk === 'klimt') sfx.play('shimmer', { delay: .15 + d, quiet: true });
       else if (lk === 'venus' || lk === 'monet') sfx.play('surf', { delay: .1 + d, quiet: true });
       else if (lk === 'aero') sfx.play('fizz', { delay: .1 + d, quiet: true });
+      else if (lk === 'evil') sfx.play('wind', { delay: .05 + d, quiet: true });
     }
     function skipHint() {
       hint = document.createElement('p'); hint.className = 'intro-hint'; hint.setAttribute('aria-hidden', 'true');

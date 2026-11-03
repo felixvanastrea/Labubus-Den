@@ -56,6 +56,11 @@ for w, st in ((400, 'normal'), (500, 'normal'), (400, 'italic')):
 for w in (300, 400, 600, 700):
     for st in ('normal', 'italic'):
         faces.append(f"@font-face{{font-family:'Open Sans';font-style:{st};font-weight:{w};src:url({F}/open-sans/files/open-sans-latin-{w}-{st}.woff2) format('woff2')}}")
+# Externe Evil: Cinzel for the title, Barlow for the rest
+for w in (600, 700):
+    faces.append(f"@font-face{{font-family:'Cinzel';font-style:normal;font-weight:{w};src:url({F}/cinzel/files/cinzel-latin-{w}-normal.woff2) format('woff2')}}")
+for w, st in ((400, 'normal'), (500, 'normal'), (600, 'normal'), (400, 'italic')):
+    faces.append(f"@font-face{{font-family:'Barlow';font-style:{st};font-weight:{w};src:url({F}/barlow/files/barlow-latin-{w}-{st}.woff2) format('woff2')}}")
 head = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>'
         + ''.join(faces) + '</style></head><body>')

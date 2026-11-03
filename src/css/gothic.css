@@ -2376,6 +2376,98 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   :root[data-look="aero"] .opts .opt .bub { animation: none; }
 }
 
+/* ---------- Externe Evil (Abi, 3 November 2026): a castle in the fog, snow falling, blood-red initials ----------
+   The wallpaper is painted in code (.ev-bg, evil in template.html) with the snow and the drifting fog on top (.ev-air).
+   Everything else follows a game's options screen: dark see-through rows with a hairline, frosted; the one in focus a
+   little lighter with a thin bright outline; plain upright sans (Barlow), Cinzel only for the title. Red is the one
+   accent: the initials, wrong answers, the seals. Right answers glow a cold silver-blue, half right a lantern amber. */
+:root[data-look="evil"] {
+  --night: #11151b; --deep: #0a0d11; --plate: #161b22; --plate-2: rgba(150, 160, 172, .1);
+  --ink: #e8e5de; --ink-hi: #ffffff; --ink-2: #b6bcc4; --ink-3: #848c96;
+  --hair: rgba(205, 214, 224, .15); --hair-2: rgba(205, 214, 224, .32); --glass: rgba(14, 18, 24, .62);
+  --right: #a9c6dc; --wrong: #e0353c; --half: #d9b26a;
+  --right-wash: rgba(169, 198, 220, .13); --wrong-wash: rgba(200, 20, 28, .13); --half-wash: rgba(217, 178, 106, .1);
+  --sel-wash: rgba(150, 160, 172, .22); --glow-soft: rgba(200, 210, 222, .12); --glow-mid: rgba(200, 210, 222, .3);
+  --title-glow: rgba(0, 0, 0, .55); --mottle-1: rgba(0, 0, 0, 0); --mottle-2: rgba(0, 0, 0, 0); --shade: rgba(0, 0, 0, .3);
+  --k-official: #c3d2e0; --k-checked: #a9c6dc; --k-proposed: #b9c9b0; --k-claude: #d9b26a; --k-none: #9aa2ac;
+  --k-official-line: rgba(195, 210, 224, .45); --k-checked-line: rgba(169, 198, 220, .45); --k-proposed-line: rgba(185, 201, 176, .45);
+  --k-claude-line: rgba(217, 178, 106, .45); --k-none-line: rgba(154, 162, 172, .4); --k-flag-line: rgba(224, 53, 60, .5);
+  --fig-bg: #f2f0ea;
+  --wax-hi: #e0484e; --wax-mid: #a5121a; --wax-edge: #4e060b; --scrim: rgba(4, 6, 9, .62);
+  --blood: #c8141c; --blood-hi: #e2454b;
+  --gold: #d9b26a; --gold-hi: #ecd29c; --gold-deep: #9c7a3c; --gold-ink: #6e5424; --gold-txt: #d9b26a;
+  --f-display: Barlow, "Helvetica Neue", Arial, sans-serif;
+  --f-read: Barlow, "Helvetica Neue", Arial, sans-serif;
+  --f-mono: Barlow, "Helvetica Neue", Arial, sans-serif;
+  --star-pal: #ffffff #e8edf2 #c9d2dc #f4f6f8;
+  --intro-ink: #eef1f4; --intro-ink-hi: #ffffff; --fx: #f2f4f7; --fx-hi: #ffffff;
+  --star-ink: #eef2f6; --fly: #f2f4f7; --fly-glow: rgba(220, 228, 236, .6); --fly-glow2: rgba(200, 210, 222, .2); --sheen: rgba(220, 228, 236, .18); --sheen-blend: soft-light;
+  --tod-dusk-1: rgba(120, 130, 150, .08); --tod-dusk-2: rgba(60, 60, 80, .05); --tod-dawn-1: rgba(150, 165, 185, .08); --tod-dawn-2: rgba(90, 100, 120, .05); --tod-day: rgba(255, 255, 255, 0);
+  --r: 0px;
+  font-synthesis: none; scrollbar-color: #4a525c #0d1015; color-scheme: dark;
+}
+:root[data-look="evil"] body { background: #11151b; }
+.ev-bg, .ev-air { display: none; }
+:root[data-look="evil"] :is(.ev-bg, .ev-air) { display: block; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; height: 100lvh; z-index: 0; pointer-events: none; transition: opacity 1s var(--ease); }
+:root[data-look="evil"] .ev-air { z-index: 1; }
+:root[data-look="evil"].intro-on :is(.ev-bg, .ev-air) { opacity: 0; transition: none; }
+/* a veil under the words: the left of the homepage, and heavier on the inner pages so the questions read */
+:root[data-look="evil"] .paper { background: linear-gradient(90deg, rgba(10, 13, 17, .74), rgba(10, 13, 17, .46) 50%, rgba(10, 13, 17, .14) 82%); transition: background .8s var(--ease); }
+:root[data-look="evil"] body:not([data-view="home"]) .paper { background: rgba(10, 13, 17, .5); }
+:root[data-look="evil"].intro-on .paper { opacity: 0; transition: none; }
+:root[data-look="evil"] :is(#sky, .rmoon, .astro) { display: none; }
+:root[data-look="evil"] .grain { opacity: .06; }
+:root[data-look="evil"] #app { text-shadow: 0 1px 3px rgba(0, 0, 0, .55); }
+:root[data-look="evil"] .title canvas { image-rendering: auto; filter: drop-shadow(0 2px 16px rgba(0, 0, 0, .65)); }
+/* upright and plain, like a menu */
+:root[data-look="evil"] :not(em, i, cite) { font-style: normal; }
+:root[data-look="evil"] :is(.h1, .h2, .h3, .bar-title) { font-weight: 500; letter-spacing: .005em; }
+:root[data-look="evil"] .lede::first-letter { font-style: normal; }
+:root[data-look="evil"] .eyebrow { color: var(--ink-3); letter-spacing: .02em; }
+:root[data-look="evil"] .stem::first-letter { color: var(--blood-hi); }
+:root[data-look="evil"] ::selection { background: #8f1016; color: #fff; }
+/* the bars: dark glass with a hairline */
+:root[data-look="evil"] .topnav { padding: 6px 14px; border: 1px solid var(--hair); background: rgba(12, 15, 20, .45); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+:root[data-look="evil"] .bar { background: rgba(12, 15, 20, .7) !important; border-bottom: 1px solid var(--hair); }
+:root[data-look="evil"] .navlinks button::after { background: var(--blood); height: 1px; }
+:root[data-look="evil"] .logo .lb { color: #e8e5de; --lb-line: #11151b; }
+/* every card: a dark see-through panel, frosted, a hairline, square */
+:root[data-look="evil"] .plate {
+  background: rgba(14, 18, 24, .58); border: 1px solid var(--hair); border-radius: 0;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, .8);
+}
+/* the buttons: a row of the menu. In focus: lighter, with a thin bright outline; the main one has a red mark on its left */
+:root[data-look="evil"] .btn { border-radius: 0; border: 1px solid var(--hair); background: rgba(14, 18, 24, .5); color: var(--ink); font-weight: 500; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+:root[data-look="evil"] .btn:hover { background: var(--sel-wash); border-color: rgba(232, 236, 240, .75); color: #fff; }
+:root[data-look="evil"] .btn.primary { background: rgba(150, 160, 172, .24); border-color: rgba(232, 236, 240, .75); color: #fff; box-shadow: inset 3px 0 0 var(--blood); }
+:root[data-look="evil"] .btn.primary:hover { background: rgba(170, 180, 192, .34); border-color: #fff; box-shadow: inset 3px 0 0 var(--blood-hi), 0 0 18px rgba(220, 228, 236, .14); }
+:root[data-look="evil"] .btn.primary svg { color: #fff; }
+:root[data-look="evil"] .btn.quiet { border-color: transparent; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+:root[data-look="evil"] .btn.quiet:hover { border-color: var(--hair-2); background: var(--sel-wash); }
+:root[data-look="evil"] .btn.danger { color: var(--blood-hi); }
+/* the answers: rows of the menu; the letter plain, no disc */
+:root[data-look="evil"] .opt { border-radius: 0; background: rgba(14, 18, 24, .5); }
+:root[data-look="evil"] .opt:hover { background: var(--sel-wash); border-color: rgba(232, 236, 240, .6); }
+:root[data-look="evil"] .bub { border: 0; border-radius: 0; background: none !important; box-shadow: none !important; width: 22px; color: var(--ink-3); font-family: var(--f-read); font-style: normal; font-weight: 500; font-size: 1.05rem; }
+:root[data-look="evil"] .opts:not(.checked) .opt[aria-pressed="true"] { background: rgba(150, 160, 172, .26); border-color: rgba(236, 240, 244, .85); }
+:root[data-look="evil"] .opt[aria-pressed="true"] .bub { color: #fff; animation: none; }
+:root[data-look="evil"] .opt.is-hit { border-color: rgba(169, 198, 220, .85); background: rgba(169, 198, 220, .1); box-shadow: inset 0 0 26px rgba(169, 198, 220, .16); }
+:root[data-look="evil"] .opt.is-hit .bub { color: var(--right); }
+:root[data-look="evil"] .opt.is-miss { border-color: rgba(224, 53, 60, .9); background: rgba(200, 20, 28, .12); box-shadow: inset 3px 0 0 var(--blood); }
+:root[data-look="evil"] .opt.is-miss .bub { color: var(--blood-hi); }
+:root[data-look="evil"] .opt.is-missed .bub { color: var(--right); }
+:root[data-look="evil"] .sky-field { --sky-star: #eef2f6; --sky-gold: #e2454b; --sky-neb: #5a6878 #3a4350; --sky-hill: #1a2028 #0d1015; background: radial-gradient(130% 120% at 70% 0%, #2c3541 0%, #0d1015 75%); }
+:root[data-look="evil"] .sky-field::after { box-shadow: inset 0 0 0 1px var(--hair-2), inset 0 0 60px rgba(0, 0, 0, .5); }
+:root[data-look="evil"] :is(.pick, .intro-hint) { --ink: #eef1f4; --ink-hi: #ffffff; --ink-2: #c6ccd3; --ink-3: #8f97a1; --hair: #2a3038; --hair-2: #48505a; --glow-mid: rgba(220, 228, 236, .4); --glow-soft: rgba(220, 228, 236, .14); --title-glow: rgba(200, 20, 28, .3); }
+@media (max-width: 640px) {
+  :root[data-look="evil"] .paper { background: linear-gradient(180deg, rgba(10, 13, 17, .5), rgba(10, 13, 17, .42) 40%, rgba(10, 13, 17, .62)); }
+  :root[data-look="evil"] .logo { white-space: nowrap; font-size: .92em; letter-spacing: -.01em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-look="evil"] :is(.ev-bg, .ev-air, .paper) { transition: none; }
+}
+
 /* ---------- the extra tick: the Labubu's word (Abi, 28 October 2026) ---------- */
 .lb-say { position: fixed; z-index: 60; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: min(440px, calc(100vw - 32px));
   display: grid; grid-template-columns: 64px 1fr; align-items: end; gap: 6px; pointer-events: none;

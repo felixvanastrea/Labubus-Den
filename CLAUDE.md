@@ -486,7 +486,25 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   No JoJo art in it: Abi's pictures were Araki's official art and other people's edits, and can't go on the Den. The
   slot for a fanart she has the artist's yes for is `.ae-bg` (a fixed layer on the right, `--ae-wall` and `data-ae-wall`);
   the Labubu stays the logo until she draws a Soft & Wet head herself.
-- `src/tests/review_looks.js [blood|codex|klimt|venus|monet|aero]` takes screenshots of each theme (home, cards, a module, a wrong answer,
+- Externe Evil (`:root[data-look="evil"]`, Abi, 3 November 2026; the name is a pun on Resident Evil, they're externs). Only
+  ever given (`gift: true`): the Labubu and the El Psy Kongroo code. Abi showed Resident Evil Village wallpapers, its logo
+  and a fan font: none of that is on the Den (Capcom's art and mark). Instead a scene painted in code (`evil` in
+  `template.html`, before the accounts block): a castle of spires on its crag in the fog, far mountains, rows of pines, a
+  chapel spire, a snowy slope with dead brush, a bare tree leaning in and brush on the right; a phone gets its own
+  composition (castle centred, tree low on the left). `.ev-bg` holds the painting (made once per size, kept when only the
+  height grows, for phone address bars), `.ev-air` the snow and the fog drifting through the valley (rAF only while worn
+  and the page shows; still with reduced motion). `.paper` is a dark veil under the words, heavier off the homepage.
+  The title (Abi chose it from a mockup: "perfect"): one line, `LABUBU’S DEN`, Cinzel 700, bone white with the first
+  letter of each word in blood red (`initials`), worn like old paint (`decayText`: pits, scratches and grime where a
+  coarse field says, seeded so it's always the same wear). No cracked condensed letters: that's the game's logo.
+  Menus from the game's options screen: every card, button and answer a dark see-through row (frosted, hairline,
+  square); hover or a pick = lighter with a thin bright outline; the main button has a red mark on its left. Barlow
+  everywhere else (Cinzel's lowercase are small caps, and Abi finds caps hard to read). Right = cold silver-blue glow,
+  wrong = red with a red bar, half = lantern amber. The stars, the real moon and the astrolabe are hidden. Intro: the
+  star falls through the night, no disc, the `wind` sound (a far bell tolls once); the scene fades in as it lands.
+  Sounds: `knell` (right, a bell in the fog with a smaller one a fifth above), `creak` (next question, a door), levels
+  checked against harp/ripple/surf. Theme list picture: the castle cropped from a full-size scene (`evil.disc`).
+- `src/tests/review_looks.js [blood|codex|klimt|venus|monet|aero|evil]` takes screenshots of each theme (home, cards, a module, a wrong answer,
   a phone) for a design review.
 - Each look's disc is painted once (`discURL`, `discPaint`); `LOOK_NIGHT` lists the looks and their theme colour.
   Test: looks.js.
