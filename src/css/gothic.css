@@ -2127,13 +2127,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-txt { margin: 0; font-size: .95rem; line-height: 1.3; overflow-wrap: anywhere; }
 /* the stars it got, a small badge on its corner */
 .ff-n { position: absolute; right: -7px; top: -9px; padding: 0 7px; border-radius: 999px; background: var(--fly); color: #2b2519; font-size: .72rem; line-height: 18px; box-shadow: 0 0 10px var(--fly-glow); }
-.ff-more { position: absolute; left: 14px; top: calc(100% - 2px); z-index: -1; display: flex; align-items: center; gap: 10px; width: max-content; padding: 11px 8px 4px 12px; border-radius: 0 0 18px 18px;
+.ff-more { position: absolute; left: 14px; top: calc(100% - 2px); z-index: -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; width: max-content; padding: 11px 8px 4px 12px; border-radius: 0 0 18px 18px;
   background: color-mix(in srgb, var(--plate) 94%, transparent); color: var(--ink); border: 1px solid var(--hair-2); border-top: 0; box-shadow: 0 10px 20px -12px var(--deep);
   opacity: 0; translate: 0 -8px; pointer-events: none; transition: opacity .25s var(--ease), translate .35s var(--spring); }
 .ff:hover .ff-more, .ff:focus-within .ff-more, .ff.on .ff-more { opacity: 1; translate: 0 0; pointer-events: auto; }
 .ff:hover .ff-n, .ff:focus-within .ff-n, .ff.on .ff-n { opacity: 0; }
 .ff-who { margin: 0; font-size: .82rem; color: var(--ink-3); white-space: nowrap; }
 .ff-who b { color: var(--ink-2); font-weight: 600; }
+.ff-ups { order: 3; flex-basis: 100%; margin: 0; max-width: 17rem; font-size: .8rem; line-height: 1.3; color: var(--ink-3); font-style: italic; }
 .ff-foot { display: flex; align-items: center; gap: 8px; }
 .ff-up { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 10px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .84rem; cursor: pointer; transition: color .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease), transform .3s var(--spring); }
 .ff-up:hover:not([disabled]) { color: var(--ink); border-color: var(--ink-3); transform: scale(1.08); }

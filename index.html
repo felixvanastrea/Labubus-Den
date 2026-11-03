@@ -2266,13 +2266,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .ff-txt { margin: 0; font-size: .95rem; line-height: 1.3; overflow-wrap: anywhere; }
 /* the stars it got, a small badge on its corner */
 .ff-n { position: absolute; right: -7px; top: -9px; padding: 0 7px; border-radius: 999px; background: var(--fly); color: #2b2519; font-size: .72rem; line-height: 18px; box-shadow: 0 0 10px var(--fly-glow); }
-.ff-more { position: absolute; left: 14px; top: calc(100% - 2px); z-index: -1; display: flex; align-items: center; gap: 10px; width: max-content; padding: 11px 8px 4px 12px; border-radius: 0 0 18px 18px;
+.ff-more { position: absolute; left: 14px; top: calc(100% - 2px); z-index: -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; width: max-content; padding: 11px 8px 4px 12px; border-radius: 0 0 18px 18px;
   background: color-mix(in srgb, var(--plate) 94%, transparent); color: var(--ink); border: 1px solid var(--hair-2); border-top: 0; box-shadow: 0 10px 20px -12px var(--deep);
   opacity: 0; translate: 0 -8px; pointer-events: none; transition: opacity .25s var(--ease), translate .35s var(--spring); }
 .ff:hover .ff-more, .ff:focus-within .ff-more, .ff.on .ff-more { opacity: 1; translate: 0 0; pointer-events: auto; }
 .ff:hover .ff-n, .ff:focus-within .ff-n, .ff.on .ff-n { opacity: 0; }
 .ff-who { margin: 0; font-size: .82rem; color: var(--ink-3); white-space: nowrap; }
 .ff-who b { color: var(--ink-2); font-weight: 600; }
+.ff-ups { order: 3; flex-basis: 100%; margin: 0; max-width: 17rem; font-size: .8rem; line-height: 1.3; color: var(--ink-3); font-style: italic; }
 .ff-foot { display: flex; align-items: center; gap: 8px; }
 .ff-up { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 10px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .84rem; cursor: pointer; transition: color .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease), transform .3s var(--spring); }
 .ff-up:hover:not([disabled]) { color: var(--ink); border-color: var(--ink-3); transform: scale(1.08); }
@@ -3721,7 +3722,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'cbd927b3ae0e', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'c4d1c6836d20', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5403,11 +5404,21 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (cta && !cta.querySelector('.ff-send') && me.key && !nt.no) cta.insertAdjacentHTML('beforeend', noteBtnHTML());
       nt.readAt = 0; paintNotes(); loadNotes(true);
     }
+    // a star is the voter's uid → their name (since 3 November 2026, so the bubble can say who starred it); `true` from before
+    const isVote = x => x === true || (typeof x === 'string' && x.length > 0 && x.length <= 24);
+    function starredBy(x) {
+      const mine = user ? x.up.indexOf(user.uid) : -1;
+      const names = x.by.map((n, i) => i === mine ? 'you' : n).filter(Boolean);
+      if (mine >= 0) { names.splice(names.indexOf('you'), 1); names.unshift('you'); }
+      const others = x.up.length - names.length, shown = names.slice(0, 3), more = names.length - shown.length + others;
+      const list = shown.length ? shown.join(', ') + (more ? ` and ${more} more` : '') : `${more} ${more === 1 ? 'person' : 'people'}`;
+      return { text: `Starred by ${list.replace(/, ([^,]*)$/, more ? ', $1' : ' and $1')}`, all: names.join(', ') + (others ? ` and ${others} more` : '') };
+    }
     const noteTier = n => NOTE_TIERS.filter(v => n >= v).length;
     const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
     function notesNow() {
       const now = Date.now();
-      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => v.up[u] === true) }))
+      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => isVote(v.up[u])), by: Object.keys(v.up || {}).filter(u => isVote(v.up[u])).map(u => typeof v.up[u] === 'string' ? v.up[u].slice(0, 24) : '') }))
         .filter(x => (x.txt || x.gif) && x.t && now - x.t < NOTE_LIFE)
         .sort((a, b) => b.up.length - a.up.length || b.t - a.t).slice(0, NOTE_SHOW);
     }
@@ -5442,7 +5453,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       return `<div class="ff t${tier} ${side === 'l' ? 'to-l' : 'to-r'}${mine ? ' mine' : ''}" data-uid="${esc(x.uid)}" style="left:${left}%;top:${top}%;--dx:${((hash(x.uid, 13) - .5) * 90).toFixed(0)}px;--dy:${((hash(x.uid, 14) - .5) * 56).toFixed(0)}px;--dur:${(11 + hash(x.uid, 15) * 8).toFixed(1)}s;--bob:${(3.2 + hash(x.uid, 17) * 2).toFixed(1)}s;--del:${(-hash(x.uid, 16) * 8).toFixed(1)}s">
         <span class="ff-dot" aria-hidden="true"><i></i></span>
         <div class="ff-bub" tabindex="0">${x.gif ? `<img class="ff-gif" src="${gifURL(x.gif, reduceMotion())}" alt="A GIF" loading="lazy" decoding="async">` : ''}${x.txt ? `<p class="ff-txt">${esc(x.txt)}</p>` : ''}${n ? `<span class="ff-n num" aria-hidden="true">✦ ${n}</span>` : ''}
-          <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>
+          <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>${n ? (() => { const sb = starredBy(x); return `<p class="ff-ups" title="${esc(sb.all)}">${esc(sb.text)}</p>`; })() : ''}
           <div class="ff-foot"><button class="ff-up" type="button" data-note="up" data-uid="${esc(x.uid)}" aria-pressed="${voted ? 'true' : 'false'}"${mine ? ' disabled' : ''} aria-label="${voted ? 'Take back your star' : 'Give it a star'}, ${n} so far">✦ <span class="num">${n}</span></button>${del}</div></div></div></div>`;
     }
     // the layer of message fireflies over the masthead (signed in, once the rules let us read them)
@@ -5521,11 +5532,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     async function voteNote(uid) {
       if (!skyOK() || !nt.list || !nt.list[uid] || uid === user.uid) return;
-      const v = nt.list[uid], on = !(v.up && v.up[user.uid] === true), f = fb.f;
-      v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = true; else delete v.up[user.uid];
+      const v = nt.list[uid], on = !(v.up && isVote(v.up[user.uid])), f = fb.f, nm = String(me.name || '').slice(0, 24);
+      v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = nm; else delete v.up[user.uid];
       paintNotes(); if (on) { sfx.play('right'); usage.track('firefly_upvoted'); } else sfx.play('untick');
-      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? true : f.deleteField() } }, { merge: true }); }
-      catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = true; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
+      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? nm : f.deleteField() } }, { merge: true }); }
+      catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = nm; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
     }
     async function delNote(uid) {
       if (!skyOK() || !(uid === user.uid || vip())) return;

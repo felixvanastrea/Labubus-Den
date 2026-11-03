@@ -592,11 +592,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   no reads.
 - News sheet "Fireflies with messages" (`NEWS.id` `fireflies-2026-11`): once per device, "Write a message" opens the form (a
   guest is asked to sign in first).
-- Firestore `notes/{uid}` = `{nm, k, txt, gif?, t (server time), up: {voterUid: true}}`, read as one query (newest 80),
+- Who starred it (Abi, 3 November 2026): the tab says "Starred by you, Amro, Nada and 2 more" (`starredBy`, the full list in
+  its tooltip); a star is the voter's uid → their name (`isVote`; old `true` stars count as "more").
+- Firestore `notes/{uid}` = `{nm, k, txt, gif?, t (server time), up: {voterUid: voter's name}}`, read as one query (newest 80),
   re-read every 20 s while the homepage shows (`notesUp`); no live watch (Spark plan). Delete my data removes the note.
   **Needs Firestore rules** (Abi must paste her current file; return the whole file): signed-in read; create/replace only at
   `notes/{own uid}` with `nm`/`k` matching `names/{k}`, `txt` 0 to 80 chars, `gif` absent or `^[A-Za-z0-9]{5,32}$`, text or
-  GIF present, `t == request.time`, `up == {}`; update only to add or remove the voter's own key in `up` (value true); delete
+  GIF present, `t == request.time`, `up == {}`; update only to add or remove the voter's own key in `up` (value = their registered name); delete
   by the owner or the owner of `names/labubu`. Until then nothing shows (`nt.no`).
 - PostHog events: `firefly_sent` (with `gif`), `firefly_upvoted`, `firefly_deleted`, `messages_switched`. Tests: notes.js,
   news.js.

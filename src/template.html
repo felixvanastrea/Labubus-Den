@@ -2627,11 +2627,21 @@
       if (cta && !cta.querySelector('.ff-send') && me.key && !nt.no) cta.insertAdjacentHTML('beforeend', noteBtnHTML());
       nt.readAt = 0; paintNotes(); loadNotes(true);
     }
+    // a star is the voter's uid → their name (since 3 November 2026, so the bubble can say who starred it); `true` from before
+    const isVote = x => x === true || (typeof x === 'string' && x.length > 0 && x.length <= 24);
+    function starredBy(x) {
+      const mine = user ? x.up.indexOf(user.uid) : -1;
+      const names = x.by.map((n, i) => i === mine ? 'you' : n).filter(Boolean);
+      if (mine >= 0) { names.splice(names.indexOf('you'), 1); names.unshift('you'); }
+      const others = x.up.length - names.length, shown = names.slice(0, 3), more = names.length - shown.length + others;
+      const list = shown.length ? shown.join(', ') + (more ? ` and ${more} more` : '') : `${more} ${more === 1 ? 'person' : 'people'}`;
+      return { text: `Starred by ${list.replace(/, ([^,]*)$/, more ? ', $1' : ' and $1')}`, all: names.join(', ') + (others ? ` and ${others} more` : '') };
+    }
     const noteTier = n => NOTE_TIERS.filter(v => n >= v).length;
     const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
     function notesNow() {
       const now = Date.now();
-      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => v.up[u] === true) }))
+      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => isVote(v.up[u])), by: Object.keys(v.up || {}).filter(u => isVote(v.up[u])).map(u => typeof v.up[u] === 'string' ? v.up[u].slice(0, 24) : '') }))
         .filter(x => (x.txt || x.gif) && x.t && now - x.t < NOTE_LIFE)
         .sort((a, b) => b.up.length - a.up.length || b.t - a.t).slice(0, NOTE_SHOW);
     }
@@ -2666,7 +2676,7 @@
       return `<div class="ff t${tier} ${side === 'l' ? 'to-l' : 'to-r'}${mine ? ' mine' : ''}" data-uid="${esc(x.uid)}" style="left:${left}%;top:${top}%;--dx:${((hash(x.uid, 13) - .5) * 90).toFixed(0)}px;--dy:${((hash(x.uid, 14) - .5) * 56).toFixed(0)}px;--dur:${(11 + hash(x.uid, 15) * 8).toFixed(1)}s;--bob:${(3.2 + hash(x.uid, 17) * 2).toFixed(1)}s;--del:${(-hash(x.uid, 16) * 8).toFixed(1)}s">
         <span class="ff-dot" aria-hidden="true"><i></i></span>
         <div class="ff-bub" tabindex="0">${x.gif ? `<img class="ff-gif" src="${gifURL(x.gif, reduceMotion())}" alt="A GIF" loading="lazy" decoding="async">` : ''}${x.txt ? `<p class="ff-txt">${esc(x.txt)}</p>` : ''}${n ? `<span class="ff-n num" aria-hidden="true">✦ ${n}</span>` : ''}
-          <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>
+          <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>${n ? (() => { const sb = starredBy(x); return `<p class="ff-ups" title="${esc(sb.all)}">${esc(sb.text)}</p>`; })() : ''}
           <div class="ff-foot"><button class="ff-up" type="button" data-note="up" data-uid="${esc(x.uid)}" aria-pressed="${voted ? 'true' : 'false'}"${mine ? ' disabled' : ''} aria-label="${voted ? 'Take back your star' : 'Give it a star'}, ${n} so far">✦ <span class="num">${n}</span></button>${del}</div></div></div></div>`;
     }
     // the layer of message fireflies over the masthead (signed in, once the rules let us read them)
@@ -2745,11 +2755,11 @@
     }
     async function voteNote(uid) {
       if (!skyOK() || !nt.list || !nt.list[uid] || uid === user.uid) return;
-      const v = nt.list[uid], on = !(v.up && v.up[user.uid] === true), f = fb.f;
-      v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = true; else delete v.up[user.uid];
+      const v = nt.list[uid], on = !(v.up && isVote(v.up[user.uid])), f = fb.f, nm = String(me.name || '').slice(0, 24);
+      v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = nm; else delete v.up[user.uid];
       paintNotes(); if (on) { sfx.play('right'); usage.track('firefly_upvoted'); } else sfx.play('untick');
-      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? true : f.deleteField() } }, { merge: true }); }
-      catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = true; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
+      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? nm : f.deleteField() } }, { merge: true }); }
+      catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = nm; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
     }
     async function delNote(uid) {
       if (!skyOK() || !(uid === user.uid || vip())) return;

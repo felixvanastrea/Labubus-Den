@@ -18,7 +18,7 @@ const people = { u1: 'Abi', u2: 'Zeineb', u3: 'Amro', u4: 'Nada', u5: 'Old', u6:
 function docs(extra = {}) {
   const d = {};
   for (const [u, nm] of Object.entries(people)) { const k = nm.toLowerCase(); d['names/' + k] = { uid: u, name: nm }; d['users/' + u] = { name: nm, key: k, s: '{}' }; }
-  d['notes/u2'] = { nm: 'Zeineb', k: 'zeineb', txt: 'Good luck for Thursday everyone!', t: now - 2 * H, up: { u3: true, u4: true, u9: true } };
+  d['notes/u2'] = { nm: 'Zeineb', k: 'zeineb', txt: 'Good luck for Thursday everyone!', t: now - 2 * H, up: { u3: 'Amro', u4: 'Nada', u9: true } };
   d['notes/u3'] = { nm: 'Amro', k: 'amro', txt: 'Who else is doing hepatitis tonight?', t: now - 30 * 6e4, up: {} };
   d['notes/u4'] = { nm: 'Nada', k: 'nada', txt: 'The achalasia slides are on the Drive', t: now - 5 * H, up: { u2: true, u3: true, u5: true, u9: true, u1: true, a: true, b: true, c: true, d: true, e: true } };
   d['notes/u6'] = { nm: 'Gifman', k: 'gifman', txt: '', gif: 'abc123XYZ', t: now - 10 * 6e4, up: {} };
@@ -73,11 +73,15 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   check(+who0 < .1 && +who1 > .9 && /Amro/.test(whoTxt), `the name on hover (${who0} → ${who1}, "${whoTxt.trim()}")`);
   await p.screenshot({ path: OUT + 'notes_desk.png' });
 
+  // who starred it: names (new votes), old `true` votes counted
+  const ups = await p.textContent('.ff[data-uid="u2"] .ff-ups');
+  check(/Starred by/.test(ups) && /Amro/.test(ups) && /Nada/.test(ups), `who starred it: “${ups}”`);
   // a star given, then taken back
   await p.hover('.ff[data-uid="u3"] .ff-bub', { force: true }); await p.waitForTimeout(400);
   await p.click('.ff[data-uid="u3"] .ff-up', { force: true }); await p.waitForTimeout(300);
   let d = await fdoc(p, 'notes/u3');
-  check(d && d.up && d.up.u1 === true && (await flies(p)).find(x => x.uid === 'u3').n === 1, 'a star given');
+  check(d && d.up && d.up.u1 === 'Abi' && (await flies(p)).find(x => x.uid === 'u3').n === 1, 'a star given, under my name');
+  check(/Starred by you/.test(await p.textContent('.ff[data-uid="u3"] .ff-ups')), 'the bubble says I starred it');
   check(/\bt1\b/.test((await flies(p)).find(x => x.uid === 'u3').cls), 'one star: brighter');
   await p.hover('.ff[data-uid="u3"] .ff-bub', { force: true }); await p.waitForTimeout(400);
   await p.click('.ff[data-uid="u3"] .ff-up', { force: true }); await p.waitForTimeout(300);
