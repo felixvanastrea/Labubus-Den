@@ -2230,6 +2230,95 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .here-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--fly); animation: herepulse 2.6s ease-out infinite; }
 @keyframes herepulse { 0% { box-shadow: 0 0 0 0 var(--fly-glow); } 70%, 100% { box-shadow: 0 0 0 9px rgba(0, 0, 0, 0); } }
 
+/* messages on fireflies (Abi, 3 November 2026): they float over the masthead with the who's-here lights, each light
+   saying its message in a little cartoon speech bubble; hover (or tap) it for who sent it, a star and the time. The stars
+   it got make it sparkle more: t1 brighter, t2 a halo and a glowing bubble, t3 rays, t4 glints circling */
+.ffs { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.ff { position: absolute; width: 0; height: 0; animation: ff-drift var(--dur, 9s) ease-in-out var(--del, 0s) infinite alternate; }
+.ff:hover, .ff:focus-within, .ff.on { z-index: 4; animation-play-state: paused; }
+@keyframes ff-drift { from { transform: translate(calc(var(--dx) * -1), calc(var(--dy) * -1)); } to { transform: translate(var(--dx), var(--dy)); } }
+.ff-dot { position: absolute; left: -10px; top: -10px; width: 20px; height: 20px; }
+.ff-dot i { position: absolute; inset: 6px; border-radius: 50%; background: var(--fly); box-shadow: 0 0 6px 2px var(--fly-glow), 0 0 20px 6px var(--fly-glow2); animation: ff-pulse 2.8s ease-in-out var(--del, 0s) infinite; }
+@keyframes ff-pulse { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+/* a cartoon speech bubble: round, bone-coloured, a little drop shadow, a thought-trail of two dots down to its light,
+   bobbing on its own beat; who sent it and the star come out on a small tab under it */
+.ff-bub {
+  --bub: #fbf4de; --bub-ink: #2b2519; --bub-edge: color-mix(in srgb, var(--fly) 75%, #fff);
+  position: absolute; top: -34px; width: max-content; max-width: 11.5rem; display: block;
+  padding: 9px 17px 10px; border-radius: 26px; border: 2px solid var(--bub-edge);
+  background: var(--bub); color: var(--bub-ink);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--fly) 60%, #3a2c10), 0 0 26px -4px var(--fly-glow), 0 12px 22px -14px var(--deep);
+  font-family: var(--f-read); font-style: normal; font-weight: 500; text-align: left; pointer-events: auto; cursor: pointer; outline: none;
+  animation: ff-in .8s var(--spring) both, ff-bob var(--bob, 4s) ease-in-out var(--del, 0s) infinite alternate; transform-origin: 0 70%;
+}
+.ff.to-r .ff-bub { left: 30px; }
+.ff.to-l .ff-bub { right: 30px; transform-origin: 100% 70%; }
+@keyframes ff-in { from { opacity: 0; scale: .2; } to { opacity: 1; scale: 1; } }
+@keyframes ff-bob { from { translate: 0 -3px; rotate: -1.6deg; } to { translate: 0 4px; rotate: 1.6deg; } }
+.ff-bub:hover, .ff-bub:focus-visible { animation-play-state: running, paused; scale: 1.04; }
+.ff-bub { transition: scale .35s var(--spring); }
+/* the tail: two little circles from the bubble toward its firefly */
+.ff-bub::before, .ff-bub::after { content: ""; position: absolute; border-radius: 50%; background: var(--bub); border: 2px solid var(--bub-edge); }
+.ff-bub::before { width: 11px; height: 11px; top: 30px; }
+.ff-bub::after { width: 6px; height: 6px; top: 40px; }
+.ff.to-r .ff-bub::before { left: -13px; } .ff.to-r .ff-bub::after { left: -23px; }
+.ff.to-l .ff-bub::before { right: -13px; } .ff.to-l .ff-bub::after { right: -23px; }
+.ff-txt { margin: 0; font-size: .95rem; line-height: 1.3; overflow-wrap: anywhere; }
+/* the stars it got, a small badge on its corner */
+.ff-n { position: absolute; right: -7px; top: -9px; padding: 0 7px; border-radius: 999px; background: var(--fly); color: var(--bub-ink); font-size: .72rem; line-height: 18px; box-shadow: 0 0 10px var(--fly-glow); }
+.ff-more { position: absolute; left: 14px; top: calc(100% - 2px); z-index: -1; display: flex; align-items: center; gap: 10px; width: max-content; padding: 11px 8px 4px 12px; border-radius: 0 0 18px 18px;
+  background: color-mix(in srgb, var(--plate) 94%, transparent); color: var(--ink); border: 1px solid var(--hair-2); border-top: 0; box-shadow: 0 10px 20px -12px var(--deep);
+  opacity: 0; translate: 0 -8px; pointer-events: none; transition: opacity .25s var(--ease), translate .35s var(--spring); }
+.ff:hover .ff-more, .ff:focus-within .ff-more, .ff.on .ff-more { opacity: 1; translate: 0 0; pointer-events: auto; }
+.ff:hover .ff-n, .ff:focus-within .ff-n, .ff.on .ff-n { opacity: 0; }
+.ff-who { margin: 0; font-size: .82rem; color: var(--ink-3); white-space: nowrap; }
+.ff-who b { color: var(--ink-2); font-weight: 600; }
+.ff-foot { display: flex; align-items: center; gap: 8px; }
+.ff-up { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 10px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .84rem; cursor: pointer; transition: color .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease), transform .3s var(--spring); }
+.ff-up:hover:not([disabled]) { color: var(--ink); border-color: var(--ink-3); transform: scale(1.08); }
+.ff-up[aria-pressed="true"] { color: var(--bub-ink, #2b2519); background: var(--fly); border-color: var(--fly); box-shadow: 0 0 12px var(--fly-glow); }
+.ff-up[disabled] { cursor: default; opacity: .6; }
+.ff-del { padding: 0; border: 0; background: none; color: var(--ink-3); font: inherit; font-size: .8rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; white-space: nowrap; }
+.ff-del:hover { color: var(--wrong); }
+/* the sparkle, by stars */
+.ff.t1 .ff-dot i { inset: 5px; box-shadow: 0 0 9px 3px var(--fly-glow), 0 0 28px 10px var(--fly-glow2); }
+.ff.t2 .ff-dot i, .ff.t3 .ff-dot i, .ff.t4 .ff-dot i { inset: 4px; box-shadow: 0 0 12px 4px var(--fly-glow), 0 0 40px 16px var(--fly-glow2); }
+.ff.t2 .ff-bub, .ff.t3 .ff-bub, .ff.t4 .ff-bub { --bub-edge: var(--fly); box-shadow: 0 3px 0 color-mix(in srgb, var(--fly) 60%, #3a2c10), 0 0 0 4px var(--fly-glow2), 0 0 38px 0 var(--fly-glow), 0 12px 22px -14px var(--deep); }
+.ff.t3 .ff-dot::before, .ff.t4 .ff-dot::before { content: ""; position: absolute; inset: -10px; background:
+  linear-gradient(var(--fly), var(--fly)) center / 1.5px 100% no-repeat, linear-gradient(var(--fly), var(--fly)) center / 100% 1.5px no-repeat;
+  -webkit-mask: radial-gradient(circle, #000 0 18%, transparent 70%); mask: radial-gradient(circle, #000 0 18%, transparent 70%); opacity: .9; animation: ff-rays 6s linear infinite; }
+@keyframes ff-rays { to { rotate: 360deg; } }
+.ff.t4 .ff-dot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: var(--fly);
+  box-shadow: 0 0 6px 2px var(--fly-glow); animation: ff-orbit 3s linear infinite; }
+@keyframes ff-orbit { from { transform: rotate(0deg) translateX(15px) scale(1); } 50% { transform: rotate(180deg) translateX(15px) scale(.6); } to { transform: rotate(360deg) translateX(15px) scale(1); } }
+.ff.mine .ff-bub { border-style: dotted; }
+.ff.swap .ff-bub { animation: none; }
+/* under the main button: release your own, in a bubble that opens */
+.ff-send { position: relative; justify-self: end; }
+.ff-open { display: inline-flex; align-items: center; gap: 9px; padding: 4px 2px; border: 0; background: none; color: var(--ink-2); font: inherit; font-family: var(--f-read); font-size: 1rem; cursor: pointer; }
+.ff-open:hover { color: var(--ink); }
+.ff-mini { width: 8px; height: 8px; border-radius: 50%; background: var(--fly); box-shadow: 0 0 8px 2px var(--fly-glow); animation: ff-pulse 2.4s ease-in-out infinite; }
+.ff-pop { position: absolute; right: 0; top: calc(100% + 12px); z-index: 8; width: min(22rem, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+  padding: 14px; border-radius: 22px; border: 1px solid var(--hair-2); background: var(--plate); box-shadow: 0 0 30px -8px var(--fly-glow), 0 20px 40px -20px var(--deep); text-align: left;
+  animation: ff-in .5s var(--spring) both; transform-origin: 90% 0; }
+.ff-pop[hidden] { display: none; }
+.ff-pop::before { content: ""; position: absolute; top: -7px; right: 28px; width: 12px; height: 12px; background: inherit; border: inherit; border-width: 1px 0 0 1px; border-radius: 4px 0 0 0; rotate: 45deg; }
+.ff-in { grid-column: 1 / -1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid var(--hair-2); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-family: var(--f-read); font-size: 1rem; }
+.ff-in:focus { outline: none; border-color: var(--ink-3); box-shadow: 0 0 0 4px var(--glow-soft); }
+.ff-count { font-size: .78rem; color: var(--ink-3); }
+.ff-pop .btn { min-height: 40px; border-radius: 999px; }
+.ff-note { grid-column: 1 / -1; margin: 0; font-size: .82rem; font-style: italic; color: var(--ink-3); }
+@media (max-width: 640px) {
+  .ff-bub { max-width: 8.8rem; padding: 6px 13px 7px; border-radius: 20px; }
+  .ff-txt { font-size: .8rem; }
+  .ff-send { justify-self: start; }
+  .ff-pop { left: 0; right: auto; transform-origin: 10% 0; }
+  .ff-pop::before { left: 28px; right: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff, .ff-dot i, .ff-dot::before, .ff-dot::after, .ff-bub, .ff-mini, .ff-pop { animation: none !important; }
+}
+
 /* everything breathes: a light over the cards, the astrolabe and the windows leaning, the main button */
 #sheen { position: fixed; z-index: 37; pointer-events: none; border-radius: var(--r); opacity: 0; transition: opacity .6s var(--ease);
   background: radial-gradient(380px circle at var(--sx, 50%) var(--sy, 50%), var(--sheen), transparent 66%); mix-blend-mode: var(--sheen-blend); }
@@ -3604,7 +3693,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '9fb3106dc7b2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '54a04aaaa1f6', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5028,7 +5117,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     document.addEventListener('visibilitychange', () => { if (document.hidden) unwatchSky(); else if (document.getElementById('class-sky')) watchSky(); });
     // the sky on the page catches up with the account
-    function skyUp() { if (skyOK()) watchSky(); redrawSky(); }
+    function skyUp() { if (skyOK()) watchSky(); redrawSky(); try { if (skyOK()) loadNotes(true); else paintNotes(); } catch (e) {} }
     const hash = (str, k) => {
       let h = 2166136261 ^ Math.imul(k, 0x9e3779b1);
       for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
@@ -5260,6 +5349,146 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (!hr.timer) hr.timer = setInterval(() => { if (S.view === 'home' && !document.hidden) loadHere(); }, 30000);
     }
     document.addEventListener('visibilitychange', () => { if (!document.hidden && S.view === 'home') { loadHere(); paintHere(); } });
+
+    // ---- notes: fireflies carrying a message, on the homepage (Abi, 3 November 2026) ----
+    // notes/{uid} = {nm, k, txt (1 to NOTE_MAX characters), t (server time), up: {voter uid: true}}: one per person, and
+    // writing a new one replaces the old (its votes start again). Each lives NOTE_LIFE (24 h) from when it was written,
+    // then fades. Everyone signed in reads them; the message shows on the firefly, the name on hover (or a tap). An upvote
+    // is one per person, taken back by a second tap, written as that voter's own key in `up` (the rules allow nothing
+    // else); the more votes, the more it sparkles (NOTE_TIERS). The author deletes theirs, the Labubu anyone's.
+    // Read when the homepage opens and every NOTE_READ while it shows (never a live watch: the free plan).
+    const NOTE_MAX = 80, NOTE_LIFE = 864e5, NOTE_READ = 60000, NOTE_SHOW = 24, NOTE_TIERS = [1, 3, 6, 10];
+    const nt = { list: null, readAt: 0, busy: false, no: false, noWrite: false, timer: 0, draft: '' };
+    const noteTier = n => NOTE_TIERS.filter(v => n >= v).length;
+    const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
+    function notesNow() {
+      const now = Date.now();
+      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => v.up[u] === true) }))
+        .filter(x => x.txt && x.t && now - x.t < NOTE_LIFE)
+        .sort((a, b) => b.up.length - a.up.length || b.t - a.t).slice(0, NOTE_SHOW);
+    }
+    async function loadNotes(force) {
+      if (!here || !skyOK() || nt.busy || document.hidden) return;
+      if (!force && nt.list && Date.now() - nt.readAt < NOTE_READ) return;
+      nt.busy = true;
+      try {
+        const f = fb.f, qs = await f.getDocs(f.query(f.collection(db, 'notes'), f.orderBy('t', 'desc'), f.limit(80)));
+        const mine = nt.list && user && nt.list[user.uid];
+        nt.list = {}; qs.docs.forEach(d => { nt.list[d.id] = d.data(); });
+        if (mine && mine.pending && !nt.list[user.uid]) nt.list[user.uid] = mine;
+        const was = nt.no; nt.no = false;
+        if (was || !document.querySelector('.ff-send')) { const cta = document.querySelector('.hero-cta'); if (cta && !cta.querySelector('.ff-send') && me.key) cta.insertAdjacentHTML('beforeend', noteBtnHTML()); }
+      } catch (e) { nt.no = true; }
+      finally { nt.busy = false; nt.readAt = Date.now(); }
+      paintNotes();
+    }
+    // where the fireflies with a message hover: free spots of the masthead, around the title and away from the caption,
+    // the facts and the main button ([x %, y % of the hero], and which side the bubble opens to). The most starred get the
+    // first spots; there are only so many spots, so only that many messages fly at once
+    const SPOTS = {
+      wide: [[40, 15, 'r'], [57, 27, 'r'], [73, 37, 'r'], [69, 57, 'r'], [39, 78, 'r'], [53, 90, 'r']],
+      mid: [[45, 14, 'r'], [62, 40, 'r'], [45, 82, 'r']],
+      narrow: [[96, 64, 'l'], [96, 89, 'l'], [96, 46, 'l']]
+    };
+    const spots = () => { const w = window.innerWidth; return w >= 900 ? SPOTS.wide : w >= 640 ? SPOTS.mid : SPOTS.narrow; };
+    function fireflyHTML(x, i) {
+      const [left, top, side] = spots()[i];
+      const n = x.up.length, mine = user && x.uid === user.uid, voted = user && x.up.includes(user.uid), tier = noteTier(n);
+      const del = mine || vip() ? `<button class="ff-del" type="button" data-note="del" data-uid="${esc(x.uid)}">${mine ? 'Delete mine' : 'Delete'}</button>` : '';
+      return `<div class="ff t${tier} ${side === 'l' ? 'to-l' : 'to-r'}${mine ? ' mine' : ''}" data-uid="${esc(x.uid)}" style="left:${left}%;top:${top}%;--dx:${((hash(x.uid, 13) - .5) * 90).toFixed(0)}px;--dy:${((hash(x.uid, 14) - .5) * 56).toFixed(0)}px;--dur:${(11 + hash(x.uid, 15) * 8).toFixed(1)}s;--bob:${(3.2 + hash(x.uid, 17) * 2).toFixed(1)}s;--del:${(-hash(x.uid, 16) * 8).toFixed(1)}s">
+        <span class="ff-dot" aria-hidden="true"><i></i></span>
+        <div class="ff-bub" tabindex="0"><p class="ff-txt">${esc(x.txt)}</p>${n ? `<span class="ff-n num" aria-hidden="true">✦ ${n}</span>` : ''}
+          <div class="ff-more"><p class="ff-who"><b>${esc(mine ? 'You' : x.nm)}</b> · ${esc(noteAgo(x.t))}</p>
+          <div class="ff-foot"><button class="ff-up" type="button" data-note="up" data-uid="${esc(x.uid)}" aria-pressed="${voted ? 'true' : 'false'}"${mine ? ' disabled' : ''} aria-label="${voted ? 'Take back your star' : 'Give it a star'}, ${n} so far">✦ <span class="num">${n}</span></button>${del}</div></div></div></div>`;
+    }
+    // the layer of message fireflies over the masthead (signed in, once the rules let us read them)
+    const notesHTML = () => here ? '<div class="ffs" id="ffs" aria-label="Messages from the class"></div>' : '';
+    // under the main button: release your own
+    function noteBtnHTML() {
+      if (!here || !skyOK() || !me.key || nt.no) return '';
+      return `<div class="ff-send"><button class="ff-open" type="button" data-note="open" aria-expanded="false"><span class="ff-mini" aria-hidden="true"></span>Release a firefly</button>
+        <form class="ff-pop" data-note="form" hidden>
+          <label class="sr-label" for="ff-in">Your message, for 24 hours</label>
+          <input id="ff-in" class="ff-in" type="text" maxlength="${NOTE_MAX}" autocomplete="off" placeholder="Say something to the class" value="${esc(nt.draft)}">
+          <span class="ff-count num" aria-live="polite">${nt.draft.length}/${NOTE_MAX}</span>
+          <button class="btn primary" type="submit"${nt.draft.trim() ? '' : ' disabled'}>Let it fly</button>
+          <p class="ff-note">Everyone signed in sees it for 24 hours. A new one replaces yours.</p></form></div>`;
+    }
+    function paintNotes() {
+      const box = document.getElementById('ffs'); if (!box) return;
+      const list = skyOK() && !nt.no ? notesNow().slice(0, spots().length) : [];
+      // one firefly at a time, so the others keep flying (a new bubble pops in, a changed one is swapped in place)
+      const keep = new Set(list.map(x => x.uid));
+      box.querySelectorAll('.ff').forEach(el => { if (!keep.has(el.dataset.uid)) el.remove(); });
+      list.forEach((x, i) => {
+        const h = fireflyHTML(x, i), el = box.querySelector(`.ff[data-uid="${CSS.escape(x.uid)}"]`);
+        if (el && el.dataset.h === h) return;
+        const t = document.createElement('div'); t.innerHTML = h; const nu = t.firstElementChild; nu.dataset.h = h;
+        if (el) { if (el.classList.contains('on')) nu.classList.add('on'); nu.classList.add('swap'); el.replaceWith(nu); } else box.appendChild(nu);
+      });
+      const send = document.querySelector('.ff-send');
+      if (send && nt.no) send.remove();
+    }
+    async function sendNote(txt) {
+      txt = String(txt || '').replace(/\s+/g, ' ').trim().slice(0, NOTE_MAX);
+      if (!txt || !skyOK() || !me.key) return;
+      const f = fb.f, mine = { nm: me.name, k: me.key, txt, t: f.serverTimestamp(), up: {} };
+      const before = nt.list && nt.list[user.uid];
+      nt.list = nt.list || {}; nt.list[user.uid] = Object.assign({}, mine, { t: Date.now(), pending: true });
+      nt.draft = ''; const inp = document.getElementById('ff-in'); if (inp) inp.value = ''; openPop(false);
+      paintNotes(); sfx.play('sparkle'); usage.track('firefly_sent', { replaced: !!before });
+      try { await f.setDoc(f.doc(db, 'notes', user.uid), mine); delete nt.list[user.uid].pending; }
+      catch (e) { if (before) nt.list[user.uid] = before; else delete nt.list[user.uid]; paintNotes(); toast('Your firefly couldn’t fly off. Try again in a moment.'); }
+    }
+    async function voteNote(uid) {
+      if (!skyOK() || !nt.list || !nt.list[uid] || uid === user.uid) return;
+      const v = nt.list[uid], on = !(v.up && v.up[user.uid] === true), f = fb.f;
+      v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = true; else delete v.up[user.uid];
+      paintNotes(); if (on) { sfx.play('right'); usage.track('firefly_upvoted'); } else sfx.play('untick');
+      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? true : f.deleteField() } }, { merge: true }); }
+      catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = true; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
+    }
+    async function delNote(uid) {
+      if (!skyOK() || !(uid === user.uid || vip())) return;
+      const before = nt.list && nt.list[uid]; if (nt.list) delete nt.list[uid];
+      paintNotes(); sfx.play('untick');
+      try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, 'notes', uid)); await b.commit(); usage.track('firefly_deleted', { own: uid === user.uid }); }
+      catch (e) { if (before) nt.list[uid] = before; paintNotes(); toast('It couldn’t be deleted. Try again in a moment.'); }
+    }
+    function openPop(on) {
+      const pop = document.querySelector('.ff-pop'), btn = document.querySelector('.ff-open'); if (!pop || !btn) return;
+      pop.hidden = !on; btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) { const inp = pop.querySelector('.ff-in'); inp.focus(); pop.querySelector('.ff-count').textContent = `${inp.value.length}/${NOTE_MAX}`; }
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.ff-pop:not([hidden])')) openPop(false); });
+    document.addEventListener('click', e => {
+      const b = e.target.closest && e.target.closest('[data-note]');
+      const ff = e.target.closest && e.target.closest('.ff');
+      if (!(e.target.closest && e.target.closest('.ff-send'))) openPop(false);
+      if (b && b.dataset.note === 'open') { openPop(document.querySelector('.ff-pop').hidden); return; }
+      document.querySelectorAll('.ff.on').forEach(x => { if (x !== ff) x.classList.remove('on'); });
+      if (ff && !b) ff.classList.toggle('on');
+      if (!b || b.tagName === 'FORM') return;
+      if (b.dataset.note === 'up') voteNote(b.dataset.uid);
+      else if (b.dataset.note === 'del') delNote(b.dataset.uid);
+    });
+    document.addEventListener('submit', e => {
+      const fm = e.target.closest && e.target.closest('[data-note="form"]'); if (!fm) return;
+      e.preventDefault(); sendNote(fm.querySelector('.ff-in').value);
+    });
+    document.addEventListener('input', e => {
+      if (!e.target.classList || !e.target.classList.contains('ff-in')) return;
+      nt.draft = e.target.value.slice(0, NOTE_MAX);
+      const fm = e.target.form; fm.querySelector('.ff-count').textContent = `${nt.draft.length}/${NOTE_MAX}`;
+      fm.querySelector('button[type="submit"]').disabled = !nt.draft.trim();
+    });
+    function notesUp() {
+      if (!here) return;
+      paintNotes(); loadNotes();
+      if (!nt.timer) nt.timer = setInterval(() => { if (S.view === 'home' && !document.hidden && document.getElementById('ffs')) loadNotes(); }, 20000);
+    }
+    let ffResize = 0;
+    window.addEventListener('resize', () => { clearTimeout(ffResize); ffResize = setTimeout(paintNotes, 200); });
 
     // ---- sparks: a little light sent from one classmate's star to another's, one per person per night ----
     // sparks/{d}_{to}_{from} = {d, to, from, nm, k, t}: written once by the sender, under their registered name, to someone
@@ -6027,6 +6256,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         if (n) await b.commit();
       } catch (e) {}
       await unhere();
+      try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, 'notes', user.uid)); await b.commit(); } catch (e) {}   // my firefly
       try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
       catch (e) { msg = why(e); paint(); listen(); return; }
       try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
@@ -6724,7 +6954,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       skyFocus: (uid, pin, kb) => skyView.focusStar(uid, pin, kb), skyBlur: uid => skyView.blur(uid),
       duelsHTML, renderDuel, openChallenge, duelAccept, duelDecline, duelPlay, duelGo, duelHanded, duelProgress, rematch, duelRunHTML,
       duelCopy: () => copyLink(duelURL(S.duelId)), duelShare: () => shareLink(S.duelId), duelCount: () => Object.keys(duels).length,
-      first: () => (user || read(NAME)) ? (me.name || read(NAME) || '') : '', beat, fliesHTML, hereLineHTML, hereUp };
+      first: () => (user || read(NAME)) ? (me.name || read(NAME) || '') : '', beat, fliesHTML, hereLineHTML, hereUp, notesHTML, noteBtnHTML, notesUp };
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
@@ -7073,7 +7303,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     if (scrollTop) window.scrollTo(0, 0);
     alive.mount(); breathe.after();
-    if (S.view === 'home') { skyclock.placeMoon(); acct.hereUp(); }
+    if (S.view === 'home') { skyclock.placeMoon(); acct.hereUp(); acct.notesUp(); }
   }
 
   function typeTabs() {
@@ -8385,7 +8615,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const cards = BANK.topics.map((t, i) => archCard(t, i)).join('');
     app.innerHTML = `
       <header class="masthead wrap stage">
-        ${skyclock.moonHTML()}${acct.fliesHTML()}
+        ${skyclock.moonHTML()}${acct.fliesHTML()}${acct.notesHTML()}
         <nav class="topnav" aria-label="Site">
           <button class="logo" type="button" data-act="top" aria-label="Labubu’s Den, back to top">${alive.svg('nav')}Labubu’s Den</button>
           <div class="navlinks">
@@ -8407,7 +8637,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
           </ul>
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
-          <div class="hero-cta rise-in" style="--d:3">${cta}${acct.hereLineHTML()}</div>
+          <div class="hero-cta rise-in" style="--d:3">${cta}${acct.hereLineHTML()}${acct.noteBtnHTML()}</div>
         </div>${lookNow() === 'codex' ? codexStripHTML() : ''}
       </header>${lookNow() === 'blood' ? bloodLandHTML() : lookNow() === 'klimt' ? meadowHTML() : lookNow() === 'venus' ? seaHTML() : ''}
       <section class="intro wrap" aria-label="About this bank">

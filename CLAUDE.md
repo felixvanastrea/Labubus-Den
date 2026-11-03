@@ -571,6 +571,22 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - Tests: class.js (it extends account.js's fake Firestore with `increment`, `deleteField`, `setDoc`; the fake also has
   `where` and live queries), sky.js (the canvas: appearing, dragging, rising, sparks, phones, reduced motion, guests).
 
+## Message fireflies (Abi, 3 November 2026)
+
+- Signed-in members write one message (80 characters, `NOTE_MAX`) that floats over the homepage masthead as a firefly with a
+  cartoon speech bubble (bone bubble, two-dot tail, bobbing; not a box: Abi asked for it less boxy). "Release a firefly" under
+  the main button opens the form. A new message replaces the old one; it fades after 24 h (`NOTE_LIFE`). Hover or tap a bubble:
+  a tab under it shows who wrote it, when, a star button (one per person, not on your own) and Delete (own, or any for the
+  Labubu). Stars make it sparkle (`NOTE_TIERS` 1/3/6/10 stars: t1 brighter, t2 halo, t3 rays, t4 circling glints). Only
+  `spots().length` fly at once, the most starred first. Separate from the who's-here lights (`.fly`).
+- Firestore `notes/{uid}` = `{nm, k, txt, t (server time), up: {voterUid: true}}`, read as one query (newest 80), re-read every
+  20 s while the homepage shows (`notesUp`); no live watch (Spark plan). Delete my data removes the note.
+  **Needs Firestore rules** (Abi must paste her current file; return the whole file): signed-in read; create/replace only at
+  `notes/{own uid}` with `nm`/`k` matching `names/{k}`, `txt` 1 to 80 chars, `t == request.time`, `up == {}`; update only to
+  add or remove the voter's own key in `up` (value true); delete by the owner or the owner of `names/labubu`. Until then the
+  section stays quiet (`nt.no`).
+- PostHog events: `firefly_sent`, `firefly_upvoted`. Test: notes.js.
+
 ## Duels and parties (Abi, 12 October 2026)
 
 - A challenge is one exam drawn once (`examDraw`), the same questions in the same order for everyone, graded like exam
