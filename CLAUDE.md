@@ -574,7 +574,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Message fireflies (Abi, 3 November 2026)
 
 - Signed-in members write one message (80 characters, `NOTE_MAX`, and/or a GIF) that floats over the homepage masthead as a
-  firefly with a cartoon speech bubble (bone bubble, two-dot tail, bobbing; not a box: Abi asked for it less boxy). The
+  firefly with a cartoon speech bubble (dark charcoal bubble with a glowing edge, two-dot tail, bobbing; not a box and not light: Abi asked). The
   "Write a message" button (a full `.btn`, under the main button) opens the form; the form is `position: fixed`, placed by
   `placePop` under or over the button (the masthead clips with `overflow: hidden`), and the other bubbles fade while it's open
   (`body.ff-writing`). A new message replaces the old one; it fades after 24 h (`NOTE_LIFE`). Hover or tap a bubble: a tab
