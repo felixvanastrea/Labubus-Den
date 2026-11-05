@@ -3722,7 +3722,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'c4d1c6836d20', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '03c120027b29', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -7322,12 +7322,19 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     else if (a && a.sel.length) safely(check);
   }
   // if anything in a step throws, what was done is saved and the screen is redrawn plainly, so a button never goes dead
+  // (5 November 2026, the iPad again): the error shows on screen so it can be screenshotted, and if even the plain redraw
+  // fails, the page reloads onto the same spot (everything is saved), at most once a minute so it can't loop
   function safely(f) {
     try { f(); } catch (e) {
       oops.report(e);
       try { save(); } catch (x) {}
-      try { delete document.documentElement.dataset.vt; paint(false); } catch (x) { oops.report(x); }
+      try { toast('Something broke: ' + String((e && e.message) || e).slice(0, 90) + '. Screenshot this for the Labubu.'); } catch (x) {}
+      try { delete document.documentElement.dataset.vt; paint(false); } catch (x) { oops.report(x); rescue(); }
     }
+  }
+  function rescue() {
+    try { const k = 'efm3-rescue', t = +sessionStorage.getItem(k) || 0; if (Date.now() - t < 60e3) return; sessionStorage.setItem(k, String(Date.now())); } catch (e) {}
+    setTimeout(() => location.reload(), 1200);
   }
 
   // ---------- rendering ----------
@@ -7395,6 +7402,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
   }
   function paint(scrollTop, focusWhat) {
+    if (window.__breakPaint > 0) { window.__breakPaint--; throw new Error('test break'); }   // ipad_next.js
     const strip = app.querySelector('.strip');
     const keepScroll = !scrollTop && strip ? strip.scrollLeft : null;
     document.body.dataset.view = S.view;
@@ -11260,6 +11268,25 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   }, { passive: true });
   app.addEventListener('pointermove', e => { if (press && Math.hypot(e.clientX - press.x, e.clientY - press.y) > 10) pressEnd(); }, { passive: true });
   app.addEventListener('pointerup', pressEnd);
+  // an iPad tap on Next (or Check) that never turned into a click (5 November 2026, couldn't be reproduced here): if no
+  // click comes 450 ms after a short, still press on one of these buttons, it's pressed for it. Reported to PostHog too.
+  {
+    const TAP = new Set(['primary', 'prev', 'exam-next', 'exam-prev']);
+    let lastClick = 0, down = null;
+    app.addEventListener('click', () => { lastClick = Date.now(); }, true);
+    app.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: Date.now() }; }, { passive: true, capture: true });
+    app.addEventListener('pointerup', e => {
+      const b = e.target.closest && e.target.closest('button[data-act]');
+      if (!b || b.disabled || !TAP.has(b.dataset.act) || !down) return;
+      if (Math.hypot(e.clientX - down.x, e.clientY - down.y) > 10 || Date.now() - down.t > 800) return;
+      const at = Date.now(), act = b.dataset.act, q = S.session && S.session.idx, x = S.exam && S.exam.idx;
+      setTimeout(() => {
+        if (lastClick >= at || !b.isConnected || b.disabled) return;
+        if ((S.session && S.session.idx) !== q || (S.exam && S.exam.idx) !== x) return;
+        oops.report(new Error('tap without click: ' + act)); b.click();
+      }, 450);
+    }, { passive: true });
+  }
   app.addEventListener('pointercancel', pressEnd);
   const inCst = el => el && el.closest && el.closest('.cst-chip, .cst-card');
   app.addEventListener('mouseover', e => { if (canHover() && inCst(e.target)) cstOpen(true); });

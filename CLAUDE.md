@@ -46,6 +46,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (`paint`), and Next on a checked question with no `#verdict` on screen shows the verdict instead of skipping it. Every
   script error goes to PostHog as `page_error` (message, stack top, view, `safari`, `touch`; 5 a visit, `oops`): look
   there to find the real cause.
+  5 November 2026, the same friend's iPad: Next pressed many times, nothing. Still not reproducible here, so Next can't
+  die now: a short still tap on Next/Check/Previous (`primary`, `prev`, `exam-next`, `exam-prev`) that brings no click within
+  450 ms presses the button itself (`tap without click` goes to PostHog); a crash in `safely` shows its message in a toast
+  ("Something broke: …. Screenshot this for the Labubu."), and if the plain redraw crashes too, `rescue()` reloads onto the
+  same spot (everything is saved; once a minute at most, `efm3-rescue`). `window.__breakPaint` = N makes `paint` throw N
+  times (tests). Test: ipad_next.js.
 - Opening animation (`intro` in `template.html`): the camera looks up at the sky, where the years hang as constellations
   (`YEARS`: EFM3 open; EFM2 and EFM4 "in progress", unlit and locked). Picking EFM3 zooms into it: its semesters are
   two of its stars (S5 open, S6 in progress). The picked star becomes the shooting star: the camera follows it down
@@ -789,7 +795,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
