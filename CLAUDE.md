@@ -782,6 +782,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   one option, Q19 and Q20 two; Abi: "don't bother about the questions"). The highlights in her copy weren't trusted (Q20 had
   immune complexes): `key: "claude"`, answered by Claude from Pr Kelati's decks, with explanations. Differs from her copy's
   highlights: Q11 BC (daily emollients keep remission), Q19 AB, Q20 B.
+- The gastroenterology (digestive pathology) midterm 2026–2027 (D259–D273, `added` 2026-11-05, the day it was sat, so never
+  part of the GI quest): all 15, from the Evalbox page Abi forwarded (her name in its header left out; the stem's "μ\"g/g\""
+  tidied to μg/g). No answers marked: `key: "claude"`, answered from Pr Khannoussi's (GERD, achalasia, ulcers, chronic
+  pancreatitis) and Pr Bahlaoui's (gastritis, IBD, hepatitis) decks, with explanations; placed by concept. Q8 (peptic ulcer
+  definition) is the ulcer slides word for word; Q15 D follows the GERD slides (clinical diagnosis, PPI, "HP testing +++").
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked

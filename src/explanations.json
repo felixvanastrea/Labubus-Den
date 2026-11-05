@@ -3381,6 +3381,111 @@
       "lecture": "derm-urticaria",
       "A": "No: immune complexes belong to vasculitis.",
       "B": "Yes: vasodilation and permeability give dermal edema."
+    },
+    "D259": {
+      "lecture": "gi-achalasia",
+      "A": "No: dysphagia to solids only points to a mechanical obstruction, like a stricture or a tumour.",
+      "B": "No: hematemesis isn't a feature of achalasia.",
+      "C": "No: odynophagia with fever suggests infectious esophagitis.",
+      "D": "Yes: achalasia gives dysphagia to solids and liquids, often worse for liquids (paradoxical)."
+    },
+    "D260": {
+      "lecture": "gi-achalasia",
+      "A": "No: CT looks for a tumour (pseudoachalasia), it doesn't diagnose achalasia.",
+      "B": "No: endoscopy rules out a structural lesion but can't confirm achalasia.",
+      "C": "No: the barium swallow shows the bird's beak and supports the diagnosis, but isn't the gold standard.",
+      "D": "Yes: high-resolution manometry confirms it (incomplete LES relaxation, no peristalsis) and gives the Chicago type."
+    },
+    "D261": {
+      "lecture": "gi-achalasia",
+      "A": "No: endoscopy doesn't measure gastric emptying.",
+      "B": "No: measuring pressures is manometry's job.",
+      "C": "Yes: endoscopy is done first to rule out a tumour of the cardia (pseudoachalasia) or a stricture.",
+      "D": "No: peristalsis is assessed by manometry."
+    },
+    "D262": {
+      "lecture": "gi-gerd",
+      "A": "Yes: heartburn and regurgitation are the typical symptoms; the diagnosis is clinical.",
+      "B": "No: dysphagia is an alarm symptom, not a typical one.",
+      "C": "No: cough and wheeze are atypical (respiratory) symptoms.",
+      "D": "No: early satiety and bloating are atypical digestive symptoms."
+    },
+    "D263": {
+      "lecture": "gi-ulcer",
+      "A": "Yes: in a bleeding ulcer, endoscopy is for diagnosis and treatment (hemostasis), guided by the Forrest classification.",
+      "B": "No: an esophageal stent has no place in a duodenal ulcer bleed.",
+      "C": "No: Crohn's mapping isn't the point in an acute bleed.",
+      "D": "No: endoscopy here also treats the bleeding."
+    },
+    "D264": {
+      "lecture": "gi-hepatitis",
+      "A": "No: there's no specific antiviral; treatment is supportive.",
+      "B": "Yes: IgG anti-HAV means immunity, from a past infection or the vaccine.",
+      "C": "Yes: IgM anti-HAV confirms acute hepatitis A.",
+      "D": "No: hepatitis A never becomes chronic."
+    },
+    "D265": {
+      "lecture": "gi-gastritis",
+      "A": "Yes: fundic atrophy with the antrum spared, low B12 and macrocytic anemia in a woman over 50 is autoimmune gastritis (Biermer).",
+      "B": "No: H. pylori gastritis predominates in the antrum (or is multifocal).",
+      "C": "No: chemical gastritis comes from bile reflux, NSAIDs or alcohol, with no B12 deficiency.",
+      "D": "No: acute erosive gastritis gives pain and bleeding, not atrophy."
+    },
+    "D266": {
+      "lecture": "gi-ulcer",
+      "A": "No: that's Barrett's esophagus.",
+      "B": "No: inflammation limited to the mucosa is gastritis, or an erosion if there's a breach.",
+      "C": "No: that isn't the definition of an ulcer.",
+      "D": "Yes: word for word the ulcer slides' definition."
+    },
+    "D267": {
+      "lecture": "gi-hepatitis",
+      "A": "No: anti-HCV antibodies appear weeks later (seroconversion often after 1 to 3 months).",
+      "B": "Yes: HCV RNA turns positive within 1 to 2 weeks and proves active infection.",
+      "C": "Yes: direct-acting antivirals cure over 95%.",
+      "D": "No: there's no vaccine for hepatitis C."
+    },
+    "D268": {
+      "lecture": "gi-pancreatitis",
+      "A": "No: ERCP isn't a diagnostic tool here and doesn't treat the insufficiency.",
+      "B": "Yes: exocrine insufficiency (low fecal elastase, steatorrhea) is treated with pancreatic enzymes with meals.",
+      "C": "No: steroids are for autoimmune pancreatitis, not exocrine insufficiency.",
+      "D": "No: surgery isn't the treatment of exocrine insufficiency."
+    },
+    "D269": {
+      "lecture": "gi-pancreatitis",
+      "A": "No: autoimmune pancreatitis is a rare cause.",
+      "B": "No: celiac disease isn't a cause of chronic pancreatitis.",
+      "C": "No: gallstones cause acute pancreatitis, rarely chronic.",
+      "D": "Yes: alcohol is the leading cause, 60 to 90% in Western countries."
+    },
+    "D270": {
+      "lecture": "gi-ibd",
+      "A": "Yes: ulcerative colitis is mucosal (and superficial submucosal).",
+      "B": "Yes: it always starts at the rectum and spreads up continuously.",
+      "C": "No: perianal fistulas belong to Crohn's disease.",
+      "D": "No: transmural inflammation with skip lesions is Crohn's disease."
+    },
+    "D271": {
+      "lecture": "gi-hepatitis",
+      "A": "No: sexual transmission isn't the route of HEV.",
+      "B": "Yes: genotypes 1 and 2 spread fecal-orally through contaminated water, in epidemics.",
+      "C": "No: HEV isn't spread by air.",
+      "D": "No: HEV isn't carried by mosquitoes."
+    },
+    "D272": {
+      "lecture": "gi-ibd",
+      "A": "Yes: cobblestoning is typical of Crohn's disease.",
+      "B": "No: continuous rectocolic inflammation is ulcerative colitis.",
+      "C": "No: Crohn's disease is transmural.",
+      "D": "Yes: non-caseating epithelioid granulomas are the histological hallmark of Crohn's (when found)."
+    },
+    "D273": {
+      "lecture": "gi-gerd",
+      "A": "No: endoscopy isn't needed first for typical reflux without alarm symptoms in a young patient.",
+      "B": "No: manometry and pH monitoring are for atypical or refractory cases, and before surgery.",
+      "C": "No: CT has no place here.",
+      "D": "Yes: the diagnosis is clinical; PPIs, with H. pylori testing (on the slides: \"Helicobacter pylori testing +++\")."
     }
   }
 }
