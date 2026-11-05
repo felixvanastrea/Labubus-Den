@@ -212,6 +212,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   October unless she says otherwise, and the communication quest got `end: 2026-10-21`.
   The dermatology midterm 2026–2027 has it from 28 October 2026 (Abi: "put it in the main page"), until 3 November unless
   she says otherwise, and the dermatology quest got `end: 2026-10-28`.
+  The gastroenterology midterm 2026–2027 has it from 5 November 2026 (Abi: "put the midterm in the homepage", and "remove
+  the quest"), until 11 November unless she says otherwise, and the GI quest got `end: 2026-11-05`.
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
