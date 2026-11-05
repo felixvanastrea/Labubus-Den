@@ -789,6 +789,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   tidied to μg/g). No answers marked: `key: "claude"`, answered from Pr Khannoussi's (GERD, achalasia, ulcers, chronic
   pancreatitis) and Pr Bahlaoui's (gastritis, IBD, hepatitis) decks, with explanations; placed by concept. Q8 (peptic ulcer
   definition) is the ulcer slides word for word; Q15 D follows the GERD slides (clinical diagnosis, PPI, "HP testing +++").
+- Since 5 November 2026 the dermatology midterm and retake 2026–2027 (S246–S285) and the gastroenterology midterm
+  2026–2027 (D259–D273) are `key: "official"` (Abi asked), Claude's notes dropped, explanations kept.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
 - `src/pipeline/` is how `bank.json` was made from the Word docs (unzipped .docx → `parse_v2.py` → `merge_bank.py`),
   plus repeat detection (`repeats.py` with scikit-learn → `clusters_raw.json` → `repeats_final.py` with hand-checked
