@@ -1,6 +1,6 @@
 {
   "current": [
-    "gi-midterm-2026"
+    "cardio-midterm-2026"
   ],
   "quests": [
     {
@@ -197,13 +197,55 @@
         }
       ],
       "end": "2026-10-07"
+    },
+    {
+      "id": "cardio-midterm-2026",
+      "title": "Cardiology midterm",
+      "module": "cardio-vascular-system-disease",
+      "due": "2026-11-11",
+      "goal": 80,
+      "note": "Pr Nazzi’s lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+      "topics": [
+        {
+          "name": "Acute rheumatic fever",
+          "lecture": "C-arf"
+        },
+        {
+          "name": "Mitral stenosis",
+          "lecture": "C-ms"
+        },
+        {
+          "name": "Mitral regurgitation",
+          "lecture": "C-mr"
+        },
+        {
+          "name": "Aortic stenosis",
+          "lecture": "C-as"
+        },
+        {
+          "name": "Aortic regurgitation",
+          "lecture": "C-ar"
+        },
+        {
+          "name": "Infective endocarditis",
+          "lecture": "C-ie"
+        },
+        {
+          "name": "Acute pericarditis",
+          "lecture": "C-pericarditis"
+        },
+        {
+          "name": "Hypertension",
+          "lecture": "C-htn"
+        }
+      ]
     }
   ],
   "spotlight": {
     "set": "s5-2627-digestive-system-disease-midterm-digestive-pathology-2026-2027",
     "title": "Gastroenterology midterm 2026–2027",
     "from": "2026-11-05",
-    "until": "2026-11-11",
+    "until": "2026-11-06",
     "note": "Today’s gastroenterology midterm, as it was given, answered from Pr Khannoussi’s and Pr Bahlaoui’s lectures."
   }
 }

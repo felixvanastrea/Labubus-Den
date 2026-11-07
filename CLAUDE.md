@@ -185,6 +185,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   cholangitis and D184 malabsorption), IBD, hepatitis A, C and E (`D.hepatitis` + `D.hav`/`D.hcv`/`D.hev`, no hepatitis B
   questions), 72 questions, all with explanations (30 October 2026, from Pr Khannoussi's and Pr Bahlaoui's decks in
   Abi's Drive, lectures `gi-*`; no key contradicted the slides). The dermatology spotlight was cut to 29 October for the redo. The dermatology quest came off on 2 November after the retake (Abi): `end` set, `current` = the GI quest only.
+- 7 November 2026: the GI quest is over and the gastroenterology spotlight came down (`until` 2026-11-06, Abi). Now: the
+  cardiology midterm (`cardio-midterm-2026`, Wednesday 11 November), Pr Nazzi's lectures from Abi's list: ARF, mitral
+  stenosis, mitral regurgitation, aortic stenosis, aortic regurgitation, infective endocarditis, acute pericarditis (the
+  `C-pericarditis` topic, which also holds the tamponade questions), hypertension; 147 questions. Tricuspid regurgitation and
+  stenosis is on her list but no past question asks about it.
 - Before: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
   on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
   the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of
