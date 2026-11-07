@@ -120,6 +120,38 @@
     "gi-hepatitis": {
       "title": "Acute hepatitis, viral hepatitis A and C (Pr Bahlaoui)",
       "added": "2026-10-30"
+    },
+    "card-ar": {
+      "title": "Aortic regurgitation (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-arf": {
+      "title": "Acute rheumatic fever (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-as": {
+      "title": "Aortic stenosis (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-htn": {
+      "title": "Hypertension (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-ie": {
+      "title": "Infective endocarditis (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-mr": {
+      "title": "Mitral regurgitation (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-ms": {
+      "title": "Mitral stenosis (Pr Nazzi)",
+      "added": "2026-11-07"
+    },
+    "card-pericarditis": {
+      "title": "Acute pericarditis (Pr Nazzi)",
+      "added": "2026-11-07"
     }
   },
   "questions": {
@@ -3486,6 +3518,1012 @@
       "B": "No: manometry and pH monitoring are for atypical or refractory cases, and before surgery.",
       "C": "No: CT has no place here.",
       "D": "Yes: the diagnosis is clinical; PPIs, with H. pylori testing (on the slides: \"Helicobacter pylori testing +++\")."
+    },
+    "C6": {
+      "lecture": "card-ar",
+      "A": "No: angina, syncope and dyspnea is the triad of aortic stenosis.",
+      "B": "Yes: long-standing hypertension can dilate the aortic root and open the valve.",
+      "C": "Yes: wide pulse pressure with bounding (water-hammer) pulses.",
+      "D": "Yes: infective endocarditis is a complication of chronic AR."
+    },
+    "C114": {
+      "lecture": "card-ar",
+      "A": "No: the pulse pressure is wide.",
+      "B": "Yes: a bounding, collapsing (water-hammer) pulse.",
+      "C": "No: weak pulses belong to aortic stenosis.",
+      "D": "Yes: systolic rises and diastolic falls: wide pulse pressure."
+    },
+    "C115": {
+      "lecture": "card-ar",
+      "A": "No: an aortic aneurysm causes chronic AR.",
+      "B": "No: rheumatic AR is chronic.",
+      "C": "Yes: endocarditis (with dissection) is the main cause of acute AR.",
+      "D": "No: a bicuspid valve gives chronic AR."
+    },
+    "C154": {
+      "lecture": "card-ar",
+      "A": "No: it's the left ventricle that suffers.",
+      "B": "No: the right atrium isn't involved.",
+      "C": "Yes: volume and pressure overload give eccentric hypertrophy and LV dilatation.",
+      "D": "No: output is kept up for years; the stroke volume is increased."
+    },
+    "C155": {
+      "lecture": "card-ar",
+      "A": "No: crescendo-decrescendo systolic is aortic stenosis.",
+      "B": "No: holosystolic at the apex is mitral regurgitation.",
+      "C": "Yes: a high-pitched, blowing, decrescendo diastolic murmur along the left sternal border.",
+      "D": "No: a mid-diastolic rumble at the apex is mitral stenosis (or the Austin Flint murmur)."
+    },
+    "C156": {
+      "lecture": "card-ar",
+      "A": "No: an aneurysm gives chronic AR.",
+      "B": "No: rheumatic AR is chronic.",
+      "C": "Yes: endocarditis, with aortic dissection, causes acute AR.",
+      "D": "No: a bicuspid valve gives chronic AR."
+    },
+    "C157": {
+      "lecture": "card-ar",
+      "A": "Yes: head bobbing (de Musset's sign).",
+      "B": "No: hepatojugular reflux is a right heart failure sign.",
+      "C": "No: edema isn't a peripheral sign of AR.",
+      "D": "Yes: the dance of the carotids (Corrigan)."
+    },
+    "C158": {
+      "lecture": "card-ar",
+      "A": "Yes: Doppler echo grades AR and shows its mechanism.",
+      "B": "No: MRI is for when echo is poor or to measure the aorta.",
+      "C": "No: the X-ray shows cardiomegaly only.",
+      "D": "No: coronary angiography is done before surgery, not to grade AR."
+    },
+    "C159": {
+      "lecture": "card-ar",
+      "A": "No: pulmonary embolism isn't a complication of AR.",
+      "B": "Yes: late left ventricular dysfunction and heart failure.",
+      "C": "No: restrictive cardiomyopathy isn't linked to AR.",
+      "D": "Yes: ventricular arrhythmias, a cause of sudden death in advanced forms."
+    },
+    "C2": {
+      "lecture": "card-arf",
+      "A": "Yes: migratory polyarthritis of the large joints is a major Jones criterion, the most frequent (about 75%).",
+      "B": "No: convulsions aren't a criterion; the neurological sign is Sydenham's chorea.",
+      "C": "No: ARF is non suppurative; a skin abscess points elsewhere.",
+      "D": "No: high ESR or CRP is a minor criterion."
+    },
+    "C60": {
+      "lecture": "card-arf",
+      "A": "No: arthralgia without inflammation is minor; the major criterion is arthritis.",
+      "B": "Yes: Sydenham's chorea is a major criterion.",
+      "C": "No: mitral stenosis is a late sequela, not a criterion.",
+      "D": "No: a valve lesion counts through carditis, not as a criterion of its own."
+    },
+    "C91": {
+      "lecture": "card-arf",
+      "A": "No: subcutaneous nodules are a major criterion.",
+      "B": "Yes: a previous episode isn't a major criterion.",
+      "C": "Yes: polyarthralgia is minor; polyarthritis is the major one.",
+      "D": "No: chorea is a major criterion."
+    },
+    "C112": {
+      "lecture": "card-arf",
+      "A": "Yes: mitral stenosis is a chronic sequela, not a Jones criterion.",
+      "B": "No: subcutaneous nodules (Meynet) are major.",
+      "C": "Yes: arthralgia is minor.",
+      "D": "No: Sydenham's chorea is major."
+    },
+    "C113": {
+      "lecture": "card-arf",
+      "A": "Yes: chorea is major.",
+      "B": "No: arthralgia is minor; arthritis is major.",
+      "C": "Yes: erythema marginatum is major.",
+      "D": "Yes: subcutaneous nodules are major."
+    },
+    "C198": {
+      "lecture": "card-arf",
+      "A": "Yes: chorea is a major manifestation.",
+      "B": "No: polyarthralgia is minor (polyarthritis is the major one).",
+      "C": "Yes: erythema marginatum is a major manifestation.",
+      "D": "No: polyarthralgia isn't major, so not all of them."
+    },
+    "C201": {
+      "lecture": "card-arf",
+      "A": "No: carditis is major.",
+      "B": "Yes: raised ESR and CRP are minor criteria.",
+      "C": "Yes: arthralgia is minor.",
+      "D": "No: erythema marginatum is major."
+    },
+    "C249": {
+      "lecture": "card-arf",
+      "A": "Yes: arthralgia is minor.",
+      "B": "No: carditis is major.",
+      "C": "No: erythema marginatum is major.",
+      "D": "Yes: raised ESR or CRP is minor."
+    },
+    "C1": {
+      "lecture": "card-arf",
+      "A": "Yes: ARF peaks between 5 and 15 years.",
+      "B": "No: the latent period is 1 to 4 weeks, not days.",
+      "C": "No: it follows group A beta-hemolytic streptococcus (S. pyogenes), not pneumococcus.",
+      "D": "Yes: the heart lesions come from a late autoimmune reaction (cross-reactivity)."
+    },
+    "C54": {
+      "lecture": "card-arf",
+      "A": "No: 2 to 4 days is far too short.",
+      "B": "No: 8 to 12 weeks is too long.",
+      "C": "No: 4 to 8 weeks is too long.",
+      "D": "Yes: after a latent period of 2 to 4 weeks."
+    },
+    "C94": {
+      "lecture": "card-arf",
+      "A": "No: the latency is weeks (2 to 4), not days.",
+      "B": "Yes: primary prevention treats the streptococcal throat infection (penicillin).",
+      "C": "No: ARF pericarditis is immune, not a bacterial invasion.",
+      "D": "Yes: the mitral valve is the most affected (mitral > aortic > tricuspid)."
+    },
+    "C200": {
+      "lecture": "card-arf",
+      "A": "Yes: mostly children of 5 to 15 years.",
+      "B": "No: the brain may be involved (chorea, 5 to 10%), not definitely.",
+      "C": "No: recurrence is prevented by penicillin prophylaxis, not steroids.",
+      "D": "Yes: 1 to 3 weeks after the strep throat."
+    },
+    "C248": {
+      "lecture": "card-arf",
+      "A": "Yes: it starts 1 to 3 weeks after the strep infection.",
+      "B": "No: the brain is involved in only 5 to 10% (chorea).",
+      "C": "Yes: ages 5 to 15 mostly.",
+      "D": "No: stopping steroids too fast gives a rebound; a recurrence comes from a new strep infection without prophylaxis."
+    },
+    "C61": {
+      "lecture": "card-arf",
+      "A": "Yes: proof of strep infection plus two major criteria.",
+      "B": "No: major criteria need evidence of a preceding strep infection.",
+      "C": "No: a first attack needs two major criteria, or one major and two minor.",
+      "D": "No: two minor criteria alone aren't enough."
+    },
+    "C192": {
+      "lecture": "card-arf",
+      "A": "Yes: group A strep infection followed by two major manifestations.",
+      "B": "No: without evidence of strep infection the probability isn't high.",
+      "C": "No: a first attack needs one major and two minor, not one minor.",
+      "D": "No: two minor manifestations aren't enough."
+    },
+    "C92": {
+      "lecture": "card-arf",
+      "A": "Yes: flitting migratory polyarthritis of large joints (knee, ankle, elbow, wrist).",
+      "B": "No: it's self-limiting, not chronic or symmetrical.",
+      "C": "No: large joints, not small.",
+      "D": "No: each joint settles within days; it isn't persistent."
+    },
+    "C188": {
+      "lecture": "card-arf",
+      "A": "No: several joints, one after the other.",
+      "B": "Yes: several joints, each inflamed for a few days to a week.",
+      "C": "No: nodules occur in only 10%.",
+      "D": "No: large joints."
+    },
+    "C95": {
+      "lecture": "card-arf",
+      "A": "Yes: secondary prophylaxis prevents recurrences.",
+      "B": "No: benzathine penicillin G is given every 2 to 4 weeks, not weekly.",
+      "C": "No: surgery isn't prophylaxis.",
+      "D": "No: preventing the first episode is primary prevention."
+    },
+    "C199": {
+      "lecture": "card-arf",
+      "A": "No: amoxicillin isn't the standard long-term prophylaxis.",
+      "B": "Yes: penicillin (benzathine penicillin G IM every 2 to 4 weeks, or penicillin V).",
+      "C": "No: ciprofloxacin isn't used.",
+      "D": "No: metronidazole doesn't cover strep."
+    },
+    "C193": {
+      "lecture": "card-arf",
+      "A": "Yes: carditis is a pancarditis, the only manifestation that leaves sequelae.",
+      "B": "No: the arthritis is self-limiting, never chronic.",
+      "C": "No: stroke isn't a complication of the acute attack.",
+      "D": "No: ARF is non suppurative."
+    },
+    "C202": {
+      "lecture": "card-arf",
+      "A": "No: myocardial infarction isn't a complication of ARF.",
+      "B": "Yes: the acute phase gives valvular regurgitation, mitral first.",
+      "C": "No: stenosis is a late, chronic sequela.",
+      "D": "Yes: pericarditis is part of the pancarditis."
+    },
+    "C93": {
+      "lecture": "card-arf",
+      "A": "No: erythema marginatum isn't itchy and is transient.",
+      "B": "No: the extensor surfaces are where the nodules sit, not the erythema (trunk and limbs).",
+      "C": "No: subcutaneous nodules are painless.",
+      "D": "Yes: skin signs are rare, about 5 to 10%."
+    },
+    "C111": {
+      "lecture": "card-arf",
+      "A": "No: the bacteria don't spread to those organs.",
+      "B": "Yes: antigen mimicry between streptococcal and host tissue antigens.",
+      "C": "Yes: a delayed autoimmune reaction.",
+      "D": "No: it isn't spread of inflammation from the throat."
+    },
+    "C189": {
+      "lecture": "card-arf",
+      "A": "No: the chest X-ray only shows cardiomegaly.",
+      "B": "No: MRI isn't the first tool.",
+      "C": "No: CT isn't used for this.",
+      "D": "Yes: echocardiography shows the valvulitis (daily auscultation, echo +++)."
+    },
+    "C191": {
+      "lecture": "card-arf",
+      "A": "No: high-dose aspirin is the NSAID they can't take.",
+      "B": "No: antibiotics clear the strep, they don't calm the inflammation.",
+      "C": "No: naproxen is another NSAID.",
+      "D": "Yes: prednisone 2 mg/kg (max 80 mg), then a slow taper.",
+      "E": "No: diuretics treat heart failure, not the inflammation."
+    },
+    "C194": {
+      "lecture": "card-arf",
+      "A": "Yes: rapid, involuntary, purposeless movements.",
+      "B": "No: chorea is a major criterion.",
+      "C": "No: it's seen in children and adolescents, mostly girls.",
+      "D": "No: it appears late, 6 to 12 weeks after the attack.",
+      "E": "No: the movements are involuntary and not rhythmic."
+    },
+    "C195": {
+      "lecture": "card-arf",
+      "A": "No: rare under 3 years.",
+      "B": "Yes: 5 to 14 years.",
+      "C": "No: it becomes less frequent after 15.",
+      "D": "No: rare after 35.",
+      "E": "No: rare after 35."
+    },
+    "C196": {
+      "lecture": "card-arf",
+      "A": "No: not staph.",
+      "B": "No: not pneumococcus.",
+      "C": "No: it's bacterial.",
+      "D": "Yes: group A beta-hemolytic streptococcus, Streptococcus pyogenes."
+    },
+    "C197": {
+      "lecture": "card-arf",
+      "A": "No: the blood count is non specific.",
+      "B": "Yes: ASO above 200 Todd units proves the recent strep infection.",
+      "C": "No: electrolytes don't help.",
+      "D": "No: blood cultures are for infective endocarditis."
+    },
+    "C256": {
+      "lecture": "card-arf",
+      "A": "Yes: acute carditis gives valvular regurgitation, mitral first.",
+      "B": "No: aortic stenosis comes years later, not during ARF.",
+      "C": "Yes: pericarditis is part of the pancarditis.",
+      "D": "No: not a complication of ARF."
+    },
+    "C4": {
+      "lecture": "card-as",
+      "A": "No: in developed countries degenerative calcification is the most common cause.",
+      "B": "Yes: echo measures the area and mean gradient.",
+      "C": "Yes: crescendo-decrescendo ejection murmur at the upper sternal borders, radiating to the carotids.",
+      "D": "No: angina is functional in 75% of cases, organic in only 25%."
+    },
+    "C58": {
+      "lecture": "card-as",
+      "A": "Yes: the crescendo-decrescendo ejection murmur is the hallmark.",
+      "B": "No: severe but asymptomatic AS can be followed up; surgery is for symptoms or warning signs.",
+      "C": "No: endocarditis is a complication of AS, not a cause.",
+      "D": "No: angina is functional in 75%."
+    },
+    "C81": {
+      "lecture": "card-as",
+      "A": "No: a decrescendo diastolic murmur is aortic regurgitation.",
+      "B": "No: angina is functional in 75%.",
+      "C": "Yes: sudden death is a complication of severe symptomatic AS.",
+      "D": "No: there's no medical treatment; surgery is the only option once symptomatic."
+    },
+    "C85": {
+      "lecture": "card-as",
+      "A": "No: the first response is LV hypertrophy, not dilatation.",
+      "B": "No: dissection isn't a cause of AS.",
+      "C": "No: severe is under 1 cm²; 1 to 1.5 cm² is moderate.",
+      "D": "Yes: valve replacement (surgery or TAVI)."
+    },
+    "C134": {
+      "lecture": "card-as",
+      "A": "Yes: angina is functional in 75%, without coronary disease.",
+      "B": "No: endocarditis is a complication, not a cause.",
+      "C": "Yes: the crescendo-decrescendo ejection murmur is the hallmark.",
+      "D": "No: moderate AS is followed up, not operated."
+    },
+    "C135": {
+      "lecture": "card-as",
+      "A": "No: AS is a systolic murmur.",
+      "B": "Yes: rheumatic fever is one of the causes.",
+      "C": "No: the chest X-ray is often normal; echo makes the diagnosis.",
+      "D": "Yes: coronary angiography before surgery over 50 or with risk factors."
+    },
+    "C137": {
+      "lecture": "card-as",
+      "A": "No: the first response is hypertrophy, not enlargement.",
+      "B": "No: endocarditis is a complication, not a cause.",
+      "C": "Yes: 1 to 1.5 cm² with a jet of 3 to 4 m/s is moderate.",
+      "D": "Yes: valve replacement."
+    },
+    "C262": {
+      "lecture": "card-as",
+      "A": "No: severe asymptomatic AS can be watched.",
+      "B": "Yes: the crescendo-decrescendo ejection murmur is the hallmark.",
+      "C": "No: angina is functional in 75%.",
+      "D": "No: endocarditis is a complication, not a cause."
+    },
+    "C5": {
+      "lecture": "card-as",
+      "A": "Yes: dyspnea, angina, and syncope or lipothymia.",
+      "B": "No: nausea isn't part of the triad.",
+      "C": "No: hemoptysis points to mitral stenosis.",
+      "D": "No: palpitations aren't part of the triad."
+    },
+    "C55": {
+      "lecture": "card-as",
+      "A": "Yes: syncope (15%).",
+      "B": "Yes: angina (30%).",
+      "C": "No: palpitations aren't part of the triad.",
+      "D": "No: cough isn't a sign of AS."
+    },
+    "C116": {
+      "lecture": "card-as",
+      "A": "No: that's pulmonary congestion, as in mitral stenosis.",
+      "B": "No: not the triad.",
+      "C": "Yes: angina, syncope, dyspnea.",
+      "D": "No: chills and sweats point to infection."
+    },
+    "C206": {
+      "lecture": "card-as",
+      "A": "Yes: exertional dyspnea (50%).",
+      "B": "No: hemoptysis is mitral stenosis.",
+      "C": "Yes: syncope.",
+      "D": "Yes: angina."
+    },
+    "C143": {
+      "lecture": "card-as",
+      "A": "No: commissurotomy is for mitral stenosis.",
+      "B": "No: antibiotics don't treat AS.",
+      "C": "No: there's no medical treatment for AS.",
+      "D": "Yes: aortic valve replacement, surgical or TAVI."
+    },
+    "C208": {
+      "lecture": "card-as",
+      "A": "No: diuretics only for heart failure.",
+      "B": "Yes: aortic valve replacement.",
+      "C": "No: beta-blockers don't treat AS.",
+      "D": "No: annuloplasty is a mitral repair."
+    },
+    "C252": {
+      "lecture": "card-as",
+      "A": "Yes: valve replacement.",
+      "B": "No: diuretics only for heart failure.",
+      "C": "No: not a treatment of AS.",
+      "D": "No: annuloplasty is mitral."
+    },
+    "C82": {
+      "lecture": "card-as",
+      "A": "No: continuous is a patent ductus.",
+      "B": "Yes: crescendo-decrescendo ejection murmur.",
+      "C": "No: the thrill is at the upper sternal border, not the apex.",
+      "D": "No: the pulse is small and slow (parvus et tardus); bounding pulses are aortic regurgitation."
+    },
+    "C141": {
+      "lecture": "card-as",
+      "A": "Yes: a systolic thrill at the upper sternal border.",
+      "B": "No: early diastolic is aortic regurgitation.",
+      "C": "Yes: A2 is soft or absent in severe AS.",
+      "D": "No: the dance of the carotids belongs to aortic regurgitation."
+    },
+    "C83": {
+      "lecture": "card-as",
+      "A": "Yes: concentric LV hypertrophy.",
+      "B": "No: the LV thickens rather than dilates.",
+      "C": "Yes: the stiff LV raises filling pressure and dilates the left atrium.",
+      "D": "No: regurgitation isn't a consequence of stenosis."
+    },
+    "C84": {
+      "lecture": "card-as",
+      "A": "No: the ECG shows left ventricular hypertrophy.",
+      "B": "No: the X-ray is often normal.",
+      "C": "No: angina is functional in 75%; coronaries are often normal.",
+      "D": "Yes: echocardiography grades severity."
+    },
+    "C132": {
+      "lecture": "card-as",
+      "A": "No: normal is about 3 cm².",
+      "B": "No: that's mild.",
+      "C": "No: that's moderate.",
+      "D": "Yes: severe under 1 cm²."
+    },
+    "C136": {
+      "lecture": "card-as",
+      "A": "No: rheumatic AS is more common in developing countries.",
+      "B": "No: bicuspid valves come in younger patients.",
+      "C": "No: a subaortic web is rare.",
+      "D": "Yes: degenerative calcification (+++)."
+    },
+    "C139": {
+      "lecture": "card-as",
+      "A": "Yes: left ventricular hypertrophy.",
+      "B": "No: AF isn't the usual finding.",
+      "C": "No: not typical.",
+      "D": "No: the left ventricle hypertrophies, not the right."
+    },
+    "C140": {
+      "lecture": "card-as",
+      "A": "No: the ECG only shows LVH.",
+      "B": "Yes: echocardiography.",
+      "C": "No: CT gives the calcium score and plans TAVI.",
+      "D": "No: the X-ray is often normal."
+    },
+    "C7": {
+      "lecture": "card-htn",
+      "A": "No: without organ damage it's an urgency.",
+      "B": "Yes: severe BP (180 or more) with target organ damage.",
+      "C": "No: an emergency is managed in hospital.",
+      "D": "No: hypertensive encephalopathy is one of the emergencies."
+    },
+    "C64": {
+      "lecture": "card-htn",
+      "A": "No: with organ damage it's an emergency.",
+      "B": "No: encephalopathy means organ damage, an emergency.",
+      "C": "Yes: severe BP (above 180) without target organ damage.",
+      "D": "No: it's often asymptomatic; anxiety is the main cause."
+    },
+    "C172": {
+      "lecture": "card-htn",
+      "A": "No: an urgency has no organ damage by definition.",
+      "B": "Yes: an emergency means target organ damage.",
+      "C": "Yes: an emergency needs hospital care.",
+      "D": "Yes: an urgency doesn't need an immediate fall in BP or admission."
+    },
+    "C51": {
+      "lecture": "card-htn",
+      "A": "Yes: hyper- and hypothyroidism cause secondary hypertension.",
+      "B": "Yes: coarctation (weak, delayed femoral pulses in the young).",
+      "C": "No: aortic stenosis doesn't cause hypertension.",
+      "D": "No: atherosclerosis is a consequence, not a cause (renal artery stenosis apart)."
+    },
+    "C301": {
+      "lecture": "card-htn",
+      "A": "Yes: coarctation of the aorta.",
+      "B": "Yes: Conn's adenoma (primary aldosteronism).",
+      "C": "Yes: glomerulonephritis, a renal parenchymal cause.",
+      "D": "Yes: pregnancy (gestational hypertension, preeclampsia)."
+    },
+    "C164": {
+      "lecture": "card-htn",
+      "A": "No: too high.",
+      "B": "Yes: 140/90 or more, so above 139/89.",
+      "C": "No: 130/80 is the target on treatment, not the definition.",
+      "D": "No: 135/85 is the home BP threshold, not office."
+    },
+    "C305": {
+      "lecture": "card-htn",
+      "A": "Yes: SBP 140 or more and/or DBP 90 or more.",
+      "B": "No: those are treatment targets.",
+      "C": "No: the diastolic threshold is 90.",
+      "D": "No: the systolic threshold is 140."
+    },
+    "C20": {
+      "lecture": "card-htn",
+      "A": "Yes: ABPM is more reliable than office readings.",
+      "B": "No: the urine albumin/creatinine ratio is a standard test.",
+      "C": "No: sustained hypertension is high both in and out of the office; high only at the office is white coat.",
+      "D": "Yes: masked hypertension is high at home, normal at the office."
+    },
+    "C162": {
+      "lecture": "card-htn",
+      "A": "Yes: it's the leading cardiovascular risk factor for death.",
+      "B": "No: it is the leading one."
+    },
+    "C163": {
+      "lecture": "card-htn",
+      "A": "Yes: the rule of 50%: only half of treated patients are at goal.",
+      "B": "No: more than half are uncontrolled."
+    },
+    "C165": {
+      "lecture": "card-htn",
+      "A": "Yes: the threshold is 140/90 or more.",
+      "B": "Yes: the first goal is under 140/80.",
+      "C": "Yes: then under 130/80 if tolerated."
+    },
+    "C166": {
+      "lecture": "card-htn",
+      "A": "No: office readings miss white coat and masked hypertension.",
+      "B": "Yes: home BP monitoring.",
+      "C": "No: invasive BP isn't a screening method.",
+      "D": "Yes: ambulatory BP monitoring (ABPM)."
+    },
+    "C167": {
+      "lecture": "card-htn",
+      "A": "Yes: it confirms hypertension.",
+      "B": "Yes: it detects masked hypertension.",
+      "C": "Yes: it rules out the white coat effect.",
+      "D": "Yes: it looks for orthostatic changes in BP."
+    },
+    "C168": {
+      "lecture": "card-htn",
+      "A": "Yes: lipids and fasting glucose (risk factors).",
+      "B": "Yes: creatinine and urine albumin/creatinine ratio (kidney damage).",
+      "C": "No: TSH is only sometimes, not standard.",
+      "D": "Yes: potassium and CBC."
+    },
+    "C169": {
+      "lecture": "card-htn",
+      "A": "Yes: stroke (risk times 8).",
+      "B": "No: hypertension doesn't cause aortic stenosis.",
+      "C": "Yes: kidney failure.",
+      "D": "No: pulmonary embolism isn't a complication of hypertension."
+    },
+    "C170": {
+      "lecture": "card-htn",
+      "A": "No: calcium blockers aren't the first choice here.",
+      "B": "Yes: beta-blockers for coronary disease (after MI, angina).",
+      "C": "Yes: ACE inhibitors or ARBs for diabetes and after MI.",
+      "D": "No: alpha-blockers aren't a preferred class."
+    },
+    "C171": {
+      "lecture": "card-htn",
+      "A": "No: edema comes from calcium blockers, not diuretics.",
+      "B": "Yes: beta-blockers can cause erectile dysfunction.",
+      "C": "Yes: ankle edema with calcium blockers.",
+      "D": "Yes: dry cough with ACE inhibitors (bradykinin).",
+      "E": "No: dehydration is a diuretic effect, not an ARB one."
+    },
+    "C303": {
+      "lecture": "card-htn",
+      "A": "Yes: weight loss (5 to 20 mmHg per 10 kg).",
+      "B": "No: regular exercise is recommended, not rest.",
+      "C": "Yes: stop smoking.",
+      "D": "No: alcohol should be reduced or stopped."
+    },
+    "C304": {
+      "lecture": "card-htn",
+      "A": "Yes: ACE inhibitors.",
+      "B": "Yes: calcium channel blockers.",
+      "C": "Yes: thiazide diuretics.",
+      "D": "No: central drugs aren't first line."
+    },
+    "C11": {
+      "lecture": "card-ie",
+      "A": "No: an atrial septal defect is the one congenital lesion left out of the risk list.",
+      "B": "No: a bypass graft doesn't touch the endocardium.",
+      "C": "No: native valve disease is intermediate risk.",
+      "D": "Yes: a prosthetic valve is high risk."
+    },
+    "C52": {
+      "lecture": "card-ie",
+      "A": "No: ASD isn't a risk lesion.",
+      "B": "No: bypass grafts aren't at risk.",
+      "C": "No: native valve disease is intermediate risk.",
+      "D": "Yes: any prosthetic valve, bioprosthesis included, is high risk."
+    },
+    "C90": {
+      "lecture": "card-ie",
+      "A": "No: intermediate risk.",
+      "B": "Yes: a prosthetic valve is high risk.",
+      "C": "No: ASD isn't at risk.",
+      "D": "No: bypass grafts aren't at risk."
+    },
+    "C57": {
+      "lecture": "card-ie",
+      "A": "No: fever with a sore throat is a throat infection.",
+      "B": "Yes: any fever with a murmur means IE until proven otherwise.",
+      "C": "No: angina isn't a sign of IE.",
+      "D": "Yes: fever with a stroke in a young patient suggests septic emboli."
+    },
+    "C89": {
+      "lecture": "card-ie",
+      "A": "No: that's tonsillitis.",
+      "B": "No: angina isn't a sign of IE.",
+      "C": "Yes: fever with a murmur.",
+      "D": "Yes: fever with hemiplegia in a young patient (embolic stroke)."
+    },
+    "C317": {
+      "lecture": "card-ie",
+      "A": "No: fever with dyspnea is non specific.",
+      "B": "Yes: fever with a regurgitant murmur.",
+      "C": "Yes: fever with heart failure (cardiac decompensation) should make you think of IE.",
+      "D": "No: fever with chest pain is non specific."
+    },
+    "C22": {
+      "lecture": "card-ie",
+      "A": "Yes: imaging of valve damage (perforation, abscess, vegetation) is a major criterion.",
+      "B": "Yes: blood cultures positive for typical organisms are major.",
+      "C": "No: Janeway lesions are a minor (vascular) criterion.",
+      "D": "No: a brain abscess is an embolic event, a minor criterion."
+    },
+    "C187": {
+      "lecture": "card-ie",
+      "A": "No: a vegetation is a sign of endocarditis, not of regurgitation itself.",
+      "B": "No: it's a major criterion.",
+      "C": "Yes: the vegetation is the hallmark on echo, a major criterion.",
+      "D": "No: ASD isn't a site for IE."
+    },
+    "C23": {
+      "lecture": "card-ie",
+      "A": "Yes: mostly IV drug users.",
+      "B": "Yes: septic pulmonary emboli.",
+      "C": "No: left-sided IE is more common.",
+      "D": "No: Staphylococcus aureus dominates right-sided IE."
+    },
+    "C87": {
+      "lecture": "card-ie",
+      "A": "Yes: right is less common than left.",
+      "B": "Yes: mostly IV drug use.",
+      "C": "No: right-sided emboli go to the lungs, not the coronaries.",
+      "D": "No: Staphylococcus aureus is the usual germ."
+    },
+    "C86": {
+      "lecture": "card-ie",
+      "A": "No: DVT isn't an IE complication.",
+      "B": "Yes: renal infarction from emboli.",
+      "C": "Yes: splenic infarcts or abscess.",
+      "D": "No: IE gives mycotic (infectious) aneurysms, not atherosclerotic ones."
+    },
+    "C88": {
+      "lecture": "card-ie",
+      "A": "No: definite IE needs 2 major, 1 major + 3 minor, or 5 minor.",
+      "B": "Yes: antibiotic prophylaxis before dental care in prosthetic valve holders.",
+      "C": "No: blood cultures are taken before antibiotics.",
+      "D": "No: treatment is IV antibiotics for 4 to 6 weeks, not oral."
+    },
+    "C160": {
+      "lecture": "card-ie",
+      "A": "No: beta-blockers would worsen shock.",
+      "B": "No: ACE inhibitors don't fix a destroyed valve.",
+      "C": "No: diuretics alone don't fix it.",
+      "D": "Yes: acute heart failure from valve destruction needs urgent surgery."
+    },
+    "C239": {
+      "lecture": "card-ie",
+      "A": "No: treatment is bactericidal, often combined, for 4 to 6 weeks.",
+      "B": "No: it's exactly why antibiotics are IV, at high doses.",
+      "C": "Yes: right-sided IE in drug users sends septic emboli to the lungs.",
+      "D": "No: Streptococcus viridans remains the most common."
+    },
+    "C314": {
+      "lecture": "card-ie",
+      "A": "Yes: fever and poor general condition.",
+      "B": "Yes: splenomegaly in 20 to 40%.",
+      "C": "Yes: Janeway lesions.",
+      "D": "Yes: petechial purpura on skin and mucosa."
+    },
+    "C316": {
+      "lecture": "card-ie",
+      "A": "Yes: dental procedures +++.",
+      "B": "No: a diagnostic endoscopy isn't a recognised trigger.",
+      "C": "Yes: an infected skin wound.",
+      "D": "Yes: ENT infections such as otitis."
+    },
+    "C318": {
+      "lecture": "card-ie",
+      "A": "Yes: tears and perforations of the leaflets.",
+      "B": "Yes: perivalvular abscesses.",
+      "C": "Yes: heart failure, the main complication.",
+      "D": "Yes: embolic stroke."
+    },
+    "C319": {
+      "lecture": "card-ie",
+      "A": "Yes: the valve leaflets.",
+      "B": "No: not the pulmonary veins.",
+      "C": "Yes: prosthetic valves.",
+      "D": "Yes: pacemakers and defibrillators (device-related IE)."
+    },
+    "C3": {
+      "lecture": "card-mr",
+      "A": "No: the upper left sternal border isn't the mitral area, and MR isn't an ejection murmur.",
+      "B": "No: that isn't MR.",
+      "C": "No: a diastolic murmur at the apex is mitral stenosis.",
+      "D": "Yes: holosystolic at the apex, radiating to the left axilla."
+    },
+    "C53": {
+      "lecture": "card-mr",
+      "A": "Yes: pansystolic at the apex is the cardinal sign.",
+      "B": "Yes: papillary muscle or chordal rupture after an infarction gives acute MR.",
+      "C": "No: mitral prolapse is one of the main causes.",
+      "D": "No: a diastolic murmur at the mitral area is stenosis."
+    },
+    "C118": {
+      "lecture": "card-mr",
+      "A": "No: that's neither the timing nor the site of MR.",
+      "B": "No: early diastolic at the left sternal edge is aortic regurgitation.",
+      "C": "Yes: pansystolic, best heard at the apex.",
+      "D": "No: an ejection systolic murmur is aortic (or pulmonary) stenosis."
+    },
+    "C147": {
+      "lecture": "card-mr",
+      "A": "No: pulsus parvus et tardus belongs to aortic stenosis.",
+      "B": "Yes: pansystolic at the apex radiating to the axilla.",
+      "C": "No: it radiates to the left axilla, not the right.",
+      "D": "No: jugular distension only comes late, with right heart failure.",
+      "E": "No: MR is systolic, not continuous."
+    },
+    "C148": {
+      "lecture": "card-mr",
+      "A": "No: wrong site and timing.",
+      "B": "No: early diastolic at the left sternal edge is aortic regurgitation.",
+      "C": "Yes: pansystolic, best heard at the apex.",
+      "D": "No: an ejection systolic murmur is aortic stenosis."
+    },
+    "C149": {
+      "lecture": "card-mr",
+      "A": "No: prolapse is a main cause of MR.",
+      "B": "No: a diastolic murmur at the mitral area is stenosis.",
+      "C": "Yes: pansystolic at the apex.",
+      "D": "Yes: chordal rupture after an infarction gives MR."
+    },
+    "C274": {
+      "lecture": "card-mr",
+      "A": "Yes: chordal rupture after an infarction gives MR.",
+      "B": "No: diastolic at the mitral area is stenosis.",
+      "C": "No: prolapse is a main cause.",
+      "D": "Yes: pansystolic at the apex."
+    },
+    "C9": {
+      "lecture": "card-mr",
+      "A": "Yes: prolapse is a main cause of primary MR.",
+      "B": "No: ischemic MR is secondary, not a primary etiology.",
+      "C": "No: AF gives secondary MR through annular dilatation.",
+      "D": "Yes: rheumatic disease is the other main primary cause."
+    },
+    "C119": {
+      "lecture": "card-mr",
+      "A": "Yes: rheumatic heart disease in low-income countries.",
+      "B": "No: prolapse leads in high-income countries.",
+      "C": "No: endocarditis is a less common cause.",
+      "D": "No: papillary rupture gives acute MR, not chronic."
+    },
+    "C146": {
+      "lecture": "card-mr",
+      "A": "No: ischemic MR is secondary.",
+      "B": "Yes: rheumatic disease.",
+      "C": "No: AF gives secondary MR.",
+      "D": "Yes: mitral prolapse."
+    },
+    "C144": {
+      "lecture": "card-mr",
+      "A": "Yes: the annulus is part of the apparatus.",
+      "B": "No: the outflow tract isn't part of it.",
+      "C": "No: the mitral chordae are in the left ventricle.",
+      "D": "Yes: the papillary muscles (pillars) of the LV.",
+      "E": "Yes: the two leaflets."
+    },
+    "C151": {
+      "lecture": "card-mr",
+      "A": "No: the X-ray only shows cardiomegaly.",
+      "B": "Yes: transthoracic echo with Doppler grades MR and LV function.",
+      "C": "No: the ECG doesn't measure MR.",
+      "D": "No: cardiac MRI is a supplement, not the first tool.",
+      "E": "Yes: transesophageal echo shows the mechanism (3D)."
+    },
+    "C152": {
+      "lecture": "card-mr",
+      "A": "Yes: infective endocarditis +++.",
+      "B": "Yes: heart failure, up to cardiogenic shock.",
+      "C": "No: emboli are systemic (from AF), not pulmonary.",
+      "D": "Yes: ventricular arrhythmias (extrasystoles, VT).",
+      "E": "Yes: AF, with its embolic risk."
+    },
+    "C153": {
+      "lecture": "card-mr",
+      "A": "No: severe symptomatic MR needs surgery.",
+      "B": "Yes: repair (plasty) is preferred when possible.",
+      "C": "No: TAVI is for the aortic valve.",
+      "D": "No: anticoagulation is only for AF.",
+      "E": "Yes: replacement when repair isn't possible."
+    },
+    "C10": {
+      "lecture": "card-ms",
+      "A": "No: a holosystolic murmur at the apex is mitral regurgitation.",
+      "B": "Yes: loud S1, opening snap after S2, then a low-pitched mid-diastolic rumble at the apex.",
+      "C": "No: a continuous murmur is a patent ductus.",
+      "D": "No: the MS rumble is at the apex, not the upper left sternal border."
+    },
+    "C121": {
+      "lecture": "card-ms",
+      "A": "No: pansystolic is mitral regurgitation.",
+      "B": "Yes: the opening snap, then the diastolic rumble.",
+      "C": "No: an ejection click belongs to aortic stenosis.",
+      "D": "No: continuous is a patent ductus."
+    },
+    "C126": {
+      "lecture": "card-ms",
+      "A": "No: continuous is a patent ductus.",
+      "B": "Yes: a diastolic murmur with an opening snap.",
+      "C": "No: a harsh systolic murmur is aortic stenosis.",
+      "D": "No: holosystolic at the apex is mitral regurgitation."
+    },
+    "C247": {
+      "lecture": "card-ms",
+      "A": "Yes: the opening snap comes early in diastole, just after S2.",
+      "B": "No: harsh systolic is aortic stenosis.",
+      "C": "No: continuous is a patent ductus.",
+      "D": "No: holosystolic is mitral regurgitation."
+    },
+    "C78": {
+      "lecture": "card-ms",
+      "A": "No: syncope belongs to aortic stenosis.",
+      "B": "No: angina is rare in MS.",
+      "C": "Yes: hemoptysis from pulmonary venous hypertension.",
+      "D": "Yes: a giant left atrium presses on the esophagus (cardiac dysphagia)."
+    },
+    "C124": {
+      "lecture": "card-ms",
+      "A": "Yes: palpitations from atrial fibrillation.",
+      "B": "No: headaches aren't a feature.",
+      "C": "Yes: hemoptysis.",
+      "D": "No: syncope is aortic stenosis."
+    },
+    "C190": {
+      "lecture": "card-ms",
+      "A": "No: palpitations (AF) are typical.",
+      "B": "No: orthopnea from pulmonary congestion is typical.",
+      "C": "No: hemoptysis is typical.",
+      "D": "Yes: syncope isn't typical of MS; it belongs to aortic stenosis."
+    },
+    "C120": {
+      "lecture": "card-ms",
+      "A": "Yes: high LA pressure leads to pulmonary hypertension.",
+      "B": "No: systemic arterial pressure isn't raised by MS.",
+      "C": "No: the LV is protected, it isn't enlarged.",
+      "D": "Yes: pulmonary hypertension ends in right ventricular dysfunction."
+    },
+    "C204": {
+      "lecture": "card-ms",
+      "A": "No: the LV stays small; the LA enlarges.",
+      "B": "Yes: the left atrium dilates behind the stenosis.",
+      "C": "No: chest pain is rare.",
+      "D": "Yes: pulmonary hypertension is a complication."
+    },
+    "C250": {
+      "lecture": "card-ms",
+      "A": "No: chest pain is rare.",
+      "B": "No: systemic hypertension isn't a complication (pulmonary hypertension is).",
+      "C": "Yes: the left atrium enlarges.",
+      "D": "No: the left ventricle isn't enlarged."
+    },
+    "C128": {
+      "lecture": "card-ms",
+      "A": "No: prolapse causes regurgitation.",
+      "B": "Yes: rheumatic heart disease, 90% of cases.",
+      "C": "No: degenerative MS exists but is far less common worldwide.",
+      "D": "No: endocarditis causes regurgitation."
+    },
+    "C203": {
+      "lecture": "card-ms",
+      "A": "No: congenital MS is rare.",
+      "B": "No: endocarditis causes regurgitation.",
+      "C": "Yes: rheumatic heart disease (90%).",
+      "D": "No: degenerative is much rarer."
+    },
+    "C260": {
+      "lecture": "card-ms",
+      "A": "Yes: rheumatic fever, 90%.",
+      "B": "No: congenital is rare.",
+      "C": "No: endocarditis gives regurgitation.",
+      "D": "No: calcification is a far less common cause."
+    },
+    "C79": {
+      "lecture": "card-ms",
+      "A": "Yes: pulmonary hypertension leads to right heart failure.",
+      "B": "Yes: AF and LA thrombus cause embolic stroke.",
+      "C": "No: emboli are systemic, from the left atrium.",
+      "D": "No: the LV is protected in MS."
+    },
+    "C130": {
+      "lecture": "card-ms",
+      "A": "No: emboli go to the systemic circulation.",
+      "B": "No: MS doesn't cause systemic hypertension.",
+      "C": "Yes: the enlarged left atrium goes into atrial fibrillation.",
+      "D": "No: aortic dissection isn't linked to MS."
+    },
+    "C80": {
+      "lecture": "card-ms",
+      "A": "No: before pregnancy it's for severe MS, not mild.",
+      "B": "No: moderate to severe regurgitation is a contraindication.",
+      "C": "No: a left atrial thrombus is a contraindication.",
+      "D": "Yes: favorable valve morphology with a tight valve (area of 1.5 cm² or less)."
+    },
+    "C131": {
+      "lecture": "card-ms",
+      "A": "Yes: unfavorable anatomy, unsuitable for balloon valvotomy, means surgery (replacement).",
+      "B": "No: medical therapy doesn't relieve the obstruction.",
+      "C": "No: balloon valvotomy needs favorable anatomy.",
+      "D": "No: anticoagulation treats the AF risk, not the stenosis."
+    },
+    "C76": {
+      "lecture": "card-ms",
+      "A": "Yes: prolapse causes regurgitation, not stenosis.",
+      "B": "No: a pansystolic murmur is mitral regurgitation.",
+      "C": "Yes: a diastolic thrill at the apex.",
+      "D": "No: chordal rupture causes regurgitation."
+    },
+    "C77": {
+      "lecture": "card-ms",
+      "A": "No: the normal area is 4 to 6 cm².",
+      "B": "Yes: a big LA can compress the recurrent laryngeal nerve (Ortner's syndrome).",
+      "C": "Yes: severe under 1.5 cm².",
+      "D": "No: the most common cause is rheumatic."
+    },
+    "C123": {
+      "lecture": "card-ms",
+      "A": "No: that's already moderate to severe stenosis.",
+      "B": "No: that's mild stenosis.",
+      "C": "Yes: 4 to 6 cm².",
+      "D": "No: too large."
+    },
+    "C127": {
+      "lecture": "card-ms",
+      "A": "Yes: S1 is loud in MS.",
+      "B": "No: S2 is normal (P2 loud only with pulmonary hypertension).",
+      "C": "No: S3 isn't a feature of MS.",
+      "D": "No: no S4, often in AF."
+    },
+    "C13": {
+      "lecture": "card-pericarditis",
+      "A": "No: the endocardium isn't involved.",
+      "B": "No: both layers are inflamed, not the parietal one alone.",
+      "C": "Yes: the myocardium can be involved (myopericarditis, troponin rises).",
+      "D": "Yes: inflammation of the parietal and visceral layers."
+    },
+    "C184": {
+      "lecture": "card-pericarditis",
+      "A": "No: both layers are inflamed.",
+      "B": "Yes: both pericardial layers.",
+      "C": "Yes: the myocardium can be involved (myopericarditis).",
+      "D": "No: the endocardium isn't involved.",
+      "E": "No: pancarditis is rheumatic fever, not acute pericarditis."
+    },
+    "C212": {
+      "lecture": "card-pericarditis",
+      "A": "No: fungal pericarditis is rare (immunocompromised).",
+      "B": "Yes: viral or idiopathic, by far the most common.",
+      "C": "No: parasitic causes are rare.",
+      "D": "No: purulent bacterial pericarditis is rare (TB apart in endemic areas)."
+    },
+    "C213": {
+      "lecture": "card-pericarditis",
+      "A": "Yes: sharp, pleuritic chest pain, worse lying down, eased leaning forward.",
+      "B": "Yes: the pericardial friction rub is pathognomonic.",
+      "C": "No: Q waves mean necrosis (infarction); pericarditis gives diffuse ST elevation without Q waves.",
+      "D": "No: calcification points to chronic constrictive pericarditis."
+    },
+    "C214": {
+      "lecture": "card-pericarditis",
+      "A": "No: dissection can cause a hemopericardium, not the other way round.",
+      "B": "Yes: tamponade, from a fast-building effusion.",
+      "C": "Yes: constriction, a late complication.",
+      "D": "No: the pericardium doesn't rupture."
+    },
+    "C243": {
+      "lecture": "card-pericarditis",
+      "A": "No: shunt reversal is a congenital heart disease problem.",
+      "B": "Yes: recurrences, with effusion, are the most frequent complication.",
+      "C": "No: pericarditis doesn't cause an infarction.",
+      "D": "Yes: supraventricular arrhythmias (AF, flutter) can occur."
+    },
+    "C253": {
+      "lecture": "card-pericarditis",
+      "A": "Yes: the friction rub.",
+      "B": "Yes: sharp pleuritic pain, worse lying down.",
+      "C": "No: Q waves mean infarction.",
+      "D": "No: calcification means chronic constriction."
+    },
+    "C258": {
+      "lecture": "card-pericarditis",
+      "A": "Yes: constriction.",
+      "B": "Yes: tamponade.",
+      "C": "No: dissection isn't a complication of pericarditis.",
+      "D": "No: the pericardium doesn't rupture."
+    },
+    "C259": {
+      "lecture": "card-pericarditis",
+      "A": "Yes: viral (or idiopathic).",
+      "B": "No: bacterial is rare.",
+      "C": "No: fungal is rare.",
+      "D": "No: parasitic is rare."
     }
   }
 }
