@@ -23,6 +23,7 @@ function docs(extra = {}) {
   d['notes/u4'] = { nm: 'Nada', k: 'nada', txt: 'The achalasia slides are on the Drive', t: now - 5 * H, up: { u2: true, u3: true, u5: true, u9: true, u1: true, a: true, b: true, c: true, d: true, e: true } };
   d['notes/u6'] = { nm: 'Gifman', k: 'gifman', txt: '', gif: 'abc123XYZ', t: now - 10 * 6e4, up: {} };
   d['notes/u7'] = { nm: 'Evil', k: 'evil', txt: 'bad id', gif: '../x?y=1', t: now - 10 * 6e4, up: {} };
+  d['notes/u9'] = { nm: 'Labubu', k: 'labubu', txt: 'Kept for four days', t: Math.max(Date.parse('2026-11-07T13:00:00Z'), now - 40 * H), up: {} };
   d['notes/u5'] = { nm: 'Old', k: 'old', txt: 'This one is from yesterday', t: now - 26 * H, up: {} };
   return Object.assign(d, extra);
 }
@@ -60,7 +61,8 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   await p.waitForTimeout(500);
   await p.screenshot({ path: OUT + 'notes_desk0.png' });
   let f = await flies(p);
-  check(f.length === 5 && f.some(x => x.uid === 'u6') && !f.some(x => x.uid === 'u5') && !(await p.$('.ff[data-uid="u7"] .ff-gif')), `the last 24 hours only, a bad GIF id dropped but its text kept (${f.map(x => x.uid)})`);
+  check(f.some(x => x.uid === 'u9') === (now < Date.parse('2026-11-11T13:30:00Z')), 'the Labubu’s kept note stays past 24 h until 11 November');
+  check(f.length === (now < Date.parse('2026-11-11T13:30:00Z') ? 6 : 5) && f.some(x => x.uid === 'u6') && !f.some(x => x.uid === 'u5') && !(await p.$('.ff[data-uid="u7"] .ff-gif')), `the last 24 hours only, a bad GIF id dropped but its text kept (${f.map(x => x.uid)})`);
   check(f[0].uid === 'u4' && f[1].uid === 'u2', 'the most starred first');
   check(await p.$eval('.ff[data-uid="u6"] .ff-gif', e => /media\.giphy\.com\/media\/abc123XYZ\/200w\.gif$/.test(e.src)) && !(await p.$('.ff[data-uid="u6"] .ff-txt')), 'a GIF-only firefly shows just the GIF');
   check(/\bt4\b/.test(f[0].cls) && /\bt2\b/.test(f[1].cls), `sparkle by stars (${f.map(x => x.cls)})`);
@@ -150,7 +152,7 @@ const fdoc = (p, r) => p.evaluate(r => window.__fb.docs[r] || null, r);
   ({ ctx, p } = await open(b, { who: { uid: 'u9', displayName: 'Labubu', email: 'l@x' }, tag: 'labubu' }));
   await p.waitForTimeout(400);
   f = await flies(p);
-  check(f.length === 5 && f.every(x => x.del), 'the Labubu can delete every one');
+  check(f.length >= 5 && f.every(x => x.del), 'the Labubu can delete every one');
   await p.hover('.ff[data-uid="u3"] .ff-bub', { force: true }); await p.waitForTimeout(400);
   await p.click('.ff[data-uid="u3"] .ff-del', { force: true }); await p.waitForTimeout(500);
   check(!(await fdoc(p, 'notes/u3')), 'the Labubu deleted one');

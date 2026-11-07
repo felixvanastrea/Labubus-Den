@@ -3722,7 +3722,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'bf37077a7ee4', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'efa092186eab', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -5387,6 +5387,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // else); the more votes, the more it sparkles (NOTE_TIERS). The author deletes theirs, the Labubu anyone's.
     // Read when the homepage opens and every NOTE_READ while it shows (never a live watch: the free plan).
     const NOTE_MAX = 80, NOTE_LIFE = 864e5, NOTE_READ = 60000, NOTE_SHOW = 24, NOTE_TIERS = [1, 3, 6, 10];
+    // a message kept longer than 24 h (Abi's call each time): by name key, for a note posted after `from`, shown until `until`
+    const NOTE_KEEP = [{ k: 'labubu', from: Date.parse('2026-11-07T12:00:00Z'), until: Date.parse('2026-11-11T13:30:00Z') }];
+    const noteAlive = (x, now) => now - x.t < NOTE_LIFE || NOTE_KEEP.some(p => p.k === x.k && x.t >= p.from && now < p.until);
     const nt = { list: null, readAt: 0, busy: false, no: false, noWrite: false, timer: 0, draft: '', gif: '', gifT: 0, gifQ: null };
     // GIFs (Abi, 3 November 2026): the ones Instagram uses, from GIPHY. A note keeps only the GIF's id (letters and digits,
     // checked on every read), never a link, and the address is built here from it. Without a GIPHY key the picker is
@@ -5415,11 +5418,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       return { text: `Starred by ${list.replace(/, ([^,]*)$/, more ? ', $1' : ' and $1')}`, all: names.join(', ') + (others ? ` and ${others} more` : '') };
     }
     const noteTier = n => NOTE_TIERS.filter(v => n >= v).length;
-    const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
+    const noteAgo = t => { const m = Math.max(1, Math.round((Date.now() - t) / 60000)); return m < 60 ? `${m} min ago` : m < 2880 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`; };
     function notesNow() {
       const now = Date.now();
-      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => isVote(v.up[u])), by: Object.keys(v.up || {}).filter(u => isVote(v.up[u])).map(u => typeof v.up[u] === 'string' ? v.up[u].slice(0, 24) : '') }))
-        .filter(x => (x.txt || x.gif) && x.t && now - x.t < NOTE_LIFE)
+      return Object.entries(nt.list || {}).map(([uid, v]) => ({ uid, nm: String(v.nm || 'Someone').slice(0, 24), k: String(v.k || ''), txt: String(v.txt || '').slice(0, NOTE_MAX), gif: GIF_ID.test(String(v.gif || '')) ? String(v.gif) : '', t: millis(v.t) || 0, up: Object.keys(v.up || {}).filter(u => isVote(v.up[u])), by: Object.keys(v.up || {}).filter(u => isVote(v.up[u])).map(u => typeof v.up[u] === 'string' ? v.up[u].slice(0, 24) : '') }))
+        .filter(x => (x.txt || x.gif) && x.t && noteAlive(x, now))
         .sort((a, b) => b.up.length - a.up.length || b.t - a.t).slice(0, NOTE_SHOW);
     }
     async function loadNotes(force) {
