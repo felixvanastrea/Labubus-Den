@@ -2638,3 +2638,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .jump.off { opacity: 0; transition: opacity .35s; }
 @keyframes jump-in { from { transform: scale(.2); } to { transform: scale(3.2); } }
 @keyframes jump-shake { 0% { translate: -14px 6px; } 50% { translate: 12px -8px; } 100% { translate: 0 0; } }
+
+/* must-know lists (only the account that got the link sees them) */
+.mk-wrap .mk { padding: 22px; }
+.mk p { margin: 0 0 10px; max-width: 62ch; }
+.mk-top { margin: 4px 0 14px; padding-left: 1.4em; display: grid; gap: 4px; }
+.mk-top li { color: var(--ink-2, inherit); }
+.mk-top .num { display: inline-block; min-width: 2.4em; font-family: var(--f-mono); font-size: .85em; color: var(--ink-3, var(--ink-2)); }
+.mk .row { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 560px) { .mk-wrap .mk { padding: 18px; } }

@@ -226,6 +226,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
+## Must-know lists (Abi, 10 November 2026)
+
+- Abi wanted only the questions the exams keep asking, almost to memorise, and only she may see which ones they are.
+  The questions are public in the bank anyway; the private part is the list, so the list is never in the page or the repo.
+- A link `#must-<base64url JSON>` = `{id, t (title), note, q: [[short id, times asked]...], doc (her private claude.ai
+  cheat sheet)}` saves it into `S.musts` (`mustTake`; synced, so it lives in her own `users` doc, which only she can
+  read; no rules change). The homepage shows a card per list (`mustCardHTML`, after the quests): its top five with ×N,
+  right so far, "Practise all N" (`mustPractise`, a fresh session like Tonight's marked ones), "Cheat sheet", "Remove".
+  Unknown short ids and a doc that isn't a claude.ai artifact link are dropped. Make the link with a script kept out of the
+  repo, and give it only to Abi. PostHog: `must_list_saved`, `must_practised`. Test: must.js (a dummy list).
+- First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
+  147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
+
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 
 - Crossing out: a right-click, a long press on a phone (480 ms; iPhones send no contextmenu, and the tap that ends the
@@ -815,7 +828,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

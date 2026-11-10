@@ -2777,6 +2777,15 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .jump.off { opacity: 0; transition: opacity .35s; }
 @keyframes jump-in { from { transform: scale(.2); } to { transform: scale(3.2); } }
 @keyframes jump-shake { 0% { translate: -14px 6px; } 50% { translate: 12px -8px; } 100% { translate: 0 0; } }
+
+/* must-know lists (only the account that got the link sees them) */
+.mk-wrap .mk { padding: 22px; }
+.mk p { margin: 0 0 10px; max-width: 62ch; }
+.mk-top { margin: 4px 0 14px; padding-left: 1.4em; display: grid; gap: 4px; }
+.mk-top li { color: var(--ink-2, inherit); }
+.mk-top .num { display: inline-block; min-width: 2.4em; font-family: var(--f-mono); font-size: .85em; color: var(--ink-3, var(--ink-2)); }
+.mk .row { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 560px) { .mk-wrap .mk { padding: 18px; } }
 </style>
 </head>
 <body>
@@ -2931,11 +2940,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
     clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
     sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {},
-    duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null, unlocks: {} };
+    duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null, unlocks: {}, musts: {} };
   let storageOK = false;
   // what an account syncs, entry by entry. Each entry's last change has a time in S.stamps (deletions too), so between
   // devices the newest change wins: a reset or a "Try again" on one device isn't undone by another's older copy
-  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks', 'duels', 'rivals', 'duelSet', 'unlocks'];
+  const SYNCED = ['answers', 'first', 'clean', 'seals', 'examLog', 'sure', 'comets', 'moon', 'days', 'statSent', 'gifts', 'marks', 'duels', 'rivals', 'duelSet', 'unlocks', 'musts'];
   let lastFlat = null;
   function flatSync(o) {
     const f = {};
@@ -3722,7 +3731,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'efa092186eab', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '7372246bf0d3', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -8778,6 +8787,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       </section>
       ${spotlightHTML()}
       ${questsLive().map((x, k) => x === QUEST ? questHTML(qi, k) : withQuest(x, () => questHTML(questInfo(), k))).join('')}
+      ${mustCardHTML()}
       ${tickCardHTML()}
       ${tonightHTML()}
       ${acct.skyHTML()}
@@ -9140,6 +9150,52 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     startList(ids, 0, { from: 'home', topic: '*', title: 'One tick too many' });
   }
   function tickGone() { const rec = tickGet('efm3-tick-home') || { at: Date.now() }; rec.gone = 1; tickSet('efm3-tick-home', rec); sfx.play('untick', { quiet: true }); render(false); }
+  // ---------- must-know lists (Abi, 10 November 2026) ----------
+  // A private list of the questions an exam keeps asking, picked by Claude from the repeats. The list is never in the page:
+  // it comes once through a link only Abi gets (#must-<base64url JSON>), is kept in S.musts (synced to her own users doc,
+  // which only she can read) and shows as a homepage card with a Practise button and a link to her private cheat sheet.
+  const MUST_SID = /^[A-Z]\d{1,4}$/, MUST_DOC = /^https:\/\/claude\.ai\/(code\/)?artifact\/[A-Za-z0-9-]{8,80}$/;
+  let sidMap = null;
+  const bySid = sid => { if (!sidMap) sidMap = new Map(BANK.questions.map(q => [q.sid, q.id])); return sidMap.get(sid); };
+  function mustTake(code) {
+    let o;
+    try { o = JSON.parse(decodeURIComponent(escape(atob(code.replace(/-/g, '+').replace(/_/g, '/'))))); } catch (e) { return false; }
+    if (!o || typeof o !== 'object' || !/^[a-z0-9-]{2,40}$/.test(o.id || '') || !Array.isArray(o.q)) return false;
+    const q = o.q.filter(x => Array.isArray(x) && MUST_SID.test(x[0]) && bySid(x[0])).map(x => [x[0], Math.max(1, Math.min(99, x[1] | 0))]).slice(0, 300);
+    if (!q.length) return false;
+    S.musts[o.id] = { t: String(o.t || 'Must-know').slice(0, 60), note: String(o.note || '').slice(0, 200), q,
+      doc: MUST_DOC.test(o.doc || '') ? o.doc : '', at: Date.now() };
+    save(); usage.track('must_list_saved', { questions: q.length });
+    toast('Saved: ' + S.musts[o.id].t);
+    return true;
+  }
+  const mustIds = m => m.q.map(x => bySid(x[0])).filter(Boolean);
+  function mustCardHTML() {
+    const ls = Object.entries(S.musts || {}).filter(([, m]) => m && Array.isArray(m.q) && mustIds(m).length).sort((a, b) => b[1].at - a[1].at);
+    if (!ls.length) return '';
+    return ls.map(([id, m], k) => {
+      const ids = mustIds(m), done = ids.filter(x => S.answers[x] && S.answers[x].checked && S.answers[x].right).length;
+      const top = m.q.slice(0, 5).map(x => `<li><span class="num">×${x[1]}</span> ${esc(stemShort(Q.get(bySid(x[0]))))}</li>`).join('');
+      return `<section class="section wrap mk-wrap" aria-labelledby="mk-h${k}">
+      <div class="mk plate">
+        <p class="eyebrow">Only you can see this</p><h2 class="h2" id="mk-h${k}">${esc(m.t)}</h2>
+        <p>${fmtN(ids.length)} questions the exams keep asking${m.note ? '. ' + esc(m.note) : ''}. Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
+        <ol class="mk-top">${top}</ol>
+        <div class="row"><button class="btn primary" type="button" data-must="${esc(id)}">Practise all ${fmtN(ids.length)} ${ICON.next}</button>
+          ${m.doc ? `<a class="btn" href="${esc(m.doc)}" target="_blank" rel="noopener">Cheat sheet</a>` : ''}
+          <button class="btn quiet" type="button" data-must-off="${esc(id)}">Remove</button></div>
+      </div>
+    </section>`;
+    }).join('');
+  }
+  function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
+  function mustPractise(id) {
+    const m = S.musts[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
+    ids.forEach(x => { keepFirst(x); delete S.answers[x]; delete S.cross[x]; });
+    usage.track('must_practised', { questions: ids.length });
+    startList(ids, 0, { from: 'home', topic: '*', title: m.t });
+  }
+  function mustOff(id) { if (!S.musts[id]) return; delete S.musts[id]; save(); sfx.play('untick', { quiet: true }); render(false); }
   // ---------- links to one part of the Den (Abi, 1 November 2026: "my colleague wants the 2026 dermatology midterm") ----------
   // #set-<slug> opens an exam set's practice, #module-<id> a module, #lecture-<id> a lecture's practice, #quest-<id> a quest.
   // The share buttons (set and lecture rows, the module header, the quest card) open the phone's share sheet, else copy it.
@@ -9159,6 +9215,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     } catch (e) { toast(l.url); }
   }
   function readLink() {
+    const mm = /^#must-([A-Za-z0-9_-]{8,8000})$/.exec(location.hash || '');
+    if (mm) { try { history.replaceState(history.state, '', location.pathname + location.search); } catch (e) {} return mustTake(mm[1]) ? { kind: 'must' } : null; }
     const m = /^#(set|module|lecture|quest)-([A-Za-z0-9_.-]+)$/.exec(location.hash || ''); if (!m) return null;
     try { history.replaceState(history.state, '', location.pathname + location.search); } catch (e) {}
     const [, kind, v] = m, lv = v.toLowerCase();
@@ -9170,6 +9228,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   function openLink(l) {
     if (!l) return;
     usage.track('link_opened', { kind: l.kind });
+    if (l.kind === 'must') { S.view = 'home'; render(false); return; }
     if (l.kind === 'set') { S.topicId = SRC.get(l.id).topic; S.view = 'topic'; startSession(S.topicId, l.id); }
     else if (l.kind === 'module') openTopic(l.id);
     else if (l.kind === 'lecture') { const d = DIAG[DIAG_INDEX.get(l.id)]; S.topicId = d.m; S.topicBy = 'lecture'; S.view = 'topic'; startLecture(l.id); }
@@ -11304,6 +11363,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const t = e.target.closest('button');
     if (!t || !app.contains(t)) return;
     { const qc = t.closest('[data-quest]'); if (qc) useQuest(qc.dataset.quest); }
+    if (t.dataset.must) { mustPractise(t.dataset.must); return; }
+    if (t.dataset.mustOff) { mustOff(t.dataset.mustOff); return; }
     if (t.dataset.share) { const i = t.dataset.share.indexOf(':'); shareLink(t.dataset.share.slice(0, i), t.dataset.share.slice(i + 1)); return; }   // a quest card's buttons act on its own quest
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; sfx.play('toggle', { quiet: true }); save(); render(false); return; }
     if (t.dataset.topic) { openTopic(t.dataset.topic); return; }
