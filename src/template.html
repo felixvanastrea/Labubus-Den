@@ -252,7 +252,7 @@
     if (S.view === 'diag' && !DIAG_INDEX.has(S.diag)) S.view = 'weak';
     if (S.view === 'weak' && !DIAG.length) S.view = 'home';
     if (S.view === 'duel' && !S.duelId) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel'].includes(S.view)) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel', 'cheat'].includes(S.view)) S.view = 'home';
     if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
     // a first visit starts with nothing new: everything in the log is new to them anyway
     if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
@@ -4638,6 +4638,8 @@
     else if (S.view === 'topic' && S.topicId) renderTopic();
     else if (S.view === 'repeats') renderRepeats();
     else if (S.view === 'updates') renderUpdates();
+    else if (S.view === 'cheat' && cheatOf(S.cheat)) renderCheat();
+    else if (S.view === 'cheat') { S.view = 'home'; document.body.dataset.view = 'home'; renderHome(); }
     else if (S.view === 'weak' && DIAG.length) renderWeak();
     else if (S.view === 'diag' && DIAG_INDEX.has(S.diag)) renderDiag();
     else if (S.view === 'duel' && S.duelId) acct.renderDuel();
@@ -6401,7 +6403,7 @@
         <p>${fmtN(ids.length)} questions${m.note ? ': ' + esc(m.note) : ''}. Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
         <ol class="mk-top">${top}</ol>
         <div class="row"><button class="btn primary" type="button" data-must="${esc(id)}">Practise all ${fmtN(ids.length)} ${ICON.next}</button>
-          ${m.doc ? `<a class="btn" href="${esc(m.doc)}" target="_blank" rel="noopener">Cheat sheet</a>` : ''}
+          ${m.sheet ? `<button class="btn" type="button" data-cheat="${esc(id)}">Cheat sheet</button>` : m.doc ? `<a class="btn" href="${esc(m.doc)}" target="_blank" rel="noopener">Cheat sheet</a>` : ''}
           ${m.pub ? '' : `<button class="btn quiet" type="button" data-must-off="${esc(id)}">Remove</button>`}</div>
       </div>
     </section>`;
@@ -6413,6 +6415,24 @@
     ids.forEach(x => { keepFirst(x); delete S.answers[x]; delete S.cross[x]; });
     usage.track('must_practised', { questions: ids.length });
     startList(ids, 0, { from: 'home', topic: '*', title: m.t });
+  }
+  // the cheat sheet that goes with a public list (built from src/cheatsheets/*.md), as its own page
+  const cheatOf = id => { const x = publicMusts().find(y => y[0] === id) || QUESTS.filter(q => q.must && q.must.id === id).map(q => [id, q.must])[0]; return x && x[1].sheet ? x[1] : null; };
+  function openCheat(id) { if (!cheatOf(id)) return; S.cheat = id; S.view = 'cheat'; usage.track('cheat_sheet_opened'); save(); render(true, null, 'next'); }
+  function renderCheat() {
+    const m = cheatOf(S.cheat);
+    app.innerHTML = `
+      ${barHTML('home', 'Home', 'Cheat sheet')}
+      <main class="wrap narrow stage">
+        <header class="page-head"><div>
+          <p class="eyebrow">What the past exams keep asking</p>
+          <h1 class="h1">${esc(m.t.replace(/^Must-know · /, ''))} cheat sheet</h1>
+          <div class="row"><button class="btn primary" type="button" data-must="${esc(S.cheat)}">Practise the ${fmtN(mustIds(m).length)} must-know questions ${ICON.next}</button></div>
+        </div></header>
+        <article class="cheat">${m.sheet}</article>
+        <div class="row cheat-end"><button class="btn primary" type="button" data-must="${esc(S.cheat)}">Practise the ${fmtN(mustIds(m).length)} must-know questions ${ICON.next}</button></div>
+        ${footHTML()}
+      </main>`;
   }
   function mustOff(id) { if (!S.musts[id]) return; delete S.musts[id]; save(); sfx.play('untick', { quiet: true }); render(false); }
   // ---------- links to one part of the Den (Abi, 1 November 2026: "my colleague wants the 2026 dermatology midterm") ----------
@@ -8583,6 +8603,7 @@
     if (!t || !app.contains(t)) return;
     { const qc = t.closest('[data-quest]'); if (qc) useQuest(qc.dataset.quest); }
     if (t.dataset.must) { mustPractise(t.dataset.must); return; }
+    if (t.dataset.cheat) { openCheat(t.dataset.cheat); return; }
     if (t.dataset.mustOff) { mustOff(t.dataset.mustOff); return; }
     if (t.dataset.share) { const i = t.dataset.share.indexOf(':'); shareLink(t.dataset.share.slice(0, i), t.dataset.share.slice(i + 1)); return; }   // a quest card's buttons act on its own quest
     if (t.dataset.type) { S.type = t.dataset.type; confirmReset = false; sfx.play('toggle', { quiet: true }); save(); render(false); return; }

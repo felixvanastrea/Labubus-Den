@@ -272,6 +272,13 @@ def build_quest(cur):
             assert sid in shortids, f"quest {cur['id']} must-know: no question {sid}"
             assert shortids[sid] in Q and Q[shortids[sid]]['topic'] == cur['module'], f"quest {cur['id']} must-know: {sid} isn't in {cur['module']}"
         out['must'] = {k: m[k] for k in ('id', 't', 'note', 'q') if k in m}
+        if m.get('sheet'):
+            import markdown
+            md = open(os.path.join('cheatsheets', m['sheet']), encoding='utf8').read()
+            html = markdown.markdown(md, extensions=['tables'])
+            html = html.replace('<table>', '<div class="cs-table"><table>').replace('</table>', '</table></div>')
+            out['must']['sheet'] = html
+            print('quest', cur['id'], 'cheat sheet |', len(html), 'bytes')
         print('quest', cur['id'], 'must-know |', len(m['q']), 'questions')
     out.update(topics=topics, q=flat)
     print('quest', cur['id'], cur['due'], '|', len(flat), 'questions |',

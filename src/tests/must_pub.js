@@ -13,6 +13,17 @@ let bad = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if
   await p.click('[data-must]'); await p.waitForTimeout(700);
   const st = await p.evaluate(() => JSON.parse(localStorage.getItem('efm3-mcq-bank-v1')));
   ok(st.view === 'quiz' && st.session.qids.length > 5, 'Practise opens a session of its ' + (st.session && st.session.qids.length) + ' questions');
+  st.view = 'home'; await p.evaluate(s => localStorage.setItem('efm3-mcq-bank-v1', JSON.stringify(s)), st); await p.reload(); await p.waitForTimeout(900);
+  await p.click('.mk [data-cheat]'); await p.waitForTimeout(700);
+  ok(await p.evaluate(() => document.body.dataset.view === 'cheat' && !!document.querySelector('.cheat h2') && !!document.querySelector('.cs-table table')), 'Cheat sheet opens its page, with its tables');
+  ok(!/not sure|disagree/i.test(await p.innerText('.cheat')), 'no notes about doubtful keys on the public sheet');
+  await p.screenshot({ path: 'shots/cheat.png', fullPage: false });
+  await p.click('.cheat-end [data-must]'); await p.waitForTimeout(600);
+  ok(await p.evaluate(() => document.body.dataset.view === 'quiz'), 'its Practise button starts the list');
+  const ph = await b.newPage({ viewport: { width: 390, height: 844 } }); await ph.addInitScript(() => { window.__skyNow = Date.parse('2026-11-10T20:00:00Z'); });
+  await ph.goto('http://127.0.0.1:8765/index.html'); await ph.waitForTimeout(900); await ph.click('.mk [data-cheat]'); await ph.waitForTimeout(700);
+  ok(await ph.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'no sideways scroll on a phone');
+  await ph.evaluate(() => document.querySelectorAll('.cs-table')[1].scrollIntoView()); await ph.screenshot({ path: 'shots/cheat390.png' });
   const p2 = await b.newPage(); await p2.addInitScript(() => { window.__skyNow = Date.parse('2026-11-12T10:00:00Z'); });
   await p2.goto('http://127.0.0.1:8765/index.html'); await p2.waitForTimeout(1000);
   ok(!(await p2.$('.mk')), 'gone once the exam has passed');

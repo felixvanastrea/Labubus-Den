@@ -240,6 +240,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (`id`, `t`, `note`, `q` = [[short id, times asked]...]; the build checks every id is in the quest's module) shows to
   everyone above the quest cards until its due date (`publicMusts`), with no Remove and no cheat sheet button (her doc is
   private; add `doc` only once she shares it). A private list with the same id shows once, as the public one. Test: must_pub.js.
+- The cheat sheet goes with a public list (Abi: "add the cheat sheet to be seen"): `sheet` in the quest's `must` names a
+  Markdown file in `src/cheatsheets/`; the build renders it (python-markdown with tables; each table wrapped in `.cs-table`,
+  which scrolls sideways on a phone) into the list. "Cheat sheet" on the card opens its page (`S.view = 'cheat'`,
+  `S.cheat`, `renderCheat`), Practise buttons at its top and foot; it goes home once the quest has passed. The public sheet
+  carries no notes on doubtful keys (Abi doesn't want classmates to see notes): those stay in her private doc.
+  PostHog: `cheat_sheet_opened`. Test: must_pub.js.
 - First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
   147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
 

@@ -2647,3 +2647,20 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
 .mk-top .num { display: inline-block; min-width: 2.4em; font-family: var(--f-mono); font-size: .85em; color: var(--ink-3, var(--ink-2)); }
 .mk .row { display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 560px) { .mk-wrap .mk { padding: 18px; } }
+
+/* the cheat sheet page */
+.cheat { font-size: 1.04rem; line-height: 1.6; }
+.cheat > p, .cheat li { max-width: 68ch; }
+.cheat h2 { font-family: var(--f-display, inherit); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3.4vw, 2.1rem); margin: 2.2em 0 .4em; padding-top: .7em; border-top: 1px solid var(--hair); text-wrap: balance; }
+.cheat h2:first-of-type { margin-top: 1.2em; }
+.cheat p { margin: 0 0 .8em; }
+.cheat strong { color: var(--ink, inherit); font-weight: 600; }
+.cheat ul { margin: 0 0 1em; padding-left: 1.2em; display: grid; gap: .35em; }
+.cs-table { overflow-x: auto; margin: .4em 0 1.2em; border: 1px solid var(--hair); border-radius: 6px; }
+.cs-table table { border-collapse: collapse; width: 100%; font-size: .93rem; line-height: 1.45; }
+.cs-table th, .cs-table td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--hair); }
+.cs-table th { font-weight: 600; color: var(--ink, inherit); background: rgba(255, 255, 255, .03); }
+.cs-table tr:last-child td { border-bottom: 0; }
+.cs-table td:first-child { color: var(--ink, inherit); }
+.cheat-end { margin: 2em 0 1em; }
+@media (max-width: 700px) { .cs-table table { min-width: 640px; } .cs-table:has(th:nth-child(3):last-child) table, .cs-table:has(th:nth-child(2):last-child) table { min-width: 0; } }
