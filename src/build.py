@@ -265,6 +265,14 @@ def build_quest(cur):
         flat += [i for i in ids if i not in seen]
         seen.update(ids)
     out = {k: cur[k] for k in ('id', 'title', 'module', 'due', 'goal', 'note', 'end') if k in cur}
+    # the must-know list (Abi, 10 November 2026): one question per idea the past exams keep asking, shown above the quest
+    if cur.get('must'):
+        m = cur['must']
+        for sid, n in m['q']:
+            assert sid in shortids, f"quest {cur['id']} must-know: no question {sid}"
+            assert shortids[sid] in Q and Q[shortids[sid]]['topic'] == cur['module'], f"quest {cur['id']} must-know: {sid} isn't in {cur['module']}"
+        out['must'] = {k: m[k] for k in ('id', 't', 'note', 'q') if k in m}
+        print('quest', cur['id'], 'must-know |', len(m['q']), 'questions')
     out.update(topics=topics, q=flat)
     print('quest', cur['id'], cur['due'], '|', len(flat), 'questions |',
           ', '.join(f"{t['name']} {len(t['q'])}" for t in topics),

@@ -6000,8 +6000,8 @@
         </div>
       </section>
       ${spotlightHTML()}
-      ${questsLive().map((x, k) => x === QUEST ? questHTML(qi, k) : withQuest(x, () => questHTML(questInfo(), k))).join('')}
       ${mustCardHTML()}
+      ${questsLive().map((x, k) => x === QUEST ? questHTML(qi, k) : withQuest(x, () => questHTML(questInfo(), k))).join('')}
       ${tickCardHTML()}
       ${tonightHTML()}
       ${acct.skyHTML()}
@@ -6384,27 +6384,32 @@
     return true;
   }
   const mustIds = m => m.q.map(x => bySid(x[0])).filter(Boolean);
+  // the quests' lists are for everyone (Abi, 10 November 2026: "publish this for all users"); a private one with the same id
+  // only shows once, as the public one
+  const publicMusts = () => QUESTS.filter(x => x.must && x.due >= questToday() && !(x.end && questToday() >= x.end)).map(x => [x.must.id, Object.assign({ pub: 1 }, x.must)]);
   function mustCardHTML() {
-    const ls = Object.entries(S.musts || {}).filter(([, m]) => m && Array.isArray(m.q) && mustIds(m).length).sort((a, b) => b[1].at - a[1].at);
+    const pub = publicMusts(), pubIds = new Set(pub.map(x => x[0]));
+    const ls = pub.concat(Object.entries(S.musts || {}).filter(([id, m]) => !pubIds.has(id) && m && Array.isArray(m.q)).sort((a, b) => b[1].at - a[1].at))
+      .filter(([, m]) => mustIds(m).length);
     if (!ls.length) return '';
     return ls.map(([id, m], k) => {
       const ids = mustIds(m), done = ids.filter(x => S.answers[x] && S.answers[x].checked && S.answers[x].right).length;
       const top = m.q.slice(0, 5).map(x => `<li><span class="num">×${x[1]}</span> ${esc(stemShort(Q.get(bySid(x[0]))))}</li>`).join('');
       return `<section class="section wrap mk-wrap" aria-labelledby="mk-h${k}">
       <div class="mk plate">
-        <p class="eyebrow">Only you can see this</p><h2 class="h2" id="mk-h${k}">${esc(m.t)}</h2>
-        <p>${fmtN(ids.length)} questions the exams keep asking${m.note ? '. ' + esc(m.note) : ''}. Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
+        <p class="eyebrow">${m.pub ? 'What the past exams keep asking' : 'Only you can see this'}</p><h2 class="h2" id="mk-h${k}">${esc(m.t)}</h2>
+        <p>${fmtN(ids.length)} questions${m.note ? ': ' + esc(m.note) : ''}. Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
         <ol class="mk-top">${top}</ol>
         <div class="row"><button class="btn primary" type="button" data-must="${esc(id)}">Practise all ${fmtN(ids.length)} ${ICON.next}</button>
           ${m.doc ? `<a class="btn" href="${esc(m.doc)}" target="_blank" rel="noopener">Cheat sheet</a>` : ''}
-          <button class="btn quiet" type="button" data-must-off="${esc(id)}">Remove</button></div>
+          ${m.pub ? '' : `<button class="btn quiet" type="button" data-must-off="${esc(id)}">Remove</button>`}</div>
       </div>
     </section>`;
     }).join('');
   }
   function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
   function mustPractise(id) {
-    const m = S.musts[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
+    const m = (publicMusts().find(x => x[0] === id) || [])[1] || S.musts[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
     ids.forEach(x => { keepFirst(x); delete S.answers[x]; delete S.cross[x]; });
     usage.track('must_practised', { questions: ids.length });
     startList(ids, 0, { from: 'home', topic: '*', title: m.t });

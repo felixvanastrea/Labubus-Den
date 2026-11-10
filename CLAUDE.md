@@ -236,6 +236,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   right so far, "Practise all N" (`mustPractise`, a fresh session like Tonight's marked ones), "Cheat sheet", "Remove".
   Unknown short ids and a doc that isn't a claude.ai artifact link are dropped. Make the link with a script kept out of the
   repo, and give it only to Abi. PostHog: `must_list_saved`, `must_practised`. Test: must.js (a dummy list).
+- Public lists (Abi, same night: "publish this for all users, above the quest"): a quest's `must` in `quests.json`
+  (`id`, `t`, `note`, `q` = [[short id, times asked]...]; the build checks every id is in the quest's module) shows to
+  everyone above the quest cards until its due date (`publicMusts`), with no Remove and no cheat sheet button (her doc is
+  private; add `doc` only once she shares it). A private list with the same id shows once, as the public one. Test: must_pub.js.
 - First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
   147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
 
@@ -828,7 +832,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
