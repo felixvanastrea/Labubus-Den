@@ -193,7 +193,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Explanations for 143 of the 147 (7 November 2026, from Pr Nazzi's 2025–2026 decks in Abi's Drive, lectures `card-*`;
   the acute pericarditis deck reads empty, so its 9 are from standard teaching). Four left unexplained and flagged to Abi:
   C145 (decompensated chronic MR: "increased LV systolic volume" not keyed), C117 (the AS slides list systemic embolism as
-  a complication, the key doesn't), C207 and C261 (disagree on RV dysfunction as an AS complication).
+  a complication, the key doesn't), C207 and C261 (disagree on RV dysfunction as an AS complication). 11 November 2026, after
+  the midterm, Abi: right ventricle is correct, so C207 is ABD (`corrections.json`) and both now have explanations; C117 and
+  C145 still wait.
 - Before: the dermatology midterm (`derm-midterm-2026`, Wednesday 28 October 2026), the five lectures Abi named
   on 22 October: acne, common bacterial infections, cutaneous tuberculosis, eczema, urticaria (96 questions). Leprosy shares
   the tuberculosis lecture topic (only 2 past questions) but isn't on it, so that topic takes `S.tb` by concept instead of

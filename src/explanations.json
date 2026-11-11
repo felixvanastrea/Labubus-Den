@@ -4524,6 +4524,20 @@
       "B": "No: bacterial is rare.",
       "C": "No: fungal is rare.",
       "D": "No: parasitic is rare."
+    },
+    "C207": {
+      "lecture": "card-as",
+      "A": "Yes: late in severe AS, the pressure overload backs up into the lungs (pulmonary hypertension) and the right ventricle fails.",
+      "B": "Yes: the hypertrophied left ventricle is prone to ventricular arrhythmias.",
+      "C": "No: pulmonary embolism comes from venous clots, not from the aortic valve.",
+      "D": "Yes: sudden cardiac death is the feared complication of symptomatic severe AS."
+    },
+    "C261": {
+      "lecture": "card-as",
+      "A": "Yes: late in severe AS, the pressure overload backs up into the lungs (pulmonary hypertension) and the right ventricle fails.",
+      "B": "Yes: sudden death is the feared complication of symptomatic severe AS.",
+      "C": "Yes: the hypertrophied left ventricle is prone to ventricular arrhythmias.",
+      "D": "No: pulmonary embolism comes from venous clots, not from the aortic valve."
     }
   }
 }

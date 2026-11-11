@@ -716,6 +716,14 @@
         ]
       },
       "why": "E is the classic contraindication (oral isotretinoin + tetracyclines, intracranial hypertension), surely meant as true in the professor's question. Claude had left it out; Abi: yes."
+    },
+    {
+      "q": "C207",
+      "confirmed": "2026-11-11",
+      "field": "answer",
+      "from": "BD",
+      "to": "ABD",
+      "why": "Severe aortic stenosis complications: the doc's key left out right ventricular dysfunction, which C261 (the same question) keys. Abi, after the cardiology midterm: right ventricle is correct."
     }
   ]
 }

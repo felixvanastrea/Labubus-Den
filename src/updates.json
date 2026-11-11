@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-11-11-corrections",
+    "date": "2026-11-11",
+    "title": "Corrected questions",
+    "kind": "Corrections",
+    "items": [
+      "Cardiology: the aortic stenosis complications question from the professor's collected questions now counts right ventricular dysfunction as a complication, like its other copy."
+    ]
+  },
+  {
     "id": "2026-11-10-must-know",
     "date": "2026-11-10",
     "title": "Must-know cardiology",
