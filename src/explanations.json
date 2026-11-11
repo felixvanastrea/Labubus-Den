@@ -4538,6 +4538,111 @@
       "B": "Yes: sudden death is the feared complication of symptomatic severe AS.",
       "C": "Yes: the hypertrophied left ventricle is prone to ventricular arrhythmias.",
       "D": "No: pulmonary embolism comes from venous clots, not from the aortic valve."
+    },
+    "C380": {
+      "lecture": "card-mr",
+      "A": "No: mitral valve prolapse is one of the two main primary causes of MR.",
+      "B": "Yes: chordal (cordage) rupture, after an MI or with prolapse, causes MR.",
+      "C": "No: a diastolic murmur in the mitral area is mitral stenosis.",
+      "D": "Yes: the MR murmur is holosystolic (pansystolic) at the apex."
+    },
+    "C381": {
+      "lecture": "card-as",
+      "A": "Yes: syncope is part of the AS triad.",
+      "B": "No: cough is not one of the signs of AS.",
+      "C": "No: palpitations are not part of the AS triad.",
+      "D": "Yes: angina is part of the AS triad (with dyspnea and syncope)."
+    },
+    "C382": {
+      "lecture": "card-arf",
+      "A": "No: two major criteria need proof of a strep infection too.",
+      "B": "No: one major and one minor isn't enough.",
+      "C": "No: two minor criteria alone don't make the diagnosis.",
+      "D": "Yes: proof of a strep throat infection plus two major criteria."
+    },
+    "C383": {
+      "lecture": "card-mr",
+      "A": "Yes: the classic MR murmur, holosystolic at the apex, radiating to the left axilla.",
+      "B": "No: jugular distension is right heart failure, not a finding of chronic MR itself.",
+      "C": "No: a small, slow pulse is aortic stenosis.",
+      "D": "Yes: in chronic MR the large volume filling the LV in diastole gives an S3 at the apex."
+    },
+    "C384": {
+      "lecture": "card-ms",
+      "A": "Yes: before valve surgery in adults over 50, the coronaries are checked by angiography.",
+      "B": "No: severity is judged by echocardiography (valve area), not the ECG.",
+      "C": "No: the MS murmur is a diastolic rumble at the apex.",
+      "D": "Yes: rheumatic fever causes almost all mitral stenosis."
+    },
+    "C385": {
+      "lecture": "card-as",
+      "A": "No: the treatment is valve replacement when AS is symptomatic and severe, not every severe AS by surgery or TAVI alone.",
+      "B": "No: infective endocarditis causes regurgitation, not stenosis.",
+      "C": "Yes: the crescendo-decrescendo ejection murmur at the upper sternal border is the hallmark.",
+      "D": "No: angina in AS can come from the LV hypertrophy itself, without coronary disease."
+    },
+    "C386": {
+      "lecture": "card-ie",
+      "A": "No: mitral stenosis is an intermediate-risk lesion.",
+      "B": "Yes: any prosthetic valve, bioprosthesis included, is the highest risk.",
+      "C": "No: non-cyanotic congenital disease (like an atrial septal defect) is not high risk.",
+      "D": "No: a coronary bypass graft is not an endocarditis risk lesion."
+    },
+    "C387": {
+      "lecture": "card-arf",
+      "A": "No: arthralgia is a minor criterion; the major one is migratory polyarthritis.",
+      "B": "No: mitral regurgitation isn't a Jones criterion (carditis is).",
+      "C": "Yes: Sydenham's chorea is a major criterion.",
+      "D": "No: mitral stenosis is a late sequel, not a criterion."
+    },
+    "C388": {
+      "lecture": "card-htn",
+      "A": "No: the urine albumin/creatinine ratio is part of the standard work-up.",
+      "B": "No: high at the office and normal at home is white-coat hypertension; sustained is high at both.",
+      "C": "Yes: ambulatory monitoring is more reliable than an office reading.",
+      "D": "Yes: masked hypertension is high at home and normal at the office."
+    },
+    "C389": {
+      "lecture": "card-ar",
+      "A": "Yes: head bobbing (de Musset's sign) comes with the wide pulse pressure.",
+      "B": "Yes: dancing carotids, from the bounding pulse.",
+      "C": "No: lower limb edema is right heart failure, not a peripheral sign of AR.",
+      "D": "No: the diastolic murmur is heard at the heart, not a peripheral sign."
+    },
+    "C390": {
+      "lecture": "card-htn",
+      "A": "No: chest pain can happen but isn't the common symptom.",
+      "B": "Yes: hypertensive encephalopathy is one of the organ damages that make it an emergency.",
+      "C": "No: without organ damage it's an urgency.",
+      "D": "Yes: over 180 with target organ damage is the definition of an emergency."
+    },
+    "C391": {
+      "lecture": "card-mr",
+      "A": "Yes: transthoracic echo grades the leak and measures LV function.",
+      "B": "No: the ECG shows rhythm and chambers, not the severity of the leak.",
+      "C": "No: a chest X-ray only shows the heart's size and the lungs.",
+      "D": "No: CT is not the tool for valve leaks."
+    },
+    "C392": {
+      "lecture": "card-arf",
+      "A": "No: 8 to 12 weeks is too late.",
+      "B": "Yes: rheumatic fever comes 2 to 4 weeks after the strep throat.",
+      "C": "No: 4 to 8 weeks is too late.",
+      "D": "No: days is too early; it's an immune reaction that takes weeks."
+    },
+    "C393": {
+      "lecture": "card-pericarditis",
+      "A": "No: cancer is a rarer cause.",
+      "B": "Yes: viral (or idiopathic) is the most common cause.",
+      "C": "No: bacterial pericarditis is rare.",
+      "D": "No: rheumatic fever is a rare cause today."
+    },
+    "C394": {
+      "lecture": "card-ie",
+      "A": "No: right-sided endocarditis is less common than left-sided.",
+      "B": "No: the usual germ is Staphylococcus aureus.",
+      "C": "Yes: IV drug use is the main cause.",
+      "D": "Yes: vegetations on the tricuspid valve throw septic emboli to the lungs."
     }
   }
 }

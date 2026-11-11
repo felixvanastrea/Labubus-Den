@@ -9,7 +9,8 @@ let bad = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if
   const card = await p.$('.mk');
   ok(!!card, 'a guest sees the must-know card');
   ok(card && !(await card.$('[data-must-off]')), 'no Remove on the public card');
-  ok(await p.evaluate(() => { const m = document.querySelector('.mk-wrap'), q = document.querySelector('[data-quest]'); return !!(m && q && (m.compareDocumentPosition(q) & Node.DOCUMENT_POSITION_FOLLOWING)); }), 'it sits above the quest');
+  // the quest card goes by the real date (dayKey), so once the quest has ended for real it isn't there to compare with
+  ok(await p.evaluate(() => { const m = document.querySelector('.mk-wrap'), q = document.querySelector('[data-quest]'); return !!m && (!q || !!(m.compareDocumentPosition(q) & Node.DOCUMENT_POSITION_FOLLOWING)); }), 'it sits above the quest');
   await p.click('[data-must]'); await p.waitForTimeout(700);
   const st = await p.evaluate(() => JSON.parse(localStorage.getItem('efm3-mcq-bank-v1')));
   ok(st.view === 'quiz' && st.session.qids.length > 5, 'Practise opens a session of its ' + (st.session && st.session.qids.length) + ' questions');

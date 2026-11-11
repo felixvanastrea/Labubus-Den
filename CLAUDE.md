@@ -225,6 +225,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   she says otherwise, and the dermatology quest got `end: 2026-10-28`.
   The gastroenterology midterm 2026–2027 has it from 5 November 2026 (Abi: "put the midterm in the homepage", and "remove
   the quest"), until 11 November unless she says otherwise, and the GI quest got `end: 2026-11-05`.
+  The cardiology midterm 2026–2027 has it from 11 November 2026 (Abi: "add today's midterm on the homepage", and remove the
+  quest and the must-know card), until 17 November unless she says otherwise, and the cardiology quest got `end: 2026-11-11`
+  (its must-know card and cheat sheet go with it: `publicMusts` reads `end`).
 - After the due date the card shows "Quest ended" and the hero goes back to normal. For the next exam,
   ask Abi for the topics and date, add a quest to `quests.json` and point `current` at it.
 
@@ -825,6 +828,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   tidied to μg/g). No answers marked: `key: "claude"`, answered from Pr Khannoussi's (GERD, achalasia, ulcers, chronic
   pancreatitis) and Pr Bahlaoui's (gastritis, IBD, hepatitis) decks, with explanations; placed by concept. Q8 (peptic ulcer
   definition) is the ulcer slides word for word; Q15 D follows the GERD slides (clinical diagnosis, PPI, "HP testing +++").
+- The cardiology midterm 2026–2027 (C380–C394, `added` 2026-11-11, the day it was sat, so never part of the cardiology
+  quest): all 15, from the Evalbox page Abi forwarded (her name in its header left out). No answers marked: `key: "claude"`,
+  answered from the official keys of the same questions in past exams and Pr Nazzi's lectures, with explanations; placed by
+  concept. Least sure: Q4 D (an S3 in chronic MR: textbook, but the past copy C147 had no S3 option), Q11 B (encephalopathy is
+  an emergency; the past copies asked about urgency, where it was false).
 - Since 5 November 2026 the dermatology midterm and retake 2026–2027 (S246–S285) and the gastroenterology midterm
   2026–2027 (D259–D273) are `key: "official"` (Abi asked), Claude's notes dropped, explanations kept.
 - `key: "claude"` answers were suggested by Claude because nothing was highlighted in the source doc; they carry a reason note.
