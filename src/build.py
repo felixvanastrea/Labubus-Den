@@ -371,6 +371,12 @@ symbol = (f'<symbol id="labubu" viewBox="{art_box}"><path fill="currentColor" d=
 assert '<!--__LABUBU__-->' in tpl
 page = (tpl.replace('/*__CSS__*/', '\n' + css).replace('<!--__LABUBU__-->', symbol)
         .replace('__BANK_JSON__', payload))
+# private question lists only the Labubu account sees (src/private/*.txt: scrambled, decoded in the page for her alone)
+priv = {f[:-4]: open(os.path.join('private', f), encoding='utf8').read().strip()
+        for f in sorted(os.listdir('private')) if f.endswith('.txt')} if os.path.isdir('private') else {}
+assert page.count('/*__PRIV__*/{}') == 1
+page = page.replace('/*__PRIV__*/{}', json.dumps(priv))
+print('private lists |', ', '.join(f'{k} ({len(v)} chars)' for k, v in priv.items()) or 'none')
 # the tab icon: the head in bone on a charcoal tile
 favicon = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="142.5 146.6 698 698">'
            '<rect x="142.5" y="146.6" width="698" height="698" rx="150" fill="#1b1a18"/>'

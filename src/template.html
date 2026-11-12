@@ -6411,7 +6411,7 @@
   }
   // a list that brings its own questions: text only (escaped here, so a link can't put markup in the page), one or more
   // right letters, a why per option; `vip` = only the Labubu account shows its card
-  function mustTakeQs(o) {
+  function mustTakeQs(o, quiet) {
     if (!TOPIC.has(o.mod)) return false;
     const txt = (x, n) => esc(String(x == null ? '' : x).slice(0, n));
     const qs = o.qs.slice(0, 120).map((x, k) => {
@@ -6426,9 +6426,25 @@
     S.musts[o.id] = { t: String(o.t || 'Practice').slice(0, 60), note: String(o.note || '').slice(0, 200), mod: o.mod, vip: o.vip ? 1 : 0,
       q: qs.map(x => [x.sid, 0]), qs, doc: MUST_DOC.test(o.doc || '') ? o.doc : '', at: Date.now() };
     if (old && Array.isArray(old.qs)) for (const x of old.qs) if (!qs.some(y => y.id === x.id)) Q.delete(x.id);
-    mustInject(); save(); usage.track('must_list_saved', { questions: qs.length });
-    toast('Saved: ' + S.musts[o.id].t);
+    mustInject(); save();
+    if (!quiet) { usage.track('must_list_saved', { questions: qs.length }); toast('Saved: ' + S.musts[o.id].t); }
     return true;
+  }
+  // lists built into the page for the Labubu account alone (Abi, 12 November 2026: "just make it so it appears only for
+  // me", no link): src/private/*.txt, scrambled so they don't read as text in the page; unpacked into her S.musts the first
+  // time her homepage draws while she's signed in as the Labubu. Anyone else's page never unpacks them.
+  const PRIV = /*__PRIV__*/{};
+  function privSeed() {
+    if (!(acct.isVip() || window.__privTest)) return;
+    const key = 'labubu-den';
+    for (const blob of Object.values(PRIV)) {
+      try {
+        const b = atob(blob), u = new Uint8Array(b.length);
+        for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+        const o = JSON.parse(new TextDecoder().decode(u));
+        if (o && o.id && !(S.musts && S.musts[o.id] && Array.isArray(S.musts[o.id].qs) && S.musts[o.id].qs.length === o.qs.length)) mustTakeQs(o, true);
+      } catch (e) {}
+    }
   }
   const mustIds = m => Array.isArray(m.qs) ? m.qs.map(x => x && x.id).filter(id => Q.has(id)) : m.q.map(x => bySid(x[0])).filter(Boolean);
   const mustSeen = m => !m.vip || acct.isVip() || !acct.here;
@@ -6436,6 +6452,7 @@
   // only shows once, as the public one
   const publicMusts = () => QUESTS.filter(x => x.must && x.due >= questToday() && !(x.end && questToday() >= x.end)).map(x => [x.must.id, Object.assign({ pub: 1 }, x.must)]);
   function mustCardHTML() {
+    privSeed();
     const pub = publicMusts(), pubIds = new Set(pub.map(x => x[0]));
     const ls = pub.concat(Object.entries(S.musts || {}).filter(([id, m]) => !pubIds.has(id) && m && Array.isArray(m.q) && mustSeen(m)).sort((a, b) => b[1].at - a[1].at))
       .filter(([, m]) => mustIds(m).length);

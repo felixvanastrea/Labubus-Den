@@ -259,7 +259,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (`q.priv`) or anyone else's page sees them. `vip` lists show only to the Labubu account (`mustSeen`: `acct.isVip()`, or
   off GitHub Pages for tests). Links can be long (up to 120 000 characters). Test: must.js.
 - AI midterm practice (`ai-practice-2026-11`): 30 questions written by Claude from Pr Bencheqroun's deck and reading guide,
-  `key: claude`, answers spread over A–D, made by a script kept out of the repo; the link went to Abi only.
+  `key: claude`, answers spread over A–D. Abi didn't want the long link ("just make it so it appears only for me"), so the
+  list is built into the page instead: `src/private/ai-practice.txt` is the list's JSON (the `qs` format above) XOR-scrambled
+  with `labubu-den` and base64'd; the build puts every `src/private/*.txt` in `PRIV`, and `privSeed` (at the top of
+  `mustCardHTML`) unpacks them into her `S.musts` only when `acct.isVip()` (or `window.__privTest`). Not readable as text in
+  the page or the repo, but anyone determined enough could unscramble it: it's hidden, not locked. To change a question,
+  unscramble the file, edit, scramble it back. Test: priv.js.
 - First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
   147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
 
@@ -884,7 +889,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.
