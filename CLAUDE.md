@@ -259,7 +259,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (`q.priv`) or anyone else's page sees them. `vip` lists show only to the Labubu account (`mustSeen`: `acct.isVip()`, or
   off GitHub Pages for tests). Links can be long (up to 120 000 characters). Test: must.js.
 - AI midterm practice (`ai-practice-2026-11`): 30 questions written by Claude from Pr Bencheqroun's deck and reading guide,
-  `key: claude`, answers spread over A–D. Abi didn't want the long link ("just make it so it appears only for me"), so the
+  `key: claude`, answers spread over A–D. Rewritten the same day in his game style (Abi asked): a short new situation, one
+  best answer of four, each on one of his "For the exam" ideas (his guide: the exam tests "the same ideas with new
+  situations"), no recall of dates or figures. Source kept out of the repo, in the session's scratchpad (`private30_v2.py`). Abi didn't want the long link ("just make it so it appears only for me"), so the
   list is built into the page instead: `src/private/ai-practice.txt` is the list's JSON (the `qs` format above) XOR-scrambled
   with `labubu-den` and base64'd; the build puts every `src/private/*.txt` in `PRIV`, and `privSeed` (at the top of
   `mustCardHTML`) unpacks them into her `S.musts` only when `acct.isVip()` (or `window.__privTest`). Not readable as text in
