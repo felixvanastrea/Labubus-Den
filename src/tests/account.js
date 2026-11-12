@@ -159,7 +159,7 @@ const FAKE = {
   await p.screenshot({ path: OUT + 'acct_name.png' });
   await p.click('.acct-naming [type="submit"]'); await p.waitForTimeout(300);
   let D = await docs(p);
-  check(D['names/abi'] && D['names/abi'].uid === 'u1' && D['users/u1'].name === 'Abi' && D['users/u1'].key === 'abi' && D['users/u1'].email === 'abi@example.com' && D['users/u1'].answered >= 2, 'the name is kept: names/abi, and in the account (name, email, answered)');
+  check(D['names/abi'] && D['names/abi'].uid === 'u1' && D['users/u1'].name === 'Abi' && D['users/u1'].key === 'abi' && !('email' in D['users/u1']) && D['users/u1'].answered >= 2, 'the name is kept: names/abi, and in the account (name, answered; no copy of the email)');
   check((await state(p)).view === 'weak' && await p.evaluate(() => document.querySelector('.acct-sheet').hidden), 'and the weak spots open');
   await p.click('.bar [data-act="home"]'); await p.waitForTimeout(200);
   check((await txt(p, '.nav-acct')) === 'Abi' && (await txt(p, '.foot-store')) === 'Your answers are saved in this browser and in your account.' && !(await p.$('.navlinks .lk')), 'home: Abi in the top bar, no padlocks, saved in your account');

@@ -351,9 +351,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   form's name is tried first). `canon`: capitals, accents, spaces, dots, dashes, apostrophes and doubled letters don't
   count, so "a.bii-M" = "Abi M."; letters only, 2 to 24. Firestore `names/{key}` = `{uid, name}`; claiming is one batch
   (new name doc, old one deleted, `users/{uid}` name + key). Changeable in the sheet ("Change it").
-- Firestore `users/{uid}`: `name`, `key`, `email`, `answered` (checked answers, for Abi to see who's active), `t`, and `s`
+- Firestore `users/{uid}`: `name`, `key`, `answered` (checked answers, for Abi to see who's active), `t`, and `s`
   = JSON of the synced entries (`SYNCED`: answers, first, clean, seals, examLog, marks...) with `stamps`. Abi sees everyone in
-  the Firebase console: Authentication > Users, and Firestore > Data (`users`, `names`).
+  the Firebase console: Authentication > Users (with their emails), and Firestore > Data (`users`, `names`). Since 12 November
+  2026 the doc keeps no copy of the email (Abi: collect less); each push deletes an old `email` field.
 - Sync: `save()` stamps every changed or deleted entry (`S.stamps`, `stamp`/`flatSync`). Between devices, per entry
   the newest change wins, deletions included (a reset or Try again isn't undone by another device); entries without
   times on either side add up (`take`). Pushing is a transaction (read, merge, write) 15 s after a change, at least every
@@ -754,7 +755,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Anonymous stats (PostHog)
 
 - Abi's PostHog project, EU cloud (eu.posthog.com), key in `usage` in `template.html`. Only on the GitHub Pages
-  site (the claude.ai link can't send data out anyway). On by default with a cookie, no banner (Abi's choice);
+  site (the claude.ai link can't send data out anyway). On by default, no banner (Abi's choice); since 12 November 2026
+  no cookie either (`persistence: 'memory'`: nothing stored on the device, each visit counts on its own; `boot` clears
+  the old cookie once), so the privacy page's "no cookie" stays true;
   "Anonymous stats: on/off" in the footer turns it off, kept in `efm3-mcq-stats`, and switching off opts out and
   deletes PostHog's cookie and storage. All of it is wrapped so PostHog failing can never break the site.
 - No names and no answers: autocapture, heatmaps, session recordings and surveys are off; only `usage.track()`
@@ -763,6 +766,19 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   joined, declined, started, settled, link copied or shared), message fireflies (sent, starred, deleted, switched off),
   update log, sound, the moon or a firefly opened, `new_version` (a tab reloading itself), and `page_error`: a script error's message and where, no answers).
   Never which options were ticked, never marks. The footer switch's tooltip says so; keep it true.
+
+## Privacy page and disclaimer (Abi, 12 November 2026)
+
+- From a "20 things so your app doesn't get sued" list, Abi asked for what applies to the Den, with no change to the
+  themes' looks. "Privacy" in the footer and under About opens `renderPrivacy` (`S.view = 'privacy'`, the cheat sheet's
+  `.cheat` styles): what's kept without and with an account, what the Labubu sees in Firebase, what the class sees (the sky,
+  who's here, fireflies, duels, class percentages), the anonymous stats, the outside services (Firebase, PostHog, GIPHY,
+  Google Fonts, Google Forms), Delete my data, and that answers can be wrong. **Keep it true**: a feature that stores or
+  shows something new about people needs a line there and a new "Last updated" date.
+- One line under About and one in the footer: answers can contain mistakes, a study tool, not medical advice.
+- Accessibility was checked (12 November): a question can be answered with the keyboard alone, options carry
+  `aria-pressed`, every image has `alt`, every button a name. Contrast in the themes wasn't touched (Abi: don't change their looks).
+- tools.js sets its clock to the day before the latest quest's exam (its exam part goes through the quest card).
 
 ## Update log
 

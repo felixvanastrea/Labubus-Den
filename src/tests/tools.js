@@ -27,6 +27,10 @@ const MOD = 'digestive-system-disease';
 
   // ---- practice on a computer ----
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
+  // the exam part goes through the quest card, so the clock is set to before the quest's exam day
+  const Q = JSON.parse(require('fs').readFileSync(__dirname + '/index.html', 'utf8').match(/<script type="application\/json" id="bank">([\s\S]*?)<\/script>/)[1]).quests;
+  const before = Date.parse(Q[Q.length - 1].due + 'T09:00:00Z') - 864e5;
+  if (before < Date.now()) await ctx.clock.install({ time: before });
   const p = await ctx.newPage(); watch(p, 'desk');
   await p.goto(URL, { waitUntil: 'load' }); await p.evaluate(() => localStorage.clear()); await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(300);
   const bank = await p.evaluate(() => JSON.parse(document.getElementById('bank').textContent));

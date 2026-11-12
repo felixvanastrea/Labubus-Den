@@ -3055,7 +3055,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (S.view === 'diag' && !DIAG_INDEX.has(S.diag)) S.view = 'weak';
     if (S.view === 'weak' && !DIAG.length) S.view = 'home';
     if (S.view === 'duel' && !S.duelId) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel', 'cheat'].includes(S.view)) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel', 'cheat', 'privacy'].includes(S.view)) S.view = 'home';
     if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
     // a first visit starts with nothing new: everything in the log is new to them anyway
     if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
@@ -3696,7 +3696,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       window.posthog.init(TOKEN, {
         api_host: HOST, defaults: '2026-05-30', person_profiles: 'identified_only',
         autocapture: false, capture_heatmaps: false, capture_dead_clicks: false, rageclick: false,
-        disable_session_recording: true, disable_surveys: true, respect_dnt: true
+        disable_session_recording: true, disable_surveys: true, respect_dnt: true,
+        // no cookie and nothing stored on the device (Abi, 12 November 2026): each visit counts on its own
+        persistence: 'memory'
       });
       } catch (e) { loaded = false; }
     }
@@ -3723,7 +3725,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         forget();
       }
     }
-    return { here, on, track, set, boot() { if (on()) load(); } };
+    return { here, on, track, set, boot() { forget(); if (on()) load(); } };
   })();
   // a script error is sent as page_error (its message, where, the screen and whether it's Safari), at most 5 a visit,
   // so a bug only some devices hit (an iPad's Check or Next "doing nothing", November 2026) can be found. No answers.
@@ -3748,7 +3750,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '86c2baf8ac79', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '4a18014c6ea8', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -4940,7 +4942,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         if (snap.exists() && snap.data().s) { try { changed = take(JSON.parse(snap.data().s)) || changed; } catch (e) {} }
         const s = blob();
         if (s.length > 900000) throw Object.assign(new Error('too big'), { code: 'too-big' });
-        tx.set(ref(), { s, t: fb.f.serverTimestamp(), email: user.email || '', answered: Object.values(S.answers).filter(a => a && a.checked).length }, { merge: true });
+        tx.set(ref(), { s, t: fb.f.serverTimestamp(), email: fb.f.deleteField(), answered: Object.values(S.answers).filter(a => a && a.checked).length }, { merge: true });
       });
       if (changed) { save(true); refresh(); }
       synced = Date.now(); paint();
@@ -5012,7 +5014,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         b.set(nr, { uid: user.uid, name });
         // the Labubu's name is never given up (the rules forbid it): it's what lets her list the class
         if (me.key && me.key !== key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key));
-        b.set(ref(), { name, key, email: user.email || '' }, { merge: true });
+        b.set(ref(), { name, key }, { merge: true });
         await b.commit();
       } catch (e) { msg = /permission/.test((e && e.code) || '') ? taken(name) : why(e); paint(); return false; }
       try { if (user.displayName !== name) await fb.a.updateProfile(user, { displayName: name }); } catch (e) {}
@@ -7442,6 +7444,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     else if (S.view === 'repeats') renderRepeats();
     else if (S.view === 'updates') renderUpdates();
     else if (S.view === 'cheat' && cheatOf(S.cheat)) renderCheat();
+    else if (S.view === 'privacy') renderPrivacy();
     else if (S.view === 'cheat') { S.view = 'home'; document.body.dataset.view = 'home'; renderHome(); }
     else if (S.view === 'weak' && DIAG.length) renderWeak();
     else if (S.view === 'diag' && DIAG_INDEX.has(S.diag)) renderDiag();
@@ -8799,6 +8802,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
           <p class="lede">Every question here comes straight from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
+          <p>Answers can still contain mistakes: report anything that looks wrong. This is a study tool, not medical advice. <button class="foot-btn" type="button" data-act="privacy">Privacy</button></p>
           <p class="credit">Made by <b>the Labubu</b></p>
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
           ${app_.slot('home')}
@@ -8893,8 +8897,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       ${reduceMotion() ? '' : `<p>Opening animation: <button class="foot-btn" type="button" role="switch" aria-checked="${introOn()}" aria-label="Opening animation" data-act="intro-toggle">${introOn() ? 'on' : 'off'}</button> · <button class="foot-btn" type="button" data-act="intro-replay">replay</button></p>`}
       <p>Sounds: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.sound()}" aria-label="Sounds" data-act="sound-toggle">${sfx.sound() ? 'on' : 'off'}</button>${sfx.touch ? ` · Vibration: <button class="foot-btn" type="button" role="switch" aria-checked="${sfx.haptics()}" aria-label="Vibration" data-act="haptic-toggle">${sfx.haptics() ? 'on' : 'off'}</button>` : ''}</p>
       ${acct.canNotes ? `<p>Messages: <button class="foot-btn" type="button" role="switch" aria-checked="${acct.notesOn()}" aria-label="Messages" data-act="notes-toggle" title="The fireflies with messages from the class on the homepage">${acct.notesOn() ? 'on' : 'off'}</button></p>` : ''}
-      ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used (with a cookie), never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
-      <p><button class="foot-btn" type="button" data-act="updates">Update log</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
+      ${usage.here ? `<p>Anonymous stats: <button class="foot-btn" type="button" role="switch" aria-checked="${usage.on()}" aria-label="Anonymous stats" data-act="stats-toggle" title="Counts visits and which features get used, with no cookie, never names or answers">${usage.on() ? 'on' : 'off'}</button></p>` : ''}
+      <p><button class="foot-btn" type="button" data-act="updates">Update log</button> · <button class="foot-btn" type="button" data-act="privacy">Privacy</button>${FB ? ` · ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}</p>
+      <p>Answers can contain mistakes. A study tool, not medical advice.</p>
       ${app_.slot('foot')}
       <p>Made by the Labubu</p>
     </footer>`;
@@ -9234,6 +9239,48 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         </div></header>
         <article class="cheat">${m.sheet}</article>
         <div class="row cheat-end"><button class="btn primary" type="button" data-must="${esc(S.cheat)}">Practise the ${fmtN(mustIds(m).length)} must-know questions ${ICON.next}</button></div>
+        ${footHTML()}
+      </main>`;
+  }
+  // what the Den keeps and who sees it (Abi, 12 November 2026). Keep it true when a feature changes what's stored or shown.
+  function renderPrivacy() {
+    app.innerHTML = `
+      ${barHTML('home', 'Home', 'Privacy')}
+      <main class="wrap narrow stage">
+        <header class="page-head"><div>
+          <p class="eyebrow">Last updated 12 November 2026</p>
+          <h1 class="h1">Privacy</h1>
+        </div></header>
+        <article class="cheat">
+          <p>The Den is a free study site made by a student for the class. It sells nothing and shows no ads. This page says what it keeps, who can see it, and how to delete it.</p>
+          <h2>Without an account</h2>
+          <ul><li>Your answers, marks and settings are saved in this browser only. Nothing about you leaves your device, apart from the anonymous stats below.</li>
+          <li>"Reset all answers" at the bottom of the homepage erases them.</li></ul>
+          <h2>With an account</h2>
+          <ul><li>Sign-in is handled by Google Firebase. Firebase keeps the email you signed in with (or your Google account's), so you can sign in again.</li>
+          <li>The Den keeps your chosen name and your study data (answers, first tries, marks, exam marks, the moon, themes, duels) in your own account, so it follows you across devices. Only you can read it.</li>
+          <li>The Labubu, who runs the Den, can see in Firebase which accounts exist, their names, how many questions they've answered, and when they last studied. Never your answers to any question.</li></ul>
+          <h2>What the class can see</h2>
+          <ul><li>The class sky: your name and roughly how many questions you did today, once you've done 10. "Hide my star" in your account takes you out.</li>
+          <li>Who's studying now: your name and the module you're on, for a few minutes.</li>
+          <li>Messages you write as fireflies, with your name, and who starred them.</li>
+          <li>Duels and parties: your name and mark, to the people in it.</li>
+          <li>How the class did on a question: only counts and percentages, never who answered what.</li></ul>
+          <h2>Anonymous stats</h2>
+          <ul><li>The Den counts visits and which features get used, with PostHog (in the EU). No names, no answers, no marks, and no cookie: nothing is stored on your device.</li>
+          <li>"Anonymous stats: off" at the bottom of every page stops it. Browsers set to "Do not track" are never counted.</li></ul>
+          <h2>Other services</h2>
+          <ul><li>Google Firebase: accounts and the synced data.</li>
+          <li>PostHog: the anonymous stats.</li>
+          <li>GIPHY: only when you open the GIF picker; your searches go to GIPHY.</li>
+          <li>Google Fonts: the typefaces load from Google.</li>
+          <li>Google Forms: "Ask the Labubu" and "Report a mistake" open a Google Form.</li></ul>
+          <h2>Deleting your data</h2>
+          <ul><li>"Delete my data" in your account erases your study data, your name, your messages and sparks, then your account.</li>
+          <li>Anything else: write to the Labubu${FB ? ` through ${askHTML('foot-btn', 'Ask the Labubu', false)}` : ''}.</li></ul>
+          <h2>The answers</h2>
+          <p>The questions come from past exams. Their answers come from official keys where there are some, and otherwise from students or checks against the lectures, so some can be wrong. Report anything that looks off. The Den is a study tool, not medical advice.</p>
+        </article>
         ${footHTML()}
       </main>`;
   }
@@ -11473,6 +11520,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       case 'quest-go': questGo(); break;
       case 'spot-go': spotStart(); break;
       case 'updates': openUpdates(); break;
+      case 'privacy': S.view = 'privacy'; usage.track('privacy_opened'); save(); render(true, null, 'next'); window.scrollTo(0, 0); break;
       case 'install-app': app_.install(); break;
       case 'mark': markToggle(); break;
       case 'practice-marked': practiseMarked(S.view === 'topic' ? S.topicId : null); break;
