@@ -251,8 +251,28 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `S.cheat`, `renderCheat`), Practise buttons at its top and foot; it goes home once the quest has passed. The public sheet
   carries no notes on doubtful keys (Abi doesn't want classmates to see notes): those stay in her private doc.
   PostHog: `cheat_sheet_opened`. Test: must_pub.js.
+- A list can bring its own questions (Abi, 12 November 2026: 30 practice questions "only accessible by me the labubu
+  account"): `qs` in the link = [{id `p` + 9 hex, sid, s (stem), o (options), a (right indices), w (a why per option), l}],
+  with `mod` (the module; the AI list uses `technical-communication`) and `vip: 1`. `mustTakeQs` escapes every text (a link can't put markup in the page) and keeps them
+  in `S.musts` (synced, her own users doc); `mustInject` (first thing in `sanitize`, so answers to them aren't pruned) puts
+  them in `Q` and `SRC` (source `must:<list id>`) but never in `BANK.questions`: no module page, search, exam, class stats
+  (`q.priv`) or anyone else's page sees them. `vip` lists show only to the Labubu account (`mustSeen`: `acct.isVip()`, or
+  off GitHub Pages for tests). Links can be long (up to 120 000 characters). Test: must.js.
+- AI midterm practice (`ai-practice-2026-11`): 30 questions written by Claude from Pr Bencheqroun's deck and reading guide,
+  `key: claude`, answers spread over A–D, made by a script kept out of the repo; the link went to Abi only.
 - First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
   147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
+
+## AI in medicine (Abi, 12 November 2026)
+
+- Pr Bencheqroun's two-session course (Practical AI for medical students / Digitalization of health in Morocco) is part of
+  the communication module, so `technical-communication` is now named "Communication and AI in Medicine" (Abi: "the module
+  is communication and AI in medicine"). The course is new: no past exams. A1–A14 (short ids `A`) are the 14 questions of
+  his "Midterm match day" review game (the Slido deck and the reading guide have the same 14, answers in the speaker notes),
+  set "AI in medicine · midterm review game (Pr Bencheqroun)", `key: official`, explained from his reading guide (lectures
+  `ai-s1`, `ai-s2`). He says they aren't the exam's questions. Two topics added to the module in `lectures.json` (`A-s1`
+  records and security: A1–A6; `A-s2` privacy, bias, using AI: A7–A14), placed by `q` entries; no concepts yet.
+- Quest `ai-midterm-2026`, Thursday 19 November 2026, both AI topics (14 questions). The cardiology quest stays ended.
 
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 

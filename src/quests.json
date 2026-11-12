@@ -1,6 +1,6 @@
 {
   "current": [
-    "cardio-midterm-2026"
+    "ai-midterm-2026"
   ],
   "quests": [
     {
@@ -356,6 +356,24 @@
         "sheet": "cardio-2026-11.md"
       },
       "end": "2026-11-11"
+    },
+    {
+      "id": "ai-midterm-2026",
+      "title": "AI in medicine midterm",
+      "module": "technical-communication",
+      "due": "2026-11-19",
+      "goal": 80,
+      "topics": [
+        {
+          "name": "AI: digitalization, records and security",
+          "lecture": "A-s1"
+        },
+        {
+          "name": "AI: privacy, bias and using it safely",
+          "lecture": "A-s2"
+        }
+      ],
+      "note": "Pr Bencheqroun’s two sessions, through the 14 questions of his review game. He says they aren’t the exam’s questions: the same ideas in new situations."
     }
   ],
   "spotlight": {

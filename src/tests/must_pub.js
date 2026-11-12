@@ -2,6 +2,9 @@
 const { chromium } = require('playwright');
 let bad = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if (!c) bad++; };
 (async () => {
+  // it needs a quest with a must-know list; none = nothing to check (the cardiology one ended on 11 November 2026)
+  const Qs = JSON.parse(require('fs').readFileSync(__dirname + '/index.html', 'utf8').match(/<script type="application\/json" id="bank">([\s\S]*?)<\/script>/)[1]).quests;
+  if (!Qs.some(x => x.must)) { console.log('ok   no quest has a must-know list now: skipped'); process.exit(0); }
   const b = await chromium.launch(); const p = await b.newPage();
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.addInitScript(() => { window.__skyNow = Date.parse('2026-11-10T20:00:00Z'); });

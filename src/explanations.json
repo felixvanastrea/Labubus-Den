@@ -152,6 +152,14 @@
     "card-pericarditis": {
       "title": "Acute pericarditis (Pr Nazzi)",
       "added": "2026-11-07"
+    },
+    "ai-s1": {
+      "title": "Digitalization and AI for learning and exams (Pr Bencheqroun, session 1)",
+      "added": "2026-11-12"
+    },
+    "ai-s2": {
+      "title": "AI for early rounds, research and safe healthcare (Pr Bencheqroun, session 2)",
+      "added": "2026-11-12"
     }
   },
   "questions": {
@@ -4643,6 +4651,104 @@
       "B": "No: the usual germ is Staphylococcus aureus.",
       "C": "Yes: IV drug use is the main cause.",
       "D": "Yes: vegetations on the tricuspid valve throw septic emboli to the lungs."
+    },
+    "A1": {
+      "lecture": "ai-s1",
+      "A": "No: nothing is running yet; live means working now, like Chikaya Santé.",
+      "B": "No: a pilot runs somewhere, like the SAMU upgrade in Rabat-Salé-Kénitra; this is only planned.",
+      "C": "Yes: an announcement or a budget is a rumour, not a signing. It is proposed, like draft Law 52.26.",
+      "D": "No: done isn't one of the four tags (live, pilot, proposed, target)."
+    },
+    "A2": {
+      "lecture": "ai-s1",
+      "A": "No: a photo is unstructured; a human must read it.",
+      "B": "Yes: only structured, coded data lets the computer fire an alert by itself.",
+      "C": "No: a voice note is unstructured; someone has to listen to it.",
+      "D": "No: a scan is digitized, not usable; the computer can't act on it."
+    },
+    "A3": {
+      "lecture": "ai-s1",
+      "A": "No: a blank field reads as “no allergy” to the next doctor.",
+      "B": "No: NKDA claims something nobody checked.",
+      "C": "No: an AI can't know what was never recorded.",
+      "D": "Yes: write explicitly that it's not available, so the next clinician knows to ask."
+    },
+    "A4": {
+      "lecture": "ai-s1",
+      "A": "Yes: the six items that travel at every handoff.",
+      "B": "No: an ID number pulls nothing if the systems don't talk to each other.",
+      "C": "No: one lab result leaves out allergies, medications and the rest.",
+      "D": "No: a pile of scans is too much and can't be searched."
+    },
+    "A5": {
+      "lecture": "ai-s1",
+      "A": "No: a disk next to the server floods with it.",
+      "B": "No: a backup never restored is a hope, not a backup.",
+      "C": "Yes: the 3-2-1 rule, plus a restore that was actually tested.",
+      "D": "No: seven-year-old paper misses everything since."
+    },
+    "A6": {
+      "lecture": "ai-s1",
+      "A": "Yes: a shoe shop can close for a week, an ICU can't, so the pressure to pay is high.",
+      "B": "No: health data are valuable, which is part of why they're attacked.",
+      "C": "No: the motives are money and sometimes political pressure.",
+      "D": "No: the rule is the opposite: keep one copy fully offline."
+    },
+    "A7": {
+      "lecture": "ai-s2",
+      "A": "No: family love is not consent.",
+      "B": "Yes: he's an adult; health data are sensitive personal data (Law 09-08), even for family.",
+      "C": "No: that shares sensitive data publicly without consent.",
+      "D": "No: family still needs the adult patient's permission."
+    },
+    "A8": {
+      "lecture": "ai-s2",
+      "A": "No: a few seconds of audio are enough to clone a voice.",
+      "B": "No: a chatbot can't verify who is speaking.",
+      "C": "No: half is still money sent to a possible scammer.",
+      "D": "Yes: stop, hang up, call back on a number you already know."
+    },
+    "A9": {
+      "lecture": "ai-s2",
+      "A": "Yes: AI predicts from past data; if the past had a pattern, it repeats it with confidence.",
+      "B": "No: it doesn't know what happened after its training data.",
+      "C": "No: AI can be confident and wrong.",
+      "D": "No: training data is the past."
+    },
+    "A10": {
+      "lecture": "ai-s2",
+      "A": "No: it was tested on another society; copy the tool and you copy its assumptions.",
+      "B": "No: stopping treatment is a new harm, not a fix.",
+      "C": "Yes: adapt, don't import; the clinician fits the plan to the patient.",
+      "D": "No: the lesson is to question imported tools, not to refuse all AI."
+    },
+    "A11": {
+      "lecture": "ai-s2",
+      "A": "No: speed says nothing about whether it's right.",
+      "B": "Yes: when information is missing, a clinician asks before deciding; AI often just answers.",
+      "C": "No: one frame is less information, not more.",
+      "D": "No: it saw one frame, not the whole play."
+    },
+    "A12": {
+      "lecture": "ai-s2",
+      "A": "No: research tools can invent references.",
+      "B": "No: that's falsifying a citation.",
+      "C": "Yes: verify every citation against the original; no paper, no citation.",
+      "D": "No: someone else citing it doesn't make it real."
+    },
+    "A13": {
+      "lecture": "ai-s2",
+      "A": "No: family interpreters can filter the story.",
+      "B": "No: AI translation for Darija and Amazigh isn't certified for clinical use.",
+      "C": "No: Tachelhit, Tamazight and Tarifit aren't always mutually intelligible.",
+      "D": "Yes: ask, check back (teach-back), and document who interpreted."
+    },
+    "A14": {
+      "lecture": "ai-s2",
+      "A": "No: AI is the top rung; it needs the steps below it.",
+      "B": "No: irreversible decisions and withdrawal of care always stay with a human.",
+      "C": "Yes: the one idea of the course; at Tier 0, AI recommends and the clinician decides.",
+      "D": "No: the course teaches using AI well, not avoiding it."
     }
   }
 }

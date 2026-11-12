@@ -196,7 +196,24 @@
     try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); storageOK = true; } catch (e) { storageOK = false; }
     if (acctHook && quiet !== true) acctHook();
   }
+  // private practice questions (Abi, 12 November 2026): a must-know list can carry its own questions (`qs`), kept only in
+  // the account that opened its link (S.musts, synced to her own users doc). They join Q and SRC here, before anything prunes
+  // answers to unknown ids, but never BANK.questions: no module page, search, exam or class stats sees them.
+  function mustInject() {
+    if (!S.musts || typeof S.musts !== 'object') return;
+    for (const [lid, m] of Object.entries(S.musts)) {
+      if (!m || !Array.isArray(m.qs) || !TOPIC.has(m.mod)) continue;
+      const src = 'must:' + lid;
+      if (!SRC.has(src)) SRC.set(src, { id: src, topic: m.mod, type: 'Collected', year: null, label: String(m.t || 'Practice') });
+      m.qs.forEach((q, k) => {
+        if (!q || !/^p[0-9a-f]{9}$/.test(q.id) || Q.has(q.id) || !Array.isArray(q.options) || !Array.isArray(q.answer)) return;
+        Q.set(q.id, Object.assign(q, { topic: m.mod, source: src, priv: 1 }));
+        BANK_ORDER.set(q.id, 1e6 + k);
+      });
+    }
+  }
   function sanitize() {
+    mustInject();
     if (!S.answers || typeof S.answers !== 'object') S.answers = {};
     for (const id of Object.keys(S.answers)) if (!Q.has(id)) delete S.answers[id];
     // grade checked answers against today's key, so a corrected answer key updates old results too
@@ -2237,7 +2254,7 @@
         const byMod = {}, sent = [], picks = {};
         for (const [id, ok] of Object.entries(S.first)) {
           if (sent.length >= 150) break;
-          const c = canonId(id), q = Q.get(c) || Q.get(id); if (!q || S.statSent[c]) continue;
+          const c = canonId(id), q = Q.get(c) || Q.get(id); if (!q || q.priv || S.statSent[c]) continue;
           S.statSent[c] = 1; sent.push(c);   // marked at once, so a copy of it isn't counted twice
           (byMod[q.topic] = byMod[q.topic] || {})[c] = { n: fb.f.increment(1), r: fb.f.increment(ok ? 1 : 0) };
           const sel = S.firstSel[id], om = Q.get(id).om;
@@ -6381,7 +6398,9 @@
   function mustTake(code) {
     let o;
     try { o = JSON.parse(decodeURIComponent(escape(atob(code.replace(/-/g, '+').replace(/_/g, '/'))))); } catch (e) { return false; }
-    if (!o || typeof o !== 'object' || !/^[a-z0-9-]{2,40}$/.test(o.id || '') || !Array.isArray(o.q)) return false;
+    if (!o || typeof o !== 'object' || !/^[a-z0-9-]{2,40}$/.test(o.id || '')) return false;
+    if (Array.isArray(o.qs)) return mustTakeQs(o);
+    if (!Array.isArray(o.q)) return false;
     const q = o.q.filter(x => Array.isArray(x) && MUST_SID.test(x[0]) && bySid(x[0])).map(x => [x[0], Math.max(1, Math.min(99, x[1] | 0))]).slice(0, 300);
     if (!q.length) return false;
     S.musts[o.id] = { t: String(o.t || 'Must-know').slice(0, 60), note: String(o.note || '').slice(0, 200), q,
@@ -6390,21 +6409,43 @@
     toast('Saved: ' + S.musts[o.id].t);
     return true;
   }
-  const mustIds = m => m.q.map(x => bySid(x[0])).filter(Boolean);
+  // a list that brings its own questions: text only (escaped here, so a link can't put markup in the page), one or more
+  // right letters, a why per option; `vip` = only the Labubu account shows its card
+  function mustTakeQs(o) {
+    if (!TOPIC.has(o.mod)) return false;
+    const txt = (x, n) => esc(String(x == null ? '' : x).slice(0, n));
+    const qs = o.qs.slice(0, 120).map((x, k) => {
+      if (!x || !Array.isArray(x.o) || x.o.length < 2 || x.o.length > 6 || !Array.isArray(x.a) || !x.a.length) return null;
+      const answer = [...new Set(x.a.filter(i => Number.isInteger(i) && i >= 0 && i < x.o.length))].sort();
+      if (!answer.length || !/^p[0-9a-f]{9}$/.test(x.id || '')) return null;
+      return { id: x.id, n: k + 1, sid: txt(x.sid || ('P' + (k + 1)), 8), stem: txt(x.s, 600), options: x.o.map(t => txt(t, 300)), answer, key: 'claude', c: [], a: '',
+        exp: Array.isArray(x.w) ? { lec: String(x.l || o.t || '').slice(0, 120), o: x.o.map((_, i) => String(x.w[i] || '').slice(0, 300)) } : undefined };
+    }).filter(Boolean);
+    if (!qs.length) return false;
+    const old = S.musts[o.id];
+    S.musts[o.id] = { t: String(o.t || 'Practice').slice(0, 60), note: String(o.note || '').slice(0, 200), mod: o.mod, vip: o.vip ? 1 : 0,
+      q: qs.map(x => [x.sid, 0]), qs, doc: MUST_DOC.test(o.doc || '') ? o.doc : '', at: Date.now() };
+    if (old && Array.isArray(old.qs)) for (const x of old.qs) if (!qs.some(y => y.id === x.id)) Q.delete(x.id);
+    mustInject(); save(); usage.track('must_list_saved', { questions: qs.length });
+    toast('Saved: ' + S.musts[o.id].t);
+    return true;
+  }
+  const mustIds = m => Array.isArray(m.qs) ? m.qs.map(x => x && x.id).filter(id => Q.has(id)) : m.q.map(x => bySid(x[0])).filter(Boolean);
+  const mustSeen = m => !m.vip || acct.isVip() || !acct.here;
   // the quests' lists are for everyone (Abi, 10 November 2026: "publish this for all users"); a private one with the same id
   // only shows once, as the public one
   const publicMusts = () => QUESTS.filter(x => x.must && x.due >= questToday() && !(x.end && questToday() >= x.end)).map(x => [x.must.id, Object.assign({ pub: 1 }, x.must)]);
   function mustCardHTML() {
     const pub = publicMusts(), pubIds = new Set(pub.map(x => x[0]));
-    const ls = pub.concat(Object.entries(S.musts || {}).filter(([id, m]) => !pubIds.has(id) && m && Array.isArray(m.q)).sort((a, b) => b[1].at - a[1].at))
+    const ls = pub.concat(Object.entries(S.musts || {}).filter(([id, m]) => !pubIds.has(id) && m && Array.isArray(m.q) && mustSeen(m)).sort((a, b) => b[1].at - a[1].at))
       .filter(([, m]) => mustIds(m).length);
     if (!ls.length) return '';
     return ls.map(([id, m], k) => {
       const ids = mustIds(m), done = ids.filter(x => S.answers[x] && S.answers[x].checked && S.answers[x].right).length;
-      const top = m.q.slice(0, 5).map(x => `<li><span class="num">×${x[1]}</span> ${esc(stemShort(Q.get(bySid(x[0]))))}</li>`).join('');
+      const top = mustIds(m).slice(0, 5).map((qid, i) => { const n = (m.q[i] || [])[1]; return `<li>${n ? `<span class="num">×${n}</span> ` : ''}${esc(stemShort(Q.get(qid)))}</li>`; }).join('');
       return `<section class="section wrap mk-wrap" aria-labelledby="mk-h${k}">
       <div class="mk plate">
-        <p class="eyebrow">${m.pub ? 'What the past exams keep asking' : 'Only you can see this'}</p><h2 class="h2" id="mk-h${k}">${esc(m.t)}</h2>
+        <p class="eyebrow">${m.pub ? 'What the past exams keep asking' : m.vip ? 'Only the Labubu can see this' : 'Only you can see this'}</p><h2 class="h2" id="mk-h${k}">${esc(m.t)}</h2>
         <p>${fmtN(ids.length)} questions${m.note ? ': ' + esc(m.note) : ''}. Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
         <ol class="mk-top">${top}</ol>
         <div class="row"><button class="btn primary" type="button" data-must="${esc(id)}">Practise all ${fmtN(ids.length)} ${ICON.next}</button>
@@ -6414,7 +6455,7 @@
     </section>`;
     }).join('');
   }
-  function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
+  function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/&(amp|lt|gt|quot|#39);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" }[e])).replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
   function mustPractise(id) {
     const m = (publicMusts().find(x => x[0] === id) || [])[1] || S.musts[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
     ids.forEach(x => { keepFirst(x); delete S.answers[x]; delete S.cross[x]; });
@@ -6501,7 +6542,7 @@
     } catch (e) { toast(l.url); }
   }
   function readLink() {
-    const mm = /^#must-([A-Za-z0-9_-]{8,8000})$/.exec(location.hash || '');
+    const mm = /^#must-([A-Za-z0-9_-]{8,120000})$/.exec(location.hash || '');
     if (mm) { try { history.replaceState(history.state, '', location.pathname + location.search); } catch (e) {} return mustTake(mm[1]) ? { kind: 'must' } : null; }
     const m = /^#(set|module|lecture|quest)-([A-Za-z0-9_.-]+)$/.exec(location.hash || ''); if (!m) return null;
     try { history.replaceState(history.state, '', location.pathname + location.search); } catch (e) {}

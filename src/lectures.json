@@ -126,10 +126,13 @@
     ],
     "technical-communication": [
       {"id": "T-foundations", "name": "Foundations of communication", "take": ["T.listening", "T.nonverbal", "T.barriers", "T.clarity"], "lectures": [{"t": "Foundations of communication in medicine (part 1)", "by": "Pr Fourtassi", "file": "1ze6IU7yzmNa3yxkYkRfV-jWzad2Ez7T0"}]},
-      {"id": "T-clinical", "name": "Clinical communication", "take": ["T.defense", "T.badnews", "T.empathy"], "lectures": [{"t": "Clinical communication (part 2)", "by": "Pr Fourtassi", "file": "1np-NvU9Ww5rIMbuRo4j6HNppxIdsrTA2"}]}
+      {"id": "T-clinical", "name": "Clinical communication", "take": ["T.defense", "T.badnews", "T.empathy"], "lectures": [{"t": "Clinical communication (part 2)", "by": "Pr Fourtassi", "file": "1np-NvU9Ww5rIMbuRo4j6HNppxIdsrTA2"}]},
+      {"id": "A-s1", "name": "AI: digitalization, records and security", "take": [], "lectures": [{"t": "Session 1: Digitalization and AI for learning and exams", "by": "Pr Bencheqroun"}]},
+      {"id": "A-s2", "name": "AI: privacy, bias and using it safely", "take": [], "lectures": [{"t": "Session 2: AI for early rounds, research and safe healthcare", "by": "Pr Bencheqroun"}]}
     ]
   },
   "q": {
+    "A1": "A-s1", "A2": "A-s1", "A3": "A-s1", "A4": "A-s1", "A5": "A-s1", "A6": "A-s1", "A7": "A-s2", "A8": "A-s2", "A9": "A-s2", "A10": "A-s2", "A11": "A-s2", "A12": "A-s2", "A13": "A-s2", "A14": "A-s2",
     "T76": "T-foundations", "T77": "T-clinical", "T78": "T-clinical", "T79": "T-clinical", "T80": "T-foundations", "T81": "T-foundations", "T82": "T-foundations", "T83": "T-clinical", "T84": "T-foundations", "T85": "T-clinical", "T86": "T-foundations", "T87": "T-clinical", "T88": "T-foundations", "T89": "T-foundations", "T90": "T-clinical", "T91": "T-clinical", "T92": "T-foundations", "T93": "T-foundations", "T94": "T-foundations", "T95": "T-foundations",
     "T70": "T-clinical", "T71": "T-clinical", "T72": "T-foundations", "T73": "T-clinical", "T74": "T-foundations", "T75": "T-clinical",
     "T26": "T-foundations", "T27": "T-foundations", "T28": "T-foundations", "T29": "T-foundations", "T30": "T-foundations", "T31": "T-clinical",
