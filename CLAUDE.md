@@ -261,12 +261,15 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - AI midterm practice (`ai-practice-2026-11`): 30 questions written by Claude from Pr Bencheqroun's deck and reading guide,
   `key: claude`, answers spread over A–D. Rewritten the same day in his game style (Abi asked): a short new situation, one
   best answer of four, each on one of his "For the exam" ideas (his guide: the exam tests "the same ideas with new
-  situations"), no recall of dates or figures. Source kept out of the repo, in the session's scratchpad (`private30_v2.py`). Abi didn't want the long link ("just make it so it appears only for me"), so the
-  list is built into the page instead: `src/private/ai-practice.txt` is the list's JSON (the `qs` format above) XOR-scrambled
-  with `labubu-den` and base64'd; the build puts every `src/private/*.txt` in `PRIV`, and `privSeed` (at the top of
-  `mustCardHTML`) unpacks them into her `S.musts` only when `acct.isVip()` (or `window.__privTest`). Not readable as text in
-  the page or the repo, but anyone determined enough could unscramble it: it's hidden, not locked. To change a question,
-  unscramble the file, edit, scramble it back. Test: priv.js.
+  situations"), no recall of dates or figures. Source kept out of the repo, in the session's scratchpad (`private30_v2.py`).
+  First only for the Labubu account; since the same day for everyone (Abi: "make it for everyone, after the quest, and say
+  clearly they shouldn't be focused on"). `src/private/ai-practice.txt` is the list's JSON (the `qs` format above)
+  XOR-scrambled with `labubu-den` and base64'd (the folder name stayed); the build puts every `src/private/*.txt` in `PRIV`,
+  defined next to `mustInject`, and `builtins()` unpacks them at load for every visitor into `BUILTIN` (never into `S.musts`;
+  an old copy there with the same id, the Labubu's, is dropped). `practiceCardHTML` shows them after the quest cards:
+  "Extra practice", "Not the priority. Do the quest's questions first", a plain (not primary) Practise button. Like the
+  private lists, they're in no module page, search, exam or class stats (`q.priv`). To change a question, edit the source
+  script and rerun it into the .txt. Test: priv.js.
 - First list: Cardiology (`cardio-2026-11`), 27 questions, one per idea asked twice or more in the cardiology quest's
   147 (they cover 87 of them), most asked first; cheat sheet "Cardiology midterm cheat sheet" in her claude.ai docs.
 

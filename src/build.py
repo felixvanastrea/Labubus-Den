@@ -371,7 +371,7 @@ symbol = (f'<symbol id="labubu" viewBox="{art_box}"><path fill="currentColor" d=
 assert '<!--__LABUBU__-->' in tpl
 page = (tpl.replace('/*__CSS__*/', '\n' + css).replace('<!--__LABUBU__-->', symbol)
         .replace('__BANK_JSON__', payload))
-# private question lists only the Labubu account sees (src/private/*.txt: scrambled, decoded in the page for her alone)
+# practice question lists built into the page for everyone (src/private/*.txt: scrambled JSON, decoded in the page)
 priv = {f[:-4]: open(os.path.join('private', f), encoding='utf8').read().strip()
         for f in sorted(os.listdir('private')) if f.endswith('.txt')} if os.path.isdir('private') else {}
 assert page.count('/*__PRIV__*/{}') == 1

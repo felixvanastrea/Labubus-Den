@@ -199,9 +199,29 @@
   // private practice questions (Abi, 12 November 2026): a must-know list can carry its own questions (`qs`), kept only in
   // the account that opened its link (S.musts, synced to her own users doc). They join Q and SRC here, before anything prunes
   // answers to unknown ids, but never BANK.questions: no module page, search, exam or class stats sees them.
+  // practice lists built into the page (src/private/*.txt), for everyone since 12 November 2026 (Abi: "make it for
+  // everyone"). Unpacked once at load, never stored in S.musts; an older copy kept there (the Labubu's) is dropped.
+  const PRIV = /*__PRIV__*/{};
+  let BUILTIN = null;
+  function builtins() {
+    if (BUILTIN) return BUILTIN;
+    BUILTIN = {};
+    const key = 'labubu-den';
+    for (const blob of Object.values(PRIV)) {
+      try {
+        const b = atob(blob), u = new Uint8Array(b.length);
+        for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+        const o = JSON.parse(new TextDecoder().decode(u)), m = o && o.id && mustBuild(o);
+        if (m) BUILTIN[o.id] = Object.assign(m, { built: 1 });
+      } catch (e) {}
+    }
+    return BUILTIN;
+  }
   function mustInject() {
-    if (!S.musts || typeof S.musts !== 'object') return;
-    for (const [lid, m] of Object.entries(S.musts)) {
+    if (!S.musts || typeof S.musts !== 'object') S.musts = {};
+    const bi = builtins();
+    for (const id of Object.keys(bi)) delete S.musts[id];
+    for (const [lid, m] of Object.entries(S.musts).concat(Object.entries(bi))) {
       if (!m || !Array.isArray(m.qs) || !TOPIC.has(m.mod)) continue;
       const src = 'must:' + lid;
       if (!SRC.has(src)) SRC.set(src, { id: src, topic: m.mod, type: 'Collected', year: null, label: String(m.t || 'Practice') });
@@ -6025,6 +6045,7 @@
       ${spotlightHTML()}
       ${mustCardHTML()}
       ${questsLive().map((x, k) => x === QUEST ? questHTML(qi, k) : withQuest(x, () => questHTML(questInfo(), k))).join('')}
+      ${practiceCardHTML()}
       ${tickCardHTML()}
       ${tonightHTML()}
       ${acct.skyHTML()}
@@ -6411,8 +6432,8 @@
   }
   // a list that brings its own questions: text only (escaped here, so a link can't put markup in the page), one or more
   // right letters, a why per option; `vip` = only the Labubu account shows its card
-  function mustTakeQs(o, quiet) {
-    if (!TOPIC.has(o.mod)) return false;
+  function mustBuild(o) {
+    if (!TOPIC.has(o.mod) || !Array.isArray(o.qs)) return null;
     const txt = (x, n) => esc(String(x == null ? '' : x).slice(0, n));
     const qs = o.qs.slice(0, 120).map((x, k) => {
       if (!x || !Array.isArray(x.o) || x.o.length < 2 || x.o.length > 6 || !Array.isArray(x.a) || !x.a.length) return null;
@@ -6421,30 +6442,19 @@
       return { id: x.id, n: k + 1, sid: txt(x.sid || ('P' + (k + 1)), 8), stem: txt(x.s, 600), options: x.o.map(t => txt(t, 300)), answer, key: 'claude', c: [], a: '',
         exp: Array.isArray(x.w) ? { lec: String(x.l || o.t || '').slice(0, 120), o: x.o.map((_, i) => String(x.w[i] || '').slice(0, 300)) } : undefined };
     }).filter(Boolean);
-    if (!qs.length) return false;
-    const old = S.musts[o.id];
-    S.musts[o.id] = { t: String(o.t || 'Practice').slice(0, 60), note: String(o.note || '').slice(0, 200), mod: o.mod, vip: o.vip ? 1 : 0,
+    if (!qs.length) return null;
+    return { t: String(o.t || 'Practice').slice(0, 60), note: String(o.note || '').slice(0, 200), mod: o.mod, vip: o.vip ? 1 : 0,
       q: qs.map(x => [x.sid, 0]), qs, doc: MUST_DOC.test(o.doc || '') ? o.doc : '', at: Date.now() };
+  }
+  function mustTakeQs(o, quiet) {
+    const m = mustBuild(o);
+    if (!m || builtins()[o.id]) return false;
+    const old = S.musts[o.id], qs = m.qs;
+    S.musts[o.id] = m;
     if (old && Array.isArray(old.qs)) for (const x of old.qs) if (!qs.some(y => y.id === x.id)) Q.delete(x.id);
     mustInject(); save();
     if (!quiet) { usage.track('must_list_saved', { questions: qs.length }); toast('Saved: ' + S.musts[o.id].t); }
     return true;
-  }
-  // lists built into the page for the Labubu account alone (Abi, 12 November 2026: "just make it so it appears only for
-  // me", no link): src/private/*.txt, scrambled so they don't read as text in the page; unpacked into her S.musts the first
-  // time her homepage draws while she's signed in as the Labubu. Anyone else's page never unpacks them.
-  const PRIV = /*__PRIV__*/{};
-  function privSeed() {
-    if (!(acct.isVip() || window.__privTest)) return;
-    const key = 'labubu-den';
-    for (const blob of Object.values(PRIV)) {
-      try {
-        const b = atob(blob), u = new Uint8Array(b.length);
-        for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-        const o = JSON.parse(new TextDecoder().decode(u));
-        if (o && o.id && !(S.musts && S.musts[o.id] && Array.isArray(S.musts[o.id].qs) && S.musts[o.id].qs.length === o.qs.length)) mustTakeQs(o, true);
-      } catch (e) {}
-    }
   }
   const mustIds = m => Array.isArray(m.qs) ? m.qs.map(x => x && x.id).filter(id => Q.has(id)) : m.q.map(x => bySid(x[0])).filter(Boolean);
   const mustSeen = m => !m.vip || acct.isVip() || !acct.here;
@@ -6452,7 +6462,6 @@
   // only shows once, as the public one
   const publicMusts = () => QUESTS.filter(x => x.must && x.due >= questToday() && !(x.end && questToday() >= x.end)).map(x => [x.must.id, Object.assign({ pub: 1 }, x.must)]);
   function mustCardHTML() {
-    privSeed();
     const pub = publicMusts(), pubIds = new Set(pub.map(x => x[0]));
     const ls = pub.concat(Object.entries(S.musts || {}).filter(([id, m]) => !pubIds.has(id) && m && Array.isArray(m.q) && mustSeen(m)).sort((a, b) => b[1].at - a[1].at))
       .filter(([, m]) => mustIds(m).length);
@@ -6472,9 +6481,25 @@
     </section>`;
     }).join('');
   }
+  // the built-in practice lists, after the quests (Abi, 12 November 2026: after the quest, and say clearly the quest's
+  // questions come first)
+  function practiceCardHTML() {
+    return Object.entries(builtins()).map(([id, m], k) => {
+      const ids = mustIds(m); if (!ids.length) return '';
+      const done = ids.filter(x => S.answers[x] && S.answers[x].checked && S.answers[x].right).length;
+      return `<section class="section wrap mk-wrap pr-wrap" aria-labelledby="pr-h${k}">
+      <div class="mk plate">
+        <p class="eyebrow">Extra practice</p><h2 class="h2" id="pr-h${k}">${esc(m.t)}</h2>
+        <p><b>Not the priority.</b> Do the quest's questions first: they're the professor's own. These ${fmtN(ids.length)} were written by Claude in his style, on the same ideas, as extra practice once you're done. They aren't his questions and they aren't from any exam.</p>
+        <p>Right so far: <b class="num">${fmtN(done)}</b> of ${fmtN(ids.length)}.</p>
+        <div class="row"><button class="btn" type="button" data-must="${esc(id)}">Practise the ${fmtN(ids.length)} extra questions ${ICON.next}</button></div>
+      </div>
+    </section>`;
+    }).join('');
+  }
   function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/&(amp|lt|gt|quot|#39);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" }[e])).replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
   function mustPractise(id) {
-    const m = (publicMusts().find(x => x[0] === id) || [])[1] || S.musts[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
+    const m = (publicMusts().find(x => x[0] === id) || [])[1] || S.musts[id] || builtins()[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
     ids.forEach(x => { keepFirst(x); delete S.answers[x]; delete S.cross[x]; });
     usage.track('must_practised', { questions: ids.length });
     startList(ids, 0, { from: 'home', topic: '*', title: m.t });
