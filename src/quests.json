@@ -373,14 +373,15 @@
           "lecture": "A-s2"
         }
       ],
-      "note": "Pr Bencheqroun’s two sessions, through the 14 questions of his review game. He says they aren’t the exam’s questions: the same ideas in new situations."
+      "note": "Pr Bencheqroun’s two sessions, through the 14 questions of his review game. He says they aren’t the exam’s questions: the same ideas in new situations.",
+      "end": "2026-11-19"
     }
   ],
   "spotlight": {
-    "set": "s5-2627-cardio-vascular-system-disease-midterm-cardiology-2026-2027",
-    "title": "Cardiology midterm 2026–2027",
-    "from": "2026-11-11",
-    "until": "2026-11-11",
-    "note": "Today’s cardiology midterm, as it was given, answered from Pr Nazzi’s lectures and the official keys of the same questions in past exams."
+    "set": "s5-2627-technical-communication-midterm-ai-in-medicine-2026-2027",
+    "title": "AI in medicine midterm 2026–2027",
+    "from": "2026-11-19",
+    "until": "2026-11-25",
+    "note": "Today’s AI in medicine midterm, as it was given, answered from Pr Bencheqroun’s slides and his midterm reading guide."
   }
 }

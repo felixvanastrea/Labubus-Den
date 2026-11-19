@@ -6484,7 +6484,10 @@
   // the built-in practice lists, after the quests (Abi, 12 November 2026: after the quest, and say clearly the quest's
   // questions come first)
   function practiceCardHTML() {
+    // only while a quest of the same module is on (the AI one ended with its exam, 19 November 2026)
+    const t = questToday();
     return Object.entries(builtins()).map(([id, m], k) => {
+      if (!QUESTS.some(x => x.module === m.mod && x.due >= t && !(x.end && t >= x.end))) return '';
       const ids = mustIds(m); if (!ids.length) return '';
       const done = ids.filter(x => S.answers[x] && S.answers[x].checked && S.answers[x].right).length;
       return `<section class="section wrap mk-wrap pr-wrap" aria-labelledby="pr-h${k}">

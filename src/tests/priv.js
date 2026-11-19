@@ -5,6 +5,7 @@ let bad = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if
   const b = await chromium.launch();
   const errs = []; const p = await b.newPage(); p.on('pageerror', e => errs.push(e.message));
   await p.addInitScript(() => { if (sessionStorage.getItem('once')) return; sessionStorage.setItem('once', 1); localStorage.setItem('efm3-mcq-bank-v1', JSON.stringify({ musts: { 'ai-practice-2026-11': { t: 'old copy', vip: 1, mod: 'technical-communication', q: [['AP1', 0]], qs: [], at: 1 } } })); });
+  await p.clock.install({ time: new Date('2026-11-18T12:00:00Z') }); // the card shows only while the AI quest is on
   await p.goto('http://127.0.0.1:8765/index.html'); await p.waitForTimeout(1200);
   ok((await p.$$('[data-must="ai-practice-2026-11"]')).length === 1, 'anyone: one card, no link needed (an old private copy is dropped)');
   ok(await p.evaluate(() => { const m = document.querySelector('.pr-wrap'), q = [...document.querySelectorAll('[data-quest]')].pop(); return !q || !!(q.compareDocumentPosition(m) & 4); }), 'after the quest');
@@ -20,6 +21,9 @@ let bad = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); if
   ok(!!(await p.$('#verdict')) && (await p.$$('.why')).length === 4, 'checks with a why for every option');
   await p.reload(); await p.waitForTimeout(1000);
   ok(await p.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('efm3-mcq-bank-v1')).answers).some(id => /^p[0-9a-f]{9}$/.test(id))), 'its answer is kept after a reload');
+  const p2 = await b.newPage(); await p2.clock.install({ time: new Date('2026-11-19T12:00:00Z') });
+  await p2.goto('http://127.0.0.1:8765/index.html'); await p2.waitForTimeout(1000);
+  ok(!(await p2.$('.pr-wrap')), 'gone once the quest has ended');
   ok(!errs.length, 'no page errors ' + errs.join(' | '));
   await b.close(); process.exit(bad ? 1 : 0);
 })();

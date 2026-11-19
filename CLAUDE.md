@@ -283,6 +283,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `ai-s1`, `ai-s2`). He says they aren't the exam's questions. Two topics added to the module in `lectures.json` (`A-s1`
   records and security: A1–A6; `A-s2` privacy, bias, using AI: A7–A14), placed by `q` entries; no concepts yet.
 - Quest `ai-midterm-2026`, Thursday 19 November 2026, both AI topics (14 questions). The cardiology quest stays ended.
+- The AI in medicine midterm 2026–2027 (A15–A34, set `s5-2627-technical-communication-midterm-ai-in-medicine-2026-2027`,
+  `added` 2026-11-19, the day it was sat): all 20, one answer each, from the Evalbox page Abi forwarded (her name in its
+  header left out). No answers marked: `key: "claude"`, answered from Pr Bencheqroun's slides and reading guide, with
+  explanations; placed in `A-s1` / `A-s2` by `lectures.json` `q` entries. Every one is a reading-guide "For the exam" idea
+  in a new situation, so none was doubtful. Same day (Abi: "remove the quest from homepage and add today's midterm"):
+  the AI quest got `end: 2026-11-19`, the spotlight shows the midterm until 25 November unless she says otherwise, and
+  the 30 extra practice questions' card leaves with the quest (`practiceCardHTML` shows only while a quest of its module
+  is on). Pushed only after the exam's time was over, so no answers went up while classmates could still be sitting it.
 
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 
