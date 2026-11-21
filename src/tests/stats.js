@@ -81,7 +81,7 @@ const names = async p => (await captured(p)).map(c => c.name);
   const want = ['module_opened', 'practice_started', 'question_checked', 'search', 'exam_mode_opened', 'exam_started', 'exam_handed_in', 'exam_review_opened'];
   check(want.every(n => ev.some(e => e.name === n)), 'module, practice, check, search and exam events');
   const chk = ev.find(e => e.name === 'question_checked');
-  check(chk && JSON.stringify(Object.keys(chk.props).sort()) === '["module","quest"]', 'a checked question says only its module and whether it\'s in the quest: ' + JSON.stringify(chk && chk.props));
+  check(chk && JSON.stringify(Object.keys(chk.props).sort()) === '["module","quest","semester"]', 'a checked question says only its module and whether it\'s in the quest: ' + JSON.stringify(chk && chk.props));
   const srch = ev.find(e => e.name === 'search');
   check(srch && srch.props.query === 'acute bronchitis' && srch.props.results > 0 && ev.filter(e => e.name === 'search').length === 1, 'one search event once typing stops: ' + JSON.stringify(srch && srch.props));
   const hand = ev.find(e => e.name === 'exam_handed_in');

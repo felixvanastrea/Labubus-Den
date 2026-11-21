@@ -1,0 +1,42 @@
+{
+ "types": [
+  "Midterms",
+  "Mock",
+  "Finals",
+  "Second session",
+  "Collected"
+ ],
+ "topics": [
+  {
+   "id": "anatomy-1",
+   "name": "Anatomy I"
+  },
+  {
+   "id": "chemistry-biochemistry",
+   "name": "Chemistry and Biochemistry"
+  },
+  {
+   "id": "biology-genetics",
+   "name": "Biology and Fundamental Genetics"
+  },
+  {
+   "id": "biostatistics-public-health",
+   "name": "Biostatistics and Public Health"
+  },
+  {
+   "id": "biophysics",
+   "name": "Biophysics"
+  },
+  {
+   "id": "learning-methods-terminology",
+   "name": "Learning Methods and Terminology"
+  },
+  {
+   "id": "foreign-languages",
+   "name": "Foreign Languages"
+  }
+ ],
+ "sources": [],
+ "cases": [],
+ "questions": []
+}

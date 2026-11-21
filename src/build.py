@@ -1,10 +1,14 @@
 """Build the site: question bank + topic tags + repeated-question clusters, injected into template.html.
 
-    python3 src/build.py          (from anywhere)
+    python3 src/build.py          (from anywhere: builds every semester in semesters.json, one after the other)
+
+One page per semester (Abi, 21 November 2026: each semester kept apart, loaded only when picked). Each has its own
+data folder ("dir" in semesters.json: bank.json, lectures.json, quests.json...) and address ("path").
 
 Writes
-    index.html             the site GitHub Pages serves (a full HTML page, at the repo root next to img/)
-    src/out/artifact.html  the same page without the <html>/<head>/<body> wrapper, for the claude.ai artifact
+    index.html             EFM3 S5, the site GitHub Pages serves (a full HTML page, at the repo root next to img/)
+    efm1-s1/index.html     and the other semesters, each in its folder, with its own version.json
+    src/out/artifact.html  EFM3 S5 without the <html>/<head>/<body> wrapper, for the claude.ai artifact
 """
 import json
 import os
@@ -17,17 +21,38 @@ ROOT = os.path.dirname(HERE)
 os.chdir(HERE)                      # data files and modules sit next to this script
 sys.path.insert(0, HERE)
 
+# every semester, one build each (a fresh interpreter, since the build runs top to bottom on one bank)
+SEMS = json.load(open('semesters.json', encoding='utf8'))
+if not os.environ.get('DEN_SEM'):
+    import subprocess
+    for _s in SEMS:
+        print(f"===== {_s['name']} =====", flush=True)
+        subprocess.run([sys.executable, os.path.abspath(__file__)], env={**os.environ, 'DEN_SEM': _s['id']}, check=True)
+    sys.exit(0)
+SEM = next(s for s in SEMS if s['id'] == os.environ['DEN_SEM'])
+MAIN = SEM is SEMS[0]                 # EFM3 S5: the Den's main address, its concepts, artifact, icon and manifest
+DATA = SEM['dir']
+
+
+def data(name):
+    return os.path.join(DATA, name)
+
+
+def live(s):                          # a semester shows in the switch once it has questions
+    return s is SEMS[0] or bool(json.load(open(os.path.join(s['dir'], 'bank.json'), encoding='utf8'))['questions'])
+
+
 from concepts import CONCEPTS, ASPECT_NAMES, tag  # noqa: E402
 import constellations  # noqa: E402
 from search_extra import SYN as EXTRA_SYN, ABBR as EXTRA_ABBR  # noqa: E402  (search-only aliases)
 
-SITE_URL = 'https://felixvanastrea.github.io/Labubus-Den/'
+SITE_URL = 'https://felixvanastrea.github.io/Labubus-Den/' + SEM['path']
 TITLE = 'Labubu’s Den'
-DESC = ('Past EFM3 exam questions (midterms, mocks, finals and second sessions), sorted by module and by exam, '
+DESC = (f"Past {SEM['year']} exam questions (midterms, mocks, finals and second sessions), sorted by module and by exam, "
         'with answers, explanations and a topic search.')
 
-bank = json.load(open('bank.json', encoding='utf8'))
-shortids = json.load(open('shortids.json', encoding='utf8'))
+bank = json.load(open(data('bank.json'), encoding='utf8'))
+shortids = json.load(open(data('shortids.json'), encoding='utf8'))
 Q = {q['id']: q for q in bank['questions']}
 rev_sid = {v: k for k, v in shortids.items()}
 for sid, qid in shortids.items():
@@ -36,7 +61,7 @@ for sid, qid in shortids.items():
 # Mistakes in the docs that Abi confirmed (corrections.json). Applied before tagging, so search and quests use
 # the fixed text. "from" must still match the bank; "also" sets other fields. Nothing is shown about the fix.
 LETTERS = 'ABCDE'
-for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
+for f in json.load(open(data('corrections.json'), encoding='utf8'))['fixes']:
     q, field = Q[shortids[f['q']]], f['field']
     if field == 'stem':
         old, put = q['stem'], lambda v: q.__setitem__('stem', v)
@@ -56,7 +81,7 @@ for f in json.load(open('corrections.json', encoding='utf8'))['fixes']:
 # Answers checked against the lectures (checked.json): the "Checked against lecture" label, only when the key is
 # still the one the check confirmed. The per-option evidence stays in the file for us; nothing else is shown.
 # A Claude-suggested answer that was checked drops Claude's reasoning note, which argued for the old key.
-for s, c in json.load(open('checked.json', encoding='utf8'))['questions'].items():
+for s, c in json.load(open(data('checked.json'), encoding='utf8'))['questions'].items():
     q = Q[shortids[s]]
     if not c['label']:
         continue
@@ -75,7 +100,7 @@ FOLLOW_UPS = {
     'S232': 'S231', 'S234': 'S233', 'S236': 'S235',
 }
 case_ids = {c['id'] for c in bank['cases']}
-for f, v in FOLLOW_UPS.items():
+for f, v in (FOLLOW_UPS.items() if MAIN else ()):
     fq, vq = Q[shortids[f]], Q[shortids[v]]
     assert not fq.get('case') and fq['source'] == vq['source'], f
     cid = 'fu-' + vq['id']
@@ -86,14 +111,14 @@ for f, v in FOLLOW_UPS.items():
     fq['caseOpen'] = True
 
 tags = tag(bank, shortids)
-rep = json.load(open('repeats.json', encoding='utf8'))
+rep = json.load(open(data('repeats.json'), encoding='utf8'))
 order = {q['id']: i for i, q in enumerate(bank['questions'])}
 cluster_of = {qid: i for i, r in enumerate(rep['repeats']) for qid in r['q']}
 for q in bank['questions']:
     q.pop('_stem', None)
     q.pop('_pi', None)
-    q['c'] = tags[q['id']]['c']
-    q['a'] = tags[q['id']]['a']
+    q['c'] = tags[q['id']]['c'] if MAIN else []   # the concepts are EFM3 S5's: other semesters get their own later
+    q['a'] = tags[q['id']]['a'] if MAIN else ''
 # word-for-word copies (same stem, same options) inside one repeated question are practised once
 for d, keep in rep['dup'].items():
     if cluster_of.get(d) == cluster_of.get(keep):
@@ -119,7 +144,7 @@ bank['cst'] = cst
 
 # explanations (explanations.json): why each proposition is right or wrong, from Abi's lecture summaries. An entry
 # also covers its constellation's other stars and word-for-word copies, matched option by option.
-ex = json.load(open('explanations.json', encoding='utf8'))
+ex = json.load(open(data('explanations.json'), encoding='utf8'))
 n_exp = 0
 for sid, e in ex['questions'].items():
     q = Q[shortids[sid]]
@@ -139,17 +164,17 @@ for sid, e in ex['questions'].items():
         Q[t]['exp'] = {'lec': lec, 'o': o}
         n_exp += 1
 print('explanations:', len(ex['questions']), 'entries, on', n_exp, 'questions')
-bank['concepts'] = [{'id': cid, 'm': mod, 'n': name,
+bank['concepts'] = [] if not MAIN else [{'id': cid, 'm': mod, 'n': name,
                      's': list(dict.fromkeys(syn + EXTRA_SYN.get(cid, []))),
                      'ab': list(dict.fromkeys(abbr + EXTRA_ABBR.get(cid, []))), 'p': parent}
                     for cid, mod, name, syn, abbr, parent in CONCEPTS]
-bank['aspects'] = ASPECT_NAMES
+bank['aspects'] = ASPECT_NAMES if MAIN else {}
 
 # lectures (lectures.json): each module split into its lectures, in course order, one weak-spot topic each (a lecture
 # with under 3 past questions shares a topic with the closest one). A question goes to the topic of its first concept
 # that a topic takes ("concept@T": only with that aspect), unless "q" moves it. Word-for-word copies and constellation
 # stars go with their lead, so a topic holds every copy. Sizes count a question once with its copies.
-LEC = json.load(open('lectures.json', encoding='utf8'))
+LEC = json.load(open(data('lectures.json'), encoding='utf8'))
 LEC_MIN = 3
 c_name = {c[0]: c[2] for c in CONCEPTS}
 
@@ -222,9 +247,11 @@ for t in bank['topics']:
     for d in spec:
         ids = members.get(d['id'], [])
         n = len({canon(Q[i]) for i in ids})
-        assert n, f"lectures.json {d['id']}: no question"
+        assert n or LEC.get('allowEmpty'), f"lectures.json {d['id']}: no question"
         sizes.append(f"{d['name'][:24]} {n}{' (small)' if n < LEC_MIN else ''}")
         e = {'id': d['id'], 'm': t['id'], 'n': d['name'], 'q': ids}
+        if d.get('p'):
+            e['p'] = d['p']             # its part of the module (General chemistry...), a heading on the page
         if len(d['lectures']) > 1:
             e['l'] = list(dict.fromkeys(x['t'] for x in d['lectures']))
         diag.append(e)
@@ -235,7 +262,7 @@ bank['diag'] = diag
 # plus hand-picked extras ("add") minus exclusions ("drop"), by short id. A topic can instead name a lecture
 # ("lecture": a lectures.json topic id) and take exactly that lecture's questions. Word-for-word copies are left
 # out, and a constellation counts once, as its lead. Within a topic, versions of the most repeated questions come first.
-quests = json.load(open('quests.json', encoding='utf8'))
+quests = json.load(open(data('quests.json'), encoding='utf8'))
 # "current" is one quest id, or a list of them (two exams a few days apart): the page shows the first one whose due
 # date hasn't passed, else the last one
 cur_ids = quests.get('current') or []
@@ -274,7 +301,7 @@ def build_quest(cur):
         out['must'] = {k: m[k] for k in ('id', 't', 'note', 'q') if k in m}
         if m.get('sheet'):
             import markdown
-            md = open(os.path.join('cheatsheets', m['sheet']), encoding='utf8').read()
+            md = open(data(os.path.join('cheatsheets', m['sheet'])), encoding='utf8').read()
             html = markdown.markdown(md, extensions=['tables'])
             html = html.replace('<table>', '<div class="cs-table"><table>').replace('</table>', '</table></div>')
             out['must']['sheet'] = html
@@ -312,7 +339,7 @@ if spot:
 # its exam sets ("sets": set ids, or "types": exam types) and/or single questions ("questions": short ids);
 # the build stores the set ids, any single question ids, and the question count. "kind" relabels an entry
 # without questions (the default label is "New on the site").
-updates = json.load(open('updates.json', encoding='utf8'))
+updates = json.load(open(data('updates.json'), encoding='utf8'))
 assert len({u['id'] for u in updates}) == len(updates), 'update ids must be unique'
 assert [u['date'] for u in updates] == sorted((u['date'] for u in updates), reverse=True), 'updates must be newest first'
 src_ids = {s['id'] for s in bank['sources']}
@@ -372,19 +399,29 @@ assert '<!--__LABUBU__-->' in tpl
 page = (tpl.replace('/*__CSS__*/', '\n' + css).replace('<!--__LABUBU__-->', symbol)
         .replace('__BANK_JSON__', payload))
 # practice question lists built into the page for everyone (src/private/*.txt: scrambled JSON, decoded in the page)
-priv = {f[:-4]: open(os.path.join('private', f), encoding='utf8').read().strip()
-        for f in sorted(os.listdir('private')) if f.endswith('.txt')} if os.path.isdir('private') else {}
+priv = {f[:-4]: open(data(os.path.join('private', f)), encoding='utf8').read().strip()
+        for f in sorted(os.listdir(data('private'))) if f.endswith('.txt')} if os.path.isdir(data('private')) else {}
 assert page.count('/*__PRIV__*/{}') == 1
 page = page.replace('/*__PRIV__*/{}', json.dumps(priv))
+up = '../' * SEM['path'].count('/')
+sem_js = {k: SEM[k] for k in ('id', 'year', 'sem', 'name', 'label', 'store', 'sync', 'sky')}
+sem_js['all'] = [{'id': s['id'], 'name': s['name'], 'year': s['year'], 'sem': s['sem'], 'store': s['store'], 'sync': s['sync'],
+                  'href': up + s['path'] or './', 'live': live(s)} for s in SEMS]
+assert page.count('/*__SEM__*/{}') == 1
+page = page.replace('/*__SEM__*/{}', json.dumps(sem_js, ensure_ascii=False))
+if up:   # a semester in a folder: the shared figures and sounds are one level up
+    page = re.sub(r'([\'"(`])(img|snd)/', r'\1' + up + r'\2/', page)
+print('semester', SEM['id'], '|', 'live' if live(SEM) else 'hidden until it has questions', '| switch:', ', '.join(s['id'] for s in sem_js['all'] if s['live'] or s['id'] == SEM['id']))
 print('private lists |', ', '.join(f'{k} ({len(v)} chars)' for k, v in priv.items()) or 'none')
 # the tab icon: the head in bone on a charcoal tile
 favicon = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="142.5 146.6 698 698">'
            '<rect x="142.5" y="146.6" width="698" height="698" rx="150" fill="#1b1a18"/>'
            f'<path fill="#ece3d1" d="{art_d["face"]}"/><path fill="#1b1a18" d="{art_d["line"]}"/></svg>\n')
-open(os.path.join(ROOT, 'favicon.svg'), 'w', encoding='utf8').write(favicon)
+if MAIN:
+    open(os.path.join(ROOT, 'favicon.svg'), 'w', encoding='utf8').write(favicon)
 
 os.makedirs('out', exist_ok=True)
-open(os.path.join('out', 'artifact.html'), 'w', encoding='utf8').write(page)
+open(os.path.join('out', 'artifact.html' if MAIN else f"artifact-{SEM['id']}.html"), 'w', encoding='utf8').write(page)
 
 # the home-screen app: on GitHub Pages the Den installs like an app (full screen, its own icon). The icons are drawn
 # from the art by src/pipeline/app_icons.js
@@ -397,7 +434,12 @@ manifest = {
               {'src': 'icon-maskable-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]}
 for i in manifest['icons']:
     assert os.path.exists(os.path.join(ROOT, i['src'])), f"{i['src']} is missing: run src/pipeline/app_icons.js"
-open(os.path.join(ROOT, 'manifest.webmanifest'), 'w', encoding='utf8').write(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+if MAIN:
+    open(os.path.join(ROOT, 'manifest.webmanifest'), 'w', encoding='utf8').write(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+# the Den remembers the last semester picked (den-sem): its main address sends you on to it, before the page loads further
+others = [s for s in SEMS[1:] if live(s)]
+go_on = ('<script>try{var g=localStorage.getItem("den-sem"),m=' + json.dumps({s['id']: s['path'] for s in others})
+         + ';if(m[g]&&!location.hash)location.replace(m[g]+location.search)}catch(e){}</script>\n') if MAIN and others else ''
 
 # the standalone page: the template's title, font links and styles go in <head>, everything else in <body>
 cut = page.index('</style>') + len('</style>')
@@ -413,14 +455,14 @@ doc = f'''<!doctype html>
 <meta property="og:title" content="{TITLE}">
 <meta property="og:description" content="{DESC}">
 <meta property="og:url" content="{SITE_URL}">
-<meta property="og:image" content="{SITE_URL}og.jpg">
+<meta property="og:image" content="{SITE_URL.rsplit(SEM['path'], 1)[0] if SEM['path'] else SITE_URL}og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="manifest" href="manifest.webmanifest">
+{go_on}<link rel="icon" href="{up}favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="{up}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{up}icon-180.png">
+<link rel="manifest" href="{up}manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Labubu’s Den">
@@ -436,8 +478,10 @@ import hashlib
 ver = hashlib.sha1(doc.encode()).hexdigest()[:12]
 assert doc.count('__DEN_VERSION__') == 1
 doc = doc.replace('__DEN_VERSION__', ver)
-open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf8').write(doc)
-open(os.path.join(ROOT, 'version.json'), 'w', encoding='utf8').write(json.dumps({'v': ver}) + '\n')
+OUT = os.path.join(ROOT, SEM['path'])
+os.makedirs(OUT, exist_ok=True)
+open(os.path.join(OUT, 'index.html'), 'w', encoding='utf8').write(doc)
+open(os.path.join(OUT, 'version.json'), 'w', encoding='utf8').write(json.dumps({'v': ver}) + '\n')
 print('version', ver)
 print('questions', len(bank['questions']), '| repeated clusters', len(repeats),
       '| dups', sum(1 for q in bank['questions'] if q.get('dupOf')), '| index.html bytes', len(doc.encode()))

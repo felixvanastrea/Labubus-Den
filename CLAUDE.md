@@ -360,6 +360,27 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   practises its questions once each, like the quest (Constellations below; with the exam-type filter; `startLecture`,
   `S.session.lec`), and the hourglass on its right takes it as a timed exam, whose Back returns to the module. The midterm's lectures and the quest's topics hold the same questions: lectures.js checks it.
 
+## Semesters (Abi, 21 November 2026)
+
+- Each semester is its own page, kept "extremely separate" (Abi): its own data, storage, search and Firestore collections,
+  and nothing of another semester is loaded. EFM3 S5 stays at the root (`index.html`); others are built into a subfolder
+  (EFM1 S1: `efm1-s1/index.html`, data in `src/sem/efm1-s1/`) from the same `template.html`. `src/semesters.json` lists
+  them (`dir`, `path`, `store` = localStorage key, `sync` = field of `users/{uid}`, `sky`); `build.py` builds each one
+  (`DEN_SEM`) with its own `version.json`. Concepts, follow-ups, the artifact, favicon and manifest are S5 only.
+- `SEM` in the page (`/*__SEM__*/`), `MAIN_SEM`, `COL(n)`: notes, here and duels go to `notes-efm1-s1` etc. outside S5. Sync
+  writes `s_efm1s1` for EFM1 (S5 keeps `s` and `answered`). **Needs Firestore rules for those collections and the new users
+  field**: ask Abi for her whole rules file and give the whole file back.
+- No class sky and no colours outside S5 (`SEM.sky`). Themes earned in one semester, the secret code, read gifts and
+  announced themes count in every semester (`elsewhere`, `earnedIn`). PostHog events carry `semester`.
+- The switch: a menu in the top bar (`semSwitchHTML`, `.semsw`), shown once two semesters are live. Each page sets
+  `den-sem`; the root page sends you on to the last semester you picked (a head script, not with a hash).
+- A semester is hidden until it has questions (`live` in build.py); the page still builds, as a preview (switch says
+  "preview"). EFM1 S1 (21 November 2026): 7 modules and Abi's 82 lectures in `lectures.json` (`allowEmpty`, parts in `p`;
+  I tidied her spellings, e.g. Biostatics), no questions yet. With no questions the homepage shows modules and lectures
+  only (no search, legend, type tabs, Most repeated or Updates); a module page lists its lectures by part, "No questions
+  yet". Module windows: `ART` has a constellation per EFM1 module (a bone, benzene, a helix, a bell curve, a lens, a book,
+  a globe). EFM2 S3: nothing yet; ask Abi for its docs and lecture list. Test: efm1.js.
+
 ## Weak spots: taken out (Abi, 21 November 2026)
 
 - "Nobody uses it and it's taking performance": the weak spots page, each lecture's diagnostic, its homepage card, the
@@ -901,7 +922,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js; node efm1.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

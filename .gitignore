@@ -6,3 +6,5 @@ src/tests/img
 src/tests/package-lock.json
 __pycache__/
 *.pyc
+src/tests/version.json
+src/tests/efm1-s1/

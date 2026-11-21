@@ -1,0 +1,900 @@
+{
+ "note": "EFM1 S1 lectures in course order (Abi, 21 November 2026). A topic is one lecture; \"p\" is its part.",
+ "allowEmpty": true,
+ "modules": {
+  "anatomy-1": [
+   {
+    "id": "AN-01",
+    "name": "Introducing anatomy: body axes, planes and organ systems",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing anatomy: body axes, planes and organ systems"
+     }
+    ]
+   },
+   {
+    "id": "AN-02",
+    "name": "Musculoskeletal system: osteology and myology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Musculoskeletal system: osteology and myology"
+     }
+    ]
+   },
+   {
+    "id": "AN-03",
+    "name": "Cardiovascular system",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cardiovascular system"
+     }
+    ]
+   },
+   {
+    "id": "AN-04",
+    "name": "Respiratory system",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Respiratory system"
+     }
+    ]
+   }
+  ],
+  "chemistry-biochemistry": [
+   {
+    "id": "CB-01",
+    "name": "Structure of matter",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Structure of matter"
+     }
+    ],
+    "p": "General chemistry"
+   },
+   {
+    "id": "CB-02",
+    "name": "Model of the atom",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Model of the atom"
+     }
+    ],
+    "p": "General chemistry"
+   },
+   {
+    "id": "CB-03",
+    "name": "Chemical bonds",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Chemical bonds"
+     }
+    ],
+    "p": "General chemistry"
+   },
+   {
+    "id": "CB-04",
+    "name": "Chemistry of solutions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Chemistry of solutions"
+     }
+    ],
+    "p": "General chemistry"
+   },
+   {
+    "id": "CB-05",
+    "name": "Oxidation and reduction",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Oxidation and reduction"
+     }
+    ],
+    "p": "General chemistry"
+   },
+   {
+    "id": "CB-06",
+    "name": "Introducing organic chemistry: carbon, the periodic table, nomenclature and functional groups",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing organic chemistry: carbon, the periodic table, nomenclature and functional groups"
+     }
+    ],
+    "p": "Organic chemistry"
+   },
+   {
+    "id": "CB-07",
+    "name": "Isomers",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Isomers"
+     }
+    ],
+    "p": "Organic chemistry"
+   },
+   {
+    "id": "CB-08",
+    "name": "Electronic effects",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Electronic effects"
+     }
+    ],
+    "p": "Organic chemistry"
+   },
+   {
+    "id": "CB-09",
+    "name": "Chemical reactions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Chemical reactions"
+     }
+    ],
+    "p": "Organic chemistry"
+   },
+   {
+    "id": "CB-10",
+    "name": "Introducing structural biochemistry: definition, reactions, bonds, water, functional groups and the three macromolecules",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing structural biochemistry: definition, reactions, bonds, water, functional groups and the three macromolecules"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-11",
+    "name": "Amino acids",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Amino acids"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-12",
+    "name": "Proteins and peptides",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Proteins and peptides"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-13",
+    "name": "Enzyme catalysis",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Enzyme catalysis"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-14",
+    "name": "Carbohydrates",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Carbohydrates"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-15",
+    "name": "Lipids",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Lipids"
+     }
+    ],
+    "p": "Structural biochemistry"
+   },
+   {
+    "id": "CB-16",
+    "name": "Introducing metabolic biochemistry",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing metabolic biochemistry"
+     }
+    ],
+    "p": "Metabolic biochemistry"
+   },
+   {
+    "id": "CB-17",
+    "name": "Carbohydrate metabolism",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Carbohydrate metabolism"
+     }
+    ],
+    "p": "Metabolic biochemistry"
+   },
+   {
+    "id": "CB-18",
+    "name": "Protein metabolism",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Protein metabolism"
+     }
+    ],
+    "p": "Metabolic biochemistry"
+   },
+   {
+    "id": "CB-19",
+    "name": "Lipid metabolism",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Lipid metabolism"
+     }
+    ],
+    "p": "Metabolic biochemistry"
+   }
+  ],
+  "biology-genetics": [
+   {
+    "id": "BG-01",
+    "name": "The 6 microscopes used in medicine: components and roles",
+    "take": [],
+    "lectures": [
+     {
+      "t": "The 6 microscopes used in medicine: components and roles"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-02",
+    "name": "Cytologic and histologic technique",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cytologic and histologic technique"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-03",
+    "name": "Cell culture and its applications",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cell culture and its applications"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-04",
+    "name": "Plasma membrane components",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Plasma membrane components"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-05",
+    "name": "Cell transport, signaling and adhesion",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cell transport, signaling and adhesion"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-06",
+    "name": "Cytoplasmic components and the 3 compartments",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cytoplasmic components and the 3 compartments"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-07",
+    "name": "Cytoskeleton components and functions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cytoskeleton components and functions"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-08",
+    "name": "Cellular functions: respiration, synthesis and epuration",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cellular functions: respiration, synthesis and epuration"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-09",
+    "name": "Nuclear components and functions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Nuclear components and functions"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-10",
+    "name": "Cell cycle and regulatory factors",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cell cycle and regulatory factors"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-11",
+    "name": "Medical applications: cancer, apoptosis and oxidative stress",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Medical applications: cancer, apoptosis and oxidative stress"
+     }
+    ],
+    "p": "Cellular biology"
+   },
+   {
+    "id": "BG-12",
+    "name": "Introducing molecular biology and genetics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing molecular biology and genetics"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-13",
+    "name": "Replication",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Replication"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-14",
+    "name": "Cytogenetics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cytogenetics"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-15",
+    "name": "Gene regulation",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Gene regulation"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-16",
+    "name": "Transcription and translation",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Transcription and translation"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-17",
+    "name": "DNA and PCR",
+    "take": [],
+    "lectures": [
+     {
+      "t": "DNA and PCR"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   },
+   {
+    "id": "BG-18",
+    "name": "Genetic diseases",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Genetic diseases"
+     }
+    ],
+    "p": "Molecular biology and genetics"
+   }
+  ],
+  "biostatistics-public-health": [
+   {
+    "id": "BP-01",
+    "name": "Basic concepts: information, data, population and sampling, quantitative and qualitative variables",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Basic concepts: information, data, population and sampling, quantitative and qualitative variables"
+     }
+    ],
+    "p": "Biostatistics"
+   },
+   {
+    "id": "BP-02",
+    "name": "Introduction to the R programming language",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introduction to the R programming language"
+     }
+    ],
+    "p": "Biostatistics"
+   },
+   {
+    "id": "BP-03",
+    "name": "Descriptive statistics: measures of centrality and dispersion",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Descriptive statistics: measures of centrality and dispersion"
+     }
+    ],
+    "p": "Biostatistics"
+   },
+   {
+    "id": "BP-04",
+    "name": "Introduction: quality of life, health program planning",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introduction: quality of life, health program planning"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-05",
+    "name": "Health system analysis: health system and health care system, the 6 pillars and strategies, actors of the health system",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Health system analysis: health system and health care system, the 6 pillars and strategies, actors of the health system"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-06",
+    "name": "Example of Ghana ADHA (group project)",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Example of Ghana ADHA (group project)"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-07",
+    "name": "Determinants of health and health promotion",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Determinants of health and health promotion"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-08",
+    "name": "Hospital-acquired infections: definition and epidemiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hospital-acquired infections: definition and epidemiology"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-09",
+    "name": "Prevention of hospital-acquired infections",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Prevention of hospital-acquired infections"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-10",
+    "name": "Hospital surveillance systems",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hospital surveillance systems"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-11",
+    "name": "Dealing with outbreaks and epidemics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Dealing with outbreaks and epidemics"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-12",
+    "name": "Public health practice: health system insurance, building blocks, universal health coverage",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Public health practice: health system insurance, building blocks, universal health coverage"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-13",
+    "name": "Introducing epidemiology: assessing community health, individual decisions, causes, risk factors and investigations",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing epidemiology: assessing community health, individual decisions, causes, risk factors and investigations"
+     }
+    ],
+    "p": "Public health"
+   },
+   {
+    "id": "BP-14",
+    "name": "Health economics: the health market and the Moroccan health insurance system",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Health economics: the health market and the Moroccan health insurance system"
+     }
+    ],
+    "p": "Public health"
+   }
+  ],
+  "biophysics": [
+   {
+    "id": "BY-01",
+    "name": "Fundamental quantities and measurement units",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Fundamental quantities and measurement units"
+     }
+    ]
+   },
+   {
+    "id": "BY-02",
+    "name": "States of matter",
+    "take": [],
+    "lectures": [
+     {
+      "t": "States of matter"
+     }
+    ]
+   },
+   {
+    "id": "BY-03",
+    "name": "Gaseous state",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Gaseous state"
+     }
+    ]
+   },
+   {
+    "id": "BY-04",
+    "name": "Water and solutions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Water and solutions"
+     }
+    ]
+   },
+   {
+    "id": "BY-05",
+    "name": "Energetics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Energetics"
+     }
+    ]
+   },
+   {
+    "id": "BY-06",
+    "name": "The free movement of matter",
+    "take": [],
+    "lectures": [
+     {
+      "t": "The free movement of matter"
+     }
+    ]
+   },
+   {
+    "id": "BY-07",
+    "name": "Physical phenomena of membranes and simple elements",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Physical phenomena of membranes and simple elements"
+     }
+    ]
+   },
+   {
+    "id": "BY-08",
+    "name": "Biophysics of the circulatory system",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Biophysics of the circulatory system"
+     }
+    ]
+   },
+   {
+    "id": "BY-09",
+    "name": "Electrocardiography",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Electrocardiography"
+     }
+    ]
+   },
+   {
+    "id": "BY-10",
+    "name": "Biophysics of respiration",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Biophysics of respiration"
+     }
+    ]
+   },
+   {
+    "id": "BY-11",
+    "name": "Acids and bases",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acids and bases"
+     }
+    ]
+   },
+   {
+    "id": "BY-12",
+    "name": "Nuclear structure and radioactivity",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Nuclear structure and radioactivity"
+     }
+    ]
+   },
+   {
+    "id": "BY-13",
+    "name": "Interaction and detection",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Interaction and detection"
+     }
+    ]
+   },
+   {
+    "id": "BY-14",
+    "name": "Radiobiology: biological effects of infrared radiation",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Radiobiology: biological effects of infrared radiation"
+     }
+    ]
+   },
+   {
+    "id": "BY-15",
+    "name": "Applications of infrared radiation in health",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Applications of infrared radiation in health"
+     }
+    ]
+   },
+   {
+    "id": "BY-16",
+    "name": "Radioprotection",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Radioprotection"
+     }
+    ]
+   },
+   {
+    "id": "BY-17",
+    "name": "Echography (ultrasound)",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Echography (ultrasound)"
+     }
+    ]
+   },
+   {
+    "id": "BY-18",
+    "name": "Medical lasers",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Medical lasers"
+     }
+    ]
+   },
+   {
+    "id": "BY-19",
+    "name": "Optics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Optics"
+     }
+    ]
+   }
+  ],
+  "learning-methods-terminology": [
+   {
+    "id": "LM-01",
+    "name": "Cultural intelligence (CI) and intelligence quotient (IQ)",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cultural intelligence (CI) and intelligence quotient (IQ)"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-02",
+    "name": "Time management",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Time management"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-03",
+    "name": "Effective note-taking strategies",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Effective note-taking strategies"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-04",
+    "name": "Reading strategies",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Reading strategies"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-05",
+    "name": "Neuroscience of effective learning",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Neuroscience of effective learning"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-06",
+    "name": "Cognition and metacognition of learning",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cognition and metacognition of learning"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-07",
+    "name": "Evidence-based learning strategies",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Evidence-based learning strategies"
+     }
+    ],
+    "p": "Learning methods"
+   },
+   {
+    "id": "LM-08",
+    "name": "Motivation and procrastination",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Motivation and procrastination"
+     }
+    ],
+    "p": "Learning methods"
+   }
+  ],
+  "foreign-languages": []
+ },
+ "q": {},
+ "unasked": {}
+}

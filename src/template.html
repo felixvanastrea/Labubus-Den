@@ -65,7 +65,16 @@
     claude: "Nothing was highlighted in the doc, so these are Claude's suggested answers, each with a short reason. Check them against your course.",
     none: "Nothing was highlighted in the doc, so these can't be graded yet"
   };
-  const STORE_KEY = 'efm3-mcq-bank-v1';
+  // ---------- semesters ----------
+  // One page per semester (Abi, 21 November 2026: "keep each semester extremely separate"): this page's bank holds only
+  // its own questions, its progress is saved under its own key and synced to its own field of the account, its social
+  // parts use their own Firestore docs (COL), and only EFM3 S5 has the class sky. SEM comes from semesters.json.
+  const SEM = Object.assign({ id: 'efm3-s5', year: 'EFM3', sem: 'S5', name: 'EFM3 · Semester 5', label: 'Semester 5 · 2025–2026',
+    store: 'efm3-mcq-bank-v1', sync: 's', sky: true, all: [] }, /*__SEM__*/{});
+  const MAIN_SEM = SEM.id === 'efm3-s5';
+  const COL = n => MAIN_SEM ? n : n + '-' + SEM.id;   // notes, here, duels: one board per semester
+  const STORE_KEY = SEM.store;
+  try { localStorage.setItem('den-sem', SEM.id); } catch (e) {}   // the main address opens on the last semester picked
   const ICON = {
     bubble: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h12a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 16 13.5H9.5L6 16.5v-3H4A1.5 1.5 0 0 1 2.5 12V6A1.5 1.5 0 0 1 4 4.5z"/></svg>',
     lock: '<svg class="lk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="9" width="11" height="8" rx="1.6"/><path d="M7 9V6.6a3 3 0 0 1 6 0V9"/></svg>',
@@ -140,6 +149,35 @@
     'technical-communication': { // a speech bubble
       p: [[50, 64], [26, 44], [74, 44], [82, 54], [82, 72], [74, 82], [48, 82], [34, 96], [36, 82], [26, 82], [18, 72], [18, 54], [38, 64], [62, 64]],
       e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 1]]
+    },
+    // EFM1 S1
+    'anatomy-1': { // a long bone, both its ends
+      p: [[50, 36], [46, 30], [36, 28], [34, 40], [44, 46], [44, 94], [34, 100], [36, 112], [46, 110], [50, 104], [54, 110], [64, 112], [66, 100], [56, 94], [56, 46], [66, 40], [64, 28], [54, 30]],
+      e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15], [15, 16], [16, 17], [17, 0]]
+    },
+    'chemistry-biochemistry': { // a benzene ring and its side chain
+      p: [[50, 96], [50, 42], [67, 52], [67, 72], [50, 82], [33, 72], [33, 52], [50, 48], [62, 55], [62, 69], [50, 76], [38, 69], [38, 55], [62, 103], [22, 46]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 1], [7, 8], [9, 10], [11, 12], [4, 0], [0, 13], [6, 14]]
+    },
+    'biology-genetics': { // a double helix
+      p: [[70,  24],  [68,  30],  [62,  36],  [54,  42],  [46,  48],  [38,  54],  [32,  60],  [30,  66],  [32,  72],  [38,  78],  [46,  84],  [54,  90],  [62,  96],  [68,  102],  [70,  108],  [30,  24],  [32,  30],  [38,  36],  [46,  42],  [54,  48],  [62,  54],  [68,  60],  [70,  66],  [68,  72],  [62,  78],  [54,  84],  [46,  90],  [38,  96],  [32,  102],  [30,  108]],
+      e: [[0,  1],  [1,  2],  [2,  3],  [3,  4],  [4,  5],  [5,  6],  [6,  7],  [7,  8],  [8,  9],  [9,  10],  [10,  11],  [11,  12],  [12,  13],  [13,  14],  [15,  16],  [16,  17],  [17,  18],  [18,  19],  [19,  20],  [20,  21],  [21,  22],  [22,  23],  [23,  24],  [24,  25],  [25,  26],  [26,  27],  [27,  28],  [28,  29],  [0,  15],  [2,  17],  [6,  21],  [8,  23],  [12,  27],  [14,  29]]
+    },
+    'biostatistics-public-health': { // a bell curve, its mean marked
+      p: [[50,  42],  [16,  95],  [22,  92],  [28,  86],  [33,  76],  [37,  66],  [41,  55],  [45,  46],  [55,  46],  [59,  55],  [63,  66],  [67,  76],  [72,  86],  [78,  92],  [84,  95],  [14,  98],  [86,  98],  [50,  98]],
+      e: [[1,  2],  [2,  3],  [3,  4],  [4,  5],  [5,  6],  [6,  7],  [7,  0],  [0,  8],  [8,  9],  [9,  10],  [10,  11],  [11,  12],  [12,  13],  [13,  14],  [15,  17],  [17,  16],  [0,  17]]
+    },
+    'biophysics': { // a lens bringing light to a focus
+      p: [[80, 62], [40, 34], [35, 46], [33, 62], [35, 78], [40, 90], [45, 78], [47, 62], [45, 46], [16, 46], [16, 62], [16, 78]],
+      e: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 1], [9, 2], [10, 3], [11, 4], [8, 0], [7, 0], [6, 0]]
+    },
+    'learning-methods-terminology': { // an open book
+      p: [[50, 50], [34, 42], [18, 46], [18, 92], [34, 88], [50, 98], [66, 88], [82, 92], [82, 46], [66, 42], [25, 60], [43, 58], [25, 72], [43, 70], [57, 58], [75, 60], [57, 70], [75, 72]],
+      e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 0], [0, 5], [10, 11], [12, 13], [14, 15], [16, 17]]
+    },
+    'foreign-languages': { // a globe
+      p: [[50, 36], [64, 40], [74, 50], [78, 64], [74, 78], [64, 88], [50, 92], [36, 88], [26, 78], [22, 64], [26, 50], [36, 40], [61, 48], [63, 64], [61, 80], [39, 80], [37, 64], [39, 48]],
+      e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 0], [0, 12], [12, 13], [13, 14], [14, 6], [6, 15], [15, 16], [16, 17], [17, 0], [9, 16], [16, 13], [13, 3]]
     },
     'hourglass': { // exam mode: an hourglass, its sand falling from the waist onto a heap
       p: [[50, 66], [50, 86], [42, 96], [58, 96], [30, 104], [70, 104], [35, 92], [65, 92], [35, 40], [65, 40], [30, 28], [70, 28], [42, 50], [58, 50]],
@@ -937,7 +975,7 @@
     const on = () => here && pref() !== 'off';
     function track(name, props) {
       if (!on() || !loaded || !window.posthog) return;
-      try { window.posthog.capture(name, props || {}); } catch (e) {}
+      try { window.posthog.capture(name, Object.assign({ semester: SEM.id }, props || {})); } catch (e) {}
     }
     // switched off: PostHog's cookie and storage go too
     function forget() {
@@ -1902,6 +1940,30 @@
   // Codex since 21 November 2026: 15/20 or more on a lecture exam (the weak spots and their diagnostics were taken out).
   // Whoever already had a lecture at Solid on its old diagnostic keeps it: worked out from S.clean, only when the
   // themes are shown, and again only when the clean answers change.
+  // ---------- the other semesters ----------
+  // What this page takes from the others: the themes earned there, the secret code, the gifts already read and the
+  // themes already announced. From their copies saved on this device, and from the account (their fields of users/{uid}).
+  const elsewhere = (() => {
+    const st = {};
+    for (const o of SEM.all) if (o.id !== SEM.id) { try { const v = JSON.parse(localStorage.getItem(o.store) || 'null'); if (v && typeof v === 'object') st[o.id] = v; } catch (e) {} }
+    function fromDoc(d) {
+      for (const o of SEM.all) if (o.id !== SEM.id && d && typeof d[o.sync] === 'string') {
+        try { const v = JSON.parse(d[o.sync]); if (v && typeof v === 'object') st[o.id] = Object.assign({}, st[o.id] || {}, v); } catch (e) {}
+      }
+    }
+    const any = f => Object.values(st).some(o => { try { return !!f(o); } catch (e) { return false; } });
+    return { fromDoc, any };
+  })();
+  // a theme earned in another semester (the same rules as themeGoal, on that semester's saved copy)
+  function earnedIn(o, id) {
+    if (id === 'blood') return ((o.moon || {}).full | 0) > 0 || Object.values(o.duels || {}).some(e => e && e.k === 'duel' && e.h);
+    if (id === 'klimt') return (o.examLog || []).some(e => e && (e.total | 0) >= GOLD_N && +e.n20 >= GOLD_MARK);
+    if (id === 'codex') return (o.examLog || []).some(e => e && typeof e.scope === 'string' && e.scope.startsWith('topic:') && +e.n20 >= SOLID) || !!(o.unlocks && o.unlocks.codexOld);
+    return false;
+  }
+  const earnedElsewhere = id => elsewhere.any(o => earnedIn(o, id));
+  const psyElsewhere = () => elsewhere.any(o => o.unlocks && o.unlocks.psy);
+
   const SOLID = 15;
   let oldSolid = null, oldSolidN = -1;
   function oldDiagSolid() {
@@ -1909,6 +1971,7 @@
     if (oldSolid !== true && n !== oldSolidN) {
       oldSolidN = n; oldSolid = false;
       for (let i = 0; i < DIAG.length && !oldSolid; i++) { const st = diagState(i); if (st.open && st.n20 >= SOLID) oldSolid = true; }
+      if (oldSolid && !S.unlocks.codexOld) S.unlocks.codexOld = Date.now();   // so the other semesters know (synced)
     }
     return oldSolid;
   }
@@ -1997,7 +2060,7 @@
     // a theme can be worn once earned (signed in: themes belong to accounts); the Labubu account has them all, and a
     // gift from her brings its themes
     // El Psy Kongroo (the secret code, S.unlocks.psy, synced): every theme, the ones to come and the given ones too
-    const canWear = id => id === 'gothic' || vip() || !!giftOf(id) || (member() && (here ? state !== 'off' : true) && (!!S.unlocks.psy || themeGoal(id).done));
+    const canWear = id => id === 'gothic' || vip() || !!giftOf(id) || (member() && (here ? state !== 'off' : true) && (!!S.unlocks.psy || psyElsewhere() || themeGoal(id).done || earnedElsewhere(id)));
     let pv = null;   // a preview running
     function applyLook() {
       if (pv) return false;
@@ -2028,7 +2091,7 @@
       noticeGifts();
       if (!member() || (here && state === 'off')) return;
       if (!Array.isArray(S.themesSeen)) S.themesSeen = [];
-      const fresh = THEMES.filter(t => t.id !== 'gothic' && canWear(t.id) && !S.themesSeen.includes(t.id));
+      const fresh = THEMES.filter(t => t.id !== 'gothic' && canWear(t.id) && !S.themesSeen.includes(t.id) && !elsewhere.any(o => Array.isArray(o.themesSeen) && o.themesSeen.includes(t.id)));
       if (!fresh.length) return;
       fresh.forEach(t => S.themesSeen.push(t.id)); save();
       const told = fresh.filter(t => !giftOf(t.id));   // a gift's theme is announced by its letter
@@ -2110,7 +2173,7 @@
     }, 3000);
     function noticeGifts() {
       if (!here || state !== 'in') return;
-      const g = myGifts().find(x => !S.gifts[x.id]); if (!g) return;
+      const g = myGifts().find(x => !S.gifts[x.id] && !elsewhere.any(o => o.gifts && o.gifts[x.id])); if (!g) return;
       setTimeout(() => {
         if (S.gifts[g.id] || S.view !== 'home' || intro.active() || (sheet && !sheet.hidden) || state !== 'in') return;
         showLetter(g);
@@ -2182,10 +2245,11 @@
       let changed = false;
       await fb.f.runTransaction(db, async tx => {
         const snap = await tx.get(ref());
-        if (snap.exists() && snap.data().s) { try { changed = take(JSON.parse(snap.data().s)) || changed; } catch (e) {} }
+        if (snap.exists() && snap.data()[SEM.sync]) { try { changed = take(JSON.parse(snap.data()[SEM.sync])) || changed; } catch (e) {} }
         const s = blob();
         if (s.length > 900000) throw Object.assign(new Error('too big'), { code: 'too-big' });
-        tx.set(ref(), { s, t: fb.f.serverTimestamp(), email: fb.f.deleteField(), answered: Object.values(S.answers).filter(a => a && a.checked).length }, { merge: true });
+        tx.set(ref(), MAIN_SEM ? { s, t: fb.f.serverTimestamp(), email: fb.f.deleteField(), answered: Object.values(S.answers).filter(a => a && a.checked).length }
+          : { [SEM.sync]: s, t: fb.f.serverTimestamp() }, { merge: true });
       });
       if (changed) { save(true); refresh(); }
       synced = Date.now(); paint();
@@ -2202,7 +2266,8 @@
           if (was === 'naming') { state = 'in'; done(); }
           paint(); if (was === 'naming') refresh();
         }
-        let ch = false; try { ch = take(JSON.parse(d.s || '{}')); } catch (e) {}
+        elsewhere.fromDoc(d);
+        let ch = false; try { ch = take(JSON.parse(d[SEM.sync] || '{}')); } catch (e) {}
         if (d.look && d.look !== read(LOOK_KEY)) { store(LOOK_KEY, d.look); ch = applyLook() || ch; }
         if (ch) { save(true); applyLook(); refresh(); }
       }, () => {});
@@ -2221,7 +2286,8 @@
       try {
         const snap = await fb.f.getDoc(ref());
         const d = snap.exists() ? snap.data() : {};
-        if (d.s) { try { full = take(JSON.parse(d.s)) || full; } catch (e) {} }
+        elsewhere.fromDoc(d);
+        if (d[SEM.sync]) { try { full = take(JSON.parse(d[SEM.sync])) || full; } catch (e) {} }
         me = { name: d.name || '', key: d.key || '' }; if (me.name) store(NAME, me.name);
         state = me.key ? 'in' : 'naming';
         if (d.look) store(LOOK_KEY, d.look);
@@ -2313,6 +2379,7 @@
         }
       }
       // my star in today's sky, once I've done SKY_MIN questions; its count moves in steps, so it's a few writes a day
+      if (!SEM.sky) return;
       const today = dayKey(), day = 'd' + today, c = S.days[today] || 0, tier = c >= SKY_MIN ? SKY_TIERS.filter(x => c >= x).pop() : 0;
       const star = skyHidden() || !tier ? null : { nm: me.name, c: tier, t: (S.dayT && S.dayT.d === today && S.dayT.t) || Date.now() };
       const sig = day + JSON.stringify(star && [star.nm, star.c]);
@@ -2531,7 +2598,7 @@
     // the Labubu's star is the North Star, gold, always there. Hover or tap a star (or a name) to see who it is, tap to
     // send a spark; drag the sky to look around.
     function skyHTML() {
-      if (!here) return '';
+      if (!here || !SEM.sky) return '';
       const m = skyModel(), tx = skyTexts(m);
       if (m.mode === 'guest') unwatchSky(); else if (skyOK()) watchSky();
       Promise.resolve().then(() => { skyView.update(skyModel()); skyView.mount(); });
@@ -2565,14 +2632,14 @@
       if (now - hr.at < (sig === hr.sig ? HERE_GAP : HERE_SWITCH)) return;
       hr.at = now; hr.sig = sig;
       const entry = { nm: me.name, t: fb.f.serverTimestamp(), m: String(m || '').slice(0, 60), v: v === 'exam' ? 'exam' : 'quiz' };
-      fb.f.setDoc(fb.f.doc(db, 'here', day), { [user.uid]: entry }, { merge: true })
+      fb.f.setDoc(fb.f.doc(db, COL('here'), day), { [user.uid]: entry }, { merge: true })
         .then(() => { if (hr.doc && hr.day === day) hr.doc[user.uid] = Object.assign({}, entry, { t: Date.now() }); })
         .catch(() => { hr.no = true; });
     }
     async function unhere() {
       hr.sig = ''; hr.at = 0;
       if (!fb || !user) return;
-      try { await fb.f.setDoc(fb.f.doc(db, 'here', 'd' + dayKey()), { [user.uid]: fb.f.deleteField() }, { merge: true }); } catch (e) {}
+      try { await fb.f.setDoc(fb.f.doc(db, COL('here'), 'd' + dayKey()), { [user.uid]: fb.f.deleteField() }, { merge: true }); } catch (e) {}
       if (hr.doc) delete hr.doc[user.uid];
     }
     async function loadHere(force) {
@@ -2580,7 +2647,7 @@
       const day = 'd' + dayKey();
       if (!force && hr.day === day && Date.now() - hr.readAt < HERE_READ) return;
       hr.busy = true;
-      try { const snap = await fb.f.getDoc(fb.f.doc(db, 'here', day)); hr.doc = snap.exists() ? snap.data() || {} : {}; hr.day = day; hr.noRead = false; }
+      try { const snap = await fb.f.getDoc(fb.f.doc(db, COL('here'), day)); hr.doc = snap.exists() ? snap.data() || {} : {}; hr.day = day; hr.noRead = false; }
       catch (e) { hr.noRead = true; }
       finally { hr.busy = false; hr.readAt = Date.now(); }
       paintHere();
@@ -2701,7 +2768,7 @@
       if (!force && nt.list && Date.now() - nt.readAt < NOTE_READ) return;
       nt.busy = true;
       try {
-        const f = fb.f, qs = await f.getDocs(f.query(f.collection(db, 'notes'), f.orderBy('t', 'desc'), f.limit(80)));
+        const f = fb.f, qs = await f.getDocs(f.query(f.collection(db, COL('notes')), f.orderBy('t', 'desc'), f.limit(80)));
         const mine = nt.list && user && nt.list[user.uid];
         nt.list = {}; qs.docs.forEach(d => { nt.list[d.id] = d.data(); });
         if (mine && mine.pending && !nt.list[user.uid]) nt.list[user.uid] = mine;
@@ -2801,7 +2868,7 @@
       nt.list = nt.list || {}; nt.list[user.uid] = Object.assign({}, mine, { t: Date.now(), pending: true });
       nt.draft = ''; nt.gif = ''; const inp = document.getElementById('ff-in'); if (inp) inp.value = ''; syncSend(); openPop(false);
       paintNotes(); sfx.play('sparkle'); usage.track('firefly_sent', { replaced: !!before, gif: !!gif });
-      try { await f.setDoc(f.doc(db, 'notes', user.uid), mine); delete nt.list[user.uid].pending; }
+      try { await f.setDoc(f.doc(db, COL('notes'), user.uid), mine); delete nt.list[user.uid].pending; }
       catch (e) { if (before) nt.list[user.uid] = before; else delete nt.list[user.uid]; paintNotes(); toast('Your firefly couldn’t fly off. Try again in a moment.'); }
     }
     async function voteNote(uid) {
@@ -2809,14 +2876,14 @@
       const v = nt.list[uid], on = !(v.up && isVote(v.up[user.uid])), f = fb.f, nm = String(me.name || '').slice(0, 24);
       v.up = Object.assign({}, v.up); if (on) v.up[user.uid] = nm; else delete v.up[user.uid];
       paintNotes(); if (on) { sfx.play('right'); usage.track('firefly_upvoted'); } else sfx.play('untick');
-      try { await f.setDoc(f.doc(db, 'notes', uid), { up: { [user.uid]: on ? nm : f.deleteField() } }, { merge: true }); }
+      try { await f.setDoc(f.doc(db, COL('notes'), uid), { up: { [user.uid]: on ? nm : f.deleteField() } }, { merge: true }); }
       catch (e) { if (on) delete v.up[user.uid]; else v.up[user.uid] = nm; paintNotes(); toast('That star didn’t reach it. Try again in a moment.'); }
     }
     async function delNote(uid) {
       if (!skyOK() || !(uid === user.uid || vip())) return;
       const before = nt.list && nt.list[uid]; if (nt.list) delete nt.list[uid];
       paintNotes(); sfx.play('untick');
-      try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, 'notes', uid)); await b.commit(); usage.track('firefly_deleted', { own: uid === user.uid }); }
+      try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, COL('notes'), uid)); await b.commit(); usage.track('firefly_deleted', { own: uid === user.uid }); }
       catch (e) { if (before) nt.list[uid] = before; paintNotes(); toast('It couldn’t be deleted. Try again in a moment.'); }
     }
     // the form sits fixed on the screen next to its button (under it, or over it when there's no room below)
@@ -3646,7 +3713,9 @@
         if (n) await b.commit();
       } catch (e) {}
       await unhere();
-      try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, 'notes', user.uid)); await b.commit(); } catch (e) {}   // my firefly
+      for (const o of SEM.all) {   // my firefly, on every semester's board
+        try { const b = fb.f.writeBatch(db); b.delete(fb.f.doc(db, o.id === 'efm3-s5' ? 'notes' : 'notes-' + o.id, user.uid)); await b.commit(); } catch (e) {}
+      }
       try { const b = fb.f.writeBatch(db); b.delete(ref()); if (me.key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key)); await b.commit(); }
       catch (e) { msg = why(e); paint(); listen(); return; }
       try { await fb.a.deleteUser(user); close(); toast('Your account and its saved progress are deleted'); }
@@ -3821,7 +3890,7 @@
     // ---- live: my invitations and challenges of today and yesterday, the colours, the one on screen ----
     function watchDuels() {
       if (!here || state !== 'in' || !fb || !user) return;
-      if (!colOff) {
+      if (!colOff && SEM.sky) {
         try {
           colOff = fb.f.onSnapshot(fb.f.query(fb.f.collection(db, 'colours')), qs => {
             const c = {}; qs.docs.forEach(d => { c[d.id] = d.data(); }); cls.colours = c; cls.coloursIn = true; duelsChanged(); redrawSky();
@@ -3834,7 +3903,7 @@
         try { if (invOff) invOff(); } catch (e) {}
         invDay = day;
         try {
-          invOff = fb.f.onSnapshot(fb.f.query(fb.f.collection(db, 'duels'), fb.f.where('ix', 'array-contains-any', [tagOf(user.uid, day), tagOf(user.uid, 'd' + dayKey(Date.now() - DUEL_OPEN))])), qs => {
+          invOff = fb.f.onSnapshot(fb.f.query(fb.f.collection(db, COL('duels')), fb.f.where('ix', 'array-contains-any', [tagOf(user.uid, day), tagOf(user.uid, 'd' + dayKey(Date.now() - DUEL_OPEN))])), qs => {
             qs.docs.forEach(d => took(d.id, d.data())); duelsChanged(true);
           }, () => { invOff = null; });
         } catch (e) { invOff = null; }
@@ -3852,7 +3921,7 @@
       const ids = Object.keys(duelOffs);
       if (ids.length >= 6) { try { duelOffs[ids[0]](); } catch (e) {} delete duelOffs[ids[0]]; }
       try {
-        duelOffs[id] = fb.f.onSnapshot(fb.f.doc(db, 'duels', id), snap => {
+        duelOffs[id] = fb.f.onSnapshot(fb.f.doc(db, COL('duels'), id), snap => {
           if (snap.exists()) took(id, snap.data()); else duels[id] = { id, gone: 1 };
           duelsChanged();
         }, () => { delete duelOffs[id]; if (!duels[id]) duels[id] = { id, gone: 1 }; duelsChanged(); });
@@ -3941,6 +4010,7 @@
         }
       } else if (cl && !here2(cl.id)) put.push([cl.id, { uid: '', nm: '', since: now, duel: id }]);
       try {
+        if (!SEM.sky) put.length = 0;   // the colours are the class sky's: a duel elsewhere moves none
         if (put.length) { const b = fb.f.writeBatch(db); for (const [cid, v] of put) b.set(fb.f.doc(db, 'colours', cid), v); await b.commit(); }
         S.duelSet[id] = now; save();
         const got = put.find(([cid, v]) => v.uid === user.uid && (!cw || cid !== cw.id));
@@ -3957,7 +4027,7 @@
       d.p = Object.assign({}, d.p, { [user.uid]: Object.assign({}, mine, { local: 1 }) });
       const v = { p: { [user.uid]: mine } };
       if (join && !(d.ix || []).includes(tagOf(user.uid, d.d))) v.ix = fb.f.arrayUnion(tagOf(user.uid, d.d));
-      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), v, { merge: true }); return true; }
+      try { await fb.f.setDoc(fb.f.doc(db, COL('duels'), id), v, { merge: true }); return true; }
       catch (e) { return false; }
     }
     async function duelAccept(id) {
@@ -4023,7 +4093,7 @@
     async function duelGo(id) {
       const d = duels[id]; if (!d || d.by !== user.uid || d.go) return;
       d.go = Date.now() + 5000; duelsChanged();
-      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), { go: d.go }, { merge: true }); usage.track('duel_live_started', { players: duelState(d).inn.length }); }
+      try { await fb.f.setDoc(fb.f.doc(db, COL('duels'), id), { go: d.go }, { merge: true }); usage.track('duel_live_started', { players: duelState(d).inn.length }); }
       catch (e) { d.go = 0; toast('Couldn’t start it. Try again.'); duelsChanged(); }
     }
     function openDuelPage(id) {
@@ -4168,7 +4238,7 @@
         t: fb.f.serverTimestamp(), d: day, until: Date.now() + DUEL_OPEN, go: 0,
         ix: [tagOf(user.uid, day), ...c.who.map(w => tagOf(w.uid, day))], inm: Object.fromEntries(c.who.map(w => [w.uid, w.nm])),
         p: { [user.uid]: { nm: me.name, s: 'in', j: Date.now() } } };
-      try { await fb.f.setDoc(fb.f.doc(db, 'duels', id), v); }
+      try { await fb.f.setDoc(fb.f.doc(db, COL('duels'), id), v); }
       catch (e) { c.busy = false; c.msg = 'The challenge couldn’t be made. Try again in a moment.'; paintCh(); return; }
       took(id, Object.assign({}, v, { t: Date.now() }));
       c.who.forEach(w => { S.rivals[w.uid] = w.nm; }); S.duels[id] = { t: Date.now(), k: c.kind, ti: info.title }; save();
@@ -4755,7 +4825,7 @@
       const a = d * Math.PI / 180, r2 = d % 30 === 0 ? 88 : d % 15 === 0 ? 91 : 93.5;
       ticks += `<line x1="${(Math.cos(a) * 97).toFixed(2)}" y1="${(Math.sin(a) * 97).toFixed(2)}" x2="${(Math.cos(a) * r2).toFixed(2)}" y2="${(Math.sin(a) * r2).toFixed(2)}"/>`;
     }
-    const ring = BANK.topics.map(t => TOPIC_SHORT(t).toUpperCase()).join('  ✦  ') + '  ✦  EFM3 · SEMESTER 5 · 2025–2026  ✦  ';
+    const ring = BANK.topics.map(t => TOPIC_SHORT(t).toUpperCase()).join('  ✦  ') + `  ✦  ${SEM.year} · ${SEM.label.toUpperCase()}  ✦  `;
     const rnd = mulberry(5);
     let dots = '';
     for (let i = 0; i < 16; i++) { const a = rnd() * 6.283, r = 10 + rnd() * 44; dots += `<circle class="dot" cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" r="${(.5 + rnd() * .9).toFixed(2)}"/>`; }
@@ -5766,6 +5836,9 @@
       : sess
       ? `<p class="cta-note">Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question ${sess.idx + 1} of ${sess.qids.length}</p>
          <button class="btn primary" type="button" data-act="resume">Continue ${ICON.next}</button>`
+      : !BANK.questions.length
+      ? `<p class="cta-note">${fmtN(BANK.topics.length)} modules and ${fmtN(DIAG.length)} lectures. Their past questions are on their way.</p>
+         <button class="btn primary" type="button" data-act="goto-modules">See the lectures ${ICON.next}</button>`
       : `<p class="cta-note">${fmtN(REPS.length)} questions came up in more than one exam.</p>
          <button class="btn primary" type="button" data-act="repeats">Start with those ${ICON.next}</button>`;
     const cards = BANK.topics.map((t, i) => archCard(t, i)).join('');
@@ -5776,20 +5849,21 @@
           <button class="logo" type="button" data-act="top" aria-label="Labubu’s Den, back to top">${alive.svg('nav')}Labubu’s Den</button>
           <div class="navlinks">
             <button type="button" data-act="goto-modules">Modules</button>
-            <button type="button" data-act="repeats">Most repeated</button>
-            <button type="button" data-act="focus-search">Search</button>
-            <button type="button" data-act="updates">Updates</button>
+            ${REPS.length ? '<button type="button" data-act="repeats">Most repeated</button>' : ''}
+            ${BANK.questions.length ? '<button type="button" data-act="focus-search">Search</button>' : ''}
+            ${UPDATES.length ? '<button type="button" data-act="updates">Updates</button>' : ''}
           </div>
           <div class="nav-end">
             ${acct.here ? `<button type="button" class="nav-acct" data-act="account" aria-label="${esc(acct.label())}">${acct.navHTML()}</button>` : ''}
-            <button class="navstat mono num" type="button" data-act="updates" title="Update log">${fmtN(BANK.questions.length)} questions${newPill()}</button>
+            ${semSwitchHTML()}
+            <button class="navstat mono num" type="button" data-act="updates" title="Update log">${BANK.questions.length ? `${fmtN(BANK.questions.length)} questions` : `${fmtN(DIAG.length)} lectures`}${newPill()}</button>
           </div>
         </nav>
         <div class="hero">
           ${astrolabeSVG()}${lookNow() === 'gothic' ? '' : discHTML(lookNow())}
-          <p class="caption rise-in" style="--d:0"><span class="greet" data-greet>${esc(skyclock.greet())}</span>An archive of past EFM3 exam questions, sorted by module and by exam.</p>
+          <p class="caption rise-in" style="--d:0"><span class="greet" data-greet>${esc(skyclock.greet())}</span>An archive of past ${esc(SEM.year)} exam questions, sorted by module and by exam.</p>
           <ul class="meta mono rise-in" style="--d:1">
-            <li>Semester 5 · 2025–2026</li><li>${BANK.topics.length} modules</li><li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>
+            <li>${esc(SEM.label)}</li><li>${BANK.topics.length} modules</li>${BANK.questions.length ? `<li>${BANK.sources.length} exam sets</li><li class="num">${fmtN(BANK.questions.length)} questions</li>` : `<li>${fmtN(DIAG.length)} lectures</li><li>No questions yet</li>`}
           </ul>
           <h1 class="title${titleHold ? ' hold' : ''}" id="title"><span class="title-text">Labubu’s<br>Den</span><canvas id="title-canvas" aria-hidden="true"></canvas></h1>
           <div class="hero-cta rise-in" style="--d:3">${cta}${acct.noteBtnHTML()}</div>
@@ -5798,7 +5872,7 @@
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
-          <p class="lede">Every question here comes straight from past EFM3 exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
+          <p class="lede">Every question here comes straight from past ${esc(SEM.year)} exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
           <p>Answers can still contain mistakes: report anything that looks wrong. This is a study tool, not medical advice. <button class="foot-btn" type="button" data-act="privacy">Privacy</button></p>
           <p class="credit">Made by <b>the Labubu</b></p>
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
@@ -5814,7 +5888,7 @@
       ${acct.skyHTML()}
       ${acct.duelsHTML()}
       ${themesSectionHTML()}
-      <section class="skyband" aria-label="Search the questions">
+      <section class="skyband" aria-label="Search the questions"${BANK.questions.length ? '' : ' hidden'}>
         <canvas id="milky" aria-hidden="true"></canvas>
         <div class="wrap">
           <div class="search" role="search">
@@ -5829,10 +5903,10 @@
       <div class="wrap" id="search-results"></div>
       <div id="home-body" class="stage">
         <section class="section wrap" id="modules" aria-labelledby="mod-h">
-          <div class="sec-head"><h2 class="h2" id="mod-h">Modules</h2>${typeTabs()}</div>
-          <p class="sec-note">Pick a module, tick every answer you think is right, then check it.</p>
+          <div class="sec-head"><h2 class="h2" id="mod-h">Modules</h2>${BANK.questions.length ? typeTabs() : ''}</div>
+          <p class="sec-note">${BANK.questions.length ? 'Pick a module, tick every answer you think is right, then check it.' : 'Pick a module to see its lectures. Their past questions come next.'}</p>
           <div class="arcade">${cards}</div>
-          <div class="allrow plate">
+          ${!BANK.questions.length ? '' : `<div class="allrow plate">
             <div class="al-main">
               <p class="al-title"><span class="h3">All modules</span><span class="al-count num">${fmtN(allQs.length)} questions</span></p>
               ${barLine(all)}
@@ -5840,10 +5914,10 @@
               <div class="keys">${chipsFor(allQs)}</div>
             </div>
             <div class="al-actions">${resetHTML('all')}<button class="btn primary" type="button" data-start="*">Practice all ${ICON.next}</button></div>
-          </div>
+          </div>`}
         </section>
         ${featureHTML()}
-        ${legendHTML('section wrap legend')}
+        ${BANK.questions.length ? legendHTML('section wrap legend') : ''}
       </div>
       <div class="wrap">${footHTML()}</div>`;
     updateSearch();
@@ -5853,6 +5927,15 @@
   }
   function archCard(t, i) {
     const qs = questionsFor(S.type, t.id);
+    if (!BANK.questions.some(q => q.topic === t.id)) {   // no questions yet: the module and its lectures
+      const nl = DIAG.filter(d => d.m === t.id).length;
+      return `<button type="button" class="arch is-empty" data-topic="${esc(t.id)}" style="--k:${i}">
+      ${windowSVG(t.id, stats([]))}
+      <span class="a-name">${esc(t.name)}</span>
+      <span class="a-sub">${nl ? `<span class="num">${fmtN(nl)}</span> ${nl === 1 ? 'lecture' : 'lectures'}` : 'No lectures yet'}</span>
+      <span class="a-meta">No questions yet</span>
+    </button>`;
+    }
     if (!qs.length) return '';
     const st = stats(qs);
     const nsets = BANK.sources.filter(s => s.topic === t.id && (S.type === 'all' || s.type === S.type)).length;
@@ -5942,13 +6025,18 @@
     const repIds = moduleRepeated(t.id);
     const nsets = BANK.sources.filter(s => s.topic === t.id).length;
     const lecs = DIAG.map((d, i) => i).filter(i => DIAG[i].m === t.id);
-    const byLec = S.topicBy === 'lecture' && lecs.length > 0;
+    const byLec = lecs.length > 0 && (S.topicBy === 'lecture' || !nsets);   // a module with no exam set yet: its lectures
     const groups = [];
     if (byLec) {
-      // the module's lectures in course order: practise one, or take it as an exam
+      // the module's lectures in course order: practise one, or take it as an exam. A part of the module (General
+      // chemistry...) is a heading; a lecture no question comes from yet shows, quiet, so the course is all there.
+      let part = null;
       const rows = lecs.map(i => {
         const d = DIAG[i], lq = lectureQs(d);
-        if (!lq.length) return '';
+        const head = d.p && d.p !== part ? `<li class="lec-part"><h3>${esc(d.p)}</h3></li>` : '';
+        if (d.p) part = d.p;
+        if (!d.q.length) return head + `<li class="set-row lec-none"><div class="entry"><span class="e-main"><span class="e-name">${esc(d.n)}</span><span class="e-meta">No questions yet</span></span></div></li>`;
+        if (!lq.length) return head;
         const ls = stats(lq), best = bestMark('topic:' + d.id), canExam = lq.some(q => q.answer.length);
         const dg = canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-lec="${esc(d.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(d.n)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${acct.member() ? ICON.hourglass : LOCK}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : '';
         return `<li class="set-row"><button type="button" class="entry" data-lec="${esc(d.id)}">
@@ -5956,7 +6044,8 @@
           <span class="e-side"><span class="e-count num">${fmtN(lq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
         </button>${dg}${shareBtn('lecture', d.id, d.n)}</li>`;
       }).join('');
-      if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. The hourglass on the right takes a lecture as a timed exam.</p><ul class="ledger">${rows}</ul></section>`);
+      if (rows && !qs.length) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">The lectures of this module, in course order. Its past questions aren’t in the Den yet: they’ll show here, lecture by lecture.</p><ul class="ledger">${rows}</ul></section>`);
+      else if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. The hourglass on the right takes a lecture as a timed exam.</p><ul class="ledger">${rows}</ul></section>`);
     }
     for (const ty of byLec ? [] : TYPES) {
       if (S.type !== 'all' && S.type !== ty) continue;
@@ -5976,24 +6065,24 @@
       <main class="wrap stage">
         <header class="page-head">
           <div>
-            <p class="eyebrow">Module · ${nsets} exam ${nsets === 1 ? 'set' : 'sets'}</p>
+            <p class="eyebrow">Module · ${nsets ? `${nsets} exam ${nsets === 1 ? 'set' : 'sets'}` : `${fmtN(lecs.length)} ${lecs.length === 1 ? 'lecture' : 'lectures'}`}</p>
             <h1 class="h1">${esc(t.name)}</h1>
-            <p class="ph-stats">${fmtN(qs.length)} questions · ${metaLine(st)}</p>
-            <div class="row">
+            <p class="ph-stats">${BANK.questions.some(q => q.topic === t.id) ? `${fmtN(qs.length)} questions · ${metaLine(st)}` : 'No questions yet'}</p>
+            ${!BANK.questions.some(q => q.topic === t.id) ? '' : `<div class="row">
               <button class="btn primary" type="button" data-start="${esc(t.id)}">Practice all ${fmtN(qs.length)} ${ICON.next}</button>
               ${repIds.length ? `<button class="btn" type="button" data-act="practice-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repIds.length)}</span></button>` : ''}
               <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
               ${markedIn(t.id).length ? `<button class="btn" type="button" data-act="practice-marked" title="The questions you marked in this module">${ICON.mark}Marked <span class="n">${fmtN(markedIn(t.id).length)}</span></button>` : ''}
               <button class="btn" type="button" data-share="module:${esc(t.id)}">${LINK}Share</button>
               ${resetHTML(t.id)}
-            </div>
+            </div>`}
           </div>
           <div class="ph-art">${windowSVG(t.id, stats(questionsFor('all', t.id)))}</div>
         </header>
-        <div class="controls by-row">${lecs.length ? `<div class="seg by-seg" role="tablist" aria-label="List the questions by">
+        <div class="controls by-row">${lecs.length && nsets ? `<div class="seg by-seg" role="tablist" aria-label="List the questions by">
           <button type="button" role="tab" aria-selected="${!byLec}" data-by="set">By exam</button>
-          <button type="button" role="tab" aria-selected="${byLec}" data-by="lecture">By lecture <span class="n">${fmtN(lecs.length)}</span></button></div>` : ''}${typeTabs()}</div>
-        ${groups.join('') || '<p class="empty">No questions of this exam type in this module.</p>'}
+          <button type="button" role="tab" aria-selected="${byLec}" data-by="lecture">By lecture <span class="n">${fmtN(lecs.length)}</span></button></div>` : ''}${BANK.questions.length ? typeTabs() : ''}</div>
+        ${groups.join('') || `<p class="empty">${BANK.questions.some(q => q.topic === t.id) ? 'No questions of this exam type in this module.' : 'No lectures or questions in this module yet.'}</p>`}
         ${footHTML()}
       </main>`;
   }
@@ -6259,6 +6348,22 @@
     </section>`;
     }).join('');
   }
+  // the semester switch in the top menu (Abi, 21 November 2026): only once a second semester is live (or on a
+  // semester's own preview); each one is its own page, and the main address remembers the last one picked (den-sem)
+  function semSwitchHTML() {
+    const list = SEM.all.filter(o => o.live || o.id === SEM.id);
+    if (list.length < 2) return '';
+    const row = o => `<b>${esc(o.year)} · ${esc(o.sem)}</b><span>${esc(o.name.replace(/^.*· /, ''))}${o.live ? '' : ', preview'}</span>`;
+    return `<details class="semsw"><summary class="navstat mono" aria-label="Semester: ${esc(SEM.name)}. Change semester">${esc(SEM.year)} · ${esc(SEM.sem)}<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
+      <div class="semsw-menu">${list.map(o => o.id === SEM.id ? `<span class="semsw-o on" aria-current="page">${row(o)}</span>`
+        : `<a class="semsw-o" href="${esc(o.href)}" data-sem-go="${esc(o.id)}">${row(o)}</a>`).join('')}</div></details>`;
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[data-sem-go]');
+    if (a) { try { localStorage.setItem('den-sem', a.dataset.semGo); } catch (x) {} usage.track('semester_switched', { to: a.dataset.semGo }); return; }
+    const open = document.querySelector('details.semsw[open]');
+    if (open && !open.contains(e.target)) open.open = false;
+  }, true);
   function stemShort(q) { const t = String(q.stem || '').replace(/<[^>]+>/g, ' ').replace(/&(amp|lt|gt|quot|#39);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" }[e])).replace(/\s+/g, ' ').trim(); return t.length > 90 ? t.slice(0, 88) + '…' : t; }
   function mustPractise(id) {
     const m = (publicMusts().find(x => x[0] === id) || [])[1] || S.musts[id] || builtins()[id]; if (!m) return; const ids = mustIds(m); if (!ids.length) return;
@@ -7005,7 +7110,7 @@
     const raw = S.q || '';
     if (fold(raw).replace(/\s/g, '').length < 2) {
       body.hidden = false;
-      box.innerHTML = raw.trim() ? '' : searchIdleHTML();
+      box.innerHTML = raw.trim() || !BANK.questions.length ? '' : searchIdleHTML();
       setStatus('');
       return;
     }

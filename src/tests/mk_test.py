@@ -66,6 +66,18 @@ head = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>'
         + ''.join(faces) + '</style></head><body>')
 open(os.path.join(HERE, 'index.html'), 'w', encoding='utf8').write(head + page + '</body></html>')
+# the other semesters, each in its folder (efm1-s1/index.html), from src/out/artifact-<id>.html
+import json
+for s in json.load(open(os.path.join(HERE, '..', 'semesters.json'), encoding='utf8'))[1:]:
+    src = os.path.join(HERE, '..', 'out', f"artifact-{s['id']}.html")
+    if not os.path.exists(src):
+        continue
+    sp = open(src, encoding='utf8').read().replace('__DEN_VERSION__', 'test00000001')
+    sp = re.sub(r"const GIPHY_KEY = '[^']*';", "const GIPHY_KEY = 'TESTKEY';", sp)
+    up = '../' * s['path'].count('/')
+    os.makedirs(os.path.join(HERE, s['path']), exist_ok=True)
+    open(os.path.join(HERE, s['path'], 'index.html'), 'w', encoding='utf8').write(head.replace('url(node_modules', 'url(' + up + 'node_modules') + sp + '</body></html>')
+    print('test page written to', os.path.join(HERE, s['path'], 'index.html'))
 link = os.path.join(HERE, 'img')
 if not os.path.exists(link):
     os.symlink(os.path.join('..', '..', 'img'), link)

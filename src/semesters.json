@@ -1,0 +1,26 @@
+[
+ {
+  "id": "efm3-s5",
+  "year": "EFM3",
+  "sem": "S5",
+  "name": "EFM3 · Semester 5",
+  "label": "Semester 5 · 2025–2026",
+  "dir": ".",
+  "path": "",
+  "store": "efm3-mcq-bank-v1",
+  "sync": "s",
+  "sky": true
+ },
+ {
+  "id": "efm1-s1",
+  "year": "EFM1",
+  "sem": "S1",
+  "name": "EFM1 · Semester 1",
+  "label": "Semester 1",
+  "dir": "sem/efm1-s1",
+  "path": "efm1-s1/",
+  "store": "den-efm1-s1-v1",
+  "sync": "s_efm1s1",
+  "sky": false
+ }
+]

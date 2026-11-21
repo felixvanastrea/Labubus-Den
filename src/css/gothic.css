@@ -131,6 +131,22 @@ a.btn { text-decoration: none; font-style: normal; }
   transition: border-color .3s var(--ease), background-color .3s var(--ease);
 }
 .navstat:hover { border-color: var(--ink-3); background: var(--plate-2); }
+.semsw { position: relative; }
+.semsw > summary { list-style: none; }
+.semsw > summary::-webkit-details-marker { display: none; }
+.semsw > summary svg { width: 12px; height: 12px; transition: transform .35s var(--spring); }
+.semsw[open] > summary { border-color: var(--ink-3); background: var(--plate-2); }
+.semsw[open] > summary svg { transform: rotate(180deg); }
+.semsw-menu {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; display: grid; min-width: 220px; padding: 6px;
+  border: 1px solid var(--hair-2); border-radius: 2px; background: var(--plate); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .7);
+  animation: rise .35s var(--ease) both;
+}
+.semsw-o { display: grid; gap: 2px; padding: 9px 12px; border-radius: 2px; color: var(--ink); text-decoration: none; transition: background-color .25s var(--ease); }
+.semsw-o b { font-family: var(--f-mono); font-size: .82rem; font-weight: 500; }
+.semsw-o span { font-style: italic; font-size: 1rem; color: var(--ink-3); }
+a.semsw-o:hover, a.semsw-o:focus-visible { background: var(--plate-2); }
+.semsw-o.on { box-shadow: inset 2px 0 0 var(--ink); }
 .new-pill { margin-right: -5px; padding: .25em .55em; border-radius: 2px; background: var(--ink); color: var(--night); font-weight: 600; animation: rise .6s var(--ease) .4s both; }
 
 .hero {
@@ -739,6 +755,12 @@ details.case[open] .case-b { margin-top: 6px; }
 .by-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
 .by-seg { padding-right: 18px; border-right: 1px solid var(--hair); }
 .lec-note { margin: -4px 0 14px; max-width: 40rem; font-style: italic; font-size: 1rem; color: var(--ink-3); }
+.lec-part { list-style: none; padding: 22px 0 6px; }
+.lec-part:first-child { padding-top: 4px; }
+.lec-part h3 { margin: 0; font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: 1.5rem; line-height: 1.1; color: var(--ink); }
+.lec-none .entry { cursor: default; }
+.lec-none .e-name { color: var(--ink-2); }
+.lec-none .e-meta { font-style: italic; }
 .entry .e-lecs { margin: -3px 0 0; font-style: italic; font-size: .98rem; line-height: 1.35; color: var(--ink-3); }
 
 /* ---------- tonight: how sure you were, the moon ---------- */
