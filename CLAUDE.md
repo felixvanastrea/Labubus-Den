@@ -294,7 +294,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - 21 November 2026 (Abi): the AI midterm came off the homepage (spotlight `until` 2026-11-20). New quest: the endocrinology
   midterm (`endo-midterm-2026`, Thursday 26 November), only Pr El Aziz's three thyroid function lectures: hypothyroidism,
   hyperthyroidism, thyroiditis (lecture topics `E-hypothyroid`, `E-hyperthyroid`, `E-thyroiditis`), 38 questions (25 official,
-  13 proposed), none explained yet. priv.js now checks the AI practice card stays hidden.
+  13 proposed). Explanations for all 38 the same day, from Pr El Aziz's three decks in Abi's Drive (lectures `endo-hypo`,
+  `endo-hyper`, `endo-thyroiditis`); no key contradicted the slides. priv.js now checks the AI practice card stays hidden.
 
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 

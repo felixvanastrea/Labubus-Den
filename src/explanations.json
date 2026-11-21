@@ -160,6 +160,18 @@
     "ai-s2": {
       "title": "AI for early rounds, research and safe healthcare (Pr Bencheqroun, session 2)",
       "added": "2026-11-12"
+    },
+    "endo-hypo": {
+      "title": "Hypothyroidism (Pr El Aziz)",
+      "added": "2026-11-21"
+    },
+    "endo-hyper": {
+      "title": "Hyperthyroidism (Pr El Aziz)",
+      "added": "2026-11-21"
+    },
+    "endo-thyroiditis": {
+      "title": "Thyroiditis (Pr El Aziz)",
+      "added": "2026-11-21"
     }
   },
   "questions": {
@@ -4889,6 +4901,288 @@
       "B": "No: the chatbot has none of his data, and no real patient data goes in public AI tools.",
       "C": "No: patients' memory isn't a record, and some can't answer.",
       "D": "Yes: plan for failure: a downtime kit, trained and drilled."
+    },
+    "E3": {
+      "lecture": "endo-hypo",
+      "A": "Exophthalmos belongs to Graves' disease, not to hypothyroidism.",
+      "B": "Yes: losing the outer third of the eyebrows is a classic skin sign of hypothyroidism.",
+      "C": "Yes: a pale, puffy, expressionless face is what the exam shows.",
+      "D": "Warm, sweaty skin is thyrotoxicosis. In hypothyroidism the skin is dry, pale and cold."
+    },
+    "E58": {
+      "lecture": "endo-hypo",
+      "A": "Hypothyroidism slows metabolism, so weight goes up, not down.",
+      "B": "Reflexes are slow and their relaxation delayed, not brisk.",
+      "C": "Yes: cold intolerance is part of the hypometabolic syndrome.",
+      "D": "Yes: marked bradycardia is a key sign (+++ on the slides)."
+    },
+    "E76": {
+      "lecture": "endo-hypo",
+      "A": "Transit slows down: constipation is the early digestive sign, not diarrhea.",
+      "B": "Exophthalmia points to Graves' disease.",
+      "C": "Yes: bradycardia is the typical cardiac sign.",
+      "D": "Yes: hair becomes sparse and thin, and falls out."
+    },
+    "E77": {
+      "lecture": "endo-hypo",
+      "A": "Yes: loss of the outer third of the eyebrow is a classic finding.",
+      "B": "A fine tremor is a sign of hyperthyroidism.",
+      "C": "Reflexes are slowed, with delayed relaxation, not rapid.",
+      "D": "Yes: a pale, puffy face is typical."
+    },
+    "E98": {
+      "lecture": "endo-hypo",
+      "A": "Yes: weight gain comes with the slowed metabolism.",
+      "B": "Tremor is a thyrotoxicosis sign.",
+      "C": "Yes: dry, rough, cold skin is an early sign.",
+      "D": "Palpitations come with the tachycardia of hyperthyroidism; here the heart is slow.",
+      "E": "Yes: cold intolerance is part of the hypometabolic syndrome."
+    },
+    "E99": {
+      "lecture": "endo-hypo",
+      "A": "Yes: myxoedema, the thick waxy infiltrated skin, is the advanced skin sign.",
+      "B": "Yes: cold intolerance.",
+      "C": "Palpitations belong to hyperthyroidism.",
+      "D": "Yes: marked, early constipation (+++).",
+      "E": "Nervousness and agitation are thyrotoxicosis; hypothyroidism brings slowing and drowsiness."
+    },
+    "E18": {
+      "lecture": "endo-hypo",
+      "A": "Sodium goes down, not up: dilutional hyponatremia from reduced water clearance.",
+      "B": "Yes: total and LDL cholesterol rise, and normalise with treatment.",
+      "C": "Free T4 is low in hypothyroidism.",
+      "D": "Yes: high TSH is the key test for primary hypothyroidism."
+    },
+    "E100": {
+      "lecture": "endo-hypo",
+      "A": "Yes: high TSH with low FT4 is overt primary hypothyroidism.",
+      "B": "Low or normal TSH with low FT4 is central hypothyroidism.",
+      "C": "High TSH with high FT4 is the TSH-secreting adenoma pattern, not hypothyroidism.",
+      "D": "Low TSH with high FT4 is thyrotoxicosis.",
+      "E": "A normal TSH with a low FT4 points to a central cause."
+    },
+    "E28": {
+      "lecture": "endo-hypo",
+      "A": "Never stop it: the dose goes up by 20 to 30% right after conception.",
+      "B": "Pregnancy increases thyroid hormone needs by 20 to 30%.",
+      "C": "Radioiodine treats hyperthyroidism and is contraindicated in pregnancy.",
+      "D": "Yes: target TSH under 2.5 mU/L in the first trimester, under 3.0 later."
+    },
+    "E55": {
+      "lecture": "endo-hypo",
+      "A": "Yes: in the elderly it's insidious and atypical (fatigue, depression, cognitive decline).",
+      "B": "Pregnancy increases the needs, it doesn't decrease them.",
+      "C": "It can: infertility and recurrent miscarriage are listed complications.",
+      "D": "Yes: growth retardation and delayed puberty in children."
+    },
+    "E97": {
+      "lecture": "endo-hypo",
+      "A": "Central hypothyroidism has a low or normal TSH; here TSH is high.",
+      "B": "Yes: high TSH with low FT4 is overt primary hypothyroidism.",
+      "C": "Subclinical means a normal FT4; here FT4 is low.",
+      "D": "Every sign and test points the other way.",
+      "E": "Yes: positive anti-TPO and a firm goiter point to Hashimoto's as the cause."
+    },
+    "E101": {
+      "lecture": "endo-hypo",
+      "A": "Yes: Hashimoto's is the main cause.",
+      "B": "Yes: after thyroid surgery or radioiodine.",
+      "C": "A pituitary adenoma gives secondary (central) hypothyroidism, not primary.",
+      "D": "Yes: iodine deficiency, the most common cause worldwide.",
+      "E": "Yes: amiodarone, lithium, interferon."
+    },
+    "E102": {
+      "lecture": "endo-hypo",
+      "A": "Yes: myxedema coma, the rare life-threatening form in elderly untreated patients.",
+      "B": "Yes: heart failure, with diastolic hypertension and pericardial effusion.",
+      "C": "Exophthalmia is Graves' orbitopathy.",
+      "D": "Hypercalcemia is seen in thyrotoxicosis; here it's hyponatremia.",
+      "E": "Yes: infertility and recurrent miscarriage."
+    },
+    "E103": {
+      "lecture": "endo-hypo",
+      "A": "Yes: once daily on an empty stomach, 30 minutes before breakfast.",
+      "B": "The dose depends on weight, age, the heart and pregnancy (about 1.3 to 1.6 µg/kg/day in a healthy adult).",
+      "C": "Yes: TSH is checked 6 to 8 weeks after each change, then every 6 to 12 months.",
+      "D": "Yes: start low (12.5 to 25 µg) and go up slowly in the elderly and in coronary disease.",
+      "E": "Yes: lifelong in most primary forms such as Hashimoto's."
+    },
+    "E104": {
+      "lecture": "endo-hypo",
+      "A": "High TSH with low FT4 is primary hypothyroidism.",
+      "B": "Yes: a low (or inappropriately normal) TSH with low FT4 means the pituitary is failing.",
+      "C": "Both normal is euthyroidism.",
+      "D": "Low TSH with high FT4 is thyrotoxicosis.",
+      "E": "High TSH with normal FT4 is subclinical hypothyroidism."
+    },
+    "E27": {
+      "lecture": "endo-hyper",
+      "A": "Thyrotoxicosis gives thermophobia, heat intolerance with sweating.",
+      "B": "Yes: a fine, regular tremor of the hands (the oath manoeuvre).",
+      "C": "Yes: fast weight loss with a preserved or increased appetite.",
+      "D": "The heart is fast: sinus tachycardia that persists at rest."
+    },
+    "E70": {
+      "lecture": "endo-hyper",
+      "A": "Hyperthyroidism gives a tachycardia that persists at rest.",
+      "B": "Transit speeds up: more frequent stools, sometimes diarrhea.",
+      "C": "Yes: fine, regular tremor of the hands.",
+      "D": "Weight is lost, often fast, despite eating more."
+    },
+    "E79": {
+      "lecture": "endo-hyper",
+      "A": "Yes: warm, sweaty hands from peripheral vasodilatation.",
+      "B": "Kidney stones aren't a sign of hyperthyroidism.",
+      "C": "Yes: fast, often marked weight loss.",
+      "D": "Chvostek's sign means hypocalcemia (think hypoparathyroidism), not hyperthyroidism."
+    },
+    "E23": {
+      "lecture": "endo-hyper",
+      "A": "Yes: the goiter of Graves' is diffuse, homogeneous, elastic and vascular.",
+      "B": "A single toxic nodule is a toxic adenoma.",
+      "C": "Graves' shows a diffuse, intense uptake on the scan; low uptake is thyroiditis.",
+      "D": "Yes: orbitopathy is specific to Graves', seen in about half."
+    },
+    "E168": {
+      "lecture": "endo-hyper",
+      "A": "Yes: antibodies stimulate the TSH receptor.",
+      "B": "Yes: thyrotoxicosis with a goiter and, in about half, exophthalmia.",
+      "C": "TRAb are part of the diagnosis when there is no specific eye sign.",
+      "D": "Orbitopathy is specific to Graves' disease."
+    },
+    "E172": {
+      "lecture": "endo-hyper",
+      "A": "Low TSH is a lab finding, not part of the clinical triad.",
+      "B": "Yes: signs of thyrotoxicosis.",
+      "C": "Yes: a diffuse, vascular goiter.",
+      "D": "Yes: orbitopathy with exophthalmia."
+    },
+    "E80": {
+      "lecture": "endo-hyper",
+      "A": "Yes: TSH is suppressed in thyrotoxicosis.",
+      "B": "Yes: TSH receptor antibodies (TRAb) are what Graves' is.",
+      "C": "Hyponatremia belongs to hypothyroidism.",
+      "D": "Thyrotoxicosis lowers cholesterol and triglycerides."
+    },
+    "E111": {
+      "lecture": "endo-hyper",
+      "A": "A high ESR points to subacute thyroiditis.",
+      "B": "Yes: positive TRAb confirm autoimmune Graves' disease.",
+      "C": "Graves' has a high, diffuse uptake; low uptake means thyroiditis.",
+      "D": "High anti-TPO with no TRAb points to Hashimoto's.",
+      "E": "A high free T3 shows thyrotoxicosis, not its cause."
+    },
+    "E81": {
+      "lecture": "endo-hyper",
+      "A": "Ophthalmopathy is specific to Graves'.",
+      "B": "Pretibial myxedema is Graves' dermopathy.",
+      "C": "Yes: a large nodular goiter.",
+      "D": "Yes: toxic multinodular goiter is a disease of older patients; Graves' of young women."
+    },
+    "E82": {
+      "lecture": "endo-hyper",
+      "A": "Not a side effect of antithyroid drugs.",
+      "B": "Not the one the lecture names.",
+      "C": "Arthralgia can happen but is minor.",
+      "D": "Yes: agranulocytosis, rare but serious, along with hepatotoxicity."
+    },
+    "E110": {
+      "lecture": "endo-hyper",
+      "A": "Toxic multinodular goiter is an older patient's nodular goiter, with no eye signs and negative antibodies.",
+      "B": "Subacute thyroiditis has a painful goiter, a high ESR and no exophthalmos.",
+      "C": "Yes: a young woman, thyrotoxicosis, diffuse goiter, exophthalmos and positive TRAb.",
+      "D": "Hashimoto's has anti-TPO and no TRAb, and leads to hypothyroidism.",
+      "E": "Factitious thyrotoxicosis has no goiter and no eye signs."
+    },
+    "E112": {
+      "lecture": "endo-hyper",
+      "A": "Subacute thyroiditis is a painful goiter, not an eye problem.",
+      "B": "Pretibial myxedema is on the shins.",
+      "C": "Yes: lid retraction, conjunctival injection, proptosis and limited eye movement are Graves' orbitopathy.",
+      "D": "Toxic multinodular goiter has no orbitopathy.",
+      "E": "Factitious thyrotoxicosis has no eye signs."
+    },
+    "E148": {
+      "lecture": "endo-hyper",
+      "A": "Pituitary insufficiency gives central hypothyroidism.",
+      "B": "Yes: Graves' disease, the most common cause.",
+      "C": "Yes: toxic multinodular goiter, the second cause.",
+      "D": "Thyroidectomy leads to hypothyroidism (it can trigger a storm if done unprepared, but isn't a cause)."
+    },
+    "E78": {
+      "lecture": "endo-thyroiditis",
+      "A": "Graves' gives a painless, elastic, vascular goiter.",
+      "B": "Silent thyroiditis is painless.",
+      "C": "Hashimoto's goiter is firm but painless.",
+      "D": "Yes: a firm, tender goiter is subacute (De Quervain) thyroiditis."
+    },
+    "E105": {
+      "lecture": "endo-thyroiditis",
+      "A": "Graves' isn't painful and has a high uptake.",
+      "B": "Yes: neck pain to the jaw, fever, thyrotoxicosis, high ESR, negative antibodies, low uptake.",
+      "C": "Hashimoto's is painless with positive anti-TPO.",
+      "D": "Silent thyroiditis is painless.",
+      "E": "Acute suppurative thyroiditis is bacterial, with normal thyroid function."
+    },
+    "E90": {
+      "lecture": "endo-thyroiditis",
+      "A": "Yes: fixed, compressive goiter, well patient, negative antibodies, normal function, hypoechoic: Riedel.",
+      "B": "Hashimoto's has positive antibodies and evolves to hypothyroidism.",
+      "C": "De Quervain is painful, with fever and thyrotoxicosis.",
+      "D": "Riedel mimics cancer, but this picture is the textbook Riedel."
+    },
+    "E108": {
+      "lecture": "endo-thyroiditis",
+      "A": "Anaplastic carcinoma grows fast; FNA would show malignant cells, not fibrous tissue.",
+      "B": "Hashimoto's isn't stony or invasive, and its antibodies are positive.",
+      "C": "Yes: a stony, fixed, painless goiter with compression, mild hypothyroidism and fibrosis only on FNA.",
+      "D": "De Quervain is painful, with a high ESR and thyrotoxicosis.",
+      "E": "Thyroid lymphoma isn't in the lecture; FNA showing only fibrous tissue fits Riedel."
+    },
+    "E24": {
+      "lecture": "endo-thyroiditis",
+      "A": "Yes: anti-TPO, the key antibody.",
+      "B": "TSH receptor antibodies mean Graves'.",
+      "C": "Yes: anti-thyroglobulin, also positive in Hashimoto's.",
+      "D": "Anti-insulin antibodies have nothing to do with the thyroid."
+    },
+    "E38": {
+      "lecture": "endo-thyroiditis",
+      "A": "Yes: post-viral, often after the flu.",
+      "B": "Yes: a painful thyroid radiating to the ear or jaw.",
+      "C": "Recovery takes weeks to months (2 to 3 months), not years.",
+      "D": "Uptake is low, because hormone leaks out of damaged cells."
+    },
+    "E89": {
+      "lecture": "endo-thyroiditis",
+      "A": "Yes: it shows within 6 months of delivery.",
+      "B": "Yes: a painless, mild goiter.",
+      "C": "Exophthalmia is Graves'.",
+      "D": "Postpartum thyroiditis is painless; a painful goiter is De Quervain."
+    },
+    "E106": {
+      "lecture": "endo-thyroiditis",
+      "A": "The thyrotoxicosis is transient.",
+      "B": "Yes: hyperthyroid, then hypothyroid, then recovery.",
+      "C": "A hypothyroid phase usually comes first.",
+      "D": "It recovers; permanent hypothyroidism is Hashimoto's course.",
+      "E": "The phases come once, in order, not back and forth."
+    },
+    "E107": {
+      "lecture": "endo-thyroiditis",
+      "A": "Antithyroid drugs don't help: hormone leaks out, it isn't overproduced.",
+      "B": "Yes: NSAIDs for pain and beta-blockers for the thyrotoxic symptoms.",
+      "C": "Yes: a short course of corticosteroids if the pain is severe.",
+      "D": "Radioiodine has no place here; uptake is low anyway.",
+      "E": "Antibiotics are for acute suppurative thyroiditis."
+    },
+    "E109": {
+      "lecture": "endo-thyroiditis",
+      "A": "Yes: sudden painful swelling of the front of the neck with fever.",
+      "B": "Yes: high CRP and ESR; it's a bacterial infection.",
+      "C": "Scintigraphy shows a cold image, not high uptake.",
+      "D": "Yes: an abscess forms.",
+      "E": "Anti-TPO belongs to autoimmune thyroiditis."
     }
   }
 }
