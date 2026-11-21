@@ -291,6 +291,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   the AI quest got `end: 2026-11-19`, the spotlight shows the midterm until 25 November unless she says otherwise, and
   the 30 extra practice questions' card leaves with the quest (`practiceCardHTML` shows only while a quest of its module
   is on). Pushed only after the exam's time was over, so no answers went up while classmates could still be sitting it.
+- 21 November 2026 (Abi): the AI midterm came off the homepage (spotlight `until` 2026-11-20). New quest: the endocrinology
+  midterm (`endo-midterm-2026`, Thursday 26 November), only Pr El Aziz's three thyroid function lectures: hypothyroidism,
+  hyperthyroidism, thyroiditis (lecture topics `E-hypothyroid`, `E-hyperthyroid`, `E-thyroiditis`), 38 questions (25 official,
+  13 proposed), none explained yet. priv.js now checks the AI practice card stays hidden.
 
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 

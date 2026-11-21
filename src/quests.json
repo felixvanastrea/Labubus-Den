@@ -1,387 +1,409 @@
 {
-  "current": [
-    "ai-midterm-2026"
-  ],
-  "quests": [
+ "current": [
+  "endo-midterm-2026"
+ ],
+ "quests": [
+  {
+   "id": "gi-midterm-2026",
+   "title": "Gastroenterology midterm",
+   "module": "digestive-system-disease",
+   "due": "2026-11-05",
+   "goal": 80,
+   "note": "The nine gastroenterology lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
     {
-      "id": "gi-midterm-2026",
-      "title": "Gastroenterology midterm",
-      "module": "digestive-system-disease",
-      "due": "2026-11-05",
-      "goal": 80,
-      "note": "The nine gastroenterology lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "GERD",
-          "lecture": "D-gerd"
-        },
-        {
-          "name": "Achalasia",
-          "lecture": "D-achalasia"
-        },
-        {
-          "name": "Gastritis",
-          "lecture": "D-gastritis"
-        },
-        {
-          "name": "Gastroduodenal ulcers",
-          "lecture": "D-ulcer"
-        },
-        {
-          "name": "Chronic pancreatitis",
-          "concepts": [
-            "D.pancreas"
-          ],
-          "drop": [
-            "D177",
-            "D184"
-          ]
-        },
-        {
-          "name": "Inflammatory bowel diseases",
-          "lecture": "D-ibd"
-        },
-        {
-          "name": "Hepatitis A, C and E",
-          "concepts": [
-            "D.hepatitis",
-            "D.hav",
-            "D.hcv",
-            "D.hev"
-          ]
-        }
-      ],
-      "end": "2026-11-05"
+     "name": "GERD",
+     "lecture": "D-gerd"
     },
     {
-      "id": "derm-midterm-2026",
-      "title": "Dermatology midterm",
-      "module": "dermatology",
-      "due": "2026-11-02",
-      "goal": 80,
-      "note": "The redo of the dermatology midterm: the same five lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "Acne",
-          "lecture": "S-acne"
-        },
-        {
-          "name": "Common bacterial infections",
-          "lecture": "S-bacterial"
-        },
-        {
-          "name": "Cutaneous tuberculosis",
-          "concepts": [
-            "S.tb"
-          ],
-          "drop": [
-            "S110"
-          ]
-        },
-        {
-          "name": "Eczema",
-          "lecture": "S-eczema"
-        },
-        {
-          "name": "Urticaria",
-          "lecture": "S-urticaria"
-        }
-      ],
-      "end": "2026-11-02"
+     "name": "Achalasia",
+     "lecture": "D-achalasia"
     },
     {
-      "id": "comm-midterm-2026",
-      "title": "Communication midterm",
-      "module": "technical-communication",
-      "due": "2026-10-21",
-      "goal": 80,
-      "note": "Both communication lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "Foundations of communication",
-          "lecture": "T-foundations"
-        },
-        {
-          "name": "Clinical communication",
-          "lecture": "T-clinical"
-        }
-      ],
-      "end": "2026-10-21"
+     "name": "Gastritis",
+     "lecture": "D-gastritis"
     },
     {
-      "id": "dig-surg-midterm-2026",
-      "title": "Digestive surgery midterm",
-      "module": "digestive-system-disease",
-      "due": "2026-10-14",
-      "goal": 80,
-      "note": "The seven lectures on the digestive surgery midterm, gathered from every past exam. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "Acute appendicitis",
-          "lecture": "D-appendicitis"
-        },
-        {
-          "name": "Peritonitis",
-          "lecture": "D-peritonitis"
-        },
-        {
-          "name": "Groin hernias",
-          "lecture": "D-hernia"
-        },
-        {
-          "name": "Hydatid cyst of the liver",
-          "lecture": "D-hydatid"
-        },
-        {
-          "name": "Caustic ingestion",
-          "lecture": "D-caustic"
-        },
-        {
-          "name": "Stomach cancer",
-          "lecture": "D-gastric-cancer"
-        },
-        {
-          "name": "Esophageal cancer",
-          "lecture": "D-eso-cancer"
-        }
-      ],
-      "end": "2026-10-14"
+     "name": "Gastroduodenal ulcers",
+     "lecture": "D-ulcer"
     },
     {
-      "id": "resp-midterm-2026",
-      "title": "Respiratory midterm",
-      "module": "respiratory-system-diseases",
-      "due": "2026-10-07",
-      "goal": 80,
-      "note": "The six topics on the respiratory midterm, gathered from every past exam. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "Acute bronchitis",
-          "concepts": [
-            "R.bronchitis"
-          ]
-        },
-        {
-          "name": "Community-acquired pneumonia",
-          "concepts": [
-            "R.cap",
-            "R.atypical",
-            "R.pneumonia",
-            "R.aspiration"
-          ]
-        },
-        {
-          "name": "Pulmonary abscess",
-          "concepts": [
-            "R.abscess"
-          ]
-        },
-        {
-          "name": "Viral pneumonia",
-          "concepts": [
-            "R.viral",
-            "R.covid"
-          ]
-        },
-        {
-          "name": "Nosocomial pneumonia",
-          "concepts": [
-            "R.nosocomial"
-          ]
-        },
-        {
-          "name": "Bronchiectasis",
-          "concepts": [
-            "R.bronchiectasis"
-          ]
-        }
-      ],
-      "end": "2026-10-07"
+     "name": "Chronic pancreatitis",
+     "concepts": [
+      "D.pancreas"
+     ],
+     "drop": [
+      "D177",
+      "D184"
+     ]
     },
     {
-      "id": "cardio-midterm-2026",
-      "title": "Cardiology midterm",
-      "module": "cardio-vascular-system-disease",
-      "due": "2026-11-11",
-      "goal": 80,
-      "note": "Pr Nazzi’s lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
-      "topics": [
-        {
-          "name": "Acute rheumatic fever",
-          "lecture": "C-arf"
-        },
-        {
-          "name": "Mitral stenosis",
-          "lecture": "C-ms"
-        },
-        {
-          "name": "Mitral regurgitation",
-          "lecture": "C-mr"
-        },
-        {
-          "name": "Aortic stenosis",
-          "lecture": "C-as"
-        },
-        {
-          "name": "Aortic regurgitation",
-          "lecture": "C-ar"
-        },
-        {
-          "name": "Infective endocarditis",
-          "lecture": "C-ie"
-        },
-        {
-          "name": "Acute pericarditis",
-          "lecture": "C-pericarditis"
-        },
-        {
-          "name": "Hypertension",
-          "lecture": "C-htn"
-        }
-      ],
-      "must": {
-        "id": "cardio-2026-11",
-        "t": "Must-know · Cardiology",
-        "note": "One for each idea asked twice or more; together they cover 87 of the quest's 147, most asked first",
-        "q": [
-          [
-            "C113",
-            8
-          ],
-          [
-            "C134",
-            8
-          ],
-          [
-            "C118",
-            7
-          ],
-          [
-            "C121",
-            6
-          ],
-          [
-            "C116",
-            6
-          ],
-          [
-            "C94",
-            5
-          ],
-          [
-            "C204",
-            4
-          ],
-          [
-            "C146",
-            4
-          ],
-          [
-            "C207",
-            4
-          ],
-          [
-            "C90",
-            4
-          ],
-          [
-            "C89",
-            4
-          ],
-          [
-            "C172",
-            4
-          ],
-          [
-            "C124",
-            3
-          ],
-          [
-            "C203",
-            3
-          ],
-          [
-            "C208",
-            3
-          ],
-          [
-            "C301",
-            3
-          ],
-          [
-            "C192",
-            2
-          ],
-          [
-            "C92",
-            2
-          ],
-          [
-            "C95",
-            2
-          ],
-          [
-            "C256",
-            2
-          ],
-          [
-            "C79",
-            2
-          ],
-          [
-            "C80",
-            2
-          ],
-          [
-            "C141",
-            2
-          ],
-          [
-            "C22",
-            2
-          ],
-          [
-            "C87",
-            2
-          ],
-          [
-            "C184",
-            2
-          ],
-          [
-            "C164",
-            2
-          ]
-        ],
-        "sheet": "cardio-2026-11.md"
-      },
-      "end": "2026-11-11"
+     "name": "Inflammatory bowel diseases",
+     "lecture": "D-ibd"
     },
     {
-      "id": "ai-midterm-2026",
-      "title": "AI in medicine midterm",
-      "module": "technical-communication",
-      "due": "2026-11-19",
-      "goal": 80,
-      "topics": [
-        {
-          "name": "AI: digitalization, records and security",
-          "lecture": "A-s1"
-        },
-        {
-          "name": "AI: privacy, bias and using it safely",
-          "lecture": "A-s2"
-        }
-      ],
-      "note": "Pr Bencheqroun’s two sessions, through the 14 questions of his review game. He says they aren’t the exam’s questions: the same ideas in new situations.",
-      "end": "2026-11-19"
+     "name": "Hepatitis A, C and E",
+     "concepts": [
+      "D.hepatitis",
+      "D.hav",
+      "D.hcv",
+      "D.hev"
+     ]
     }
-  ],
-  "spotlight": {
-    "set": "s5-2627-technical-communication-midterm-ai-in-medicine-2026-2027",
-    "title": "AI in medicine midterm 2026–2027",
-    "from": "2026-11-19",
-    "until": "2026-11-25",
-    "note": "Today’s AI in medicine midterm, as it was given, answered from Pr Bencheqroun’s slides and his midterm reading guide."
+   ],
+   "end": "2026-11-05"
+  },
+  {
+   "id": "derm-midterm-2026",
+   "title": "Dermatology midterm",
+   "module": "dermatology",
+   "due": "2026-11-02",
+   "goal": 80,
+   "note": "The redo of the dermatology midterm: the same five lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
+    {
+     "name": "Acne",
+     "lecture": "S-acne"
+    },
+    {
+     "name": "Common bacterial infections",
+     "lecture": "S-bacterial"
+    },
+    {
+     "name": "Cutaneous tuberculosis",
+     "concepts": [
+      "S.tb"
+     ],
+     "drop": [
+      "S110"
+     ]
+    },
+    {
+     "name": "Eczema",
+     "lecture": "S-eczema"
+    },
+    {
+     "name": "Urticaria",
+     "lecture": "S-urticaria"
+    }
+   ],
+   "end": "2026-11-02"
+  },
+  {
+   "id": "comm-midterm-2026",
+   "title": "Communication midterm",
+   "module": "technical-communication",
+   "due": "2026-10-21",
+   "goal": 80,
+   "note": "Both communication lectures, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
+    {
+     "name": "Foundations of communication",
+     "lecture": "T-foundations"
+    },
+    {
+     "name": "Clinical communication",
+     "lecture": "T-clinical"
+    }
+   ],
+   "end": "2026-10-21"
+  },
+  {
+   "id": "dig-surg-midterm-2026",
+   "title": "Digestive surgery midterm",
+   "module": "digestive-system-disease",
+   "due": "2026-10-14",
+   "goal": 80,
+   "note": "The seven lectures on the digestive surgery midterm, gathered from every past exam. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
+    {
+     "name": "Acute appendicitis",
+     "lecture": "D-appendicitis"
+    },
+    {
+     "name": "Peritonitis",
+     "lecture": "D-peritonitis"
+    },
+    {
+     "name": "Groin hernias",
+     "lecture": "D-hernia"
+    },
+    {
+     "name": "Hydatid cyst of the liver",
+     "lecture": "D-hydatid"
+    },
+    {
+     "name": "Caustic ingestion",
+     "lecture": "D-caustic"
+    },
+    {
+     "name": "Stomach cancer",
+     "lecture": "D-gastric-cancer"
+    },
+    {
+     "name": "Esophageal cancer",
+     "lecture": "D-eso-cancer"
+    }
+   ],
+   "end": "2026-10-14"
+  },
+  {
+   "id": "resp-midterm-2026",
+   "title": "Respiratory midterm",
+   "module": "respiratory-system-diseases",
+   "due": "2026-10-07",
+   "goal": 80,
+   "note": "The six topics on the respiratory midterm, gathered from every past exam. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
+    {
+     "name": "Acute bronchitis",
+     "concepts": [
+      "R.bronchitis"
+     ]
+    },
+    {
+     "name": "Community-acquired pneumonia",
+     "concepts": [
+      "R.cap",
+      "R.atypical",
+      "R.pneumonia",
+      "R.aspiration"
+     ]
+    },
+    {
+     "name": "Pulmonary abscess",
+     "concepts": [
+      "R.abscess"
+     ]
+    },
+    {
+     "name": "Viral pneumonia",
+     "concepts": [
+      "R.viral",
+      "R.covid"
+     ]
+    },
+    {
+     "name": "Nosocomial pneumonia",
+     "concepts": [
+      "R.nosocomial"
+     ]
+    },
+    {
+     "name": "Bronchiectasis",
+     "concepts": [
+      "R.bronchiectasis"
+     ]
+    }
+   ],
+   "end": "2026-10-07"
+  },
+  {
+   "id": "cardio-midterm-2026",
+   "title": "Cardiology midterm",
+   "module": "cardio-vascular-system-disease",
+   "due": "2026-11-11",
+   "goal": 80,
+   "note": "Pr Nazzi’s lectures on the midterm, every past question on them. Questions asked again with the same propositions count once, as a constellation.",
+   "topics": [
+    {
+     "name": "Acute rheumatic fever",
+     "lecture": "C-arf"
+    },
+    {
+     "name": "Mitral stenosis",
+     "lecture": "C-ms"
+    },
+    {
+     "name": "Mitral regurgitation",
+     "lecture": "C-mr"
+    },
+    {
+     "name": "Aortic stenosis",
+     "lecture": "C-as"
+    },
+    {
+     "name": "Aortic regurgitation",
+     "lecture": "C-ar"
+    },
+    {
+     "name": "Infective endocarditis",
+     "lecture": "C-ie"
+    },
+    {
+     "name": "Acute pericarditis",
+     "lecture": "C-pericarditis"
+    },
+    {
+     "name": "Hypertension",
+     "lecture": "C-htn"
+    }
+   ],
+   "must": {
+    "id": "cardio-2026-11",
+    "t": "Must-know · Cardiology",
+    "note": "One for each idea asked twice or more; together they cover 87 of the quest's 147, most asked first",
+    "q": [
+     [
+      "C113",
+      8
+     ],
+     [
+      "C134",
+      8
+     ],
+     [
+      "C118",
+      7
+     ],
+     [
+      "C121",
+      6
+     ],
+     [
+      "C116",
+      6
+     ],
+     [
+      "C94",
+      5
+     ],
+     [
+      "C204",
+      4
+     ],
+     [
+      "C146",
+      4
+     ],
+     [
+      "C207",
+      4
+     ],
+     [
+      "C90",
+      4
+     ],
+     [
+      "C89",
+      4
+     ],
+     [
+      "C172",
+      4
+     ],
+     [
+      "C124",
+      3
+     ],
+     [
+      "C203",
+      3
+     ],
+     [
+      "C208",
+      3
+     ],
+     [
+      "C301",
+      3
+     ],
+     [
+      "C192",
+      2
+     ],
+     [
+      "C92",
+      2
+     ],
+     [
+      "C95",
+      2
+     ],
+     [
+      "C256",
+      2
+     ],
+     [
+      "C79",
+      2
+     ],
+     [
+      "C80",
+      2
+     ],
+     [
+      "C141",
+      2
+     ],
+     [
+      "C22",
+      2
+     ],
+     [
+      "C87",
+      2
+     ],
+     [
+      "C184",
+      2
+     ],
+     [
+      "C164",
+      2
+     ]
+    ],
+    "sheet": "cardio-2026-11.md"
+   },
+   "end": "2026-11-11"
+  },
+  {
+   "id": "ai-midterm-2026",
+   "title": "AI in medicine midterm",
+   "module": "technical-communication",
+   "due": "2026-11-19",
+   "goal": 80,
+   "topics": [
+    {
+     "name": "AI: digitalization, records and security",
+     "lecture": "A-s1"
+    },
+    {
+     "name": "AI: privacy, bias and using it safely",
+     "lecture": "A-s2"
+    }
+   ],
+   "note": "Pr Bencheqroun’s two sessions, through the 14 questions of his review game. He says they aren’t the exam’s questions: the same ideas in new situations.",
+   "end": "2026-11-19"
+  },
+  {
+   "id": "endo-midterm-2026",
+   "title": "Endocrinology midterm",
+   "module": "endocrinology",
+   "due": "2026-11-26",
+   "goal": 80,
+   "topics": [
+    {
+     "name": "Hypothyroidism",
+     "lecture": "E-hypothyroid"
+    },
+    {
+     "name": "Hyperthyroidism",
+     "lecture": "E-hyperthyroid"
+    },
+    {
+     "name": "Thyroiditis",
+     "lecture": "E-thyroiditis"
+    }
+   ],
+   "note": "Pr El Aziz’s three thyroid function lectures: hypothyroidism, hyperthyroidism and thyroiditis."
   }
+ ],
+ "spotlight": {
+  "set": "s5-2627-technical-communication-midterm-ai-in-medicine-2026-2027",
+  "title": "AI in medicine midterm 2026–2027",
+  "from": "2026-11-19",
+  "until": "2026-11-20",
+  "note": "Today’s AI in medicine midterm, as it was given, answered from Pr Bencheqroun’s slides and his midterm reading guide."
+ }
 }
