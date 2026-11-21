@@ -879,107 +879,6 @@ details.case[open] .case-b { margin-top: 6px; }
 .by-seg { padding-right: 18px; border-right: 1px solid var(--hair); }
 .lec-note { margin: -4px 0 14px; max-width: 40rem; font-style: italic; font-size: 1rem; color: var(--ink-3); }
 .entry .e-lecs { margin: -3px 0 0; font-style: italic; font-size: .98rem; line-height: 1.35; color: var(--ink-3); }
-.lec-dg svg { color: var(--ink-3); }
-.lec-dg span { font-variant-numeric: tabular-nums; }
-.lec-dg.has-best.solid svg { color: var(--right); }
-.lec-dg.has-best.shaky svg { color: var(--half); }
-.lec-dg.has-best.weak svg { color: var(--wrong); }
-.dg-lecs { margin: 12px 0 0; max-width: 40rem; font-style: italic; font-size: 1.06rem; line-height: 1.4; color: var(--ink-2); }
-.ex-unlocked { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--ink-3); border-radius: var(--r); background: var(--sel-wash); box-shadow: 0 0 0 4px var(--glow-soft); animation: rise .7s var(--ease) .3s both; }
-.ex-ul-t { margin: 0; font-family: var(--f-display); font-style: italic; font-size: 1.4rem; line-height: 1.15; }
-.ex-ul-l { display: flex; flex-wrap: wrap; gap: 8px; }
-.ex-ul-l .btn { min-height: 40px; }
-
-/* ---------- weak spots: one star per question needed, lit as they're tried ---------- */
-.xp { position: relative; display: inline-flex; align-items: center; gap: 7px; padding: 3px 1px; justify-self: start; filter: drop-shadow(0 0 5px var(--glow-soft)); }
-.xp::before { content: ""; position: absolute; left: 5px; right: 5px; top: 50%; height: 1px; background: var(--hair); }
-.xp-s {
-  position: relative; display: block; width: 11px; height: 11px; background: var(--hair-2);
-  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
-  transition: background-color .5s var(--ease), transform .6s var(--spring);
-}
-.xp-s.on { background: var(--ink); }
-.xp-s.new { animation: xp-lit 1s var(--spring) .25s both; }
-@keyframes xp-lit { 0% { transform: scale(.2) rotate(-60deg); background: var(--hair-2); } 55% { transform: scale(1.7) rotate(8deg); background: var(--ink-hi); } 100% { transform: none; background: var(--ink); } }
-.xp.open { filter: drop-shadow(0 0 7px var(--glow-mid)); }
-.xp.open .xp-s { background: var(--ink-hi); }
-/* under the verdict: a star toward the topic's diagnostic, or the diagnostic unlocked */
-.xpl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: -6px; padding: 10px 14px; border: 1px dashed var(--hair-2); border-radius: var(--r); animation: rise .6s var(--ease) .15s both; }
-.xpl-t { font-size: 1.02rem; line-height: 1.35; color: var(--ink-2); }
-.xpl-t b { color: var(--ink); font-weight: 600; }
-.xpl.open { border-style: solid; border-color: var(--ink-3); background: var(--sel-wash); box-shadow: 0 0 0 4px var(--glow-soft), 0 0 30px -6px var(--glow-mid); }
-.xpl.open .xpl-t { font-family: var(--f-display); font-style: italic; font-size: 1.35rem; color: var(--ink); }
-.xpl.open .xpl-t b { font-weight: 400; }
-.xpl-go { margin-left: auto; min-height: 36px; }
-/* the weak spots page */
-.dg-sum { margin: 16px 0 0; font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); }
-.dg-sum b { color: var(--wrong); font-weight: 500; }
-.dg-group { padding-top: 30px; }
-.dg-gnote { margin: -4px 0 12px; font-style: italic; font-size: 1rem; color: var(--ink-3); }
-.dg-row .dg-main { display: grid; gap: 9px; min-width: 0; }
-.dg-name { font-size: 1.26rem; line-height: 1.2; }
-.dg-meta { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); }
-.dg-side { display: grid; justify-items: end; gap: 7px; }
-.dg-mark { display: inline-flex; align-items: baseline; gap: 3px; white-space: nowrap; }
-.dg-mark b { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: 2rem; line-height: 1; }
-.dg-mark span { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); }
-.dg-chip { font-family: var(--f-mono); font-size: .7rem; line-height: 1.2; padding: .28em .62em; border: 1px solid currentColor; border-radius: 2px; white-space: nowrap; }
-.dg-chip.solid { color: var(--right); }
-.dg-chip.shaky { color: var(--half); }
-.dg-chip.weak { color: var(--wrong); }
-.bar-line.dg-bar { height: 4px; max-width: 26rem; }
-.dg-fresh .dg-name { font-size: 1.12rem; color: var(--ink-2); }
-.dg-note { margin: 36px 0 0; font-style: italic; font-size: 1rem; color: var(--ink-3); max-width: 40rem; }
-/* a topic's diagnostic */
-.dg-hero { display: grid; gap: 12px; padding-top: 18px; }
-.dg-hero .score { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; }
-.dg-hero .score b { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(4.4rem, 16vw, 7.5rem); line-height: .82; }
-.dg-hero .score > span:not(.dg-chip) { font-style: italic; font-size: 1.5rem; color: var(--ink-2); }
-.dg-chip.big { align-self: center; font-size: .8rem; padding: .38em .8em; }
-.dg-from { margin: 0; max-width: 38rem; font-size: 1.08rem; line-height: 1.5; color: var(--ink-2); }
-.bar-line.dg-hbar { height: 6px; max-width: 34rem; }
-.dg-sec { padding-top: 36px; }
-.dg-sec .h3 { margin-bottom: 10px; display: flex; align-items: baseline; gap: 10px; }
-.dg-sec .h3 .n { font-family: var(--f-mono); font-style: normal; font-size: .74rem; color: var(--ink-3); }
-.dg-habit { margin: 0; max-width: 40rem; font-size: 1.14rem; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
-.dg-habit b { color: var(--ink); font-weight: 600; }
-.fx-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.fx { display: grid; gap: 7px; padding: 14px 16px; border: 1px solid var(--hair); border-left: 2px solid var(--wrong); border-radius: var(--r); background: var(--plate); min-width: 0; }
-.fx.miss { border-left-color: var(--right); }
-.fx p { margin: 0; }
-.fx-kind { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: .74rem; color: var(--wrong); }
-.fx.miss .fx-kind { color: var(--right); }
-.fx-kind svg { width: 13px; height: 13px; flex: none; }
-.fx-prop { font-family: var(--f-display); font-style: italic; font-size: 1.42rem; line-height: 1.2; overflow-wrap: anywhere; text-wrap: balance; }
-.fx-q { font-size: .98rem; line-height: 1.45; color: var(--ink-3); overflow-wrap: anywhere; }
-.fx-q span { margin-left: 4px; font-family: var(--f-mono); font-size: .7rem; white-space: nowrap; }
-.fx-why { display: grid; gap: 3px; margin-top: 3px !important; padding-top: 9px; border-top: 1px solid var(--hair); font-size: 1.04rem; line-height: 1.5; color: var(--ink); }
-.fx-why span { font-family: var(--f-mono); font-size: .68rem; color: var(--ink-3); }
-.dg-actions { margin-top: 30px; }
-.dg-lock { display: grid; gap: 14px; margin: 20px 0 6px; }
-.dg-lock .xp-s { width: 15px; height: 15px; }
-.dg-lock p { margin: 0; max-width: 34rem; font-size: 1.12rem; line-height: 1.5; color: var(--ink-2); }
-/* on the home page */
-.wsc-wrap { padding-top: 48px; }
-.wsc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 26px 44px; padding: clamp(22px, 4vw, 40px); }
-.wsc-text { display: grid; gap: 14px; align-content: start; min-width: 0; }
-.wsc-text p { margin: 0; }
-.wsc-stat { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); }
-.wsc-stat b { color: var(--ink); font-weight: 500; }
-.wsc-side { display: grid; gap: 10px; align-content: center; min-width: 0; }
-.wsc-side-t { margin: 0; font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); }
-.wsc-side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.wsc-row {
-  width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n left" "xp xp"; gap: 9px 12px;
-  padding: 12px 14px; border: 1px solid var(--hair); border-radius: var(--r); background: transparent; color: var(--ink); text-align: left; cursor: pointer;
-  transition: border-color .3s var(--ease), background-color .3s var(--ease), transform .2s var(--ease);
-}
-.wsc-row:hover { border-color: var(--hair-2); background: var(--plate-2); }
-.wsc-row:active { transform: scale(.99); }
-.wsc-n { grid-area: n; min-width: 0; font-size: 1.1rem; line-height: 1.25; }
-.wsc-left { grid-area: left; align-self: center; font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); white-space: nowrap; }
-.wsc-row .xp { grid-area: xp; }
-@media (max-width: 760px) { .wsc { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- tonight: how sure you were, the moon ---------- */
 .sure { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: -4px; }
@@ -1022,10 +921,8 @@ p.ins.quiet { font-size: 1rem; color: var(--ink-3); }
   .tn-moon .moon.big { width: 60px; height: 60px; }
 }
 @media (max-width: 640px) {
-  .wsc-wrap { padding-top: 36px; }
   .set-exam { padding: 0 9px; margin-right: 0; }
   .by-seg { padding-right: 0; border-right: 0; }
-  .dg-mark b { font-size: 1.7rem; }
   .fx-prop { font-size: 1.28rem; }
 }
 /* on question screens the toast sits above the action bar */
@@ -2955,7 +2852,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // ---------- state ----------
   let S = { type: 'all', view: 'home', topicId: null, session: null, answers: {}, first: {}, seals: {}, seenUpdate: null, q: '', aspect: null, repMod: 'all', scrollBack: 0,
     exam: null, examLog: [], examScreen: 'intro', examScope: null, examN: 20, examBack: { view: 'home' },
-    clean: {}, weakMod: null, diag: null, diagAll: false, diagFrom: 'weak', topicBy: 'set', stamps: {},
+    clean: {}, topicBy: 'set', stamps: {},
     sure: {}, comets: {}, cometsInit: 0, moon: null, days: {}, statSent: {}, gifts: {}, marks: {}, cross: {}, firstSel: {},
     duels: {}, rivals: {}, duelSet: {}, duelSend: {}, duelId: null, unlocks: {}, musts: {} };
   let storageOK = false;
@@ -3089,10 +2986,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if ((S.view === 'quiz' || S.view === 'done') && !S.session) S.view = 'home';
     if (S.view === 'topic' && !S.topicId) S.view = 'home';
     if (S.view === 'exam' && !S.exam && !scopeInfo(S.examScope)) S.view = 'home';
-    if (S.view === 'diag' && !DIAG_INDEX.has(S.diag)) S.view = 'weak';
-    if (S.view === 'weak' && !DIAG.length) S.view = 'home';
+    if (S.view === 'diag' || S.view === 'weak') S.view = 'home';   // weak spots were taken out on 21 November 2026
     if (S.view === 'duel' && !S.duelId) S.view = 'home';
-    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'weak', 'diag', 'duel', 'cheat', 'privacy'].includes(S.view)) S.view = 'home';
+    if (!['home', 'topic', 'quiz', 'done', 'repeats', 'updates', 'exam', 'duel', 'cheat', 'privacy'].includes(S.view)) S.view = 'home';
     if (S.view === 'updates' && !UPDATES.length) S.view = 'home';
     // a first visit starts with nothing new: everything in the log is new to them anyway
     if (UPDATES.length && !UPDATES.some(u => u.id === S.seenUpdate)) S.seenUpdate = UPDATES[0].id;
@@ -3102,7 +2998,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (S.repMod !== 'all' && !TOPIC.has(S.repMod)) S.repMod = 'all';
     if (typeof S.scrollBack !== 'number') S.scrollBack = 0;
     if (S.topicBy !== 'lecture') S.topicBy = 'set';
-    if (S.diagFrom !== 'topic') S.diagFrom = 'weak';
   }
 
   // ---------- helpers ----------
@@ -3787,7 +3682,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '79ae406ad8e2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '0a5a025db742', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -4704,20 +4599,31 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         'So every theme is yours, with nothing to earn: the Blood moon, the Codex and the Golden phase.',
         'Thank you, and good luck in the exams.'] }
   ];
+  // Codex since 21 November 2026: 15/20 or more on a lecture exam (the weak spots and their diagnostics were taken out).
+  // Whoever already had a lecture at Solid on its old diagnostic keeps it: worked out from S.clean, only when the
+  // themes are shown, and again only when the clean answers change.
   const SOLID = 15;
-  function bestDiag() {
-    let best = null;
-    for (let i = 0; i < DIAG.length; i++) { const st = diagState(i); if (st.open && (best === null || st.n20 > best)) best = st.n20; }
-    return best;
+  let oldSolid = null, oldSolidN = -1;
+  function oldDiagSolid() {
+    const n = Object.keys(S.clean).length;
+    if (oldSolid !== true && n !== oldSolidN) {
+      oldSolidN = n; oldSolid = false;
+      for (let i = 0; i < DIAG.length && !oldSolid; i++) { const st = diagState(i); if (st.open && st.n20 >= SOLID) oldSolid = true; }
+    }
+    return oldSolid;
+  }
+  function bestLectureExam() {
+    const l = S.examLog.filter(e => typeof e.scope === 'string' && e.scope.startsWith('topic:'));
+    return l.length ? Math.max(...l.map(e => e.n20)) : null;
   }
   // done: earned; p: how far along (0 to 1); req: what it asks; now: where you are
   // a duel played to the end (handed in): S.duels[id].h, synced
   const firstDuel = () => Object.values(S.duels || {}).some(e => e && e.k === 'duel' && e.h);
   function themeGoal(id) {
     if (id === 'codex') {
-      const b = bestDiag();
-      return { done: b !== null && b >= SOLID, p: b === null ? 0 : Math.min(1, b / SOLID), req: `Get one lecture to Solid: ${SOLID}/20 or more on its diagnostic.`,
-        now: b === null ? `No lecture diagnosed yet: try ${DIAG_MIN} questions from one lecture to open its diagnostic.` : `Your best lecture: ${fmtPts(b)}/20.` };
+      const b = bestLectureExam(), done = (b !== null && b >= SOLID) || oldDiagSolid();
+      return { done, p: done ? 1 : b === null ? 0 : Math.min(1, b / SOLID), req: `Get ${SOLID}/20 or more on a lecture exam: on a module page, list it by lecture and press the hourglass beside a lecture.`,
+        now: done ? '' : b === null ? 'No lecture exam yet.' : `Your best lecture exam: ${fmtPts(b)}/20.` };
     }
     if (id === 'blood') {
       // or a gift for your first duel (Abi, 12 October 2026)
@@ -6475,7 +6381,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             : `<button class="btn quiet" type="button" data-acct="erase"${dis}>Delete my data</button>`}</div>`;
       }
       return `${head}<h2 class="h2" id="acct-h">${esc(reason || 'Keep your progress everywhere')}</h2>
-        <p class="acct-p">${reason ? 'It’s free and takes a few seconds. ' : ''}An account unlocks exam mode, weak spots and quests, and your answers follow you from your phone to your laptop. Practising questions stays open to everyone.</p>
+        <p class="acct-p">${reason ? 'It’s free and takes a few seconds. ' : ''}An account unlocks exam mode and quests, and your answers follow you from your phone to your laptop. Practising questions stays open to everyone.</p>
         <button class="btn primary acct-g" type="button" data-acct="google"${dis}>Continue with Google</button>
         <form class="acct-mail" data-acct-form="mail">
           <p class="acct-or">${mode === 'new' ? 'Or create an account with your email' : 'Or sign in with your email'}</p>
@@ -6552,7 +6458,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (!fb) load().catch(() => {});   // warm up while they read
     }
     function close() { if (sheet) { if (!sheet.hidden) sfx.play('shut', { quiet: true }); sheet.hidden = true; erasing = false; editing = false; msg = ''; mode = 'in'; } reason = ''; pending = null; }
-    // the locked features (exam mode, weak spots, quests): a guest gets the sheet, then what they asked for once signed in
+    // the locked features (exam mode, quests): a guest gets the sheet, then what they asked for once signed in
     function gate(why, then) {
       if (member()) return false;
       reason = state === 'naming' ? '' : why; pending = then || null;
@@ -7142,9 +7048,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   })();
   const LOCK = ICON.lock;
   const lockMark = () => acct.member() ? '' : LOCK;
-  // screens a guest can't stay on (after signing out, or an old session): exam mode, weak spots, a quest
+  // screens a guest can't stay on (after signing out, or an old session): exam mode, a quest
   function lockedView() {
-    return ['exam', 'weak', 'diag', 'duel'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && ['quest', 'diag'].includes(S.session.from));
+    return ['exam', 'duel'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && S.session.from === 'quest');
   }
 
   // ---------- actions ----------
@@ -7209,10 +7115,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     if (sess && inQuiz && sess.from === 'repeats') { S.view = 'repeats'; restore = true; }
     else if (sess && inQuiz && sess.from === 'updates') { S.view = 'updates'; restore = true; }
-    else if (sess && inQuiz && sess.from === 'weak' && DIAG.length) { S.view = 'weak'; restore = true; }
     else if (sess && inQuiz && sess.from === 'home') { S.view = 'home'; restore = true; }
-    else if (sess && inQuiz && sess.from === 'diag' && DIAG_INDEX.has(S.diag)) { S.view = 'diag'; }
-    else if (sess && inQuiz && (sess.from === 'search' || sess.from === 'quest')) { S.view = 'home'; restore = true; }
+    else if (sess && inQuiz && (sess.from === 'search' || sess.from === 'quest' || sess.from === 'weak' || sess.from === 'diag')) { S.view = 'home'; restore = true; }
     else if (sess && sess.topic !== '*' && inQuiz) { S.topicId = sess.topic; S.view = 'topic'; }
     else S.view = 'home';
     save();
@@ -7257,22 +7161,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (!q.answer.length || !a || !a.sel.length || a.checked) return;
     a.checked = true; a.correct = isCorrect(q, a.sel);
     if (!(q.id in S.first)) { S.first[q.id] = a.correct; if (acct.signedIn()) S.firstSel[q.id] = a.sel.slice(); }
-    // a clean try: the first one, or a drill a day after the last try
-    const prev = S.clean[q.id], di = DIAG_OF.get(q.id), now = Date.now();
-    const clean = !prev || (S.session.drill && now - prev.t > DRILL_GAP);
-    xpGain = null;
+    // a clean try: the first one (for the one-tick-too-many habit and the old Codex)
+    const now = Date.now(), clean = !S.clean[q.id];
     if (clean && (a.sure === true || a.sure === false)) S.sure[q.id] = [a.sure ? 1 : 0, a.correct ? 1 : 0, now];
     moonGain = moonTick([q.id]);
     if (moonGain === 'full') sfx.play('sparkle', { delay: 0.4, quiet: true });
-    if (clean) {
-      const before = di !== undefined ? diagState(di) : null;
-      S.clean[q.id] = { s: a.sel.slice(), ok: a.correct, t: Date.now(), x: 0 };
-      if (before) {
-        const after = diagState(di);
-        if (after.done > before.done || after.open !== before.open) xpGain = { i: di, before, after };
-        if (after.open && !before.open) { sfx.play('sparkle', { delay: 0.55, quiet: true }); usage.track('diagnostic_unlocked', { topic: DIAG[di].id }); }
-      }
-    }
+    if (clean) S.clean[q.id] = { s: a.sel.slice(), ok: a.correct, t: now, x: 0 };
     usage.track('question_checked', { module: q.topic, quest: QUEST_SET.has(q.id) });
     if (a.correct) {
       streak++;
@@ -7285,13 +7179,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     // what this session earned, for its end
     const g = S.session.gain || (S.session.gain = { best: 0, diag: {}, moon: 0 });
     g.best = Math.max(g.best, streak);
-    if (xpGain && xpGain.after && xpGain.before) { const id = DIAG[xpGain.i].id; g.diag[id] = (g.diag[id] || 0) + Math.max(0, xpGain.after.done - xpGain.before.done); }
     if (moonGain) g.moon = moonGain === 'full' ? 2 : 1;
-    const shoot = (a.correct && streak % 7 === 0) || (xpGain && xpGain.after && xpGain.after.open && !xpGain.before.open);
+    const shoot = a.correct && streak % 7 === 0;
     save();
     justChecked = true;
     render(false, 'verdict');
-    justChecked = false; xpGain = null; moonGain = null;
+    justChecked = false; moonGain = null;
     if (a.correct) flyStars();
     alive.react(a.correct ? (streak && streak % 7 === 0 ? 'streak' : 'right') : a.sel.some(i => q.answer.includes(i)) ? 'partial' : 'wrong');
     acct.beat((TOPIC.get(q.topic) || {}).name || '', 'quiz');
@@ -7423,8 +7316,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (S.view === 'exam') { const x = examScreen(); return 'exam-' + x + (x === 'run' ? ':' + S.exam.idx : x === 'review' ? ':' + S.exam.ridx : ''); }
     if (S.view === 'done') return 'done';
     if (S.view === 'topic') return 'topic:' + S.topicId + ':' + S.topicBy;
-    if (S.view === 'weak') return 'weak:' + S.weakMod;
-    if (S.view === 'diag') return 'diag:' + S.diag;
     if (S.view === 'duel') return 'duel:' + S.duelId;
     return S.view;
   }
@@ -7483,8 +7374,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     else if (S.view === 'cheat' && cheatOf(S.cheat)) renderCheat();
     else if (S.view === 'privacy') renderPrivacy();
     else if (S.view === 'cheat') { S.view = 'home'; document.body.dataset.view = 'home'; renderHome(); }
-    else if (S.view === 'weak' && DIAG.length) renderWeak();
-    else if (S.view === 'diag' && DIAG_INDEX.has(S.diag)) renderDiag();
     else if (S.view === 'duel' && S.duelId) acct.renderDuel();
     else renderHome();
     const nstrip = app.querySelector('.bar ~ main .strip');
@@ -7960,7 +7849,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (S.exam && S.exam.handed) {
       const i = S.examLog.findIndex(e => e.id === S.exam.id);
       if (i !== -1) S.examLog[i] = examEntry(S.exam);
-      // an exam handed in before the diagnostic existed still counts as clean answers
+      // an older exam's answers still count as clean answers
       for (const [id, p] of Object.entries(S.exam.picks)) {
         const c = S.clean[id];
         if (!c || c.t < S.exam.handed) S.clean[id] = { s: p.slice(), ok: isCorrect(Q.get(id), p), t: S.exam.handed, x: 1 };
@@ -7973,14 +7862,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // where Back goes from the rules and the results: the page the exam was opened from
   function keepExamBack() {
     if (S.view === 'exam') return;
-    S.examBack = { view: S.view, topicId: S.topicId, diag: S.diag, weakMod: S.weakMod, duelId: S.duelId };
+    S.examBack = { view: S.view, topicId: S.topicId, duelId: S.duelId };
     S.scrollBack = window.scrollY;
   }
   function examBackLabel() {
     const b = S.examBack || {};
     if (b.view === 'topic' && TOPIC.has(b.topicId)) return TOPIC_SHORT(TOPIC.get(b.topicId));
-    if (b.view === 'diag' && DIAG_INDEX.has(b.diag)) return 'Diagnostic';
-    if (b.view === 'weak') return 'Weak spots';
     if (b.view === 'duel' && b.duelId) return 'The challenge';
     return b.view === 'home' && QUEST && S.examScope && S.examScope.kind === 'quest' ? 'Quest' : 'Home';
   }
@@ -8114,11 +8001,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     S.examLog = [e, ...S.examLog.filter(x => x.id !== ex.id)].slice(0, EXAM_LOG_MAX);
     if (ex.duel) acct.duelHanded(ex);
     S.examScreen = 'results';
-    // every answered question is a clean try for the diagnostic; note the topics this exam unlocked
-    const was = new Map();
-    for (const id of ex.qids) { const i = DIAG_OF.get(id); if (i !== undefined && !was.has(i)) was.set(i, diagState(i).open); }
+    // every answered question is a clean try
     for (const id of ex.qids) { const p = ex.picks[id]; if (p && p.length) S.clean[id] = { s: p.slice(), ok: isCorrect(Q.get(id), p), t: ex.handed, x: 1 }; }
-    ex.unlocked = [...was].filter(([i, open]) => !open && diagState(i).open).map(([i]) => DIAG[i].id);
     // the questions answered count for the moon
     const answered = ex.qids.filter(id => ex.picks[id] && ex.picks[id].length);
     moonTick(answered);
@@ -8139,11 +8023,9 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     examConfirm = false;
     if (S.view === 'exam' && examScreen() === 'review') { S.examScreen = 'results'; save(); render(true, null, 'back'); return; }
     const b = S.examBack || { view: 'home' };
-    S.view = ['home', 'topic', 'weak', 'diag', 'duel'].includes(b.view) ? b.view : 'home';
+    S.view = ['home', 'topic', 'duel'].includes(b.view) ? b.view : 'home';
     if (S.view === 'duel') { if (b.duelId) S.duelId = b.duelId; else S.view = 'home'; }
     if (S.view === 'topic') { if (TOPIC.has(b.topicId)) S.topicId = b.topicId; else S.view = 'home'; }
-    if (S.view === 'diag') { if (DIAG_INDEX.has(b.diag)) S.diag = b.diag; else S.view = 'weak'; }
-    if (S.view === 'weak' && b.weakMod) S.weakMod = b.weakMod;
     save();
     render(true, null, 'back', () => { if (S.scrollBack) window.scrollTo(0, S.scrollBack); });
   }
@@ -8219,7 +8101,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         <ol class="ex-rules">
           <li><b>One minute per question.</b> ${fmtN(mins)} minutes for all ${fmtN(n)}, ${order}. Move between them and change your picks until you hand in.</li>
           <li><b>One point per question.</b> Tick every right answer for the full point, or at least half of them for half a point. A single wrong tick and that question scores nothing, but your other points stay. With three right answers: all three give 1, two give 0.5, one gives 0.</li>
-          <li><b>No answers until the end.</b> Hand in when you’re done. When the time runs out, the exam is handed in as it is, even if you left the page. Then you get your mark out of 20 and every question with its answer and explanation, and your answers count toward the weak spots.</li>
+          <li><b>No answers until the end.</b> Hand in when you’re done. When the time runs out, the exam is handed in as it is, even if you left the page. Then you get your mark out of 20 and every question with its answer and explanation.</li>
         </ol>
         <div class="row ex-go"><button class="btn primary" type="button" data-act="exam-start">${ICON.hourglass}Start the exam ${ICON.next}</button><span class="ex-go-note">The clock starts right away.</span></div>
         ${acct.here ? `<div class="ex-ch"><p class="ex-ch-t"><b>Or challenge the class to it.</b> The same ${fmtN(n)} questions for each of you: a duel for a colour in the class sky, or a party of up to 8 for a ranking.</p>
@@ -8354,9 +8236,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       const mk = examMark(Q.get(id), ex.picks[id]);
       return `<button type="button" class="cell x-${mk.cls}" data-jump="${i}" aria-label="Question ${i + 1}, ${mk.label.toLowerCase()}">${i + 1}</button>`;
     }).join('');
-    const unlocked = (ex.unlocked || []).filter(id => DIAG_INDEX.has(id));
-    const unlockHTML = unlocked.length ? `<div class="ex-unlocked"><p class="ex-ul-t">✦ ${unlocked.length === 1 ? 'This exam unlocked a diagnostic' : `This exam unlocked ${unlocked.length} diagnostics`}</p>
-      <div class="ex-ul-l">${unlocked.map(id => `<button class="btn" type="button" data-diag="${esc(id)}">${esc(DIAG[DIAG_INDEX.get(id)].n)} ${ICON.next}</button>`).join('')}</div></div>` : '';
     const tally = [['full', s.full, s.full === 1 ? 'full point' : 'full points'], ['half', s.half, s.half === 1 ? 'half point' : 'half points'], ['zero', s.zero, 'no point'], ['blank', s.blank, 'blank']];
     app.innerHTML = `
       ${barHTML('exam-back', examBackLabel(), `Exam · ${ex.title || 'Quest'}`)}
@@ -8372,10 +8251,8 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             ${ex.duel ? `<button class="btn primary" type="button" data-duel="${esc(ex.duel)}">See the ${ex.title && ex.title.startsWith('Party') ? 'party' : 'duel'} ${ICON.next}</button>` : ''}
             <button class="btn${ex.duel ? '' : ' primary'}" type="button" data-act="exam-review">Review your answers ${ex.duel ? '' : ICON.next}</button>
             ${scopeInfo(ex.scope) && !ex.duel ? `<button class="btn" type="button" data-act="exam-new">New exam</button>` : ''}
-            <button class="btn" type="button" data-act="weak" data-mod="${esc((scopeInfo(ex.scope) || {}).mod || '')}">Weak spots</button>
             <button class="btn quiet" type="button" data-act="exam-back">Back</button>
           </div>
-          ${unlockHTML}
           <nav class="strip" aria-label="Questions">${cells}</nav>
         </section>
         ${topics ? `<section class="ex-topics" aria-labelledby="xt-h"><h2 class="h3" id="xt-h">${QX ? 'By topic' : 'By lecture'}</h2><ul class="ledger">${topics}</ul></section>` : ''}
@@ -8412,7 +8289,10 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     };
   }
 
-  // ---------- weak spots: the diagnostic ----------
+  // ---------- lectures, and the old diagnostic ----------
+  // The weak spots (a diagnostic per lecture) were taken out on 21 November 2026 (Abi: nobody used them, and they cost
+  // speed). DIAG stays: it is each module's lectures (bank.diag), for "By lecture", lecture exams and exam results.
+  // diagState stays only for the old Codex rule (oldDiagSolid). What follows is how the diagnostic worked.
   // Each module is split into its lectures at build time (bank.diag, from lectures.json, in course order; a lecture with
   // very few past questions shares one with the closest lecture, listed in d.l). The module page practises them one by
   // one ("By lecture") and each has a diagnostic. A question counts once with its word-for-word copies and constellation
@@ -8421,7 +8301,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // lecture's questions are tried (all of them if it has fewer), its diagnostic opens: the mark with the exam's rule,
   // what the lost points went to, and every proposition got wrong with its why.
   const DIAG = BANK.diag || [];
-  const DIAG_MIN = 8, DRILL_GAP = 20 * 3600e3;
+  const DIAG_MIN = 8;
   const DIAG_OF = new Map(), DIAG_INDEX = new Map();
   DIAG.forEach((d, i) => { DIAG_INDEX.set(d.id, i); d.q.forEach(id => DIAG_OF.set(id, i)); });
   function canonId(id) { const q = Q.get(id), k = (q && q.dupOf) || id; return CST.has(k) ? CST.get(k)[0] : k; }
@@ -8430,8 +8310,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     for (const id of d.q) { if (!keyedId(id)) continue; const c = canonId(id); if (!g.has(c)) g.set(c, []); g.get(c).push(id); }
     return g;
   });
-  const STATUS = { solid: 'Solid', shaky: 'Shaky', weak: 'Weak spot' };
-  let xpGain = null;   // the topic a check just moved toward (or into) its diagnostic, shown under the verdict once
 
   // answers from before the diagnostic: a first try that was retried only left whether it was right
   function sanitizeClean() {
@@ -8449,8 +8327,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (id in S.first) S.clean[id] = { s: null, ok: !!S.first[id], t: 0, x: 0 };
       else if (a && a.checked && Array.isArray(a.sel)) S.clean[id] = { s: a.sel.slice(), ok: isCorrect(Q.get(id), a.sel), t: 0, x: 0 };
     }
-    if (S.diag !== undefined && S.diag !== null && !DIAG_INDEX.has(S.diag)) S.diag = null;
-    if (S.weakMod && !TOPIC.has(S.weakMod)) S.weakMod = null;
   }
   // the latest clean try among a question's copies, and what it scores with the exam's rule
   function lastTry(ids) {
@@ -8472,216 +8348,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     st.status = st.n20 >= 15 ? 'solid' : st.n20 >= 10 ? 'shaky' : 'weak';
     return st;
   }
-  // everything the diagnostic page shows: the propositions got wrong, the questions to drill, the ones never tried,
-  // and what wrong ticks cost (the points those questions would have had without them)
-  function diagDetail(i) {
-    const st = diagState(i), items = [], missed = [], untried = [];
-    let wrongCost = 0;
-    for (const [c, ids] of DIAG_GROUPS[i]) {
-      const a = lastTry(ids);
-      if (!a) { untried.push(ids.includes(c) ? c : ids[0]); continue; }
-      const q = Q.get(a.id);
-      if (tryPts(a) < 1) missed.push(a.id);
-      if (!a.e.s) continue;
-      const sel = a.e.s;
-      if (sel.some(k => !q.answer.includes(k))) wrongCost += examPoints(q, sel.filter(k => q.answer.includes(k)));
-      q.options.forEach((_, k) => { const pk = sel.includes(k); if (pk !== q.answer.includes(k)) items.push({ tick: pk, id: a.id, k, t: a.e.t }); });
-    }
-    items.sort((x, y) => (y.tick - x.tick) || (y.t - x.t));
-    return { st, items, missed, untried, wrongCost };
-  }
-  // the progress toward a diagnostic: one star per question needed, lit as they're tried
-  function xpHTML(st, fresh) {
-    let s = '';
-    for (let j = 0; j < st.need; j++) s += `<i class="xp-s${j < st.done ? ' on' : ''}${j === fresh ? ' new' : ''}"></i>`;
-    return `<span class="xp${st.open ? ' open' : ''}" role="img" aria-label="${fmtN(Math.min(st.done, st.need))} of ${fmtN(st.need)} toward the diagnostic">${s}</span>`;
-  }
-  function splitHTML(st, cls) {
-    const w = v => st.done ? (100 * v / st.done).toFixed(2) : 0;
-    return `<span class="bar-line ex-bar ${cls || ''}" aria-hidden="true"><i class="r" style="width:${w(st.full)}%"></i><i class="h" style="width:${w(st.half)}%"></i><i class="w" style="width:${w(st.zero)}%"></i></span>`;
-  }
-  // under the verdict, once: a star lit toward the topic's diagnostic, or the diagnostic unlocking
-  function xpLineHTML(g) {
-    const d = DIAG[g.i], s = g.after;
-    if (s.open && !g.before.open) return `<div class="xpl open" role="status">${xpHTML(s)}<span class="xpl-t">Diagnostic unlocked: <b>${esc(d.n)}</b></span>
-      <button class="btn quiet xpl-go" type="button" data-diag="${esc(d.id)}">See it ${ICON.next}</button></div>`;
-    if (s.open) return '';
-    return `<div class="xpl" role="status">${xpHTML(s, s.done - 1)}<span class="xpl-t"><b>${esc(d.n)}</b> · ${fmtN(s.done)} of ${fmtN(s.need)} toward its diagnostic</span></div>`;
-  }
-  function weakModules() { return BANK.topics.filter(t => DIAG.some(d => d.m === t.id)); }
-  // the module the weak spots open on: the last one looked at, else the one with the most tries, else the quest's
-  function weakDefault() {
-    const mods = weakModules();
-    if (S.weakMod && mods.some(t => t.id === S.weakMod)) return S.weakMod;
-    const n = new Map();
-    for (const id of Object.keys(S.clean)) { const q = Q.get(id); if (q) n.set(q.topic, (n.get(q.topic) || 0) + 1); }
-    const top = [...n].sort((a, b) => b[1] - a[1])[0];
-    return top ? top[0] : QUEST && mods.some(t => t.id === QUEST.module) ? QUEST.module : (mods[0] || {}).id;
-  }
-  function openWeak(mod) {
-    if (!DIAG.length || acct.gate('Weak spots need an account', () => openWeak(mod))) return;
-    S.weakMod = mod && TOPIC.has(mod) ? mod : weakDefault();
-    const vt = S.view === 'diag' ? 'back' : 'nav';
-    S.view = 'weak'; confirmReset = false; usage.track('weak_spots_opened', { module: S.weakMod });
-    save(); render(true, null, vt);
-  }
-  function openDiag(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined || acct.gate('Weak spots need an account', () => openDiag(id))) return;
-    if (S.view !== 'diag') S.diagFrom = S.view === 'topic' && S.topicId === DIAG[i].m ? 'topic' : 'weak';
-    S.diag = id; S.weakMod = DIAG[i].m; S.diagAll = false; S.view = 'diag';
-    usage.track('diagnostic_opened', { topic: id, open: diagState(i).open });
-    save(); render(true, null, 'nav');
-  }
-  // practise a lecture’s questions never tried (toward its diagnostic)
-  function untriedTopic(id) {
-    const i = DIAG_INDEX.get(id); if (i === undefined || acct.gate('Weak spots need an account', () => untriedTopic(id))) return;
-    const ids = diagDetail(i).untried;
-    if (!ids.length) { openDiag(id); return; }
-    startList(ids, 0, { topic: DIAG[i].m, from: S.view === 'diag' ? 'diag' : S.view === 'home' ? 'home' : 'weak', title: `${DIAG[i].n} · toward its diagnostic` });
-  }
-
-  function renderWeak() {
-    const mods = weakModules(), mod = weakDefault();
-    S.weakMod = mod;
-    const all = DIAG.map((d, i) => diagState(i));
-    const states = all.filter(s => DIAG[s.i].m === mod);
-    const open = states.filter(s => s.open).sort((a, b) => a.n20 - b.n20 || b.total - a.total);
-    const going = states.filter(s => !s.open && s.done).sort((a, b) => (a.need - a.done) - (b.need - b.done) || b.total - a.total);
-    const fresh = states.filter(s => !s.done);
-    const tabs = mods.map(t => {
-      const n = all.filter(s => s.open && DIAG[s.i].m === t.id).length;
-      return `<button type="button" role="tab" aria-selected="${t.id === mod}" data-weakmod="${esc(t.id)}">${esc(TOPIC_SHORT(t))}${n ? ` <span class="n">${fmtN(n)}</span>` : ''}</button>`;
-    }).join('');
-    const openRow = s => {
-      const d = DIAG[s.i];
-      return `<li><button type="button" class="entry dg-row" data-diag="${esc(d.id)}">
-        <span class="dg-main"><span class="dg-name">${esc(d.n)}</span>${splitHTML(s, 'dg-bar')}
-        <span class="dg-meta">${fmtN(s.done)} of ${fmtN(s.total)} tried · ${fmtN(s.full)} full, ${fmtN(s.half)} half, ${fmtN(s.zero)} none</span></span>
-        <span class="dg-side"><span class="dg-chip ${s.status}">${STATUS[s.status]}</span><span class="dg-mark num"><b>${fmtPts(s.n20)}</b><span>/20</span></span></span>
-      </button></li>`;
-    };
-    const xpRow = s => {
-      const d = DIAG[s.i], left = s.need - s.done;
-      return `<li><button type="button" class="entry dg-row xp-row" data-diag-go="${esc(d.id)}" title="Practise its questions not tried yet">
-        <span class="dg-main"><span class="dg-name">${esc(d.n)}</span>${xpHTML(s)}
-        <span class="dg-meta">${s.done ? `${fmtN(s.done)} of ${fmtN(s.need)} · ${left === 1 ? 'one more' : `${fmtN(left)} more`} to unlock` : `${fmtN(s.need)} questions to unlock · ${fmtN(s.total)} in all`}</span></span>
-        <span class="dg-side"><span class="e-go">${ICON.next}</span></span>
-      </button></li>`;
-    };
-    const weakN = open.filter(s => s.status === 'weak').length;
-    const sum = open.length
-      ? `${fmtN(open.length)} of ${fmtN(states.length)} lectures diagnosed${weakN ? ` · <b>${fmtN(weakN)}</b> ${weakN === 1 ? 'weak spot' : 'weak spots'}` : ''}${going.length ? ` · ${fmtN(going.length)} on the way` : ''}`
-      : going.length ? `No diagnostic yet · ${fmtN(going.length)} ${going.length === 1 ? 'lecture' : 'lectures'} on the way` : 'Nothing tried in this module yet';
-    const sec = (title, note, rows, cls) => rows.length ? `<section class="group dg-group ${cls || ''}"><h2>${title} <span class="n num">${fmtN(rows.length)}</span></h2>${note ? `<p class="dg-gnote">${note}</p>` : ''}<ul class="ledger">${rows.join('')}</ul></section>` : '';
-    app.innerHTML = `
-      ${barHTML('home', 'Home', 'Weak spots')}
-      <main class="wrap narrow stage">
-        <header class="page-head">
-          <div>
-            <p class="eyebrow">The diagnostic</p>
-            <h1 class="h1">Weak spots</h1>
-            <p class="ph-lead">Try ${DIAG_MIN} questions from a lecture and the Labubu diagnoses it: your mark on it with the exam’s rule, what costs you the points, and every fact to fix, with the lecture’s why.</p>
-            ${instinctHTML()}
-          </div>
-        </header>
-        <div class="controls"><div class="seg" role="tablist" aria-label="Module">${tabs}</div></div>
-        <p class="dg-sum">${sum}</p>
-        ${sec('Diagnosed', 'Weakest first. Open one for what to fix.', open.map(openRow))}
-        ${sec('On the way', 'Each star is a question tried. Tap to practise the rest.', going.map(xpRow))}
-        ${sec('Not started', '', fresh.map(xpRow), 'dg-fresh')}
-        <p class="dg-note">Only clean answers count: your first try, an exam, or a drill a day later. A retry right after seeing the answer doesn’t.</p>
-        ${footHTML()}
-      </main>`;
-  }
-
-  function renderDiag() {
-    const i = DIAG_INDEX.get(S.diag), d = DIAG[i], t = TOPIC.get(d.m), det = diagDetail(i), s = det.st;
-    const head = `<p class="eyebrow">Diagnostic · ${esc(t.name)}</p><h1 class="h1">${esc(d.n)}</h1>${lecsHTML(d, 'dg-lecs')}`;
-    // back to the module's lectures when it was opened from there
-    const bar = S.diagFrom === 'topic' && S.topicId === d.m ? barHTML('diag-back', TOPIC_SHORT(t), d.n) : barHTML('weak', 'Weak spots', d.n);
-    if (!s.open) {
-      const left = s.need - s.done;
-      app.innerHTML = `
-        ${bar}
-        <main class="wrap narrow stage">
-          <header class="page-head"><div>${head}
-            <div class="dg-lock">${xpHTML(s)}<p>${s.done ? `${fmtN(s.done)} of ${fmtN(s.need)} tried. ` : ''}${left === 1 ? 'One more question' : `${fmtN(left)} more questions`} and the Labubu can tell you where you stand on it.</p></div>
-            <div class="row"><button class="btn primary" type="button" data-act="diag-untried">Practise toward it ${ICON.next}</button>
-              <button class="btn" type="button" data-act="diag-exam">${ICON.hourglass}Exam on this lecture</button></div>
-          </div></header>
-          ${footHTML()}
-        </main>`;
-      return;
-    }
-    const lost = Math.max(0, 20 - s.n20), tick20 = s.done ? Math.round(det.wrongCost / s.done * 2000) / 100 : 0;
-    const anyTick = det.items.some(x => x.tick);
-    const habit = lost < 0.005 ? 'Every question right. Nothing lost here.'
-      : tick20 > 0 ? `Wrong ticks cost you <b>${fmtPts(tick20)}</b> of the ${fmtPts(lost)} points you lose here. Without them you’d be at <b>${fmtPts(Math.min(20, s.n20 + tick20))}/20</b>. ${tick20 >= lost / 2 ? 'When you’re not sure of a proposition, leave it.' : 'The rest are right answers you didn’t tick.'}`
-      : anyTick ? `Your wrong ticks didn’t cost extra here: those questions didn’t have enough right answers ticked to score anyway. The ${fmtPts(lost)} points you lose are right answers you didn’t know.`
-      : `No wrong ticks here: the ${fmtPts(lost)} points you lose are right answers you didn’t tick. It’s what you don’t know yet, not how you tick.`;
-    const shown = S.diagAll ? det.items : det.items.slice(0, 10);
-    const fx = shown.map(it => {
-      const q = Q.get(it.id), why = q.exp && q.exp.o[it.k];
-      return `<li class="fx ${it.tick ? 'tick' : 'miss'}">
-        <p class="fx-kind">${it.tick ? `${ICON.cross}You ticked it. It’s false.` : `${ICON.check}You missed it. It’s true.`}</p>
-        <p class="fx-prop">${q.options[it.k]}</p>
-        <p class="fx-q">${esc(clip(flat(q.stem), 120))} <span>${esc(setLabel(q))} · Q${esc(q.n)}</span></p>
-        ${why ? `<p class="fx-why"><span>Why, from the lecture</span>${esc(why)}</p>` : ''}
-      </li>`;
-    }).join('');
-    const ticks = det.items.filter(x => x.tick).length;
-    app.innerHTML = `
-      ${bar}
-      <main class="wrap narrow stage">
-        <header class="page-head"><div>${head}</div></header>
-        <section class="dg-hero">
-          <p class="score"><b class="num">${fmtPts(s.n20)}</b><span>/ 20</span><span class="dg-chip big ${s.status}">${STATUS[s.status]}</span></p>
-          <p class="dg-from">Your mark on this lecture with the exam’s rule, from your clean tries on ${fmtN(s.done)} of its ${fmtN(s.total)} questions.</p>
-          ${splitHTML(s, 'dg-hbar')}
-          <ul class="ex-tally"><li class="t-full"><b class="num">${fmtN(s.full)}</b> full</li><li class="t-half"><b class="num">${fmtN(s.half)}</b> half</li><li class="t-zero"><b class="num">${fmtN(s.zero)}</b> no point</li>${det.untried.length ? `<li class="t-blank"><b class="num">${fmtN(det.untried.length)}</b> not tried</li>` : ''}</ul>
-        </section>
-        <section class="dg-sec"><h2 class="h3">Where the points go</h2><p class="dg-habit">${habit}</p></section>
-        ${det.items.length ? `<section class="dg-sec"><h2 class="h3">What to fix <span class="n num">${fmtN(det.items.length)}</span></h2>
-          <p class="dg-gnote">${ticks ? `${fmtN(ticks)} ${ticks === 1 ? 'proposition' : 'propositions'} you ticked that ${ticks === 1 ? 'is' : 'are'} false, then the right ones you missed. ` : 'The right propositions you missed. '}Newest first.</p>
-          <ol class="fx-list">${fx}</ol>
-          ${det.items.length > shown.length ? `<div class="more-row"><button class="btn" type="button" data-act="diag-all">Show all ${fmtN(det.items.length)}</button></div>` : ''}</section>` : ''}
-        <div class="row dg-actions">
-          ${det.untried.length ? `<button class="btn primary" type="button" data-act="diag-untried">${fmtN(det.untried.length)} not tried yet ${ICON.next}</button>` : ''}
-          <button class="btn" type="button" data-act="diag-exam">${ICON.hourglass}Exam on this lecture</button>
-        </div>
-        ${footHTML()}
-      </main>`;
-  }
-  // the lectures a topic gathers, when it gathers more than one
+  // the lectures a topic gathers, when it gathers several (COPD and cor pulmonale...)
   function lecsHTML(d, cls) {
     return d.l && d.l.length > 1 ? `<p class="${cls}">${d.l.length === 2 ? 'Both lectures' : `All ${fmtN(d.l.length)} lectures`}: ${d.l.map(esc).join(' · ')}</p>` : '';
-  }
-  // on the home page: the way in, and the lectures closest to their diagnostic
-  function weakCardHTML() {
-    if (!DIAG.length) return '';
-    const all = DIAG.map((d, i) => diagState(i)), open = all.filter(s => s.open);
-    const weakest = open.slice().sort((a, b) => a.n20 - b.n20)[0];
-    let near = all.filter(s => !s.open && s.done).sort((a, b) => (a.need - a.done) - (b.need - b.done)).slice(0, 3);
-    if (!near.length) { const m = QUEST ? QUEST.module : weakDefault(); near = all.filter(s => DIAG[s.i].m === m && !s.open).sort((a, b) => b.total - a.total).slice(0, 3); }
-    const rows = near.map(s => `<li><button type="button" class="wsc-row" data-diag-go="${esc(DIAG[s.i].id)}"><span class="wsc-n">${esc(DIAG[s.i].n)}</span>${xpHTML(s)}<span class="wsc-left">${s.need - s.done === 1 ? 'one more' : `${fmtN(s.need - s.done)} more`}</span></button></li>`).join('');
-    return `<section class="section wrap wsc-wrap" aria-labelledby="wsc-h">
-      <div class="wsc plate">
-        <div class="wsc-text">
-          <p class="eyebrow">The diagnostic</p>
-          <h2 class="h2" id="wsc-h">Weak spots</h2>
-          <p class="f-lead">Try ${DIAG_MIN} questions from a lecture and the Labubu diagnoses it: your mark on it, the ticks that cost you, and the facts to fix.</p>
-          <p class="wsc-stat">${open.length ? `${fmtN(open.length)} ${open.length === 1 ? 'lecture' : 'lectures'} diagnosed${weakest ? ` · weakest: <b>${esc(DIAG[weakest.i].n)}</b>, ${fmtPts(weakest.n20)}/20` : ''}` : 'No lecture diagnosed yet.'}</p>
-          <div><button class="btn primary" type="button" data-act="weak">${lockMark()}Open weak spots ${ICON.next}</button></div>
-        </div>
-        ${rows ? `<div class="wsc-side"><p class="wsc-side-t">${open.length || near.some(s => s.done) ? 'Closest to a diagnostic' : 'Start here'}</p><ul>${rows}</ul></div>` : ''}
-      </div>
-    </section>`;
   }
 
   // ---------- tonight: how sure you were and the moon (study nights) ----------
   // Sure / not sure: optional, picked before checking (a.sure on the practice answer). First tries go
-  // to S.sure = {id: [sure 1/0, right 1/0, t]} for the instinct line on the weak spots page (a retry right after seeing
-  // the answer would flatter it).
+  // to S.sure = {id: [sure 1/0, right 1/0, t]} (kept; its line, "Your instinct", was on the weak spots page).
   // The moon: a night counts once MOON_DAY different questions are checked that day; it grows one step per night to full
   // at MOON_FULL, then starts again. A missed night only pauses it. S.moon = {n, full, last, day, ids}.
   // Comets (questions missed coming back on a schedule) were taken out on 28 October 2026 (Abi); S.comets stays, unused.
@@ -8752,19 +8426,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }
     return out.length ? `<span class="v-note">${out.join(' ')}</span>` : '';
   }
-  // your instinct: how often you're right when you're sure, and when you're not (every module)
-  function instinctHTML() {
-    const v = Object.values(S.sure), su = v.filter(x => x[0] === 1), un = v.filter(x => x[0] === 0);
-    if (su.length + un.length < 5) return `<p class="ins quiet"><span class="ins-l">Your instinct</span> Tap <b>Sure</b> or <b>Not sure</b> before you check a question: after five, this shows how often your “sure” is right.</p>`;
-    const pct = a => Math.round(100 * a.filter(x => x[1]).length / a.length);
-    const parts = [];
-    if (su.length) parts.push(`when you’re sure, you’re right <b>${pct(su)}%</b> of the time <span class="n num">(${fmtN(su.length)})</span>`);
-    if (un.length) parts.push(`when you’re not, <b>${pct(un)}%</b> <span class="n num">(${fmtN(un.length)})</span>`);
-    const tip = su.length >= 5 && pct(su) < 70 ? 'Your “sure” isn’t solid yet: in the exam, tick only the propositions you’d bet on.'
-      : un.length >= 5 && pct(un) >= 60 ? 'You know more than you think.'
-      : su.length >= 5 && pct(su) >= 85 ? 'When you’re sure, trust it.' : '';
-    return `<div class="ins"><p class="ins-t"><span class="ins-l">Your instinct</span> ${parts.join(' · ')}.</p>${tip ? `<p class="ins-tip">${tip}</p>` : ''}</div>`;
-  }
   // on the home page: the moon (and the marked questions)
   function tonightHTML() {
     const m = S.moon, today = dayKey(), counted = m.last === today, left = Math.max(0, MOON_DAY - (m.day === today ? m.ids.length : 0));
@@ -8816,7 +8477,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           <div class="navlinks">
             <button type="button" data-act="goto-modules">Modules</button>
             <button type="button" data-act="repeats">Most repeated</button>
-            ${DIAG.length ? `<button type="button" data-act="weak">${lockMark()}Weak spots</button>` : ''}
             <button type="button" data-act="focus-search">Search</button>
             <button type="button" data-act="updates">Updates</button>
           </div>
@@ -8853,7 +8513,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       ${tonightHTML()}
       ${acct.skyHTML()}
       ${acct.duelsHTML()}
-      ${weakCardHTML()}
       ${themesSectionHTML()}
       <section class="skyband" aria-label="Search the questions">
         <canvas id="milky" aria-hidden="true"></canvas>
@@ -8986,20 +8645,18 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const byLec = S.topicBy === 'lecture' && lecs.length > 0;
     const groups = [];
     if (byLec) {
-      // the module's lectures in course order: practise one, or open its diagnostic
+      // the module's lectures in course order: practise one, or take it as an exam
       const rows = lecs.map(i => {
         const d = DIAG[i], lq = lectureQs(d);
         if (!lq.length) return '';
-        const ls = stats(lq), st = diagState(i);
-        const dg = st.open
-          ? `<button type="button" class="set-exam lec-dg has-best ${st.status}" data-diag="${esc(d.id)}" title="Its diagnostic: ${STATUS[st.status].toLowerCase()}" aria-label="${esc(d.n)}: diagnostic, ${fmtPts(st.n20)} out of 20, ${STATUS[st.status].toLowerCase()}">${acct.member() ? ICON.star : LOCK}<span>${fmtPts(st.n20)}<small>/20</small></span></button>`
-          : `<button type="button" class="set-exam lec-dg" data-diag="${esc(d.id)}" title="${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic" aria-label="${esc(d.n)}: ${fmtN(st.done)} of ${fmtN(st.need)} tried toward its diagnostic">${acct.member() ? ICON.star : LOCK}<span>${fmtN(st.done)}<small>/${fmtN(st.need)}</small></span></button>`;
+        const ls = stats(lq), best = bestMark('topic:' + d.id), canExam = lq.some(q => q.answer.length);
+        const dg = canExam ? `<button type="button" class="set-exam${best !== null ? ' has-best' : ''}" data-exam-lec="${esc(d.id)}" title="Take it as a timed exam, out of 20" aria-label="Take ${esc(d.n)} as an exam${best !== null ? `, best mark ${fmtPts(best)} out of 20` : ''}">${acct.member() ? ICON.hourglass : LOCK}<span>${best !== null ? `${fmtPts(best)}<small>/20</small>` : 'Exam'}</span></button>` : '';
         return `<li class="set-row"><button type="button" class="entry" data-lec="${esc(d.id)}">
           <span class="e-main"><span class="e-name">${esc(d.n)}</span>${lecsHTML(d, 'e-lecs')}${barLine(ls)}<span class="e-meta">${metaLine(ls)}</span></span>
           <span class="e-side"><span class="e-count num">${fmtN(lq.length)} Qs</span><span class="e-go">${ICON.next}</span></span>
         </button>${dg}${shareBtn('lecture', d.id, d.n)}</li>`;
       }).join('');
-      if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. On the right, each lecture’s diagnostic: the questions tried toward it, then your mark once it opens.</p><ul class="ledger">${rows}</ul></section>`);
+      if (rows) groups.push(`<section class="group"><h2>Lectures</h2><p class="lec-note">In course order, each question once, like in the quest: a question asked again with the same propositions is one constellation. The hourglass on the right takes a lecture as a timed exam.</p><ul class="ledger">${rows}</ul></section>`);
     }
     for (const ty of byLec ? [] : TYPES) {
       if (S.type !== 'all' && S.type !== ty) continue;
@@ -9027,7 +8684,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
               ${repIds.length ? `<button class="btn" type="button" data-act="practice-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repIds.length)}</span></button>` : ''}
               <button class="btn" type="button" data-act="exam-module" title="A mock exam drawn from every past question of this module">${acct.member() ? ICON.hourglass : LOCK}Exam mode</button>
               ${markedIn(t.id).length ? `<button class="btn" type="button" data-act="practice-marked" title="The questions you marked in this module">${ICON.mark}Marked <span class="n">${fmtN(markedIn(t.id).length)}</span></button>` : ''}
-              ${DIAG.some(d => d.m === t.id) ? `<button class="btn" type="button" data-act="weak-module">${lockMark()}Weak spots</button>` : ''}
               <button class="btn" type="button" data-share="module:${esc(t.id)}">${LINK}Share</button>
               ${resetHTML(t.id)}
             </div>
@@ -9548,7 +9204,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           <div class="opts${checked ? ' checked' : ''}${justChecked ? ' reveal' : ''}" role="group" aria-labelledby="stem">${opts}</div>
           ${hasKey && !checked ? sureRowHTML(a) : ''}
           ${verdict}
-          ${checked && xpGain && xpGain.after ? xpLineHTML(xpGain) : ''}
           ${checked && moonGain ? moonLineHTML(moonGain) : ''}
           ${ex}
           ${reportHTML(q, checked)}
@@ -9647,7 +9302,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // ---------- stars ----------
   // A right answer sends a star from each right pick to its square on the strip (to the streak if the strip is out of
   // view). The streak grows in the bar as the Great Bear, star by star, and glows once its seven stars are lit. Shooting
-  // stars for the moments: every 7 in a row, a diagnostic opening, the secret code (a bigger one), a session at 80% or more.
+  // stars for the moments: every 7 in a row, the secret code (a bigger one), a session at 80% or more.
   // The end of a session draws it as a constellation: one star per question, the right ones lit in order and joined
   // while they were in a row, as the score counts up. All of it gives way to reduced motion.
   const STAR_D = 'M0-6l1.4 4.6 4.6 1.4-4.6 1.4L0 6l-1.4-4.6L-6 0l4.6-1.4z';
@@ -9785,16 +9440,11 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (share >= .8) shootingStar();
     }, sky.ms);
   }
-  // what the session added: its longest line, the diagnostics it fed, tonight's moon
+  // what the session added: its longest line and tonight's moon
   function gainsHTML(sess) {
     const g = sess.gain; if (!g) return '';
     const items = [];
     if (g.best >= 3) items.push(`Longest line: ${fmtN(g.best)} right in a row`);
-    for (const [id, k] of Object.entries(g.diag || {}).sort((x, y) => y[1] - x[1]).slice(0, 2)) {
-      const i = DIAG_INDEX.get(id); if (i === undefined || !k) continue;
-      const st = diagState(i);
-      items.push(st.open ? `${esc(DIAG[i].n)}: its diagnostic is open` : `${esc(DIAG[i].n)}: ${fmtN(st.done)} of ${fmtN(st.need)} toward its diagnostic`);
-    }
     if (g.moon) items.push(g.moon === 2 ? 'A full moon tonight' : 'Tonight counts for the moon');
     if (!items.length) return '';
     const st = `<svg viewBox="-7 -7 14 14" aria-hidden="true"><path d="${STAR_D}" fill="currentColor"/></svg>`;
@@ -11574,9 +11224,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     if (t.dataset.qtopic !== undefined) { startQuest(+t.dataset.qtopic, false, 'go'); return; }
     if (t.dataset.examSet) { openExam({ kind: 'set', id: t.dataset.examSet }); return; }
     if (t.dataset.examN) { S.examN = +t.dataset.examN; sfx.play('toggle'); save(); render(false); return; }
-    if (t.dataset.weakmod) { S.weakMod = t.dataset.weakmod; sfx.play('nav'); save(); render(false, null, 'next'); return; }
-    if (t.dataset.diag) { openDiag(t.dataset.diag); return; }
-    if (t.dataset.diagGo) { untriedTopic(t.dataset.diagGo); return; }
+    if (t.dataset.examLec) { openExam({ kind: 'topic', id: t.dataset.examLec }); return; }
     if (t.dataset.upd) { practiceUpdate(t.dataset.upd); return; }
     if (t.dataset.theme) { acct.wear(t.dataset.theme); return; }
     if (t.dataset.copyq) { const q = Q.get(t.dataset.copyq); if (q) copyQuestion(q, t.dataset.k === '1'); return; }
@@ -11652,11 +11300,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       case 'exam': openExam(QUEST ? { kind: 'quest', id: QUEST.id } : null); break;
       case 'exam-resume': openExam(); break;
       case 'exam-module': openExam({ kind: 'module', id: S.topicId }); break;
-      case 'weak': openWeak(t.dataset.mod || (S.view === 'topic' ? S.topicId : null)); break;
-      case 'weak-module': openWeak(S.topicId); break;
-      case 'diag-untried': untriedTopic(S.diag); break;
-      case 'diag-exam': openExam({ kind: 'topic', id: S.diag }); break;
-      case 'diag-all': S.diagAll = true; save(); render(false); break;
       case 'account': acct.open(); break;
       case 'sky-hide': acct.toggleSky(); break;
       case 'sky-spark': acct.sendSpark(t.dataset.uid); break;
@@ -11666,7 +11309,6 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       case 'duel-copy': acct.duelCopy(); break;
       case 'duel-share': acct.duelShare(); break;
       case 'duel-rematch': acct.rematch(S.duelId); break;
-      case 'diag-back': S.view = 'topic'; S.diagFrom = 'weak'; save(); render(true, null, 'back'); break;
       case 'exam-start': startExam(); break;
       case 'exam-back': examBack(); break;
       case 'exam-next': examGo(1); break;

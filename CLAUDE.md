@@ -307,12 +307,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 - A right answer sends a star from each right pick to its square on the strip, which twinkles (`flyStars`; to the
   streak if the strip is out of view). The streak grows in the bar as the Great Bear (`streakHTML`, `BEAR`), from 2 in a
-  row, complete and glowing at 7. Shooting stars (`shootingStar`): every 7 in a row, a diagnostic opening, the secret
+  row, complete and glowing at 7. Shooting stars (`shootingStar`): every 7 in a row, the secret
   code (a bigger one), a session ending at 80% or more.
 - The end of a session (`renderDone`) draws it as a constellation (`sessionSky`): one star per question with a key, up
   to 24 a row, seeded by the questions so a session keeps its shape; right ones lit and joined while they came in a row,
   the others dim; the score counts up with it (`playSessionSky`), a tap draws it at once, and it plays only once per
-  session (`sess.doneSeen`). Under it, what the session added (`sess.gain`, `gainsHTML`): longest line, diagnostics fed,
+  session (`sess.doneSeen`). Under it, what the session added (`sess.gain`, `gainsHTML`): longest line and
   tonight's moon. Star colour `--star-ink` per theme. Reduced motion: none of the motion.
   Test: stars.js.
 
@@ -327,17 +327,17 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   `spreadDraw`); a past exam set (all its questions in their own order; the hourglass button on each set row of a module page,
   which then shows the best mark); a module (a random mock of 20, 25 or 50 questions, the sizes of a midterm, a mock
   and the finals, one per repeated question; "Exam mode" in the module header); a lecture (scope kind `topic`, up to 20
-  of its questions; from its diagnostic page). Back from the rules and results returns where the exam was opened
+  of its questions; the hourglass on its row, module page by lecture). Back from the rules and results returns where the exam was opened
   (`S.examBack`). A running exam always comes first: any exam button brings it back.
 - While it runs: no verdict, key, explanations, report link or constellation; the strip only shows what's ticked.
   "Hand in" asks first (blanks and time left; Escape or "Keep going" closes it). At zero it hands itself in as it is,
   on any page, and on load if the time ran out while the page was closed. Warnings at 5 and 1 minutes.
 - State: `S.exam` (`scope`, `qids`, `picks`, `start`, `end`, `handed`, `auto`, `unlocked`), kept apart from practice
   answers, and `S.examLog` (the last 40 marks, each with its scope key). A handed-in exam is regraded against the
-  current key on load. Every answered exam question is a clean try for the weak spots. "Reset all answers" clears it all.
+  current key on load. "Reset all answers" clears it all.
 - Screens (`S.view = 'exam'`, `S.examScreen`): the rules (an hourglass window that lights up with the best mark),
   the running exam (clock and a running-down line in the bar), the results (mark, full / half / none / blank, by
-  the quest's topics or else by lecture, the diagnostics it unlocked, past marks) and the review.
+  the quest's topics or else by lecture, past marks) and the review.
 
 ## Lectures
 
@@ -345,7 +345,7 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   semester by module. Read them with the Google Drive tools; big .pptx decks often come back empty, and a PDF copy
   in her Drive may work instead. `lectures.json` gives each lecture's Drive file id.
 - `lectures.json` lists each module's lectures in course order, as the topics the site uses (`bank.diag`): the module
-  page's "By lecture" list, the weak spots and the exam results. A topic is one lecture; a lecture with under 3 past
+  page's "By lecture" list, lecture exams and the exam results. A topic is one lecture; a lecture with under 3 past
   questions shares a topic with the closest one (COPD and cor pulmonale, the four cardiomyopathy lectures...), and
   the site then names its lectures (`l`). `take` lists concept ids: a question goes to the topic of its first concept
   a topic takes (`concept@T` only with that aspect); `q` moves single questions by short id, and their word-for-word
@@ -358,27 +358,26 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   surgery decks and the skin cancers .ppt couldn't be read (too big or old format); a PDF export from Abi would do.
 - On the site: a module page lists its questions by exam set (default) or by lecture (`S.topicBy`); a lecture row
   practises its questions once each, like the quest (Constellations below; with the exam-type filter; `startLecture`,
-  `S.session.lec`), and the button on its right opens its diagnostic, whose Back then returns to the module
-  (`S.diagFrom`). The midterm's lectures and the quest's topics hold the same questions: lectures.js checks it.
+  `S.session.lec`), and the hourglass on its right takes it as a timed exam, whose Back returns to the module. The midterm's lectures and the quest's topics hold the same questions: lectures.js checks it.
 
-## Weak spots (the diagnostic)
+## Weak spots: taken out (Abi, 21 November 2026)
 
-- One per lecture (Lectures above). Sizes count a question once with its word-for-word copies and constellation stars.
-- Evidence (`S.clean`): each question's latest clean try: the first try in practice, every exam answer, or a drill
-  at least 20 hours after the last try (`DRILL_GAP`); never a retry right after the answer was shown. Answers from
-  before the diagnostic existed were backfilled (picks where known, right or wrong otherwise).
-- A lecture's diagnostic opens after `DIAG_MIN` (8) tries, or all its questions if it has fewer. The progress shows as
-  stars, one per question needed, lit as they're tried (`xpHTML`): on the weak spots page, the home card, and under
-  the verdict after each clean try ("Diagnostic unlocked" with a sparkle when it opens).
-- The diagnostic: the mark on the lecture with the exam's rule, Solid (15+) / Shaky (10+) / Weak spot, what wrong ticks
-  cost (and the mark without them), every proposition got wrong (ticked but false first, then missed) with the
-  lecture's why, and actions: drill the missed ones, practise the ones not tried, an exam on the lecture.
+- "Nobody uses it and it's taking performance": the weak spots page, each lecture's diagnostic, its homepage card, the
+  stars toward a diagnostic under the verdict, "This exam unlocked a diagnostic", the session end's "toward its
+  diagnostic", the "Your instinct" line, the top menu and module buttons, and their styles are gone (test weak.js too).
+  An old saved view on them lands on the homepage.
+- Kept: `DIAG` (each module's lectures, for "By lecture", lecture exams and exam results), `S.clean` (first tries and
+  exam answers; one tick too many reads it; no drills any more, so a clean try is only the first), `S.sure` and the Sure /
+  Not sure picker with its verdict line, and `diagState` only for the old Codex rule.
+- A lecture row's button on the right is now the lecture as a timed exam (`data-exam-lec`, scope `topic`, the hourglass
+  and best mark like a set row), the only way in to lecture exams since the diagnostic page went.
+- Codex is now 15/20 or more on a lecture exam (`bestLectureExam`, from `S.examLog`); whoever had a lecture at Solid on
+  its old diagnostic keeps it (`oldDiagSolid`, worked out from `S.clean` only when the themes are shown).
 
 ## Accounts (Firebase)
 
-- Exam mode, weak spots and quests need an account (Abi's choice, October 2026); practising questions, search, lectures
-  and the update log stay open to guests. `acct.gate(reason, then)` at the top of `openExam`, `openWeak`, `openDiag`,
-  `untriedTopic`, `drillTopic`, `startQuest`, `questGo`: a guest gets the sheet with the reason, and once signed in and
+- Exam mode and quests need an account (Abi's choice, October 2026); practising questions, search, lectures
+  and the update log stay open to guests. `acct.gate(reason, then)` at the top of `openExam`, `startQuest`, `questGo`: a guest gets the sheet with the reason, and once signed in and
   named, what they clicked. Padlocks (`ICON.lock`, `lockMark()`) replace the icons on those buttons for guests; `render`
   sends a guest away from those screens (`lockedView`). Only on GitHub Pages: elsewhere (claude.ai, the tests) nothing
   is locked (`acct.member()` is true). `window.__acctTest` turns accounts on in account.js.
@@ -409,12 +408,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 ## Tonight: sure / not sure and the moon
 
 - Two study habits, explained in the comment block "tonight" in `template.html`. Sure / not sure: an optional pick
-  before checking (first tries go to `S.sure`), for the "Your instinct" line on the weak spots page.
+  before checking, with a line under the verdict (first tries go to `S.sure`; its "Your instinct" line went with the
+  weak spots).
 - Comets (a missed question coming back the next day, then after 3, 7 and 14 days) were taken out on 28 October 2026
   (Abi: "remove the comet stuff"): no verdict line, no Tonight half, no "Catch its N comets" on a diagnostic, nothing at
   the end of a session, exams make none. `S.comets` stays in the state and `SYNCED` so old saves load; nothing reads it.
-  Without them (and with no drill), a diagnostic gets new evidence from first tries and exams only.
-- The moon: a night counts once `MOON_DAY` (5) different questions are checked that day; it grows to full at
+  - The moon: a night counts once `MOON_DAY` (5) different questions are checked that day; it grows to full at
   `MOON_FULL` (14) nights, and a night off only pauses it (`S.moon`). The "Tonight" card on the homepage (after the
   quest) shows the moon and the marked questions. Tests: tonight.js, weak.js.
 
@@ -434,13 +433,13 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Themes (cosmetics, "looks" in the code)
 
-- Earned with real study milestones (Abi's choice), never by volume: Codex = one lecture at Solid (15/20 or more on its
-  diagnostic, `SOLID`, `bestDiag`); Blood moon = a first full moon (`S.moon.full`) or a first duel; Golden phase = a golden exam, 16/20
+- Earned with real study milestones (Abi's choice), never by volume: Codex = 15/20 or more on a lecture exam (`SOLID`,
+  `bestLectureExam`; the old diagnostic rule still counts for those who earned it, `oldDiagSolid`); Blood moon = a first full moon (`S.moon.full`) or a first duel; Golden phase = a golden exam, 16/20
   or more in exam mode on 20 questions or more (`GOLD_MARK`, `GOLD_N`, from `S.examLog`). `themeGoal(id)` gives done,
   progress, the requirement and where you are. Wearing needs an account (`canWear`: signed in, or not on GitHub
   Pages); the account named Labubu (`LOOKS_FOR`, Abi's) has every theme. A theme not earned is never worn, even if
   saved on the device.
-- The homepage's "Themes" section (`themesSectionHTML`, after the weak spots card) and the account sheet
+- The homepage's "Themes" section (`themesSectionHTML`, after the duels) and the account sheet
   (`themeListHTML(true)`) list them: worn, Wear it, or locked with its requirement, progress line and bar. Tapping a
   locked theme previews it for 6 s (`preview`), guests too; guests get a Sign in button. A newly earned theme is
   announced once per device by a toast on the homepage (`noticeUnlocks`, `S.themesSeen`).
@@ -902,7 +901,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node weak.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

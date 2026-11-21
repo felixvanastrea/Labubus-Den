@@ -31,10 +31,10 @@ const state = p => p.evaluate(K => JSON.parse(localStorage.getItem(K)), KEY);
   const canon = id => { const k = Q.get(id).dupOf || id; return lead.get(k) || k; };
   const sets = bank.sources.filter(s => s.topic === MOD);
 
-  // the module page: an exam button on every set, exam mode and weak spots for the module
+  // the module page: an exam button on every set, and exam mode for the module (no weak spots since 21 November 2026)
   await p.click(`.arch[data-topic="${MOD}"]`); await p.waitForTimeout(250);
   check((await p.$$('.set-exam')).length === sets.length, `an exam button on each of the ${sets.length} sets`);
-  check(!!(await p.$('[data-act="exam-module"]')) && !!(await p.$('[data-act="weak-module"]')), 'Exam mode and Weak spots for the module');
+  check(!!(await p.$('[data-act="exam-module"]')) && !(await p.$('[data-act="weak-module"]')), 'Exam mode for the module, and no weak spots');
 
   // a past exam set: all its questions, in the order they were set
   const set = sets.find(s => s.type === 'Midterms');

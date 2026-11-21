@@ -1,7 +1,7 @@
 // Accounts, against a fake Firebase served in place of the real SDK (it keeps the rules' one-name-per-person too).
-// Guests: Sign in in the top bar and footer, padlocks on exam mode / weak spots / quests, and a locked button opens the
+// Guests: Sign in in the top bar and footer, padlocks on exam mode / quests, and a locked button opens the
 // sheet (Google, or email and password: wrong password, forgot password). Signing in from it: the account's copy and
-// this device's merge, a name is picked, then the weak spots open. Sync: a change goes up 15 s later, merged with what
+// this device's merge, a name is picked, then exam mode opens. Sync: a change goes up 15 s later, merged with what
 // the account got meanwhile; another device's change (or deletion) arrives live; the next visit signs in on its own.
 // Names: change it; a lookalike of a taken name is refused. Email accounts; sign out; delete my data (the copy, the
 // name, the account); the phone's top bar; a database that refuses says so; the claude.ai copy shows nothing.
@@ -134,7 +134,7 @@ const FAKE = {
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(200);
   const loaded0 = await p.evaluate(() => window.__fb.calls.length);
   check((await txt(p, '.nav-acct')) === 'Sign in' && /Account: Sign in/.test(await txt(p, '.foot')) && loaded0 === 0, 'guest: Sign in in the top bar and the footer, Firebase not loaded');
-  check(!!(await p.$('.navlinks [data-act="weak"] .lk')) && !!(await p.$('.hero-cta [data-act="quest-go"] .lk, .qp-actions [data-act="quest-go"] .lk')), 'guest: padlocks on weak spots and the quest');
+  check(!!(await p.$('.hero-cta [data-act="quest-go"] .lk, .qp-actions [data-act="quest-go"] .lk')) && !(await p.$('.navlinks [data-act="weak"]')), 'guest: a padlock on the quest, and no weak spots anywhere');
 
   // the sheet
   await p.click('.nav-acct'); await p.waitForTimeout(200);
@@ -147,9 +147,10 @@ const FAKE = {
   check(calls.includes('reset abi@example.com') && /new password is on its way/.test(await txt(p, '.acct-msg')), 'forgot your password: ' + await txt(p, '.acct-msg'));
   await p.click('[data-acct="close"]');
 
-  // a locked feature: the sheet says why; signed in and named, the weak spots open
-  await p.click('.navlinks [data-act="weak"]'); await p.waitForTimeout(200);
-  check((await txt(p, '#acct-h')) === 'Weak spots need an account' && (await state(p)).view !== 'weak', 'locked: Weak spots asks to sign in');
+  // a locked feature: the sheet says why; signed in and named, exam mode opens
+  await p.click('.arch[data-topic]'); await p.waitForTimeout(250);
+  await p.click('[data-act="exam-module"]'); await p.waitForTimeout(200);
+  check((await txt(p, '#acct-h')) === 'Exam mode needs an account' && (await state(p)).view !== 'exam', 'locked: exam mode asks to sign in');
   await p.click('[data-acct="google"]'); await p.waitForTimeout(300);
   let S = await state(p);
   check(!!S.answers[qa.id] && !!S.answers[qb.id] && !!S.clean[qb.id], 'signed in: this device\'s answer and the account\'s, both kept');
@@ -160,8 +161,9 @@ const FAKE = {
   await p.click('.acct-naming [type="submit"]'); await p.waitForTimeout(300);
   let D = await docs(p);
   check(D['names/abi'] && D['names/abi'].uid === 'u1' && D['users/u1'].name === 'Abi' && D['users/u1'].key === 'abi' && !('email' in D['users/u1']) && D['users/u1'].answered >= 2, 'the name is kept: names/abi, and in the account (name, answered; no copy of the email)');
-  check((await state(p)).view === 'weak' && await p.evaluate(() => document.querySelector('.acct-sheet').hidden), 'and the weak spots open');
-  await p.click('.bar [data-act="home"]'); await p.waitForTimeout(200);
+  check((await state(p)).view === 'exam' && await p.evaluate(() => document.querySelector('.acct-sheet').hidden), 'and exam mode opens');
+  await p.click('.bar [data-act="exam-back"]'); await p.waitForTimeout(250);
+  await p.click('.bar .back'); await p.waitForTimeout(250);
   check((await txt(p, '.nav-acct')) === 'Abi' && (await txt(p, '.foot-store')) === 'Your answers are saved in this browser and in your account.' && !(await p.$('.navlinks .lk')), 'home: Abi in the top bar, no padlocks, saved in your account');
 
   // another device: an answer added and one taken back arrive live
@@ -210,7 +212,7 @@ const FAKE = {
 
   // sign out: padlocks are back, this device keeps its answers
   await p.click('[data-acct="out"]'); await p.waitForTimeout(200);
-  check((await txt(p, '.nav-acct')) === 'Sign in' && await p.evaluate(() => localStorage.getItem('efm3-acct')) === null && !!(await state(p)).answers[qd.id] && !!(await p.$('.navlinks .lk')), 'signed out: Sign in, padlocks back, this device keeps its answers');
+  check((await txt(p, '.nav-acct')) === 'Sign in' && await p.evaluate(() => localStorage.getItem('efm3-acct')) === null && !!(await state(p)).answers[qd.id] && !!(await p.$('.hero-cta [data-act="quest-go"] .lk, .qp-actions [data-act="quest-go"] .lk')), 'signed out: Sign in, padlocks back, this device keeps its answers');
 
   // an email account: a lookalike of a taken name is refused, another works
   await p.click('.nav-acct'); await p.waitForTimeout(150);

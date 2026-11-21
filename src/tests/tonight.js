@@ -1,5 +1,5 @@
-// Tonight: sure / not sure before checking (a second tap clears it; the verdict says how it went; first tries feed the
-// instinct line on the weak spots page); the moon (a night counts at 5 different questions, a night off only pauses it,
+// Tonight: sure / not sure before checking (a second tap clears it; the verdict says how it went; first tries are kept in
+// S.sure; the instinct line went with the weak spots, 21 November 2026); the moon (a night counts at 5 different questions, a night off only pauses it,
 // full at 14); the Tonight card on the home page; no comets anywhere (taken out 28 October 2026); phone layout.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -87,25 +87,9 @@ const view = p => p.evaluate(() => document.body.dataset.view);
   await p.click('.bar [data-act="home"]'); await p.waitForTimeout(250);
   check((await txt(p, '#tn-h')) === 'Night 1 of 14' && (await txt(p, '.tn-mt .tn-sub')).startsWith('Tonight counts.'), 'home: night 1, tonight counts');
 
-  // instinct: shows after five marked answers
-  S = await state(p);
-  const marked = Object.keys(S.sure).length;
-  await p.click('.navlinks [data-act="weak"]'); await p.waitForTimeout(200);
-  check(marked < 5 ? (await txt(p, 'p.ins')).startsWith('Your instinct Tap Sure or Not sure') : true, `instinct: a hint before five (${marked} marked)`);
-  await p.evaluate(K => { const S = JSON.parse(localStorage.getItem(K)); const ids = Object.keys(JSON.parse(document.getElementById('bank').textContent).questions.reduce((o, q) => (o[q.id] = 1, o), {})).slice(500, 512);
-    ids.forEach((id, i) => { S.sure[id] = [i < 8 ? 1 : 0, i < 5 ? 1 : 0, 1]; }); localStorage.setItem(K, JSON.stringify(S)); }, KEY);
-  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(250);
-  S = await state(p);
-  const su = Object.values(S.sure).filter(x => x[0] === 1), un = Object.values(S.sure).filter(x => x[0] === 0);
-  const pct = a => Math.round(100 * a.filter(x => x[1]).length / a.length);
-  const ins = await txt(p, '.ins');
-  check(ins.startsWith(`Your instinct when you’re sure, you’re right ${pct(su)}% of the time (${su.length}) · when you’re not, ${pct(un)}% (${un.length}).`), 'instinct: ' + ins);
-  check(pct(su) < 70 ? ins.includes('tick only the propositions you’d bet on') : true, 'with a tip when "sure" isn’t solid');
-  await p.screenshot({ path: OUT + 'tn_weak_instinct.png' });
-
   // the moon pauses on a night off and fills at 14
   await p.clock.fastForward(DAY - 2 * H);   // Wednesday 7 pm
-  await p.click('.bar [data-act="home"]'); await p.waitForTimeout(250);
+  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(250);
   check((await txt(p, '.tn-mt .tn-sub')).startsWith('5 more questions and tonight counts.'), 'the next night: the moon waits for 5 questions');
   await (await p.$('.tn')).screenshot({ path: OUT + 'tn_home_due.png' });
   S = await state(p);

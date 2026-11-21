@@ -141,7 +141,7 @@ async function context(b, size, user, docs) {
   check(await look(p) === 'gothic', 'Sara: a theme she hasn\'t earned isn\'t worn, even saved on the device');
   check(/New theme unlocked: Blood moon/.test(await p.evaluate(() => (document.querySelector('.toast') || {}).textContent || '')), 'Sara: told she unlocked Blood moon');
   const card = id => p.evaluate(id => { const b = document.querySelector(`.th-wrap [data-theme="${id}"]`); return b ? b.closest('.th-card').textContent.replace(/\s+/g, ' ') : ''; }, id);
-  check(/Wear it/.test(await card('blood')) && /Preview/.test(await card('codex')) && /Solid: 15\/20/.test(await card('codex')) && /No lecture diagnosed yet/.test(await card('codex')), 'Themes section: Blood moon to wear, Codex locked with its requirement');
+  check(/Wear it/.test(await card('blood')) && /Preview/.test(await card('codex')) && /15\/20 or more on a lecture exam/.test(await card('codex')) && /No lecture exam yet/.test(await card('codex')), 'Themes section: Blood moon to wear, Codex locked with its requirement');
   check(/Preview/.test(await card('klimt')) && /golden exam: 16\/20 or more in exam mode, on 20 questions or more/.test(await card('klimt')) && /No exam of 20 questions or more yet/.test(await card('klimt')), 'Golden phase locked: a golden exam, 16/20 on 20 questions or more');
   await p.evaluate(() => document.querySelector('.th-wrap').scrollIntoView());
   await p.screenshot({ path: OUT + 'look_themes.png' });
