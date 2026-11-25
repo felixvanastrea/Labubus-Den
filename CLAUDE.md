@@ -427,6 +427,12 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   reads through part 3 here, the rest leans on Duffin, the deck's source); H11, H16, H19, H21 wait. Psychology and sociology
   not answered yet (Pr Kadiri's and Pr Guennoun's decks are in the S3 lectures folder). The "History and Embryology Midterm"
   PDF in the S3 folder is histology and embryology only (S2), left out.
+- 25 November 2026, evening (Abi: "just answer with whatever you can"): every other S3 question got a key from Claude's
+  knowledge, without the lectures (`answers_knowledge.py` reads `src/pipeline/s3/knowledge/*.txt`, "SID KEY" pairs; an answer
+  from the slides is never overwritten). Their note says "not yet checked against the lecture slides". Keys only, no
+  explanations yet. Left unanswered (10): A147 (figure labels unknown), A310, A341, A343, A344, A354, A355, A387 (garbled or
+  no option fits), S43 (its case text is missing), B235 (no option is right). To check a module against its lectures later,
+  write an `answers_<module>.py` from the slides like the physiology ones: it replaces the knowledge keys.
 - Quest `physio-midterm-2026` (S3, Tuesday 1 December 2026, Abi's list): renal intro (PH-16), nephron + glomerular filtration
   (PH-18; PH-17 has no past question), bioenergetics intro (PH-10), regulation of energy metabolism (PH-11, renamed from
   "Carbohydrate metabolism": Pr Dinh-Xuan's lecture 2 is that deck; P65 and P67, cellular respiration, moved there), lipid

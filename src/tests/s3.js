@@ -14,8 +14,8 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); 
   const hits = await p.evaluate(() => (document.body.innerText.match(/(\d+) questions? match/) || document.body.innerText.match(/(\d+) questions/) || [])[1]);
   ok(+hits > 20, 'search "thyroid" finds questions (' + hits + ')');
   await p.goto(BASE + '#set-anatomy-3-finals-anatomy-4-head-and-neck'); await p.waitForTimeout(1500);
-  ok(await p.evaluate(() => document.body.dataset.view) === 'quiz', 'an unkeyed set opens on a question, not the end screen');
-  for (let i = 0; i < 9; i++) { await p.click('button.primary'); await p.waitForTimeout(300); }
+  ok(await p.evaluate(() => document.body.dataset.view) === 'quiz', 'a set opens on a question');
+  await p.evaluate(() => { const b = [...document.querySelectorAll('.strip button, [data-jump]')].find(x => x.textContent.trim() === '10'); if (b) b.click(); }); await p.waitForTimeout(600);
   await p.waitForTimeout(800);
   ok(await p.evaluate(() => { const i = document.querySelector('figure.fig img'); return !!i && i.complete && i.naturalWidth > 100; }), 'Q10 shows its figure');
   await p.goto(BASE + '#module-clinical-biochemistry'); await p.waitForTimeout(1200);

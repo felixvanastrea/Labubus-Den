@@ -1,5 +1,15 @@
 [
  {
+  "id": "2026-11-25-s3-answers",
+  "date": "2026-11-25",
+  "title": "Answers for the whole semester",
+  "kind": "Answers",
+  "items": [
+   "Almost every S3 question now has an answer: anatomy, semiology, clinical biochemistry, vital functions and first aid, psychology and sociology.",
+   "These ones are Claude’s answers, not yet checked against the lectures: each question says so. Physiology and the history of medicine were answered from the lecture slides."
+  ]
+ },
+ {
   "id": "2026-11-25-history",
   "date": "2026-11-25",
   "title": "History of medicine, psychology and sociology exam",
