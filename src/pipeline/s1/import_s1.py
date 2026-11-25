@@ -14,25 +14,25 @@ bank = json.load(open(D + 'bank.json'))
 LEC = json.load(open(D + 'lectures.json'))
 
 SETS = {   # key: (module, type, year, label)
- 'anat-2022': ('anatomy-1', 'Second session', '2021–2022', 'Second session January 2022 · Anatomy I'),
- 'anat-2023': ('anatomy-1', 'Second session', '2022–2023', 'Second session January 2023 · Anatomy I'),
- 'anat-mock': ('anatomy-1', 'Mock', '2025–2026', 'Mock December 2025 · Anatomy I'),
- 'anat-fmc': ('anatomy-1', 'Mock', '2025–2026', 'French-track mock December 2025 · Anatomy I (translated)'),
+ 'anat-2022': ('anatomy-1', 'Second session', '', 'Second session I · Anatomy I'),
+ 'anat-2023': ('anatomy-1', 'Second session', '', 'Second session II · Anatomy I'),
+ 'anat-mock': ('anatomy-1', 'Mock', '', 'Mock · Anatomy I'),
+ 'anat-fmc': ('anatomy-1', 'Mock', '', 'French-track mock · Anatomy I (translated)'),
  'anat-review': ('anatomy-1', 'Collected', '', 'Collected · Bones of the limbs'),
- 'chem-mock': ('chemistry-biochemistry', 'Mock', '2025–2026', 'Mock January 2026 · Chemistry and biochemistry'),
- 'chem-2024': ('chemistry-biochemistry', 'Mock', '2024–2025', 'Mock December 2024 · Chemistry and biochemistry'),
- 'chem-fr': ('chemistry-biochemistry', 'Mock', '2025–2026', 'French-track mock 2025–2026 · Chemistry and biochemistry (translated)'),
+ 'chem-mock': ('chemistry-biochemistry', 'Mock', '', 'Mock · Chemistry and biochemistry'),
+ 'chem-2024': ('chemistry-biochemistry', 'Mock', '', 'Older mock · Chemistry and biochemistry'),
+ 'chem-fr': ('chemistry-biochemistry', 'Mock', '', 'French-track mock · Chemistry and biochemistry (translated)'),
  'chem-fr-exam': ('chemistry-biochemistry', 'Collected', '', 'French-track exam · Organic chemistry (translated)'),
  'chem-en': ('chemistry-biochemistry', 'Collected', '', 'Exam (partial) · Chemistry'),
  'sbio-fr': ('chemistry-biochemistry', 'Collected', '', 'French-track exam · Structural biochemistry (translated)'),
  'sbio-en': ('chemistry-biochemistry', 'Collected', '', 'Collected · Structural biochemistry MCQs'),
- 'bg-mock': ('biology-genetics', 'Mock', '2025–2026', 'Mock January 2026 · Biology and genetics'),
- 'cell-2023': ('biology-genetics', 'Second session', '2022–2023', 'Second session January 2023 · Cellular biology'),
- 'ph-mock': ('biostatistics-public-health', 'Mock', '2025–2026', 'Mock December 2025 · Public health and biostatistics'),
- 'ph-fr': ('biostatistics-public-health', 'Mock', '2025–2026', 'French-track mock 2025–2026 · Public health and biostatistics (translated)'),
- 'biophys-mock': ('biophysics', 'Mock', '2025–2026', 'Mock December 2025 · Biophysics'),
- 'bio-review': ('biophysics', 'Collected', '2025–2026', 'Class review 2025–2026 · Biophysics'),
- 'lm-mock': ('learning-methods-terminology', 'Mock', '2025–2026', 'Mock January 2026 · Learning methods and terminology'),
+ 'bg-mock': ('biology-genetics', 'Mock', '', 'Mock · Biology and genetics'),
+ 'cell-2023': ('biology-genetics', 'Second session', '', 'Second session · Cellular biology'),
+ 'ph-mock': ('biostatistics-public-health', 'Mock', '', 'Mock · Public health and biostatistics'),
+ 'ph-fr': ('biostatistics-public-health', 'Mock', '', 'French-track mock · Public health and biostatistics (translated)'),
+ 'biophys-mock': ('biophysics', 'Mock', '', 'Mock · Biophysics'),
+ 'bio-review': ('biophysics', 'Collected', '', 'Class review · Biophysics'),
+ 'lm-mock': ('learning-methods-terminology', 'Mock', '', 'Mock · Learning methods and terminology'),
 }
 ORDER = list(SETS)
 PFX = {'anatomy-1': 'A', 'chemistry-biochemistry': 'C', 'biology-genetics': 'G', 'biostatistics-public-health': 'P',
@@ -47,7 +47,7 @@ FIG = {   # (set, n): image, w, h
  ('chem-fr-exam', 13): ('c5-isomers', 520, 57), ('chem-fr-exam', 16): ('fischer-butanediol', 340, 145),
 }
 STEM = {   # stems that pointed at a figure, written so they read on their own
- ('ph-mock', 15): 'The figure shows the causes of death in Burkina Faso (GBD 2023, both sexes, all ages). Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths?',
+ ('ph-mock', 15): 'The figure shows the causes of death in Burkina Faso (Global Burden of Disease, both sexes, all ages). Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths?',
  ('ph-mock', 19): 'The lower histogram (density versus exam grades) allows you to:',
  ('ph-mock', 24): 'From this graph (histogram of BMI, from 18 to 30 kg/m², with its quartiles and interquartile range), we can conclude that:',
  ('ph-fr', 1): 'To compare the exam grades of two groups (female and male students), the appropriate test would be:',
@@ -93,7 +93,7 @@ for k in ORDER:
             continue
         n += 1
         stem = STEM.get((k, q['ord']), re.sub(r'\s*\[[^\]]*\]\s*', ' ', q['s']).strip())
-        qid = h(label, q['ord'], q['s'])
+        qid = h('s1', k, q['ord'], q['s'])   # by set key, so a relabel keeps saved answers
         e = {'id': qid, 'n': n, 'topic': mod, 'source': sid_src, 'stem': esc(stem),
              'options': [esc(o) for o in q['o']], 'answer': [], 'key': 'none'}
         if (k, q['ord']) in FIG:

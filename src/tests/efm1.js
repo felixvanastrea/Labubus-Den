@@ -23,7 +23,7 @@ const BASE = (process.env.BASE || 'http://127.0.0.1:8765') + '/efm1-s1/index.htm
   await p.fill('#q', ''); await p.type('#q', 'isomers', { delay: 5 }); await p.waitForTimeout(900);
   const hits = await p.evaluate(() => document.querySelectorAll('#search-results [data-qid], #search-results .q-row, #search-results li').length);
   check(+hits >= 10, 'search "isomers" finds questions (' + hits + ')');
-  await p.goto(BASE + '#set-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics'); await p.waitForTimeout(1500);
+  await p.goto(BASE + '#set-biostatistics-public-health-mock-public-health-and-biostatistics'); await p.waitForTimeout(1500);
   check(await p.evaluate(() => document.body.dataset.view) === 'quiz', 'a set opens on a question');
   await p.evaluate(() => { const b = [...document.querySelectorAll('.strip button, [data-jump]')].find(x => x.textContent.trim() === '13'); if (b) b.click(); }); await p.waitForTimeout(1400);
   check(await p.evaluate(() => { const i = document.querySelector('figure.fig img'); return !!i && i.complete && i.naturalWidth > 100; }), 'the GBD question shows its figure');

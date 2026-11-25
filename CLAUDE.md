@@ -385,7 +385,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   only (no search, legend, type tabs, Most repeated or Updates); a module page lists its lectures by part, "No questions
   yet". Module windows: `ART` has a constellation per EFM1 module (a bone, benzene, a helix, a bell curve, a lens, a book,
   a globe). Test: efm1.js.
-- EFM1 S1 questions (25 November 2026, live since): 436 from Abi's Year 1 Drive folder (about 470 uncategorised photos).
+- EFM1 S1 questions (25 November 2026, live since; no dates in the set names or years, Abi: "they might be wrong", so the
+  two anatomy second sessions are I and II and the older chemistry mock is "Older mock"; ids hash the set key, not the label): 436 from Abi's Year 1 Drive folder (about 470 uncategorised photos).
   Only the S1 photos (30 October 2025 to 16 January 2026) were used; the April to June ones and the 7 PDFs are S2, left out.
   Every photo was read and typed up by hand into `src/pipeline/s1/raw/NNN.txt` (photo index in capture order; duplicates and
   re-sent copies marked DUP); French ones translated into English (Abi: "translate french to english"), with "(translated)"

@@ -38,35 +38,35 @@
  ],
  "sources": [
   {
-   "id": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "id": "s1-anatomy-1-second-session-i-anatomy-i",
    "topic": "anatomy-1",
    "type": "Second session",
-   "year": "2021–2022",
-   "label": "Second session January 2022 · Anatomy I",
+   "year": "",
+   "label": "Second session I · Anatomy I",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "id": "s1-anatomy-1-second-session-ii-anatomy-i",
    "topic": "anatomy-1",
    "type": "Second session",
-   "year": "2022–2023",
-   "label": "Second session January 2023 · Anatomy I",
+   "year": "",
+   "label": "Second session II · Anatomy I",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "id": "s1-anatomy-1-mock-anatomy-i",
    "topic": "anatomy-1",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock December 2025 · Anatomy I",
+   "year": "",
+   "label": "Mock · Anatomy I",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "id": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "topic": "anatomy-1",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "French-track mock December 2025 · Anatomy I (translated)",
+   "year": "",
+   "label": "French-track mock · Anatomy I (translated)",
    "added": "2026-11-25"
   },
   {
@@ -78,27 +78,27 @@
    "added": "2026-11-25"
   },
   {
-   "id": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "id": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "topic": "chemistry-biochemistry",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock January 2026 · Chemistry and biochemistry",
+   "year": "",
+   "label": "Mock · Chemistry and biochemistry",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "id": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "topic": "chemistry-biochemistry",
    "type": "Mock",
-   "year": "2024–2025",
-   "label": "Mock December 2024 · Chemistry and biochemistry",
+   "year": "",
+   "label": "Older mock · Chemistry and biochemistry",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "id": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "topic": "chemistry-biochemistry",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "French-track mock 2025–2026 · Chemistry and biochemistry (translated)",
+   "year": "",
+   "label": "French-track mock · Chemistry and biochemistry (translated)",
    "added": "2026-11-25"
   },
   {
@@ -134,69 +134,69 @@
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "id": "s1-biology-genetics-mock-biology-and-genetics",
    "topic": "biology-genetics",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock January 2026 · Biology and genetics",
+   "year": "",
+   "label": "Mock · Biology and genetics",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "id": "s1-biology-genetics-second-session-cellular-biology",
    "topic": "biology-genetics",
    "type": "Second session",
-   "year": "2022–2023",
-   "label": "Second session January 2023 · Cellular biology",
+   "year": "",
+   "label": "Second session · Cellular biology",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "id": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "topic": "biostatistics-public-health",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock December 2025 · Public health and biostatistics",
+   "year": "",
+   "label": "Mock · Public health and biostatistics",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "id": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "topic": "biostatistics-public-health",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "French-track mock 2025–2026 · Public health and biostatistics (translated)",
+   "year": "",
+   "label": "French-track mock · Public health and biostatistics (translated)",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biophysics-mock-december-2025-biophysics",
+   "id": "s1-biophysics-mock-biophysics",
    "topic": "biophysics",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock December 2025 · Biophysics",
+   "year": "",
+   "label": "Mock · Biophysics",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-biophysics-class-review-2025-2026-biophysics",
+   "id": "s1-biophysics-class-review-biophysics",
    "topic": "biophysics",
    "type": "Collected",
-   "year": "2025–2026",
-   "label": "Class review 2025–2026 · Biophysics",
+   "year": "",
+   "label": "Class review · Biophysics",
    "added": "2026-11-25"
   },
   {
-   "id": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "id": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "topic": "learning-methods-terminology",
    "type": "Mock",
-   "year": "2025–2026",
-   "label": "Mock January 2026 · Learning methods and terminology",
+   "year": "",
+   "label": "Mock · Learning methods and terminology",
    "added": "2026-11-25"
   }
  ],
  "cases": [],
  "questions": [
   {
-   "id": "d3e89f8d91",
+   "id": "e114b4c3df",
    "n": 1,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Clavicle is :",
    "options": [
     "a rod like bone placed in front of the upper part of the thorax",
@@ -223,10 +223,10 @@
    ]
   },
   {
-   "id": "e8eccddbe1",
+   "id": "38856f247d",
    "n": 2,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which of the following is NOT true about the pectoral girdle?",
    "options": [
     "includes the clavicle",
@@ -251,10 +251,10 @@
    ]
   },
   {
-   "id": "080f3449e0",
+   "id": "55f33024f1",
    "n": 3,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The area of the proximal humerus located directly below the tubercles, which is the site of many fractures, is called the:",
    "options": [
     "anatomic neck",
@@ -279,10 +279,10 @@
    ]
   },
   {
-   "id": "cdbe0dcde2",
+   "id": "cb6c094e7c",
    "n": 4,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Elements passing through the axilla region are :",
    "options": [
     "The proximal part of the biceps brachii",
@@ -310,10 +310,10 @@
    ]
   },
   {
-   "id": "214a6c963e",
+   "id": "30bd1f9baa",
    "n": 5,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Axilla region is anteriorly formed by :",
    "options": [
     "Pectoral minor",
@@ -340,10 +340,10 @@
    ]
   },
   {
-   "id": "c4aa9368fd",
+   "id": "86cea115c2",
    "n": 6,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Ankle Joint :",
    "options": [
     "Is located between the lower end of the tibia, the two malleoli, and the body of the talus",
@@ -370,10 +370,10 @@
    ]
   },
   {
-   "id": "39ac71ed97",
+   "id": "b0573882ab",
    "n": 7,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Cubital region :",
    "options": [
     "is an area of transition between the anatomical arm and the forearm",
@@ -401,10 +401,10 @@
    ]
   },
   {
-   "id": "47b4f7f53e",
+   "id": "e17b9b1c85",
    "n": 8,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The cubital fossa content is as follow :",
    "options": [
     "The median nerve",
@@ -432,10 +432,10 @@
    ]
   },
   {
-   "id": "da4f709e53",
+   "id": "30e5053230",
    "n": 9,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The popliteal fossa is bounded:",
    "options": [
     "Superolaterally: Semitendinosus and semimembranosus",
@@ -461,10 +461,10 @@
    ]
   },
   {
-   "id": "fb14a3692e",
+   "id": "7d3f9be78a",
    "n": 10,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The main contents of the popliteal fossa are:",
    "options": [
     "Popliteal artery and its branches",
@@ -492,10 +492,10 @@
    ]
   },
   {
-   "id": "f143c199dd",
+   "id": "1cbabdc34b",
    "n": 11,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Sternum :",
    "options": [
     "is posterior to the T4 (thoracic vertebra 4)",
@@ -522,10 +522,10 @@
    ]
   },
   {
-   "id": "7ed6e6741e",
+   "id": "b29ca1604d",
    "n": 12,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The vertebral arch of a typical thoracic vertebra :",
    "options": [
     "is posterior",
@@ -552,10 +552,10 @@
    ]
   },
   {
-   "id": "dbef61a6de",
+   "id": "2dc30ed984",
    "n": 13,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Trapezius muscle :",
    "options": [
     "Attaches to the occipital bone",
@@ -582,10 +582,10 @@
    ]
   },
   {
-   "id": "d7c08899ac",
+   "id": "9705f2c5fb",
    "n": 14,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The left ventricle (of the heart) :",
    "options": [
     "forms the greater part of the posterior surface of the heart",
@@ -610,10 +610,10 @@
    ]
   },
   {
-   "id": "323472f4d1",
+   "id": "f1d6b7ff04",
    "n": 15,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The right ventricle (of the heart) :",
    "options": [
     "receives blood from the left atrium via the mitral valve",
@@ -640,10 +640,10 @@
    ]
   },
   {
-   "id": "0fe4cad3b9",
+   "id": "fd19551a62",
    "n": 16,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The right coronary artery :",
    "options": [
     "Arises from the right pulmonary artery",
@@ -668,10 +668,10 @@
    ]
   },
   {
-   "id": "f600fe9905",
+   "id": "c8b5064951",
    "n": 17,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The arch of the aorta :",
    "options": [
     "Gives off the right pulmonary artery",
@@ -697,10 +697,10 @@
    ]
   },
   {
-   "id": "670ff45a76",
+   "id": "c1b84fb3fb",
    "n": 18,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The trachea :",
    "options": [
     "courses from the larynx into the thorax",
@@ -728,10 +728,10 @@
    ]
   },
   {
-   "id": "88154eb077",
+   "id": "6a928db8f7",
    "n": 19,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The left lung :",
    "options": [
     "Is surrounded by the pleura",
@@ -758,10 +758,10 @@
    ]
   },
   {
-   "id": "4f4c087fd4",
+   "id": "ac41866852",
    "n": 20,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The right lung :",
    "options": [
     "Is larger than the left lung",
@@ -789,10 +789,10 @@
    ]
   },
   {
-   "id": "2def94a5af",
+   "id": "55d530157f",
    "n": 21,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The distal end of the radius presents:",
    "options": [
     "A lower face which articulates with the Scaphoid and Lunate",
@@ -819,10 +819,10 @@
    ]
   },
   {
-   "id": "d03fdf872c",
+   "id": "9c064b85ce",
    "n": 22,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Concerning the Ulna, mark the right answer(s):",
    "options": [
     "It's a short bone",
@@ -848,10 +848,10 @@
    ]
   },
   {
-   "id": "e032e1b5af",
+   "id": "ff5db216b8",
    "n": 23,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "To orient the Hip bone:",
    "options": [
     "The Obturator foramen is distal",
@@ -877,10 +877,10 @@
    ]
   },
   {
-   "id": "18333d81fb",
+   "id": "0b8add25de",
    "n": 24,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The sacrum articulates:",
    "options": [
     "Proximally with the coccyx",
@@ -906,10 +906,10 @@
    ]
   },
   {
-   "id": "0621af0417",
+   "id": "a63669ab7d",
    "n": 25,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which element isn't in the carpal tunnel?:",
    "options": [
     "Flexor pollicis longus",
@@ -934,10 +934,10 @@
    ]
   },
   {
-   "id": "31a0a187b2",
+   "id": "216214189d",
    "n": 26,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The Guyon's canal contains:",
    "options": [
     "The radial artery",
@@ -963,10 +963,10 @@
    ]
   },
   {
-   "id": "0ea543498a",
+   "id": "39b2949f9c",
    "n": 27,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The borders of the anatomical snuffbox are:",
    "options": [
     "Medially, the tendon of the extensor pollicis longus",
@@ -993,10 +993,10 @@
    ]
   },
   {
-   "id": "b6466a46fd",
+   "id": "506b1ab766",
    "n": 28,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The safe zone of intra muscular injection is located in the:",
    "options": [
     "Superior medial quadrant",
@@ -1021,10 +1021,10 @@
    ]
   },
   {
-   "id": "dcc44af6f6",
+   "id": "2111b18771",
    "n": 29,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The superficial muscles of the gluteal region are:",
    "options": [
     "The gluteus Maximus",
@@ -1052,10 +1052,10 @@
    ]
   },
   {
-   "id": "b57f1ed449",
+   "id": "fee3433af9",
    "n": 30,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The sciatic nerve crosses the:",
    "options": [
     "Suprapiriform foramina",
@@ -1080,10 +1080,10 @@
    ]
   },
   {
-   "id": "8e5de2b66c",
+   "id": "5ff9f6057d",
    "n": 31,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "What is the nerve supply of the deltoid muscle?",
    "options": [
     "Musculocutaneous nerve",
@@ -1108,10 +1108,10 @@
    ]
   },
   {
-   "id": "a5432b659f",
+   "id": "dda520ca1b",
    "n": 32,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Injury to median nerve at the elbow leads to:",
    "options": [
     "Loss of shoulder flexion",
@@ -1136,10 +1136,10 @@
    ]
   },
   {
-   "id": "67e7bab931",
+   "id": "c38e240a7f",
    "n": 33,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "What is the origin of the brachial artery supplying the upper limb?",
    "options": [
     "Axillary artery",
@@ -1164,10 +1164,10 @@
    ]
   },
   {
-   "id": "60e9705c20",
+   "id": "c2471d8cb2",
    "n": 34,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Injury of flexor pollicis longus at the carpal tunnel can result in:",
    "options": [
     "Loss of little finger flexion",
@@ -1192,10 +1192,10 @@
    ]
   },
   {
-   "id": "e743f8d3d4",
+   "id": "f19abf22ad",
    "n": 35,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Injury to the ulnar nerve at the cubital tunnel can lead to:",
    "options": [
     "Loss of Flexor digitorum profundus action of little finger",
@@ -1220,10 +1220,10 @@
    ]
   },
   {
-   "id": "875615199e",
+   "id": "c835d01e86",
    "n": 36,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which structure is NOT part of the greater sciatic foramen contents?",
    "options": [
     "Internal pudendal artery",
@@ -1248,10 +1248,10 @@
    ]
   },
   {
-   "id": "d4b946bd5a",
+   "id": "fe07bd530e",
    "n": 37,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which muscle is commonly referred to as Tailor's muscle?",
    "options": [
     "Hamstrings",
@@ -1276,10 +1276,10 @@
    ]
   },
   {
-   "id": "5e9edc9eed",
+   "id": "ade460d72f",
    "n": 38,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which muscle is present in the lateral compartment of the lower leg?",
    "options": [
     "Tibialis anterior",
@@ -1304,10 +1304,10 @@
    ]
   },
   {
-   "id": "460dec5c78",
+   "id": "f2ba99a71e",
    "n": 39,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which artery terminates as dorsalis pedis?",
    "options": [
     "Posterior tibial artery",
@@ -1332,10 +1332,10 @@
    ]
   },
   {
-   "id": "bddeaca8c9",
+   "id": "18fc7590a6",
    "n": 40,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "What is the motor supply to the foot intrinsics?",
    "options": [
     "Tibial nerve",
@@ -1360,10 +1360,10 @@
    ]
   },
   {
-   "id": "dfc9f4035b",
+   "id": "e05d61aa1a",
    "n": 41,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Groups of organs which together perform an overall function:",
    "options": [
     "Organ systems",
@@ -1388,10 +1388,10 @@
    ]
   },
   {
-   "id": "595a6309e7",
+   "id": "ab5c764bdd",
    "n": 42,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The plane that divides the body into superior and inferior portion is the:",
    "options": [
     "Sagittal plane",
@@ -1416,10 +1416,10 @@
    ]
   },
   {
-   "id": "a15b096743",
+   "id": "5562a8f750",
    "n": 43,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The _______ plane divides the body into right and left halves is:",
    "options": [
     "Transverse",
@@ -1444,10 +1444,10 @@
    ]
   },
   {
-   "id": "3fcabf8c10",
+   "id": "26a1851ef9",
    "n": 44,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "In the anatomical position, the subject:",
    "options": [
     "Is lying down.",
@@ -1472,10 +1472,10 @@
    ]
   },
   {
-   "id": "9b857e37f5",
+   "id": "313f78f7e0",
    "n": 45,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The anatomical term which best describes a structure toward the head is:",
    "options": [
     "Superficial",
@@ -1500,10 +1500,10 @@
    ]
   },
   {
-   "id": "e516c444e3",
+   "id": "15285f13e2",
    "n": 46,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "The best anatomical term to describe the back region of the body would be:",
    "options": [
     "Ventral",
@@ -1528,10 +1528,10 @@
    ]
   },
   {
-   "id": "561a2ed928",
+   "id": "3377c772f5",
    "n": 47,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Another name for anterior is:",
    "options": [
     "Ventral",
@@ -1556,10 +1556,10 @@
    ]
   },
   {
-   "id": "84e58957fd",
+   "id": "49f2cca0c8",
    "n": 48,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which body system provides the cells of the body with nutrients?",
    "options": [
     "respiratory",
@@ -1584,10 +1584,10 @@
    ]
   },
   {
-   "id": "64eae51b98",
+   "id": "bbbeb46b60",
    "n": 49,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "Which of the following is located beneath the diaphragm in the left upper quadrant of the abdominal cavity?",
    "options": [
     "Appendix",
@@ -1612,10 +1612,10 @@
    ]
   },
   {
-   "id": "a0c661e53d",
+   "id": "9af62a7a15",
    "n": 50,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2022-anatomy-i",
+   "source": "s1-anatomy-1-second-session-i-anatomy-i",
    "stem": "In which of the following positions does a patient lie face down?",
    "options": [
     "Dorsal",
@@ -1640,10 +1640,10 @@
    ]
   },
   {
-   "id": "d566891eb7",
+   "id": "6a53870e81",
    "n": 1,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The manubrium:",
    "options": [
     "is the inferior part of the sternum",
@@ -1668,10 +1668,10 @@
    ]
   },
   {
-   "id": "c095fe6fa4",
+   "id": "b3d9ea22bc",
    "n": 2,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The Sternum:",
    "options": [
     "is anterior to the T4 (thoracic vertebra 4)",
@@ -1699,10 +1699,10 @@
    ]
   },
   {
-   "id": "289634a618",
+   "id": "dd81e67698",
    "n": 3,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Pick up the right answer(s) about ribs:",
    "options": [
     "They have a medial surface and a lateral surface",
@@ -1728,10 +1728,10 @@
    ]
   },
   {
-   "id": "aa02b7d00d",
+   "id": "23e621eb80",
    "n": 4,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The vertebral arch of a typical thoracic vertebra:",
    "options": [
     "is lateral",
@@ -1756,10 +1756,10 @@
    ]
   },
   {
-   "id": "0ab755bc08",
+   "id": "d6c53235a7",
    "n": 5,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The vertebral body of a typical thoracic vertebra:",
    "options": [
     "is the major weightbearing component",
@@ -1786,10 +1786,10 @@
    ]
   },
   {
-   "id": "b30e939527",
+   "id": "fd7dfef414",
    "n": 6,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The serratus anterior muscle :",
    "options": [
     "Attaches to ribs 1 to 9",
@@ -1815,10 +1815,10 @@
    ]
   },
   {
-   "id": "a5a02b8241",
+   "id": "deb7012eff",
    "n": 7,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The Trapezius muscle :",
    "options": [
     "Attaches to the sternum",
@@ -1845,10 +1845,10 @@
    ]
   },
   {
-   "id": "22c698a299",
+   "id": "878275b1e8",
    "n": 8,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The Pectoralis major muscle :",
    "options": [
     "Attaches to the 4th thoracic vertebra (T4)",
@@ -1873,10 +1873,10 @@
    ]
   },
   {
-   "id": "63c9adf138",
+   "id": "1210dea6ab",
    "n": 9,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The Rhomboid major muscle :",
    "options": [
     "Attaches to the humerus",
@@ -1903,10 +1903,10 @@
    ]
   },
   {
-   "id": "5aa1587d70",
+   "id": "951ad29889",
    "n": 10,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The diaphragm:",
    "options": [
     "Attaches to the lower ribs",
@@ -1935,10 +1935,10 @@
    ]
   },
   {
-   "id": "d02d3f8be3",
+   "id": "da4309759a",
    "n": 11,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The left ventricle (of the heart):",
    "options": [
     "forms the greater part of the lateral surface of the heart",
@@ -1965,10 +1965,10 @@
    ]
   },
   {
-   "id": "01d114a747",
+   "id": "ad35e44e74",
    "n": 12,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The right ventricle (of the heart):",
    "options": [
     "receives blood from the left atrium via the tricuspid valve",
@@ -1994,10 +1994,10 @@
    ]
   },
   {
-   "id": "b0d8203cef",
+   "id": "bbcbd8cbea",
    "n": 13,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The right atrium (of the heart):",
    "options": [
     "receives deoxygenated venous blood from the systemic circulation",
@@ -2024,10 +2024,10 @@
    ]
   },
   {
-   "id": "f7925412c0",
+   "id": "d0f6889df7",
    "n": 14,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The coronary arteries :",
    "options": [
     "Arise from the pulmonary trunk",
@@ -2053,10 +2053,10 @@
    ]
   },
   {
-   "id": "b71238bf96",
+   "id": "a2563432d7",
    "n": 15,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The right coronary artery :",
    "options": [
     "Arise from the right pulmonary artery",
@@ -2082,10 +2082,10 @@
    ]
   },
   {
-   "id": "343e8080c7",
+   "id": "0a504fa23e",
    "n": 16,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The arch of the aorta gives off:",
    "options": [
     "the right pulmonary artery",
@@ -2112,10 +2112,10 @@
    ]
   },
   {
-   "id": "1ac2f80f05",
+   "id": "c3a11e1b5a",
    "n": 17,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The aorta gives off:",
    "options": [
     "The superior vena cava",
@@ -2143,10 +2143,10 @@
    ]
   },
   {
-   "id": "b1d63baf6b",
+   "id": "5844885942",
    "n": 18,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The trachea:",
    "options": [
     "courses from the larynx to the stomach",
@@ -2173,10 +2173,10 @@
    ]
   },
   {
-   "id": "28f946fd25",
+   "id": "bf030f3007",
    "n": 19,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The trachea:",
    "options": [
     "courses posterior to the ascending aorta",
@@ -2203,10 +2203,10 @@
    ]
   },
   {
-   "id": "0c66d45a2e",
+   "id": "4eec4e085d",
    "n": 20,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The left lung :",
    "options": [
     "is surrounded by the pleura",
@@ -2234,10 +2234,10 @@
    ]
   },
   {
-   "id": "44ea8123d0",
+   "id": "9d56e66919",
    "n": 21,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The right lung:",
    "options": [
     "is larger than the left lung",
@@ -2265,10 +2265,10 @@
    ]
   },
   {
-   "id": "0669a248c6",
+   "id": "b8170e0d37",
    "n": 22,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The right lung:",
    "options": [
     "inferior lobe is in contact with the upper part of the anterolateral wall",
@@ -2295,10 +2295,10 @@
    ]
   },
   {
-   "id": "37bf18d0fd",
+   "id": "60d3189e87",
    "n": 23,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The superior vena cava drains blood from:",
    "options": [
     "the pulmonary trunk",
@@ -2324,10 +2324,10 @@
    ]
   },
   {
-   "id": "02d1ee7c99",
+   "id": "77ce82ce2f",
    "n": 24,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The elements (or structures) located in the left hilum are:",
    "options": [
     "The superior vena cava",
@@ -2352,10 +2352,10 @@
    ]
   },
   {
-   "id": "b3ce8c80ca",
+   "id": "5df7e9ab9e",
    "n": 25,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The mediastinum contains:",
    "options": [
     "the inferior vena cava",
@@ -2383,10 +2383,10 @@
    ]
   },
   {
-   "id": "453104dde8",
+   "id": "1c1558fa21",
    "n": 26,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The scapula is:",
    "options": [
     "A bone of the pelvic girdle",
@@ -2413,10 +2413,10 @@
    ]
   },
   {
-   "id": "9fd0747018",
+   "id": "750c524122",
    "n": 27,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The clavicle:",
    "options": [
     "Is a long bone",
@@ -2443,10 +2443,10 @@
    ]
   },
   {
-   "id": "1f414aa5b3",
+   "id": "104c90b57d",
    "n": 28,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "To orient the humerus:",
    "options": [
     "The head faces proximally",
@@ -2472,10 +2472,10 @@
    ]
   },
   {
-   "id": "52c79786ba",
+   "id": "74baa014da",
    "n": 29,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The Ulna presents:",
    "options": [
     "Proximally, the head of the Ulna",
@@ -2502,10 +2502,10 @@
    ]
   },
   {
-   "id": "d2f0c5c012",
+   "id": "ad81996074",
    "n": 30,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The distal row of the carpal bones is composed of:",
    "options": [
     "The scaphoid",
@@ -2532,10 +2532,10 @@
    ]
   },
   {
-   "id": "ce6694415c",
+   "id": "8bc5220c11",
    "n": 31,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The sacrum :",
    "options": [
     "Is the posterior bone of the pelvic girdle",
@@ -2561,10 +2561,10 @@
    ]
   },
   {
-   "id": "07703dca76",
+   "id": "3a05118d34",
    "n": 32,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The ulna articulates:",
    "options": [
     "Proximally with the humerus",
@@ -2591,10 +2591,10 @@
    ]
   },
   {
-   "id": "6acd842f15",
+   "id": "af8a5b51a8",
    "n": 33,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The patella :",
    "options": [
     "Is an odd bone",
@@ -2620,10 +2620,10 @@
    ]
   },
   {
-   "id": "6939fade93",
+   "id": "e05018e260",
    "n": 34,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The fibula presents:",
    "options": [
     "A head proximally",
@@ -2649,10 +2649,10 @@
    ]
   },
   {
-   "id": "e2e21cadff",
+   "id": "52f3b3aaba",
    "n": 35,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The anterior tarsal bones are:",
    "options": [
     "The talus",
@@ -2679,10 +2679,10 @@
    ]
   },
   {
-   "id": "6cde7deb03",
+   "id": "259b302ef8",
    "n": 36,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Concerning the phalanges:",
    "options": [
     "Each toe has 2 phalanges",
@@ -2708,10 +2708,10 @@
    ]
   },
   {
-   "id": "8d6094495c",
+   "id": "236f616ed7",
    "n": 37,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "The foot presents:",
    "options": [
     "Tarsal bones",
@@ -2738,10 +2738,10 @@
    ]
   },
   {
-   "id": "e3a8b10a3e",
+   "id": "9af77e911f",
    "n": 38,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Concerning the medial malleolus:",
    "options": [
     "The lateral face of the medial malleolus articulates with the medial face of the talus",
@@ -2767,10 +2767,10 @@
    ]
   },
   {
-   "id": "5d668758e2",
+   "id": "5d708f299e",
    "n": 39,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What is the action of Flexor carpi radialis in the hand",
    "options": [
     "Flexion at distal interphalangeal joint",
@@ -2795,10 +2795,10 @@
    ]
   },
   {
-   "id": "d2fd2dc731",
+   "id": "900217fdb8",
    "n": 40,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What is the action of biceps brachii",
    "options": [
     "Elbow flexion",
@@ -2825,10 +2825,10 @@
    ]
   },
   {
-   "id": "a984d5da06",
+   "id": "d9b14d0c7f",
    "n": 41,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Which muscles are NOT a rotator cuff muscle:",
    "options": [
     "Supraspinatus",
@@ -2854,10 +2854,10 @@
    ]
   },
   {
-   "id": "cf81c102b0",
+   "id": "75ae07320b",
    "n": 42,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Which muscle is supplied by radial nerve in the forearm?",
    "options": [
     "Extensor Pollicis Longus",
@@ -2882,10 +2882,10 @@
    ]
   },
   {
-   "id": "145c7733ad",
+   "id": "57ebeca3ec",
    "n": 43,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What is the terminal branch of anterior tibial artery:",
    "options": [
     "Posterior tibial artery",
@@ -2910,10 +2910,10 @@
    ]
   },
   {
-   "id": "2ac7f7451b",
+   "id": "db674dea7c",
    "n": 44,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Contents of the popliteal fossa include:",
    "options": [
     "Popliteal artery",
@@ -2940,10 +2940,10 @@
    ]
   },
   {
-   "id": "1c55748e6c",
+   "id": "900a241bba",
    "n": 45,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What is the action of tibialis posterior?",
    "options": [
     "Ankle dorsiflexion",
@@ -2968,10 +2968,10 @@
    ]
   },
   {
-   "id": "68c465e19c",
+   "id": "c7ed06ceca",
    "n": 46,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "This nerve supplies sensation to the first dorsal webspace of foot:",
    "options": [
     "Femoral nerve",
@@ -2996,10 +2996,10 @@
    ]
   },
   {
-   "id": "01d7d0f614",
+   "id": "33eb75e0d3",
    "n": 47,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What are the branches of the brachial artery in the upper limb?",
    "options": [
     "Ulnar artery",
@@ -3025,10 +3025,10 @@
    ]
   },
   {
-   "id": "c082a8621a",
+   "id": "ae7303f989",
    "n": 48,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "What is the main structure passing through the cubital tunnel",
    "options": [
     "Median nerve",
@@ -3053,10 +3053,10 @@
    ]
   },
   {
-   "id": "329b48d8ba",
+   "id": "a47a3905de",
    "n": 49,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Injury to the common peroneal nerve leads to:",
    "options": [
     "Loss of ankle dorsiflexion",
@@ -3082,10 +3082,10 @@
    ]
   },
   {
-   "id": "a0c28fd70b",
+   "id": "87fdfee305",
    "n": 50,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-second-session-january-2023-anatomy-i",
+   "source": "s1-anatomy-1-second-session-ii-anatomy-i",
    "stem": "Injury of median nerve at carpal tunnel leads to:",
    "options": [
     "Loss of power to thenar muscles",
@@ -3110,10 +3110,10 @@
    ]
   },
   {
-   "id": "c163de8149",
+   "id": "c0bf8aee6a",
    "n": 1,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Pick the right answer(s) about ribs:",
    "options": [
     "They articulate posteriorly with the thoracic vertebrae",
@@ -3138,10 +3138,10 @@
    ]
   },
   {
-   "id": "7174926184",
+   "id": "fd35eafdc3",
    "n": 2,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The vertebral body of a typical thoracic vertebra:",
    "options": [
     "Articulates with a fibrocartilaginous intervertebral disc",
@@ -3166,10 +3166,10 @@
    ]
   },
   {
-   "id": "bcc82e7195",
+   "id": "b7ce193b9f",
    "n": 3,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Check the main components of the sternum?",
    "options": [
     "Manubrium",
@@ -3194,10 +3194,10 @@
    ]
   },
   {
-   "id": "c582270cd4",
+   "id": "3ee21f0a44",
    "n": 4,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "What is the clinical significance of the angle of Louis?",
    "options": [
     "Used to locate the second intercostal space",
@@ -3222,10 +3222,10 @@
    ]
   },
   {
-   "id": "99a37d9014",
+   "id": "fa99dae9b4",
    "n": 5,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Which term describes the line passing through the midpoint of the clavicle?",
    "options": [
     "Midaxillary line",
@@ -3249,10 +3249,10 @@
    ]
   },
   {
-   "id": "03348e69bd",
+   "id": "b9188e1e8b",
    "n": 6,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "What constitutes the boundary of the thoracic inlet?",
    "options": [
     "Xiphoïd process",
@@ -3277,10 +3277,10 @@
    ]
   },
   {
-   "id": "dec08be97f",
+   "id": "fab6c77378",
    "n": 7,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The sternoclavicular joint is:",
    "options": [
     "Located between the sternum and first rib",
@@ -3305,10 +3305,10 @@
    ]
   },
   {
-   "id": "f2faf18722",
+   "id": "e2734ffea2",
    "n": 8,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Identify the structures that pass through the thoracic outlet.",
    "options": [
     "Subclavian artery",
@@ -3332,10 +3332,10 @@
    ]
   },
   {
-   "id": "5f7c9543af",
+   "id": "7e5c949b1f",
    "n": 9,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Which bones articulate directly with the manubrium?",
    "options": [
     "Xiphoid process",
@@ -3360,10 +3360,10 @@
    ]
   },
   {
-   "id": "acc336e753",
+   "id": "f8d6a1d0bb",
    "n": 10,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Identify the muscles of the superficial scapular plane:",
    "options": [
     "Rhomboids",
@@ -3388,10 +3388,10 @@
    ]
   },
   {
-   "id": "24f24641b4",
+   "id": "910b7012f0",
    "n": 11,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The deltoid muscle is innervated by the nerve:",
    "options": [
     "Musculocutaneous",
@@ -3415,10 +3415,10 @@
    ]
   },
   {
-   "id": "019a9f474f",
+   "id": "7ac2a9cdc1",
    "n": 12,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The teres minor muscle:",
    "options": [
     "Is a deep muscle of the scapular region",
@@ -3443,10 +3443,10 @@
    ]
   },
   {
-   "id": "ddabdcbecc",
+   "id": "a609413225",
    "n": 13,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The coracobrachialis muscle:",
    "options": [
     "Is a muscle of the posterior compartment of the arm",
@@ -3471,10 +3471,10 @@
    ]
   },
   {
-   "id": "5eba434d86",
+   "id": "c8b38b90e5",
    "n": 14,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "At the level of the arm, the musculocutaneous nerve innervates the muscles:",
    "options": [
     "Anconeus",
@@ -3499,10 +3499,10 @@
    ]
   },
   {
-   "id": "eed3b386aa",
+   "id": "0495e5070c",
    "n": 15,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The brachioradialis muscle:",
    "options": [
     "Has an ulnar origin",
@@ -3527,10 +3527,10 @@
    ]
   },
   {
-   "id": "d84cf9e308",
+   "id": "7f1b148a5d",
    "n": 16,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The opponens pollicis muscle is innervated by the:",
    "options": [
     "Radial nerve",
@@ -3554,10 +3554,10 @@
    ]
   },
   {
-   "id": "dc94c2d57a",
+   "id": "e41cc9271b",
    "n": 17,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The interosseous muscles:",
    "options": [
     "Allow abduction of the fingers",
@@ -3582,10 +3582,10 @@
    ]
   },
   {
-   "id": "07e8852826",
+   "id": "9cafc93607",
    "n": 18,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "In the radial groove on the posterior surface of the humerus passes the artery:",
    "options": [
     "Interosseous",
@@ -3609,10 +3609,10 @@
    ]
   },
   {
-   "id": "12dc6e7ea8",
+   "id": "12cc5e8af6",
    "n": 19,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "The palmaris longus muscle:",
    "options": [
     "Is innervated by the radial nerve",
@@ -3637,10 +3637,10 @@
    ]
   },
   {
-   "id": "0e2b875011",
+   "id": "d7867a7bdf",
    "n": 20,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-mock-december-2025-anatomy-i",
+   "source": "s1-anatomy-1-mock-anatomy-i",
    "stem": "Identify posterior muscles of the forearm compartment:",
    "options": [
     "Extensor carpi ulnaris",
@@ -3665,10 +3665,10 @@
    ]
   },
   {
-   "id": "d76e02f5d9",
+   "id": "bff861e162",
    "n": 1,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "Pick the muscles of the anterior compartment of the forearm:",
    "options": [
     "Brachioradialis",
@@ -3693,10 +3693,10 @@
    ]
   },
   {
-   "id": "27d555e182",
+   "id": "e232ac5d03",
    "n": 2,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The sternocostal hiatus (Larrey's cleft) gives passage to:",
    "options": [
     "the internal thoracic artery",
@@ -3720,10 +3720,10 @@
    ]
   },
   {
-   "id": "d277f36129",
+   "id": "5ca935ad75",
    "n": 3,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "Pick the muscles of the scapular region:",
    "options": [
     "Serratus anterior",
@@ -3748,10 +3748,10 @@
    ]
   },
   {
-   "id": "8e8b59f4df",
+   "id": "7bc9244311",
    "n": 4,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The right main bronchus is:",
    "options": [
     "More vertical than the left main bronchus",
@@ -3775,10 +3775,10 @@
    ]
   },
   {
-   "id": "b4c953dda6",
+   "id": "c1969e28e1",
    "n": 5,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "On the lateral faces of the second phalanges (P2) of the last four fingers end the tendons:",
    "options": [
     "Of the interosseous muscles",
@@ -3802,10 +3802,10 @@
    ]
   },
   {
-   "id": "736e9ceded",
+   "id": "df0c53eb56",
    "n": 6,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The median slip of the extensor tendons of the last 4 fingers ends:",
    "options": [
     "On the base of the second phalanges",
@@ -3829,10 +3829,10 @@
    ]
   },
   {
-   "id": "0d4439758c",
+   "id": "35a471153f",
    "n": 7,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "Pick the terminal branches of the anteromedial secondary trunk (medial cord) of the brachial plexus:",
    "options": [
     "Ulnar",
@@ -3857,10 +3857,10 @@
    ]
   },
   {
-   "id": "ee8bd2a6fc",
+   "id": "51ac264559",
    "n": 8,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The left surface of the heart is called:",
    "options": [
     "Pulmonary",
@@ -3884,10 +3884,10 @@
    ]
   },
   {
-   "id": "ef28ae24fc",
+   "id": "a6adbec833",
    "n": 9,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The muscles of the anterior compartment of the arm are:",
    "options": [
     "Anconeus",
@@ -3912,10 +3912,10 @@
    ]
   },
   {
-   "id": "df3cf497ae",
+   "id": "80ec15cc2a",
    "n": 10,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "Pick the muscles of the anterior compartment of the arm:",
    "options": [
     "Anconeus",
@@ -3940,10 +3940,10 @@
    ]
   },
   {
-   "id": "64060e4f9d",
+   "id": "d6fa5fd143",
    "n": 11,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The arteries that form the deep palmar arch are:",
    "options": [
     "The interosseous artery",
@@ -3968,10 +3968,10 @@
    ]
   },
   {
-   "id": "83357effc2",
+   "id": "f4e9ce67fa",
    "n": 12,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The muscle that ends at the middle palmar aponeurosis is:",
    "options": [
     "Pronator quadratus",
@@ -3995,10 +3995,10 @@
    ]
   },
   {
-   "id": "b04cfc8821",
+   "id": "c825a18ae3",
    "n": 13,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The Biceps brachii muscle is innervated by the nerve:",
    "options": [
     "Musculocutaneous",
@@ -4022,10 +4022,10 @@
    ]
   },
   {
-   "id": "4a71bfbd17",
+   "id": "2f92ca12cd",
    "n": 14,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The serratus anterior muscle",
    "options": [
     "Is a superficial muscle",
@@ -4049,10 +4049,10 @@
    ]
   },
   {
-   "id": "861aab646f",
+   "id": "88b3773cdd",
    "n": 15,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The elements passing at the posterior surface of the arm are:",
    "options": [
     "The musculocutaneous nerve",
@@ -4077,10 +4077,10 @@
    ]
   },
   {
-   "id": "395fcea7e1",
+   "id": "9c966a80c7",
    "n": 16,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The right lung has:",
    "options": [
     "3 lobar bronchi",
@@ -4105,10 +4105,10 @@
    ]
   },
   {
-   "id": "40d57442ef",
+   "id": "65a6a2cd49",
    "n": 17,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The right pulmonary artery passes:",
    "options": [
     "behind the oesophagus",
@@ -4133,10 +4133,10 @@
    ]
   },
   {
-   "id": "e5ad6eaa46",
+   "id": "408326309a",
    "n": 18,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The nerve that provides sensation to the pulp of the thumb:",
    "options": [
     "Ulnar",
@@ -4160,10 +4160,10 @@
    ]
   },
   {
-   "id": "bdc3bd1ff3",
+   "id": "9a51e3e605",
    "n": 19,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "In the hand, the ulnar nerve innervates the muscles",
    "options": [
     "Interossei",
@@ -4188,10 +4188,10 @@
    ]
   },
   {
-   "id": "b0cf065c25",
+   "id": "4c4c8c5204",
    "n": 20,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The musculocutaneous nerve innervates the muscles:",
    "options": [
     "Biceps brachii",
@@ -4216,10 +4216,10 @@
    ]
   },
   {
-   "id": "59fa5130c9",
+   "id": "90eb0daeff",
    "n": 21,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The great azygos vein drains into:",
    "options": [
     "the right atrium",
@@ -4243,10 +4243,10 @@
    ]
   },
   {
-   "id": "91b54d9274",
+   "id": "0379e29e39",
    "n": 22,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The thoracic aorta:",
    "options": [
     "begins at the aortic isthmus",
@@ -4271,10 +4271,10 @@
    ]
   },
   {
-   "id": "5bc61a96a7",
+   "id": "5b7f17d9bc",
    "n": 23,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The trachea divides into main bronchi at the level of:",
    "options": [
     "T5",
@@ -4299,10 +4299,10 @@
    ]
   },
   {
-   "id": "db8ec5b69f",
+   "id": "ea8bd6e5fe",
    "n": 24,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "The thoracic trachea is related anteriorly to the following organs:",
    "options": [
     "the thoracic oesophagus",
@@ -4327,10 +4327,10 @@
    ]
   },
   {
-   "id": "0fafa90675",
+   "id": "d5db9120ba",
    "n": 25,
    "topic": "anatomy-1",
-   "source": "s1-anatomy-1-french-track-mock-december-2025-anatomy-i-translated",
+   "source": "s1-anatomy-1-french-track-mock-anatomy-i-translated",
    "stem": "This question concerns the mammary gland:",
    "options": [
     "located between the first and third ribs",
@@ -4354,7 +4354,7 @@
    ]
   },
   {
-   "id": "64007db071",
+   "id": "b49f96927a",
    "n": 1,
    "topic": "anatomy-1",
    "source": "s1-anatomy-1-collected-bones-of-the-limbs",
@@ -4384,7 +4384,7 @@
    ]
   },
   {
-   "id": "01aab47ee1",
+   "id": "486449db21",
    "n": 2,
    "topic": "anatomy-1",
    "source": "s1-anatomy-1-collected-bones-of-the-limbs",
@@ -4416,7 +4416,7 @@
    ]
   },
   {
-   "id": "d48759b837",
+   "id": "709289d662",
    "n": 3,
    "topic": "anatomy-1",
    "source": "s1-anatomy-1-collected-bones-of-the-limbs",
@@ -4445,7 +4445,7 @@
    ]
   },
   {
-   "id": "21fcff6ee9",
+   "id": "f7bfcbb466",
    "n": 4,
    "topic": "anatomy-1",
    "source": "s1-anatomy-1-collected-bones-of-the-limbs",
@@ -4475,10 +4475,10 @@
    ]
   },
   {
-   "id": "4cb08f231a",
+   "id": "a85bc76157",
    "n": 1,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "We consider an unknown element ᴬ_ZX . It has 6 electrons and 6 neutrons. Its number of protons is:",
    "options": [
     "2",
@@ -4502,10 +4502,10 @@
    ]
   },
   {
-   "id": "727064f240",
+   "id": "0a2d84d10a",
    "n": 2,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Its mass number is:",
    "options": [
     "14",
@@ -4529,10 +4529,10 @@
    ]
   },
   {
-   "id": "c678eb78be",
+   "id": "b3c8fa73f1",
    "n": 3,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Its Atomic mass (a.m.u) is:",
    "options": [
     "14",
@@ -4556,10 +4556,10 @@
    ]
   },
   {
-   "id": "1e6e1e3070",
+   "id": "a45c32ee8a",
    "n": 4,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The unkown element is:",
    "options": [
     "The Carbon",
@@ -4583,10 +4583,10 @@
    ]
   },
   {
-   "id": "8de2549f4f",
+   "id": "da14a1822a",
    "n": 5,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Among the following propositions, check the exact proposition (s) for the Zinc ⁶⁵₃₀Zn atom",
    "options": [
     "This atom is made up of 30 nucleons, 30 protons and 65 electrons",
@@ -4610,10 +4610,10 @@
    ]
   },
   {
-   "id": "5c8dfd43ee",
+   "id": "365c78e4b0",
    "n": 6,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The following atoms ³⁵Cl and ³⁷Cl",
    "options": [
     "Have the same atomic number",
@@ -4639,10 +4639,10 @@
    ]
   },
   {
-   "id": "c67d9a6b12",
+   "id": "38e59ed164",
    "n": 7,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The CIP rule is based on:",
    "options": [
     "Number of electrons",
@@ -4666,10 +4666,10 @@
    ]
   },
   {
-   "id": "b1c76d6083",
+   "id": "c69e8ad6f9",
    "n": 8,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Isomers have:",
    "options": [
     "The same electronic configuration",
@@ -4693,10 +4693,10 @@
    ]
   },
   {
-   "id": "0cd0caf900",
+   "id": "1c22acfefe",
    "n": 9,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The Geometric isomerism:",
    "options": [
     "Is Z and E configuration",
@@ -4720,10 +4720,10 @@
    ]
   },
   {
-   "id": "07536da912",
+   "id": "6dd0412a89",
    "n": 10,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The optical isomerism is about:",
    "options": [
     "Cis and trans configuration",
@@ -4747,10 +4747,10 @@
    ]
   },
   {
-   "id": "d494257d0a",
+   "id": "9494fc9db2",
    "n": 11,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "The Fischer Projection is:",
    "options": [
     "For Carbanion stereoisomers",
@@ -4774,10 +4774,10 @@
    ]
   },
   {
-   "id": "ed5c22ac4b",
+   "id": "0a42e0e01f",
    "n": 12,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Diastereoisomers are:",
    "options": [
     "Chiral molecules",
@@ -4802,10 +4802,10 @@
    ]
   },
   {
-   "id": "08df14f1ef",
+   "id": "fe4f187b0b",
    "n": 13,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Pick the correct statement, Favism i a diesease of:",
    "options": [
     "Bile acids metabolism",
@@ -4829,10 +4829,10 @@
    ]
   },
   {
-   "id": "094a64d03b",
+   "id": "05dbedefc0",
    "n": 14,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding Glycogenolysis, pick the correct statements:",
    "options": [
     "It's activated by insulin",
@@ -4857,10 +4857,10 @@
    ]
   },
   {
-   "id": "bf97cc64e3",
+   "id": "c623886127",
    "n": 15,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding carbohydrates pick the correct statements:",
    "options": [
     "Peptidoglycan is a monosaccharide",
@@ -4885,10 +4885,10 @@
    ]
   },
   {
-   "id": "b72880e321",
+   "id": "f594edf0cc",
    "n": 16,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding amino acids pick the correct statements:",
    "options": [
     "Histidine is an essential amino acid",
@@ -4913,10 +4913,10 @@
    ]
   },
   {
-   "id": "654bdb7d6c",
+   "id": "d93bb4a42e",
    "n": 17,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding gluconeogenesis pick the correct statements:",
    "options": [
     "It produces a high amount of ATP",
@@ -4941,10 +4941,10 @@
    ]
   },
   {
-   "id": "46032ed683",
+   "id": "67460b5e46",
    "n": 18,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding glycolysis pick the correct statements:",
    "options": [
     "It occurs in the cytoplasm and the nucleus",
@@ -4969,10 +4969,10 @@
    ]
   },
   {
-   "id": "b4ae0f5233",
+   "id": "c4e15c2e57",
    "n": 19,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding lipids pick the correct statements:",
    "options": [
     "Omega are saturated fatty acids",
@@ -4996,10 +4996,10 @@
    ]
   },
   {
-   "id": "d5b5eaff02",
+   "id": "1eb1284cd1",
    "n": 20,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding lipids metabolism pick the correct statements:",
    "options": [
     "Cholesterol is not biosynthetized by the body",
@@ -5024,10 +5024,10 @@
    ]
   },
   {
-   "id": "a6b885c6cc",
+   "id": "e6ce56ed99",
    "n": 21,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding lipoproteins pick the correct statements:",
    "options": [
     "Lipoproteins are amphiphilic",
@@ -5052,10 +5052,10 @@
    ]
   },
   {
-   "id": "4152e36f45",
+   "id": "3250456984",
    "n": 22,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Among these compounds pick the ketone bodies:",
    "options": [
     "Acetyl-CoA",
@@ -5080,10 +5080,10 @@
    ]
   },
   {
-   "id": "9ab9e4bcf5",
+   "id": "b1fc2eb108",
    "n": 23,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding pyruvate faite pick the correct statements:",
    "options": [
     "Pyruvate is the product of glycolysis",
@@ -5108,10 +5108,10 @@
    ]
   },
   {
-   "id": "c610bd63e0",
+   "id": "9fbb2b7ffa",
    "n": 24,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding proteins structure, pick the correct statements:",
    "options": [
     "Peptide bond is rigid",
@@ -5136,10 +5136,10 @@
    ]
   },
   {
-   "id": "27037d75ca",
+   "id": "b0d414f834",
    "n": 25,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-january-2026-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-mock-chemistry-and-biochemistry",
    "stem": "Regarding cofactors pick the correct statements:",
    "options": [
     "NADH is a mineral cofactor",
@@ -5164,10 +5164,10 @@
    ]
   },
   {
-   "id": "06df6d9e56",
+   "id": "3581bd5c49",
    "n": 1,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its mass number is:",
    "options": [
     "16",
@@ -5191,10 +5191,10 @@
    ]
   },
   {
-   "id": "2901db2209",
+   "id": "956a6870ef",
    "n": 2,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "We consider the real of the oxygen nucleus is 15.995 a.m.u. The mass defect value is approximatively:",
    "options": [
     "0,079 a.m.u",
@@ -5218,10 +5218,10 @@
    ]
   },
   {
-   "id": "388192eb2e",
+   "id": "3fa6f76534",
    "n": 3,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its Atomic mass (a.m.u) is:",
    "options": [
     "16",
@@ -5245,10 +5245,10 @@
    ]
   },
   {
-   "id": "b3099e0fca",
+   "id": "8f8812e309",
    "n": 4,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its number of protons is:",
    "options": [
     "5",
@@ -5272,10 +5272,10 @@
    ]
   },
   {
-   "id": "9e9d81509c",
+   "id": "fe96404732",
    "n": 5,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "We consider an unknown element AZX. It has 8 electrons and 8 neutrons. The unknown element is:",
    "options": [
     "The Bore",
@@ -5299,10 +5299,10 @@
    ]
   },
   {
-   "id": "1eae20dba2",
+   "id": "c21047851c",
    "n": 6,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The Oxygen mass of proton and neutron are respectively: mp=1.0078 a.m.u and mn = 1.0087 a.m.u. The theorical mass of the Oxygen is approximatively:",
    "options": [
     "15,779",
@@ -5326,10 +5326,10 @@
    ]
   },
   {
-   "id": "1641def9df",
+   "id": "525648e70f",
    "n": 7,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The optical isomerism is about:",
    "options": [
     "Z and E configuration",
@@ -5353,10 +5353,10 @@
    ]
   },
   {
-   "id": "89dfd0a32c",
+   "id": "23abf8d0c0",
    "n": 8,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The Geometric isomerism:",
    "options": [
     "Is R and S configuration",
@@ -5380,10 +5380,10 @@
    ]
   },
   {
-   "id": "dd134e4a2d",
+   "id": "b6a0f223ce",
    "n": 9,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Diastereoisomers are:",
    "options": [
     "Epimers",
@@ -5408,10 +5408,10 @@
    ]
   },
   {
-   "id": "a4b59907ae",
+   "id": "7bd3981854",
    "n": 10,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Isomers have:",
    "options": [
     "The same hybridization",
@@ -5435,10 +5435,10 @@
    ]
   },
   {
-   "id": "e8cddae1f7",
+   "id": "5b13bf5fae",
    "n": 11,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The CIP rule is based on:",
    "options": [
     "Number of electrons",
@@ -5462,10 +5462,10 @@
    ]
   },
   {
-   "id": "2d1f4f8b5f",
+   "id": "00ccacce63",
    "n": 12,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The Fischer Projection is:",
    "options": [
     "For Carbanion stereoisomers",
@@ -5489,10 +5489,10 @@
    ]
   },
   {
-   "id": "2ec25e4f5e",
+   "id": "ea57b3b2e4",
    "n": 13,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Which among the following amino acids is standard?",
    "options": [
     "Histidine",
@@ -5517,10 +5517,10 @@
    ]
   },
   {
-   "id": "df0a733a56",
+   "id": "147f00adf6",
    "n": 14,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "An enzyme:",
    "options": [
     "Is a catalyst",
@@ -5545,10 +5545,10 @@
    ]
   },
   {
-   "id": "f4e8486d1a",
+   "id": "20fdd1db16",
    "n": 15,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Glycogenolysis is:",
    "options": [
     "The breakdown of glycogen to glucose",
@@ -5573,10 +5573,10 @@
    ]
   },
   {
-   "id": "e7ce5c7efa",
+   "id": "8019cbc341",
    "n": 16,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Steroids hormones are:",
    "options": [
     "Cortisol",
@@ -5601,10 +5601,10 @@
    ]
   },
   {
-   "id": "27e7d28111",
+   "id": "921419f7a0",
    "n": 17,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Which among the following amino acids is composed by a sulfur atom:",
    "options": [
     "Methionine",
@@ -5629,10 +5629,10 @@
    ]
   },
   {
-   "id": "167adb640f",
+   "id": "ef92a6b993",
    "n": 18,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Regarding cholesterol, pick the correct statements:",
    "options": [
     "HMG-CoA kinase is the key enzyme of cholesterol biosynthesis",
@@ -5657,10 +5657,10 @@
    ]
   },
   {
-   "id": "18305bb103",
+   "id": "d3f51ec043",
    "n": 19,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Glucose-6-Phosphate dehydrogenase:",
    "options": [
     "Is the key enzyme of glycolysis",
@@ -5685,10 +5685,10 @@
    ]
   },
   {
-   "id": "1fd6f27fd5",
+   "id": "0b639c334d",
    "n": 20,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Regarding lactose pick the correct statements:",
    "options": [
     "Hydrolysis of lactose gives glucose and galactose",
@@ -5713,10 +5713,10 @@
    ]
   },
   {
-   "id": "85cac0d270",
+   "id": "ec94bb4aa5",
    "n": 21,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Regarding the gluconeogenesis pick the correct statements:",
    "options": [
     "It's the reverse of glycolysis",
@@ -5741,10 +5741,10 @@
    ]
   },
   {
-   "id": "11eb1252df",
+   "id": "cf865333a9",
    "n": 22,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "Among the following carbohydrates pick the monosaccharides:",
    "options": [
     "Glucose",
@@ -5769,10 +5769,10 @@
    ]
   },
   {
-   "id": "3def2825ef",
+   "id": "3994f72120",
    "n": 23,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-mock-december-2024-chemistry-and-biochemistry",
+   "source": "s1-chemistry-biochemistry-older-mock-chemistry-and-biochemistry",
    "stem": "The synthesis of Acetyl-CoA from pyruvate is catalyzed by:",
    "options": [
     "Catalase",
@@ -5796,10 +5796,10 @@
    ]
   },
   {
-   "id": "f03d4aedf4",
+   "id": "ba4c881ef0",
    "n": 1,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Molecule 1 (figure):",
    "options": [
     "is a meso form",
@@ -5830,10 +5830,10 @@
    ]
   },
   {
-   "id": "b6749014ef",
+   "id": "475cf54de4",
    "n": 2,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "What is the valence shell of 79Au?",
    "options": [
     "6s1 4f14",
@@ -5857,10 +5857,10 @@
    ]
   },
   {
-   "id": "b472744fba",
+   "id": "13748ffdda",
    "n": 3,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "What is the period of Au?",
    "options": [
     "Period 3",
@@ -5884,10 +5884,10 @@
    ]
   },
   {
-   "id": "a12dede3c7",
+   "id": "7e80e1fba7",
    "n": 4,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Which column (group) is Au (gold) in?",
    "options": [
     "column 11",
@@ -5911,10 +5911,10 @@
    ]
   },
   {
-   "id": "28be61b7c8",
+   "id": "58f6ff62eb",
    "n": 5,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "The number of stereoisomers of molecule 3 (figure) is:",
    "options": [
     "4",
@@ -5945,10 +5945,10 @@
    ]
   },
   {
-   "id": "b855d5c32b",
+   "id": "1830c2ee57",
    "n": 6,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Molecules 3 and 4 (figure):",
    "options": [
     "Have a plane of symmetry",
@@ -5979,10 +5979,10 @@
    ]
   },
   {
-   "id": "940431fcdf",
+   "id": "c42daa4a37",
    "n": 7,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "The name of molecule 2 (figure) according to the IUPAC rule is:",
    "options": [
     "(Trans)-1-hydroxy-4-methylcyclohexanol",
@@ -6013,10 +6013,10 @@
    ]
   },
   {
-   "id": "372f4561f5",
+   "id": "6c33b3fc2e",
    "n": 8,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Molecule 2 (figure):",
    "options": [
     "shows geometric isomerism (Cis)",
@@ -6048,10 +6048,10 @@
    ]
   },
   {
-   "id": "5048c64123",
+   "id": "a74a66ffa8",
    "n": 9,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "What is the block of Au?",
    "options": [
     "Block f",
@@ -6075,10 +6075,10 @@
    ]
   },
   {
-   "id": "c49b1cfa2e",
+   "id": "e9bff780bf",
    "n": 10,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "The valence electrons of 79Au are:",
    "options": [
     "1",
@@ -6102,10 +6102,10 @@
    ]
   },
   {
-   "id": "0694a5a5f7",
+   "id": "296d7d7e8d",
    "n": 11,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Complete oxidation of a 16-carbon fatty acid (palmitate) yields:",
    "options": [
     "7 cycles of beta-oxidation",
@@ -6130,10 +6130,10 @@
    ]
   },
   {
-   "id": "366f80712d",
+   "id": "3ec4ce9d5d",
    "n": 12,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Among the following propositions, which are true?",
    "options": [
     "Essential amino acids must be obtained from the diet",
@@ -6159,10 +6159,10 @@
    ]
   },
   {
-   "id": "cc8d148ccf",
+   "id": "c1d061b6bc",
    "n": 13,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Among the following enzymes, which catalyse irreversible steps of glycolysis?",
    "options": [
     "Pyruvate kinase",
@@ -6187,10 +6187,10 @@
    ]
   },
   {
-   "id": "733540e655",
+   "id": "c324626945",
    "n": 14,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Ketone bodies are used as an energy source by:",
    "options": [
     "The brain (during prolonged fasting)",
@@ -6215,10 +6215,10 @@
    ]
   },
   {
-   "id": "6c88f46827",
+   "id": "c6bb0fcc98",
    "n": 15,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Among the following propositions, which are true?",
    "options": [
     "The peptide bond is an amide bond",
@@ -6243,10 +6243,10 @@
    ]
   },
   {
-   "id": "42cf7452a8",
+   "id": "ae781542ad",
    "n": 16,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Concerning lipids, indicate the correct proposition(s):",
    "options": [
     "Prostaglandins are formed by the action of COX1 and COX2",
@@ -6271,10 +6271,10 @@
    ]
   },
   {
-   "id": "50c7026cf3",
+   "id": "f8ef873512",
    "n": 17,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "The main role of NADH,H+ and FADH2 is to:",
    "options": [
     "Activate the Krebs cycle enzymes in the mitochondrial matrix",
@@ -6298,10 +6298,10 @@
    ]
   },
   {
-   "id": "990bb5cc22",
+   "id": "52f7eb6276",
    "n": 18,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Among the following propositions, which are true?",
    "options": [
     "Ligases are the 5th class of enzymes",
@@ -6326,10 +6326,10 @@
    ]
   },
   {
-   "id": "2cfa41602b",
+   "id": "90df72c4da",
    "n": 19,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Concerning carbohydrates, indicate the correct proposition(s):",
    "options": [
     "Reduction of ribose forms sorbitol, which is used as a laxative",
@@ -6354,10 +6354,10 @@
    ]
   },
   {
-   "id": "3fd88158e9",
+   "id": "17bcf7df40",
    "n": 20,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "From one molecule of glucose, glycolysis directly produces:",
    "options": [
     "6 NADH + H+",
@@ -6382,10 +6382,10 @@
    ]
   },
   {
-   "id": "4519a0b977",
+   "id": "33b6a761c8",
    "n": 21,
    "topic": "chemistry-biochemistry",
-   "source": "s1-chemistry-biochemistry-french-track-mock-2025-2026-chemistry-and-biochemistry-translated",
+   "source": "s1-chemistry-biochemistry-french-track-mock-chemistry-and-biochemistry-translated",
    "stem": "Before beta-oxidation, fatty acids must be activated. This activation:",
    "options": [
     "Requires the consumption of 2 ATP molecules",
@@ -6410,7 +6410,7 @@
    ]
   },
   {
-   "id": "d7e0479e2c",
+   "id": "34d1ba6c2f",
    "n": 1,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-organic-chemistry-translated",
@@ -6445,7 +6445,7 @@
    ]
   },
   {
-   "id": "c67234200d",
+   "id": "26a8e68f7c",
    "n": 2,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-organic-chemistry-translated",
@@ -6475,7 +6475,7 @@
    ]
   },
   {
-   "id": "0c27a8a76c",
+   "id": "392084fdcc",
    "n": 3,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-organic-chemistry-translated",
@@ -6505,7 +6505,7 @@
    ]
   },
   {
-   "id": "713dd4e89c",
+   "id": "5dd9eeaf1b",
    "n": 4,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-organic-chemistry-translated",
@@ -6541,7 +6541,7 @@
    ]
   },
   {
-   "id": "a79388e257",
+   "id": "87fca719b6",
    "n": 1,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6569,7 +6569,7 @@
    ]
   },
   {
-   "id": "eeef4672e8",
+   "id": "ce353fed7d",
    "n": 2,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6597,7 +6597,7 @@
    ]
   },
   {
-   "id": "3d3db6982e",
+   "id": "5b86979f45",
    "n": 3,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6625,7 +6625,7 @@
    ]
   },
   {
-   "id": "42e57601b6",
+   "id": "befa00b2dc",
    "n": 4,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6661,7 +6661,7 @@
    ]
   },
   {
-   "id": "ae46477575",
+   "id": "c6725b38ff",
    "n": 5,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6696,7 +6696,7 @@
    ]
   },
   {
-   "id": "ca7e849576",
+   "id": "6bcb5461a0",
    "n": 6,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-exam-partial-chemistry",
@@ -6732,7 +6732,7 @@
    ]
   },
   {
-   "id": "02cfbdfb9c",
+   "id": "6c947e2e21",
    "n": 1,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6761,7 +6761,7 @@
    ]
   },
   {
-   "id": "0a03792216",
+   "id": "d47bb1f573",
    "n": 2,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6790,7 +6790,7 @@
    ]
   },
   {
-   "id": "16198baa0e",
+   "id": "7763dae391",
    "n": 3,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6818,7 +6818,7 @@
    ]
   },
   {
-   "id": "22856073de",
+   "id": "98ec6a549c",
    "n": 4,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6847,7 +6847,7 @@
    ]
   },
   {
-   "id": "628a665d2e",
+   "id": "950b212456",
    "n": 5,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6875,7 +6875,7 @@
    ]
   },
   {
-   "id": "b62638904b",
+   "id": "4531b12446",
    "n": 6,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6905,7 +6905,7 @@
    ]
   },
   {
-   "id": "3c5a6b885d",
+   "id": "447571f4cf",
    "n": 7,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6937,7 +6937,7 @@
    ]
   },
   {
-   "id": "562c45db23",
+   "id": "f9a8c74b3e",
    "n": 8,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6967,7 +6967,7 @@
    ]
   },
   {
-   "id": "25872ffb10",
+   "id": "68db5ea016",
    "n": 9,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -6997,7 +6997,7 @@
    ]
   },
   {
-   "id": "e1e9e7769d",
+   "id": "107e5fb4e3",
    "n": 10,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7026,7 +7026,7 @@
    ]
   },
   {
-   "id": "bde4638288",
+   "id": "743347fab3",
    "n": 11,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7056,7 +7056,7 @@
    ]
   },
   {
-   "id": "f7114faa57",
+   "id": "d29315239b",
    "n": 12,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7087,7 +7087,7 @@
    ]
   },
   {
-   "id": "7d1c7508de",
+   "id": "2e27946752",
    "n": 13,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7119,7 +7119,7 @@
    ]
   },
   {
-   "id": "06293a960b",
+   "id": "8cea679b32",
    "n": 14,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7147,7 +7147,7 @@
    ]
   },
   {
-   "id": "7d637be23c",
+   "id": "e9d49910be",
    "n": 15,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7177,7 +7177,7 @@
    ]
   },
   {
-   "id": "5c106ea8d5",
+   "id": "36ae06f4be",
    "n": 16,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7207,7 +7207,7 @@
    ]
   },
   {
-   "id": "31a9b1de97",
+   "id": "9e68ae4f52",
    "n": 17,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7239,7 +7239,7 @@
    ]
   },
   {
-   "id": "315b03f32d",
+   "id": "5e3f3ac5a7",
    "n": 18,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7270,7 +7270,7 @@
    ]
   },
   {
-   "id": "16882f88f3",
+   "id": "1bde3904a4",
    "n": 19,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7299,7 +7299,7 @@
    ]
   },
   {
-   "id": "5354e03e15",
+   "id": "9f92eaaf45",
    "n": 20,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7331,7 +7331,7 @@
    ]
   },
   {
-   "id": "333ed34050",
+   "id": "f029f0d8e3",
    "n": 21,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7359,7 +7359,7 @@
    ]
   },
   {
-   "id": "31ce1c87fc",
+   "id": "f8670a9757",
    "n": 22,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7390,7 +7390,7 @@
    ]
   },
   {
-   "id": "a2e5a43143",
+   "id": "d25e62cafa",
    "n": 23,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7420,7 +7420,7 @@
    ]
   },
   {
-   "id": "52a3d65e83",
+   "id": "ebc3b4648b",
    "n": 24,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7449,7 +7449,7 @@
    ]
   },
   {
-   "id": "b2c52abe4d",
+   "id": "05d251e1bb",
    "n": 25,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-french-track-exam-structural-biochemistry-translated",
@@ -7478,7 +7478,7 @@
    ]
   },
   {
-   "id": "c6cb843909",
+   "id": "5bf421d39b",
    "n": 1,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7505,7 +7505,7 @@
    ]
   },
   {
-   "id": "d48fb1c41f",
+   "id": "c0ee292489",
    "n": 2,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7533,7 +7533,7 @@
    ]
   },
   {
-   "id": "5717762cd1",
+   "id": "17217bd9fd",
    "n": 3,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7561,7 +7561,7 @@
    ]
   },
   {
-   "id": "3de14e7a9a",
+   "id": "ebf9b86551",
    "n": 4,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7590,7 +7590,7 @@
    ]
   },
   {
-   "id": "857d11efc9",
+   "id": "b274e5824f",
    "n": 5,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7621,7 +7621,7 @@
    ]
   },
   {
-   "id": "6c3f747d9d",
+   "id": "d3ebb19a72",
    "n": 6,
    "topic": "chemistry-biochemistry",
    "source": "s1-chemistry-biochemistry-collected-structural-biochemistry-mcqs",
@@ -7649,10 +7649,10 @@
    ]
   },
   {
-   "id": "570cc12707",
+   "id": "a11617f9a0",
    "n": 1,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The cell culture steps are:",
    "options": [
     "Fixation.",
@@ -7677,10 +7677,10 @@
    ]
   },
   {
-   "id": "a29bcb4c7c",
+   "id": "887deb633f",
    "n": 2,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The MRD pump:",
    "options": [
     "Concerns ions.",
@@ -7705,10 +7705,10 @@
    ]
   },
   {
-   "id": "5977052813",
+   "id": "533dc7410e",
    "n": 3,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Mitochondrial genome:",
    "options": [
     "Encodes for Krebs cycle enzymes.",
@@ -7732,10 +7732,10 @@
    ]
   },
   {
-   "id": "c27ca5b03d",
+   "id": "337a9a37ee",
    "n": 4,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "In medicine, the biopsy inclusion for the light microscope:",
    "options": [
     "Involves Bouin liquid.",
@@ -7760,10 +7760,10 @@
    ]
   },
   {
-   "id": "2653f073d8",
+   "id": "5f84cee6d1",
    "n": 5,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The protein synthesis and translocation to RER involves:",
    "options": [
     "SRP receptor.",
@@ -7788,10 +7788,10 @@
    ]
   },
   {
-   "id": "9a3bd336c3",
+   "id": "0596e093f6",
    "n": 6,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Actin microfilaments ensure:",
    "options": [
     "Axon supporting.",
@@ -7816,10 +7816,10 @@
    ]
   },
   {
-   "id": "21b4c85029",
+   "id": "3d97e45805",
    "n": 7,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Cyclins/CDK controlling S phase are:",
    "options": [
     "Cyclin A/CDK4.",
@@ -7843,10 +7843,10 @@
    ]
   },
   {
-   "id": "4c968ff365",
+   "id": "887a63a82d",
    "n": 8,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The endoplasmic system components are:",
    "options": [
     "Golgi apparatus.",
@@ -7871,10 +7871,10 @@
    ]
   },
   {
-   "id": "aa12cb1b49",
+   "id": "5f855b0a2a",
    "n": 9,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The early endosome:",
    "options": [
     "Produces molecules.",
@@ -7898,10 +7898,10 @@
    ]
   },
   {
-   "id": "9404769abd",
+   "id": "04a18cbd40",
    "n": 10,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The permeability:",
    "options": [
     "Concerns macromolecules.",
@@ -7926,10 +7926,10 @@
    ]
   },
   {
-   "id": "0e6de359cc",
+   "id": "2219a71cd1",
    "n": 11,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Molecules that inhibit cell cycle are:",
    "options": [
     "pRB.",
@@ -7956,10 +7956,10 @@
    ]
   },
   {
-   "id": "3c79434688",
+   "id": "70a6de4d8c",
    "n": 12,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The TEM components are a:",
    "options": [
     "Special objective.",
@@ -7984,10 +7984,10 @@
    ]
   },
   {
-   "id": "46bd5b8e48",
+   "id": "d0932c5409",
    "n": 13,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Microtubules associated proteins are:",
    "options": [
     "Arp.",
@@ -8012,10 +8012,10 @@
    ]
   },
   {
-   "id": "7f73562513",
+   "id": "fc1c7d2967",
    "n": 14,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "IN Gene Expression &amp; Regulation; Which enzyme is primarily responsible for synthesizing RNA from a DNA template?",
    "options": [
     "Ligase.",
@@ -8039,10 +8039,10 @@
    ]
   },
   {
-   "id": "f4fb8b66fb",
+   "id": "320f30cb25",
    "n": 15,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "RNA polymerase III transcribes:",
    "options": [
     "mRNA.",
@@ -8067,10 +8067,10 @@
    ]
   },
   {
-   "id": "7b8dba0e85",
+   "id": "241c00d3ff",
    "n": 16,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Which concept explains why individuals with the same mutation may show different symptoms?",
    "options": [
     "Pleiotropy.",
@@ -8094,10 +8094,10 @@
    ]
   },
   {
-   "id": "cc97113f1e",
+   "id": "6a9fa06a29",
    "n": 17,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "What is a gene mutation?",
    "options": [
     "A temporary change in the DNA sequence.",
@@ -8121,10 +8121,10 @@
    ]
   },
   {
-   "id": "7512014dfc",
+   "id": "2de5f0e8c9",
    "n": 18,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Which type of mutation is commonly associated to leukemia caused by mutagenic physical or chemical agents?",
    "options": [
     "Germline mutation",
@@ -8149,10 +8149,10 @@
    ]
   },
   {
-   "id": "e0943e90b7",
+   "id": "f6bd8fa0fb",
    "n": 19,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "DNA polymerase δ:",
    "options": [
     "Has no proofreading activity",
@@ -8177,10 +8177,10 @@
    ]
   },
   {
-   "id": "74bc403ac5",
+   "id": "7372364ca3",
    "n": 20,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Klinefelter syndrome (47,XXY) is an example of:",
    "options": [
     "Autosomal aneuploidy.",
@@ -8204,10 +8204,10 @@
    ]
   },
   {
-   "id": "8b49e6cdc9",
+   "id": "40e989fe98",
    "n": 21,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "Down syndrome can result from a Robertsonian translocation. These translocations typically involve which type of chromosomes?",
    "options": [
     "Metacentric chromosomes.",
@@ -8231,10 +8231,10 @@
    ]
   },
   {
-   "id": "373b85fd99",
+   "id": "6d9df0d415",
    "n": 22,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "In the case of the TP53 gene, alternative splicing allows:",
    "options": [
     "Production of a single protein only.",
@@ -8258,10 +8258,10 @@
    ]
   },
   {
-   "id": "a8a2b22807",
+   "id": "eafbcd0649",
    "n": 23,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The central dogma of molecular biology states that genetic information flows from:",
    "options": [
     "RNA → DNA → Protein.",
@@ -8285,10 +8285,10 @@
    ]
   },
   {
-   "id": "6c039a85e0",
+   "id": "8f26cc54e9",
    "n": 24,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "The coding strand of DNA is:",
    "options": [
     "Identical in sequence to mRNA (except T replaced by U).",
@@ -8313,10 +8313,10 @@
    ]
   },
   {
-   "id": "6e716b7745",
+   "id": "d26b224294",
    "n": 25,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-mock-january-2026-biology-and-genetics",
+   "source": "s1-biology-genetics-mock-biology-and-genetics",
    "stem": "In Duchenne Muscular Dystrophy, which type of mutation typically causes a frameshift in the dystrophin gene?",
    "options": [
     "Duplication of an entire gene.",
@@ -8340,10 +8340,10 @@
    ]
   },
   {
-   "id": "d2e6ca2a70",
+   "id": "1abd7d1ee9",
    "n": 1,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The fluorescent microscope components are :",
    "options": [
     "laser beam",
@@ -8369,10 +8369,10 @@
    ]
   },
   {
-   "id": "559a0001ae",
+   "id": "1569f12a1e",
    "n": 2,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The steps of histological technique for the transmission electron microscope involves :",
    "options": [
     "ultramicrotome",
@@ -8397,10 +8397,10 @@
    ]
   },
   {
-   "id": "bb262b80d0",
+   "id": "18565c4cb6",
    "n": 3,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Biopsy fixation for histological technique needs :",
    "options": [
     "osmic acid",
@@ -8427,10 +8427,10 @@
    ]
   },
   {
-   "id": "af578de07a",
+   "id": "01bd77b01e",
    "n": 4,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Cell culture involes :",
    "options": [
     "no nutrient medium",
@@ -8457,10 +8457,10 @@
    ]
   },
   {
-   "id": "09a2928b9e",
+   "id": "007f02b3b0",
    "n": 5,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Simple diffusion through plasma membrane :",
    "options": [
     "concerns gas like O2 and CO2",
@@ -8486,10 +8486,10 @@
    ]
   },
   {
-   "id": "8ffbeb41b0",
+   "id": "20aa2ba026",
    "n": 6,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Multi-drug resistant pumps (MDR) :",
    "options": [
     "are very specific",
@@ -8515,10 +8515,10 @@
    ]
   },
   {
-   "id": "8feb65fb36",
+   "id": "f60956bf2e",
    "n": 7,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "During endocytosis mechanism, you could observe :",
    "options": [
     "substance adsorption above clathrins",
@@ -8546,10 +8546,10 @@
    ]
   },
   {
-   "id": "5e4b67cb6d",
+   "id": "ad0de2b4bb",
    "n": 8,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Adenylyl cyclase is an integral membrane protein that contains:",
    "options": [
     "12 transmembrane segments",
@@ -8576,10 +8576,10 @@
    ]
   },
   {
-   "id": "8ddfcc4c62",
+   "id": "4785df88cf",
    "n": 9,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Inositol Triphosphate (IP3) Pathway involves :",
    "options": [
     "G protein coupled receptor",
@@ -8606,10 +8606,10 @@
    ]
   },
   {
-   "id": "a2c06468ae",
+   "id": "d43b017124",
    "n": 10,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "MAPKinase signaling pathway involves :",
    "options": [
     "thyrosine Kinase receptor (TKR)",
@@ -8637,10 +8637,10 @@
    ]
   },
   {
-   "id": "0da0f4bf15",
+   "id": "14a7cb1ee4",
    "n": 11,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "During the microtubule formation:",
    "options": [
     "alpha tubulin combines with beta tubulin",
@@ -8667,10 +8667,10 @@
    ]
   },
   {
-   "id": "309ea47248",
+   "id": "a3403d87c6",
    "n": 12,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Concerning associated proteins to microtubules :",
    "options": [
     "gamma TURC ensures microtubules nucleation",
@@ -8697,10 +8697,10 @@
    ]
   },
   {
-   "id": "1c1b5f9598",
+   "id": "f932f1d9c9",
    "n": 13,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Microtubules are present in :",
    "options": [
     "centrosomes and centrioles",
@@ -8726,10 +8726,10 @@
    ]
   },
   {
-   "id": "2d8798adc0",
+   "id": "9235d20ca0",
    "n": 14,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The microtubules ensure :",
    "options": [
     "intracellular transport of organelles",
@@ -8756,10 +8756,10 @@
    ]
   },
   {
-   "id": "4e8ab33e73",
+   "id": "f7286576da",
    "n": 15,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "Actin associated proteins are :",
    "options": [
     "troponin and myosin",
@@ -8785,10 +8785,10 @@
    ]
   },
   {
-   "id": "9ceaa55033",
+   "id": "50f8b83fb7",
    "n": 16,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "About intermediate filaments:",
    "options": [
     "keratins are found in epithelial cells",
@@ -8816,10 +8816,10 @@
    ]
   },
   {
-   "id": "2151c2032f",
+   "id": "e5f52bdb07",
    "n": 17,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The addressing proteins to the peroxisome membrane involves :",
    "options": [
     "PTS1 signal",
@@ -8846,10 +8846,10 @@
    ]
   },
   {
-   "id": "f05d18c515",
+   "id": "671aa209e3",
    "n": 18,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The cell epuration in the peroxisome :",
    "options": [
     "eliminates H2O2",
@@ -8876,10 +8876,10 @@
    ]
   },
   {
-   "id": "6f0c5ae77d",
+   "id": "7819510538",
    "n": 19,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The protein glycozylation in the cell :",
    "options": [
     "involves endoplasmic reticulum",
@@ -8907,10 +8907,10 @@
    ]
   },
   {
-   "id": "4bf3ad61de",
+   "id": "4c7145cc40",
    "n": 20,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "In the nucleus:",
    "options": [
     "nuclear envelope is supported by lamina",
@@ -8938,10 +8938,10 @@
    ]
   },
   {
-   "id": "8dcf778b30",
+   "id": "b33c9f564a",
    "n": 21,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The RNAm splicing occurs at the:",
    "options": [
     "lamines ABC",
@@ -8967,10 +8967,10 @@
    ]
   },
   {
-   "id": "4cff26791d",
+   "id": "89fc8bb2dc",
    "n": 22,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The body Cajal ensure the :",
    "options": [
     "DNA splicing",
@@ -8995,10 +8995,10 @@
    ]
   },
   {
-   "id": "6fb441d1a2",
+   "id": "72881d7a95",
    "n": 23,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The pore complex shows :",
    "options": [
     "basket shape",
@@ -9026,10 +9026,10 @@
    ]
   },
   {
-   "id": "c56b316cb9",
+   "id": "be4da5d4b2",
    "n": 24,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The death ligands inducing apoptosis are :",
    "options": [
     "free radicals",
@@ -9056,10 +9056,10 @@
    ]
   },
   {
-   "id": "d9b3538b68",
+   "id": "0c405e9705",
    "n": 25,
    "topic": "biology-genetics",
-   "source": "s1-biology-genetics-second-session-january-2023-cellular-biology",
+   "source": "s1-biology-genetics-second-session-cellular-biology",
    "stem": "The apoptosis external pathway involves :",
    "options": [
     "mitochondria",
@@ -9085,10 +9085,10 @@
    ]
   },
   {
-   "id": "6eb700d552",
+   "id": "9386bafb70",
    "n": 1,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "In Morocco, which governance structure does not belong to the private sector in Morocco?",
    "options": [
     "Non profit healthcare networks",
@@ -9112,10 +9112,10 @@
    ]
   },
   {
-   "id": "0f8230fc25",
+   "id": "096f4a9914",
    "n": 2,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "A health system is best described as:",
    "options": [
     "A dynamic and complex system",
@@ -9139,10 +9139,10 @@
    ]
   },
   {
-   "id": "d938b72910",
+   "id": "0552220f42",
    "n": 3,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "A health system is defined as:",
    "options": [
     "A collection of doctors, nurses, and medicines",
@@ -9166,10 +9166,10 @@
    ]
   },
   {
-   "id": "30f05101b5",
+   "id": "723982fa33",
    "n": 4,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "What is the difference between public health and traditional clinical medicine?",
    "options": [
     "Clinical medicine treats diseases, while public health aims to prevent and control diseases at the population level.",
@@ -9193,10 +9193,10 @@
    ]
   },
   {
-   "id": "a96bbf20af",
+   "id": "d7f8cbd203",
    "n": 5,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "In a Hospital, interprofessional collaboration is hindered by:",
    "options": [
     "Limited decision spaces of nurses",
@@ -9221,10 +9221,10 @@
    ]
   },
   {
-   "id": "f3a33f7692",
+   "id": "07ef121693",
    "n": 6,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "The structural determinants of social inequalities in health refer to:",
    "options": [
     "Biological factors",
@@ -9249,10 +9249,10 @@
    ]
   },
   {
-   "id": "53e36d9e73",
+   "id": "bc0f52a3d6",
    "n": 7,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "Equity in health systems means:",
    "options": [
     "Same services for all",
@@ -9276,10 +9276,10 @@
    ]
   },
   {
-   "id": "c37d235c05",
+   "id": "51366b950d",
    "n": 8,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "Among the following determinants, which are modifiable to combat cardiovascular diseases?",
    "options": [
     "Genetics",
@@ -9304,10 +9304,10 @@
    ]
   },
   {
-   "id": "114984b5d8",
+   "id": "c066e8a728",
    "n": 9,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "A health center recently detected an unusual increase in diarrhea cases in an urban area. An investigation is launched to identify possible causes, and necessary measures are taken to contain the epidemic. Which essential public health function is this?",
    "options": [
     "Epidemiological surveillance",
@@ -9331,10 +9331,10 @@
    ]
   },
   {
-   "id": "0d8df34a7e",
+   "id": "1aff9658bc",
    "n": 10,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "What is the main goal of primary prevention?",
    "options": [
     "Prevent the development of diseases.",
@@ -9358,10 +9358,10 @@
    ]
   },
   {
-   "id": "3fcbd27589",
+   "id": "44173b7341",
    "n": 11,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "What is the first step in a public health approach?",
    "options": [
     "Identifying the causes of the health problem",
@@ -9385,10 +9385,10 @@
    ]
   },
   {
-   "id": "96f2808adc",
+   "id": "538be15e0e",
    "n": 12,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "Which is not a WHO health system building block?",
    "options": [
     "Health workforce",
@@ -9412,11 +9412,11 @@
    ]
   },
   {
-   "id": "e1e0fce336",
+   "id": "a3c30461eb",
    "n": 13,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
-   "stem": "The figure shows the causes of death in Burkina Faso (GBD 2023, both sexes, all ages). Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths?",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
+   "stem": "The figure shows the causes of death in Burkina Faso (Global Burden of Disease, both sexes, all ages). Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths?",
    "options": [
     "Malaria, HIV and meningitis are real public health problems in BurkinaFaso",
     "High burden of communicable diseases in Morocco",
@@ -9446,10 +9446,10 @@
    ]
   },
   {
-   "id": "6dd73d05d4",
+   "id": "fcb7a9366d",
    "n": 14,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "A major health system performance challenge in Morocco is:",
    "options": [
     "Excess funding above 10% of GDP",
@@ -9473,10 +9473,10 @@
    ]
   },
   {
-   "id": "509177de6c",
+   "id": "37019747e6",
    "n": 15,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "Among the following determinants, which are behavioral determinants of health?",
    "options": [
     "Diet",
@@ -9501,10 +9501,10 @@
    ]
   },
   {
-   "id": "97d37d8e9b",
+   "id": "6566d6949e",
    "n": 16,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "The lower histogram (density versus exam grades) allows you to:",
    "options": [
     "Directly measure the median value",
@@ -9536,10 +9536,10 @@
    ]
   },
   {
-   "id": "b8c440ac13",
+   "id": "6764de5f26",
    "n": 17,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "A histogram is used to represent:",
    "options": [
     "A crosstab",
@@ -9563,10 +9563,10 @@
    ]
   },
   {
-   "id": "8b44e5fc57",
+   "id": "6b42d09b1b",
    "n": 18,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "The Pearson correlation coefficient measures:",
    "options": [
     "Linear relation between two continuous variables",
@@ -9591,10 +9591,10 @@
    ]
   },
   {
-   "id": "a0d6cd7a7e",
+   "id": "4852021937",
    "n": 19,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "The independent sample t-test is valid when:",
    "options": [
     "There are less than 10 observations per group",
@@ -9619,10 +9619,10 @@
    ]
   },
   {
-   "id": "8b913a7aa8",
+   "id": "29a8b51063",
    "n": 20,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "If the p-value is less than 0.05, we:",
    "options": [
     "Accepts H0",
@@ -9647,10 +9647,10 @@
    ]
   },
   {
-   "id": "4110ae7c55",
+   "id": "65ef866757",
    "n": 21,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "From this graph (histogram of BMI, from 18 to 30 kg/m², with its quartiles and interquartile range), we can conclude that:",
    "options": [
     "Interquartile range is zero, showing no dispersion",
@@ -9681,10 +9681,10 @@
    ]
   },
   {
-   "id": "6236eca269",
+   "id": "49ecdb68a9",
    "n": 22,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-mock-december-2025-public-health-and-biostatistics",
+   "source": "s1-biostatistics-public-health-mock-public-health-and-biostatistics",
    "stem": "The Student's test applies when:",
    "options": [
     "There are more than two groups",
@@ -9709,10 +9709,10 @@
    ]
   },
   {
-   "id": "31d0b1d703",
+   "id": "21ca2514b7",
    "n": 1,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "To compare the exam grades of two groups (female and male students), the appropriate test would be:",
    "options": [
     "Mann-Whitney test if normality is rejected",
@@ -9737,10 +9737,10 @@
    ]
   },
   {
-   "id": "c5ccfecdcc",
+   "id": "0cfe26751d",
    "n": 2,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "In a box plot of weight (kg), the points located outside the whiskers represent:",
    "options": [
     "Missing values in the data.",
@@ -9765,10 +9765,10 @@
    ]
   },
   {
-   "id": "11451df1dd",
+   "id": "d9fde4be94",
    "n": 3,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "A patient's blood glucose level, measured in g/L, is an example of what type of random variable?",
    "options": [
     "Discrete quantitative",
@@ -9792,10 +9792,10 @@
    ]
   },
   {
-   "id": "5a6181746b",
+   "id": "86eb53e002",
    "n": 4,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "The standard deviation is a measure of dispersion that is the square root of the variance. What is its main advantage over the variance?",
    "options": [
     "It is always a whole number.",
@@ -9819,10 +9819,10 @@
    ]
   },
   {
-   "id": "a1c586a97f",
+   "id": "3b548e2c72",
    "n": 5,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "The histogram (density of exam grades, with a theoretical curve drawn over it) allows you to:",
    "options": [
     "Identify qualitative classes",
@@ -9854,10 +9854,10 @@
    ]
   },
   {
-   "id": "34855fa799",
+   "id": "f4b113486a",
    "n": 6,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "From this graph (histogram of BMI with its quartiles and interquartile range), we can conclude that:",
    "options": [
     "There is no strong visible asymmetry between the quartiles",
@@ -9888,10 +9888,10 @@
    ]
   },
   {
-   "id": "e5eef8b526",
+   "id": "9338b9342f",
    "n": 7,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "In a box plot, the 'box' itself represents an important measure of dispersion. Which one?",
    "options": [
     "The total range of the data",
@@ -9915,10 +9915,10 @@
    ]
   },
   {
-   "id": "2ab46723f9",
+   "id": "0c41e654a5",
    "n": 8,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Pearson's correlation test (between height and weight) assumes that:",
    "options": [
     "The distributions are strongly asymmetric",
@@ -9943,10 +9943,10 @@
    ]
   },
   {
-   "id": "1f75f3b0b6",
+   "id": "f9fdf86c63",
    "n": 9,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Among the following determinants, which are modifiable to fight cardiovascular diseases?",
    "options": [
     "Smoking",
@@ -9971,10 +9971,10 @@
    ]
   },
   {
-   "id": "8692031615",
+   "id": "3aad22fb43",
    "n": 10,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "What is the main objective of medical reasoning?",
    "options": [
     "Prevent diseases in the general population.",
@@ -9998,10 +9998,10 @@
    ]
   },
   {
-   "id": "46ea094e1d",
+   "id": "f3ae7e6cd0",
    "n": 11,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "As part of the generalisation of AMO (compulsory health insurance) in Morocco, what are the expected benefits for equity in health?",
    "options": [
     "Reduction of inequalities in access to medical care.",
@@ -10026,10 +10026,10 @@
    ]
   },
   {
-   "id": "d3eafe6b29",
+   "id": "efb1dfd3f0",
    "n": 12,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "What is the main objective of primary prevention?",
    "options": [
     "Facilitate rehabilitation after a disease has occurred.",
@@ -10053,10 +10053,10 @@
    ]
   },
   {
-   "id": "eded760519",
+   "id": "a5f53836ba",
    "n": 13,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Among the following laws, which one institutionalises the practice of medicine in Morocco",
    "options": [
     "07.22",
@@ -10080,10 +10080,10 @@
    ]
   },
   {
-   "id": "d10183b4cd",
+   "id": "997d169a89",
    "n": 14,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "What does the difference in neonatal mortality between rural and urban settings in Morocco mean",
    "options": [
     "Lack of governance at the rural level",
@@ -10107,10 +10107,10 @@
    ]
   },
   {
-   "id": "abe2567782",
+   "id": "33ef5e53ce",
    "n": 15,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Law 08-22 institutionalises in Morocco:",
    "options": [
     "The High Authority for Health",
@@ -10134,10 +10134,10 @@
    ]
   },
   {
-   "id": "5165956334",
+   "id": "f46e9dcc10",
    "n": 16,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "What is the first step of a public health approach?",
    "options": [
     "Identifying the health problem",
@@ -10161,10 +10161,10 @@
    ]
   },
   {
-   "id": "33b71a0e6d",
+   "id": "7eeb09fa81",
    "n": 17,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Morocco suffers from an acute shortage of doctors since the doctor/inhabitant ratio is:",
    "options": [
     "1.8 per 1000",
@@ -10188,10 +10188,10 @@
    ]
   },
   {
-   "id": "ea1288d671",
+   "id": "221ac7aac1",
    "n": 18,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "In a multidisciplinary clinic in Maarif, the monthly revenue is 240,000 MAD and the total expenses are 86,000 MAD. What is the net result of this clinic?",
    "options": [
     "154,000 MAD",
@@ -10215,10 +10215,10 @@
    ]
   },
   {
-   "id": "2585d6fb64",
+   "id": "6149f2e796",
    "n": 19,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "The territorial health grouping (groupement sanitaire de territoire) means",
    "options": [
     "A network of military and non-profit hospitals in the territory",
@@ -10242,10 +10242,10 @@
    ]
   },
   {
-   "id": "48f4566de0",
+   "id": "cc3166b0ae",
    "n": 20,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "What is the fundamental difference between public health and traditional clinical medicine?",
    "options": [
     "Clinical medicine does not rely on scientific evidence, unlike public health.",
@@ -10269,10 +10269,10 @@
    ]
   },
   {
-   "id": "1af2eac5a6",
+   "id": "7a17cfea6d",
    "n": 21,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "A health centre recently detected an unusual increase in diarrhoea cases in an urban area. An investigation is launched to identify the possible causes, and appropriate measures are taken to contain the epidemic. Which essential public health function does this situation illustrate?",
    "options": [
     "Quality assurance of health services",
@@ -10296,10 +10296,10 @@
    ]
   },
   {
-   "id": "4bc303c32a",
+   "id": "43b7591007",
    "n": 22,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Among the following determinants, which are biological in nature?",
    "options": [
     "Age",
@@ -10324,10 +10324,10 @@
    ]
   },
   {
-   "id": "ce84b98a49",
+   "id": "4599aa6485",
    "n": 23,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Among the following interventions, which fall under tertiary prevention?",
    "options": [
     "Vaccination",
@@ -10352,10 +10352,10 @@
    ]
   },
   {
-   "id": "e00a69a328",
+   "id": "a9356563d0",
    "n": 24,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "The structural determinants of social inequalities in health mainly refer to:",
    "options": [
     "Biological factors",
@@ -10380,10 +10380,10 @@
    ]
   },
   {
-   "id": "76984378ac",
+   "id": "2bde7d7453",
    "n": 25,
    "topic": "biostatistics-public-health",
-   "source": "s1-biostatistics-public-health-french-track-mock-2025-2026-public-health-and-biostatistics-translated",
+   "source": "s1-biostatistics-public-health-french-track-mock-public-health-and-biostatistics-translated",
    "stem": "Among the following determinants, which are behavioural determinants of health?",
    "options": [
     "Diet",
@@ -10408,10 +10408,10 @@
    ]
   },
   {
-   "id": "0f149a588a",
+   "id": "687e3306ff",
    "n": 1,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "What can be stated about the attenuation of the X-ray beam as it passes through the patient:",
    "options": [
     "The half-value layer (HVL) is expressed in m⁻¹",
@@ -10436,10 +10436,10 @@
    ]
   },
   {
-   "id": "2dcc34258b",
+   "id": "70c14c9cb1",
    "n": 2,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Technetium-99m (Tc-99m):",
    "options": [
     "Has a physical half-life of several days",
@@ -10464,10 +10464,10 @@
    ]
   },
   {
-   "id": "517b2bcb72",
+   "id": "63d4452d30",
    "n": 3,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Main roles of the middle ear:",
    "options": [
     "Producing perilymph and endolymph",
@@ -10492,10 +10492,10 @@
    ]
   },
   {
-   "id": "23876e2ae1",
+   "id": "275b14299d",
    "n": 4,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Among the different isotopes of Iodine, some have particular importance in medicine:",
    "options": [
     "Iodine-127 (¹²⁷I) is used for scintigraphy imaging",
@@ -10520,10 +10520,10 @@
    ]
   },
   {
-   "id": "26115ba311",
+   "id": "e92297693b",
    "n": 5,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Beta-plus emission (β⁺):",
    "options": [
     "Has no energy condition",
@@ -10548,10 +10548,10 @@
    ]
   },
   {
-   "id": "8026da1651",
+   "id": "cd1ff19c77",
    "n": 6,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "The photoelectric effect:",
    "options": [
     "Occurs between a photon and an electron",
@@ -10575,10 +10575,10 @@
    ]
   },
   {
-   "id": "e934be759c",
+   "id": "6211c042e5",
    "n": 7,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding cellular radiosensitivity:",
    "options": [
     "Hematopoietic stem cells are more radiosensitive than muscle cells",
@@ -10603,10 +10603,10 @@
    ]
   },
   {
-   "id": "1a1bd5b063",
+   "id": "94eb38a285",
    "n": 8,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "In Radiobiology:",
    "options": [
     "Cellular effects may result in cell death or mutation",
@@ -10632,10 +10632,10 @@
    ]
   },
   {
-   "id": "0a39bdd4b8",
+   "id": "ecfe53d2be",
    "n": 9,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding radiation dose limits:",
    "options": [
     "Radiation doses in medical exposure are not subject to regulatory dose limits for patients",
@@ -10660,10 +10660,10 @@
    ]
   },
   {
-   "id": "ef4b2f2370",
+   "id": "d69d740ec1",
    "n": 10,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "In conductive hearing loss:",
    "options": [
     "The main lesion is in hair cells or auditory nerve",
@@ -10688,10 +10688,10 @@
    ]
   },
   {
-   "id": "228561b673",
+   "id": "9c448e5199",
    "n": 11,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "What is ocular accommodation?",
    "options": [
     "The ability of the eye to reduce its optical power",
@@ -10715,10 +10715,10 @@
    ]
   },
   {
-   "id": "0a73d0a749",
+   "id": "8df3f3aac2",
    "n": 12,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "The power of a spherical diopter is proportional to:",
    "options": [
     "The thickness of the diopter",
@@ -10743,10 +10743,10 @@
    ]
   },
   {
-   "id": "a636fd1dd3",
+   "id": "12cf85c243",
    "n": 13,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Alpha particles:",
    "options": [
     "Have straight-line trajectories",
@@ -10771,10 +10771,10 @@
    ]
   },
   {
-   "id": "2d51839d8c",
+   "id": "25e8c22242",
    "n": 14,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "The osmosis phenomenon:",
    "options": [
     "Is independent of the chemical potential gradient of the solvent",
@@ -10799,10 +10799,10 @@
    ]
   },
   {
-   "id": "479ed2487c",
+   "id": "e33d34c5bb",
    "n": 15,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "During anemia:",
    "options": [
     "Turbulent blood flow may occur, causing an anemic murmur",
@@ -10827,10 +10827,10 @@
    ]
   },
   {
-   "id": "27648b30ca",
+   "id": "37c4ad04cc",
    "n": 16,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding physical quantities and their units according to the International System (SI):",
    "options": [
     "Force is expressed in Joule (J)",
@@ -10855,10 +10855,10 @@
    ]
   },
   {
-   "id": "e6de7c93db",
+   "id": "4200c40f15",
    "n": 17,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "According to the equation of state for perfect gases:",
    "options": [
     "P.n = V.R.T",
@@ -10882,10 +10882,10 @@
    ]
   },
   {
-   "id": "d8ed995e4d",
+   "id": "89b5cba92d",
    "n": 18,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding blood pressure:",
    "options": [
     "The diastolic pressure should be greater than 90 mmHg",
@@ -10909,10 +10909,10 @@
    ]
   },
   {
-   "id": "9a2c9cd0c1",
+   "id": "3ea06ac758",
    "n": 19,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Protein electrophoresis:",
    "options": [
     "Describes the migration of charged particles under the effect of an electric field",
@@ -10937,10 +10937,10 @@
    ]
   },
   {
-   "id": "b783ec9b82",
+   "id": "3aeed65545",
    "n": 20,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "For a real fluid, the flow regime:",
    "options": [
     "Depends on the viscosity",
@@ -10965,10 +10965,10 @@
    ]
   },
   {
-   "id": "a1a8db0f45",
+   "id": "1913fb2f72",
    "n": 21,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding biological membranes:",
    "options": [
     "A dialysis membrane is permeable to only one type of ion or molecule",
@@ -10993,10 +10993,10 @@
    ]
   },
   {
-   "id": "315a07c7a4",
+   "id": "d854708f4e",
    "n": 22,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "Regarding the transport of oxygen (O2) in the blood:",
    "options": [
     "Each hemoglobin molecule binds four O2 molecules",
@@ -11021,10 +11021,10 @@
    ]
   },
   {
-   "id": "e8e41ef9e1",
+   "id": "5a971e9226",
    "n": 23,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "A patient has an arterial blood pH of 7.62, a plasma of 24 mmol/L, and a PCO2 of 23 mmHg. This is therefore:",
    "options": [
     "A pure metabolic alkalosis",
@@ -11048,10 +11048,10 @@
    ]
   },
   {
-   "id": "343ef6e6ba",
+   "id": "78ad346b8b",
    "n": 24,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "In localized vascular dilation:",
    "options": [
     "Pressure decreases",
@@ -11076,10 +11076,10 @@
    ]
   },
   {
-   "id": "48d063ed26",
+   "id": "f099c45833",
    "n": 25,
    "topic": "biophysics",
-   "source": "s1-biophysics-mock-december-2025-biophysics",
+   "source": "s1-biophysics-mock-biophysics",
    "stem": "The absolute uncertainty:",
    "options": [
     "Is only evaluated by direct measurements",
@@ -11103,10 +11103,10 @@
    ]
   },
   {
-   "id": "6b53d41efe",
+   "id": "aa63805308",
    "n": 1,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Regarding measurement uncertainties :",
    "options": [
     "An error is, by definition, the deviation between the measurement taken and the exact value.",
@@ -11132,10 +11132,10 @@
    ]
   },
   {
-   "id": "0d22619636",
+   "id": "ecdbada151",
    "n": 2,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "An error is considered systematic :",
    "options": [
     "When it contributes to always overestimating (or always underestimating) the measured value.",
@@ -11161,10 +11161,10 @@
    ]
   },
   {
-   "id": "cef7b5c70d",
+   "id": "dc9c8dae39",
    "n": 3,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "An error is considered random :",
    "options": [
     "When it is reproducible.",
@@ -11189,10 +11189,10 @@
    ]
   },
   {
-   "id": "ab862957bc",
+   "id": "1f9e714b56",
    "n": 4,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Boiling is a phenomenon:",
    "options": [
     "Progressive, where the liquid changes to a vapor state without the formation of gas bubbles.",
@@ -11218,10 +11218,10 @@
    ]
   },
   {
-   "id": "0db7070a2a",
+   "id": "bddd9827aa",
    "n": 5,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The mass concentration of a chemical component :",
    "options": [
     "Is the ratio of its quantity (n) to the volume (V) of the solution.",
@@ -11246,10 +11246,10 @@
    ]
   },
   {
-   "id": "50d73270e0",
+   "id": "88f84aa138",
    "n": 6,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The molal concentration of a chemical component :",
    "options": [
     "Is the ratio of its mass (m) to the volume (V) of the solution.",
@@ -11274,10 +11274,10 @@
    ]
   },
   {
-   "id": "a4f5448d32",
+   "id": "f8ab37ac7d",
    "n": 7,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Absolute uncertainty :",
    "options": [
     "Is the absolute value of the minimum possible deviation between the measurement and the exact value.",
@@ -11301,10 +11301,10 @@
    ]
   },
   {
-   "id": "12c521ad23",
+   "id": "49de726c39",
    "n": 8,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "About the physical states of matter:",
    "options": [
     "In the solid state, matter is dense with a high density.",
@@ -11329,10 +11329,10 @@
    ]
   },
   {
-   "id": "fd16303498",
+   "id": "0d0cd9a737",
    "n": 9,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Water evaporation from the body:",
    "options": [
     "Allows heat to escape by cooling the body.",
@@ -11358,10 +11358,10 @@
    ]
   },
   {
-   "id": "789a87e6dd",
+   "id": "d18054ed87",
    "n": 10,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "In the BTPS conditions :",
    "options": [
     "The temperature is 273 K.",
@@ -11386,10 +11386,10 @@
    ]
   },
   {
-   "id": "706f37fd7a",
+   "id": "8d253184c5",
    "n": 11,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "In the STPD conditions:",
    "options": [
     "The temperature is 273 K.",
@@ -11415,10 +11415,10 @@
    ]
   },
   {
-   "id": "ed840fa6ad",
+   "id": "e9905629ef",
    "n": 12,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "According to Boyle-Mariotte's law, for a constant amount of gas n and a constant temperature T :",
    "options": [
     "The volume V of the gas increases as the pressure P increases.",
@@ -11443,10 +11443,10 @@
    ]
   },
   {
-   "id": "eaf3ab2def",
+   "id": "7e8fad225c",
    "n": 13,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The osmolality of a solution:",
    "options": [
     "Corresponds to the sum of the molar concentrations of the different solutes in this solution.",
@@ -11472,10 +11472,10 @@
    ]
   },
   {
-   "id": "774e15253d",
+   "id": "a9d699938d",
    "n": 14,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Regarding the measurement of the volume of a liquid compartment based on the dilution principle, a good tracer:",
    "options": [
     "Spreads evenly throughout the compartment.",
@@ -11500,10 +11500,10 @@
    ]
   },
   {
-   "id": "5a8cbd1f01",
+   "id": "235b8d1010",
    "n": 15,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "According to the equation of state for perfect gases :",
    "options": [
     "P.T = n.R.V",
@@ -11527,10 +11527,10 @@
    ]
   },
   {
-   "id": "d5f07498e8",
+   "id": "5bfb338bf9",
    "n": 16,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "During scuba diving:",
    "options": [
     "The pressure increases by 1 atm every 10 meters.",
@@ -11555,10 +11555,10 @@
    ]
   },
   {
-   "id": "0b05f4a5d2",
+   "id": "183fe4ff5a",
    "n": 17,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Regarding physical quantities and their units according to the International System (SI) :",
    "options": [
     "The intensity of an electric current is expressed in Ampere (A).",
@@ -11584,10 +11584,10 @@
    ]
   },
   {
-   "id": "209f6a151d",
+   "id": "d937a387f7",
    "n": 18,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The dimension of the acceleration of a force corresponds to :",
    "options": [
     "M.L².T⁻²",
@@ -11611,10 +11611,10 @@
    ]
   },
   {
-   "id": "464652d131",
+   "id": "02ef2d2dae",
    "n": 19,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The dimension of force corresponds to :",
    "options": [
     "M.L².T⁻²",
@@ -11638,10 +11638,10 @@
    ]
   },
   {
-   "id": "14b23389e1",
+   "id": "a3cb24611a",
    "n": 20,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "A fluid is said to be non-Newtonian:",
    "options": [
     "When its viscosity η is modified by its flow velocity.",
@@ -11666,10 +11666,10 @@
    ]
   },
   {
-   "id": "84008b5c9c",
+   "id": "fa923c379c",
    "n": 21,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Blood viscosity increases when:",
    "options": [
     "Plasma viscosity increases.",
@@ -11694,10 +11694,10 @@
    ]
   },
   {
-   "id": "680fb153b2",
+   "id": "9d4b59031f",
    "n": 22,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "During anemia:",
    "options": [
     "Hematocrit increases.",
@@ -11722,10 +11722,10 @@
    ]
   },
   {
-   "id": "2c0248460a",
+   "id": "e3bacc109f",
    "n": 23,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "According to Bernouilli's theorem, for a fluid of negligible viscosity in an dilation of a horizontal pipe :",
    "options": [
     "The pressure P increases.",
@@ -11750,10 +11750,10 @@
    ]
   },
   {
-   "id": "de4f76149f",
+   "id": "e3829a443a",
    "n": 24,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "According to Poiseuille's experimental law; for a viscous liquid flowing in a horizontal pipe with a radius r , the pressure difference ΔP between two points A and B of the pipe :",
    "options": [
     "Is proportional to the length \"l\" of the pipe separating A and B.",
@@ -11779,10 +11779,10 @@
    ]
   },
   {
-   "id": "7fef234575",
+   "id": "03477ceb63",
    "n": 25,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "For real fluids:",
    "options": [
     "The flow mode is laminar when the Reynolds number is less than 2000.",
@@ -11808,10 +11808,10 @@
    ]
   },
   {
-   "id": "a43a375a20",
+   "id": "f4681628ae",
    "n": 26,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "In vascular dilation:",
    "options": [
     "Pressure decreases.",
@@ -11836,10 +11836,10 @@
    ]
   },
   {
-   "id": "fd62af6428",
+   "id": "44b8f7ef87",
    "n": 27,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "Regarding real fluids:",
    "options": [
     "The flow regime depends on the velocity \"v\".",
@@ -11865,10 +11865,10 @@
    ]
   },
   {
-   "id": "9a0354821e",
+   "id": "6a57289f3f",
    "n": 28,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "At the level of vascular narrowing:",
    "options": [
     "Blood flow velocity increases.",
@@ -11894,10 +11894,10 @@
    ]
   },
   {
-   "id": "c458e63efd",
+   "id": "c7a02ac9f9",
    "n": 29,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "The viscosity coefficient of a macromolecular solution depends on:",
    "options": [
     "The viscosity of the solvent.",
@@ -11923,10 +11923,10 @@
    ]
   },
   {
-   "id": "6cc62ac0b0",
+   "id": "a4fdde76fb",
    "n": 30,
    "topic": "biophysics",
-   "source": "s1-biophysics-class-review-2025-2026-biophysics",
+   "source": "s1-biophysics-class-review-biophysics",
    "stem": "For a real fluid, the flow mode:",
    "options": [
     "Depends on the fluid's flow velocity.",
@@ -11952,10 +11952,10 @@
    ]
   },
   {
-   "id": "45f2567540",
+   "id": "4de81a167c",
    "n": 1,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "A cyanosis is:",
    "options": [
     "A bluish discoloration of the skin",
@@ -11979,10 +11979,10 @@
    ]
   },
   {
-   "id": "f5295c180f",
+   "id": "839534d1c0",
    "n": 2,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Cardiomegaly is:",
    "options": [
     "A death of myocardial cells due to severe ischemia",
@@ -12006,10 +12006,10 @@
    ]
   },
   {
-   "id": "a881f7aa40",
+   "id": "17071dd713",
    "n": 3,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s):",
    "options": [
     "Troponin is a test to measure the level of two proteins that are released into the blood when myocardial cells die",
@@ -12034,10 +12034,10 @@
    ]
   },
   {
-   "id": "6d126656f4",
+   "id": "a204a84b38",
    "n": 4,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "In the word « pancreatitis »:",
    "options": [
     "\"itis\" is a prefix",
@@ -12061,10 +12061,10 @@
    ]
   },
   {
-   "id": "4ae21d286c",
+   "id": "0957adc3eb",
    "n": 5,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Tachypnea means:",
    "options": [
     "A process of recording during sleep",
@@ -12088,10 +12088,10 @@
    ]
   },
   {
-   "id": "f12574c4bd",
+   "id": "f7a94679e9",
    "n": 6,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Rectoplasty means:",
    "options": [
     "A process of recording the rectum",
@@ -12115,10 +12115,10 @@
    ]
   },
   {
-   "id": "75e173fb54",
+   "id": "7104524152",
    "n": 7,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "In the term polysomnography, the word root means:",
    "options": [
     "Disease",
@@ -12142,10 +12142,10 @@
    ]
   },
   {
-   "id": "c4295d2558",
+   "id": "0aa68e325f",
    "n": 8,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s) concerning the word \"electrocardiogram\":",
    "options": [
     "It means the record of electrical activity of the heart",
@@ -12170,10 +12170,10 @@
    ]
   },
   {
-   "id": "3864ee95f6",
+   "id": "6e9b96fa3b",
    "n": 9,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s) about the abbreviations:",
    "options": [
     "SBE is for a severe bacterial infection of the heart",
@@ -12197,10 +12197,10 @@
    ]
   },
   {
-   "id": "886a6547d5",
+   "id": "d48d0a1c49",
    "n": 10,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s) regarding the word \"endocardium\":",
    "options": [
     "It means the inner layer of the heart",
@@ -12225,10 +12225,10 @@
    ]
   },
   {
-   "id": "133dc6763f",
+   "id": "0c726a56fb",
    "n": 11,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s) concerning the combining form, it:",
    "options": [
     "Usually indicates the involved body part",
@@ -12253,10 +12253,10 @@
    ]
   },
   {
-   "id": "25a846f8e7",
+   "id": "5a909bd010",
    "n": 12,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Check the correct answer(s) concerning the word \"pericardium\":",
    "options": [
     "\"um\" is a suffix meaning structure",
@@ -12281,10 +12281,10 @@
    ]
   },
   {
-   "id": "01e5eb4d69",
+   "id": "291a09bac3",
    "n": 13,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "All of the following enhance memory efficiency BUT one:",
    "options": [
     "Negative emotions",
@@ -12308,10 +12308,10 @@
    ]
   },
   {
-   "id": "be957a3554",
+   "id": "758629855b",
    "n": 14,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "The memory related to general information about the world is referred to as",
    "options": [
     "Working memory",
@@ -12335,10 +12335,10 @@
    ]
   },
   {
-   "id": "83d860a057",
+   "id": "62a92d9cf9",
    "n": 15,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Which memory technique uses familiar places to \"store\" information mentally?",
    "options": [
     "Method of loci (memory palace)",
@@ -12362,10 +12362,10 @@
    ]
   },
   {
-   "id": "270c9b596e",
+   "id": "3ea061c6d8",
    "n": 16,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Which study strategy is more effective than re-reading for long-term learning?",
    "options": [
     "Highlighting repeatedly",
@@ -12389,10 +12389,10 @@
    ]
   },
   {
-   "id": "42a12cd9af",
+   "id": "a5cdf83891",
    "n": 17,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Which note-taking method is best for comparing information side-by-side (e.g., drug classes or differential diagnoses)?",
    "options": [
     "Method of loci",
@@ -12416,10 +12416,10 @@
    ]
   },
   {
-   "id": "96db6fcd09",
+   "id": "cc6b3834ff",
    "n": 18,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "In the Pomodoro technique, what is the standard focus interval before a short break?",
    "options": [
     "45 minutes",
@@ -12443,10 +12443,10 @@
    ]
   },
   {
-   "id": "66d93f141d",
+   "id": "ffe71fe8b2",
    "n": 19,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "Choose the one correct fact about the perception gap:",
    "options": [
     "It gets narrower when one's perception is closer to reality",
@@ -12470,10 +12470,10 @@
    ]
   },
   {
-   "id": "1c9084cd44",
+   "id": "4ddd12d725",
    "n": 20,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "\"Hyperpyrexia\" is defined as body temperature above :",
    "options": [
     "40.1°C",
@@ -12497,10 +12497,10 @@
    ]
   },
   {
-   "id": "5760a7f142",
+   "id": "8e673b5add",
    "n": 21,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "\"Vital signs\" should be checked in the first part of physical examination, and include:",
    "options": [
     "Weight",
@@ -12524,10 +12524,10 @@
    ]
   },
   {
-   "id": "1787bab762",
+   "id": "8b2d2c343b",
    "n": 22,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "What is the hormone of Satiety:",
    "options": [
     "Ghrelin",
@@ -12551,10 +12551,10 @@
    ]
   },
   {
-   "id": "be87658ec9",
+   "id": "3c1cddb8ad",
    "n": 23,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "We need to pursue further exploration of Fever if:",
    "options": [
     "Signs for critical illness",
@@ -12579,10 +12579,10 @@
    ]
   },
   {
-   "id": "0aec2fc9eb",
+   "id": "6fb1dea550",
    "n": 24,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "The index of Muscle mass",
    "options": [
     "Is calculated using the height and body weight",
@@ -12606,10 +12606,10 @@
    ]
   },
   {
-   "id": "80811d013b",
+   "id": "15fa988511",
    "n": 25,
    "topic": "learning-methods-terminology",
-   "source": "s1-learning-methods-terminology-mock-january-2026-learning-methods-and-terminology",
+   "source": "s1-learning-methods-terminology-mock-learning-methods-and-terminology",
    "stem": "When taking history, the doctor has to elicit three main elements from the patient's narration. Those are known as \"ICE\", and the \"I\" refers t :",
    "options": [
     "Instincts",
