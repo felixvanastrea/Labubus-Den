@@ -79,9 +79,9 @@ for s in S:
         if sid in ANS:   # answered from the lecture Abi sent (answers.json), never from the docs' own marks
             e['answer'] = ['ABCDE'.index(c) for c in ANS[sid]['key']]
             e['key'] = 'claude'
-            e['qNotes'] = [{'by': 'claude', 'anchor': None, 'html': '<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>'
+            e['qNotes'] = [{'by': 'claude', 'anchor': None, 'html': '<p>Answered from the lecture slides.</p>'
                             if ANS[sid].get('by') == 'lecture' else
-                            '<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>'}]
+                            '<p>Claude’s answer.</p>'}]
         questions.append(e)
 assert len({q['id'] for q in questions}) == len(questions), 'id clash'
 assert all(v in lec_by_mod[Q['topic']] for k, v in moves.items() for Q in questions if Q['id'] == short[k])

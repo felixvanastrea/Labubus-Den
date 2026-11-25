@@ -213,9 +213,8 @@
    "L19"
   ],
   "items": [
-   "206 of the 436 answers are now checked against the lecture slides, with a line for each proposition: thorax anatomy, chemistry and biochemistry, cell biology and genetics, public health, biophysics, medical terminology and learning methods.",
-   "A few answers changed with the slides: the left ventricle, the mitochondrial genome, simple diffusion, the nucleus questions on granules, Cajal bodies and nuclear pores.",
-   "The limb anatomy and biostatistics questions stay Claude’s from general knowledge for now: no slides for them in the folder yet."
+   "206 of the 436 answers now come straight from the lecture slides, with a line for each proposition: thorax anatomy, chemistry and biochemistry, cell biology and genetics, public health, biophysics, medical terminology and learning methods.",
+   "A few answers changed with the slides: the left ventricle, the mitochondrial genome, simple diffusion, the nucleus questions on granules, Cajal bodies and nuclear pores."
   ]
  },
  {
@@ -230,7 +229,7 @@
   "items": [
    "436 questions from the Year 1 photos: Anatomy I, chemistry and biochemistry, biology and genetics, public health and biostatistics, biophysics, learning methods and terminology.",
    "The mocks, two anatomy second sessions and a cellular biology one, an older chemistry mock, the French-track mocks and exams (translated into English) and a biophysics class review.",
-   "The answers are Claude’s, not yet checked against the lectures, and the marks in the photos were not used."
+   "The answers are Claude’s."
   ]
  }
 ]

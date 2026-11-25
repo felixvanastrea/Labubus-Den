@@ -414,6 +414,10 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (no deck), figure and nomenclature questions, the French-track structural biochemistry exam, clinical basics, and a few the
   slides don't settle (G33, G42, G43, Y8, Y29, Y54, C60, P1, P35). The aorta and veins decks (parts 6–7, the same file twice)
   are scans: OCR'd here. The About line counts the slide-checked answers (their note says "from the lecture slides").
+- Notes on S1 and S3 answers (Abi, 25 November 2026: "don't mention that answers were not checked"): a knowledge answer's
+  note is just "Claude’s answer.", a slide one "Answered … from the lecture slides (…)."; nothing about unchecked answers or
+  the photos' marks on the site, the About line ("The answers are Claude’s, N of them straight from the lecture slides.")
+  or the update log.
 - EFM2 S3 (25 November 2026, `efm2-s3/`, data in `src/sem/efm2-s3/`, store `den-efm2-s3-v1`, sync `s_efm2s3`): 7 modules and
   79 lectures from Abi's "EFM Quick-Link sheet" (every year's lectures per semester; Abi: S3 first, then S1). Modules:
   Anatomy III (`AT-`), Physiology II (`PH-`, parts neuromuscular / bioenergetics / renal as her sheet has them, renal

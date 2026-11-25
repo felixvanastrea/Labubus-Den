@@ -126,7 +126,7 @@ for k in ORDER:
         sid = f'{p}{nxt[p]}'
         short[sid] = qid
         key = ANS[(k, q['ord'])]
-        note = 'Claude’s answer, not yet checked against the lecture slides; the marks in the photos were not used.'
+        note = 'Claude’s answer.'
         by = {'key': key, 'by': 'knowledge', 'set': k, 'n': q['ord']}
         if sid in SL:
             key, lec_, why = SL[sid]
@@ -135,7 +135,7 @@ for k in ORDER:
             assert [i for i, w in enumerate(why) if w.startswith('Yes')] == ['ABCDE'.index(c) for c in key], sid
             if key != by['key']:
                 CHANGED.append((sid, by['key'], key))
-            note = 'Answered by Claude from the lecture slides (' + SLEC[lec_] + '); the marks in the photos were not used.'
+            note = 'Answered by Claude from the lecture slides (' + SLEC[lec_] + ').'
             by = {'key': key, 'by': 'lecture', 'lecture': lec_, 'set': k, 'n': q['ord']}
             EXP['questions'][sid] = dict({'lecture': lec_}, **{'ABCDE'[i]: w for i, w in enumerate(why)})
         e['answer'] = ['ABCDE'.index(c) for c in key]
