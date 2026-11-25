@@ -199,13 +199,13 @@
    },
    {
     "id": "PH-11",
-    "name": "Carbohydrate metabolism",
+    "name": "Regulation of energy metabolism",
     "take": [
      "P.carb"
     ],
     "lectures": [
      {
-      "t": "Carbohydrate metabolism"
+      "t": "Regulation of energy metabolism (carbohydrates)"
      }
     ],
     "p": "Bioenergetics"
@@ -1058,6 +1058,8 @@
  "q": {
   "A287": "AT-01",
   "P34": "PH-06",
+  "P65": "PH-11",
+  "P67": "PH-11",
   "P73": "PH-06",
   "S27": "SM-02",
   "S34": "SM-14",

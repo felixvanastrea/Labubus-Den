@@ -16,3 +16,5 @@ O.update({
 ('Practice test 3 · Neuroanatomy (Pr Fliyou)',34):'AT-01',
 })
 O.update({('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 14): 'PH-06'})   # cross-bridge cycling: muscle, not ATP
+O.update({('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 6): 'PH-11',   # cellular respiration is in lecture 2
+          ('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 8): 'PH-11'})

@@ -68,5 +68,260 @@
   "key": "ACDE",
   "by": "lecture",
   "lecture": "ren-4"
+ },
+ "P13": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P20": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "taste"
+ },
+ "P21": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "taste"
+ },
+ "P25": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P26": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P27": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P28": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P29": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P30": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P31": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P32": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P33": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P34": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P35": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P37": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P38": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P39": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P40": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P41": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P42": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P43": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P44": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P45": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P50": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "myotatic"
+ },
+ "P51": {
+  "key": "BC",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P52": {
+  "key": "AB",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P53": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "neuro-2"
+ },
+ "P54": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P55": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "tactile"
+ },
+ "P56": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P57": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "neuro-3"
+ },
+ "P58": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "tactile"
+ },
+ "P59": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "stress"
+ },
+ "P69": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P70": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P71": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P72": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P73": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P74": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P75": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P76": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "muscle-2"
+ },
+ "P77": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "muscle-1"
+ },
+ "P60": {
+  "key": "AC",
+  "by": "lecture",
+  "lecture": "bio-1"
+ },
+ "P61": {
+  "key": "AD",
+  "by": "lecture",
+  "lecture": "bio-1"
+ },
+ "P62": {
+  "key": "AD",
+  "by": "lecture",
+  "lecture": "bio-3"
+ },
+ "P63": {
+  "key": "ACD",
+  "by": "lecture",
+  "lecture": "bio-2"
+ },
+ "P64": {
+  "key": "BC",
+  "by": "lecture",
+  "lecture": "bio-3"
+ },
+ "P65": {
+  "key": "AC",
+  "by": "lecture",
+  "lecture": "bio-2"
+ },
+ "P66": {
+  "key": "ABC",
+  "by": "lecture",
+  "lecture": "bio-1"
+ },
+ "P67": {
+  "key": "BCD",
+  "by": "lecture",
+  "lecture": "bio-2"
+ },
+ "P68": {
+  "key": "ABC",
+  "by": "lecture",
+  "lecture": "bio-2"
  }
 }

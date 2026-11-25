@@ -9581,11 +9581,20 @@
     "GP depolarization occurs as voltage independent and AP as voltage regulated.",
     "AP has positive feed-back cycle and GP is not."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9722,11 +9731,20 @@
     "IV and V",
     "I, III and V"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.chem",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9742,12 +9760,21 @@
     "Gated sodium ion channel",
     "Calcium ion"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.chem",
     "P.atp",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9824,11 +9851,20 @@
     "Role of myosin kinase in muscle contraction",
     "Striated arrangement of the actin and myosin filaments"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9844,11 +9880,20 @@
     "Increase in the number of motor neurons",
     "Increase in the number of muscle fibers"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9864,13 +9909,22 @@
     "An increase in adenosine triphosphate (ATP) level",
     "A decrease in ATP level"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.atp",
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9886,13 +9940,22 @@
     "Uptake of Ca2+ into the motor end plate; action potential in the motor end plate; action potential in the muscle.",
     "Release of Ach; action potential in the muscle end plate; action potential in the muscle"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.nmj",
     "P.muscle",
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9908,11 +9971,20 @@
     "Binding of Ca2+ to troponin C",
     "Binding of actin and myosin"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9928,11 +10000,20 @@
     "Oxidative capacity",
     "Speed of contraction"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9948,10 +10029,19 @@
     "It binds to troponin, moving tropomyosin, so that actin heads can bind to myosin.",
     "It binds to actin, moving myosin, so that troponin can bind to tropomyosin."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9967,12 +10057,21 @@
     "The source of energy used during contraction",
     "The nature of the contractile protein"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.nutri",
     "P.chem"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9988,10 +10087,19 @@
     "Depolarization",
     "Falling phase"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10007,11 +10115,20 @@
     "Poorly perfused muscle fibers are recruited before richly perfused muscle fibers",
     "Anaerobic fibers are recruited before aerobic fibers"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.atp",
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10027,11 +10144,20 @@
     "It produces more tension when the muscle contracts isotonically than isometrically",
     "It decreases in magnitude with repeated stimulation"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10069,10 +10195,19 @@
     "H- zone",
     "Distance between T-tubules"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10087,11 +10222,20 @@
     "Increases conduction velocity by reducing axial resistance",
     "Increases conduction velocity by decreasing membrane capacitance"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10106,11 +10250,20 @@
     "Integrating incoming signals to determine whether an action potential is generated",
     "Maintaining the resting membrane potential"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10125,10 +10278,19 @@
     "Chloride",
     "Potassium"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10143,10 +10305,19 @@
     "NMDA receptors",
     "GABA-B receptors"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10161,12 +10332,21 @@
     "Generating action potentials for muscle depolarization",
     "Storing calcium ions and releasing them during muscle contraction"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.atp",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10181,11 +10361,20 @@
     "Slow-twitch fibers fatigue quickly, while fast-twitch fibers are fatigue-resistant",
     "Slow-twitch fibers are larger in diameter compared to fast-twitch fibers"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.atp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10200,13 +10389,22 @@
     "Breakdown of ATP into ADP and inorganic phosphate",
     "Depolarization of the sarcoplasmic reticulum membrane"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle",
     "P.atp",
     "P.nmj",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10221,10 +10419,19 @@
     "Tropomyosin",
     "Troponin"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10358,12 +10565,21 @@
     "Cutaneous fibers meeting at same spinal nerve level",
     "Each set of spinal nerves also innervate a certain set of muscles"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.sensory",
     "P.muscle",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10378,11 +10594,21 @@
     "Neurotransmitter release",
     "Graded potential"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.ap",
     "P.nerves"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10397,10 +10623,20 @@
     "MP becomes more negative",
     "MP Hyperpolarizes"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10415,10 +10651,19 @@
     "AP amplitude varies due to decreased NE",
     "AP amplitude changes due to less Na+ channels"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10432,10 +10677,19 @@
     "Always open",
     "Results in hyperpolarization"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10450,10 +10704,19 @@
     "Decreased response w/ stimulation",
     "Response to varying or important stimuli intensity"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.sensory"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10468,10 +10731,19 @@
     "Decreased diffusion in post-synapse",
     "Increased NT release"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10486,10 +10758,19 @@
     "AP",
     "Above Treshold potential value"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10504,10 +10785,19 @@
     "Thalamus → receptor → medulla",
     "Medulla → receptor → Thalamus"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.sensory"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10522,13 +10812,22 @@
     "Relaxes bladder",
     "Inhibits digestive fcts"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.stress",
     "P.nerves",
     "P.kidney",
     "P.special"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10543,11 +10842,21 @@
     "Proteins",
     "Vitamins"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.nutri",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10562,11 +10871,21 @@
     "Carbs",
     "Vitamins"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.nutri",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10581,10 +10900,20 @@
     "Cholesterol",
     "Glycerol"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.lipid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10599,10 +10928,21 @@
     "Maltose",
     "Sucrose"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10617,12 +10957,22 @@
     "In well nourished healthy individuals fat meets 80-90% of resting energy needs",
     "Total body fat in males 25% while in females it’s 15%"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.lipid",
     "P.carb",
     "P.nutri"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10637,11 +10987,21 @@
     "Electron transport chain (oxidation)",
     "Pyruvate formation"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.atp",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10656,12 +11016,23 @@
     "Carbs are the main source of energy",
     "Proteins are the main source of energy"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.nutri",
     "P.carb",
     "P.chem"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10676,11 +11047,22 @@
     "Krebs cycle",
     "O2 is the final acceptor of e-"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.atp",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10694,12 +11076,23 @@
     "Major source of energy",
     "Cellular structural components"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.carb",
     "P.nutri",
     "P.chem"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10714,10 +11107,19 @@
     "Fasciculus, muscle bundle, myofibril",
     "Fasciculus, muscle fiber, myofibril"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10732,12 +11134,21 @@
     "Stimulates cellular contraction by opening voltage-gated ion channels",
     "Binds to the T-tubules, causing calcium release"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.nmj",
     "P.muscle",
     "P.ap"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10752,10 +11163,19 @@
     "To prevent myosin from continuing to slide up the actin filament",
     "To aid in myosin ‘cocking’ on the actin filament"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10770,10 +11190,19 @@
     "Z disc &amp; I band",
     "M lines &amp; A band"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10788,11 +11217,20 @@
     "Reversible binding to actin filament",
     "Irreversible binding to actin filament"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.atp",
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10807,10 +11245,19 @@
     "Fast to fatigue, red color",
     "Slow to fatigue, white color"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10825,10 +11272,19 @@
     "Wave summation",
     "Treppe"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10843,10 +11299,19 @@
     "Tauri Disease",
     "Myasthenia Gravis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.nmj"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10861,10 +11326,19 @@
     "Ca+ actively transported out of SR",
     "Ca+ diffusion out of SR"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "P.muscle"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {

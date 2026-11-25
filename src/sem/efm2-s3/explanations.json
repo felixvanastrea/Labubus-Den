@@ -19,6 +19,50 @@
     "ren-5": {
       "title": "Renal physiology 5: Tubular reabsorption",
       "added": "2026-11-25"
+    },
+    "neuro-2": {
+      "title": "Neurons and electrical communication (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "neuro-3": {
+      "title": "Synapses and chemical communication (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "tactile": {
+      "title": "Tactile and position senses (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "taste": {
+      "title": "Taste and olfaction (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "stress": {
+      "title": "Physiology of stress (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "myotatic": {
+      "title": "The myotatic reflexes",
+      "added": "2026-11-25"
+    },
+    "muscle-1": {
+      "title": "Muscle physiology, part I (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "muscle-2": {
+      "title": "Muscle physiology, part II (Pr Covasa)",
+      "added": "2026-11-25"
+    },
+    "bio-1": {
+      "title": "Bioenergetics 1: Introduction (Pr Dinh-Xuan)",
+      "added": "2026-11-25"
+    },
+    "bio-2": {
+      "title": "Bioenergetics 2: Regulation of energy metabolism (Pr Dinh-Xuan)",
+      "added": "2026-11-25"
+    },
+    "bio-3": {
+      "title": "Bioenergetics 3: Lipids metabolism (Pr Dinh-Xuan)",
+      "added": "2026-11-25"
     }
   },
   "questions": {
@@ -129,6 +173,374 @@
       "C": "Yes: angiotensin II is a potent vasoconstrictor raising blood pressure.",
       "D": "Yes: aldosterone raises Na+ and water reabsorption, so volume and pressure rise.",
       "E": "Yes: ADH raises water reabsorption and constricts vessels."
+    },
+    "P13": {
+      "lecture": "neuro-2",
+      "A": "True, so not the answer: the AP starts at the axon hillock, graded potentials on dendrites and the soma.",
+      "B": "True, so not the answer: graded potentials vary and fade with distance; the AP is all-or-none and does not decay.",
+      "C": "Not true, so this is the answer: it is the other way round, graded potentials are short-distance and the AP long-distance.",
+      "D": "True, so not the answer: graded potentials come from ligand-gated channels, the AP from voltage-gated ones.",
+      "E": "True, so not the answer: Na+ entry opens more Na+ channels in the AP (positive feedback); graded potentials have no such loop."
+    },
+    "P20": {
+      "lecture": "taste",
+      "A": "Sour goes through an H+ channel, not a G protein.",
+      "B": "Sour is an H+ channel and umami a G protein receptor.",
+      "C": "Yes: sweet and bitter use G protein receptors, salty an Na+ channel.",
+      "D": "Incomplete: sweet (G protein) is also right.",
+      "E": "Umami uses a G protein receptor, not an ion channel."
+    },
+    "P21": {
+      "lecture": "taste",
+      "A": "Not involved, so this is the answer: the odorant opens cAMP-gated channels that let in Na+ and Ca2+, and Cl- leaves; K+ plays no part.",
+      "B": "Involved: adenylyl cyclase makes cAMP from ATP.",
+      "C": "Involved: cAMP opens the cyclic nucleotide-gated channel.",
+      "D": "Involved: the cAMP-gated channel lets Na+ in.",
+      "E": "Involved: Ca2+ enters and opens Ca2+-activated Cl- channels."
+    },
+    "P25": {
+      "lecture": "muscle-2",
+      "A": "Smooth muscle can contract without an AP (hormones, stretch); cardiac muscle cannot.",
+      "B": "Yes: both need a rise in Ca2+ to contract.",
+      "C": "Only cardiac (and skeletal) muscle has T tubules; smooth muscle lacks them.",
+      "D": "Myosin light chain kinase drives contraction only in smooth muscle.",
+      "E": "Cardiac muscle is striated; smooth muscle is not."
+    },
+    "P26": {
+      "lecture": "muscle-2",
+      "A": "Sarcomeres of neighbouring myofibrils do not fuse.",
+      "B": "Yes: strength training makes each fibre bigger (hypertrophy).",
+      "C": "More blood supply comes with endurance training and adds little mass.",
+      "D": "Training does not make new motor neurons.",
+      "E": "Adult muscle grows by enlarging fibres, not by making many new ones."
+    },
+    "P27": {
+      "lecture": "muscle-2",
+      "A": "Without action potentials the muscle simply relaxes.",
+      "B": "High Ca2+ drives contraction, not rigor.",
+      "C": "Low Ca2+ lets the muscle relax.",
+      "D": "ATP detaches myosin from actin, so more ATP prevents rigor.",
+      "E": "Yes: without ATP myosin heads cannot let go of actin, so the muscle locks (rigor, as in rigor mortis)."
+    },
+    "P28": {
+      "lecture": "muscle-2",
+      "A": "Ca2+ enters the nerve terminal before the end plate depolarizes, not after.",
+      "B": "Yes: Ca2+ enters the terminal, ACh is released, then the end plate depolarizes.",
+      "C": "The nerve action potential comes first, before ACh release.",
+      "D": "Ca2+ enters the nerve terminal, not the end plate, and the end plate gives an end-plate potential, not an AP.",
+      "E": "The end plate gives a graded end-plate potential; the action potential starts in the muscle membrane around it."
+    },
+    "P29": {
+      "lecture": "muscle-1",
+      "A": "Yes: the AP spreads along the sarcolemma first, then down the T tubules.",
+      "B": "SR Ca2+ channels (ryanodine receptors) open after the T tubule depolarizes.",
+      "C": "Ca2+ uptake by the SR pump comes at the end, during relaxation.",
+      "D": "Ca2+ binds troponin C after it is released from the SR.",
+      "E": "Actin and myosin bind last."
+    },
+    "P30": {
+      "lecture": "muscle-2",
+      "A": "Type I fibres are thinner.",
+      "B": "Type II fibres are stronger.",
+      "C": "Type II fibres have more glycolytic capacity.",
+      "D": "Yes: type I (slow, oxidative) fibres have many mitochondria and resist fatigue, good for distance running.",
+      "E": "Type II fibres are faster."
+    },
+    "P31": {
+      "lecture": "muscle-1",
+      "A": "Ca2+ binds troponin, not tropomyosin.",
+      "B": "Ca2+ binds troponin, and myosin has the heads, not actin.",
+      "C": "Yes: Ca2+ binds troponin C, tropomyosin moves off the binding sites and myosin heads bind actin.",
+      "D": "Myosin has the heads that bind actin, not the other way round.",
+      "E": "Ca2+ does not bind actin."
+    },
+    "P32": {
+      "lecture": "muscle-2",
+      "A": "Both use Ca2+ from the SR (smooth muscle also from outside); this differs less than its role.",
+      "B": "Yes: in skeletal muscle Ca2+ binds troponin; in smooth muscle it binds calmodulin and switches on myosin light chain kinase.",
+      "C": "Both make force by actin-myosin cross-bridge cycling.",
+      "D": "Both run on ATP.",
+      "E": "Both use actin and myosin."
+    },
+    "P33": {
+      "lecture": "neuro-2",
+      "A": "After-hyperpolarization takes the potential below rest.",
+      "B": "Repolarization brings it back toward rest.",
+      "C": "Hyperpolarization makes it more negative.",
+      "D": "Yes: depolarization makes the membrane less negative than at rest.",
+      "E": "The falling phase is repolarization."
+    },
+    "P34": {
+      "lecture": "muscle-2",
+      "A": "Small motor units are recruited first (size principle).",
+      "B": "Slow fibres are recruited before fast ones.",
+      "C": "Yes: weak, small slow units first, then stronger ones as more force is needed.",
+      "D": "Slow, richly perfused fibres are recruited first.",
+      "E": "Aerobic (slow oxidative) fibres are recruited first."
+    },
+    "P35": {
+      "lecture": "muscle-2",
+      "A": "The twitch begins during the latent period, before repolarization is fully over.",
+      "B": "The twitch lasts much longer than the action potential.",
+      "C": "Yes: in an isometric contraction the fibres cannot shorten, so tension is highest.",
+      "D": "Shortening (isotonic) lowers the tension the muscle can make.",
+      "E": "Repeated stimulation adds up (treppe, summation, tetanus) before fatigue sets in."
+    },
+    "P37": {
+      "lecture": "muscle-1",
+      "A": "The I band shortens.",
+      "B": "Z disks come closer together.",
+      "C": "Yes: the A band is the length of the thick filaments and does not change.",
+      "D": "The H zone shortens and can disappear.",
+      "E": "T tubules sit at the sarcomere and move closer with it."
+    },
+    "P38": {
+      "lecture": "neuro-2",
+      "A": "Myelin speeds conduction; channels gather at the nodes.",
+      "B": "Myelin raises membrane resistance, and that speeds conduction.",
+      "C": "Myelin does not change axial resistance; a wider axon does.",
+      "D": "Yes: myelin lowers capacitance and raises resistance, so the impulse jumps node to node (saltatory)."
+    },
+    "P39": {
+      "lecture": "neuro-2",
+      "A": "Neurotransmitters are made in the soma and terminals.",
+      "B": "The axon conducts the AP to the terminal.",
+      "C": "Yes: the hillock sums the inputs and fires an AP if threshold is reached.",
+      "D": "The Na+–K+ pump and leak channels keep the resting potential everywhere."
+    },
+    "P40": {
+      "lecture": "neuro-3",
+      "A": "Na+ makes the AP, not the release.",
+      "B": "Yes: Ca2+ entering the terminal makes vesicles fuse and release.",
+      "C": "Cl- is not the release signal.",
+      "D": "K+ repolarizes the terminal."
+    },
+    "P41": {
+      "lecture": "neuro-3",
+      "A": "Yes: AMPA receptors are ionotropic glutamate receptors that give fast EPSPs.",
+      "B": "Metabotropic receptors act through G proteins, slowly.",
+      "C": "NMDA receptors are ligand-gated but slower and blocked by Mg2+ at rest.",
+      "D": "GABA-B is metabotropic and inhibitory."
+    },
+    "P42": {
+      "lecture": "muscle-1",
+      "A": "ATP comes from mitochondria and glycolysis.",
+      "B": "Structure comes from the cytoskeleton and connective tissue.",
+      "C": "The sarcolemma makes the action potential.",
+      "D": "Yes: the SR stores Ca2+ and releases it to start contraction."
+    },
+    "P43": {
+      "lecture": "muscle-2",
+      "A": "One statement is right.",
+      "B": "Yes: slow fibres are oxidative and fatigue-resistant; fast fibres give short bursts of power.",
+      "C": "It is the reverse: slow fibres resist fatigue.",
+      "D": "Slow fibres are smaller in diameter."
+    },
+    "P44": {
+      "lecture": "muscle-1",
+      "A": "ACh acts at the end plate, far from the SR.",
+      "B": "Yes: T tubule DHP receptors sense the voltage and open the SR ryanodine receptors.",
+      "C": "ATP breakdown powers the cross-bridges, it does not release Ca2+.",
+      "D": "The trigger is T tubule depolarization, not depolarization of the SR."
+    },
+    "P45": {
+      "lecture": "muscle-1",
+      "A": "Actin carries the myosin binding sites but does not bind Ca2+.",
+      "B": "Skeletal myosin does not bind the Ca2+ that starts contraction.",
+      "C": "Tropomyosin is moved, it does not bind Ca2+.",
+      "D": "Yes: Ca2+ binds troponin C."
+    },
+    "P50": {
+      "lecture": "myotatic",
+      "A": "Yes: a dermatome is the skin area supplied by the sensory fibres of one spinal nerve level.",
+      "B": "That describes a myotome (muscles of one spinal level), not a dermatome."
+    },
+    "P51": {
+      "lecture": "neuro-3",
+      "A": "Receptor activation happens on the postsynaptic membrane.",
+      "B": "Yes: Ca2+ enters the axon terminal.",
+      "C": "Yes: the terminal releases the neurotransmitter.",
+      "D": "Graded potentials are made in the postsynaptic cell."
+    },
+    "P52": {
+      "lecture": "neuro-2",
+      "A": "Yes: cations coming in depolarize the membrane.",
+      "B": "Yes: depolarizing means less negative.",
+      "C": "Cations entering make it less negative, not more.",
+      "D": "Hyperpolarization comes from cation exit or anion entry."
+    },
+    "P53": {
+      "lecture": "neuro-2",
+      "A": "Fewer Na+ channels do not shorten the AP.",
+      "B": "All-or-none holds only while there are enough channels; fewer channels change the AP.",
+      "C": "Norepinephrine has nothing to do with Na+ channel density.",
+      "D": "Yes: with fewer Na+ channels less Na+ enters, so the AP is smaller (or fails)."
+    },
+    "P54": {
+      "lecture": "neuro-3",
+      "A": "Yes: a ligand-gated channel opens only when a molecule (the ligand) binds.",
+      "B": "It is closed until the ligand binds.",
+      "C": "Depends on the ion: most cation channels depolarize; only some (Cl-) hyperpolarize."
+    },
+    "P55": {
+      "lecture": "tactile",
+      "A": "Rapid adaptation is phasic receptors.",
+      "B": "Yes: tonic receptors adapt slowly and keep firing while the stimulus lasts.",
+      "C": "Falling response is adaptation, typical of phasic receptors.",
+      "D": "Signalling changes in a stimulus is the job of phasic receptors."
+    },
+    "P56": {
+      "lecture": "neuro-3",
+      "A": "Yes: removing the neurotransmitter from the cleft (enzymes like AChE) ends the graded potential.",
+      "B": "Neurotransmitters do not enter the postsynaptic cell.",
+      "C": "Diffusion away of the transmitter helps end the signal; less diffusion prolongs it.",
+      "D": "More release prolongs it."
+    },
+    "P57": {
+      "lecture": "neuro-3",
+      "A": "Can happen with Cl- channels, but the general answer is a graded potential.",
+      "B": "Yes: ligand-gated channels make graded (postsynaptic) potentials.",
+      "C": "APs come from voltage-gated channels.",
+      "D": "Reaching threshold is not what the receptor itself does."
+    },
+    "P58": {
+      "lecture": "tactile",
+      "A": "Yes: receptor, then the spinal cord and medulla, then the thalamus, then cortex.",
+      "B": "The receptor comes first.",
+      "C": "The thalamus comes after the medulla.",
+      "D": "The receptor comes first."
+    },
+    "P59": {
+      "lecture": "stress",
+      "A": "Yes: the parasympathetic system constricts bronchi and stimulates the gallbladder.",
+      "B": "Pupil dilation is sympathetic.",
+      "C": "It contracts the bladder (micturition); relaxing it is sympathetic.",
+      "D": "It stimulates digestion; inhibition is sympathetic."
+    },
+    "P69": {
+      "lecture": "muscle-1",
+      "A": "A fasciculus is bigger than a muscle fibre.",
+      "B": "The sarcolemma and sarcoplasm are parts of a fibre, smaller than a fasciculus.",
+      "C": "A fasciculus is a muscle bundle; they are the same level.",
+      "D": "Yes: fasciculus, then muscle fibre, then myofibril."
+    },
+    "P70": {
+      "lecture": "muscle-2",
+      "A": "ACh acts at the end plate, not on the SR.",
+      "B": "Yes: ACh opens the postsynaptic nicotinic receptors; the AP that follows makes the SR release Ca2+.",
+      "C": "ACh opens ligand-gated channels, not voltage-gated ones.",
+      "D": "ACh does not bind T tubules."
+    },
+    "P71": {
+      "lecture": "muscle-1",
+      "A": "Troponin moves tropomyosin, not the other way round.",
+      "B": "The SR releases Ca2+.",
+      "C": "Yes: tropomyosin covers the binding sites on actin, so myosin stops sliding when Ca2+ falls.",
+      "D": "ATP hydrolysis cocks the myosin head."
+    },
+    "P72": {
+      "lecture": "muscle-1",
+      "A": "Yes: in a full contraction the H zone and I bands disappear.",
+      "B": "The A band never changes.",
+      "C": "Z discs stay; they come closer.",
+      "D": "M lines and the A band stay."
+    },
+    "P73": {
+      "lecture": "muscle-1",
+      "A": "ATP is split into ADP and Pi; ADP is not phosphorylated.",
+      "B": "Detachment comes from ATP binding, not its hydrolysis.",
+      "C": "Yes: hydrolysis cocks the head, which then binds actin reversibly.",
+      "D": "The binding is reversible: the next ATP releases it."
+    },
+    "P74": {
+      "lecture": "muscle-2",
+      "A": "Yes: slow oxidative fibres are red (myoglobin, mitochondria) and resist fatigue.",
+      "B": "That is fast glycolytic fibres.",
+      "C": "Red fibres resist fatigue.",
+      "D": "White fibres tire fast."
+    },
+    "P75": {
+      "lecture": "muscle-2",
+      "A": "Yes: stimuli so fast there is no relaxation between them give complete (fused) tetanus.",
+      "B": "Incomplete tetanus still has partial relaxation.",
+      "C": "Wave summation is twitches adding up, with relaxation in between.",
+      "D": "Treppe is the staircase rise after rest."
+    },
+    "P76": {
+      "lecture": "muscle-2",
+      "A": "Muscular dystrophy is a defect of muscle proteins (dystrophin).",
+      "B": "McArdle disease is a glycogen phosphorylase defect.",
+      "C": "Tarui disease is a phosphofructokinase defect.",
+      "D": "Yes: myasthenia gravis is antibodies against the ACh receptor."
+    },
+    "P77": {
+      "lecture": "muscle-1",
+      "A": "Ca2+ is pumped, not passively moved, into the SR.",
+      "B": "Yes: SERCA pumps actively take Ca2+ back into the SR.",
+      "C": "Ca2+ goes into the SR during relaxation.",
+      "D": "Ca2+ leaving the SR starts contraction."
+    },
+    "P60": {
+      "lecture": "bio-1",
+      "A": "Yes: carbohydrates are macronutrients, eaten in large amounts.",
+      "B": "CO2 is a waste product, not a nutrient.",
+      "C": "Yes: proteins are macronutrients.",
+      "D": "Vitamins are micronutrients, needed in small amounts."
+    },
+    "P61": {
+      "lecture": "bio-1",
+      "A": "Yes: minerals are micronutrients.",
+      "B": "Water is a macronutrient on the slides.",
+      "C": "Carbohydrates are macronutrients.",
+      "D": "Yes: vitamins are micronutrients."
+    },
+    "P62": {
+      "lecture": "bio-3",
+      "A": "Yes: a triglyceride is three fatty acids on a glycerol backbone.",
+      "B": "Triglycerides are themselves lipids (fats), made of glycerol and fatty acids.",
+      "C": "Cholesterol is a lipid (a sterol), not a building block of fats.",
+      "D": "Yes: glycerol is the backbone of triglycerides."
+    },
+    "P63": {
+      "lecture": "bio-2",
+      "A": "Yes: starch is a glucose polymer we digest.",
+      "B": "No: cellulose is a glucose polymer we cannot digest (no enzyme).",
+      "C": "Yes: maltose (glucose + glucose) is split by maltase.",
+      "D": "Yes: sucrose (glucose + fructose) is split by sucrase."
+    },
+    "P64": {
+      "lecture": "bio-3",
+      "A": "No: that describes carbohydrates; being hydrophobic makes fat compact.",
+      "B": "Yes: fat is less oxidized (more reduced) than carbohydrate, so it holds more energy, 9 kcal/g against 4.",
+      "C": "Yes: a well-nourished adult meets 80 to 90% of resting energy needs from fat.",
+      "D": "No: it is the reverse, about 15% in men and 25% in women."
+    },
+    "P65": {
+      "lecture": "bio-2",
+      "A": "Yes: the Krebs cycle runs in the mitochondrial matrix.",
+      "B": "No: glycolysis happens in the cytoplasm.",
+      "C": "Yes: the electron transport chain sits in the inner mitochondrial membrane.",
+      "D": "No: pyruvate is made by glycolysis, in the cytoplasm."
+    },
+    "P66": {
+      "lecture": "bio-1",
+      "A": "Yes: too much of some vitamins (the fat-soluble ones above all) is harmful.",
+      "B": "Yes: vitamins are micronutrients, needed only in small quantities.",
+      "C": "Yes: carbohydrates are the major source of energy.",
+      "D": "No: proteins mostly build and repair; they are not the main fuel."
+    },
+    "P67": {
+      "lecture": "bio-2",
+      "A": "No: glycolysis does not need oxygen.",
+      "B": "Yes: aerobic respiration is the matrix and membrane reactions of the mitochondria.",
+      "C": "Yes: the Krebs cycle is part of aerobic respiration.",
+      "D": "Yes: oxygen is the final electron acceptor, forming water."
+    },
+    "P68": {
+      "lecture": "bio-2",
+      "A": "Yes: ribose and deoxyribose form the backbone of nucleic acids.",
+      "B": "Yes: carbohydrates are major sources of energy.",
+      "C": "Yes: they are cellular structural components."
     }
   }
 }

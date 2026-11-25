@@ -413,13 +413,16 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 - S3 answers (from 25 November 2026): Abi uploads each module's lectures to Drive ("S3 lectures" › module folder) and
   Claude answers from the slides. They live in `src/sem/efm2-s3/answers.json` (short id → key letters, lecture), applied by
   `import_bank.py` as `key: "claude"` with a note that the slides, not the docs' marks, gave the answer; explanations in the
-  semester's `explanations.json`. One script per batch in `src/pipeline/s3/` (`answers_physio_renal.py`: P1–P10, P46–P49
-  from Renal physiology 1–5). Left unkeyed until a lecture covers them: P11 (acid-base), P12 (prostate: not in any renal
-  lecture, flagged to Abi, dropped from the quest). The About line says answers are being added while some are missing.
+  semester's `explanations.json`. One script per batch in `src/pipeline/s3/`: `answers_physio_renal.py` (Renal physiology
+  1–5), `answers_physio_neuro.py` (Pr Covasa's neuron, synapse, tactile, taste, stress, muscle decks and the myotatic reflexes),
+  `answers_physio_bioenergetics.py` (Pr Dinh-Xuan's bioenergetics 1–3): 65 of the 77 physiology questions. Left unkeyed until
+  a lecture covers them: P11 (acid-base), P12 (prostate: in no renal lecture, flagged to Abi, dropped from the quest), P14–P19
+  and P22–P24 (cortex, vision, hearing, vestibular, CSF: those decks aren't in the folder), P36 (creatine phosphate vs
+  glycogen as muscle's energy store: no slide settles it). The About line says answers are being added while some are missing.
 - Quest `physio-midterm-2026` (S3, Tuesday 1 December 2026, Abi's list): renal intro (PH-16), nephron + glomerular filtration
-  (PH-18; PH-17 has no past question), bioenergetics intro (PH-10), "regulation of energy metabolism" (not a lecture name on
-  her sheet: PH-13 ATP for now, ask her), lipid metabolism (PH-12); 17 questions. The bioenergetics lectures weren't in the
-  Drive folder on 25 November, so those 8 wait for answers.
+  (PH-18; PH-17 has no past question), bioenergetics intro (PH-10), regulation of energy metabolism (PH-11, renamed from
+  "Carbohydrate metabolism": Pr Dinh-Xuan's lecture 2 is that deck; P65 and P67, cellular respiration, moved there), lipid
+  metabolism (PH-12); 18 questions, all answered and explained.
 
 ## Weak spots: taken out (Abi, 21 November 2026)
 
