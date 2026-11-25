@@ -2200,5 +2200,805 @@
  "B251": {
   "key": "BCD",
   "by": "knowledge"
+ },
+ "S1": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S2": {
+  "key": "AE",
+  "by": "knowledge"
+ },
+ "S3": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S4": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S5": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S6": {
+  "key": "AC",
+  "by": "knowledge"
+ },
+ "S7": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S8": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S9": {
+  "key": "ACDE",
+  "by": "knowledge"
+ },
+ "S10": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S11": {
+  "key": "ABCE",
+  "by": "knowledge"
+ },
+ "S12": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S13": {
+  "key": "CDE",
+  "by": "knowledge"
+ },
+ "S14": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S15": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S16": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S17": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S18": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S19": {
+  "key": "ACE",
+  "by": "knowledge"
+ },
+ "S20": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S21": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S22": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S23": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S24": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S25": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S26": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S27": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S28": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S29": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S30": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S31": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S32": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S33": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S34": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S35": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S36": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S37": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S38": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S39": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S40": {
+  "key": "BCE",
+  "by": "knowledge"
+ },
+ "S41": {
+  "key": "DE",
+  "by": "knowledge"
+ },
+ "S42": {
+  "key": "BD",
+  "by": "knowledge"
+ },
+ "S44": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S45": {
+  "key": "ABE",
+  "by": "knowledge"
+ },
+ "S46": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S47": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S48": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S49": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S50": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S51": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S52": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S53": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S54": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S55": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S56": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S57": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S58": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S59": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S60": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S61": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S62": {
+  "key": "BD",
+  "by": "knowledge"
+ },
+ "S63": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S64": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S65": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S66": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S67": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S68": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S69": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S70": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S71": {
+  "key": "AC",
+  "by": "knowledge"
+ },
+ "S72": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S73": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S74": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S75": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S76": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S77": {
+  "key": "BC",
+  "by": "knowledge"
+ },
+ "S78": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S79": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S80": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S81": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S82": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S83": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S84": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S85": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S86": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S87": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S88": {
+  "key": "BD",
+  "by": "knowledge"
+ },
+ "S89": {
+  "key": "BC",
+  "by": "knowledge"
+ },
+ "S90": {
+  "key": "BC",
+  "by": "knowledge"
+ },
+ "S91": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S92": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S93": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S94": {
+  "key": "BC",
+  "by": "knowledge"
+ },
+ "S95": {
+  "key": "BD",
+  "by": "knowledge"
+ },
+ "S96": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S97": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S98": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S99": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S100": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S101": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S102": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S103": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S104": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S105": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S106": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S107": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S108": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S109": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S110": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S111": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S112": {
+  "key": "ACD",
+  "by": "knowledge"
+ },
+ "S113": {
+  "key": "AC",
+  "by": "knowledge"
+ },
+ "S114": {
+  "key": "AE",
+  "by": "knowledge"
+ },
+ "S115": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S116": {
+  "key": "BE",
+  "by": "knowledge"
+ },
+ "S117": {
+  "key": "BCDE",
+  "by": "knowledge"
+ },
+ "S118": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S119": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S120": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S121": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S122": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S123": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S124": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S125": {
+  "key": "ACE",
+  "by": "knowledge"
+ },
+ "S126": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S127": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S128": {
+  "key": "AD",
+  "by": "knowledge"
+ },
+ "S129": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S130": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S131": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S132": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S133": {
+  "key": "ACE",
+  "by": "knowledge"
+ },
+ "S134": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S135": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S136": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S137": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S138": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S139": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S140": {
+  "key": "BCDE",
+  "by": "knowledge"
+ },
+ "S141": {
+  "key": "ABE",
+  "by": "knowledge"
+ },
+ "S142": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S143": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S144": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S145": {
+  "key": "AE",
+  "by": "knowledge"
+ },
+ "S146": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S147": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S148": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S149": {
+  "key": "ABCDE",
+  "by": "knowledge"
+ },
+ "S150": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S151": {
+  "key": "ABCDE",
+  "by": "knowledge"
+ },
+ "S152": {
+  "key": "CDE",
+  "by": "knowledge"
+ },
+ "S153": {
+  "key": "BCE",
+  "by": "knowledge"
+ },
+ "S154": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S155": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S156": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S157": {
+  "key": "ABCE",
+  "by": "knowledge"
+ },
+ "S158": {
+  "key": "AB",
+  "by": "knowledge"
+ },
+ "S159": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S160": {
+  "key": "ACE",
+  "by": "knowledge"
+ },
+ "S161": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S162": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S163": {
+  "key": "AE",
+  "by": "knowledge"
+ },
+ "S164": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S165": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S166": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S167": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S168": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S169": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S170": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S171": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S172": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S173": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S174": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S175": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S176": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S177": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S178": {
+  "key": "AE",
+  "by": "knowledge"
+ },
+ "S179": {
+  "key": "ABC",
+  "by": "knowledge"
+ },
+ "S180": {
+  "key": "BE",
+  "by": "knowledge"
+ },
+ "S181": {
+  "key": "BCDE",
+  "by": "knowledge"
+ },
+ "S182": {
+  "key": "BCD",
+  "by": "knowledge"
+ },
+ "S183": {
+  "key": "ABDE",
+  "by": "knowledge"
+ },
+ "S184": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S185": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S186": {
+  "key": "CE",
+  "by": "knowledge"
+ },
+ "S187": {
+  "key": "ABCD",
+  "by": "knowledge"
+ },
+ "S188": {
+  "key": "ACDE",
+  "by": "knowledge"
+ },
+ "S189": {
+  "key": "ABD",
+  "by": "knowledge"
+ },
+ "S190": {
+  "key": "B",
+  "by": "knowledge"
+ },
+ "S191": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S192": {
+  "key": "D",
+  "by": "knowledge"
+ },
+ "S193": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S194": {
+  "key": "E",
+  "by": "knowledge"
+ },
+ "S195": {
+  "key": "A",
+  "by": "knowledge"
+ },
+ "S196": {
+  "key": "BE",
+  "by": "knowledge"
+ },
+ "S197": {
+  "key": "CD",
+  "by": "knowledge"
+ },
+ "S198": {
+  "key": "C",
+  "by": "knowledge"
+ },
+ "S199": {
+  "key": "DE",
+  "by": "knowledge"
+ },
+ "S200": {
+  "key": "BDE",
+  "by": "knowledge"
+ },
+ "S201": {
+  "key": "BD",
+  "by": "knowledge"
  }
 }

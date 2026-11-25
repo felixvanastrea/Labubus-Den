@@ -11476,12 +11476,23 @@
     "Tobacco-related lung cancer",
     "Cystic fibrosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11497,12 +11508,22 @@
     "Tobacco-related lung cancer",
     "Cystic fibrosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11518,11 +11539,22 @@
     "Tripod position breathing",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11538,10 +11570,19 @@
     "4 weeks",
     "8 weeks"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11557,10 +11598,19 @@
     "8 weeks",
     "12 weeks"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11576,12 +11626,22 @@
     "Chronic obstructive pulmonary disease (COPD)",
     "Cough-variant asthma"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11597,12 +11657,24 @@
     "Chronic obstructive pulmonary disease (COPD)",
     "Cough-variant asthma"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11618,13 +11690,25 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.hf",
     "S.cv",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11640,10 +11724,22 @@
     "Hypoxia",
     "Hypercapnia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11659,11 +11755,22 @@
     "Presence of air in the pleura (pneumothorax)",
     "A cardiothoracic ratio &gt; 50%"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cxr",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11679,11 +11786,23 @@
     "A cardiothoracic ratio = 45%",
     "Presence of liquid in the pleura (pleural effusion)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cxr",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11699,13 +11818,23 @@
     "Production of sputum",
     "Lung hyperinflation seen on Chest X-ray"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp",
     "S.cxr",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11721,13 +11850,24 @@
     "Production of sputum",
     "Lung hyperinflation seen on Chest X-Ray"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp",
     "S.cxr",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11743,10 +11883,20 @@
     "Jugular venous distention",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11762,13 +11912,24 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11784,13 +11945,23 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11806,13 +11977,25 @@
     "Crackling lung sounds",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11828,13 +12011,25 @@
     "Anxiety or restlessness",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11850,13 +12045,24 @@
     "Mild systemic hypertension",
     "Severe pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11872,13 +12078,24 @@
     "Insufficiency of mitral valve",
     "Pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11894,12 +12111,24 @@
     "Insufficiency of mitral valve",
     "Long standing systemic hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11915,10 +12144,22 @@
     "A ventricular fibrillation is a life threatening condition",
     "Damage to the AV node results in a heart block"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11934,10 +12175,20 @@
     "An incompetent (or insufficient or leaky) valve is defined by a valve that is narrowed and does not fully open, impeding blood move forward through the valve.",
     "A stenotic valve is defined by a valve that does not close completely, letting blood move backward through the valve."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11953,10 +12204,22 @@
     "Aortic insufficiency is characterized by a heart murmur during the diastolic phase",
     "None of the above is true"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11972,10 +12235,22 @@
     "Sedentary lifestyle",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -11991,10 +12266,19 @@
     "Efficient use of laboratory and radiological tools",
     "Collaboration and communication with different healthcare givers while respecting confidentiality"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.summary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12010,10 +12294,19 @@
     "For completion of abdominal examination students must palpate the supraclavicular lymph nodes, palpate all hernia orifices, and examine rectum and genitalia",
     "Proper full abdominal clinical examination, requires exposure from xiphisternum till the mid-thigh"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12029,11 +12322,20 @@
     "Patient with severe and frequent vomiting may present with low blood pressure (hypotension), high heart rate (tachycardia) and low urine output",
     "Pregnancy test must be ordered for all women in reproductive age"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12049,10 +12351,19 @@
     "Palmar Erythema and Spider Naevi",
     "Splenomegaly"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12068,10 +12379,19 @@
     "A differential list must be long and comprehensive to include every organ system in the body",
     "The differential list is used to guide ordering the subsequent diagnostic tests"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.summary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12087,11 +12407,20 @@
     "Melena (passing black tarry stools) usually indicates blood from the upper gastrointestinal tract",
     "Consider sending blood for complete blood cell count (CBC and coagulation profile"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12107,10 +12436,19 @@
     "Boys with abdominal pain may have torsion of the testis",
     "Irritation of the diaphragm secondary to cholecystitis (inflammation of gallbladder) may cause pain to be felt at the tip of right shoulder"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12126,10 +12464,19 @@
     "In cases of prehepatic jaundice, there accumulation of conjugated (water soluble) bilirubin as well as raise in liver enzymes",
     "In cases of post-hepatic jaundice, the characteristic clay-colored stool is caused by lack of bilirubin excretion into intestine"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12145,11 +12492,20 @@
     "Pain originating in the parietal peritoneum is poorly localized",
     "Main stimuli for visceral pain are hollow viscus wall tension, ischemia and spastic contractions"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.history",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12165,11 +12521,20 @@
     "Endoscopic retrograde cholangiopancreatography (ERCP)",
     "Plain abdominal x-ray"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cxr"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12185,10 +12550,19 @@
     "Longitudinal tear 2-3 cm long of the gastro-esophageal junction (GEJ)",
     "Caused by intense vomiting efforts after binge alcohol drinking"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12204,10 +12578,19 @@
     "Abdominal distension with hyperactive loud bowel sounds",
     "High serum lipase is diagnostic"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12223,11 +12606,20 @@
     "Essential to examine all hernia orifices",
     "Plain abdominal x-ray shows dilated bowel loops with air fluid levels"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cxr"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12243,10 +12635,20 @@
     "Diplopia",
     "Low libido"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12262,11 +12664,22 @@
     "Constipation",
     "Loss of pubic and axillar hair"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12282,12 +12695,22 @@
     "Hypoglycemia",
     "Absence of goiter"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid",
     "S.diabetes",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12303,11 +12726,21 @@
     "Low TSH with Low FT4 and FT3",
     "Normal TSH, with normal thyroglobulin"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12342,11 +12775,22 @@
     "Visual field",
     "Self-antibodies measurement Case study (4 MCQs)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary",
     "S.endo"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12362,10 +12806,21 @@
     "A capillary blood glucose above 1.26g/l",
     "A1C≥6.5%"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12381,10 +12836,22 @@
     "lack of ketosis",
     "advanced age"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12400,10 +12867,21 @@
     "Diabetic neuropathy because of dry skin and hyperkeratosis",
     "Peripheral arterial disease because of dry skin and hyperkeratosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12419,10 +12897,21 @@
     "Ankle-brachial index (abi)",
     "Pulses examination"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12438,10 +12927,21 @@
     "Thyrotoxicosis symptoms",
     "High FT4"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12457,10 +12957,21 @@
     "Tetanic crisis",
     "Seizures"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.parathyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12475,10 +12986,19 @@
     "Pain radiates to the lower angle of right scapula",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12493,10 +13013,19 @@
     "Reversal peristalsis of the stomach plays a significant role in the mechanism of vomiting.",
     "Pregnancy test must be ordered for all women in reproductive age."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12511,12 +13040,21 @@
     "Heartburn is a burning retrosternal discomfort that increases on lying down or bending forward",
     "Usually associated with dysphagia and weight loss"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12531,11 +13069,20 @@
     "For completion of abdominal examination students must palpate the supraclavicular lymph nodes, palpate all hernia orifices, and examine rectum and genitalia",
     "Should look at the patient's face during examination to identify any signs of pain or discomfort"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12550,10 +13097,19 @@
     "Pain radiates to the lower angle of right scapula",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12568,10 +13124,19 @@
     "Retrosternal pain that may radiate to throat",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12586,10 +13151,19 @@
     "High serum lipase is diagnostic",
     "Colicky pain recurrent every 2-3 minutes"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12604,10 +13178,19 @@
     "Large palpable gallbladder",
     "Jaundice"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12622,11 +13205,20 @@
     "Dilated bowel loops on plain abdominal x-ray",
     "Constipation with absence of flatus"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cxr"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12641,11 +13233,20 @@
     "Consider sending blood for complete blood cell count (CBC) and coagulation profile",
     "Important to ask about history of alcohol abuse or use of non-steroidal antiinflammatory drugs (NSAIDs)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12660,11 +13261,21 @@
     "Sputum",
     "Fever"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.resp",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12679,12 +13290,22 @@
     "Rhinosinusitis",
     "Pulmonary tuberculosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12699,11 +13320,21 @@
     "Ptosis",
     "Miosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.resp",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12718,13 +13349,23 @@
     "Pulmonary embolism",
     "Acute pulmonary oedema"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.resp",
     "S.hf",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12739,12 +13380,22 @@
     "Pulmonary emphysema",
     "Condensation syndrome"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.resp",
     "S.cxr",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12759,11 +13410,22 @@
     "Obtain samples for pleural fluid analysis",
     "Confirm the pleural effusion"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cxr",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12778,12 +13440,22 @@
     "Pneumonia",
     "Exacerbation of asthma"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12798,10 +13470,21 @@
     "Increase of tactile fremitus",
     "Increase of bronchial breath sounds"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12816,10 +13499,20 @@
     "Dullness on percussion",
     "Reduced tactile fremitus (vocal fremitus)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12834,11 +13527,21 @@
     "Chest pain",
     "Fever"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.resp",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12853,10 +13556,20 @@
     "Classic sign of infective endocarditis",
     "Frequently seen, especially in young children with dark skin"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12871,13 +13584,24 @@
     "Ascites",
     "Dependent edema"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12892,13 +13616,24 @@
     "Crackling lung sounds",
     "Enlarged liver and spleen"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12913,13 +13648,24 @@
     "Severe left heart failure",
     "Severe pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12934,13 +13680,23 @@
     "Pulmonary edema",
     "Crackling lung sounds"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12955,10 +13711,19 @@
     "Osler nodes",
     "Janeway lesions"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12973,10 +13738,20 @@
     "Abdominal pain",
     "Ascites"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -12991,11 +13766,22 @@
     "Explain the procedure",
     "Take patient's consent"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13010,11 +13796,20 @@
     "Liver Cirrhosis",
     "Intestinal obstruction"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.hf"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13029,12 +13824,22 @@
     "Pyrosis",
     "Regurgitation"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13049,10 +13854,19 @@
     "Esophageal manometry",
     "Abdominal ultrasound"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13067,11 +13881,22 @@
     "Colorectal cancer",
     "Parkinson's disease"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13086,11 +13911,22 @@
     "Paroxysmal hypertension",
     "Headaches"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.adrenal",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13105,12 +13941,22 @@
     "It is never associated with optic chiasma compression",
     "It is an adrenal tumor"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary",
     "S.gonads",
     "S.adrenal"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13125,11 +13971,21 @@
     "It can be caused by Klinefelter syndrome",
     "The hormonal profile shows low Testosterone and low FSH, LH"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gonads",
     "S.pituitary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13144,10 +14000,19 @@
     "Investigations include: TSH, fT4, TRAb, Thyroid ultrasound",
     "Clinical features include stretch marks, dry skin, alopecia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13162,10 +14027,21 @@
     "Weight loss",
     "Purple striae"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13180,10 +14056,20 @@
     "A1c",
     "Two values for a jeun glycemia&gt; 1.26 g/dl"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13198,13 +14084,23 @@
     "Severe left heart failure",
     "Mild systemic hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13219,10 +14115,20 @@
     "Jugular venous distention",
     "Osler nodes"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13237,10 +14143,21 @@
     "Sedentary lifestyle",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13255,13 +14172,24 @@
     "Chronic hypoxic lung disease",
     "Long standing systemic hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13276,12 +14204,23 @@
     "Insufficiency of mitral valve",
     "Severe aortic stenosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13296,13 +14235,23 @@
     "Crackling lung sounds",
     "Ascites"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13317,11 +14266,21 @@
     "None of the above",
     "Intercostal retractions (use of intercostal muscles when breathing)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13336,10 +14295,19 @@
     "12 weeks",
     "3 weeks"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13354,12 +14322,23 @@
     "COPD",
     "Tobacco-related lung cancer"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13374,12 +14353,22 @@
     "Tobacco-related lung cancer",
     "Cystic fibrosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13394,12 +14383,22 @@
     "Upper respiratory infection",
     "Acute bronchitis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13414,10 +14413,19 @@
     "3 weeks",
     "2 weeks"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13432,10 +14440,19 @@
     "Efficient use of laboratory and radiological tools",
     "Formulated a problem list summary in format to match your book knowledge and illness scripts"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.summary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13450,11 +14467,20 @@
     "Should differentiate it from coughing blood or epistaxis (nasal bleeding)",
     "The definition of hematemesis is limited to the vomiting of fresh blood from a source proximal to pylorus"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13469,11 +14495,20 @@
     "Patient with severe and frequent vomiting may present with low blood pressure (hypotension), high heart rate (tachycardia) and low urine output",
     "The chemoreceptor trigger zone is important in the mechanism of vomiting due to drugs, uremia, and radiation sickness"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13488,10 +14523,19 @@
     "A differential list must be long and comprehensive to include every organ system in the body",
     "Should be prioritized in descending order of likelihood"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.summary"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13506,10 +14550,19 @@
     "Palmar Erythema and Spider Naevi",
     "Ascites"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13524,10 +14577,19 @@
     "Should look at the patient's face during examination to identify any signs of pain or discomfort",
     "Proper full abdominal clinical examination, requires exposure from xiphisternum till the mid-thigh"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13542,10 +14604,20 @@
     "Any value for glycemia superior to 1.5 g/dl",
     "A1c inferior to 7 %"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13560,11 +14632,20 @@
     "The anti-tireoperoxidase (ATPO) antibodies are negative in Hashimoto thyroiditis;",
     "Hashimoto thyroiditis is an autoimmune disease;"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid",
     "S.endo"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13579,11 +14660,22 @@
     "Abdominal obesity",
     "Exophthalmia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13598,10 +14690,20 @@
     "Tetanic crisis",
     "Tachycardia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.parathyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13616,10 +14718,19 @@
     "Clinical features include stretch marks, dry skin, alopecia;",
     "It is an autoimmune disease caused by anti-TSH receptor antibodies (TRAb);"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13634,11 +14745,22 @@
     "Headaches",
     "Perspiration"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.adrenal",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13653,11 +14775,21 @@
     "Adrenal insufficiency with autoimmune etiology",
     "Adrenal insufficiency caused by tumoral infiltration of the adrenal;"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.adrenal",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13673,10 +14805,20 @@
     "Blood pressure can be measured through clothing (bare arm is not mandatory)",
     "Blood pressure must be measured using the arm on the opposite side as a mastectomy"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13692,11 +14834,22 @@
     "Osler nodes",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13712,11 +14865,21 @@
     "Aortic stenosis",
     "No cardiovascular diseases"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.lipids"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13732,11 +14895,23 @@
     "Janeway lesions",
     "Splinter hemorrhages"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13752,10 +14927,21 @@
     "Helps evaluate central venous pressure",
     "Is a sign of dehydration"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13771,11 +14957,23 @@
     "Occurs in areas of the body that are lower than the heart",
     "Occurs mostly in legs and ankles"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13791,10 +14989,20 @@
     "Jugular venous distention",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13810,13 +15018,24 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13832,13 +15051,23 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13854,13 +15083,25 @@
     "Crackling lung sounds",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13876,13 +15117,25 @@
     "Anxiety or restlessness",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13898,13 +15151,24 @@
     "Mild systemic hypertension",
     "Severe pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13920,13 +15184,24 @@
     "Insufficiency of mitral valve",
     "Pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -13942,12 +15217,24 @@
     "Insufficiency of mitral valve",
     "Long-standing systemic hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26074,10 +27361,20 @@
     "Jugular venous distention",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26093,13 +27390,24 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26115,13 +27423,23 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26137,13 +27455,25 @@
     "Crackling lung sounds",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26159,13 +27489,25 @@
     "Anxiety or restlessness",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26181,13 +27523,24 @@
     "Mild systemic hypertension",
     "Severe pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26203,13 +27556,24 @@
     "Insufficiency of mitral valve",
     "Pulmonary hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26225,12 +27589,24 @@
     "Insufficiency of mitral valve",
     "Long standing systemic hypertension"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.hf",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26246,10 +27622,22 @@
     "A ventricular fibrillation is a life threatening condition.",
     "Damage to the AV node results in a heart block."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26265,10 +27653,20 @@
     "An incompetent (or insufficient or leaky) valve is defined by a valve that is narrowed and does not fully open, impeding blood move forward through the valve.",
     "A stenotic valve is defined by a valve that does not close completely, letting blood move backward through the valve."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26284,10 +27682,22 @@
     "Aortic insufficiency is characterized by a heart murmur during the diastolic phase.",
     "None of the above is true."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26303,10 +27713,22 @@
     "Sedentary lifestyle",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26322,13 +27744,25 @@
     "Heart failure",
     "Allergic rhinitis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.gi",
     "S.hf"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26344,12 +27778,23 @@
     "Chronic obstructive pulmonary disease",
     "Post-viral cough"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.resp",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26365,11 +27810,23 @@
     "Intercostal retractions (use of intercostal muscles when breathing)",
     "Tripod position breathing"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26385,10 +27842,19 @@
     "Less than 3 weeks",
     "At least 4 weeks"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26404,10 +27870,19 @@
     "2 months",
     "3 months"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26423,12 +27898,22 @@
     "Idiopathic pulmonary fibrosis",
     "Acute bronchitis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26444,13 +27929,25 @@
     "Treatment with Angiotensin Converting Enzyme (ACE) inhibitors",
     "Gastro-Esophageal Reflux Disease (GERD)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cough",
     "S.gi",
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26466,13 +27963,25 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.hf",
     "S.cv",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26488,10 +27997,22 @@
     "Panic attack",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26507,11 +28028,24 @@
     "Absence of air in the pleura (No pneumothorax)",
     "A cardiothoracic ratio &lt; 50%"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cxr",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26527,11 +28061,23 @@
     "Presence of liquid in the pleura (pleural effusion)",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cxr",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26547,13 +28093,26 @@
     "Production of sputum",
     "Lung hyperinflation seen on Chest X-ray"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp",
     "S.cxr",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26569,13 +28128,24 @@
     "Production of sputum",
     "Lung hyperinflation seen on Chest X-Ray"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp",
     "S.cxr",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26591,14 +28161,25 @@
     "Capillary glycemia over 2.5 g/l",
     "History of autoimmune disease"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c1",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.gi",
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26614,14 +28195,23 @@
     "Hyperosmolar hyperglycemic state",
     "Major hyperglycemia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c1",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.gi",
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26637,14 +28227,25 @@
     "Drowsiness",
     "Weight loss"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c1",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.gi",
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26660,14 +28261,23 @@
     "Secondary hypothyroidism",
     "Endemic goiter"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c2",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.endo",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26683,14 +28293,26 @@
     "Normal blood pressure",
     "Asthenia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c2",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26706,14 +28328,24 @@
     "ACTH",
     "Morning serum cortisol"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c2",
    "c": [
     "S.diabetes",
     "S.thyroid",
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26729,11 +28361,22 @@
     "Subcapsular cataract",
     "Bone pain"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.parathyroid",
     "S.ecg"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26749,11 +28392,22 @@
     "Blood glucose &lt; 0.7 g/l",
     "Resolution of symptoms after glucose intake"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes",
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26769,11 +28423,22 @@
     "Solitary nodule",
     "Absence of symptoms of hypo- or hyperthyroidism"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c3",
    "c": [
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26789,11 +28454,20 @@
     "Anti-TPO antibodies",
     "Calcitonin assay"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c3",
    "c": [
     "S.thyroid"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26809,12 +28483,22 @@
     "Cystic nodule",
     "Presence of microcalcifications"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c3",
    "c": [
     "S.thyroid",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26830,13 +28514,22 @@
     "Neck and chest CT scan",
     "Chest MRI"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-retake-2022-2023-gi-and-endocrine-semiology-c3",
    "c": [
     "S.thyroid",
     "S.gi",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26852,10 +28545,19 @@
     "Ureteric colic due to renal stone",
     "Intestinal obstruction (occlusion)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26871,10 +28573,19 @@
     "Ureteric colic due to renal stone",
     "Intestinal obstruction (occlusion)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26890,10 +28601,19 @@
     "Ureteric colic due to renal stone",
     "Intestinal obstruction (occlusion)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26909,10 +28629,19 @@
     "Ureteric colic due to renal stone",
     "Intestinal obstruction (occlusion)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26928,11 +28657,20 @@
     "Dilated bowel loops on plain abdominal X-ray",
     "Hypoactive bowel sounds"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cxr"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26948,10 +28686,19 @@
     "Patients with cholecystitis (inflammation of gallbladder) present with upper abdominal pain that radiates to the tip of the right shoulder",
     "In acute appendicitis, pain starts at the periumbilical region then becomes localized to the right lower quadrant"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26967,11 +28714,20 @@
     "Summary of family, social history and review of the systems",
     "All positive and relevant negative symptoms and signs"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.summary",
     "S.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -26987,10 +28743,19 @@
     "It is important to ask for alcohol abuse history and the use of anticoagulant or anti-platelet drugs",
     "Bleeding from the proximal jejunum usually presents as hematemesis or melena but never presents as hematochezia"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27006,12 +28771,21 @@
     "The most likely diagnosis is gastro-esophageal reflux disease (GERD)",
     "It should be differentiated from cardiac chest pain"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27027,11 +28801,20 @@
     "Obtain history for pregnancy and drug use (such as opiates or chemotherapy)",
     "Feculent vomit looks and smells like feces; it is strongly suggestive of distal intestinal obstruction"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27047,10 +28830,19 @@
     "It is important to take a sexual history and inquire about substance use (alcohol and drug abuse)",
     "Painless obstructive jaundice with weight loss suggests malignant biliary obstruction"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27066,11 +28858,20 @@
     "Ascites",
     "Odynophagia (painful swallowing)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27086,11 +28887,20 @@
     "Left colon cancer (splenic flexure)",
     "Gastric tumor"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "c": [
     "S.summary",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27106,10 +28916,20 @@
     "Blood pressure can be measured through clothing (bare arm is not mandatory)",
     "Blood pressure must be measured using the arm on the opposite side to a mastectomy"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27125,11 +28945,22 @@
     "Osler nodes",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27145,11 +28976,21 @@
     "Aortic stenosis",
     "No cardiovascular diseases"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.lipids"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27165,11 +29006,23 @@
     "Janeway lesions",
     "Splinter hemorrhages"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27185,10 +29038,21 @@
     "Helps evaluate central venous pressure",
     "Is a sign of dehydration"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.cv"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27204,11 +29068,23 @@
     "Occurs in areas of the body that are lower than the heart",
     "Occurs mostly in legs and ankles"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.cv",
     "S.cough"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27224,13 +29100,25 @@
     "Pulmonary edema",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.hf",
     "S.cv",
     "S.asthma"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27246,10 +29134,22 @@
     "Panic attack",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27265,11 +29165,21 @@
     "Lung cancer",
     "Cystic fibrosis"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27285,11 +29195,23 @@
     "Lung cancer",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.asthma",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27305,11 +29227,23 @@
     "Intercostal muscle recession",
     "Tripod position"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27325,11 +29259,22 @@
     "It increases the volume in the chest cavity",
     "None of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.dyspnea",
     "S.resp"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27345,11 +29290,20 @@
     "Pain radiates to the groin or scrotum",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c1",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27365,11 +29319,20 @@
     "Pain radiates to the groin or scrotum",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c1",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27385,11 +29348,20 @@
     "Pain radiates to the groin or scrotum",
     "Pain radiates to the left shoulder tip"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c1",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27405,10 +29377,19 @@
     "Aggravating and alleviating factors",
     "All of the above"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27424,10 +29405,19 @@
     "Clay (light) colored stool",
     "Blood in urine with dysuria"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27443,11 +29433,20 @@
     "Magnetic resonance cholangiopancreatography (MRCP)",
     "Endoscopic retrograde cholangiopancreatography (ERCP)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0
+   ],
+   "key": "claude",
    "c": [
     "S.gi",
     "S.cxr"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27463,12 +29462,22 @@
     "Solitary nodule",
     "Nodule fixed to adjacent tissues"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c2",
    "c": [
     "S.thyroid",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27484,12 +29493,22 @@
     "Irregular borders",
     "Oval shape"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c2",
    "c": [
     "S.thyroid",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27505,12 +29524,21 @@
     "Secondary hypothyroidism",
     "Graves' disease"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    2
+   ],
+   "key": "claude",
    "case": "s3-semiology-1-midterm-2022-2023-semiology-i-c2",
    "c": [
     "S.thyroid",
     "S.gi"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27526,10 +29554,20 @@
     "A random glycemia higher than 2 g/l with symptoms of hyperglycemia",
     "Glycemia after 2 hours of OGTT higher than 2 g/l"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27545,10 +29583,21 @@
     "Is associated with ketoacidosis",
     "Is associated with weight loss"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -27564,11 +29613,21 @@
     "Absence of GH suppression after performing an OGTT",
     "By measuring GHRH"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "S.pituitary",
     "S.diabetes"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer, not yet checked against the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
