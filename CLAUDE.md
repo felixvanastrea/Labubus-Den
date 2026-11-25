@@ -384,7 +384,15 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   I tidied her spellings, e.g. Biostatics), no questions yet. With no questions the homepage shows modules and lectures
   only (no search, legend, type tabs, Most repeated or Updates); a module page lists its lectures by part, "No questions
   yet". Module windows: `ART` has a constellation per EFM1 module (a bone, benzene, a helix, a bell curve, a lens, a book,
-  a globe). EFM2 S3: nothing yet; ask Abi for its docs and lecture list. Test: efm1.js.
+  a globe). Test: efm1.js.
+- EFM2 S3 (25 November 2026, `efm2-s3/`, data in `src/sem/efm2-s3/`, store `den-efm2-s3-v1`, sync `s_efm2s3`): 7 modules and
+  79 lectures from Abi's "EFM Quick-Link sheet" (every year's lectures per semester; Abi: S3 first, then S1). Modules:
+  Anatomy III (`AT-`), Physiology II (`PH-`, parts neuromuscular / bioenergetics / renal as her sheet has them, renal
+  holding the BE and US/P reviews and metabolic rate), Semiology I (`SM-`), Clinical Biochemistry (`BC-`), Vital Functions
+  and First Aid (`VF-`), Foreign Languages and Art, Culture and History of Medicine (no lectures listed). No questions yet,
+  so hidden. Module windows: a brain, an action potential, a stethoscope, a test tube, a first-aid cross over a heartbeat,
+  the rod of Asclepius (foreign languages reuses EFM1's globe). Each question that comes in is placed in its lecture by
+  reading it (`lectures.json` `q` entries), the way S5 was; S5's concept tagger (`concepts.py`) is S5-only.
 
 ## Weak spots: taken out (Abi, 21 November 2026)
 

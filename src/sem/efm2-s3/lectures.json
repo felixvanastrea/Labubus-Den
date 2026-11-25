@@ -1,0 +1,885 @@
+{
+ "note": "EFM2 S3 lectures in course order (Abi's EFM Quick-Link sheet, 25 November 2026). A topic is one lecture; \"p\" is its part.",
+ "allowEmpty": true,
+ "modules": {
+  "anatomy-3": [
+   {
+    "id": "AT-01",
+    "name": "Nervous system anatomy",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Nervous system anatomy"
+     }
+    ]
+   },
+   {
+    "id": "AT-02",
+    "name": "Maxillofacial anatomy",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Maxillofacial anatomy"
+     }
+    ]
+   },
+   {
+    "id": "AT-03",
+    "name": "ENT anatomy",
+    "take": [],
+    "lectures": [
+     {
+      "t": "ENT anatomy"
+     }
+    ]
+   },
+   {
+    "id": "AT-04",
+    "name": "Ophthalmological anatomy",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Ophthalmological anatomy"
+     }
+    ]
+   }
+  ],
+  "physiology-2": [
+   {
+    "id": "PH-01",
+    "name": "Nerves overview",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Nerves overview"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-02",
+    "name": "Electrical communication: action potential and chemical communication",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Electrical communication: action potential and chemical communication"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-03",
+    "name": "Sensory physiology and reflexes",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Sensory physiology and reflexes"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-04",
+    "name": "Somatic and special sensations",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Somatic and special sensations"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-05",
+    "name": "Stress",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Stress"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-06",
+    "name": "Introducing muscle physiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing muscle physiology"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-07",
+    "name": "Neuromuscular junction",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Neuromuscular junction"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-08",
+    "name": "Myotatic and spindle reflex",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Myotatic and spindle reflex"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-09",
+    "name": "Other sensory organs",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Other sensory organs"
+     }
+    ],
+    "p": "Neuromuscular physiology"
+   },
+   {
+    "id": "PH-10",
+    "name": "Introducing bioenergetics",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing bioenergetics"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-11",
+    "name": "Carbohydrate metabolism",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Carbohydrate metabolism"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-12",
+    "name": "Lipid metabolism",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Lipid metabolism"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-13",
+    "name": "ATP as an energy source",
+    "take": [],
+    "lectures": [
+     {
+      "t": "ATP as an energy source"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-14",
+    "name": "Energy balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Energy balance"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-15",
+    "name": "Revision: obesity, carbohydrates and lipids",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Revision: obesity, carbohydrates and lipids"
+     }
+    ],
+    "p": "Bioenergetics"
+   },
+   {
+    "id": "PH-16",
+    "name": "Urinary system introduction",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Urinary system introduction"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-17",
+    "name": "Nephron physiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Nephron physiology"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-18",
+    "name": "Glomerular filtration",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Glomerular filtration"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-19",
+    "name": "GFR regulation",
+    "take": [],
+    "lectures": [
+     {
+      "t": "GFR regulation"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-20",
+    "name": "Tubular reabsorption",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Tubular reabsorption"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-21",
+    "name": "Acid-base balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acid-base balance"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-22",
+    "name": "BE review",
+    "take": [],
+    "lectures": [
+     {
+      "t": "BE review"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-23",
+    "name": "US/P review",
+    "take": [],
+    "lectures": [
+     {
+      "t": "US/P review"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-24",
+    "name": "Energetics and metabolic rate",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Energetics and metabolic rate"
+     }
+    ],
+    "p": "Renal physiology"
+   },
+   {
+    "id": "PH-25",
+    "name": "Basal metabolic rate",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Basal metabolic rate"
+     }
+    ],
+    "p": "Renal physiology"
+   }
+  ],
+  "semiology-1": [
+   {
+    "id": "SM-01",
+    "name": "Critical thinking and problem-solving strategies",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Critical thinking and problem-solving strategies"
+     }
+    ],
+    "p": "General semiology skills"
+   },
+   {
+    "id": "SM-02",
+    "name": "Clinical approach to the patient and doctor's skills",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Clinical approach to the patient and doctor's skills"
+     }
+    ],
+    "p": "General semiology skills"
+   },
+   {
+    "id": "SM-03",
+    "name": "Introducing endocrine semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing endocrine semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-04",
+    "name": "Dyslipidemia",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Dyslipidemia"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-05",
+    "name": "Thyroid semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Thyroid semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-06",
+    "name": "Pituitary semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Pituitary semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-07",
+    "name": "Parathyroid semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Parathyroid semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-08",
+    "name": "Gonads semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Gonads semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-09",
+    "name": "Adrenal semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Adrenal semiology"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-10",
+    "name": "Diabetes",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Diabetes"
+     }
+    ],
+    "p": "Endocrine semiology"
+   },
+   {
+    "id": "SM-11",
+    "name": "Congestive heart failure: left and right heart",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Congestive heart failure: left and right heart"
+     }
+    ],
+    "p": "Cardiac semiology"
+   },
+   {
+    "id": "SM-12",
+    "name": "Introducing cardiovascular semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing cardiovascular semiology"
+     }
+    ],
+    "p": "Cardiac semiology"
+   },
+   {
+    "id": "SM-13",
+    "name": "ECG",
+    "take": [],
+    "lectures": [
+     {
+      "t": "ECG"
+     }
+    ],
+    "p": "Cardiac semiology"
+   },
+   {
+    "id": "SM-14",
+    "name": "GI clinical cases",
+    "take": [],
+    "lectures": [
+     {
+      "t": "GI clinical cases"
+     }
+    ],
+    "p": "Gastrointestinal semiology"
+   },
+   {
+    "id": "SM-15",
+    "name": "Clinical cases",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Clinical cases"
+     }
+    ],
+    "p": "Gastrointestinal semiology"
+   },
+   {
+    "id": "SM-16",
+    "name": "Introducing respiratory semiology",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing respiratory semiology"
+     }
+    ],
+    "p": "Respiratory semiology"
+   },
+   {
+    "id": "SM-17",
+    "name": "Asthma and COPD",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Asthma and COPD"
+     }
+    ],
+    "p": "Respiratory semiology"
+   },
+   {
+    "id": "SM-18",
+    "name": "Breathing control and dyspnea",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Breathing control and dyspnea"
+     }
+    ],
+    "p": "Respiratory semiology"
+   },
+   {
+    "id": "SM-19",
+    "name": "Cough",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cough"
+     }
+    ],
+    "p": "Respiratory semiology"
+   },
+   {
+    "id": "SM-20",
+    "name": "Chest X-rays",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Chest X-rays"
+     }
+    ],
+    "p": "Respiratory semiology"
+   },
+   {
+    "id": "SM-21",
+    "name": "Pulmonary function tests",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Pulmonary function tests"
+     }
+    ],
+    "p": "Respiratory semiology"
+   }
+  ],
+  "clinical-biochemistry": [
+   {
+    "id": "BC-01",
+    "name": "Thyroid hormones",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Thyroid hormones"
+     }
+    ],
+    "p": "Hormones"
+   },
+   {
+    "id": "BC-02",
+    "name": "Steroid hormones",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Steroid hormones"
+     }
+    ],
+    "p": "Hormones"
+   },
+   {
+    "id": "BC-03",
+    "name": "Insulin",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Insulin"
+     }
+    ],
+    "p": "Hormones"
+   },
+   {
+    "id": "BC-04",
+    "name": "Adrenal medulla hormones",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Adrenal medulla hormones"
+     }
+    ],
+    "p": "Hormones"
+   },
+   {
+    "id": "BC-05",
+    "name": "Hepatic markers",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hepatic markers"
+     }
+    ],
+    "p": "Biochemical exploration of vital organs"
+   },
+   {
+    "id": "BC-06",
+    "name": "Cardiac markers",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Cardiac markers"
+     }
+    ],
+    "p": "Biochemical exploration of vital organs"
+   },
+   {
+    "id": "BC-07",
+    "name": "Renal markers",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Renal markers"
+     }
+    ],
+    "p": "Biochemical exploration of vital organs"
+   },
+   {
+    "id": "BC-08",
+    "name": "Exploration of blood proteins",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Exploration of blood proteins"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-09",
+    "name": "Exploration of a lipid anomaly",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Exploration of a lipid anomaly"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-10",
+    "name": "Exploration of blood glucose",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Exploration of blood glucose"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-11",
+    "name": "Calcium-phosphate balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Calcium-phosphate balance"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-12",
+    "name": "Iron balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Iron balance"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-13",
+    "name": "Acid-base balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acid-base balance"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   },
+   {
+    "id": "BC-14",
+    "name": "Hydroelectrolytic balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hydroelectrolytic balance"
+     }
+    ],
+    "p": "Exploration of proteins, lipids and glucose"
+   }
+  ],
+  "vital-first-aid": [
+   {
+    "id": "VF-01",
+    "name": "Introducing vital functions",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Introducing vital functions"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-02",
+    "name": "Increased intracranial pressure",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Increased intracranial pressure"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-03",
+    "name": "Acute kidney injury",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acute kidney injury"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-04",
+    "name": "Acute liver failure",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acute liver failure"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-05",
+    "name": "Hemostasis: physiological exploration and disorders",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hemostasis: physiological exploration and disorders"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-06",
+    "name": "Acid-base balance",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Acid-base balance"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-07",
+    "name": "Thermoregulation",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Thermoregulation"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-08",
+    "name": "Hemorrhagic shock and multiple organ failure",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Hemorrhagic shock and multiple organ failure"
+     }
+    ],
+    "p": "Experimental medicine"
+   },
+   {
+    "id": "VF-09",
+    "name": "First aid fundamentals",
+    "take": [],
+    "lectures": [
+     {
+      "t": "First aid fundamentals"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-10",
+    "name": "Effective emergency call",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Effective emergency call"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-11",
+    "name": "Choking",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Choking"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-12",
+    "name": "Bleeding",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Bleeding"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-13",
+    "name": "Unconsciousness",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Unconsciousness"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-14",
+    "name": "Seven medical emergencies: stroke, injuries, seizures, heart attack, fainting, asthma and burns",
+    "take": [],
+    "lectures": [
+     {
+      "t": "Seven medical emergencies: stroke, injuries, seizures, heart attack, fainting, asthma and burns"
+     }
+    ],
+    "p": "First aid"
+   },
+   {
+    "id": "VF-15",
+    "name": "CPR",
+    "take": [],
+    "lectures": [
+     {
+      "t": "CPR"
+     }
+    ],
+    "p": "First aid"
+   }
+  ],
+  "foreign-languages": [],
+  "art-history-medicine": []
+ },
+ "q": {},
+ "unasked": {}
+}

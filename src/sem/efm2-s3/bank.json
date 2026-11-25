@@ -1,0 +1,42 @@
+{
+ "types": [
+  "Midterms",
+  "Mock",
+  "Finals",
+  "Second session",
+  "Collected"
+ ],
+ "topics": [
+  {
+   "id": "anatomy-3",
+   "name": "Anatomy III"
+  },
+  {
+   "id": "physiology-2",
+   "name": "Physiology II"
+  },
+  {
+   "id": "semiology-1",
+   "name": "Semiology I"
+  },
+  {
+   "id": "clinical-biochemistry",
+   "name": "Clinical Biochemistry"
+  },
+  {
+   "id": "vital-first-aid",
+   "name": "Vital Functions and First Aid"
+  },
+  {
+   "id": "foreign-languages",
+   "name": "Foreign Languages"
+  },
+  {
+   "id": "art-history-medicine",
+   "name": "Art, Culture and History of Medicine"
+  }
+ ],
+ "sources": [],
+ "cases": [],
+ "questions": []
+}

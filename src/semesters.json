@@ -22,5 +22,17 @@
   "store": "den-efm1-s1-v1",
   "sync": "s_efm1s1",
   "sky": false
+ },
+ {
+  "id": "efm2-s3",
+  "year": "EFM2",
+  "sem": "S3",
+  "name": "EFM2 · Semester 3",
+  "label": "Semester 3",
+  "dir": "sem/efm2-s3",
+  "path": "efm2-s3/",
+  "store": "den-efm2-s3-v1",
+  "sync": "s_efm2s3",
+  "sky": false
  }
 ]

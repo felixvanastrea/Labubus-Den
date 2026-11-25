@@ -2792,7 +2792,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // its own questions, its progress is saved under its own key and synced to its own field of the account, its social
   // parts use their own Firestore docs (COL), and only EFM3 S5 has the class sky. SEM comes from semesters.json.
   const SEM = Object.assign({ id: 'efm3-s5', year: 'EFM3', sem: 'S5', name: 'EFM3 · Semester 5', label: 'Semester 5 · 2025–2026',
-    store: 'efm3-mcq-bank-v1', sync: 's', sky: true, all: [] }, {"id": "efm3-s5", "year": "EFM3", "sem": "S5", "name": "EFM3 · Semester 5", "label": "Semester 5 · 2025–2026", "store": "efm3-mcq-bank-v1", "sync": "s", "sky": true, "all": [{"id": "efm3-s5", "name": "EFM3 · Semester 5", "year": "EFM3", "sem": "S5", "store": "efm3-mcq-bank-v1", "sync": "s", "href": "./", "live": true}, {"id": "efm1-s1", "name": "EFM1 · Semester 1", "year": "EFM1", "sem": "S1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "href": "efm1-s1/", "live": false}]});
+    store: 'efm3-mcq-bank-v1', sync: 's', sky: true, all: [] }, {"id": "efm3-s5", "year": "EFM3", "sem": "S5", "name": "EFM3 · Semester 5", "label": "Semester 5 · 2025–2026", "store": "efm3-mcq-bank-v1", "sync": "s", "sky": true, "all": [{"id": "efm3-s5", "name": "EFM3 · Semester 5", "year": "EFM3", "sem": "S5", "store": "efm3-mcq-bank-v1", "sync": "s", "href": "./", "live": true}, {"id": "efm1-s1", "name": "EFM1 · Semester 1", "year": "EFM1", "sem": "S1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "href": "efm1-s1/", "live": false}, {"id": "efm2-s3", "name": "EFM2 · Semester 3", "year": "EFM2", "sem": "S3", "store": "den-efm2-s3-v1", "sync": "s_efm2s3", "href": "efm2-s3/", "live": false}]});
   const MAIN_SEM = SEM.id === 'efm3-s5';
   const COL = n => MAIN_SEM ? n : n + '-' + SEM.id;   // notes, here, duels: one board per semester
   const STORE_KEY = SEM.store;
@@ -2900,6 +2900,31 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     'foreign-languages': { // a globe
       p: [[50, 36], [64, 40], [74, 50], [78, 64], [74, 78], [64, 88], [50, 92], [36, 88], [26, 78], [22, 64], [26, 50], [36, 40], [61, 48], [63, 64], [61, 80], [39, 80], [37, 64], [39, 48]],
       e: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 0], [0, 12], [12, 13], [13, 14], [14, 6], [6, 15], [15, 16], [16, 17], [17, 0], [9, 16], [16, 13], [13, 3]]
+    },
+    // EFM2 S3
+    'anatomy-3': { // a brain and its stem
+      p: [[50,  42],  [65,  45],  [76,  52],  [80,  62],  [76,  72],  [65,  79],  [50,  82],  [35,  79],  [24,  72],  [20,  62],  [24,  52],  [35,  45],  [44,  50],  [52,  60],  [46,  70],  [58,  74],  [58,  82],  [60,  96]],
+      e: [[0,  1],  [1,  2],  [2,  3],  [3,  4],  [4,  5],  [5,  6],  [6,  7],  [7,  8],  [8,  9],  [9,  10],  [10,  11],  [11,  0],  [0,  12],  [12,  13],  [13,  14],  [14,  15],  [15,  16],  [16,  17]]
+    },
+    'physiology-2': { // an action potential
+      p: [[48,  30],  [18,  84],  [34,  84],  [40,  78],  [44,  52],  [54,  48],  [58,  72],  [62,  94],  [70,  90],  [84,  84],  [16,  100],  [86,  100],  [16,  36]],
+      e: [[1,  2],  [2,  3],  [3,  4],  [4,  0],  [0,  5],  [5,  6],  [6,  7],  [7,  8],  [8,  9],  [10,  11],  [10,  12]]
+    },
+    'semiology-1': { // a stethoscope
+      p: [[62,  96],  [32,  28],  [68,  28],  [34,  42],  [66,  42],  [42,  58],  [58,  58],  [50,  66],  [50,  80],  [52,  90],  [62,  108],  [72,  102],  [72,  90]],
+      e: [[1,  3],  [2,  4],  [3,  5],  [4,  6],  [5,  7],  [6,  7],  [7,  8],  [8,  9],  [9,  0],  [0,  10],  [10,  11],  [11,  12],  [12,  0]]
+    },
+    'clinical-biochemistry': { // a test tube with its sample
+      p: [[50,  96],  [40,  26],  [60,  26],  [40,  86],  [60,  86],  [46,  100],  [54,  100],  [40,  64],  [60,  64],  [50,  52],  [46,  72],  [55,  78]],
+      e: [[1,  3],  [3,  5],  [5,  0],  [0,  6],  [6,  4],  [4,  2],  [1,  2],  [7,  8]]
+    },
+    'vital-first-aid': { // a first-aid cross over a heartbeat
+      p: [[48,  104],  [44,  28],  [56,  28],  [56,  44],  [72,  44],  [72,  56],  [56,  56],  [56,  72],  [44,  72],  [44,  56],  [28,  56],  [28,  44],  [44,  44],  [16,  92],  [36,  92],  [42,  84],  [54,  80],  [60,  92],  [84,  92]],
+      e: [[1,  2],  [2,  3],  [3,  4],  [4,  5],  [5,  6],  [6,  7],  [7,  8],  [8,  9],  [9,  10],  [10,  11],  [11,  12],  [12,  1],  [13,  14],  [14,  15],  [15,  0],  [0,  16],  [16,  17],  [17,  18]]
+    },
+    'art-history-medicine': { // the rod of Asclepius
+      p: [[50,  24],  [50,  110],  [58,  32],  [42,  42],  [58,  54],  [42,  66],  [58,  78],  [42,  90],  [52,  98]],
+      e: [[0,  1],  [0,  2],  [2,  3],  [3,  4],  [4,  5],  [5,  6],  [6,  7],  [7,  8]]
     },
     'hourglass': { // exam mode: an hourglass, its sand falling from the waist onto a heap
       p: [[50, 66], [50, 86], [42, 96], [58, 96], [30, 104], [70, 104], [35, 92], [65, 92], [35, 40], [65, 40], [30, 28], [70, 28], [42, 50], [58, 50]],
@@ -3742,7 +3767,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'b18a531c6a60', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '1e2152c92587', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
