@@ -82,8 +82,7 @@
    "parathyroid",
    "neck",
    "cervical",
-   "neck and thyroid gland",
-   "thyroid"
+   "neck and thyroid gland"
   ],
   "ab": [],
   "rx": "thyroid gland|lobes of the thyroid|thyroid lob|parathyroid|isthmus|neck|cervical (lymph|region|fascia)|carotid sheath|sternocleidomastoid|hyoid"
@@ -348,8 +347,7 @@
    "aquaporins",
    "aldosterone",
    "loop of Henle",
-   "tubular reabsorption and secretion",
-   "glucose"
+   "tubular reabsorption and secretion"
   ],
   "ab": [
    "adh"
@@ -379,8 +377,7 @@
    "nephron",
    "renal corpuscle",
    "juxtamedullary nephron",
-   "nephron physiology",
-   "renal"
+   "nephron physiology"
   ],
   "ab": [],
   "rx": "nephron|renal corpuscle|cortical nephron|juxtamedullary"
@@ -515,8 +512,7 @@
    "stretch reflex",
    "muscle spindle",
    "Golgi tendon organ",
-   "myotatic reflex and muscle spindle",
-   "muscle"
+   "myotatic reflex and muscle spindle"
   ],
   "ab": [],
   "rx": "myotatic|stretch reflex|muscle spindle|spindle|golgi tendon|tendon reflex|gamma motor"
@@ -536,8 +532,7 @@
    "myosin",
    "muscle fibers",
    "muscle physiology",
-   "muscle",
-   "cardiac"
+   "muscle"
   ],
   "ab": [],
   "rx": "muscle|sarcom|sarcoplasm|myosin|actin|troponin|tropomyosin|myofibr|fasciculus|t.tubule|excitation.contraction|ryanodine|dihydropyridine|rigor|twitch|tetanus|isometric|isotonic|hypertroph"
@@ -1077,8 +1072,7 @@
    "urea cycle",
    "ammonia",
    "hepatic markers",
-   "hepatic",
-   "urea"
+   "hepatic"
   ],
   "ab": [
    "alt",
@@ -1196,8 +1190,7 @@
    "calcitonin",
    "calcemia",
    "calcium-phosphate balance",
-   "calcium-phosphate",
-   "parathyroid"
+   "calcium-phosphate"
   ],
   "ab": [
    "pth"
@@ -1285,8 +1278,7 @@
    "renal replacement therapy",
    "prerenal",
    "postrenal",
-   "glomerular filtration rate",
-   "renal"
+   "glomerular filtration rate"
   ],
   "ab": [
    "aki",
@@ -1469,8 +1461,7 @@
    "burns",
    "injuries",
    "fractures",
-   "seven medical emergencies",
-   "asthma"
+   "seven medical emergencies"
   ],
   "ab": [
    "fast"

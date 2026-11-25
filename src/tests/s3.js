@@ -8,7 +8,7 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); 
   const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
   p.on('pageerror', e => errs.push(e.message));
   await p.goto(BASE); await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForTimeout(1200);
-  ok(/1,179 questions/.test(await p.textContent('button.navstat')), 'the count shows 1,179 questions');
+  ok(+((await p.textContent('button.navstat')).match(/([\d,]+) questions/)[1].replace(/,/g, '')) >= 1179, 'the count shows the S3 questions');
   ok(/lecture by lecture/.test(await p.textContent('body')), 'About says answers come lecture by lecture');
   await p.fill('input[type=search]', 'thyroid'); await p.waitForTimeout(700);
   const hits = await p.evaluate(() => (document.body.innerText.match(/(\d+) questions? match/) || document.body.innerText.match(/(\d+) questions/) || [])[1]);

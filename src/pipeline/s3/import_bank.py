@@ -172,7 +172,7 @@ for c in concepts:
     low = [s.lower() for s in c['s']]
     for s in list(c['s']):
         w = s.lower().split()[0]
-        if ' ' in s and w in ONE and w not in low:
+        if ' ' in s and w in ONE and w not in low and c['n'].lower().startswith(w):   # only a topic named by that word
             c['s'].append(w); low.append(w)
 bank['sources'] = sources
 bank['cases'] = cases
