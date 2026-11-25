@@ -1002,7 +1002,8 @@
  },
  "C12": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 12
  },
@@ -1155,7 +1156,8 @@
  },
  "C34": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 9
  },
@@ -1259,61 +1261,71 @@
  },
  "C49": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr",
   "n": 1
  },
  "C50": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-56",
   "set": "chem-fr",
   "n": 2
  },
  "C51": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-56",
   "set": "chem-fr",
   "n": 5
  },
  "C52": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-56",
   "set": "chem-fr",
   "n": 6
  },
  "C53": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr",
   "n": 8
  },
  "C54": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr",
   "n": 9
  },
  "C55": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-2",
   "set": "chem-fr",
   "n": 10
  },
  "C56": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr",
   "n": 11
  },
  "C57": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-56",
   "set": "chem-fr",
   "n": 12
  },
  "C58": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-56",
   "set": "chem-fr",
   "n": 13
  },
@@ -1414,7 +1426,8 @@
  },
  "C73": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr-exam",
   "n": 16
  },
@@ -1427,31 +1440,36 @@
  },
  "C75": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-ox",
   "set": "chem-en",
   "n": 11
  },
  "C76": {
   "key": "E",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-ox",
   "set": "chem-en",
   "n": 12
  },
  "C77": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-en",
   "n": 13
  },
  "C78": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-2",
   "set": "chem-en",
   "n": 14
  },
  "C79": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-en",
   "n": 15
  },
@@ -1937,8 +1955,9 @@
   "n": 17
  },
  "G43": {
-  "key": "ABC",
-  "by": "knowledge",
+  "key": "ABDE",
+  "by": "lecture",
+  "lecture": "cb-perox",
   "set": "cell-2023",
   "n": 18
  },
@@ -2364,13 +2383,15 @@
  },
  "Y11": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-amet",
   "set": "biophys-mock",
   "n": 11
  },
  "Y12": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-amet",
   "set": "biophys-mock",
   "n": 12
  },
@@ -2487,13 +2508,15 @@
  },
  "Y30": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-sol",
   "set": "bio-review",
   "n": 5
  },
  "Y31": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-sol",
   "set": "bio-review",
   "n": 6
  },
@@ -2694,13 +2717,15 @@
  },
  "L6": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-gi",
   "set": "lm-mock",
   "n": 6
  },
  "L7": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-resp",
   "set": "lm-mock",
   "n": 7
  },

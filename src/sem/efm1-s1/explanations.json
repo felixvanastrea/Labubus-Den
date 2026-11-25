@@ -116,6 +116,38 @@
    "title": "Learning methodologies booklet",
    "added": "2026-11-25"
   },
+  "org-2": {
+   "title": "Organic chemistry, lecture 2: nomenclature",
+   "added": "2026-11-25"
+  },
+  "gen-56": {
+   "title": "General chemistry, lectures 5–6: periodic table and chemical bonds",
+   "added": "2026-11-25"
+  },
+  "gen-ox": {
+   "title": "General chemistry, tutorial 5: oxidation and reduction",
+   "added": "2026-11-25"
+  },
+  "gen-sol": {
+   "title": "General chemistry, lectures 7–8: chemistry in solutions",
+   "added": "2026-11-25"
+  },
+  "cb-perox": {
+   "title": "Cell biology: the peroxisome (Pr Aboussaouira)",
+   "added": "2026-11-25"
+  },
+  "by-amet": {
+   "title": "Biophysics: ametropias",
+   "added": "2026-11-25"
+  },
+  "mt-resp": {
+   "title": "Medical terminology: respiratory system (Pr Benyoussef)",
+   "added": "2026-11-25"
+  },
+  "mt-gi": {
+   "title": "Medical terminology: digestive system (Pr Benyoussef)",
+   "added": "2026-11-25"
+  },
   "ph-intro": {
    "title": "Public health: introduction (Pr Mouwafaq)",
    "added": "2026-11-25"
@@ -439,6 +471,13 @@
    "C": "Yes: the slides: best used for monosaccharides and some amino acids.",
    "D": "No: sugars and amino acids."
   },
+  "C12": {
+   "lecture": "org-34",
+   "A": "No: being chiral doesn't define diastereoisomers; they are stereoisomers that are not mirror images.",
+   "B": "Yes: the meso form (2R,3S) is a diastereoisomer of the (2R,3R) and (2S,3S) forms.",
+   "C": "Yes: epimers differ at one carbon only, so they are diastereoisomers.",
+   "D": "No: enantiomers are the mirror-image pairs."
+  },
   "C13": {
    "lecture": "bc-5",
    "A": "No: favism is G6PD deficiency.",
@@ -586,6 +625,13 @@
    "C": "No: CIP priorities, not electronic configuration.",
    "D": "No: CIP rules, not Hofmann's."
   },
+  "C34": {
+   "lecture": "org-34",
+   "A": "Yes: epimers are diastereoisomers.",
+   "B": "No: chirality doesn't define them.",
+   "C": "Yes: the meso form is a diastereoisomer of the R,R and S,S forms.",
+   "D": "No: enantiomers are mirror images."
+  },
   "C35": {
    "lecture": "org-34",
    "A": "No: hybridization can differ.",
@@ -684,6 +730,76 @@
    "C": "No: hexokinase phosphorylates glucose.",
    "D": "Yes: PDH decarboxylates pyruvate into acetyl-CoA."
   },
+  "C49": {
+   "lecture": "org-34",
+   "A": "No: it has no chiral carbon, so no meso form.",
+   "B": "No: an axis of chirality needs an allene or a spirane.",
+   "C": "No: the higher-priority groups are on opposite sides.",
+   "D": "Yes: COOH (over CH3) and OH (over CH3) are on opposite sides of the double bond: E."
+  },
+  "C50": {
+   "lecture": "gen-56",
+   "A": "No: the 4f subshell is full and inner.",
+   "B": "Yes: a block d element's outer structure is ns (n−1)d: 6s1 5d10.",
+   "C": "No: 4f is an inner shell.",
+   "D": "No: the 5d electrons count too."
+  },
+  "C51": {
+   "lecture": "gen-56",
+   "A": "No: n = 6.",
+   "B": "No: n = 6.",
+   "C": "No: n = 6.",
+   "D": "Yes: its outer shell is n = 6."
+  },
+  "C52": {
+   "lecture": "gen-56",
+   "A": "Yes: 6s1 5d10: column IB, the 11th.",
+   "B": "No: column 11.",
+   "C": "No: column 11.",
+   "D": "No: column 11."
+  },
+  "C53": {
+   "lecture": "org-34",
+   "A": "Yes: two different chiral centres: 2² = 4 stereoisomers.",
+   "B": "No: 4, since the molecule can't be meso (its two ends differ).",
+   "C": "No: 4.",
+   "D": "No: 4."
+  },
+  "C54": {
+   "lecture": "org-34",
+   "A": "No: with CH3 at one end and COOH at the other there is no internal plane of symmetry.",
+   "B": "Yes: 4 is the mirror image of 3, and they don't superimpose.",
+   "C": "No: mirror images are enantiomers, not diastereoisomers.",
+   "D": "No: B is right."
+  },
+  "C55": {
+   "lecture": "org-2",
+   "A": "No: the alcohol gives the suffix; no \"hydroxy\" with \"-ol\".",
+   "B": "Yes: the OH carbon is C1, the methyl on C4, both on the same side of the ring: cis-4-methylcyclohexanol.",
+   "C": "No: the chain is numbered from the alcohol, which is the suffix.",
+   "D": "No: the two groups are on the same side, and the name is wrong."
+  },
+  "C56": {
+   "lecture": "org-34",
+   "A": "Yes: OH and CH3 on the same side of the ring: cis.",
+   "B": "No: a cyclohexane is not aromatic.",
+   "C": "No: they are on the same side.",
+   "D": "Yes: a plane through C1 and C4 cuts it in two mirror halves."
+  },
+  "C57": {
+   "lecture": "gen-56",
+   "A": "No: f is filled inside.",
+   "B": "No: no p electrons outside.",
+   "C": "No: its d subshell is filling.",
+   "D": "Yes: ns (n−1)d: block d."
+  },
+  "C58": {
+   "lecture": "gen-56",
+   "A": "No: 6s1 plus 5d10.",
+   "B": "No: 11.",
+   "C": "No: 11.",
+   "D": "Yes: 1 + 10 = 11."
+  },
   "C59": {
    "lecture": "bc-6",
    "A": "Yes: C16 so n = 8: n − 1 = 7 turns.",
@@ -762,6 +878,14 @@
    "D": "No: conformers interconvert by rotation, without breaking bonds.",
    "E": "Yes: the slides go from one conformer to the next by a 60° rotation."
   },
+  "C73": {
+   "lecture": "org-34",
+   "A": "No: they are not mirror images.",
+   "B": "Yes: stereoisomers that aren't mirror images.",
+   "C": "No: conformers interconvert by rotation; these are different configurations.",
+   "D": "Yes: I has the same groups on the same side: an internal plane of symmetry, the meso form.",
+   "E": "No: II's last chiral carbon has its OH on the right: D, not L."
+  },
   "C74": {
    "lecture": "gen-3",
    "A": "Yes: ms (+½ or −½) gives the direction of the electron's spin.",
@@ -769,6 +893,46 @@
    "C": "No: the subshell (s, p, d, f) is l.",
    "D": "No: the energy level (shell) is n.",
    "E": "No: A is right."
+  },
+  "C75": {
+   "lecture": "gen-ox",
+   "A": "Yes: technetium is oxidised by O2: 4Tc + 7O2 → 2Tc2O7.",
+   "B": "No: that is its reaction with water.",
+   "C": "No: that is its reaction with a base.",
+   "D": "No: that is the same reaction written with ions.",
+   "E": "No: A is right."
+  },
+  "C76": {
+   "lecture": "gen-ox",
+   "A": "No: 2x + 7(−2) = 0.",
+   "B": "No: technetium is the positive one.",
+   "C": "No: 2x = 14.",
+   "D": "No: 2x = 14.",
+   "E": "Yes: 2x − 14 = 0, so x = +7 (the VII of its name)."
+  },
+  "C77": {
+   "lecture": "org-34",
+   "A": "Yes: the C2=C3 double bond carries two different groups on each carbon.",
+   "B": "No: it accepts it; the isomer drawn is Z.",
+   "C": "No: no allene or spirane, so no axis.",
+   "D": "Yes: Cl (over COOH) and CH=CBr2 (over CH3) are on the same side: Z.",
+   "E": "No: no chiral carbon or axis."
+  },
+  "C78": {
+   "lecture": "org-2",
+   "A": "No: the chain is five carbons with a carboxylic acid.",
+   "B": "No: the acid gives the suffix; there are two double bonds.",
+   "C": "Yes: the acid is C1; 5,5-dibromo, 2-chloro, 3-methyl, double bonds at 2 and 4; Z at C2=C3.",
+   "D": "No: it is Z.",
+   "E": "No: the descriptor Z is needed."
+  },
+  "C79": {
+   "lecture": "org-34",
+   "A": "No: OH and Cl are on the same side.",
+   "B": "Yes: OH on C1 and Cl on C4 point the same way: cis.",
+   "C": "No: a cyclohexane is not aromatic.",
+   "D": "Yes: a plane through C1 and C4 divides it in two.",
+   "E": "No: B and D are right."
   },
   "C104": {
    "lecture": "bc-1",
@@ -1092,6 +1256,14 @@
    "D": "Yes: GFAP is in glial cells.",
    "E": "No: vimentin is in connective tissue; hair and nails are keratin."
   },
+  "G43": {
+   "lecture": "cb-perox",
+   "A": "Yes: the peroxisome makes and destroys H2O2.",
+   "B": "Yes: catalase uses H2O2 to oxidise other substrates.",
+   "C": "No: pesticides are xenobiotics detoxified in the smooth ER.",
+   "D": "Yes: the slides list selenium glutathione peroxidase and glutathione as the antioxidant.",
+   "E": "Yes: the catalase reaction oxidises a reducing substrate (antioxidants, R'H2)."
+  },
   "G44": {
    "lecture": "cb-4",
    "A": "Yes: N-glycosylation is an ER function.",
@@ -1351,6 +1523,20 @@
    "C": "No: category A is above 6 mSv a year (but under 20).",
    "D": "No: category B stays under 6 mSv a year."
   },
+  "Y11": {
+   "lecture": "by-amet",
+   "A": "No: accommodation increases the power.",
+   "B": "No: the lens changes, not the cornea.",
+   "C": "Yes: the eye adds power to bring near objects into focus.",
+   "D": "No: that is the pupil."
+  },
+  "Y12": {
+   "lecture": "by-amet",
+   "A": "No: thickness isn't in it.",
+   "B": "Yes: power = (n2 − n1) / r.",
+   "C": "No: not in the formula.",
+   "D": "Yes: n2 − n1 is on top."
+  },
   "Y13": {
    "lecture": "by-radio",
    "A": "Yes: heavy, so they go in a straight line.",
@@ -1413,6 +1599,20 @@
    "B": "Yes: S up, v down, P up.",
    "C": "No: the velocity falls.",
    "D": "Yes: Q = S·v is constant, so v falls."
+  },
+  "Y30": {
+   "lecture": "gen-sol",
+   "A": "No: n over V is the molar concentration.",
+   "B": "Yes: mass over volume of solution.",
+   "C": "No: n over the mass of solvent is molality.",
+   "D": "Yes: kg/m³ (or g/L)."
+  },
+  "Y31": {
+   "lecture": "gen-sol",
+   "A": "No: that is the mass concentration.",
+   "B": "No: that is molarity.",
+   "C": "Yes: moles of solute per kg of solvent.",
+   "D": "Yes: mol/kg."
   },
   "Y33": {
    "lecture": "by-states",
@@ -1560,6 +1760,20 @@
    "B": "No: -itis means inflammation.",
    "C": "No: the word root is pancreat.",
    "D": "Yes: a suffix, at the end of the word; -itis means inflammation."
+  },
+  "L6": {
+   "lecture": "mt-gi",
+   "A": "No: that would be -graphy.",
+   "B": "No: that would be rectal.",
+   "C": "Yes: rect/o + plasty: surgical repair of the rectum.",
+   "D": "No: -plasty is a repair, not surgery in general."
+  },
+  "L7": {
+   "lecture": "mt-resp",
+   "A": "No: poly is the prefix (many).",
+   "B": "No: no swelling.",
+   "C": "Yes: poly/somno/graphy: somn is sleep.",
+   "D": "No: no symptom."
   },
   "L8": {
    "lecture": "mt-cardio",

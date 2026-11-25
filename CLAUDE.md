@@ -404,14 +404,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Dropped: a public health question with two options cut off, and the (2S)-alanine question whose figure carries someone's
   circles. Figures: `img/efm1-s1-*.webp`. Y17/Y40 (PV = nRT) print as a key conflict only because "P.V = n.R.T" and
   "P.V = n.R/T" have the same words; both keys are right. Test: efm1.js.
-- S1 answers from the slides (25 November 2026, Abi uploaded "S1 lectures" to Drive): 206 of the 436 checked option by
+- S1 answers from the slides (25 November 2026, Abi uploaded "S1 lectures" to Drive): 231 of the 436 checked option by
   option against the decks, in `src/pipeline/s1/slides/<module>.txt` (`@ id | title` lectures, then `SID KEY lecture` and one
   ` Yes:/No: why` line per option); `import_s1.py` asserts the Yes lines match the key, replaces the knowledge key, writes
   the note "Answered by Claude from the lecture slides (…)" and `src/sem/efm1-s1/explanations.json`. Keys that changed with
   the slides: A14 AE (most of the LV is posterior, the heart deck), G3 BC (mtDNA codes complexes III, IV, V), G30 ABE (simple
   diffusion lists water and ions), G46 B and G47 C (the slides give Cajal bodies telomere repair, granules splicing), G48 ACD
-  (2 pore rings). Still from knowledge: limb anatomy and the introduction (no deck in the folder), G15–G17 and G23 (genetics decks don't spell them out), biostatistics
-  (no deck), figure and nomenclature questions, the French-track structural biochemistry exam, clinical basics, and a few the
+  (2 pore rings), G43 ABDE (the French peroxisome .ppt, converted with soffice: glutathione peroxidase, antioxidants; pesticides are the SER's). `slides/more.txt` holds the second pass (figures read against the isomerism lecture, gold and technetium, solutions, ametropias, terminology). Still from knowledge: limb anatomy and the introduction (no deck in the folder), G15–G17 and G23 (genetics decks don't spell them out), biostatistics
+  (no deck), C70 (chain or position isomers), C71, the French-track structural biochemistry exam, clinical basics, and a few the
   slides don't settle (G33, G42, G43, Y8, Y29, Y54, C60, P1, P35). The aorta and veins decks (parts 6–7, the same file twice)
   are scans: OCR'd here. The About line counts the slide-checked answers (their note says "from the lecture slides").
 - Notes on S1 and S3 answers (Abi, 25 November 2026: "don't mention that answers were not checked"): a knowledge answer's

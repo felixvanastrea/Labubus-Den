@@ -1,0 +1,143 @@
+# Second pass (25 November 2026): figures read against Pr Ouchbani's isomerism and nomenclature lectures, gold and
+# technetium from his periodic table lecture and redox tutorial, solutions, the peroxisome deck (French), ametropias,
+# and the respiratory and GI terminology decks.
+@ org-2 | Organic chemistry, lecture 2: nomenclature
+@ gen-56 | General chemistry, lectures 5–6: periodic table and chemical bonds
+@ gen-ox | General chemistry, tutorial 5: oxidation and reduction
+@ gen-sol | General chemistry, lectures 7–8: chemistry in solutions
+@ cb-perox | Cell biology: the peroxisome (Pr Aboussaouira)
+@ by-amet | Biophysics: ametropias
+@ mt-resp | Medical terminology: respiratory system (Pr Benyoussef)
+@ mt-gi | Medical terminology: digestive system (Pr Benyoussef)
+C12 BC org-34
+ No: being chiral doesn't define diastereoisomers; they are stereoisomers that are not mirror images.
+ Yes: the meso form (2R,3S) is a diastereoisomer of the (2R,3R) and (2S,3S) forms.
+ Yes: epimers differ at one carbon only, so they are diastereoisomers.
+ No: enantiomers are the mirror-image pairs.
+C34 AC org-34
+ Yes: epimers are diastereoisomers.
+ No: chirality doesn't define them.
+ Yes: the meso form is a diastereoisomer of the R,R and S,S forms.
+ No: enantiomers are mirror images.
+C49 D org-34
+ No: it has no chiral carbon, so no meso form.
+ No: an axis of chirality needs an allene or a spirane.
+ No: the higher-priority groups are on opposite sides.
+ Yes: COOH (over CH3) and OH (over CH3) are on opposite sides of the double bond: E.
+C53 A org-34
+ Yes: two different chiral centres: 2² = 4 stereoisomers.
+ No: 4, since the molecule can't be meso (its two ends differ).
+ No: 4.
+ No: 4.
+C54 B org-34
+ No: with CH3 at one end and COOH at the other there is no internal plane of symmetry.
+ Yes: 4 is the mirror image of 3, and they don't superimpose.
+ No: mirror images are enantiomers, not diastereoisomers.
+ No: B is right.
+C55 B org-2
+ No: the alcohol gives the suffix; no "hydroxy" with "-ol".
+ Yes: the OH carbon is C1, the methyl on C4, both on the same side of the ring: cis-4-methylcyclohexanol.
+ No: the chain is numbered from the alcohol, which is the suffix.
+ No: the two groups are on the same side, and the name is wrong.
+C56 AD org-34
+ Yes: OH and CH3 on the same side of the ring: cis.
+ No: a cyclohexane is not aromatic.
+ No: they are on the same side.
+ Yes: a plane through C1 and C4 cuts it in two mirror halves.
+C73 BD org-34
+ No: they are not mirror images.
+ Yes: stereoisomers that aren't mirror images.
+ No: conformers interconvert by rotation; these are different configurations.
+ Yes: I has the same groups on the same side: an internal plane of symmetry, the meso form.
+ No: II's last chiral carbon has its OH on the right: D, not L.
+C77 AD org-34
+ Yes: the C2=C3 double bond carries two different groups on each carbon.
+ No: it accepts it; the isomer drawn is Z.
+ No: no allene or spirane, so no axis.
+ Yes: Cl (over COOH) and CH=CBr2 (over CH3) are on the same side: Z.
+ No: no chiral carbon or axis.
+C78 C org-2
+ No: the chain is five carbons with a carboxylic acid.
+ No: the acid gives the suffix; there are two double bonds.
+ Yes: the acid is C1; 5,5-dibromo, 2-chloro, 3-methyl, double bonds at 2 and 4; Z at C2=C3.
+ No: it is Z.
+ No: the descriptor Z is needed.
+C79 BD org-34
+ No: OH and Cl are on the same side.
+ Yes: OH on C1 and Cl on C4 point the same way: cis.
+ No: a cyclohexane is not aromatic.
+ Yes: a plane through C1 and C4 divides it in two.
+ No: B and D are right.
+C50 B gen-56
+ No: the 4f subshell is full and inner.
+ Yes: a block d element's outer structure is ns (n−1)d: 6s1 5d10.
+ No: 4f is an inner shell.
+ No: the 5d electrons count too.
+C51 D gen-56
+ No: n = 6.
+ No: n = 6.
+ No: n = 6.
+ Yes: its outer shell is n = 6.
+C52 A gen-56
+ Yes: 6s1 5d10: column IB, the 11th.
+ No: column 11.
+ No: column 11.
+ No: column 11.
+C57 D gen-56
+ No: f is filled inside.
+ No: no p electrons outside.
+ No: its d subshell is filling.
+ Yes: ns (n−1)d: block d.
+C58 D gen-56
+ No: 6s1 plus 5d10.
+ No: 11.
+ No: 11.
+ Yes: 1 + 10 = 11.
+C75 A gen-ox
+ Yes: technetium is oxidised by O2: 4Tc + 7O2 → 2Tc2O7.
+ No: that is its reaction with water.
+ No: that is its reaction with a base.
+ No: that is the same reaction written with ions.
+ No: A is right.
+C76 E gen-ox
+ No: 2x + 7(−2) = 0.
+ No: technetium is the positive one.
+ No: 2x = 14.
+ No: 2x = 14.
+ Yes: 2x − 14 = 0, so x = +7 (the VII of its name).
+Y30 BD gen-sol
+ No: n over V is the molar concentration.
+ Yes: mass over volume of solution.
+ No: n over the mass of solvent is molality.
+ Yes: kg/m³ (or g/L).
+Y31 CD gen-sol
+ No: that is the mass concentration.
+ No: that is molarity.
+ Yes: moles of solute per kg of solvent.
+ Yes: mol/kg.
+G43 ABDE cb-perox
+ Yes: the peroxisome makes and destroys H2O2.
+ Yes: catalase uses H2O2 to oxidise other substrates.
+ No: pesticides are xenobiotics detoxified in the smooth ER.
+ Yes: the slides list selenium glutathione peroxidase and glutathione as the antioxidant.
+ Yes: the catalase reaction oxidises a reducing substrate (antioxidants, R'H2).
+Y11 C by-amet
+ No: accommodation increases the power.
+ No: the lens changes, not the cornea.
+ Yes: the eye adds power to bring near objects into focus.
+ No: that is the pupil.
+Y12 BD by-amet
+ No: thickness isn't in it.
+ Yes: power = (n2 − n1) / r.
+ No: not in the formula.
+ Yes: n2 − n1 is on top.
+L7 C mt-resp
+ No: poly is the prefix (many).
+ No: no swelling.
+ Yes: poly/somno/graphy: somn is sleep.
+ No: no symptom.
+L6 C mt-gi
+ No: that would be -graphy.
+ No: that would be rectal.
+ Yes: rect/o + plasty: surgical repair of the rectum.
+ No: -plasty is a repair, not surgery in general.

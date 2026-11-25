@@ -4794,7 +4794,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -5400,7 +5400,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -5822,7 +5822,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -5849,7 +5849,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 5–6: periodic table and chemical bonds).</p>"
     }
    ]
   },
@@ -5876,7 +5876,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 5–6: periodic table and chemical bonds).</p>"
     }
    ]
   },
@@ -5903,7 +5903,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 5–6: periodic table and chemical bonds).</p>"
     }
    ]
   },
@@ -5937,7 +5937,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -5971,7 +5971,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -6005,7 +6005,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lecture 2: nomenclature).</p>"
     }
    ]
   },
@@ -6040,7 +6040,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -6067,7 +6067,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 5–6: periodic table and chemical bonds).</p>"
     }
    ]
   },
@@ -6094,7 +6094,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 5–6: periodic table and chemical bonds).</p>"
     }
    ]
   },
@@ -6533,7 +6533,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -6589,7 +6589,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, tutorial 5: oxidation and reduction).</p>"
     }
    ]
   },
@@ -6617,7 +6617,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, tutorial 5: oxidation and reduction).</p>"
     }
    ]
   },
@@ -6653,7 +6653,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -6688,7 +6688,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lecture 2: nomenclature).</p>"
     }
    ]
   },
@@ -6724,7 +6724,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Organic chemistry, lectures 3–4: isomerism).</p>"
     }
    ]
   },
@@ -8860,7 +8860,8 @@
    "answer": [
     0,
     1,
-    2
+    3,
+    4
    ],
    "key": "claude",
    "c": [
@@ -8870,7 +8871,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Cell biology: the peroxisome (Pr Aboussaouira)).</p>"
     }
    ]
   },
@@ -10707,7 +10708,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Biophysics: ametropias).</p>"
     }
    ]
   },
@@ -10735,7 +10736,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Biophysics: ametropias).</p>"
     }
    ]
   },
@@ -11238,7 +11239,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 7–8: chemistry in solutions).</p>"
     }
    ]
   },
@@ -11266,7 +11267,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (General chemistry, lectures 7–8: chemistry in solutions).</p>"
     }
    ]
   },
@@ -12107,7 +12108,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Medical terminology: digestive system (Pr Benyoussef)).</p>"
     }
    ]
   },
@@ -12134,7 +12135,7 @@
     {
      "by": "claude",
      "anchor": null,
-     "html": "<p>Claude’s answer.</p>"
+     "html": "<p>Answered by Claude from the lecture slides (Medical terminology: respiratory system (Pr Benyoussef)).</p>"
     }
    ]
   },
