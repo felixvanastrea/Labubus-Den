@@ -1,12 +1,25 @@
 {
- "note": "EFM2 S3 lectures in course order (Abi's EFM Quick-Link sheet, 25 November 2026). A topic is one lecture; \"p\" is its part.",
+ "note": "EFM2 S3 lectures in course order (Abi's EFM Quick-Link sheet, 25 November 2026). A topic is one lecture; \"p\" is its part. Questions are placed by their first tag (concepts.json, S3 only); \"q\" moves the few the tags would misplace, read one by one (25 November 2026). BC-00, the pre-analytical phase, has questions in every biochemistry exam but is not on the sheet: ask Abi where it belongs.",
  "allowEmpty": true,
  "modules": {
   "anatomy-3": [
    {
     "id": "AT-01",
     "name": "Nervous system anatomy",
-    "take": [],
+    "take": [
+     "A.skull",
+     "A.csf",
+     "A.meninges",
+     "A.vessels",
+     "A.spinal",
+     "A.brainstem",
+     "A.cerebellum",
+     "A.pituitary",
+     "A.diencephalon",
+     "A.basal",
+     "A.cerebrum",
+     "A.neuro"
+    ],
     "lectures": [
      {
       "t": "Nervous system anatomy"
@@ -16,7 +29,9 @@
    {
     "id": "AT-02",
     "name": "Maxillofacial anatomy",
-    "take": [],
+    "take": [
+     "A.face"
+    ],
     "lectures": [
      {
       "t": "Maxillofacial anatomy"
@@ -26,7 +41,12 @@
    {
     "id": "AT-03",
     "name": "ENT anatomy",
-    "take": [],
+    "take": [
+     "A.ear",
+     "A.nose",
+     "A.larynx",
+     "A.neck"
+    ],
     "lectures": [
      {
       "t": "ENT anatomy"
@@ -36,7 +56,9 @@
    {
     "id": "AT-04",
     "name": "Ophthalmological anatomy",
-    "take": [],
+    "take": [
+     "A.orbit"
+    ],
     "lectures": [
      {
       "t": "Ophthalmological anatomy"
@@ -48,7 +70,9 @@
    {
     "id": "PH-01",
     "name": "Nerves overview",
-    "take": [],
+    "take": [
+     "P.nerves"
+    ],
     "lectures": [
      {
       "t": "Nerves overview"
@@ -59,7 +83,9 @@
    {
     "id": "PH-02",
     "name": "Electrical communication: action potential and chemical communication",
-    "take": [],
+    "take": [
+     "P.ap"
+    ],
     "lectures": [
      {
       "t": "Electrical communication: action potential and chemical communication"
@@ -70,7 +96,9 @@
    {
     "id": "PH-03",
     "name": "Sensory physiology and reflexes",
-    "take": [],
+    "take": [
+     "P.sensory"
+    ],
     "lectures": [
      {
       "t": "Sensory physiology and reflexes"
@@ -81,7 +109,9 @@
    {
     "id": "PH-04",
     "name": "Somatic and special sensations",
-    "take": [],
+    "take": [
+     "P.special"
+    ],
     "lectures": [
      {
       "t": "Somatic and special sensations"
@@ -92,7 +122,9 @@
    {
     "id": "PH-05",
     "name": "Stress",
-    "take": [],
+    "take": [
+     "P.stress"
+    ],
     "lectures": [
      {
       "t": "Stress"
@@ -103,7 +135,9 @@
    {
     "id": "PH-06",
     "name": "Introducing muscle physiology",
-    "take": [],
+    "take": [
+     "P.muscle"
+    ],
     "lectures": [
      {
       "t": "Introducing muscle physiology"
@@ -114,7 +148,9 @@
    {
     "id": "PH-07",
     "name": "Neuromuscular junction",
-    "take": [],
+    "take": [
+     "P.nmj"
+    ],
     "lectures": [
      {
       "t": "Neuromuscular junction"
@@ -125,7 +161,9 @@
    {
     "id": "PH-08",
     "name": "Myotatic and spindle reflex",
-    "take": [],
+    "take": [
+     "P.spindle"
+    ],
     "lectures": [
      {
       "t": "Myotatic and spindle reflex"
@@ -136,7 +174,9 @@
    {
     "id": "PH-09",
     "name": "Other sensory organs",
-    "take": [],
+    "take": [
+     "P.chem"
+    ],
     "lectures": [
      {
       "t": "Other sensory organs"
@@ -147,7 +187,9 @@
    {
     "id": "PH-10",
     "name": "Introducing bioenergetics",
-    "take": [],
+    "take": [
+     "P.nutri"
+    ],
     "lectures": [
      {
       "t": "Introducing bioenergetics"
@@ -158,7 +200,9 @@
    {
     "id": "PH-11",
     "name": "Carbohydrate metabolism",
-    "take": [],
+    "take": [
+     "P.carb"
+    ],
     "lectures": [
      {
       "t": "Carbohydrate metabolism"
@@ -169,7 +213,9 @@
    {
     "id": "PH-12",
     "name": "Lipid metabolism",
-    "take": [],
+    "take": [
+     "P.lipid"
+    ],
     "lectures": [
      {
       "t": "Lipid metabolism"
@@ -180,7 +226,9 @@
    {
     "id": "PH-13",
     "name": "ATP as an energy source",
-    "take": [],
+    "take": [
+     "P.atp"
+    ],
     "lectures": [
      {
       "t": "ATP as an energy source"
@@ -191,7 +239,9 @@
    {
     "id": "PH-14",
     "name": "Energy balance",
-    "take": [],
+    "take": [
+     "P.balance"
+    ],
     "lectures": [
      {
       "t": "Energy balance"
@@ -213,7 +263,9 @@
    {
     "id": "PH-16",
     "name": "Urinary system introduction",
-    "take": [],
+    "take": [
+     "P.kidney"
+    ],
     "lectures": [
      {
       "t": "Urinary system introduction"
@@ -224,7 +276,9 @@
    {
     "id": "PH-17",
     "name": "Nephron physiology",
-    "take": [],
+    "take": [
+     "P.nephron"
+    ],
     "lectures": [
      {
       "t": "Nephron physiology"
@@ -235,7 +289,9 @@
    {
     "id": "PH-18",
     "name": "Glomerular filtration",
-    "take": [],
+    "take": [
+     "P.gfr"
+    ],
     "lectures": [
      {
       "t": "Glomerular filtration"
@@ -246,7 +302,9 @@
    {
     "id": "PH-19",
     "name": "GFR regulation",
-    "take": [],
+    "take": [
+     "P.gfrreg"
+    ],
     "lectures": [
      {
       "t": "GFR regulation"
@@ -257,7 +315,9 @@
    {
     "id": "PH-20",
     "name": "Tubular reabsorption",
-    "take": [],
+    "take": [
+     "P.tubular"
+    ],
     "lectures": [
      {
       "t": "Tubular reabsorption"
@@ -268,7 +328,9 @@
    {
     "id": "PH-21",
     "name": "Acid-base balance",
-    "take": [],
+    "take": [
+     "P.acidbase"
+    ],
     "lectures": [
      {
       "t": "Acid-base balance"
@@ -301,7 +363,9 @@
    {
     "id": "PH-24",
     "name": "Energetics and metabolic rate",
-    "take": [],
+    "take": [
+     "P.metab"
+    ],
     "lectures": [
      {
       "t": "Energetics and metabolic rate"
@@ -325,7 +389,9 @@
    {
     "id": "SM-01",
     "name": "Critical thinking and problem-solving strategies",
-    "take": [],
+    "take": [
+     "S.summary"
+    ],
     "lectures": [
      {
       "t": "Critical thinking and problem-solving strategies"
@@ -336,7 +402,9 @@
    {
     "id": "SM-02",
     "name": "Clinical approach to the patient and doctor's skills",
-    "take": [],
+    "take": [
+     "S.history"
+    ],
     "lectures": [
      {
       "t": "Clinical approach to the patient and doctor's skills"
@@ -347,7 +415,9 @@
    {
     "id": "SM-03",
     "name": "Introducing endocrine semiology",
-    "take": [],
+    "take": [
+     "S.endo"
+    ],
     "lectures": [
      {
       "t": "Introducing endocrine semiology"
@@ -358,7 +428,9 @@
    {
     "id": "SM-04",
     "name": "Dyslipidemia",
-    "take": [],
+    "take": [
+     "S.lipids"
+    ],
     "lectures": [
      {
       "t": "Dyslipidemia"
@@ -369,7 +441,9 @@
    {
     "id": "SM-05",
     "name": "Thyroid semiology",
-    "take": [],
+    "take": [
+     "S.thyroid"
+    ],
     "lectures": [
      {
       "t": "Thyroid semiology"
@@ -380,7 +454,9 @@
    {
     "id": "SM-06",
     "name": "Pituitary semiology",
-    "take": [],
+    "take": [
+     "S.pituitary"
+    ],
     "lectures": [
      {
       "t": "Pituitary semiology"
@@ -391,7 +467,9 @@
    {
     "id": "SM-07",
     "name": "Parathyroid semiology",
-    "take": [],
+    "take": [
+     "S.parathyroid"
+    ],
     "lectures": [
      {
       "t": "Parathyroid semiology"
@@ -402,7 +480,9 @@
    {
     "id": "SM-08",
     "name": "Gonads semiology",
-    "take": [],
+    "take": [
+     "S.gonads"
+    ],
     "lectures": [
      {
       "t": "Gonads semiology"
@@ -413,7 +493,9 @@
    {
     "id": "SM-09",
     "name": "Adrenal semiology",
-    "take": [],
+    "take": [
+     "S.adrenal"
+    ],
     "lectures": [
      {
       "t": "Adrenal semiology"
@@ -424,7 +506,9 @@
    {
     "id": "SM-10",
     "name": "Diabetes",
-    "take": [],
+    "take": [
+     "S.diabetes"
+    ],
     "lectures": [
      {
       "t": "Diabetes"
@@ -435,7 +519,9 @@
    {
     "id": "SM-11",
     "name": "Congestive heart failure: left and right heart",
-    "take": [],
+    "take": [
+     "S.hf"
+    ],
     "lectures": [
      {
       "t": "Congestive heart failure: left and right heart"
@@ -446,7 +532,9 @@
    {
     "id": "SM-12",
     "name": "Introducing cardiovascular semiology",
-    "take": [],
+    "take": [
+     "S.cv"
+    ],
     "lectures": [
      {
       "t": "Introducing cardiovascular semiology"
@@ -457,7 +545,9 @@
    {
     "id": "SM-13",
     "name": "ECG",
-    "take": [],
+    "take": [
+     "S.ecg"
+    ],
     "lectures": [
      {
       "t": "ECG"
@@ -468,7 +558,9 @@
    {
     "id": "SM-14",
     "name": "GI clinical cases",
-    "take": [],
+    "take": [
+     "S.gi"
+    ],
     "lectures": [
      {
       "t": "GI clinical cases"
@@ -490,7 +582,9 @@
    {
     "id": "SM-16",
     "name": "Introducing respiratory semiology",
-    "take": [],
+    "take": [
+     "S.resp"
+    ],
     "lectures": [
      {
       "t": "Introducing respiratory semiology"
@@ -501,7 +595,9 @@
    {
     "id": "SM-17",
     "name": "Asthma and COPD",
-    "take": [],
+    "take": [
+     "S.asthma"
+    ],
     "lectures": [
      {
       "t": "Asthma and COPD"
@@ -512,7 +608,9 @@
    {
     "id": "SM-18",
     "name": "Breathing control and dyspnea",
-    "take": [],
+    "take": [
+     "S.dyspnea"
+    ],
     "lectures": [
      {
       "t": "Breathing control and dyspnea"
@@ -523,7 +621,9 @@
    {
     "id": "SM-19",
     "name": "Cough",
-    "take": [],
+    "take": [
+     "S.cough"
+    ],
     "lectures": [
      {
       "t": "Cough"
@@ -534,7 +634,9 @@
    {
     "id": "SM-20",
     "name": "Chest X-rays",
-    "take": [],
+    "take": [
+     "S.cxr"
+    ],
     "lectures": [
      {
       "t": "Chest X-rays"
@@ -545,7 +647,9 @@
    {
     "id": "SM-21",
     "name": "Pulmonary function tests",
-    "take": [],
+    "take": [
+     "S.pft"
+    ],
     "lectures": [
      {
       "t": "Pulmonary function tests"
@@ -556,9 +660,24 @@
   ],
   "clinical-biochemistry": [
    {
+    "id": "BC-00",
+    "name": "Pre-analytical phase",
+    "p": "General",
+    "lectures": [
+     {
+      "t": "Pre-analytical phase"
+     }
+    ],
+    "take": [
+     "B.preanal"
+    ]
+   },
+   {
     "id": "BC-01",
     "name": "Thyroid hormones",
-    "take": [],
+    "take": [
+     "B.thyroid"
+    ],
     "lectures": [
      {
       "t": "Thyroid hormones"
@@ -569,7 +688,9 @@
    {
     "id": "BC-02",
     "name": "Steroid hormones",
-    "take": [],
+    "take": [
+     "B.steroid"
+    ],
     "lectures": [
      {
       "t": "Steroid hormones"
@@ -580,7 +701,9 @@
    {
     "id": "BC-03",
     "name": "Insulin",
-    "take": [],
+    "take": [
+     "B.insulin"
+    ],
     "lectures": [
      {
       "t": "Insulin"
@@ -591,7 +714,9 @@
    {
     "id": "BC-04",
     "name": "Adrenal medulla hormones",
-    "take": [],
+    "take": [
+     "B.catechol"
+    ],
     "lectures": [
      {
       "t": "Adrenal medulla hormones"
@@ -602,7 +727,9 @@
    {
     "id": "BC-05",
     "name": "Hepatic markers",
-    "take": [],
+    "take": [
+     "B.liver"
+    ],
     "lectures": [
      {
       "t": "Hepatic markers"
@@ -613,7 +740,9 @@
    {
     "id": "BC-06",
     "name": "Cardiac markers",
-    "take": [],
+    "take": [
+     "B.heart"
+    ],
     "lectures": [
      {
       "t": "Cardiac markers"
@@ -624,7 +753,9 @@
    {
     "id": "BC-07",
     "name": "Renal markers",
-    "take": [],
+    "take": [
+     "B.kidney"
+    ],
     "lectures": [
      {
       "t": "Renal markers"
@@ -635,7 +766,9 @@
    {
     "id": "BC-08",
     "name": "Exploration of blood proteins",
-    "take": [],
+    "take": [
+     "B.proteins"
+    ],
     "lectures": [
      {
       "t": "Exploration of blood proteins"
@@ -646,7 +779,9 @@
    {
     "id": "BC-09",
     "name": "Exploration of a lipid anomaly",
-    "take": [],
+    "take": [
+     "B.lipids"
+    ],
     "lectures": [
      {
       "t": "Exploration of a lipid anomaly"
@@ -657,7 +792,9 @@
    {
     "id": "BC-10",
     "name": "Exploration of blood glucose",
-    "take": [],
+    "take": [
+     "B.glucose"
+    ],
     "lectures": [
      {
       "t": "Exploration of blood glucose"
@@ -668,7 +805,9 @@
    {
     "id": "BC-11",
     "name": "Calcium-phosphate balance",
-    "take": [],
+    "take": [
+     "B.calcium"
+    ],
     "lectures": [
      {
       "t": "Calcium-phosphate balance"
@@ -679,7 +818,9 @@
    {
     "id": "BC-12",
     "name": "Iron balance",
-    "take": [],
+    "take": [
+     "B.iron"
+    ],
     "lectures": [
      {
       "t": "Iron balance"
@@ -690,7 +831,9 @@
    {
     "id": "BC-13",
     "name": "Acid-base balance",
-    "take": [],
+    "take": [
+     "B.acidbase"
+    ],
     "lectures": [
      {
       "t": "Acid-base balance"
@@ -701,7 +844,9 @@
    {
     "id": "BC-14",
     "name": "Hydroelectrolytic balance",
-    "take": [],
+    "take": [
+     "B.water"
+    ],
     "lectures": [
      {
       "t": "Hydroelectrolytic balance"
@@ -714,7 +859,9 @@
    {
     "id": "VF-01",
     "name": "Introducing vital functions",
-    "take": [],
+    "take": [
+     "V.intro"
+    ],
     "lectures": [
      {
       "t": "Introducing vital functions"
@@ -725,7 +872,9 @@
    {
     "id": "VF-02",
     "name": "Increased intracranial pressure",
-    "take": [],
+    "take": [
+     "V.icp"
+    ],
     "lectures": [
      {
       "t": "Increased intracranial pressure"
@@ -736,7 +885,9 @@
    {
     "id": "VF-03",
     "name": "Acute kidney injury",
-    "take": [],
+    "take": [
+     "V.aki"
+    ],
     "lectures": [
      {
       "t": "Acute kidney injury"
@@ -747,7 +898,9 @@
    {
     "id": "VF-04",
     "name": "Acute liver failure",
-    "take": [],
+    "take": [
+     "V.alf"
+    ],
     "lectures": [
      {
       "t": "Acute liver failure"
@@ -758,7 +911,9 @@
    {
     "id": "VF-05",
     "name": "Hemostasis: physiological exploration and disorders",
-    "take": [],
+    "take": [
+     "V.hemo"
+    ],
     "lectures": [
      {
       "t": "Hemostasis: physiological exploration and disorders"
@@ -769,7 +924,9 @@
    {
     "id": "VF-06",
     "name": "Acid-base balance",
-    "take": [],
+    "take": [
+     "V.acidbase"
+    ],
     "lectures": [
      {
       "t": "Acid-base balance"
@@ -780,7 +937,9 @@
    {
     "id": "VF-07",
     "name": "Thermoregulation",
-    "take": [],
+    "take": [
+     "V.thermo"
+    ],
     "lectures": [
      {
       "t": "Thermoregulation"
@@ -791,7 +950,9 @@
    {
     "id": "VF-08",
     "name": "Hemorrhagic shock and multiple organ failure",
-    "take": [],
+    "take": [
+     "V.shock"
+    ],
     "lectures": [
      {
       "t": "Hemorrhagic shock and multiple organ failure"
@@ -802,7 +963,9 @@
    {
     "id": "VF-09",
     "name": "First aid fundamentals",
-    "take": [],
+    "take": [
+     "V.fa"
+    ],
     "lectures": [
      {
       "t": "First aid fundamentals"
@@ -813,7 +976,9 @@
    {
     "id": "VF-10",
     "name": "Effective emergency call",
-    "take": [],
+    "take": [
+     "V.call"
+    ],
     "lectures": [
      {
       "t": "Effective emergency call"
@@ -824,7 +989,9 @@
    {
     "id": "VF-11",
     "name": "Choking",
-    "take": [],
+    "take": [
+     "V.choking"
+    ],
     "lectures": [
      {
       "t": "Choking"
@@ -835,7 +1002,9 @@
    {
     "id": "VF-12",
     "name": "Bleeding",
-    "take": [],
+    "take": [
+     "V.bleed"
+    ],
     "lectures": [
      {
       "t": "Bleeding"
@@ -846,7 +1015,9 @@
    {
     "id": "VF-13",
     "name": "Unconsciousness",
-    "take": [],
+    "take": [
+     "V.uncons"
+    ],
     "lectures": [
      {
       "t": "Unconsciousness"
@@ -857,7 +1028,9 @@
    {
     "id": "VF-14",
     "name": "Seven medical emergencies: stroke, injuries, seizures, heart attack, fainting, asthma and burns",
-    "take": [],
+    "take": [
+     "V.emerg7"
+    ],
     "lectures": [
      {
       "t": "Seven medical emergencies: stroke, injuries, seizures, heart attack, fainting, asthma and burns"
@@ -868,7 +1041,9 @@
    {
     "id": "VF-15",
     "name": "CPR",
-    "take": [],
+    "take": [
+     "V.cpr"
+    ],
     "lectures": [
      {
       "t": "CPR"
@@ -880,6 +1055,22 @@
   "foreign-languages": [],
   "art-history-medicine": []
  },
- "q": {},
+ "q": {
+  "A287": "AT-01",
+  "P34": "PH-06",
+  "S27": "SM-02",
+  "S34": "SM-14",
+  "S39": "SM-06",
+  "S48": "SM-10",
+  "S106": "SM-02",
+  "B16": "BC-03",
+  "B138": "BC-03",
+  "V47": "VF-15",
+  "V116": "VF-05",
+  "S156": "SM-05",
+  "S157": "SM-05",
+  "S158": "SM-05",
+  "S177": "SM-14"
+ },
  "unasked": {}
 }

@@ -1,0 +1,254 @@
+[
+ {
+  "s": "What is the partial pressure of CO2 in the alveoli of a patient with hypercapnia defined by a partial pressure of CO2 in the arterial blood (PaCO2) = 50 mmHg?",
+  "o": [
+   "50 mmHg",
+   "45 mmHg",
+   "60 mmHg",
+   "55 mmHg"
+  ],
+  "case": null,
+  "n": 1,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "At what levels of partial pressure of oxygen in the alveoli PAO2 will a living human be unable to achieve blood oxygenation?",
+  "o": [
+   "80 mmHg",
+   "150 mmHg",
+   "40 mmHg",
+   "100 mmHg"
+  ],
+  "case": null,
+  "n": 2,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the physiological functions of the human lungs:",
+  "o": [
+   "Adding carbon dioxide to circulating hemoglobin",
+   "Gas exchange between the breathing air and the pulmonary circulation",
+   "Activation of angiotensin 1",
+   "Oxygenation of the blood"
+  ],
+  "case": null,
+  "n": 3,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the correct propositions regarding alveolar volume and alveolar ventilation:",
+  "o": [
+   "Alveolar ventilation is the product of alveolar volume multiply by respiratory rate",
+   "The tidal volume (VT) is the ratio of alveolar volume (VA) to the dead space (VD)",
+   "Alveolar volume (VA) is part of the tidal volume (VT)",
+   "Alveolar volume (VA) can be higher than the tidal volume (VT)"
+  ],
+  "case": null,
+  "n": 4,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the correct propositions regarding the Residual Volume (RV):",
+  "o": [
+   "The residual Volume (RV) is the volume of air that stays in the lungs after a full and maximal expiration",
+   "The residual Volume (RV) is the volume of air that stays in the lungs after normal and quiet expiration",
+   "The Residual Volume (RV) is one component of the Total Lung Capacity (TLC)",
+   "The Residual Volume (RV) is one component of the Vital Capacity (VC)"
+  ],
+  "case": null,
+  "n": 5,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the principal components of the cardiovascular system:",
+  "o": [
+   "The airways",
+   "The blood components (the fluid to be moved)",
+   "The endocrine glands",
+   "The heart (the pump)"
+  ],
+  "case": null,
+  "n": 6,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the correct propositions regarding high blood pressure:",
+  "o": [
+   "High blood pressure can result from increased vascular resistance to maintain blood flow",
+   "High blood pressure can result from decreased vascular resistance when blood flow is unchanged",
+   "High blood pressure increases when the diameter of the vessels increases (vasodilation)",
+   "High blood pressure can increase blood flow when vascular resistance is unchanged"
+  ],
+  "case": null,
+  "n": 7,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the correct propositions regarding the vascular tone (underlying local vasoconstriction):",
+  "o": [
+   "Hypoxia increases vascular tone (causing vasoconstriction) in the pulmonary circulation",
+   "The vascular tone is higher in the systemic veins than in the systemic arteries",
+   "The vascular tone is higher in the pulmonary circulation than in the systemic circulation",
+   "The vascular tone is modulated by vascular endothelium"
+  ],
+  "case": null,
+  "n": 8,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Indicate the characteristics of the systemic circulation:",
+  "o": [
+   "The resistance in the systemic circulation is lower than the one found in the pulmonary circulation",
+   "The pressure in the systemic circulation is higher than the one found in the pulmonary circulation",
+   "It brings carbon dioxide rich venous blood back to the lungs",
+   "It provides oxygen rich arterial blood to all organs of the human body"
+  ],
+  "case": null,
+  "n": 9,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Which salivary gland contributes the most to total saliva production in humans?",
+  "o": [
+   "Submandibular gland",
+   "Parotid gland",
+   "Buccal glands",
+   "Sublingual gland"
+  ],
+  "case": null,
+  "n": 10,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "What is the primary stimulus for secretion of succus entericus in the small intestine?",
+  "o": [
+   "Increased gastric acid production",
+   "Presence of chyme in the intestinal lumen",
+   "Parasympathetic stimulation via the vagus nerve",
+   "Low blood glucose levels"
+  ],
+  "case": null,
+  "n": 11,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Which of the following components stimulates the secretion of gastrin during the gastric phase of digestion?",
+  "o": [
+   "Glycogen",
+   "Amino acids and peptide fragments",
+   "Carbohydrates",
+   "Lipids"
+  ],
+  "case": null,
+  "n": 12,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Which transport mechanism is primarily responsible for sodium absorption in the jejunum during digestion?",
+  "o": [
+   "Na+-H+ antiporter",
+   "Sodium-independent passive diffusion",
+   "Sodium-glucose linked transporter (SGLT1)",
+   "Nat-K+-2Cl symporter"
+  ],
+  "case": null,
+  "n": 13,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "What is the primary function of intrinsic factor secreted by parietal cells in the stomach?",
+  "o": [
+   "Digestion of proteins",
+   "Neutralization of gastric acid",
+   "Absorption of vitamin B12",
+   "Activation of pepsinogen"
+  ],
+  "case": null,
+  "n": 14,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "What is the primary regulatory mechanism of aldosterone secretion?",
+  "o": [
+   "Epinephrine",
+   "Plasma glucose levels",
+   "Renin-angiotensin system (RAS)",
+   "ACTH secretion"
+  ],
+  "case": null,
+  "n": 15,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Which hormone increases lipolysis in adipose tissue through activation of beta-adrenergic receptors?",
+  "o": [
+   "Insulin",
+   "Cortisol",
+   "Aldosterone",
+   "Epinephrine"
+  ],
+  "case": null,
+  "n": 16,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Epinephrine activates which receptor type to increase heart rate and cardiac output?",
+  "o": [
+   "Alpha 2-adrenergic receptors",
+   "Alpha 1-adrenergic receptors",
+   "Beta 1-adrenergic receptors",
+   "Beta 2-adrenergic receptors"
+  ],
+  "case": null,
+  "n": 17,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ },
+ {
+  "s": "Which enzyme catalyzes the conversion of cholesterol to pregnenolone, the first step in steroid biosynthesis?",
+  "o": [
+   "11 beta-hydroxylase",
+   "Cholesterol desmolase",
+   "17 alpha-hydroxylase",
+   "Aldosterone synthase"
+  ],
+  "case": null,
+  "n": 18,
+  "sec": null,
+  "aside": "S2 (Physiology I: respiratory, cardiovascular, GI, endocrine)",
+  "set": "Mock · Physiology"
+ }
+]

@@ -1,0 +1,1509 @@
+[
+ {
+  "id": "A.orbit",
+  "m": "anatomy-3",
+  "n": "Orbit and eye",
+  "s": [
+   "eye",
+   "eyeball",
+   "orbit",
+   "orbital cavity",
+   "extraocular muscles",
+   "retina",
+   "lens",
+   "cornea",
+   "pupil",
+   "visual pathway",
+   "optic nerve",
+   "optic chiasm",
+   "visual field",
+   "lacrimal",
+   "orbit and eye"
+  ],
+  "ab": [],
+  "rx": "orbit(?!al surface)|eyeball|\\beye\\b|eyes\\b|extraocular|rectus muscle|oblique muscle|retina|cornea|\\blens\\b|pupil|iris\\b|ciliary|aqueous humo|optic (nerve|chiasm|tract|radiation)|chiasma|visual (field|defect|pathway|cortex)|hemianop|lacrimal|eyelid|conjunctiv|choroid(?!al| plexus)|sclera|vitreous|ptosis|strabism|diplopia|accommodation|refract|anisocoria|consensual|ophthalm"
+ },
+ {
+  "id": "A.ear",
+  "m": "anatomy-3",
+  "n": "Ear",
+  "s": [
+   "ear",
+   "middle ear",
+   "inner ear",
+   "tympanic cavity",
+   "ossicles",
+   "labyrinth",
+   "cochlea",
+   "eustachian tube",
+   "auditory tube"
+  ],
+  "ab": [],
+  "rx": "\\bears?\\b|middle ear|inner ear|auditory (tube|canal|meatus)|acoustic meatus|external auditory|tympan|ossic|\\bmalle|\\bincud|\\bstapes|stapedi|labyrinth|cochlea|vestibul(e|ar organ)|semicircular|eustachian|mastoid|endolymph|perilymph|pinna|auricle|hearing"
+ },
+ {
+  "id": "A.nose",
+  "m": "anatomy-3",
+  "n": "Nose and paranasal sinuses",
+  "s": [
+   "nose",
+   "nasal cavity",
+   "paranasal sinuses",
+   "sinusitis",
+   "turbinates",
+   "nose and paranasal sinuses"
+  ],
+  "ab": [],
+  "rx": "nasal|nose|paranasal|maxillary sinus|frontal sinus|ethmoid(al)? sinus|sphenoid(al)? sinus|turbinate|concha|septum|meatus|sinusitis|olfactory region"
+ },
+ {
+  "id": "A.larynx",
+  "m": "anatomy-3",
+  "n": "Larynx and pharynx",
+  "s": [
+   "larynx",
+   "pharynx",
+   "vocal cords",
+   "laryngopharynx",
+   "oropharynx",
+   "nasopharynx",
+   "recurrent laryngeal nerve",
+   "larynx and pharynx"
+  ],
+  "ab": [],
+  "rx": "laryn|pharyn|vocal|glottis|epiglott|cricoid|arytenoid|thyroid cartilage|cricothyroid|tonsil|deglutition|phonation"
+ },
+ {
+  "id": "A.neck",
+  "m": "anatomy-3",
+  "n": "Neck and thyroid gland",
+  "s": [
+   "thyroid gland",
+   "parathyroid",
+   "neck",
+   "cervical",
+   "neck and thyroid gland",
+   "thyroid"
+  ],
+  "ab": [],
+  "rx": "thyroid gland|lobes of the thyroid|thyroid lob|parathyroid|isthmus|neck|cervical (lymph|region|fascia)|carotid sheath|sternocleidomastoid|hyoid"
+ },
+ {
+  "id": "A.face",
+  "m": "anatomy-3",
+  "n": "Face, jaws and mouth",
+  "s": [
+   "face",
+   "mandible",
+   "maxilla",
+   "temporomandibular joint",
+   "TMJ",
+   "muscles of mastication",
+   "tongue",
+   "salivary glands",
+   "parotid",
+   "oral cavity",
+   "palate",
+   "teeth",
+   "facial nerve",
+   "trigeminal nerve",
+   "face, jaws and mouth"
+  ],
+  "ab": [
+   "tmj"
+  ],
+  "rx": "mandib|maxill|temporomandibular|\\btmj\\b|mastica|masseter|temporalis|pterygoid|tongue|lingual|salivary|parotid|submandibular|sublingual|oral cavity|palat|teeth|tooth|dental|\\blips?\\b|facial (artery|vein|muscle|expression|skeleton|bone)|\\bface\\b|zygoma|buccinator|mylohyoid|digastric|geniohyoid|genioglossus|hypoglossal|trigeminal|external carotid|facial nerve|nerve vii\\b"
+ },
+ {
+  "id": "A.skull",
+  "m": "anatomy-3",
+  "n": "Skull",
+  "s": [
+   "skull",
+   "calvaria",
+   "cranium",
+   "skull base",
+   "sutures",
+   "pterion",
+   "foramen magnum"
+  ],
+  "ab": [],
+  "rx": "vault|hemi-?frontal|metopic|calvari|skull|cranium|cranial vault|suture|pterion|asterion|lambda|bregma|inion|frontal bone|parietal bone|occipital bone|temporal bone|sphenoid|ethmoid|cribriform|crista galli|clivus|foramen (magnum|ovale|lacerum|spinosum|rotundum)|jugular foramen|sella|pituitary (lodge|fossa)|fontanel"
+ },
+ {
+  "id": "A.csf",
+  "m": "anatomy-3",
+  "n": "Ventricles and CSF",
+  "s": [
+   "ventricles",
+   "cerebrospinal fluid",
+   "CSF",
+   "choroid plexus",
+   "foramen of Monro",
+   "aqueduct of Sylvius",
+   "Magendie",
+   "Luschka",
+   "ventricles and csf"
+  ],
+  "ab": [
+   "csf",
+   "lcr"
+  ],
+  "rx": "ventric|cerebrospinal fluid|\\bcsf\\b|choroid plexus|monro|sylvius|aqueduct|magendie|luschka|hydroceph|pacchion|arachnoid granul"
+ },
+ {
+  "id": "A.meninges",
+  "m": "anatomy-3",
+  "n": "Meninges",
+  "s": [
+   "meninges",
+   "dura mater",
+   "arachnoid",
+   "pia mater",
+   "subarachnoid space",
+   "falx cerebri",
+   "tentorium"
+  ],
+  "ab": [],
+  "rx": "mening|dura mater|arachnoid|pia mater|subarachnoid|epidural|subdural|falx|tentori|venous sinus|sinus(es)? of the dura|dural"
+ },
+ {
+  "id": "A.vessels",
+  "m": "anatomy-3",
+  "n": "Brain vessels",
+  "s": [
+   "circle of Willis",
+   "cerebral arteries",
+   "vertebral artery",
+   "basilar artery",
+   "anterior cerebral artery",
+   "middle cerebral artery",
+   "posterior cerebral artery",
+   "brain vessels"
+  ],
+  "ab": [],
+  "rx": "willis|cerebral arter|anterior cerebral|middle cerebral|posterior cerebral|basilar|vertebral arter|vertebrobasilar|communicating arter|lenticulostriate|vasculari[sz]ation|internal carotid|stroke|infarct"
+ },
+ {
+  "id": "A.spinal",
+  "m": "anatomy-3",
+  "n": "Spinal cord",
+  "s": [
+   "spinal cord",
+   "conus medullaris",
+   "cauda equina",
+   "anterior horn",
+   "posterior horn",
+   "spinal tracts",
+   "dermatome"
+  ],
+  "ab": [],
+  "rx": "dcml|anterolateral system|brown.s[eé]quard|spinal cord|conus|cauda equina|anterior horn|posterior horn|lateral horn|spinal (nerve|segment|canal|tract)|filum|lumbar puncture|corticospinal|spinothalamic|dorsal column|lemnisc|goll|burdach|clarke|fasciculus (gracilis|cuneatus)|decussat|pyramid(al)? (tract|way)|extrapyramidal|tract"
+ },
+ {
+  "id": "A.brainstem",
+  "m": "anatomy-3",
+  "n": "Brainstem and cranial nerve nuclei",
+  "s": [
+   "brainstem",
+   "midbrain",
+   "pons",
+   "medulla oblongata",
+   "cranial nerves",
+   "cerebral peduncles",
+   "fourth ventricle floor",
+   "brainstem and cranial nerve nuclei"
+  ],
+  "ab": [],
+  "rx": "alternating syndrome|brain ?stem|midbrain|mesenceph|pons\\b|pontine|medulla oblongata|\\bmedulla\\b|bulb|olive|peduncle|colliculi|quadrigeminal|tectum|tegment|reticular|oculomotor|trochlear|abducen|vestibulocochlear|glossopharyngeal|vagus|accessory nerve|cranial nerve"
+ },
+ {
+  "id": "A.cerebellum",
+  "m": "anatomy-3",
+  "n": "Cerebellum",
+  "s": [
+   "cerebellum",
+   "vermis",
+   "cerebellar peduncles",
+   "vestibulocerebellum"
+  ],
+  "ab": [],
+  "rx": "cerebell|vermis|flocculonodular"
+ },
+ {
+  "id": "A.pituitary",
+  "m": "anatomy-3",
+  "n": "Pituitary gland",
+  "s": [
+   "pituitary",
+   "hypophysis",
+   "pituitary gland",
+   "sella turcica",
+   "pituitary lodge"
+  ],
+  "ab": [],
+  "rx": "pituitar|hypophys|sella turc|transsphenoid"
+ },
+ {
+  "id": "A.diencephalon",
+  "m": "anatomy-3",
+  "n": "Diencephalon",
+  "s": [
+   "thalamus",
+   "hypothalamus",
+   "pineal gland",
+   "epiphysis",
+   "pulvinar",
+   "diencephalon"
+  ],
+  "ab": [],
+  "rx": "melatonin|thalam|pineal|epiphysis|pulvinar|mammillary|diencephal|optic chiasm"
+ },
+ {
+  "id": "A.basal",
+  "m": "anatomy-3",
+  "n": "Basal ganglia and internal capsule",
+  "s": [
+   "basal ganglia",
+   "caudate nucleus",
+   "lenticular nucleus",
+   "putamen",
+   "internal capsule",
+   "claustrum",
+   "basal ganglia and internal capsule"
+  ],
+  "ab": [],
+  "rx": "basal (ganglia|nuclei)|caudate|lenticular|putamen|pallid|striat|subthalamic|substantia nigra|locus niger|internal capsule|external capsule|extreme capsule|claustrum"
+ },
+ {
+  "id": "A.cerebrum",
+  "m": "anatomy-3",
+  "n": "Cerebral hemispheres and cortex",
+  "s": [
+   "cerebral cortex",
+   "cerebral hemispheres",
+   "lobes of the brain",
+   "sulci",
+   "corpus callosum",
+   "limbic system",
+   "motor area",
+   "cerebral hemispheres and cortex"
+  ],
+  "ab": [],
+  "rx": "cortex|cortical|hemispher|lobe\\b|lobes\\b|sulcus|sulci|fissure|gyrus|gyri|corpus callosum|commissur|limbic|hippocamp|amygdal|broca|wernicke|motor area|telenceph|white matter|grey matter|gray matter|cerebrum|cerebral"
+ },
+ {
+  "id": "A.neuro",
+  "m": "anatomy-3",
+  "n": "Nervous system (general)",
+  "s": [
+   "nervous system",
+   "neural tube",
+   "embryology of the nervous system",
+   "neurons",
+   "nervous system (general)",
+   "nervous system ()"
+  ],
+  "ab": [],
+  "rx": "referred pain|nervous system|neural (tube|plate|crest)|spina bifida|neuron|glia|prosenceph|rhombenceph|ectoderm|mesoderm|endoderm|brain"
+ },
+ {
+  "id": "P.acidbase",
+  "m": "physiology-2",
+  "n": "Acid-base balance",
+  "s": [
+   "acid-base balance",
+   "bicarbonate",
+   "pH",
+   "buffer",
+   "acid-base"
+  ],
+  "ab": [],
+  "rx": "acid.base|bicarbonate|hco3|carbonic|buffer|\\bph\\b|acidosis|alkalosis|hydrogen ion"
+ },
+ {
+  "id": "P.gfrreg",
+  "m": "physiology-2",
+  "n": "GFR regulation",
+  "s": [
+   "GFR regulation",
+   "autoregulation",
+   "renin",
+   "angiotensin",
+   "tubuloglomerular feedback",
+   "gfr"
+  ],
+  "ab": [],
+  "rx": "autoregulat|tubuloglomerular|renin|angiotensin|macula densa|juxtaglomerular|afferent arteriol|efferent arteriol|vasoconstrict|vasodilat|blood pressure"
+ },
+ {
+  "id": "P.tubular",
+  "m": "physiology-2",
+  "n": "Tubular reabsorption and secretion",
+  "s": [
+   "tubular reabsorption",
+   "secretion",
+   "glucose reabsorption",
+   "ADH",
+   "aquaporins",
+   "aldosterone",
+   "loop of Henle",
+   "tubular reabsorption and secretion",
+   "glucose"
+  ],
+  "ab": [
+   "adh"
+  ],
+  "rx": "reabsor|(?<![tT][ -])tubul|secret|glucosuria|transport maximum|aquaporin|antidiuretic|\\badh\\b|vasopressin|aldosteron|loop of henle|collecting duct|countercurrent|osmolar"
+ },
+ {
+  "id": "P.gfr",
+  "m": "physiology-2",
+  "n": "Glomerular filtration",
+  "s": [
+   "glomerular filtration",
+   "GFR",
+   "Bowman capsule",
+   "filtration barrier"
+  ],
+  "ab": [
+   "gfr"
+  ],
+  "rx": "glomerul|\\bgfr\\b|bowman|filtrat|podocyt|creatinine|clearance"
+ },
+ {
+  "id": "P.nephron",
+  "m": "physiology-2",
+  "n": "Nephron physiology",
+  "s": [
+   "nephron",
+   "renal corpuscle",
+   "juxtamedullary nephron",
+   "nephron physiology",
+   "renal"
+  ],
+  "ab": [],
+  "rx": "nephron|renal corpuscle|cortical nephron|juxtamedullary"
+ },
+ {
+  "id": "P.kidney",
+  "m": "physiology-2",
+  "n": "The urinary system",
+  "s": [
+   "kidney functions",
+   "urine",
+   "urinary system",
+   "prostate",
+   "homeostasis",
+   "the urinary system"
+  ],
+  "ab": [],
+  "rx": "kidney|renal|\\burin|bladder|ureter|urethra|prostate|micturition|homeosta|plasma volume|blood volume|erythropoiet"
+ },
+ {
+  "id": "P.metab",
+  "m": "physiology-2",
+  "n": "Metabolic rate",
+  "s": [
+   "basal metabolic rate",
+   "metabolic rate",
+   "energy expenditure"
+  ],
+  "ab": [
+   "bmr"
+  ],
+  "rx": "metabolic rate|\\bbmr\\b|energy expenditure|calorimetr"
+ },
+ {
+  "id": "P.balance",
+  "m": "physiology-2",
+  "n": "Energy balance and obesity",
+  "s": [
+   "energy balance",
+   "obesity",
+   "calories",
+   "energy intake",
+   "energy balance and obesity",
+   "energy and obesity"
+  ],
+  "ab": [],
+  "rx": "energy (balance|intake|storage)|obesity|obese|calori|body mass|adipos|leptin|ghrelin|satiety|appetite"
+ },
+ {
+  "id": "P.atp",
+  "m": "physiology-2",
+  "n": "ATP as an energy source",
+  "s": [
+   "ATP",
+   "aerobic reactions",
+   "mitochondria",
+   "oxidative phosphorylation",
+   "creatine phosphate",
+   "atp as an energy source"
+  ],
+  "ab": [
+   "atp"
+  ],
+  "rx": "\\batp\\b|aerobic|anaerobic|mitochond|oxidative phosph|electron transport|krebs|creatine phosphate|phosphocreatine|chemical potential energy|final acceptor"
+ },
+ {
+  "id": "P.lipid",
+  "m": "physiology-2",
+  "n": "Lipid metabolism",
+  "s": [
+   "lipids",
+   "fatty acids",
+   "triglycerides",
+   "cholesterol",
+   "beta-oxidation",
+   "ketone bodies",
+   "lipid metabolism"
+  ],
+  "ab": [],
+  "rx": "lipid|fatty acid|triglycer|cholesterol|glycerol|lipolys|lipogen|beta.oxidation|ketone|hydrophob"
+ },
+ {
+  "id": "P.carb",
+  "m": "physiology-2",
+  "n": "Carbohydrate metabolism",
+  "s": [
+   "carbohydrates",
+   "glucose",
+   "glycolysis",
+   "glycogen",
+   "starch",
+   "carbohydrate metabolism"
+  ],
+  "ab": [],
+  "rx": "carbohydrat|\\bcarbs?\\b|glucose|glycoly|glycogen|starch|cellulose|maltose|sucrose|lactose|fructose|gluconeogen"
+ },
+ {
+  "id": "P.nutri",
+  "m": "physiology-2",
+  "n": "Bioenergetics and nutrients",
+  "s": [
+   "bioenergetics",
+   "macronutrients",
+   "micronutrients",
+   "vitamins",
+   "minerals",
+   "bioenergetics and nutrients"
+  ],
+  "ab": [],
+  "rx": "macronutri|micronutri|nutrient|vitamin|mineral|bioenerget|protein synth|amino acid|energy"
+ },
+ {
+  "id": "P.nmj",
+  "m": "physiology-2",
+  "n": "Neuromuscular junction",
+  "s": [
+   "neuromuscular junction",
+   "acetylcholine",
+   "end plate"
+  ],
+  "ab": [
+   "nmj"
+  ],
+  "rx": "neuromuscular junction|\\bnmj\\b|end.plate|acetylcholine|curare|myasthen"
+ },
+ {
+  "id": "P.spindle",
+  "m": "physiology-2",
+  "n": "Myotatic reflex and muscle spindle",
+  "s": [
+   "myotatic reflex",
+   "stretch reflex",
+   "muscle spindle",
+   "Golgi tendon organ",
+   "myotatic reflex and muscle spindle",
+   "muscle"
+  ],
+  "ab": [],
+  "rx": "myotatic|stretch reflex|muscle spindle|spindle|golgi tendon|tendon reflex|gamma motor"
+ },
+ {
+  "id": "P.muscle",
+  "m": "physiology-2",
+  "n": "Muscle physiology",
+  "s": [
+   "skeletal muscle",
+   "smooth muscle",
+   "cardiac muscle",
+   "sarcomere",
+   "excitation-contraction coupling",
+   "troponin",
+   "actin",
+   "myosin",
+   "muscle fibers",
+   "muscle physiology",
+   "muscle",
+   "cardiac"
+  ],
+  "ab": [],
+  "rx": "muscle|sarcom|sarcoplasm|myosin|actin|troponin|tropomyosin|myofibr|fasciculus|t.tubule|excitation.contraction|ryanodine|dihydropyridine|rigor|twitch|tetanus|isometric|isotonic|hypertroph"
+ },
+ {
+  "id": "P.stress",
+  "m": "physiology-2",
+  "n": "Stress and the autonomic nervous system",
+  "s": [
+   "stress",
+   "autonomic nervous system",
+   "sympathetic",
+   "parasympathetic",
+   "cortisol",
+   "stress and the autonomic nervous system"
+  ],
+  "ab": [],
+  "rx": "stress|sympathetic|parasympathetic|autonomic|fight or flight|cortisol|adrenal medulla|catecholamin|epinephrine|norepinephrine"
+ },
+ {
+  "id": "P.chem",
+  "m": "physiology-2",
+  "n": "Taste and smell",
+  "s": [
+   "taste",
+   "smell",
+   "olfaction",
+   "gustation",
+   "taste and smell"
+  ],
+  "ab": [],
+  "rx": "taste|gustat|umami|olfact|smell|odor|odour|sweet|salty|sour|bitter"
+ },
+ {
+  "id": "P.special",
+  "m": "physiology-2",
+  "n": "Special senses",
+  "s": [
+   "vision",
+   "hearing",
+   "taste",
+   "smell",
+   "olfaction",
+   "vestibular system",
+   "retina",
+   "cochlea",
+   "special senses"
+  ],
+  "ab": [],
+  "rx": "retina|photorecept|rods?\\b|cones?\\b|visual|vision|accommodation|lens|pupil|auditory|cochlea|hair cell|hearing|sound|vestibul|semicircular|otolith|endolymph"
+ },
+ {
+  "id": "P.sensory",
+  "m": "physiology-2",
+  "n": "Sensory physiology and reflexes",
+  "s": [
+   "sensory receptors",
+   "somatosensory cortex",
+   "dermatome",
+   "pain",
+   "nociception",
+   "reflex arc",
+   "thermoreceptors",
+   "sensory physiology and reflexes",
+   "sensory and reflexes"
+  ],
+  "ab": [],
+  "rx": "sensor|sensory receptor|tonic receptor|phasic receptor|receptor potential|somatosens|somatic sens|dermatome|nocicep|pain|thermorecep|mechanorecep|propriocep|touch|reflex|thalamus|dorsal column|spinothalamic|sensory deficit"
+ },
+ {
+  "id": "P.ap",
+  "m": "physiology-2",
+  "n": "Action potential and synapses",
+  "s": [
+   "action potential",
+   "resting membrane potential",
+   "graded potential",
+   "synapse",
+   "neurotransmitters",
+   "EPSP",
+   "ion channels",
+   "action potential and synapses"
+  ],
+  "ab": [
+   "ap",
+   "epsp",
+   "ipsp"
+  ],
+  "rx": "action potential|membrane potential|resting potential|graded potential|depolari|hyperpolari|repolari|threshold|treshold|refractory|synap|neurotransmit|epsp|ipsp|ion channel|ligand.gated|voltage.gated|sodium channel|potassium channel|\\bna\\+|\\bk\\+|nernst|equilibrium potential|ampa|nmda|gaba|axon hillock|conduction velocity|saltatory"
+ },
+ {
+  "id": "P.nerves",
+  "m": "physiology-2",
+  "n": "Nerves and neurons",
+  "s": [
+   "neurons",
+   "glia",
+   "myelin",
+   "nervous system organization",
+   "cerebrospinal fluid",
+   "nerves and neurons"
+  ],
+  "ab": [],
+  "rx": "neuron|glia|myelin|schwann|oligodendro|axon|dendrit|nervous system|nerve|cerebrospinal|\\bcsf\\b|cortex|cortical|brain"
+ },
+ {
+  "id": "S.summary",
+  "m": "semiology-1",
+  "n": "Clinical reasoning and presentation",
+  "s": [
+   "critical thinking",
+   "problem solving",
+   "clinical summary",
+   "problem list",
+   "illness script",
+   "clinical approach",
+   "clinical reasoning and presentation"
+  ],
+  "ab": [],
+  "rx": "differential diagnosis|critical thinking|problem solving|problem list|illness script|clinical summary|summary presentation|differential diagnos(is|e) (list|process)|data analysis"
+ },
+ {
+  "id": "S.history",
+  "m": "semiology-1",
+  "n": "History taking and the doctor",
+  "s": [
+   "history taking",
+   "clinical approach to the patient",
+   "doctor-patient",
+   "history taking and the doctor"
+  ],
+  "ab": [],
+  "rx": "history taking|taking history|before taking history|chief complaint|doctor should|patient.s consent|identity"
+ },
+ {
+  "id": "S.diabetes",
+  "m": "semiology-1",
+  "n": "Diabetes",
+  "s": [
+   "diabetes",
+   "type 1 diabetes",
+   "type 2 diabetes",
+   "ketoacidosis",
+   "hypoglycemia",
+   "Whipple triad",
+   "OGTT",
+   "HbA1c"
+  ],
+  "ab": [
+   "dka",
+   "ogtt",
+   "a1c"
+  ],
+  "rx": "diabet|ketoacidos|ketosis|ketonur|hyperglyc|hypoglyc|whipple|ogtt|a1c|glycemia|insulin|polyuria|polydips|kussmaul|hyperosmolar"
+ },
+ {
+  "id": "S.thyroid",
+  "m": "semiology-1",
+  "n": "Thyroid semiology",
+  "s": [
+   "thyroid",
+   "hypothyroidism",
+   "hyperthyroidism",
+   "goiter",
+   "thyroid nodule",
+   "TIRADS",
+   "Graves",
+   "thyroid semiology"
+  ],
+  "ab": [
+   "tsh",
+   "tirads"
+  ],
+  "rx": "(?<!para)thyroid|goit|\\btsh|ft4|ft3|tirads|graves|hashimoto|thyrotox|calciton|thyroglobulin|tpo"
+ },
+ {
+  "id": "S.pituitary",
+  "m": "semiology-1",
+  "n": "Pituitary semiology",
+  "s": [
+   "pituitary",
+   "acromegaly",
+   "prolactin",
+   "growth hormone",
+   "pituitary semiology"
+  ],
+  "ab": [
+   "gh",
+   "igf1"
+  ],
+  "rx": "pituitar|acromegal|\\bgh\\b|igf|prolactin|galactorr|cushing|gigantism|hypophys"
+ },
+ {
+  "id": "S.parathyroid",
+  "m": "semiology-1",
+  "n": "Parathyroid semiology",
+  "s": [
+   "parathyroid",
+   "hypoparathyroidism",
+   "hyperparathyroidism",
+   "calcium",
+   "PTH",
+   "parathyroid semiology"
+  ],
+  "ab": [
+   "pth"
+  ],
+  "rx": "parathyro|\\bpth\\b|hypocalc|hypercalc|carpopedal|chvostek|trousseau|tetany"
+ },
+ {
+  "id": "S.gonads",
+  "m": "semiology-1",
+  "n": "Gonads semiology",
+  "s": [
+   "gonads",
+   "hypogonadism",
+   "amenorrhea",
+   "testes",
+   "ovaries",
+   "gonads semiology"
+  ],
+  "ab": [],
+  "rx": "gonad|amenorr|testic|testes|ovar|puberty|hirsut|virili|gynecomast|estrogen|testosterone"
+ },
+ {
+  "id": "S.adrenal",
+  "m": "semiology-1",
+  "n": "Adrenal semiology",
+  "s": [
+   "adrenal insufficiency",
+   "Addison",
+   "Cushing syndrome",
+   "pheochromocytoma",
+   "hyperaldosteronism",
+   "adrenal semiology",
+   "adrenal"
+  ],
+  "ab": [],
+  "rx": "adrenal|addison|pheo|aldosteron|cortisol|acth"
+ },
+ {
+  "id": "S.lipids",
+  "m": "semiology-1",
+  "n": "Dyslipidemia",
+  "s": [
+   "dyslipidemia",
+   "hypercholesterolemia",
+   "xanthoma",
+   "xanthelasma"
+  ],
+  "ab": [],
+  "rx": "dyslipid|hypercholesterol|xanthom|lipid profile|triglycer|ldl|hdl"
+ },
+ {
+  "id": "S.endo",
+  "m": "semiology-1",
+  "n": "Endocrine semiology (general)",
+  "s": [
+   "endocrine semiology",
+   "hormones",
+   "endocrine semiology (general)",
+   "endocrine ()"
+  ],
+  "ab": [],
+  "rx": "endocrin|hormone"
+ },
+ {
+  "id": "S.gi",
+  "m": "semiology-1",
+  "n": "Gastrointestinal semiology",
+  "s": [
+   "abdominal pain",
+   "jaundice",
+   "vomiting",
+   "GI bleeding",
+   "dysphagia",
+   "heartburn",
+   "portal hypertension",
+   "ascites",
+   "bowel obstruction",
+   "abdominal mass",
+   "gastrointestinal semiology",
+   "gastrointestinal"
+  ],
+  "ab": [],
+  "rx": "proctolog|rectal exam|abdom|jaundic|vomit|nausea|bleeding|melena|hematochez|hematemes|dysphag|heartburn|reflux|gerd|portal hypertension|ascites|bowel|colic|cholecyst|pancreat|appendic|gallbladder|gall stone|biliary|bile duct|liver|hepat|spleen|stool|constipation|diarrh|epigastr|umbilic|quadrant|odynophag|varices|peritone|cholangitis|ercp|mrcp|ultrasonograph"
+ },
+ {
+  "id": "S.ecg",
+  "m": "semiology-1",
+  "n": "ECG",
+  "s": [
+   "ECG",
+   "EKG",
+   "electrocardiogram"
+  ],
+  "ab": [
+   "ecg",
+   "ekg"
+  ],
+  "rx": "\\becg\\b|\\bekg\\b|electrocardiog|qrs|p wave|t wave|st segment"
+ },
+ {
+  "id": "S.hf",
+  "m": "semiology-1",
+  "n": "Heart failure semiology",
+  "s": [
+   "heart failure",
+   "left heart failure",
+   "right heart failure",
+   "pulmonary edema",
+   "orthopnea",
+   "heart failure semiology"
+  ],
+  "ab": [
+   "chf"
+  ],
+  "rx": "heart failure|pulmonary edema|pulmonary oedema|orthopn|paroxysmal nocturnal|frothy|biventricular|cardiac failure|shunt"
+ },
+ {
+  "id": "S.cv",
+  "m": "semiology-1",
+  "n": "Cardiovascular semiology",
+  "s": [
+   "blood pressure measurement",
+   "hypertension",
+   "jugular venous distention",
+   "edema",
+   "infective endocarditis signs",
+   "heart sounds",
+   "murmurs",
+   "arrhythmias",
+   "chest pain",
+   "cardiovascular semiology",
+   "cardiovascular"
+  ],
+  "ab": [
+   "jvd"
+  ],
+  "rx": "blood pressure|hypertension|jugular|\\bjvd\\b|edema|oedema|endocarditis|osler|janeway|roth|splinter|xanthelasma|heart sound|murmur|valv|stenosis|insufficien|regurgit|arrhythm|fibrillation|heart block|palpitation|cardiovascular|chest pain|angina|cyanosis|clubbing|pulse|syncope"
+ },
+ {
+  "id": "S.cxr",
+  "m": "semiology-1",
+  "n": "Chest X-rays",
+  "s": [
+   "chest X-ray",
+   "pneumothorax",
+   "pleural effusion",
+   "cardiothoracic ratio",
+   "chest x-rays"
+  ],
+  "ab": [
+   "cxr"
+  ],
+  "rx": "x.ray|radiograph|pneumothorax|pleural effusion|cardiothoracic|hemidiaphragm|pneumomediastin|opacit|chest imaging"
+ },
+ {
+  "id": "S.pft",
+  "m": "semiology-1",
+  "n": "Pulmonary function tests",
+  "s": [
+   "pulmonary function tests",
+   "spirometry",
+   "FEV1",
+   "lung volumes"
+  ],
+  "ab": [
+   "pft",
+   "fev1",
+   "fvc"
+  ],
+  "rx": "spirometr|fev1|\\bfvc\\b|pulmonary function|lung function|peak flow|tiffeneau|vital capacity"
+ },
+ {
+  "id": "S.cough",
+  "m": "semiology-1",
+  "n": "Cough",
+  "s": [
+   "cough",
+   "acute cough",
+   "chronic cough",
+   "hemoptysis",
+   "sputum"
+  ],
+  "ab": [],
+  "rx": "cough|hemoptys|haemoptys|sputum|expectorat"
+ },
+ {
+  "id": "S.asthma",
+  "m": "semiology-1",
+  "n": "Asthma and COPD",
+  "s": [
+   "asthma",
+   "COPD",
+   "wheezing",
+   "emphysema",
+   "chronic bronchitis",
+   "asthma and copd"
+  ],
+  "ab": [
+   "copd",
+   "bpco"
+  ],
+  "rx": "asthma|copd|wheez|emphysem|chronic bronchitis|hyperinflation|pulmonary fibrosis|cystic fibrosis|lung cancer|teenager|over 40"
+ },
+ {
+  "id": "S.dyspnea",
+  "m": "semiology-1",
+  "n": "Breathing control and dyspnea",
+  "s": [
+   "dyspnea",
+   "shortness of breath",
+   "tripod position",
+   "respiratory distress",
+   "hypoxia",
+   "breathing control and dyspnea"
+  ],
+  "ab": [],
+  "rx": "dyspn|shortness of breath|breathing|tripod|nasal flaring|intercostal|respiratory rate|hypox|pursed lip|cyanosis"
+ },
+ {
+  "id": "S.resp",
+  "m": "semiology-1",
+  "n": "Respiratory semiology (general)",
+  "s": [
+   "respiratory semiology",
+   "lung examination",
+   "percussion",
+   "auscultation",
+   "crackles",
+   "respiratory semiology (general)",
+   "respiratory ()"
+  ],
+  "ab": [],
+  "rx": "superior vena cava|horner|osteoarthropathy|pierre marie|clubbing|consolidation|effusion syndrome|dullness|respirat|lung|pulmonar|chest|percussion|auscultat|crackl|bronch|pleur|thorax|thoracic"
+ },
+ {
+  "id": "B.preanal",
+  "m": "clinical-biochemistry",
+  "n": "Pre-analytical phase",
+  "s": [
+   "pre-analytical phase",
+   "blood sampling",
+   "sampling tubes"
+  ],
+  "ab": [],
+  "rx": "pre.analytical|sampling|sample|tube|tourniquet|hemoly|haemoly|venipunct|phlebotom|quality control|\\biqc\\b|\\bicq\\b|interference|analytical|laboratory|edta|heparin|biological (variation|result)|physiological variation|pregnancy|medical devices|diagnostic in vitro"
+ },
+ {
+  "id": "B.thyroid",
+  "m": "clinical-biochemistry",
+  "n": "Thyroid hormones",
+  "s": [
+   "thyroid hormones",
+   "T3",
+   "T4",
+   "TSH",
+   "thyroglobulin",
+   "iodine",
+   "thyroperoxidase",
+   "deiodinase",
+   "thyroid"
+  ],
+  "ab": [
+   "tsh",
+   "t3",
+   "t4",
+   "tbg"
+  ],
+  "rx": "(?<!para)thyro|\\biod|\\bt3\\b|\\bt4\\b|\\btsh\\b|\\btbg\\b|\\bmit\\b|\\bdit\\b|deiodinase|\\btpo\\b"
+ },
+ {
+  "id": "B.steroid",
+  "m": "clinical-biochemistry",
+  "n": "Steroid hormones",
+  "s": [
+   "steroid hormones",
+   "cortisol",
+   "aldosterone",
+   "estrogens",
+   "progesterone",
+   "testosterone",
+   "congenital adrenal hyperplasia",
+   "21-hydroxylase",
+   "steroid"
+  ],
+  "ab": [],
+  "rx": "steroid|cortisol|cortico|aldosteron|mineralocort|glucocort|estrogen|oestrogen|estradiol|progesteron|testosteron|androgen|pregnenolone|dhea|21.hydroxylase|adrenal hyperplasia|theca|granulosa|leydig|\\blh\\b|\\bfsh\\b|amenorr|cholesterol desmolase"
+ },
+ {
+  "id": "B.insulin",
+  "m": "clinical-biochemistry",
+  "n": "Insulin",
+  "s": [
+   "insulin",
+   "C-peptide",
+   "pancreatic beta cells",
+   "glucagon"
+  ],
+  "ab": [],
+  "rx": "insulin|\\bc.peptide|peptide [abc]\\b|beta cell|islets|glucagon|langerhans"
+ },
+ {
+  "id": "B.catechol",
+  "m": "clinical-biochemistry",
+  "n": "Adrenal medulla hormones",
+  "s": [
+   "catecholamines",
+   "adrenaline",
+   "noradrenaline",
+   "pheochromocytoma",
+   "neuroblastoma",
+   "VMA",
+   "adrenal medulla hormones",
+   "adrenal medulla",
+   "adrenal"
+  ],
+  "ab": [
+   "vma"
+  ],
+  "rx": "catecholamin|adrenalin|noradrenalin|epinephrin|dopamine|pheochromo|neuroblastom|adrenal medulla|vanillylmandel|metanephrin|tyrosine hydroxyl|phenylalanine|bronchodilat"
+ },
+ {
+  "id": "B.liver",
+  "m": "clinical-biochemistry",
+  "n": "Hepatic markers",
+  "s": [
+   "liver tests",
+   "transaminases",
+   "ALT",
+   "AST",
+   "bilirubin",
+   "GGT",
+   "alkaline phosphatase",
+   "cholestasis",
+   "urea cycle",
+   "ammonia",
+   "hepatic markers",
+   "hepatic",
+   "urea"
+  ],
+  "ab": [
+   "alt",
+   "ast",
+   "ggt",
+   "pal"
+  ],
+  "rx": "transaminas|aminotransferas|\\balt\\b|\\bast\\b|asat|alat|bilirub|ggt|gamma.gt|alkaline phosphatase|cholesta|hepat|liver|cytolys|urea cycle|ammon|\\bnh3\\b|cirrhosis|prothrombin|\\bbile\\b"
+ },
+ {
+  "id": "B.heart",
+  "m": "clinical-biochemistry",
+  "n": "Cardiac markers",
+  "s": [
+   "cardiac markers",
+   "troponin",
+   "BNP",
+   "NT-proBNP",
+   "CK-MB",
+   "myoglobin",
+   "cardiac"
+  ],
+  "ab": [
+   "bnp",
+   "ckmb"
+  ],
+  "rx": "troponin|natriuretic|bnp|ck.mb|creatine kinase|myoglobin|cardiac marker|cardiac cell|myocardial|heart failure|cardiomyocyte|coronary|cardiovascular risk|lactate dehydrogenase|\\bldh\\b"
+ },
+ {
+  "id": "B.kidney",
+  "m": "clinical-biochemistry",
+  "n": "Renal markers",
+  "s": [
+   "renal markers",
+   "creatinine",
+   "urea",
+   "creatinine clearance",
+   "GFR",
+   "microalbuminuria",
+   "uric acid",
+   "renal"
+  ],
+  "ab": [
+   "gfr"
+  ],
+  "rx": "creatinin|clearance|\\burea\\b|uric acid|microalbumin|albuminuria|proteinuria|glomerul|renal|kidney|nephr|\\bgfr\\b|osteodystroph"
+ },
+ {
+  "id": "B.proteins",
+  "m": "clinical-biochemistry",
+  "n": "Blood proteins",
+  "s": [
+   "serum protein electrophoresis",
+   "proteinogram",
+   "albumin",
+   "gamma globulins",
+   "immunoglobulins",
+   "beta-gamma block",
+   "blood proteins"
+  ],
+  "ab": [],
+  "rx": "electrophores|proteinogram|albumin|globulin|immunoglobulin|beta.?gamma|(?<!lipo)protein(s)? (are|in the blood|fraction)|blood proteins|serum proteins|total protein|clotting factors"
+ },
+ {
+  "id": "B.lipids",
+  "m": "clinical-biochemistry",
+  "n": "Lipid anomalies",
+  "s": [
+   "lipid profile",
+   "cholesterol",
+   "triglycerides",
+   "LDL",
+   "HDL",
+   "VLDL",
+   "chylomicrons",
+   "dyslipidemia",
+   "apolipoproteins",
+   "lipid anomalies"
+  ],
+  "ab": [
+   "ldl",
+   "hdl",
+   "vldl",
+   "eal"
+  ],
+  "rx": "lipid|cholesterol|triglycer|\\bldl\\b|\\bhdl\\b|vldl|chylomicron|lipoprotein|apo ?b|dyslipid|serum appearance|lactescent"
+ },
+ {
+  "id": "B.glucose",
+  "m": "clinical-biochemistry",
+  "n": "Blood glucose",
+  "s": [
+   "glycemia",
+   "blood glucose",
+   "HbA1c",
+   "diabetes",
+   "OGTT",
+   "hypoglycemia"
+  ],
+  "ab": [
+   "hba1c",
+   "ogtt"
+  ],
+  "rx": "glyc(a)?emia|blood glucose|glucose|hba1c|glycated|ogtt|diabet|hypoglyc|hyperglyc|glycogen|lactate"
+ },
+ {
+  "id": "B.calcium",
+  "m": "clinical-biochemistry",
+  "n": "Calcium-phosphate balance",
+  "s": [
+   "calcium",
+   "phosphate",
+   "parathyroid hormone",
+   "vitamin D",
+   "calcitonin",
+   "calcemia",
+   "calcium-phosphate balance",
+   "calcium-phosphate",
+   "parathyroid"
+  ],
+  "ab": [
+   "pth"
+  ],
+  "rx": "calci|phosph|parathyroid|\\bpth\\b|vitamin d|calcitriol|bone"
+ },
+ {
+  "id": "B.iron",
+  "m": "clinical-biochemistry",
+  "n": "Iron balance",
+  "s": [
+   "iron",
+   "ferritin",
+   "transferrin",
+   "iron deficiency",
+   "hepcidin",
+   "serum iron",
+   "iron balance"
+  ],
+  "ab": [],
+  "rx": "\\biron\\b|ferritin|transferrin|hepcidin|hemosiderin|lactoferrin|ferr|anemia|anaemia|tibc"
+ },
+ {
+  "id": "B.acidbase",
+  "m": "clinical-biochemistry",
+  "n": "Acid-base balance",
+  "s": [
+   "acid-base balance",
+   "blood gases",
+   "bicarbonate",
+   "pH",
+   "acidosis",
+   "alkalosis",
+   "acid-base"
+  ],
+  "ab": [],
+  "rx": "acid.base|blood gas|bicarbonat|hco3|\\bph\\b|acidosis|alkalosis|anion gap|pco2"
+ },
+ {
+  "id": "B.water",
+  "m": "clinical-biochemistry",
+  "n": "Hydroelectrolytic balance",
+  "s": [
+   "sodium",
+   "potassium",
+   "natremia",
+   "kalemia",
+   "osmolality",
+   "water balance",
+   "electrolytes",
+   "hydroelectrolytic balance",
+   "hydroelectrolytic"
+  ],
+  "ab": [],
+  "rx": "sodium|potassium|natr|kal(a)?emia|osmol|electrolyt|chloride|water|hydration|intracellular|extracellular|ionogram|hyponatr|hyperkal"
+ },
+ {
+  "id": "V.icp",
+  "m": "vital-first-aid",
+  "n": "Increased intracranial pressure",
+  "s": [
+   "intracranial pressure",
+   "ICP",
+   "cerebral edema",
+   "cerebral perfusion pressure",
+   "Monro-Kellie",
+   "hydrocephalus",
+   "Cushing triad",
+   "herniation",
+   "increased intracranial pressure"
+  ],
+  "ab": [
+   "icp",
+   "cpp"
+  ],
+  "rx": "intracranial|\\bicp\\b|monro.kellie|monroe|cerebral (perfusion|edema|oedema|blood flow)|\\bcpp\\b|\\bcbf\\b|hydroceph|cushing triad|herniation|trephin|papilledema|subdural|epidural|hematoma|mannitol|acetazolamide|shunt"
+ },
+ {
+  "id": "V.aki",
+  "m": "vital-first-aid",
+  "n": "Acute kidney injury",
+  "s": [
+   "acute kidney injury",
+   "AKI",
+   "renal replacement therapy",
+   "prerenal",
+   "postrenal",
+   "glomerular filtration rate",
+   "renal"
+  ],
+  "ab": [
+   "aki",
+   "rrt",
+   "gfr"
+  ],
+  "rx": "\\baki\\b|acute kidney|renal|kidney|glomerul|\\bgfr\\b|dialys|nephro|foley|creatinine|oliguri|urine output"
+ },
+ {
+  "id": "V.alf",
+  "m": "vital-first-aid",
+  "n": "Acute liver failure",
+  "s": [
+   "acute liver failure",
+   "acetaminophen overdose",
+   "N-acetylcysteine",
+   "hepatitis",
+   "liver function tests"
+  ],
+  "ab": [
+   "alf",
+   "apap",
+   "nac"
+  ],
+  "rx": "liver|hepat|acetaminophen|paracetamol|\\bapap\\b|acetylcysteine|napqi|jaundice|encephalopathy|\\balt\\b|\\bast\\b"
+ },
+ {
+  "id": "V.hemo",
+  "m": "vital-first-aid",
+  "n": "Hemostasis disorders",
+  "s": [
+   "hemostasis",
+   "coagulation",
+   "platelets",
+   "thrombocytopenia",
+   "hemophilia",
+   "von Willebrand disease",
+   "thrombosis",
+   "aPTT",
+   "vitamin K",
+   "hemostasis disorders"
+  ],
+  "ab": [
+   "aptt",
+   "vwd"
+  ],
+  "rx": "hemosta|haemosta|coagul|platelet|thrombocyt|hemophil|haemophil|willebrand|thrombo|aptt|prothromb|vitamin k|fibrin|antithrombin|protein c|clot|desmopressin"
+ },
+ {
+  "id": "V.shock",
+  "m": "vital-first-aid",
+  "n": "Hemorrhagic shock and multiple organ failure",
+  "s": [
+   "hemorrhagic shock",
+   "multiple organ failure",
+   "hypovolemia",
+   "shock",
+   "hemorrhagic shock and multiple organ failure"
+  ],
+  "ab": [
+   "mof"
+  ],
+  "rx": "shock(?!able)|cardiac output|multiple organ|\\bmof\\b|hypovol|blood loss"
+ },
+ {
+  "id": "V.acidbase",
+  "m": "vital-first-aid",
+  "n": "Acid-base balance",
+  "s": [
+   "acid-base balance",
+   "blood gas analysis",
+   "metabolic acidosis",
+   "respiratory compensation",
+   "anion gap",
+   "acid-base"
+  ],
+  "ab": [],
+  "rx": "acid.base|blood gas|acidosis|alkalosis|alcalosis|anion gap|bicarbon|hco3|paco2|\\bph\\b|kussmaul"
+ },
+ {
+  "id": "V.thermo",
+  "m": "vital-first-aid",
+  "n": "Thermoregulation",
+  "s": [
+   "fever",
+   "hyperthermia",
+   "hypothermia",
+   "antipyretics",
+   "thermoregulation",
+   "heat stroke"
+  ],
+  "ab": [],
+  "rx": "fever|pyre|antipyret|hyperthermi|hypothermi|thermoreg|heat (stroke|production|conservation|loss|exchange)|shiver|temperature"
+ },
+ {
+  "id": "V.intro",
+  "m": "vital-first-aid",
+  "n": "Vital functions (general)",
+  "s": [
+   "vital functions",
+   "vital signs",
+   "vital functions (general)",
+   "vital functions ()"
+  ],
+  "ab": [],
+  "rx": "vital (function|sign)"
+ },
+ {
+  "id": "V.cpr",
+  "m": "vital-first-aid",
+  "n": "CPR",
+  "s": [
+   "CPR",
+   "cardiopulmonary resuscitation",
+   "chest compressions",
+   "defibrillator",
+   "basic life support"
+  ],
+  "ab": [
+   "cpr",
+   "aed",
+   "bls"
+  ],
+  "rx": "\\bcpr\\b|cardiopulmonary resus|chest compression|defibrillat|\\baed\\b|basic life support|rescue breath|cardiac arrest|shockable|abc of"
+ },
+ {
+  "id": "V.choking",
+  "m": "vital-first-aid",
+  "n": "Choking",
+  "s": [
+   "choking",
+   "Heimlich manoeuvre",
+   "airway obstruction",
+   "back blows"
+  ],
+  "ab": [],
+  "rx": "mechanical obstruction|chok|heimlich|abdominal thrust|back blow|airway obstruction|foreign body"
+ },
+ {
+  "id": "V.call",
+  "m": "vital-first-aid",
+  "n": "Effective emergency call",
+  "s": [
+   "emergency call",
+   "emergency numbers",
+   "SAMU",
+   "15",
+   "19",
+   "141",
+   "effective emergency call"
+  ],
+  "ab": [
+   "samu"
+  ],
+  "rx": "phone number|emergency (call|number|services)|\\bsamu\\b|protection civile|police|gendarmerie|\\bcall|dial|dispatcher|emergency medical service"
+ },
+ {
+  "id": "V.uncons",
+  "m": "vital-first-aid",
+  "n": "Unconsciousness",
+  "s": [
+   "unconscious casualty",
+   "recovery position",
+   "consciousness",
+   "unconsciousness"
+  ],
+  "ab": [],
+  "rx": "unconscious|recovery position|conscious|unresponsive|avpu|glasgow"
+ },
+ {
+  "id": "V.emerg7",
+  "m": "vital-first-aid",
+  "n": "Seven medical emergencies",
+  "s": [
+   "stroke",
+   "seizures",
+   "heart attack",
+   "fainting",
+   "asthma attack",
+   "burns",
+   "injuries",
+   "fractures",
+   "seven medical emergencies",
+   "asthma"
+  ],
+  "ab": [
+   "fast"
+  ],
+  "rx": "stroke|\\bfast\\b|seizure|epilep|convuls|heart attack|myocardial infarction|chest pain|faint|syncope|asthma attack|inhaler|burn|fracture|sprain|injur|wound|poison|hypoglyc|diabetic emergency|anaphyla"
+ },
+ {
+  "id": "V.bleed",
+  "m": "vital-first-aid",
+  "n": "Bleeding",
+  "s": [
+   "external bleeding",
+   "direct pressure",
+   "tourniquet",
+   "haemorrhage first aid",
+   "bleeding"
+  ],
+  "ab": [],
+  "rx": "bleed|haemorrhag|hemorrhag|direct pressure|tourniquet|nosebleed|epistaxis|dressing|bandage"
+ },
+ {
+  "id": "V.fa",
+  "m": "vital-first-aid",
+  "n": "First aid fundamentals",
+  "s": [
+   "first aid",
+   "scene safety",
+   "first aider",
+   "casualty",
+   "3C steps",
+   "first aid fundamentals"
+  ],
+  "ab": [],
+  "rx": "first a[il]d|first aider|casualt|scene|bystander|3c|evacuation|hazard|danger|safety|primary survey|secondary survey|drabc"
+ }
+]

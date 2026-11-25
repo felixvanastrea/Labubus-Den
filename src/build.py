@@ -110,14 +110,16 @@ for f, v in (FOLLOW_UPS.items() if MAIN else ()):
     fq['case'] = cid
     fq['caseOpen'] = True
 
-tags = tag(bank, shortids)
+tags = tag(bank, shortids) if MAIN else {}
+# other semesters bring their own tag dictionary (concepts.json, made with their questions) and the tags in bank.json
+SEM_CONCEPTS = json.load(open(data('concepts.json'), encoding='utf8')) if not MAIN and os.path.exists(data('concepts.json')) else []
 rep = json.load(open(data('repeats.json'), encoding='utf8'))
 order = {q['id']: i for i, q in enumerate(bank['questions'])}
 cluster_of = {qid: i for i, r in enumerate(rep['repeats']) for qid in r['q']}
 for q in bank['questions']:
     q.pop('_stem', None)
     q.pop('_pi', None)
-    q['c'] = tags[q['id']]['c'] if MAIN else []   # the concepts are EFM3 S5's: other semesters get their own later
+    q['c'] = tags[q['id']]['c'] if MAIN else q.get('c', [])   # S5's from concepts.py; others' from their bank.json
     q['a'] = tags[q['id']]['a'] if MAIN else ''
 # word-for-word copies (same stem, same options) inside one repeated question are practised once
 for d, keep in rep['dup'].items():
@@ -164,7 +166,8 @@ for sid, e in ex['questions'].items():
         Q[t]['exp'] = {'lec': lec, 'o': o}
         n_exp += 1
 print('explanations:', len(ex['questions']), 'entries, on', n_exp, 'questions')
-bank['concepts'] = [] if not MAIN else [{'id': cid, 'm': mod, 'n': name,
+bank['concepts'] = [{'id': c['id'], 'm': c['m'], 'n': c['n'], 's': c['s'], 'ab': c['ab'], 'p': None}
+                    for c in SEM_CONCEPTS] if not MAIN else [{'id': cid, 'm': mod, 'n': name,
                      's': list(dict.fromkeys(syn + EXTRA_SYN.get(cid, []))),
                      'ab': list(dict.fromkeys(abbr + EXTRA_ABBR.get(cid, []))), 'p': parent}
                     for cid, mod, name, syn, abbr, parent in CONCEPTS]
@@ -176,7 +179,7 @@ bank['aspects'] = ASPECT_NAMES if MAIN else {}
 # stars go with their lead, so a topic holds every copy. Sizes count a question once with its copies.
 LEC = json.load(open(data('lectures.json'), encoding='utf8'))
 LEC_MIN = 3
-c_name = {c[0]: c[2] for c in CONCEPTS}
+c_name = {c[0]: c[2] for c in CONCEPTS} if MAIN else {c['id']: c['n'] for c in SEM_CONCEPTS}
 
 
 def canon(q):

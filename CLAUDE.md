@@ -393,6 +393,23 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   so hidden. Module windows: a brain, an action potential, a stethoscope, a test tube, a first-aid cross over a heartbeat,
   the rod of Asclepius (foreign languages reuses EFM1's globe). Each question that comes in is placed in its lecture by
   reading it (`lectures.json` `q` entries), the way S5 was; S5's concept tagger (`concepts.py`) is S5-only.
+- EFM2 S3 questions (25 November 2026, live since): 1,179 from 41 sets in Abi's Drive folder "Year 2 and 1" › "S3"
+  (anatomy 498, biochemistry 251, semiology 201, vital functions and first aid 152, physiology 77). **No answers**, on Abi's
+  order ("don't make the correction at all until i send you the lecture"): every question is `key: "none"`, `answer: []`,
+  even where a doc marked one. Answers come lecture by lecture once she sends the lecture. A set or lecture with no keyed
+  question opens on its first question (not the end screen); the About text says there are no answers yet.
+  Left out: French files (Biochem 2018/2019, ANATOMIRE 4), S2/S4 topics (the semiology final 2023–24, Mock SEMIOLOGY 2805,
+  Pr Fourtassi's midterm; the physiology mock's Q1–18 are S2 Physiology I, kept in `src/pipeline/s3/aside_s2_s4.json`),
+  duplicate copies, the photos of the biochem correction, the Covasa neurophysiology graph quiz. Five scans were typed by
+  hand (`src/pipeline/s3/scans/`). Five figures: `img/efm2-s3-*.webp`.
+  Tags: S3 has its own dictionary, `src/sem/efm2-s3/concepts.json` (made by `src/pipeline/s3/s3concepts.py` +
+  `tagger.py`: stem matches first, then options, in priority order; each concept belongs to one lecture), and the tags are
+  in `bank.json` (`c`). `build.py` reads both for a semester that isn't S5. Lectures `take` each concept's questions;
+  `q` moves the 15 read by hand (`overrides.py`). `BC-00 Pre-analytical phase` was added to biochemistry (32 questions,
+  not on her sheet: ask Abi). Repeats: same module, near-same stem and propositions, never when a meaning word differs
+  (92 clusters). To redo: `python3 src/pipeline/s3/import_bank.py` (it rewrites bank, shortids, repeats, concepts and
+  lectures; ids are hashes of set label, number and stem, so answers saved by students survive a rerun). Short ids:
+  A anatomy, P physiology, S semiology, B biochemistry, V vital functions. Test: s3.js.
 
 ## Weak spots: taken out (Abi, 21 November 2026)
 
@@ -935,7 +952,7 @@ python3 src/build.py && python3 src/tests/mk_test.py     # test copy with local 
 cd src/tests && npm install && python3 -m http.server 8765 &
 node search_repeats.js; node search_quiz_flow.js; node reset.js; node no_view_transitions.js
 node intro_controls.js; node intro_frames.js; node intro_pick.js; node intro_star.js; node quest.js; node update_log.js; node feedback.js; node constellation.js
-node sound.js; node exam.js; node stats.js; node scopes.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js; node efm1.js
+node sound.js; node exam.js; node stats.js; node scopes.js; node lectures.js; node account.js; node tonight.js; node looks.js; node class.js; node gift.js; node sky_intro.js; node app.js; node tools.js; node stars.js; node sky.js; node duel.js; node news.js; node alive.js; node tick.js; node fresh.js; node links.js; node notes.js; node ipad_next.js; node must.js; node must_pub.js; node priv.js; node efm1.js; node s3.js
 node screenshots.js   # screenshots land in src/tests/shots/
 ```
 Playwright and Chromium are expected to be preinstalled; the tests only need the fonts from `npm install`.

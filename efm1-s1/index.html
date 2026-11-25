@@ -2785,14 +2785,14 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     checked: 'Checked against the S5 lectures: every marked answer is backed by a lecture slide, an official key on a copy of the question, or textbook medicine.',
     proposed: 'Proposed answers, green in the doc. Not official, so double-check.',
     claude: "Nothing was highlighted in the doc, so these are Claude's suggested answers, each with a short reason. Check them against your course.",
-    none: "Nothing was highlighted in the doc, so these can't be graded yet"
+    none: "No answer marked yet, so these can't be graded yet"
   };
   // ---------- semesters ----------
   // One page per semester (Abi, 21 November 2026: "keep each semester extremely separate"): this page's bank holds only
   // its own questions, its progress is saved under its own key and synced to its own field of the account, its social
   // parts use their own Firestore docs (COL), and only EFM3 S5 has the class sky. SEM comes from semesters.json.
   const SEM = Object.assign({ id: 'efm3-s5', year: 'EFM3', sem: 'S5', name: 'EFM3 · Semester 5', label: 'Semester 5 · 2025–2026',
-    store: 'efm3-mcq-bank-v1', sync: 's', sky: true, all: [] }, {"id": "efm1-s1", "year": "EFM1", "sem": "S1", "name": "EFM1 · Semester 1", "label": "Semester 1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "sky": false, "all": [{"id": "efm3-s5", "name": "EFM3 · Semester 5", "year": "EFM3", "sem": "S5", "store": "efm3-mcq-bank-v1", "sync": "s", "href": "../", "live": true}, {"id": "efm1-s1", "name": "EFM1 · Semester 1", "year": "EFM1", "sem": "S1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "href": "../efm1-s1/", "live": false}, {"id": "efm2-s3", "name": "EFM2 · Semester 3", "year": "EFM2", "sem": "S3", "store": "den-efm2-s3-v1", "sync": "s_efm2s3", "href": "../efm2-s3/", "live": false}]});
+    store: 'efm3-mcq-bank-v1', sync: 's', sky: true, all: [] }, {"id": "efm1-s1", "year": "EFM1", "sem": "S1", "name": "EFM1 · Semester 1", "label": "Semester 1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "sky": false, "all": [{"id": "efm3-s5", "name": "EFM3 · Semester 5", "year": "EFM3", "sem": "S5", "store": "efm3-mcq-bank-v1", "sync": "s", "href": "../", "live": true}, {"id": "efm1-s1", "name": "EFM1 · Semester 1", "year": "EFM1", "sem": "S1", "store": "den-efm1-s1-v1", "sync": "s_efm1s1", "href": "../efm1-s1/", "live": false}, {"id": "efm2-s3", "name": "EFM2 · Semester 3", "year": "EFM2", "sem": "S3", "store": "den-efm2-s3-v1", "sync": "s_efm2s3", "href": "../efm2-s3/", "live": true}]});
   const MAIN_SEM = SEM.id === 'efm3-s5';
   const COL = n => MAIN_SEM ? n : n + '-' + SEM.id;   // notes, here, duels: one board per semester
   const STORE_KEY = SEM.store;
@@ -3767,7 +3767,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '5414cd8d08f2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = '74aa1fb1d869', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -7177,7 +7177,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const qids = qs.map(q => q.id);
     const idx = qs.findIndex(q => ['todo', 'draft'].includes(result(q)));
     S.session = { topic: topicId, type: setId ? 'all' : S.type, set: setId || null, mode: 'all', qids, order: qids.slice(), shuffle: false, idx: Math.max(0, idx) };
-    S.view = idx === -1 ? 'done' : 'quiz';
+    S.view = idx === -1 && qs.some(q => q.answer.length) ? 'done' : 'quiz';   // questions with no answers yet (EFM2 S3) can still be read through
     usage.track('practice_started', { from: setId ? 'exam set' : 'module', module: topicId === '*' ? 'all' : topicId, title: sessionTitle(S.session), questions: qids.length });
     save(); render(true, null, 'nav');
   }
@@ -7203,7 +7203,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     const qids = qs.map(q => q.id), idx = qs.findIndex(q => ['todo', 'draft'].includes(result(q)));
     const title = d.n + (S.type === 'all' ? '' : ' · ' + (TYPE_GROUP[S.type] || S.type));
     S.session = { topic: d.m, type: S.type, set: null, lec: id, title, mode: 'all', qids, order: qids.slice(), shuffle: false, idx: Math.max(0, idx) };
-    S.view = idx === -1 ? 'done' : 'quiz';
+    S.view = idx === -1 && qs.some(q => q.answer.length) ? 'done' : 'quiz';
     usage.track('practice_started', { from: 'lecture', module: d.m, title, questions: qids.length });
     save(); render(true, null, 'nav');
   }
@@ -8619,7 +8619,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
-          <p class="lede">Every question here comes straight from past ${esc(SEM.year)} exams (midterms, mocks, finals and second sessions) and from the professors' question sets. The answers were checked against several sources, and each question shows where its answer comes from.</p>
+          <p class="lede">Every question here comes straight from past ${esc(SEM.year)} exams (midterms, mocks, finals and second sessions) and from the professors' question sets. ${BANK.questions.some(q => (q.answer || []).length) ? 'The answers were checked against several sources, and each question shows where its answer comes from.' : 'No answers yet: they are added lecture by lecture, each one checked against the lecture.'}</p>
           <p>Answers can still contain mistakes: report anything that looks wrong. This is a study tool, not medical advice. <button class="foot-btn" type="button" data-act="privacy">Privacy</button></p>
           <p class="credit">Made by <b>the Labubu</b></p>
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}
@@ -9315,7 +9315,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     }).join('');
     let verdict = '';
     if (!hasKey) {
-      verdict = `<div class="verdict nokey" id="verdict" tabindex="-1"><span class="v-main">No answer key</span><span class="v-sub">Nothing is highlighted for this one in the doc, so it can't be graded yet.</span></div>`;
+      verdict = `<div class="verdict nokey" id="verdict" tabindex="-1"><span class="v-main">No answer key</span><span class="v-sub">No answer is marked for this one yet, so it can't be graded.</span></div>`;
     } else if (checked) {
       const overlap = a.sel.filter(i => q.answer.includes(i)).length;
       const main = a.correct ? `${ICON.check} Correct` : (overlap ? `${ICON.cross} Partly right` : `${ICON.cross} Wrong`);
@@ -9431,7 +9431,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           ${st.keyed ? `<p class="score"><b class="num" data-countup="${st.right}">${play ? 0 : fmtN(st.right)}</b><span>/ ${fmtN(st.keyed)} right</span></p>` : `<p class="score"><span>No answer key for these yet</span></p>`}
           ${sky.name ? `<p class="dc-name">${esc(sky.name)}</p>` : ''}
           ${gainsHTML(sess)}
-          <p class="d-meta">${st.keyed ? `${fmtN(answered)} checked${answered ? `, ${pct}% right` : ''}${st.left ? `, ${fmtN(st.left)} skipped` : ''}${st.nokey ? `, ${fmtN(st.nokey)} without an answer key` : ''}.` : `The doc has no highlighted answers for these ${st.total} questions.`}</p>
+          <p class="d-meta">${st.keyed ? `${fmtN(answered)} checked${answered ? `, ${pct}% right` : ''}${st.left ? `, ${fmtN(st.left)} skipped` : ''}${st.nokey ? `, ${fmtN(st.nokey)} without an answer key` : ''}.` : `No answers are marked for these ${st.total} questions yet.`}</p>
           ${qi ? questDoneHTML(qi) : ''}
           <div class="d-actions">
             ${st.wrong ? `<button class="btn primary" type="button" data-act="mistakes">Retry the ${fmtN(st.wrong)} you got wrong</button>` : ''}
