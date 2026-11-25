@@ -1,4 +1,134 @@
 {
- "lectures": {},
- "questions": {}
+  "lectures": {
+    "ren-1": {
+      "title": "Renal physiology 1: Introduction",
+      "added": "2026-11-25"
+    },
+    "ren-2": {
+      "title": "Renal physiology 2: Physiology of the nephron",
+      "added": "2026-11-25"
+    },
+    "ren-3": {
+      "title": "Renal physiology 3: Glomerular filtration",
+      "added": "2026-11-25"
+    },
+    "ren-4": {
+      "title": "Renal physiology 4: Regulation of GFR",
+      "added": "2026-11-25"
+    },
+    "ren-5": {
+      "title": "Renal physiology 5: Tubular reabsorption",
+      "added": "2026-11-25"
+    }
+  },
+  "questions": {
+    "P1": {
+      "lecture": "ren-1",
+      "A": "Yes: urea, uric acid and creatinine are removed.",
+      "B": "Yes: the kidneys clear hormones from the blood.",
+      "C": "Yes: toxic substances are among the exogenous chemicals removed.",
+      "D": "Yes: therapeutic medications are exogenous chemicals the kidneys remove.",
+      "E": "No: blood cells are too big to pass the filter; red cells in urine are abnormal (hematuria)."
+    },
+    "P2": {
+      "lecture": "ren-1",
+      "A": "Yes: urea, made by the liver from ammonia, is the main nitrogenous waste.",
+      "B": "No: glucose in urine (glucosuria) is abnormal; all filtered glucose is normally reabsorbed.",
+      "C": "Yes: creatinine, from creatine phosphate breakdown, is a normal waste.",
+      "D": "Yes: uric acid, from nucleic acid breakdown, is a normal waste.",
+      "E": "Yes: the kidneys regulate electrolytes, so sodium is normally excreted."
+    },
+    "P3": {
+      "lecture": "ren-1",
+      "A": "Abnormal: albumin in urine is albuminuria.",
+      "B": "Abnormal: glucose in urine is glucosuria.",
+      "C": "Normal: sodium is an electrolyte the kidneys excrete every day.",
+      "D": "Abnormal: red cells in urine is hematuria.",
+      "E": "Normal: potassium is an electrolyte the kidneys excrete every day."
+    },
+    "P4": {
+      "lecture": "ren-1",
+      "A": "Yes: osmolarity is on the slide for blood homeostasis.",
+      "B": "Yes: blood volume and pressure are on the slide for blood homeostasis.",
+      "C": "No: calcitriol synthesis is listed under general (whole-body) homeostasis, not blood homeostasis.",
+      "D": "Yes: electrolyte concentrations are on the slide for blood homeostasis.",
+      "E": "No: gluconeogenesis in starvation is listed under general homeostasis, not blood homeostasis."
+    },
+    "P46": {
+      "lecture": "ren-1",
+      "A": "No: gluconeogenesis is listed under general (whole-body) homeostasis, not blood homeostasis.",
+      "B": "Yes: blood volume and pressure are on the slide for blood homeostasis.",
+      "C": "Yes: electrolyte concentrations are on the slide for blood homeostasis.",
+      "D": "Yes: blood volume is on the slide for blood homeostasis."
+    },
+    "P47": {
+      "lecture": "ren-1",
+      "A": "Yes: toxic substances are among the exogenous chemicals removed.",
+      "B": "Yes: urea, uric acid and creatinine are removed.",
+      "C": "No: blood cells are not filtered; red cells in urine are abnormal.",
+      "D": "Yes: the kidneys clear hormones from the blood."
+    },
+    "P48": {
+      "lecture": "ren-1",
+      "A": "No: glucose is filtered but all of it is normally reabsorbed; in urine it is abnormal.",
+      "B": "Yes: uric acid, from nucleic acid breakdown, is a waste the kidneys remove.",
+      "C": "Yes: creatinine, from creatine phosphate breakdown, is a waste the kidneys remove.",
+      "D": "No: albumin is held back by the negatively charged filter; in urine it is abnormal."
+    },
+    "P49": {
+      "lecture": "ren-1",
+      "A": "Yes: the kidneys regulate blood volume and pressure.",
+      "B": "Yes: they regulate acid-base balance (H+ and HCO3-).",
+      "C": "Yes: they regulate osmolarity.",
+      "D": "No: PaCO2 is set by breathing, the lungs, not the kidneys."
+    },
+    "P5": {
+      "lecture": "ren-3",
+      "A": "Yes: GFR is about 2 mL per second, 120 mL per minute.",
+      "B": "Yes: about 170 L a day, which is the body fluids filtered about 4 times a day.",
+      "C": "Yes: of 120 mL/min filtered, 119 are reabsorbed and about 1 mL becomes urine.",
+      "D": "No: ADH reduces urine by increasing water reabsorption in the collecting duct, not by lowering filtration.",
+      "E": "Yes: molecules under 3 nm (glucose, nitrogenous wastes) pass freely through the filter."
+    },
+    "P6": {
+      "lecture": "ren-5",
+      "A": "Yes: glucose is small (under 3 nm) and passes the filter freely.",
+      "B": "Yes: normally all filtered glucose is reabsorbed.",
+      "C": "Yes: glucose is co-transported with Na+ by SGLT proteins.",
+      "D": "Yes: basal Na+–K+ pumps push Na+ out so it does not build up in the cells.",
+      "E": "No: glucosuria comes when blood glucose is too high and the carriers are saturated, not when it is low."
+    },
+    "P7": {
+      "lecture": "ren-4",
+      "A": "Yes: ADH is made in the hypothalamus and released by the posterior pituitary.",
+      "B": "No: ADH (vasopressin) is a vasoconstrictor.",
+      "C": "No: ADH does not act on filtration.",
+      "D": "Yes: it inserts aquaporins so more water is reabsorbed.",
+      "E": "No: ADH acts on the collecting duct, not the proximal tubule."
+    },
+    "P8": {
+      "lecture": "ren-4",
+      "A": "Yes: renin starts the chain to angiotensin II, a potent vasoconstrictor.",
+      "B": "No: ACE inhibitors block angiotensin II formation, so they lower pressure.",
+      "C": "Yes: aldosterone makes the DCT and collecting duct reabsorb Na+ and water, raising plasma volume.",
+      "D": "No: diuretics increase urine and lower plasma volume.",
+      "E": "Yes: ADH increases water reabsorption and constricts vessels."
+    },
+    "P9": {
+      "lecture": "ren-4",
+      "A": "Yes: ACE inhibitors stop angiotensin II, so vessels dilate and less aldosterone is made.",
+      "B": "No: renin leads to angiotensin II, a vasoconstrictor.",
+      "C": "No: angiotensin II is a potent vasoconstrictor.",
+      "D": "No: ADH increases water reabsorption and plasma volume.",
+      "E": "Yes: ANP dilates vessels and makes the kidneys lose Na+ and water."
+    },
+    "P10": {
+      "lecture": "ren-4",
+      "A": "Yes: renin leads to angiotensin II and aldosterone.",
+      "B": "No: inulin is a marker used to measure GFR; it has no effect on pressure.",
+      "C": "Yes: angiotensin II is a potent vasoconstrictor raising blood pressure.",
+      "D": "Yes: aldosterone raises Na+ and water reabsorption, so volume and pressure rise.",
+      "E": "Yes: ADH raises water reabsorption and constricts vessels."
+    }
+  }
 }

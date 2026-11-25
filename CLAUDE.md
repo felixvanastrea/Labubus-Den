@@ -410,6 +410,16 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (92 clusters). To redo: `python3 src/pipeline/s3/import_bank.py` (it rewrites bank, shortids, repeats, concepts and
   lectures; ids are hashes of set label, number and stem, so answers saved by students survive a rerun). Short ids:
   A anatomy, P physiology, S semiology, B biochemistry, V vital functions. Test: s3.js.
+- S3 answers (from 25 November 2026): Abi uploads each module's lectures to Drive ("S3 lectures" › module folder) and
+  Claude answers from the slides. They live in `src/sem/efm2-s3/answers.json` (short id → key letters, lecture), applied by
+  `import_bank.py` as `key: "claude"` with a note that the slides, not the docs' marks, gave the answer; explanations in the
+  semester's `explanations.json`. One script per batch in `src/pipeline/s3/` (`answers_physio_renal.py`: P1–P10, P46–P49
+  from Renal physiology 1–5). Left unkeyed until a lecture covers them: P11 (acid-base), P12 (prostate: not in any renal
+  lecture, flagged to Abi, dropped from the quest). The About line says answers are being added while some are missing.
+- Quest `physio-midterm-2026` (S3, Tuesday 1 December 2026, Abi's list): renal intro (PH-16), nephron + glomerular filtration
+  (PH-18; PH-17 has no past question), bioenergetics intro (PH-10), "regulation of energy metabolism" (not a lecture name on
+  her sheet: PH-13 ATP for now, ask her), lipid metabolism (PH-12); 17 questions. The bioenergetics lectures weren't in the
+  Drive folder on 25 November, so those 8 wait for answers.
 
 ## Weak spots: taken out (Abi, 21 November 2026)
 

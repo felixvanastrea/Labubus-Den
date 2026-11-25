@@ -36,6 +36,8 @@ def clean_case(t):
 sources, cases, questions, short = [], [], [], {}
 nxt = Counter()
 aside = []
+import os
+ANS = json.load(open(D + 'answers.json')) if os.path.exists(D + 'answers.json') else {}
 lec_by_mod = {m: [d['id'] for d in ds] for m, ds in LEC['modules'].items()}
 moves = {}
 for s in S:
@@ -73,6 +75,10 @@ for s in S:
             moves[sid] = want
         elif not tg:
             print('untagged:', sid, s['label'], q['n'], q['s'][:70])
+        if sid in ANS:   # answered from the lecture Abi sent (answers.json), never from the docs' own marks
+            e['answer'] = ['ABCDE'.index(c) for c in ANS[sid]['key']]
+            e['key'] = 'claude'
+            e['qNotes'] = [{'by': 'claude', 'anchor': None, 'html': '<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>'}]
         questions.append(e)
 assert len({q['id'] for q in questions}) == len(questions), 'id clash'
 assert all(v in lec_by_mod[Q['topic']] for k, v in moves.items() for Q in questions if Q['id'] == short[k])

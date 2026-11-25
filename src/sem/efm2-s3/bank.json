@@ -9218,10 +9218,22 @@
     "Some therapeutic medications",
     "Red blood cells"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.kidney"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9237,12 +9249,24 @@
     "Uric acid",
     "Sodium"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.gfr",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9258,11 +9282,22 @@
     "Erythrocytes (red blood cells)",
     "Potassium"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9278,13 +9313,24 @@
     "Concentration of electrolytes (ions)",
     "Glucose synthesis from amino acids (gluconeogenesis)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.tubular",
     "P.carb",
     "P.nutri"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9300,13 +9346,25 @@
     "The antidiuretic hormone reduces urine volume by inhibiting glomerular filtration.",
     "Glucose, urea, and creatinine are small molecules that can pass through the nephron membrane filter."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.gfr",
     "P.tubular",
     "P.nephron",
     "P.kidney"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9322,13 +9380,25 @@
     "Na+–K + pumps in the basal surface of the epithelium prevents Na+ to accumulate in epithelial cells.",
     "When blood glucose levels are low, tubular reabsorption of glucose is reduced leading to glucosuria (presence of glucose in the urine)."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.tubular",
     "P.gfr",
     "P.carb",
     "P.kidney"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9344,13 +9414,23 @@
     "ADH reduces urinary volumes by increasing water reabsorption via the membrane prorteins ‘aquaporins’.",
     "ADH reduces urinary volumes by increasing water reabsorption in the proximal convoluted tubule."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.tubular",
     "P.gfrreg",
     "P.gfr",
     "P.kidney"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9366,12 +9446,23 @@
     "Diuretics",
     "Antidiuretic hormone."
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.gfrreg",
     "P.kidney",
     "P.tubular"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9387,12 +9478,22 @@
     "Antidiuretic hormone",
     "Atrial natriuretic peptide"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.gfrreg",
     "P.kidney",
     "P.tubular"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -9408,11 +9509,23 @@
     "Aldosterone",
     "ADH"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
    "c": [
     "P.gfrreg",
     "P.tubular"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10126,12 +10239,23 @@
     "Concentration of electrolytes (ions)",
     "Blood volume"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.carb",
     "P.nutri"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10146,10 +10270,21 @@
     "Red blood cells",
     "Endogenous hormones in excess"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
    "c": [
     "P.kidney"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10164,12 +10299,22 @@
     "Creatinine",
     "Albumin"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.gfr",
     "P.carb"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {
@@ -10184,12 +10329,23 @@
     "Osmolarity",
     "Partial pressure of CO2 in arterial blood (PaCO2)"
    ],
-   "answer": [],
-   "key": "none",
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
    "c": [
     "P.kidney",
     "P.acidbase",
     "P.tubular"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
    ]
   },
   {

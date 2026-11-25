@@ -1,4 +1,40 @@
 {
- "current": [],
- "quests": []
+ "current": [
+  "physio-midterm-2026"
+ ],
+ "quests": [
+  {
+   "id": "physio-midterm-2026",
+   "title": "Physiology II midterm",
+   "module": "physiology-2",
+   "due": "2026-12-01",
+   "goal": 80,
+   "topics": [
+    {
+     "name": "Renal: introduction",
+     "lecture": "PH-16",
+     "drop": [
+      "P12"
+     ]
+    },
+    {
+     "name": "Renal: nephron and glomerular filtration",
+     "lecture": "PH-18"
+    },
+    {
+     "name": "Bioenergetics: introduction",
+     "lecture": "PH-10"
+    },
+    {
+     "name": "Bioenergetics: regulation of energy metabolism",
+     "lecture": "PH-13"
+    },
+    {
+     "name": "Bioenergetics: lipid metabolism",
+     "lecture": "PH-12"
+    }
+   ],
+   "note": "Renal physiology lectures 1 to 3 (introduction, physiology of the nephron, glomerular filtration) and bioenergetics (introduction, regulation of energy metabolism, lipid metabolism)."
+  }
+ ]
 }

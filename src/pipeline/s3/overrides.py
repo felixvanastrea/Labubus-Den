@@ -15,3 +15,4 @@ O.update({
 ('Finals 2022–2023 · First aid',17):'VF-15',('Midterm · Vital functions',9):'VF-05',
 ('Practice test 3 · Neuroanatomy (Pr Fliyou)',34):'AT-01',
 })
+O.update({('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 14): 'PH-06'})   # cross-bridge cycling: muscle, not ATP

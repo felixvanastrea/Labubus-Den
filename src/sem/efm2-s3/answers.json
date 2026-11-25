@@ -1,0 +1,72 @@
+{
+ "P1": {
+  "key": "ABCD",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P2": {
+  "key": "ACDE",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P3": {
+  "key": "ABD",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P4": {
+  "key": "ABD",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P46": {
+  "key": "BCD",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P47": {
+  "key": "ABD",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P48": {
+  "key": "BC",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P49": {
+  "key": "ABC",
+  "by": "lecture",
+  "lecture": "ren-1"
+ },
+ "P5": {
+  "key": "ABCE",
+  "by": "lecture",
+  "lecture": "ren-3"
+ },
+ "P6": {
+  "key": "ABCD",
+  "by": "lecture",
+  "lecture": "ren-5"
+ },
+ "P7": {
+  "key": "AD",
+  "by": "lecture",
+  "lecture": "ren-4"
+ },
+ "P8": {
+  "key": "ACE",
+  "by": "lecture",
+  "lecture": "ren-4"
+ },
+ "P9": {
+  "key": "AE",
+  "by": "lecture",
+  "lecture": "ren-4"
+ },
+ "P10": {
+  "key": "ACDE",
+  "by": "lecture",
+  "lecture": "ren-4"
+ }
+}

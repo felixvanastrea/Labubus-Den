@@ -9,7 +9,7 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok   ' : 'FAIL ') + m); 
   p.on('pageerror', e => errs.push(e.message));
   await p.goto(BASE); await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForTimeout(1200);
   ok(/1,179 questions/.test(await p.textContent('button.navstat')), 'the count shows 1,179 questions');
-  ok(/No answers yet/.test(await p.textContent('body')), 'About says there are no answers yet');
+  ok(/lecture by lecture/.test(await p.textContent('body')), 'About says answers come lecture by lecture');
   await p.fill('input[type=search]', 'thyroid'); await p.waitForTimeout(700);
   const hits = await p.evaluate(() => (document.body.innerText.match(/(\d+) questions? match/) || document.body.innerText.match(/(\d+) questions/) || [])[1]);
   ok(+hits > 20, 'search "thyroid" finds questions (' + hits + ')');
