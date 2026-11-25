@@ -5047,8 +5047,8 @@
       "lecture": "endo-hyper",
       "A": "Yes: antibodies stimulate the TSH receptor.",
       "B": "Yes: thyrotoxicosis with a goiter and, in about half, exophthalmia.",
-      "C": "TRAb are part of the diagnosis when there is no specific eye sign.",
-      "D": "Orbitopathy is specific to Graves' disease."
+      "C": "No: TRAb are part of the diagnosis when there is no specific eye sign.",
+      "D": "No: orbitopathy is specific to Graves' disease."
     },
     "E172": {
       "lecture": "endo-hyper",

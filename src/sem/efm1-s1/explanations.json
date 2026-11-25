@@ -92,6 +92,18 @@
    "title": "Biochemistry, chapter 6: lipid metabolism",
    "added": "2026-11-25"
   },
+  "gen-rep": {
+   "title": "Molecular biology: DNA replication (Pr Alami)",
+   "added": "2026-11-25"
+  },
+  "gen-tt": {
+   "title": "Molecular biology: transcription and translation (Pr Alami)",
+   "added": "2026-11-25"
+  },
+  "gen-mut": {
+   "title": "Genetics: mutations and chromosome variations, with its tutorial",
+   "added": "2026-11-25"
+  },
   "mt-intro": {
    "title": "Medical terminology: introduction (Pr Benyoussef)",
    "added": "2026-11-25"
@@ -903,6 +915,62 @@
    "B": "No: CapZ stops actin polymerization.",
    "C": "Yes: MAP2 stabilises microtubules.",
    "D": "Yes: dynein is a motor protein on microtubules."
+  },
+  "G14": {
+   "lecture": "gen-tt",
+   "A": "No: ligase joins DNA fragments.",
+   "B": "No: DNA polymerase I repairs and replicates DNA.",
+   "C": "No: DNA polymerase III is the main replicating enzyme of prokaryotes.",
+   "D": "Yes: RNA polymerase makes RNA from the DNA template."
+  },
+  "G18": {
+   "lecture": "gen-mut",
+   "A": "No: a germline mutation would affect the offspring, not cause the person's leukemia.",
+   "B": "Yes: in body cells, it affects only the individual.",
+   "C": "No: caused by an agent, it isn't spontaneous.",
+   "D": "Yes: mutagens (radiation, chemicals) induce mutations."
+  },
+  "G19": {
+   "lecture": "gen-rep",
+   "A": "No: replicative polymerases proofread (3' to 5' exonuclease).",
+   "B": "No: primers are made by the primase, held by DNA polymerase α.",
+   "C": "Yes: the slides: polymerase δ elongates the Okazaki fragments of the lagging strand.",
+   "D": "Yes: PCNA is its sliding clamp."
+  },
+  "G20": {
+   "lecture": "gen-mut",
+   "A": "No: the extra chromosome is an X.",
+   "B": "No: polyploidy is whole extra sets.",
+   "C": "Yes: an extra X (XXY): a sex chromosome aneuploidy.",
+   "D": "No: not a structural change."
+  },
+  "G21": {
+   "lecture": "gen-mut",
+   "A": "No: they involve acrocentric chromosomes.",
+   "B": "Yes: the five acrocentric pairs: 13, 14, 15, 21 and 22.",
+   "C": "No: not the sex chromosomes.",
+   "D": "No: only the acrocentric ones."
+  },
+  "G22": {
+   "lecture": "gen-tt",
+   "A": "No: alternative splicing makes several proteins from one gene.",
+   "B": "No: it works on the transcript, not on chromosome segments.",
+   "C": "Yes: different protein variants (isoforms) from the same transcript.",
+   "D": "No: the gene isn't duplicated."
+  },
+  "G24": {
+   "lecture": "gen-tt",
+   "A": "Yes: the coding (sense) strand reads like the mRNA, with T for U.",
+   "B": "No: the template (antisense) strand is the complementary one.",
+   "C": "Yes: same 5' to 3' direction as the mRNA.",
+   "D": "No: the template for transcription is the antisense strand."
+  },
+  "G25": {
+   "lecture": "gen-mut",
+   "A": "No: a whole-gene duplication doesn't shift the reading frame.",
+   "B": "No: a silent mutation changes no amino acid.",
+   "C": "Yes: inserting one nucleotide shifts the way the sequence is read.",
+   "D": "No: a substitution changes one codon, the frame stays."
   },
   "G26": {
    "lecture": "cb-1",

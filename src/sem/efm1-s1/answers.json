@@ -1741,7 +1741,8 @@
  },
  "G14": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-tt",
   "set": "bg-mock",
   "n": 14
  },
@@ -1765,31 +1766,36 @@
  },
  "G18": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-mut",
   "set": "bg-mock",
   "n": 18
  },
  "G19": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-rep",
   "set": "bg-mock",
   "n": 19
  },
  "G20": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-mut",
   "set": "bg-mock",
   "n": 20
  },
  "G21": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-mut",
   "set": "bg-mock",
   "n": 21
  },
  "G22": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-tt",
   "set": "bg-mock",
   "n": 22
  },
@@ -1801,13 +1807,15 @@
  },
  "G24": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-tt",
   "set": "bg-mock",
   "n": 24
  },
  "G25": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-mut",
   "set": "bg-mock",
   "n": 25
  },

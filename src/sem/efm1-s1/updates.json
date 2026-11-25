@@ -113,6 +113,14 @@
    "G11",
    "G12",
    "G13",
+   "G14",
+   "G18",
+   "G19",
+   "G20",
+   "G21",
+   "G22",
+   "G24",
+   "G25",
    "G26",
    "G27",
    "G28",
@@ -205,9 +213,9 @@
    "L19"
   ],
   "items": [
-   "198 of the 436 answers are now checked against the lecture slides, with a line for each proposition: thorax anatomy, chemistry and biochemistry, cell biology, public health, biophysics, medical terminology and learning methods.",
+   "206 of the 436 answers are now checked against the lecture slides, with a line for each proposition: thorax anatomy, chemistry and biochemistry, cell biology and genetics, public health, biophysics, medical terminology and learning methods.",
    "A few answers changed with the slides: the left ventricle, the mitochondrial genome, simple diffusion, the nucleus questions on granules, Cajal bodies and nuclear pores.",
-   "The limb anatomy, genetics and biostatistics questions stay Claude’s from general knowledge for now: no slides for them in the folder yet."
+   "The limb anatomy and biostatistics questions stay Claude’s from general knowledge for now: no slides for them in the folder yet."
   ]
  },
  {

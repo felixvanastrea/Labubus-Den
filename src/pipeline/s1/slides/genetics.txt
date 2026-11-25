@@ -1,0 +1,45 @@
+# Genetics: Pr Alami's molecular biology decks (replication, transcription and translation) and the mutations and
+# chromosome variations deck with its tutorial. G15, G16, G17 and G23 stay Claude's: the slides don't spell them out.
+@ gen-rep | Molecular biology: DNA replication (Pr Alami)
+@ gen-tt | Molecular biology: transcription and translation (Pr Alami)
+@ gen-mut | Genetics: mutations and chromosome variations, with its tutorial
+G14 D gen-tt
+ No: ligase joins DNA fragments.
+ No: DNA polymerase I repairs and replicates DNA.
+ No: DNA polymerase III is the main replicating enzyme of prokaryotes.
+ Yes: RNA polymerase makes RNA from the DNA template.
+G24 AC gen-tt
+ Yes: the coding (sense) strand reads like the mRNA, with T for U.
+ No: the template (antisense) strand is the complementary one.
+ Yes: same 5' to 3' direction as the mRNA.
+ No: the template for transcription is the antisense strand.
+G22 C gen-tt
+ No: alternative splicing makes several proteins from one gene.
+ No: it works on the transcript, not on chromosome segments.
+ Yes: different protein variants (isoforms) from the same transcript.
+ No: the gene isn't duplicated.
+G19 CD gen-rep
+ No: replicative polymerases proofread (3' to 5' exonuclease).
+ No: primers are made by the primase, held by DNA polymerase α.
+ Yes: the slides: polymerase δ elongates the Okazaki fragments of the lagging strand.
+ Yes: PCNA is its sliding clamp.
+G18 BD gen-mut
+ No: a germline mutation would affect the offspring, not cause the person's leukemia.
+ Yes: in body cells, it affects only the individual.
+ No: caused by an agent, it isn't spontaneous.
+ Yes: mutagens (radiation, chemicals) induce mutations.
+G20 C gen-mut
+ No: the extra chromosome is an X.
+ No: polyploidy is whole extra sets.
+ Yes: an extra X (XXY): a sex chromosome aneuploidy.
+ No: not a structural change.
+G21 B gen-mut
+ No: they involve acrocentric chromosomes.
+ Yes: the five acrocentric pairs: 13, 14, 15, 21 and 22.
+ No: not the sex chromosomes.
+ No: only the acrocentric ones.
+G25 C gen-mut
+ No: a whole-gene duplication doesn't shift the reading frame.
+ No: a silent mutation changes no amino acid.
+ Yes: inserting one nucleotide shifts the way the sequence is read.
+ No: a substitution changes one codon, the frame stays.
