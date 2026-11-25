@@ -16,7 +16,7 @@ const BASE = (process.env.BASE || 'http://127.0.0.1:8765') + '/efm1-s1/index.htm
   check(st.sem === 'efm1-s1', 'remembers the semester');
   check(!st.keys.includes('efm3-mcq-bank-v1'), 'never touches the S5 store');
   check(!st.sky, 'no class sky');
-  check(st.wins === 7, 'a window for each of the 7 modules: ' + st.wins);
+  check(st.wins === 6, 'a window for each of the 6 modules (no foreign languages): ' + st.wins);
   check(st.sw.includes('../'), 'the switch leads back to S5');
   check(+((await p.textContent('button.navstat')).match(/([\d,]+) questions/)[1].replace(/,/g, '')) >= 436, 'the count shows the S1 questions');
   check(/Claude’s for now/.test(await p.textContent('body')), 'About says the answers are Claude’s, not yet checked');
