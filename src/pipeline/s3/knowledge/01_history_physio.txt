@@ -1,0 +1,8 @@
+# history leftovers
+H11 A  H16 E  H19 C  H21 A
+# psychology (several right answers possible)
+H26 CE  H27 BDE  H28 ACD  H29 ABDE  H30 ACDE  H31 BCDE  H32 ABD  H33 ADE  H34 BE  H35 DE  H36 C  H37 CD  H38 B
+# sociology (one answer)
+H39 A  H40 A  H41 B  H42 E  H43 B  H44 A  H45 C  H46 B  H47 E  H48 D  H49 C  H50 C
+# physiology leftovers
+P11 ABCD  P12 ABCD  P14 D  P15 D  P16 A  P17 E  P18 D  P19 E  P22 B  P23 A  P24 D  P36 C
