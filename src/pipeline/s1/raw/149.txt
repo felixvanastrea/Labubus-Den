@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+5. [figure: histogram of exam grades, same as fig/ph_q19.jpg] The histogram allows you to:
+A. Identify qualitative classes
+B. Compare the observed density with a theoretical curve (black)
+C. Measure the median directly
+D. Visualise the shape of the distribution and assess normality

@@ -1,0 +1,11 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+13. Which among the following amino acids is standard?
+A. Histidine
+B. Pyrrolysine
+C. Lysine
+D. Selenocysteine
+14. An enzyme:
+A. Is a catalyst
+B. Affects the reaction yield
+C. Is recycled at the end of the reaction
+D. Increases the activation energy

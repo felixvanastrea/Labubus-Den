@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED) FIGURE fig/frchem_q10.jpg (crop molecule 2: cyclohexane, HO/H on C1, CH3/H on C4)
+10. [figure: molecule 2] The name of molecule 2 according to the IUPAC rule is:
+A. (Trans)-1-hydroxy-4-methylcyclohexanol
+B. (Cis)-4-methylcyclohexanol
+C. (Cis)-4-hydroxy-1-methyl-cyclohexanol
+D. (Trans)-4-hydroxy-1-methyl-cyclohexanol

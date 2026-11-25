@@ -1,0 +1,21 @@
+# SET: FMC1 blanc anat 1, 29 Dec 2025 (French-track anatomy mock; TRANSLATED; ticks ignored)
+10. Pick the muscles of the anterior compartment of the arm:
+A. Anconeus
+B. Brachialis
+C. Subscapularis
+D. Biceps brachii
+11. The arteries that form the deep palmar arch are:
+A. The interosseous artery
+B. The radial artery
+C. The ulnopalmar artery (deep palmar branch of the ulnar artery)
+D. The dorsal carpal artery
+12. The muscle that ends at the middle palmar aponeurosis is:
+A. Pronator quadratus
+B. Flexor carpi ulnaris
+C. Flexor carpi radialis
+D. Palmaris longus
+13. The Biceps brachii muscle is innervated by the nerve:
+A. Musculocutaneous
+B. Radial
+C. Median
+D. Ulnar

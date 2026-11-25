@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+1. [number inferred] [figure: exam grades by sex (F, M), not captured] To compare these two groups of grades, the appropriate test would be:
+A. Mann-Whitney test if normality is rejected
+B. Chi-square test
+C. Pearson correlation test
+D. Student's t-test if the distributions are normal

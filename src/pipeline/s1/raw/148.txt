@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+10. What is the main objective of medical reasoning?
+A. Prevent diseases in the general population.
+B. Analyse current epidemiological trends.
+C. Implement public health policies.
+D. Establish a precise, individual medical diagnosis.

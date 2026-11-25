@@ -1,0 +1,16 @@
+# SET: Biophysics review (class slides, Jan 9 2026)
+Q. A fluid is said to be non-Newtonian:
+A. When its viscosity η is modified by its flow velocity.
+B. When its structure varies with flow velocity.
+C. When its flow regime is laminar.
+D. When it does not contain protein macromolecules.
+Q. Blood viscosity increases when:
+A. Plasma viscosity increases.
+B. Hematocrit decreases.
+C. Temperature increases.
+D. There is an inflammatory syndrome.
+Q. During anemia:
+A. Hematocrit increases.
+B. Blood viscosity is high.
+C. Blood flow velocity increases.
+D. Turbulence may appear, causing an anemic murmur.

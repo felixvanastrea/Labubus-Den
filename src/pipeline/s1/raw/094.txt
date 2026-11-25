@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED) FIGURE fig/frchem_q1.jpg (crop molecule 1: HOOC–C(CH3)=C(CH3)–OH)
+1. [figure: molecule 1] Molecule 1:
+A. is a meso form
+B. has an axis of chirality
+C. shows geometric isomerism (Z)
+D. shows geometric isomerism (E)

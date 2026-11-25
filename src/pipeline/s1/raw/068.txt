@@ -1,0 +1,21 @@
+# SET: Biophysics (Evalbox, 25 Q, Wed Dec 31 2025, title not seen). no picks
+1. What can be stated about the attenuation of the X-ray beam as it passes through the patient:
+A. The half-value layer (HVL) is expressed in m⁻¹
+B. The attenuation of the beam follows an exponentially decreasing law
+C. The HVL corresponds to the depth at which the number of photons in the beam is reduced by ln2
+D. The contrast of the radiological image depends on the attenuation coefficients (μ) of the traversed tissues
+2. Technetium-99m (Tc-99m):
+A. Has a physical half-life of several days
+B. Comes from the decay of Molybdenum-99 (⁹⁹Mo)
+C. Is used in scintigraphy imaging
+D. Is a gamma emitter with an energy of 511 keV
+3. Main roles of the middle ear:
+A. Producing perilymph and endolymph
+B. Impedance matching between air and cochlear fluids
+C. Generating action potentials in the auditory nerve
+D. Acting as a lever system via the ossicles
+4. Among the different isotopes of Iodine, some have particular importance in medicine:
+A. Iodine-127 (¹²⁷I) is used for scintigraphy imaging
+B. Iodine-131 (¹³¹I), a (beta minus)β⁻emitter, is used for metabolic radiotherapy in the treatment of thyroid cancers
+C. Iodine-123 (¹²³I) can be used in positron emission tomography
+D. Iodine-123 (¹²³I), a gamma emitter, is used for thyroid scintigraphy imaging

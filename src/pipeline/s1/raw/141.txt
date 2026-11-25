@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+16. What is the first step of a public health approach?
+A. Identifying the health problem
+B. Implementing solutions to address it
+C. Evaluating the results of the actions put in place
+D. Identifying the causes of the health problem

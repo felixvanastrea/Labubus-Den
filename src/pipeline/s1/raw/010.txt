@@ -1,0 +1,7 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+34. Concerning the classification of amino acids :
+A. Methionine is sulfur-containing
+B. Alanine is aromatic
+C. Tryptophan is hydroxylated
+D. Phenylalanine is dibasic
+E. Glutamate is a diacid

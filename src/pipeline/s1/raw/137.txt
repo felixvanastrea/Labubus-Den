@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+20. What is the fundamental difference between public health and traditional clinical medicine?
+A. Clinical medicine does not rely on scientific evidence, unlike public health.
+B. Public health uses only biomedical approaches, while clinical medicine is multidisciplinary.
+C. Clinical medicine treats diseases, while public health aims to prevent and control diseases at the population level.
+D. Public health focuses on individuals, while clinical medicine focuses on populations.

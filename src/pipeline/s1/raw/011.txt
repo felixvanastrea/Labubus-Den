@@ -1,0 +1,7 @@
+# SET: Structural biochemistry FR doc (TRANSLATED). Q22 and Q24 depend on formula figures too small to read -> skipped
+23. Complex lipids
+A. Phosphatidic acids, lecithins and cephalins make up the glycerophospholipids
+B. Ceramides and phosphosphingolipids make up the glycosphingolipids
+C. Fatty acid is common to simple and complex lipids
+D. Sphingosine is common to phosphosphingolipids and ceramides
+E. It is glycerol or sphingosine that determines the nature of the lipid

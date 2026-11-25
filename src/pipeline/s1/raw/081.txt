@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (French-track Evalbox, photographed Jan 1 2026; TRANSLATED)
+21. The main role of NADH,H+ and FADH2 is to:
+A. Activate the Krebs cycle enzymes in the mitochondrial matrix
+B. Transfer electrons to the respiratory chain
+C. Transport oxygen to the mitochondria
+D. Supply ATP directly to the cell

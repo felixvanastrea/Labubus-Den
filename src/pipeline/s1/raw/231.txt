@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED)
+2. What is the valence shell of 79Au?
+A. 6s1 4f14
+B. 6s1 5d10
+C. 6s1 4f14 5d10
+D. 6s1

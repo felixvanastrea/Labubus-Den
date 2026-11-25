@@ -1,0 +1,21 @@
+# SET: Biophysics Dec 31 2025
+9. Regarding radiation dose limits:
+A. Radiation doses in medical exposure are not subject to regulatory dose limits for patients
+B. The whole-body dose limit for the general public or non-exposed workers is 1 mSv per year
+C. For category A workers, the whole-body dose limit is below 6 mSv per year
+D. For category B workers, the whole-body dose limit ranges from 6 to 20 mSv per year
+10. In conductive hearing loss:
+A. The main lesion is in hair cells or auditory nerve
+B. The problem is before the cochlea (outer/middle ear)
+C. Both air and bone conduction are equally reduced
+D. Air conduction is reduced, bone conduction is normal
+11. What is ocular accommodation?
+A. The ability of the eye to reduce its optical power
+B. The ability of the eye to adjust the curvature of the cornea
+C. The ability of the eye to increase its optical power in order to see nearby objects
+D. The ability of the eye to change the size of the iris
+12. The power of a spherical diopter is proportional to:
+A. The thickness of the diopter
+B. The inverse of the radius of curvature of the diopter
+C. The wavelength of light
+D. The difference in refractive indices of the two media

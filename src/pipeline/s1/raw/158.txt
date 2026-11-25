@@ -1,0 +1,16 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. Absolute uncertainty :
+A. Is the absolute value of the minimum possible deviation between the measurement and the exact value.
+B. Is usually expressed as a percentage.
+C. Is the absolute value of the maximum possible deviation between the measurement and the exact value.
+D. Is always evaluated by direct measurements.
+Q. About the physical states of matter:
+A. In the solid state, matter is dense with a high density.
+B. The liquid state is characterized by molecules that are close together.
+C. The liquid state is characterized by an indeterminate volume, compressible and expandable.
+D. In the gaseous state, matter has a high density (β).
+Q. Water evaporation from the body:
+A. Allows heat to escape by cooling the body.
+B. Is achieved only through perspiration.
+C. Also involves the lungs.
+D. Can increase during intense physical activity.

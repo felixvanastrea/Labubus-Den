@@ -1,0 +1,16 @@
+# SET: Biophysics review (class slides, Jan 9 2026)
+Q. Regarding physical quantities and their units according to the International System (SI) :
+A. The intensity of an electric current is expressed in Ampere (A).
+B. Energy is expressed in Joule (J).
+C. Activity is expressed in Gray (Gy).
+D. Pressure is expressed in Pascal (Pa).
+Q. The dimension of the acceleration of a force corresponds to :
+A. M.L².T⁻²
+B. M.L.T⁻²
+C. L.T⁻²
+D. M.L⁻¹.T⁻²
+Q. The dimension of force corresponds to :
+A. M.L².T⁻²
+B. M.L.T⁻²
+C. L.T⁻²
+D. M.L⁻¹.T⁻²

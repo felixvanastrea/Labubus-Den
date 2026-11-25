@@ -1,0 +1,11 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. The osmolality of a solution:
+A. Corresponds to the sum of the molar concentrations of the different solutes in this solution.
+B. Corresponds to the sum of the molal concentrations of the different solutes in this solution.
+C. Can be calculated from the cryoscopic depression Δθ.
+D. Is expressed in mol/kg.
+Q. Regarding the measurement of the volume of a liquid compartment based on the dilution principle, a good tracer:
+A. Spreads evenly throughout the compartment.
+B. Does not diffuse outside the compartment.
+C. Is completely metabolized during the measurement time.
+D. Significantly changes the volume of the compartment when introduced.

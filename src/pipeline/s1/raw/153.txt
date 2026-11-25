@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+4. The standard deviation is a measure of dispersion that is the square root of the variance. What is its main advantage over the variance?
+A. It is always a whole number.
+B. It is easier to calculate than the variance.
+C. It is expressed in the same unit as the mean.
+D. It is not affected by extreme values.

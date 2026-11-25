@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED)
+24. From one molecule of glucose, glycolysis directly produces:
+A. 6 NADH + H+
+B. 2 pyruvates
+C. 2 net ATP
+D. 6 CO2

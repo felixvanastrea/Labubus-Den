@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED)
+25. Before beta-oxidation, fatty acids must be activated. This activation:
+A. Requires the consumption of 2 ATP molecules
+B. Requires an acyl-CoA synthetase
+C. Takes place in the mitochondrial matrix
+D. Directly releases ATP

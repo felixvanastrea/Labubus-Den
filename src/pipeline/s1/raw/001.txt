@@ -1,0 +1,31 @@
+# SET: Chemistry FR exam p3 (French track; TRANSLATED; pen marks ignored). FIGURES in fig/fr_chem_p3.jpg (crop per question)
+12. Among the following representations, which correspond to (2S)-2-aminopropanoic acid: [figure: five structures A–E]
+A. Structure A
+B. Structure B
+C. Structure C
+D. Structure D
+E. Structure E
+13. Among the propositions below about the following molecules [figure: three skeletal formulas, C5 chains: pentane-like, 2-methylbutane, 2,2-dimethylpropane], which are correct?
+A. they are position isomers
+B. they are functional isomers
+C. they are chain isomers
+D. they are optical isomers
+E. they are Z and E isomers
+14. Among the following propositions, indicate those that are correct:
+A. a coordination complex consists of a metal cation and ligands
+B. a coordination complex links the metal cation to the ligands by semi-polar or coordinate bonds
+C. ligands are molecules or ions with empty orbitals
+D. a paramagnetic complex has paired electrons
+E. a diamagnetic complex is repelled by a magnetic field
+15. In a Newman representation:
+A. conformations are rotations around a carbon-carbon bond
+B. the anti conformation is the least stable
+C. the totally eclipsed conformation is always the least stable
+D. conformations occur by breaking bonds
+E. going from one conformation to another requires a 60° rotation
+16. Among the following propositions, tick the correct answers: [figure: Fischer projections I (CH3 / H–OH / H–OH / CH3) and II (CH3 / HO–H / H–OH / CH3)]
+A. I and II are enantiomers
+B. I and II are diastereoisomers
+C. I and II are conformers
+D. I is a meso isomer
+E. II is an L-threo isomer

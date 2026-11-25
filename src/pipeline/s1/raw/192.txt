@@ -1,0 +1,12 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+22. Among the following carbohydrates pick the monosaccharides:
+A. Glucose
+B. Starch
+C. Maltose
+D. Fructose
+23. The synthesis of Acetyl-CoA from pyruvate is catalyzed by:
+A. Catalase
+B. Pyruvate kinase
+C. Hexokinase
+D. Pyruvate dehydrogenase
+# MISSING: Q24 (non-essential amino acid: Phenylalanine, Isoleucine, ... cut), Q25

@@ -1,0 +1,19 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+25. About cholesterol
+A. Cholesterol is common to sterides and cerides
+B. Cholesterol serves as the common alcohol in the composition of complex lipids
+C. Breakdown of cholesterol leads to the formation of alcohol and fatty acid.
+D. Cholesterol is produced in the liver and is the precursor of various hormones in humans
+E. Two types of proteins are associated with cholesterol in the blood: high-density lipoproteins (HDL) on the one hand and low-density lipoproteins (LDL) on the other.
+26. Fats and oils
+A. Fatty substances and oils are also called lipids
+B. Glycerol is the alcohol part of most fats and oils
+C. At room temperature, a fat is solid and an oil is liquid
+D. The different fats and oils correspond to different fatty acids attached to the glycerol molecule
+E. Triolein is the triglyceride that represents olive oil
+27. Physicochemical properties
+A. Physicochemical properties depend mainly on the COOH
+B. Liposomes - membrane monolayers - serve as material for biochemical study
+C. Saturated fatty acids are more soluble than unsaturated ones
+D. Soap, which is soluble, is obtained by saponification between fatty acid and phosphoric acid
+E. Unsaturated fatty acids are as soluble in water as in organic solvents

@@ -1,0 +1,11 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 (2025) version (photographed Jan 9 2026; ticks ignored)
+7. The optical isomerism is about:
+A. Z and E configuration
+B. Erythro and threo configuration
+C. Cis and trans configuration
+D. R and S configuration
+8. The Geometric isomerism:
+A. Is R and S configuration
+B. Is Z and E configuration
+C. Based on the electronic configuration
+D. Based on Hofmann rule

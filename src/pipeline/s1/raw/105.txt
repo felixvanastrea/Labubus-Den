@@ -1,0 +1,21 @@
+# SET: Biology & genetics Jan 2 2026
+17. What is a gene mutation?
+A. A temporary change in the DNA sequence.
+B. A change in a single nucleotide (point mutation).
+C. A permanent alteration in the DNA sequence.
+D. A rearrangement of entire chromosomes.
+18. Which type of mutation is commonly associated to leukemia caused by mutagenic physical or chemical agents?
+A. Germline mutation
+B. Somatic mutation
+C. Spontaneous mutation
+D. Induced mutation.
+19. DNA polymerase δ:
+A. Has no proofreading activity
+B. Adds RNA primers
+C. Synthesizes the lagging strand
+D. Requires PCNA as a sliding clamp for processivity.
+20. Klinefelter syndrome (47,XXY) is an example of:
+A. Autosomal aneuploidy.
+B. Polyploidy.
+C. Sex chromosome aneuploidy.
+D. Mosaic inversion.

@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED) FIGURE fig/frchem_q11.jpg (crop molecule 2)
+11. [figure: molecule 2] Molecule 2:
+A. shows geometric isomerism (Cis)
+B. is an aromatic molecule
+C. shows geometric isomerism (Trans)
+D. has a plane of symmetry

@@ -1,0 +1,19 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+28. Properties - continued
+A. Halogenated derivatives give information on the degree of unsaturation of fatty acids
+B. Rancidity is due to lipid oxidation reactions
+C. Catalytic reduction turns an oil into margarine
+D. Fatty acids absorb at certain wavelengths
+E. An oxidation always ends up cutting the fatty acid in two
+29. Soap and fats
+A. In a soap, the ionised fatty acid mixes with the fat and the rest of the carboxyl is in contact with water
+B. Reducing fatty acids makes them fresher substances and lets them keep longer
+C. The fact that fats do not mix with water makes them good stores
+D. Out-of-date biscuits taste of soap because of the accumulation of free fatty acids
+E. Soap is foamy and soluble thanks to micelle formation
+30. Saponification and rancidity
+A. The saponification index lets you estimate the mass of fatty acids when analysing lipids
+B. Saponification is a reversible reaction
+C. Rancidity is a consequence of reduction of double bonds and causes the unpleasant smell
+D. Vitamin E delays rancidity
+E. Rancidity can be due to the passage from Cis to Trans configuration

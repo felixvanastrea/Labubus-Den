@@ -1,0 +1,15 @@
+# SET: Public health Dec 30 2025
+3. A health system is defined as:
+A. A collection of doctors, nurses, and medicines
+B. All activities whose main purpose is to promote, restore, or maintain health
+C. A network of hospitals and clinics providing medical care only
+D. The Ministry of Health and public health institutions
+4. What is the difference between public health and traditional clinical medicine?
+A. Clinical medicine treats diseases, while public health aims to prevent and control diseases at the population level.
+B. Clinical medicine does not rely on scientific evidence, unlike public health.
+C. Public health focuses on individuals, while clinical medicine focuses on populations.
+D. Public health uses only biomedical approaches, while clinical medicine is multidisciplinary.
+5. Among the following determinants, which are biological:
+A. Physical activity
+B. Genetics
+[C, D cut]

@@ -1,0 +1,7 @@
+# SET: Structural biochemistry FR doc (TRANSLATED). Q12 figure fig/fr_biochim_q12.jpg is garbled (alpha/beta lost) -> skip Q12
+11. Osidosides (holosides)
+A. Sucrose is an osidoside because the anomeric OH of fructose is engaged in a bond
+B. An osidose is a compound in which the anomeric OH of the last monosaccharide is free
+C. A sugar is an oligoside when it contains at least 10 units
+D. An osidoside is a sugar in which the anomeric -OH groups are engaged in osidic bonds
+E. Glycogen and sucrose are osidoses

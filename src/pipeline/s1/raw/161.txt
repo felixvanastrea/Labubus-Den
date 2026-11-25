@@ -1,0 +1,11 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. According to the equation of state for perfect gases :
+A. P.T = n.R.V
+B. P.V = n.R/T
+C. P.V = n.R.T
+D. P.n = V.R.T
+Q. During scuba diving:
+A. The pressure increases by 1 atm every 10 meters.
+B. The amount of dissolved gas in the plasma decreases with depth.
+C. The ascent must be very rapid to avoid gas embolism.
+D. In the event of gas embolism, the diver must be placed in a hyperbaric chamber as soon as possible.

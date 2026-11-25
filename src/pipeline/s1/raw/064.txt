@@ -1,0 +1,12 @@
+# SET: Public health Dec 30 2025. FIGURE fig/ph_q24a.jpg + ph_q24b.jpg: "Histogram of BMI with Quartiles and Interquartile Range (IQR)": Q1 = 22.60, Median (Q2) = 25.00, Q3 = 27.12, IQR = 4.52; BMI 18–30, frequencies 3,2,4,4,4,4,3 roughly
+24. [figure] From this graph, we can conclude that:
+A. Interquartile range is zero, showing no dispersion
+B. No strong visible asymmetry between quartiles exists
+C. Extreme values are not shown on this graph
+D. BMI distribution is concentrated around median
+25. The Student's test applies when:
+A. There are more than two groups
+B. The grouping variable is qualitative
+C. We compare two averages
+D. The data is non-normal
+# MISSING: Q5 C-D, Q6, Q18 B-D

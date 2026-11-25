@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+2. [figure: box plot of weight (kg), not captured] The points located outside the whiskers represent:
+A. Missing values in the data.
+B. The limits of the box plot.
+C. Atypical individuals according to the distribution.
+D. Extreme values called outliers.

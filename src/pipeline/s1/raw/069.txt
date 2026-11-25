@@ -1,0 +1,26 @@
+# SET: Biophysics Dec 31 2025
+13. Alpha particles:
+A. Have straight-line trajectories
+B. Are light charged particles
+C. Have a high Linear Energy Transfer (LET)
+D. Are used in imaging
+14. The osmosis phenomenon:
+A. Is independent of the chemical potential gradient of the solvent
+B. Tends to equalize the concentrations on both sides of the membrane
+C. Refers to the flow of solvent from a concentrated solution to a less concentrated solution
+D. Most often occurs across a semipermeable membrane
+15. During anemia:
+A. Turbulent blood flow may occur, causing an anemic murmur
+B. The blood flow velocity increases
+C. The blood viscosity is high
+D. The hematocrit increases
+16. Regarding physical quantities and their units according to the International System (SI):
+A. Force is expressed in Joule (J)
+B. Pressure is expressed in Pascal (Pa)
+C. Electric charge is expressed in Coulomb (C)
+D. Absorbed dose is expressed in Becquerel (Bq)
+17. According to the equation of state for perfect gases:
+A. P.n = V.R.T
+B. P.V = n.R.T
+C. P.T = n.R.V
+[D next photo]

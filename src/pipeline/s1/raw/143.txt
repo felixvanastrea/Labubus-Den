@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+12. What is the main objective of primary prevention?
+A. Facilitate rehabilitation after a disease has occurred.
+B. Screen for and treat diseases.
+C. Prevent the onset of diseases.
+D. Reduce complications related to an already existing disease.

@@ -1,0 +1,16 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. Boiling is a phenomenon:
+A. Progressive, where the liquid changes to a vapor state without the formation of gas bubbles.
+B. Sudden and fast, during which the liquid and vapor bubbles coexist.
+C. The temperature of which depends on the nature of the liquid and the pressure of the surrounding environment.
+D. Which can be calculated from the boiling point elevation.
+Q. The mass concentration of a chemical component :
+A. Is the ratio of its quantity (n) to the volume (V) of the solution.
+B. Is the ratio of its mass (m) to the volume (V) of the solution.
+C. Is the ratio of its quantity (n) to the mass (m) of the solution.
+D. Is expressed in Kg/m³
+Q. The molal concentration of a chemical component :
+A. Is the ratio of its mass (m) to the volume (V) of the solution.
+B. Is the ratio of its quantity (n) to the volume (V) of the solution.
+C. Is the ratio of its quantity (n) to the mass (m) of the solvent.
+D. Is expressed in mol/kg according to the International System.

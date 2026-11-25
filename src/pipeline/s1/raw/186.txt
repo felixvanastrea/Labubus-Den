@@ -1,0 +1,11 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+11. The CIP rule is based on:
+A. Number of electrons
+B. Z number
+C. Electronegativity
+D. Electronic effects
+12. The Fischer Projection is:
+A. For Carbanion stereoisomers
+B. For Carbocation stereoisomers
+C. For carboxylic acid stereoisomers
+D. For sugar and aminoacids stereoisomers

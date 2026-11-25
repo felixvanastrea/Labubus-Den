@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+22. Among the following determinants, which are biological in nature?
+A. Age
+B. Genetic factors
+C. Physical activity
+D. Smoking

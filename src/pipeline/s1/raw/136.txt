@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+19. The territorial health grouping (groupement sanitaire de territoire) means
+A. A network of military and non-profit hospitals in the territory
+B. A network of private health facilities with local facilities
+C. A grouping of university hospitals excluding health centres
+D. A grouping of hospitals with the health centres in a territory

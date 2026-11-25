@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+25. Among the following determinants, which are behavioural determinants of health?
+A. Diet
+B. Physical activity
+C. Genetic factors
+D. Level of education

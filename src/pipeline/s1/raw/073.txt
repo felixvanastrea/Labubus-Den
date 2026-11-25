@@ -1,0 +1,21 @@
+# SET: Chemistry/biochemistry (Evalbox, 25 Q, Thu Jan 1 2026, title not seen)
+9. The Geometric isomerism:
+A. Is Z and E configuration
+B. Is R and S configuration
+C. Based on Hofmann rule
+D. Based on the electronic configuration
+10. The optical isomerism is about:
+A. Cis and trans configuration
+B. Erythro and threo configuration
+C. R and S configuration
+D. Z and E configuration
+11. The Fischer Projection is:
+A. For Carbanion stereoisomers
+B. For Carbocation stereoisomers
+C. For sugar and amino acids stereoisomers
+D. For carboxylic acid stereoisomers
+12. Diastereoisomers are:
+A. Chiral molecules
+B. Meso form
+C. Epimers
+D. Enantiomers

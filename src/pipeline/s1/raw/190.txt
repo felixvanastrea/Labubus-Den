@@ -1,0 +1,11 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+17. Which among the following amino acids is composed by a sulfur atom:
+A. Methionine
+B. Aspartate
+C. Valine
+D. Cysteine
+18. Regarding cholesterol, pick the correct statements:
+A. HMG-CoA kinase is the key enzyme of cholesterol biosynthesis
+B. Acetyl-CoA is the precursor of cholesterol
+C. Cholesterol biosynthesis is simple
+D. Cholesterol synthesis is inhibited by statins

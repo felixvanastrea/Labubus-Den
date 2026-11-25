@@ -1,0 +1,16 @@
+# SET: Biophysics review (class slides, Jan 9 2026)
+Q. For real fluids:
+A. The flow mode is laminar when the Reynolds number is less than 2000.
+B. The flow is turbulent when the Reynolds number is between 2000 and 4000.
+C. The flow regime is unpredictable when the Reynolds number is between 2000 and 4000.
+D. The flow is often turbulent at very high flow velocities.
+Q. In vascular dilation:
+A. Pressure decreases.
+B. Pressure increases.
+C. Blood flow velocity increases.
+D. Blood flow velocity decreases.
+Q. Regarding real fluids:
+A. The flow regime depends on the velocity "v".
+B. The flow regime depends on the fluid density "ρ".
+C. The flow is turbulent when the Reynolds number is greater than 4000.
+D. The flow regime is unpredictable for a Reynolds number less than 2000.

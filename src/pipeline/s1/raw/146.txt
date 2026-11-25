@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+9. Among the following determinants, which are modifiable to fight cardiovascular diseases?
+A. Smoking
+B. Physical activity
+C. Genetics
+D. Age

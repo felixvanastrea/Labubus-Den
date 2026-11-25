@@ -1,0 +1,6 @@
+# SET: Public health Dec 30 2025. FIGURE for Q15 = photo 057 (/tmp/claude-tool-results/cb6ba06f-288c-5eb3-9e57-abd362950453/mcp-Google_Drive-blob-1795624809807-ba7o8l-5b78bf2b.jpg)
+15. [figure: GBD 2023 deaths treemaps, Burkina Faso and Morocco] Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths ?
+A. Malaria, HIV and meningitis are real public health problems in BurkinaFaso
+B. High burden of communicable diseases in Morocco
+C. Cancer is to be neglected as it does not lead to high death rate in Morocco
+D. High burden of non communicable diseases in Burkina Faso

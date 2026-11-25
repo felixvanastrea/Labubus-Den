@@ -1,0 +1,6 @@
+# SET: Public health Dec 30 2025. FIGURE fig/ph_q19.jpg (bar chart counts + histogram/density of "Note de l'examen")
+19. [figure] The lower histogram graph (Density versus exam Grades) allows you to:
+A. Directly measure the median value
+B. Identify different qualitative classes
+C. Visualize distribution shape and assess normality
+D. Compare the observed density with a theoretical curve

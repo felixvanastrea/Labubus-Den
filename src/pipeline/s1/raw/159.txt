@@ -1,0 +1,16 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. In the BTPS conditions :
+A. The temperature is 273 K.
+B. The temperature is 310 K.
+C. The pressure is 2 atm.
+D. The gas is saturated with water vapor.
+Q. In the STPD conditions:
+A. The temperature is 273 K.
+B. The temperature is 310 K.
+C. The pressure is 1 atm.
+D. The gas is not mixed with water vapor.
+Q. According to Boyle-Mariotte's law, for a constant amount of gas n and a constant temperature T :
+A. The volume V of the gas increases as the pressure P increases.
+B. The volume V of the gas decreases when the pressure P increases.
+C. The volume V of the gas varies linearly with temperature.
+D. The product of the pressure P by the volume V of this gas is constant.

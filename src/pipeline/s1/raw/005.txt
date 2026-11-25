@@ -1,0 +1,7 @@
+# SET: Structural biochemistry FR doc (TRANSLATED). Q15 figure too blurry -> skipped
+14. Properties of monosaccharides
+A. The presence of alcohol functions gives monosaccharides high solubility in water.
+B. On heating, monosaccharides pass irreversibly from the crystalline to the colloidal state.
+C. Monosaccharides do not absorb in the ultraviolet (UV) but give characteristic infrared (IR) spectra.
+D. All monosaccharides with more than three carbons rotate polarised light
+E. Monosaccharides, thanks to their OH radicals, can easily associate by hydrogen bonds with other monosaccharide molecules or with amines.

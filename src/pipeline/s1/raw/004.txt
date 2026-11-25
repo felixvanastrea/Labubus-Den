@@ -1,0 +1,13 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+9. Secondary products of monosaccharides
+A. Deoxyribofuranose is essential in the composition of DNA
+B. Deoxyribose makes up the nucleotides of DNA and RNA
+C. Vitamin C - a ribose derivative - is an essential antioxidant
+D. Ascorbic acid derives from glucose
+E. Deoxyribose is obtained by reduction of ribose
+10. Saccharides
+A. An oside formed of 10 monosaccharides is a polysaccharide
+B. Glycogen and starch have a very similar structure
+C. Chitin is a polyoside identical to starch
+D. Hydrolysis of heterogeneous polysaccharides leads to osamines and/or uronic acid.
+E. Like amylopectin, amylose is an oligosaccharide

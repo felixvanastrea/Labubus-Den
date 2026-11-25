@@ -1,0 +1,31 @@
+# SET: Structural biochemistry FR doc (TRANSLATED) — exam heading "Épreuve de : Biochimie structurale", UM6SS
+1. Monosaccharides (oses):
+A. All contain 2 functions, one amine and the other acid
+B. All contain an aldehyde group
+C. The ketone function is always carried by carbon number 2
+D. Can contain only one primary alcohol function
+E. All come from glucose
+2. About glycerol:
+A. Reduction of glycerol leads to the formation of sugars
+B. Glycerol is one of the constituents of sucrose
+C. It is the oxidation of glycerol that gives ketoses
+D. Glycerol is a sugar alcohol
+E. Glycerol is a derivative of glucose
+3. Isomerism
+A. All the carbons of a monosaccharide are asymmetric
+B. The asymmetric carbon is also called the anomeric carbon
+C. All the aldoses of the same series are isomers of each other
+D. Only the carbons carrying secondary -OH groups are asymmetric
+E. The number of isomers depends on the number of symmetric carbons
+4. Epimers
+A. Glyceraldehyde and glycerol are epimers
+B. Glucose and fructose can exist in the form of 16 epimers
+C. Two epimers differ only by the configuration of one and the same carbon
+D. 2 epimers of glucose are not epimers of each other
+E. L-glucose and D-glucose are two epimers
+5. Anomers
+A. All sugars of the same series can exist in the Alpha or Beta form
+B. An anomer is obtained by projecting a monosaccharide onto a horizontal mirror
+C. An anomer is obtained after cyclisation according to Tollens
+D. The passage from one anomeric form to another is called racemisation
+E. Anomers of aldoses are obtained by internal esterification of the carbonyl function

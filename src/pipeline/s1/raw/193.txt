@@ -1,0 +1,31 @@
+# SET: Cellular Biology, 1st Year, 2nd Session, Semester 1, January 2023 (25 MCQ, 5 options)
+1. The fluorescent microscope components are :
+A. laser beam
+B. UV lamp
+C. photomultiplier
+D. objectif lens
+E. condenser lens.
+2. The steps of histological technique for the transmission electron microscope involves :
+A. ultramicrotome
+B. automaton
+C. flow hood
+D. cryostat
+E. CO2 incubator.
+3. Biopsy fixation for histological technique needs :
+A. osmic acid
+B. glutaraldehyde
+C. heavy metal salts
+D. Bouin liquid
+E. synthetic resins.
+4. Cell culture involes :
+A. no nutrient medium
+B. Hematein-eosin staining
+C. CO2incubator
+D. neutral pH
+E. laminar flow hood.
+5. Simple diffusion through plasma membrane :
+A. concerns gas like O2 and CO2
+B. concerns water and ions
+C. concerns large molecules
+D. needs cellular ATP energy
+E. depends on gas partial pressure.

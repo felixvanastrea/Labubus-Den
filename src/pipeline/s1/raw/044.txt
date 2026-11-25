@@ -1,0 +1,11 @@
+# SET: FMC1 blanc anat 1, 29 Dec 2025 (French-track anatomy mock; TRANSLATED; ticks ignored)
+1. Pick the muscles of the anterior compartment of the forearm:
+A. Brachioradialis
+B. Pronator quadratus
+C. Flexor carpi ulnaris
+D. Anconeus
+2. The sternocostal hiatus (Larrey's cleft) gives passage to:
+A. the internal thoracic artery
+B. the right and left vagus nerves (X)
+C. the phrenic nerves
+D. the external thoracic artery

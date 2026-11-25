@@ -1,0 +1,7 @@
+# SET: Public health FR (translated)
+3. A patient's blood glucose level, measured in g/L, is an example of what type of random variable?
+A. Discrete quantitative
+B. Continuous quantitative
+C. Qualitative
+D. Bernoulli
+# FR public health set: have 1-25 except none? check later

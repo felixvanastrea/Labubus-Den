@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+8. [figure above, not captured: scatter plot vs height (cm)] Pearson's correlation test assumes that:
+A. The distributions are strongly asymmetric
+B. Both variables are quantitative and normally distributed
+C. The relationship between the two variables is linear
+D. The variables are qualitative

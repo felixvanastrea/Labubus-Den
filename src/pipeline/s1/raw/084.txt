@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED)
+17. Among the following enzymes, which catalyse irreversible steps of glycolysis?
+A. Pyruvate kinase
+B. Enolase
+C. Phosphofructokinase-1 (PFK-1)
+D. Aldolase

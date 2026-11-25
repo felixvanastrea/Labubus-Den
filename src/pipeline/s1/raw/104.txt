@@ -1,0 +1,21 @@
+# SET: Biology & genetics Jan 2 2026
+21. Down syndrome can result from a Robertsonian translocation. These translocations typically involve which type of chromosomes?
+A. Metacentric chromosomes.
+B. Acrocentric chromosomes.
+C. Sex chromosomes only
+D. Any autosomal chromosome.
+22. In the case of the TP53 gene, alternative splicing allows:
+A. Production of a single protein only.
+B. Loss of chromosome segments.
+C. Production of multiple protein isoforms.
+D. Duplication of the entire gene.
+23. The central dogma of molecular biology states that genetic information flows from:
+A. RNA → DNA → Protein.
+B. DNA → Protein → RNA.
+C. DNA → RNA → Protein.
+D. Protein → DNA → RNA.
+24. The coding strand of DNA is:
+A. Identical in sequence to mRNA (except T replaced by U).
+B. Complementary to the mRNA.
+C. Same 5' → 3' orientation as the mRNA.
+D. The template for RNA synthesis.

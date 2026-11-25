@@ -1,0 +1,14 @@
+# SET: Public health Dec 30 2025
+20. A histogram is used to represent:
+A. A crosstab
+B. A continuous quantitative variable
+C. A qualitative variable
+D. An ordinal qualitative variable
+21. The Pearson correlation coefficient measures:
+A. Linear relation between two continuous variables
+B. Intensity and meaning of linear relationship
+C. Difference between two average values
+D. Association between two nominal variables
+22. The independent sample t-test is valid when:
+A. There are less than 10 observations per group
+[rest next]

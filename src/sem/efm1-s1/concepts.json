@@ -1,0 +1,972 @@
+[
+ {
+  "id": "AN-01",
+  "m": "anatomy-1",
+  "n": "Introducing anatomy: body axes, planes and organ systems",
+  "s": [
+   "introducing anatomy: body axes, planes and organ systems",
+   "introducing anatomy",
+   "body axes",
+   "planes",
+   "organ systems"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "AN-02",
+  "m": "anatomy-1",
+  "n": "Musculoskeletal system: osteology and myology",
+  "s": [
+   "musculoskeletal system: osteology and myology",
+   "musculoskeletal system",
+   "osteology",
+   "myology"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "AN-03",
+  "m": "anatomy-1",
+  "n": "Cardiovascular system",
+  "s": [
+   "cardiovascular system"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "AN-04",
+  "m": "anatomy-1",
+  "n": "Respiratory system",
+  "s": [
+   "respiratory system"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-01",
+  "m": "chemistry-biochemistry",
+  "n": "Structure of matter",
+  "s": [
+   "structure of matter"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-02",
+  "m": "chemistry-biochemistry",
+  "n": "Model of the atom",
+  "s": [
+   "model of the atom"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-03",
+  "m": "chemistry-biochemistry",
+  "n": "Chemical bonds",
+  "s": [
+   "chemical bonds"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-04",
+  "m": "chemistry-biochemistry",
+  "n": "Chemistry of solutions",
+  "s": [
+   "chemistry of solutions"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-05",
+  "m": "chemistry-biochemistry",
+  "n": "Oxidation and reduction",
+  "s": [
+   "oxidation and reduction",
+   "oxidation",
+   "reduction"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-06",
+  "m": "chemistry-biochemistry",
+  "n": "Introducing organic chemistry: carbon, the periodic table, nomenclature and functional groups",
+  "s": [
+   "introducing organic chemistry: carbon, the periodic table, nomenclature and functional groups",
+   "introducing organic chemistry",
+   "carbon",
+   "the periodic table",
+   "nomenclature",
+   "functional groups"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-07",
+  "m": "chemistry-biochemistry",
+  "n": "Isomers",
+  "s": [
+   "isomers"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-08",
+  "m": "chemistry-biochemistry",
+  "n": "Electronic effects",
+  "s": [
+   "electronic effects"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-09",
+  "m": "chemistry-biochemistry",
+  "n": "Chemical reactions",
+  "s": [
+   "chemical reactions"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-10",
+  "m": "chemistry-biochemistry",
+  "n": "Introducing structural biochemistry: definition, reactions, bonds, water, functional groups and the three macromolecules",
+  "s": [
+   "introducing structural biochemistry: definition, reactions, bonds, water, functional groups and the three macromolecules",
+   "introducing structural biochemistry",
+   "definition",
+   "reactions",
+   "bonds",
+   "water",
+   "functional groups",
+   "the three macromolecules"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-11",
+  "m": "chemistry-biochemistry",
+  "n": "Amino acids",
+  "s": [
+   "amino acids"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-12",
+  "m": "chemistry-biochemistry",
+  "n": "Proteins and peptides",
+  "s": [
+   "proteins and peptides",
+   "proteins",
+   "peptides"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-13",
+  "m": "chemistry-biochemistry",
+  "n": "Enzyme catalysis",
+  "s": [
+   "enzyme catalysis"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-14",
+  "m": "chemistry-biochemistry",
+  "n": "Carbohydrates",
+  "s": [
+   "carbohydrates"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-15",
+  "m": "chemistry-biochemistry",
+  "n": "Lipids",
+  "s": [
+   "lipids"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-16",
+  "m": "chemistry-biochemistry",
+  "n": "Introducing metabolic biochemistry",
+  "s": [
+   "introducing metabolic biochemistry"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-17",
+  "m": "chemistry-biochemistry",
+  "n": "Carbohydrate metabolism",
+  "s": [
+   "carbohydrate metabolism"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-18",
+  "m": "chemistry-biochemistry",
+  "n": "Protein metabolism",
+  "s": [
+   "protein metabolism"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "CB-19",
+  "m": "chemistry-biochemistry",
+  "n": "Lipid metabolism",
+  "s": [
+   "lipid metabolism"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-01",
+  "m": "biology-genetics",
+  "n": "The 6 microscopes used in medicine: components and roles",
+  "s": [
+   "the 6 microscopes used in medicine: components and roles",
+   "the 6 microscopes used in medicine",
+   "components",
+   "roles"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-02",
+  "m": "biology-genetics",
+  "n": "Cytologic and histologic technique",
+  "s": [
+   "cytologic and histologic technique",
+   "cytologic",
+   "histologic technique"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-03",
+  "m": "biology-genetics",
+  "n": "Cell culture and its applications",
+  "s": [
+   "cell culture and its applications",
+   "cell culture",
+   "its applications"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-04",
+  "m": "biology-genetics",
+  "n": "Plasma membrane components",
+  "s": [
+   "plasma membrane components"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-05",
+  "m": "biology-genetics",
+  "n": "Cell transport, signaling and adhesion",
+  "s": [
+   "cell transport, signaling and adhesion",
+   "cell transport",
+   "signaling",
+   "adhesion"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-06",
+  "m": "biology-genetics",
+  "n": "Cytoplasmic components and the 3 compartments",
+  "s": [
+   "cytoplasmic components and the 3 compartments",
+   "cytoplasmic components",
+   "the 3 compartments"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-07",
+  "m": "biology-genetics",
+  "n": "Cytoskeleton components and functions",
+  "s": [
+   "cytoskeleton components and functions",
+   "cytoskeleton components",
+   "functions"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-08",
+  "m": "biology-genetics",
+  "n": "Cellular functions: respiration, synthesis and epuration",
+  "s": [
+   "cellular functions: respiration, synthesis and epuration",
+   "cellular functions",
+   "respiration",
+   "synthesis",
+   "epuration"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-09",
+  "m": "biology-genetics",
+  "n": "Nuclear components and functions",
+  "s": [
+   "nuclear components and functions",
+   "nuclear components",
+   "functions"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-10",
+  "m": "biology-genetics",
+  "n": "Cell cycle and regulatory factors",
+  "s": [
+   "cell cycle and regulatory factors",
+   "cell cycle",
+   "regulatory factors"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-11",
+  "m": "biology-genetics",
+  "n": "Medical applications: cancer, apoptosis and oxidative stress",
+  "s": [
+   "medical applications: cancer, apoptosis and oxidative stress",
+   "medical applications",
+   "cancer",
+   "apoptosis",
+   "oxidative stress"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-12",
+  "m": "biology-genetics",
+  "n": "Introducing molecular biology and genetics",
+  "s": [
+   "introducing molecular biology and genetics",
+   "introducing molecular biology",
+   "genetics"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-13",
+  "m": "biology-genetics",
+  "n": "Replication",
+  "s": [
+   "replication"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-14",
+  "m": "biology-genetics",
+  "n": "Cytogenetics",
+  "s": [
+   "cytogenetics"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-15",
+  "m": "biology-genetics",
+  "n": "Gene regulation",
+  "s": [
+   "gene regulation"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-16",
+  "m": "biology-genetics",
+  "n": "Transcription and translation",
+  "s": [
+   "transcription and translation",
+   "transcription",
+   "translation"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-17",
+  "m": "biology-genetics",
+  "n": "DNA and PCR",
+  "s": [
+   "dna and pcr"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BG-18",
+  "m": "biology-genetics",
+  "n": "Genetic diseases",
+  "s": [
+   "genetic diseases"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-01",
+  "m": "biostatistics-public-health",
+  "n": "Basic concepts: information, data, population and sampling, quantitative and qualitative variables",
+  "s": [
+   "basic concepts: information, data, population and sampling, quantitative and qualitative variables",
+   "basic concepts",
+   "information",
+   "data",
+   "population",
+   "sampling",
+   "quantitative",
+   "qualitative variables"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-02",
+  "m": "biostatistics-public-health",
+  "n": "Introduction to the R programming language",
+  "s": [
+   "introduction to the r programming language"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-03",
+  "m": "biostatistics-public-health",
+  "n": "Descriptive statistics: measures of centrality and dispersion",
+  "s": [
+   "descriptive statistics: measures of centrality and dispersion",
+   "descriptive statistics",
+   "measures of centrality",
+   "dispersion"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-04",
+  "m": "biostatistics-public-health",
+  "n": "Introduction: quality of life, health program planning",
+  "s": [
+   "introduction: quality of life, health program planning",
+   "quality of life",
+   "health program planning"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-05",
+  "m": "biostatistics-public-health",
+  "n": "Health system analysis: health system and health care system, the 6 pillars and strategies, actors of the health system",
+  "s": [
+   "health system analysis: health system and health care system, the 6 pillars and strategies, actors of the health system",
+   "health system analysis",
+   "health system",
+   "health care system",
+   "the 6 pillars",
+   "strategies",
+   "actors of the health system"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-06",
+  "m": "biostatistics-public-health",
+  "n": "Example of Ghana ADHA (group project)",
+  "s": [
+   "example of ghana adha (group project)",
+   "example of ghana adha",
+   "group project"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-07",
+  "m": "biostatistics-public-health",
+  "n": "Determinants of health and health promotion",
+  "s": [
+   "determinants of health and health promotion",
+   "determinants of health",
+   "health promotion"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-08",
+  "m": "biostatistics-public-health",
+  "n": "Hospital-acquired infections: definition and epidemiology",
+  "s": [
+   "hospital-acquired infections: definition and epidemiology",
+   "hospital-acquired infections",
+   "definition",
+   "epidemiology"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-09",
+  "m": "biostatistics-public-health",
+  "n": "Prevention of hospital-acquired infections",
+  "s": [
+   "prevention of hospital-acquired infections"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-10",
+  "m": "biostatistics-public-health",
+  "n": "Hospital surveillance systems",
+  "s": [
+   "hospital surveillance systems"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-11",
+  "m": "biostatistics-public-health",
+  "n": "Dealing with outbreaks and epidemics",
+  "s": [
+   "dealing with outbreaks and epidemics",
+   "dealing with outbreaks",
+   "epidemics"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-12",
+  "m": "biostatistics-public-health",
+  "n": "Public health practice: health system insurance, building blocks, universal health coverage",
+  "s": [
+   "public health practice: health system insurance, building blocks, universal health coverage",
+   "public health practice",
+   "health system insurance",
+   "building blocks",
+   "universal health coverage"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-13",
+  "m": "biostatistics-public-health",
+  "n": "Introducing epidemiology: assessing community health, individual decisions, causes, risk factors and investigations",
+  "s": [
+   "introducing epidemiology: assessing community health, individual decisions, causes, risk factors and investigations",
+   "introducing epidemiology",
+   "assessing community health",
+   "individual decisions",
+   "causes",
+   "risk factors",
+   "investigations"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BP-14",
+  "m": "biostatistics-public-health",
+  "n": "Health economics: the health market and the Moroccan health insurance system",
+  "s": [
+   "health economics: the health market and the moroccan health insurance system",
+   "health economics",
+   "the health market",
+   "the moroccan health insurance system"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-01",
+  "m": "biophysics",
+  "n": "Fundamental quantities and measurement units",
+  "s": [
+   "fundamental quantities and measurement units",
+   "fundamental quantities",
+   "measurement units"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-02",
+  "m": "biophysics",
+  "n": "States of matter",
+  "s": [
+   "states of matter"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-03",
+  "m": "biophysics",
+  "n": "Gaseous state",
+  "s": [
+   "gaseous state"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-04",
+  "m": "biophysics",
+  "n": "Water and solutions",
+  "s": [
+   "water and solutions",
+   "water",
+   "solutions"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-05",
+  "m": "biophysics",
+  "n": "Energetics",
+  "s": [
+   "energetics"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-06",
+  "m": "biophysics",
+  "n": "The free movement of matter",
+  "s": [
+   "the free movement of matter"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-07",
+  "m": "biophysics",
+  "n": "Physical phenomena of membranes and simple elements",
+  "s": [
+   "physical phenomena of membranes and simple elements",
+   "physical phenomena of membranes",
+   "simple elements"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-08",
+  "m": "biophysics",
+  "n": "Biophysics of the circulatory system",
+  "s": [
+   "biophysics of the circulatory system"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-09",
+  "m": "biophysics",
+  "n": "Electrocardiography",
+  "s": [
+   "electrocardiography"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-10",
+  "m": "biophysics",
+  "n": "Biophysics of respiration",
+  "s": [
+   "biophysics of respiration"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-11",
+  "m": "biophysics",
+  "n": "Acids and bases",
+  "s": [
+   "acids and bases",
+   "acids",
+   "bases"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-12",
+  "m": "biophysics",
+  "n": "Nuclear structure and radioactivity",
+  "s": [
+   "nuclear structure and radioactivity",
+   "nuclear structure",
+   "radioactivity"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-13",
+  "m": "biophysics",
+  "n": "Interaction and detection",
+  "s": [
+   "interaction and detection",
+   "interaction",
+   "detection"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-14",
+  "m": "biophysics",
+  "n": "Radiobiology: biological effects of infrared radiation",
+  "s": [
+   "radiobiology: biological effects of infrared radiation",
+   "radiobiology",
+   "biological effects of infrared radiation"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-15",
+  "m": "biophysics",
+  "n": "Applications of infrared radiation in health",
+  "s": [
+   "applications of infrared radiation in health"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-16",
+  "m": "biophysics",
+  "n": "Radioprotection",
+  "s": [
+   "radioprotection"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-17",
+  "m": "biophysics",
+  "n": "Echography (ultrasound)",
+  "s": [
+   "echography (ultrasound)",
+   "echography",
+   "ultrasound"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-18",
+  "m": "biophysics",
+  "n": "Medical lasers",
+  "s": [
+   "medical lasers"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-19",
+  "m": "biophysics",
+  "n": "Optics",
+  "s": [
+   "optics"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "BY-20",
+  "m": "biophysics",
+  "n": "Hearing",
+  "s": [
+   "hearing"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-01",
+  "m": "learning-methods-terminology",
+  "n": "Cultural intelligence (CI) and intelligence quotient (IQ)",
+  "s": [
+   "cultural intelligence (ci) and intelligence quotient (iq)",
+   "cultural intelligence",
+   "intelligence quotient"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-02",
+  "m": "learning-methods-terminology",
+  "n": "Time management",
+  "s": [
+   "time management"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-03",
+  "m": "learning-methods-terminology",
+  "n": "Effective note-taking strategies",
+  "s": [
+   "effective note-taking strategies"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-04",
+  "m": "learning-methods-terminology",
+  "n": "Reading strategies",
+  "s": [
+   "reading strategies"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-05",
+  "m": "learning-methods-terminology",
+  "n": "Neuroscience of effective learning",
+  "s": [
+   "neuroscience of effective learning"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-06",
+  "m": "learning-methods-terminology",
+  "n": "Cognition and metacognition of learning",
+  "s": [
+   "cognition and metacognition of learning",
+   "cognition",
+   "metacognition of learning"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-07",
+  "m": "learning-methods-terminology",
+  "n": "Evidence-based learning strategies",
+  "s": [
+   "evidence-based learning strategies"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-08",
+  "m": "learning-methods-terminology",
+  "n": "Motivation and procrastination",
+  "s": [
+   "motivation and procrastination",
+   "motivation",
+   "procrastination"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-09",
+  "m": "learning-methods-terminology",
+  "n": "Medical terminology",
+  "s": [
+   "medical terminology"
+  ],
+  "ab": [],
+  "rx": ""
+ },
+ {
+  "id": "LM-10",
+  "m": "learning-methods-terminology",
+  "n": "Clinical basics: vital signs, fever, nutrition, history taking",
+  "s": [
+   "clinical basics: vital signs, fever, nutrition, history taking",
+   "clinical basics",
+   "vital signs",
+   "fever",
+   "nutrition",
+   "history taking"
+  ],
+  "ab": [],
+  "rx": ""
+ }
+]

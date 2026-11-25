@@ -1,0 +1,13 @@
+# PHOTO-2025-11-03-00-50-32 | chemistry (organic) doc, red = answer shown in red (looks like a key). FIGURE: molecule 1 = Br2C=CH-C(CH3)=C(Cl)-COOH skeletal drawing
+13. We consider the molecule 1 [figure]. The molecule 1 :
+*A. Accepts a geometric isomerism
+B. Has the geometric isomerism
+C. Has an axis of chirality
+*D. The molecule has the geometric isomerism Z
+E. Is chiral
+14. The molecule 1 name according to UPAC rule is :
+A. (R)-2- chloro-4-bromopropan-2-ol
+B. (Z)-1-chloro-5-bromobutanal
+*C. (Z)-5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid
+D. (E)- -5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid
+E. 5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid

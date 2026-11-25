@@ -1,0 +1,16 @@
+# SET: Biophysics review (slides projected in class, Jan 9 2026; no numbers; marks on slides ignored)
+Q. Regarding measurement uncertainties :
+A. An error is, by definition, the deviation between the measurement taken and the exact value.
+B. Systematic error is often related to poor calibration of the measuring instrument.
+C. Random error often varies predictably.
+D. Relative uncertainty is usually expressed as a percentage.
+Q. An error is considered systematic :
+A. When it contributes to always overestimating (or always underestimating) the measured value.
+B. When it varies predictably.
+C. When it depends on the experimenter.
+D. When it depends on the measuring device.
+Q. An error is considered random :
+A. When it is reproducible.
+B. When it varies unpredictably.
+C. When it depends on the experimenter.
+D. When it depends on the measuring instrument.

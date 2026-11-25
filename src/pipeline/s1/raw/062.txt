@@ -1,0 +1,11 @@
+# SET: Public health Dec 30 2025
+22. The independent sample t-test is valid when:
+A. There are less than 10 observations per group
+B. The two groups are independent
+C. The variable under study follows a normal distribution
+D. The data is qualitative
+23. If the p-value is less than 0.05, we:
+A. Accepts H0
+B. Concludes a significant difference or association
+C. Rejects H0
+D. Refuses to conclude because it is not known if the test performed is significant or not

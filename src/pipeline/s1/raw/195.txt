@@ -1,0 +1,43 @@
+# SET: Cellular Biology, 1st Year, 2nd Session, Semester 1, January 2023 (25 MCQ, 5 options)
+6. Multi-drug resistant pumps (MDR) :
+A. are very specific
+B. are GTP-dependent
+C. ensure the transport of drugs inside the cell
+D. are present in both cancerous and normal cells
+E. explain the resistance of tumor cells to chemotherapy.
+7. During endocytosis mechanism, you could observe :
+A. substance adsorption above clathrins
+B. invagination membrane via G proteins
+C. endocytosis vesicle formation
+D. endocytosis vesicle detachment
+E. endocytosis vesicle migration in cytoplasm.
+8. Adenylyl cyclase is an integral membrane protein that contains:
+A. 12 transmembrane segments
+B. 2 cytoplasmic domains
+C. catalytic site for synthesis of cAMP
+D. site of the protein kinase A (PKA)
+E. site of the protein kinase C (PKC).
+9. Inositol Triphosphate (IP3) Pathway involves :
+A. G protein coupled receptor
+B. thyrosine kinase receptor
+C. diacyl glycerol (DAG)
+D. protein kinase A (PKA)
+E. protein kinase C (PKC).
+10. MAPKinase signaling pathway involves :
+A. thyrosine Kinase receptor (TKR)
+B. Ras or Rac protein
+C. adenylyl cyclase
+D. MKK4 kinase
+E. growth factors.
+11. During the microtubule formation:
+A. alpha tubulin combines with beta tubulin
+B. GTP binds to beta tubulin site
+C. Keratin binds to tubulins
+D. protofilaments are formed before
+E. 3 protofilaments form a hollow microtubule.
+12. Concerning associated proteins to microtubules :
+A. gamma TURC ensures microtubules nucleation
+B. kinesin transforms chemical energy (ATP or GTP)
+C. dynein bind two globular parts on the microtubules
+D. myosin is associated to microtubules end
+E. troponin is associated to microtubules end.

@@ -1,0 +1,16 @@
+# SET: FMC1 blanc anat 1, 29 Dec 2025 (French-track anatomy mock; TRANSLATED; ticks ignored)
+3. Pick the muscles of the scapular region:
+A. Serratus anterior
+B. Teres major
+C. Trapezius
+D. Deltoid
+4. The right main bronchus is:
+A. More vertical than the left main bronchus
+B. Narrower than the left main bronchus
+C. More horizontal than the left main bronchus
+D. Longer than the left main bronchus
+5. On the lateral faces of the second phalanges (P2) of the last four fingers end the tendons:
+A. Of the interosseous muscles
+B. Of the extensor digitorum
+C. Of the lumbrical muscles
+D. Of the flexor digitorum superficialis

@@ -1,0 +1,26 @@
+# SET: Biophysics Dec 31 2025
+17. According to the equation of state for perfect gases:
+A. P.n = V.R.T
+B. P.V = n.R.T
+C. P.T = n.R.V
+D. P.V = n.R/T
+18. Regarding blood pressure:
+A. The diastolic pressure should be greater than 90 mmHg
+B. The systolic pressure should be greater than 140 mmHg
+C. It should be measured at the heart level or lying down, in a resting patient
+D. It should be measured at maximum effort
+19. Protein electrophoresis:
+A. Describes the migration of charged particles under the effect of an electric field
+B. Describes a form of migration under the effect of centrifugal acceleration
+C. Separates proteins based on their migration velocity
+D. Describes a form of migration under the effect of gravity
+20. For a real fluid, the flow regime:
+A. Depends on the viscosity
+B. Depends on the pH value
+C. Is laminar when the Reynolds number "R" is greater than 4000
+D. Depends on the flow velocity
+21. Regarding biological membranes:
+A. A dialysis membrane is permeable to only one type of ion or molecule
+B. The exchange of water and small particles between the blood and the interstitial fluid occurs through a dialysis membrane.
+C. A semipermeable membrane is permeable only to the solvent
+D. A selective membrane is permeable to the solvent, small molecules, and small ions

@@ -1,0 +1,19 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+17. Fatty acids
+A. Lipids are natural derivatives of fatty acids
+B. Carbon 2 of the fatty acid is the Alpha carbon
+C. Fatty acids are rarely in the free state
+D. Fatty acids are saturated or unsaturated, branched and sometimes cyclic
+E. Oleic acid is the essential constituent of olive oil
+18. Polyunsaturated (polyethylenic) fatty acids
+A. Prostaglandins are anti-inflammatory compounds
+B. A prostaglandin derives from arachidonic acid
+C. Arachidic acid, a compound with 20 carbons and 4 double bonds, is the precursor of hormones and prostaglandins
+D. Cyclic fatty acids derive from arachidonic acid and cholesterol
+E. Aspirin favours the action of prostaglandins
+19. Simple lipids
+A. Simple lipids are natural derivatives of cholesterol
+B. They are insoluble in water but soluble in organic solvents
+C. Lipids are stored as triglycerides with unsaturated fatty acids
+D. Simple lipids include glycerides, sterides and cerides
+E. Tristearate, a glyceride, allows lipids to be stored in adipocytes

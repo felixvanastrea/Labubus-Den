@@ -1,0 +1,7 @@
+# SET: chemistry organic doc (same as 013; red = key, ignored). FIGURE fig/chem_mol2.jpg (crop needed: cyclohexane chair, HO & C2H5 on C1, Cl & CH3 on C4)
+15. We consider the molecule 2 [figure]. The molecule 2
+A. has the geometric isomerism Trans
+B. has the geometric isomerism Cis
+C. is aromatic
+D. has a symmetric plan
+E. None of them

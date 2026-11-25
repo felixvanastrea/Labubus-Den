@@ -1,0 +1,22 @@
+# SET: Biophysics Dec 31 2025
+22. Regarding the transport of oxygen (O2) in the blood:
+A. Each hemoglobin molecule binds four O2 molecules
+B. The maximum transport capacity of combined O2 is independent of the blood hemoglobin level
+C. Combined oxygen represents 40% of the transported oxygen
+D. The oxygen saturation (SaO2) in arterial blood of a normal adult at rest is 95 to 100%
+23. A patient has an arterial blood pH of 7.62, a plasma [HCO3⁻] of 24 mmol/L, and a PCO2 of 23 mmHg. This is therefore:
+A. A pure metabolic alkalosis
+B. A pure respiratory alkalosis
+C. A mixed metabolic acidosis
+D. A pure respiratory acidosis
+24. In localized vascular dilation:
+A. Pressure decreases
+B. Pressure increases
+C. Blood flow velocity increases
+D. Blood flow velocity decreases
+25. The absolute uncertainty:
+A. Is only evaluated by direct measurements
+B. Is usually expressed as a percentage
+C. Is the absolute value of the maximum possible deviation between the measured value and the exact value
+D. Is the absolute value of the minimum possible deviation between the measured value and the exact value.
+# Biophysics set complete (Q1-25)

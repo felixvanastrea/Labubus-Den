@@ -1,0 +1,43 @@
+# SET: Cellular Biology, 1st Year, 2nd Session, Semester 1, January 2023 (25 MCQ, 5 options)
+13. Microtubules are present in :
+A. centrosomes and centrioles
+B. lamellipodia and podosomes
+C. nucleus and nucleolus
+D. plasma membrane
+E. cilia and flagella.
+14. The microtubules ensure :
+A. intracellular transport of organelles
+B. direction of intracellular transport
+C. migration of chromosomes during mitosis
+D. muscle contraction
+E. lamina formation.
+15. Actin associated proteins are :
+A. troponin and myosin
+B. tubulin and desmine
+C. cofilin and tropomyosin
+D. dyneine and kinesine
+E. keratin and vimentin.
+16. About intermediate filaments:
+A. keratins are found in epithelial cells
+B. nuclear lamins form stabilizes the inner nuclear membrane
+C. neurofilaments strengthen the long axons of neurons
+D. Glial fibrilary acid proteins are present in glial cells
+E. vimentins are found in hair and nails.
+17. The addressing proteins to the peroxisome membrane involves :
+A. PTS1 signal
+B. PEX19 protein
+C. membrane receptor
+D. TOM translocon
+E. PEX16 protein.
+18. The cell epuration in the peroxisome :
+A. eliminates H2O2
+B. involves the catalase
+C. eliminates pesticides
+D. involves the glutathione
+E. needs anti-oxydants.
+19. The protein glycozylation in the cell :
+A. involves endoplasmic reticulum
+B. occurs at Golgi apparatus
+C. concens proteins
+D. concerns lipids
+E. concens ions.

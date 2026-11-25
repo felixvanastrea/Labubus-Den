@@ -1,0 +1,13 @@
+# SET: Structural biochemistry FR doc (TRANSLATED)
+20. Simple lipids (continued). What does the following formula represent? [formula: CH3–(CH2)7–CH=CH–(CH2)7–CO–O– esterified on the middle carbon of glycerol, whose two end carbons are CH2–OH]
+A. A monoglyceride
+B. A ceride
+C. Glycerol palmitate
+D. Glycerol oleate
+E. Simple lipid
+21. Glycerides
+A. Fats and oils make up the stores in adipose tissue
+B. Camels use triglycerides to make water and ATP
+C. Glycerides stored in adipose tissue are broken down as the body needs them, by lipolysis
+D. Glycerol is obtained by hydrolysis of fats and oils
+E. Glycerol is a precursor of simple lipids

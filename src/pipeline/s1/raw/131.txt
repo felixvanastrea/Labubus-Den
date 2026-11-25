@@ -1,0 +1,6 @@
+# SET: Public health FR (French-track Evalbox, 25 Q, photographed Jan 6 2026; TRANSLATED from French; one Q per photo)
+24. The structural determinants of social inequalities in health mainly refer to:
+A. Biological factors
+B. Macroeconomic policies
+C. Governance
+D. Individual behaviours

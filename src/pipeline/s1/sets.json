@@ -1,0 +1,5464 @@
+{
+ "chem-en": [
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The quantum number ms indicates:",
+   "o": [
+    "The direction of electron spin",
+    "The orbital",
+    "The subshells",
+    "The energy level",
+    "None of them is correct"
+   ],
+   "file": "000.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Technetium(VII) oxide (Tc2O7) is prepared by the oxidation of technetium at 450-500°C according to the chemical equation :",
+   "o": [
+    "4Tc + 7O2 → 2Tc2O7",
+    "Tc2O7 + 2H2O → 2HTcO4",
+    "Tc2O7 + 2NaOH → 2NaTcO4 + H2O",
+    "Tc2O7 + 2OH⁻ → 2TcO4⁻ + H2O",
+    "None of them"
+   ],
+   "file": "000.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The oxidation number of Technetium (VII) oxide (Tc2O7) is :",
+   "o": [
+    "6",
+    "-7",
+    "2",
+    "5",
+    "7"
+   ],
+   "file": "000.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "We consider the molecule 1 [figure]. The molecule 1 :",
+   "o": [
+    "Accepts a geometric isomerism",
+    "Has the geometric isomerism",
+    "Has an axis of chirality",
+    "The molecule has the geometric isomerism Z",
+    "Is chiral"
+   ],
+   "file": "013.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The molecule 1 name according to UPAC rule is :",
+   "o": [
+    "(R)-2- chloro-4-bromopropan-2-ol",
+    "(Z)-1-chloro-5-bromobutanal",
+    "(Z)-5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid",
+    "(E)- -5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid",
+    "5,5-dibromo-2-chloro-3-methylpenta-2,4-dienoic acid"
+   ],
+   "file": "013.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "We consider the molecule 2 [figure]. The molecule 2",
+   "o": [
+    "has the geometric isomerism Trans",
+    "has the geometric isomerism Cis",
+    "is aromatic",
+    "has a symmetric plan",
+    "None of them"
+   ],
+   "file": "240.txt"
+  }
+ ],
+ "chem-fr-exam": [
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Among the following representations, which correspond to (2S)-2-aminopropanoic acid: [figure: five structures A–E]",
+   "o": [
+    "Structure A",
+    "Structure B",
+    "Structure C",
+    "Structure D",
+    "Structure E"
+   ],
+   "file": "001.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Among the propositions below about the following molecules [figure: three skeletal formulas, C5 chains: pentane-like, 2-methylbutane, 2,2-dimethylpropane], which are correct?",
+   "o": [
+    "they are position isomers",
+    "they are functional isomers",
+    "they are chain isomers",
+    "they are optical isomers",
+    "they are Z and E isomers"
+   ],
+   "file": "001.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Among the following propositions, indicate those that are correct:",
+   "o": [
+    "a coordination complex consists of a metal cation and ligands",
+    "a coordination complex links the metal cation to the ligands by semi-polar or coordinate bonds",
+    "ligands are molecules or ions with empty orbitals",
+    "a paramagnetic complex has paired electrons",
+    "a diamagnetic complex is repelled by a magnetic field"
+   ],
+   "file": "001.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "In a Newman representation:",
+   "o": [
+    "conformations are rotations around a carbon-carbon bond",
+    "the anti conformation is the least stable",
+    "the totally eclipsed conformation is always the least stable",
+    "conformations occur by breaking bonds",
+    "going from one conformation to another requires a 60° rotation"
+   ],
+   "file": "001.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Among the following propositions, tick the correct answers: [figure: Fischer projections I (CH3 / H–OH / H–OH / CH3) and II (CH3 / HO–H / H–OH / CH3)]",
+   "o": [
+    "I and II are enantiomers",
+    "I and II are diastereoisomers",
+    "I and II are conformers",
+    "I is a meso isomer",
+    "II is an L-threo isomer"
+   ],
+   "file": "001.txt"
+  }
+ ],
+ "sbio-fr": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "Monosaccharides (oses):",
+   "o": [
+    "All contain 2 functions, one amine and the other acid",
+    "All contain an aldehyde group",
+    "The ketone function is always carried by carbon number 2",
+    "Can contain only one primary alcohol function",
+    "All come from glucose"
+   ],
+   "file": "006.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "About glycerol:",
+   "o": [
+    "Reduction of glycerol leads to the formation of sugars",
+    "Glycerol is one of the constituents of sucrose",
+    "It is the oxidation of glycerol that gives ketoses",
+    "Glycerol is a sugar alcohol",
+    "Glycerol is a derivative of glucose"
+   ],
+   "file": "006.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Isomerism",
+   "o": [
+    "All the carbons of a monosaccharide are asymmetric",
+    "The asymmetric carbon is also called the anomeric carbon",
+    "All the aldoses of the same series are isomers of each other",
+    "Only the carbons carrying secondary -OH groups are asymmetric",
+    "The number of isomers depends on the number of symmetric carbons"
+   ],
+   "file": "006.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Epimers",
+   "o": [
+    "Glyceraldehyde and glycerol are epimers",
+    "Glucose and fructose can exist in the form of 16 epimers",
+    "Two epimers differ only by the configuration of one and the same carbon",
+    "2 epimers of glucose are not epimers of each other",
+    "L-glucose and D-glucose are two epimers"
+   ],
+   "file": "006.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Anomers",
+   "o": [
+    "All sugars of the same series can exist in the Alpha or Beta form",
+    "An anomer is obtained by projecting a monosaccharide onto a horizontal mirror",
+    "An anomer is obtained after cyclisation according to Tollens",
+    "The passage from one anomeric form to another is called racemisation",
+    "Anomers of aldoses are obtained by internal esterification of the carbonyl function"
+   ],
+   "file": "006.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The Haworth representation",
+   "o": [
+    "The L forms of the same monosaccharide obtained in the vertical and horizontal planes are identical",
+    "In the D series of monosaccharides, everything on the right in the Tollens form is at the bottom in the Haworth form",
+    "The CH2OH of a D aldose is always at the top in the Haworth ring",
+    "In D-galactose the alpha anomeric -OH is trans to the CH2OH",
+    "In fructofuranose it is the CH2OH of C1 that forms the oxygen bridge with C5"
+   ],
+   "file": "002.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Oxidation of monosaccharides",
+   "o": [
+    "The aldehyde group is easily oxidised",
+    "Oxidation of monosaccharides starts with transformation of the aldehyde",
+    "Oxidation of a monosaccharide by a strong acid always leads to the formation of aldaric acid",
+    "Mild oxidation of glucose gives gluconic acid",
+    "Uronic acid is obtained by oxidation while blocking the aldehyde function."
+   ],
+   "file": "002.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "Esterification of monosaccharides",
+   "o": [
+    "Sorbitol is obtained by reduction of fructose",
+    "Reduction by phosphoric acid of a monosaccharide is an esterification reaction",
+    "It is in the form of phosphoric esters that sugars take part in metabolism",
+    "G-6-P is obtained by esterification of glucose by nitric acid",
+    "G-1-P is obtained by esterification of the reducing function of glucose"
+   ],
+   "file": "002.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Secondary products of monosaccharides",
+   "o": [
+    "Deoxyribofuranose is essential in the composition of DNA",
+    "Deoxyribose makes up the nucleotides of DNA and RNA",
+    "Vitamin C - a ribose derivative - is an essential antioxidant",
+    "Ascorbic acid derives from glucose",
+    "Deoxyribose is obtained by reduction of ribose"
+   ],
+   "file": "004.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Saccharides",
+   "o": [
+    "An oside formed of 10 monosaccharides is a polysaccharide",
+    "Glycogen and starch have a very similar structure",
+    "Chitin is a polyoside identical to starch",
+    "Hydrolysis of heterogeneous polysaccharides leads to osamines and/or uronic acid.",
+    "Like amylopectin, amylose is an oligosaccharide"
+   ],
+   "file": "004.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Osidosides (holosides)",
+   "o": [
+    "Sucrose is an osidoside because the anomeric OH of fructose is engaged in a bond",
+    "An osidose is a compound in which the anomeric OH of the last monosaccharide is free",
+    "A sugar is an oligoside when it contains at least 10 units",
+    "An osidoside is a sugar in which the anomeric -OH groups are engaged in osidic bonds",
+    "Glycogen and sucrose are osidoses"
+   ],
+   "file": "003.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Properties of monosaccharides",
+   "o": [
+    "The presence of alcohol functions gives monosaccharides high solubility in water.",
+    "On heating, monosaccharides pass irreversibly from the crystalline to the colloidal state.",
+    "Monosaccharides do not absorb in the ultraviolet (UV) but give characteristic infrared (IR) spectra.",
+    "All monosaccharides with more than three carbons rotate polarised light",
+    "Monosaccharides, thanks to their OH radicals, can easily associate by hydrogen bonds with other monosaccharide molecules or with amines."
+   ],
+   "file": "005.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Fatty acids",
+   "o": [
+    "Lipids are natural derivatives of fatty acids",
+    "Carbon 2 of the fatty acid is the Alpha carbon",
+    "Fatty acids are rarely in the free state",
+    "Fatty acids are saturated or unsaturated, branched and sometimes cyclic",
+    "Oleic acid is the essential constituent of olive oil"
+   ],
+   "file": "008.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Polyunsaturated (polyethylenic) fatty acids",
+   "o": [
+    "Prostaglandins are anti-inflammatory compounds",
+    "A prostaglandin derives from arachidonic acid",
+    "Arachidic acid, a compound with 20 carbons and 4 double bonds, is the precursor of hormones and prostaglandins",
+    "Cyclic fatty acids derive from arachidonic acid and cholesterol",
+    "Aspirin favours the action of prostaglandins"
+   ],
+   "file": "008.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Simple lipids",
+   "o": [
+    "Simple lipids are natural derivatives of cholesterol",
+    "They are insoluble in water but soluble in organic solvents",
+    "Lipids are stored as triglycerides with unsaturated fatty acids",
+    "Simple lipids include glycerides, sterides and cerides",
+    "Tristearate, a glyceride, allows lipids to be stored in adipocytes"
+   ],
+   "file": "008.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Simple lipids (continued). What does the following formula represent? [formula: CH3–(CH2)7–CH=CH–(CH2)7–CO–O– esterified on the middle carbon of glycerol, whose two end carbons are CH2–OH]",
+   "o": [
+    "A monoglyceride",
+    "A ceride",
+    "Glycerol palmitate",
+    "Glycerol oleate",
+    "Simple lipid"
+   ],
+   "file": "007.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Glycerides",
+   "o": [
+    "Fats and oils make up the stores in adipose tissue",
+    "Camels use triglycerides to make water and ATP",
+    "Glycerides stored in adipose tissue are broken down as the body needs them, by lipolysis",
+    "Glycerol is obtained by hydrolysis of fats and oils",
+    "Glycerol is a precursor of simple lipids"
+   ],
+   "file": "007.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Complex lipids",
+   "o": [
+    "Phosphatidic acids, lecithins and cephalins make up the glycerophospholipids",
+    "Ceramides and phosphosphingolipids make up the glycosphingolipids",
+    "Fatty acid is common to simple and complex lipids",
+    "Sphingosine is common to phosphosphingolipids and ceramides",
+    "It is glycerol or sphingosine that determines the nature of the lipid"
+   ],
+   "file": "011.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "About cholesterol",
+   "o": [
+    "Cholesterol is common to sterides and cerides",
+    "Cholesterol serves as the common alcohol in the composition of complex lipids",
+    "Breakdown of cholesterol leads to the formation of alcohol and fatty acid.",
+    "Cholesterol is produced in the liver and is the precursor of various hormones in humans",
+    "Two types of proteins are associated with cholesterol in the blood: high-density lipoproteins (HDL) on the one hand and low-density lipoproteins (LDL) on the other."
+   ],
+   "file": "009.txt"
+  },
+  {
+   "n": 26,
+   "ord": 26,
+   "s": "Fats and oils",
+   "o": [
+    "Fatty substances and oils are also called lipids",
+    "Glycerol is the alcohol part of most fats and oils",
+    "At room temperature, a fat is solid and an oil is liquid",
+    "The different fats and oils correspond to different fatty acids attached to the glycerol molecule",
+    "Triolein is the triglyceride that represents olive oil"
+   ],
+   "file": "009.txt"
+  },
+  {
+   "n": 27,
+   "ord": 27,
+   "s": "Physicochemical properties",
+   "o": [
+    "Physicochemical properties depend mainly on the COOH",
+    "Liposomes - membrane monolayers - serve as material for biochemical study",
+    "Saturated fatty acids are more soluble than unsaturated ones",
+    "Soap, which is soluble, is obtained by saponification between fatty acid and phosphoric acid",
+    "Unsaturated fatty acids are as soluble in water as in organic solvents"
+   ],
+   "file": "009.txt"
+  },
+  {
+   "n": 28,
+   "ord": 28,
+   "s": "Properties - continued",
+   "o": [
+    "Halogenated derivatives give information on the degree of unsaturation of fatty acids",
+    "Rancidity is due to lipid oxidation reactions",
+    "Catalytic reduction turns an oil into margarine",
+    "Fatty acids absorb at certain wavelengths",
+    "An oxidation always ends up cutting the fatty acid in two"
+   ],
+   "file": "012.txt"
+  },
+  {
+   "n": 29,
+   "ord": 29,
+   "s": "Soap and fats",
+   "o": [
+    "In a soap, the ionised fatty acid mixes with the fat and the rest of the carboxyl is in contact with water",
+    "Reducing fatty acids makes them fresher substances and lets them keep longer",
+    "The fact that fats do not mix with water makes them good stores",
+    "Out-of-date biscuits taste of soap because of the accumulation of free fatty acids",
+    "Soap is foamy and soluble thanks to micelle formation"
+   ],
+   "file": "012.txt"
+  },
+  {
+   "n": 30,
+   "ord": 30,
+   "s": "Saponification and rancidity",
+   "o": [
+    "The saponification index lets you estimate the mass of fatty acids when analysing lipids",
+    "Saponification is a reversible reaction",
+    "Rancidity is a consequence of reduction of double bonds and causes the unpleasant smell",
+    "Vitamin E delays rancidity",
+    "Rancidity can be due to the passage from Cis to Trans configuration"
+   ],
+   "file": "012.txt"
+  },
+  {
+   "n": 34,
+   "ord": 34,
+   "s": "Concerning the classification of amino acids :",
+   "o": [
+    "Methionine is sulfur-containing",
+    "Alanine is aromatic",
+    "Tryptophan is hydroxylated",
+    "Phenylalanine is dibasic",
+    "Glutamate is a diacid"
+   ],
+   "file": "010.txt"
+  }
+ ],
+ "sbio-en": [
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The naturally occuring form of amino acids in proteins:",
+   "o": [
+    "L-amino acids only",
+    "D-amino acids only",
+    "Both L and D amino acids",
+    "None of these"
+   ],
+   "file": "014.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "Amino acids with the aliphatic 'R' group are :",
+   "o": [
+    "Glycine, alanine, leucine",
+    "Serine, threonine, tyrosine",
+    "Lysine, arginine, histidine",
+    "Phenylalanine, tyrosine and tryptophan",
+    "None of these"
+   ],
+   "file": "014.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Polar amino acids are usually found :",
+   "o": [
+    "on the surface of proteins",
+    "inside the core of proteins",
+    "can be present anywhere in proteins",
+    "inside and outside the core of proteins",
+    "None of these"
+   ],
+   "file": "014.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "About the formation of the peptide bond:",
+   "o": [
+    "The formation of the peptide bond is a condensation reaction",
+    "The peptide bond is formed between the alpha carboxyl of one amino acid and the amine of the next amino acid.",
+    "The breaking of a peptide bond releases a molecule of water",
+    "The peptide bond is formed from two peptides.",
+    "All the above statements are wrong."
+   ],
+   "file": "014.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Pick the aldoses :",
+   "o": [
+    "Glucose",
+    "Fructose",
+    "Galactose",
+    "Mannose",
+    "Ribose"
+   ],
+   "file": "015.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Pick the correct statement:",
+   "o": [
+    "Cellulase is a beta-glycosidase",
+    "Glycogen, startch, cellulose and peptidoglycan are polymer of glucose",
+    "Glycogen is stored in the liver, muscles and kidney",
+    "Cellulose is an animal storage",
+    "Maltose is a homopolysaccharides"
+   ],
+   "file": "015.txt"
+  }
+ ],
+ "anat-2022": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The Clavicle is :",
+   "o": [
+    "a rod like bone placed in front of the upper part of the thorax",
+    "laterally, it is attached to the manubrium of the sternum",
+    "attached laterally to the scapula",
+    "The conoid part of the coracoclavicular ligament is attached to the conoid tubercle",
+    "A short bone"
+   ],
+   "file": "p_anat2022_15.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Which of the following is NOT true about the pectoral girdle?",
+   "o": [
+    "includes the clavicle",
+    "is part of the appendicular skeleton",
+    "includes the humerus",
+    "attaches the upper extremity to the axial skeleton",
+    "The shoulder (pectoral) girdle is the portion of the skeleton that acts as the point of connection between the arms and the thorax"
+   ],
+   "file": "p_anat2022_15.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "The area of the proximal humerus located directly below the tubercles, which is the site of many fractures, is called the:",
+   "o": [
+    "anatomic neck",
+    "surgical neck",
+    "coracoid process",
+    "intertubercular groove",
+    "Trochlea"
+   ],
+   "file": "016.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Elements passing through the axilla region are :",
+   "o": [
+    "The proximal part of the biceps brachii",
+    "subclavian artery and its branches",
+    "Infraclavicular part of the brachial plexus",
+    "The long thoracic and intercostobrachial nerve",
+    "Axillary vein and its tributaries"
+   ],
+   "file": "016.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "The Axilla region is anteriorly formed by :",
+   "o": [
+    "Pectoral minor",
+    "Clavipectoral fascia",
+    "Coracobrachialis",
+    "Pectoal major",
+    "Short head of the biceps brachii"
+   ],
+   "file": "016.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The Ankle Joint :",
+   "o": [
+    "Is located between the lower end of the tibia, the two malleoli, and the body of the talus",
+    "The calcaneofibular ligament runs from the tip of the medial malleolus downward",
+    "Deep fibular and tibial nerves supply the ankle joint",
+    "Is a deep socket formed by the lower ends of the tibia and fibula",
+    "Saphenous nerve cross the posterior aspect of the ankle region"
+   ],
+   "file": "016.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Cubital region :",
+   "o": [
+    "is an area of transition between the anatomical arm and the forearm",
+    "limited Medially by Medial border of the brachioradialis",
+    "limited Medially by Lateral border of the pronator teres",
+    "It is floor formed by the Brachialis and Supinator",
+    "the median cubital vein is often the vein of choice for intravenous injections."
+   ],
+   "file": "016.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The cubital fossa content is as follow :",
+   "o": [
+    "The median nerve",
+    "Subclavian veins",
+    "The termination of the brachial artery",
+    "The tendon of the biceps brachii",
+    "The radial nerve"
+   ],
+   "file": "018.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The popliteal fossa is bounded:",
+   "o": [
+    "Superolaterally: Semitendinosus and semimembranosus",
+    "Inferomedially: Medial head of gastrocnemius",
+    "Superomedially: Biceps femoris",
+    "Inferolaterally: Lateral head of gastrocnemius",
+    "The Plantaris is an inferomedially limit"
+   ],
+   "file": "018.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The main contents of the popliteal fossa are:",
+   "o": [
+    "Popliteal artery and its branches",
+    "Tibial vein and its tributaries",
+    "Tibial nerve and its branches",
+    "Common peroneal nerve",
+    "Popliteal lymph nodes"
+   ],
+   "file": "018.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The Sternum :",
+   "o": [
+    "is posterior to the T4 (thoracic vertebra 4)",
+    "contains the jugular notch",
+    "Receives the anterior sternochondral joints with ribs 1, 2, 3, 4 and 5",
+    "permits bilateral identification of rib 2 at the level of the sternal angle",
+    "articulates with the right and left clavicles"
+   ],
+   "file": "018.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The vertebral arch of a typical thoracic vertebra :",
+   "o": [
+    "is posterior",
+    "is anterior",
+    "is the major weight-bearing component of a thoracic vertebra",
+    "is formed by right and left laminae, which fuse at the midline",
+    "contains a spinous process projecting posteriorly and inferiorly"
+   ],
+   "file": "018.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "The Trapezius muscle :",
+   "o": [
+    "Attaches to the occipital bone",
+    "is a muscle of the back",
+    "attaches to the scapula and the clavicle",
+    "attaches to the lateral margin of the sternum",
+    "is a muscle of the anterior wall of the thorax"
+   ],
+   "file": "017.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The left ventricle (of the heart) :",
+   "o": [
+    "forms the greater part of the posterior surface of the heart",
+    "forms the greater part of the anterior surface of the heart",
+    "receives blood from the right atrium via the tricuspid valve",
+    "receives blood from the right atrium via the mitral valve",
+    "Outflow during systole is to the aorta via the aortic semilunar valve"
+   ],
+   "file": "017.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The right ventricle (of the heart) :",
+   "o": [
+    "receives blood from the left atrium via the mitral valve",
+    "forms the greater part of the anterior surface of the heart",
+    "receives blood from the right atrium via the tricuspid valve",
+    "receives blood from the right atrium via the mitral valve",
+    "Outflows to the pulmonary trunk via the pulmonary semilunar valve"
+   ],
+   "file": "017.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "The right coronary artery :",
+   "o": [
+    "Arises from the right pulmonary artery",
+    "Arises from the left pulmonary artery",
+    "courses along the epicardium following the right atrioventricular sulcus",
+    "gives off branches to the left atrium",
+    "supplies most of the left ventricle"
+   ],
+   "file": "017.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The arch of the aorta :",
+   "o": [
+    "Gives off the right pulmonary artery",
+    "Gives off the left pulmonary artery",
+    "First branch is the brachiocephalic trunk",
+    "Second branch is the right common carotid artery",
+    "Third branch is the left subclavian artery"
+   ],
+   "file": "017.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "The trachea :",
+   "o": [
+    "courses from the larynx into the thorax",
+    "bifurcates into the right and left primary bronchi at the T4–T5 vertebral level",
+    "is held open by C - shaped transverse cartilage rings embedded in its wall",
+    "The posterior wall of the trachea is composed mainly of smooth muscle",
+    "is posterior to the esophagus"
+   ],
+   "file": "019.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The left lung :",
+   "o": [
+    "Is surrounded by the pleura",
+    "has three lobes and two fissures",
+    "contains the oblique fissure",
+    "has a half-cone shape with a base, apex, two surfaces, and three borders",
+    "lateral (or costal) surface lies adjacent to the heart"
+   ],
+   "file": "019.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "The right lung :",
+   "o": [
+    "Is larger than the left lung",
+    "has three lobes and two fissures",
+    "horizontal fissure separates the inferior lobe from the superior lobe",
+    "is surrounded by the pleura",
+    "mediastinal surface lies adjacent to the heart, the inferior vena cava, superior vena cava, azygos vein, and esophagus"
+   ],
+   "file": "019.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The distal end of the radius presents:",
+   "o": [
+    "A lower face which articulates with the Scaphoid and Lunate",
+    "A lateral face ending with the styloid process",
+    "A medial face which articulates with the olecranon",
+    "A neck",
+    "Gutters at its posterior face"
+   ],
+   "file": "019.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Concerning the Ulna, mark the right answer(s):",
+   "o": [
+    "It's a short bone",
+    "It's the lateral bone of the forearm",
+    "The biggest end is proximal",
+    "It's a symmetric bone",
+    "It's an asymmetric bone"
+   ],
+   "file": "019.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "To orient the Hip bone:",
+   "o": [
+    "The Obturator foramen is distal",
+    "The biggest notch anteriorly",
+    "The acetabular surface is lateral",
+    "The acetabular surface is medial",
+    "The obturator foramen is proximal"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The sacrum articulates:",
+   "o": [
+    "Proximally with the coccyx",
+    "Distally with the coccyx",
+    "Laterally with the Hip bones",
+    "Medially with the Hip bones",
+    "None of the above"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "Which element isn't in the carpal tunnel?:",
+   "o": [
+    "Flexor pollicis longus",
+    "Flexor carpi radialis",
+    "Flexor digitorum superficialis",
+    "Flexor digitorum profundus",
+    "Median nerve"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 26,
+   "ord": 26,
+   "s": "The Guyon's canal contains:",
+   "o": [
+    "The radial artery",
+    "The ulnar artery",
+    "The radial nerve",
+    "The Ulnar nerve",
+    "The median nerve"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 27,
+   "ord": 27,
+   "s": "The borders of the anatomical snuffbox are:",
+   "o": [
+    "Medially, the tendon of the extensor pollicis longus",
+    "Medially, the tendon of the extensor pollicis brevis",
+    "Laterally, the tendon of the extensor pollicis brevis",
+    "Laterally, the tendon of the abductor pollicis longus",
+    "Laterally, the sartorius"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 28,
+   "ord": 28,
+   "s": "The safe zone of intra muscular injection is located in the:",
+   "o": [
+    "Superior medial quadrant",
+    "Inferior lateral quadrant",
+    "Inferior medial quadrant",
+    "Superior lateral quadrant",
+    "None of the above"
+   ],
+   "file": "020.txt"
+  },
+  {
+   "n": 29,
+   "ord": 29,
+   "s": "The superficial muscles of the gluteal region are:",
+   "o": [
+    "The gluteus Maximus",
+    "The gluteus minimus",
+    "The tensor fasciae latae",
+    "The gluteus medius",
+    "The Piriformis"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 30,
+   "ord": 30,
+   "s": "The sciatic nerve crosses the:",
+   "o": [
+    "Suprapiriform foramina",
+    "Infrapiriform foramina",
+    "The lesser sciatic notch",
+    "The obturator foramen",
+    "The Carpal Tunnel"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 31,
+   "ord": 31,
+   "s": "What is the nerve supply of the deltoid muscle?",
+   "o": [
+    "Musculocutaneous nerve",
+    "Axillary nerve",
+    "Suprascapular nerve",
+    "Thoracodorsal nerve",
+    "Median nerve"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 32,
+   "ord": 32,
+   "s": "Injury to median nerve at the elbow leads to:",
+   "o": [
+    "Loss of shoulder flexion",
+    "Loss of elbow extension",
+    "Loss of finger and wrist flexion",
+    "Loss of sensation over ulnar border of the forearm",
+    "Loss of sensation over first dorsal webspace"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 33,
+   "ord": 33,
+   "s": "What is the origin of the brachial artery supplying the upper limb?",
+   "o": [
+    "Axillary artery",
+    "Ulnar artery",
+    "Radial artery",
+    "Posterior Interosseous artery",
+    "Radial recurrent artery"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 34,
+   "ord": 34,
+   "s": "Injury of flexor pollicis longus at the carpal tunnel can result in:",
+   "o": [
+    "Loss of little finger flexion",
+    "Inability to flex the thumb at interphalangeal level",
+    "Loss of index finger extension",
+    "Sensory deficit at thenar webspace",
+    "Loss of thumb extension"
+   ],
+   "file": "021.txt"
+  },
+  {
+   "n": 35,
+   "ord": 35,
+   "s": "Injury to the ulnar nerve at the cubital tunnel can lead to:",
+   "o": [
+    "Loss of Flexor digitorum profundus action of little finger",
+    "Loss of flexor digitorum superficialis action of index finger",
+    "Loss of thumb flexion",
+    "Loss of sensation over radial border of forearm",
+    "Loss of power in thenar eminence"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 36,
+   "ord": 36,
+   "s": "Which structure is NOT part of the greater sciatic foramen contents?",
+   "o": [
+    "Internal pudendal artery",
+    "Superior gluteal nerve",
+    "Superior gluteal artery",
+    "Sciatic nerve",
+    "Inferior gluteal nerve"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 37,
+   "ord": 37,
+   "s": "Which muscle is commonly referred to as Tailor's muscle?",
+   "o": [
+    "Hamstrings",
+    "Gracilis",
+    "Sartorius",
+    "Rectus Femoris",
+    "Pectineus"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 38,
+   "ord": 38,
+   "s": "Which muscle is present in the lateral compartment of the lower leg?",
+   "o": [
+    "Tibialis anterior",
+    "Flexor Hallucis Longus",
+    "Peroneus Longus",
+    "Gastrocnemmius",
+    "Soleus"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 39,
+   "ord": 39,
+   "s": "Which artery terminates as dorsalis pedis?",
+   "o": [
+    "Posterior tibial artery",
+    "Anterior tibial artery",
+    "Peroneal artery",
+    "Medial plantar artery",
+    "None of the above"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 40,
+   "ord": 40,
+   "s": "What is the motor supply to the foot intrinsics?",
+   "o": [
+    "Tibial nerve",
+    "Femoral nerve",
+    "Sural nerve",
+    "Saphenous nerve",
+    "Superficial peroneal nerve"
+   ],
+   "file": "022.txt"
+  },
+  {
+   "n": 41,
+   "ord": 41,
+   "s": "Groups of organs which together perform an overall function:",
+   "o": [
+    "Organ systems",
+    "Body",
+    "Tissue",
+    "Group system",
+    "Team"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 42,
+   "ord": 42,
+   "s": "The plane that divides the body into superior and inferior portion is the:",
+   "o": [
+    "Sagittal plane",
+    "Transverse plane",
+    "Oblique plane",
+    "Frontal plane",
+    "None of the above"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 43,
+   "ord": 43,
+   "s": "The _______ plane divides the body into right and left halves is:",
+   "o": [
+    "Transverse",
+    "Sagittal",
+    "Coronal",
+    "Oblique",
+    "Para-sagittal"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 44,
+   "ord": 44,
+   "s": "In the anatomical position, the subject:",
+   "o": [
+    "Is lying down.",
+    "Has arms placed above the head",
+    "Is standing upright facing the observer with the palms backward",
+    "Is standing upright facing the observer with the palms forward.",
+    "None of the above"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 45,
+   "ord": 45,
+   "s": "The anatomical term which best describes a structure toward the head is:",
+   "o": [
+    "Superficial",
+    "Deep",
+    "Inferior",
+    "Superior",
+    "None of the above"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 46,
+   "ord": 46,
+   "s": "The best anatomical term to describe the back region of the body would be:",
+   "o": [
+    "Ventral",
+    "Dorsal",
+    "Gluteal",
+    "Deep",
+    "None of the above"
+   ],
+   "file": "023.txt"
+  },
+  {
+   "n": 47,
+   "ord": 47,
+   "s": "Another name for anterior is:",
+   "o": [
+    "Ventral",
+    "Dorsal",
+    "Caudal",
+    "cranial",
+    "None of these"
+   ],
+   "file": "024.txt"
+  },
+  {
+   "n": 48,
+   "ord": 48,
+   "s": "Which body system provides the cells of the body with nutrients?",
+   "o": [
+    "respiratory",
+    "digestive",
+    "cardiovascular",
+    "endocrine",
+    "urinary"
+   ],
+   "file": "024.txt"
+  },
+  {
+   "n": 49,
+   "ord": 49,
+   "s": "Which of the following is located beneath the diaphragm in the left upper quadrant of the abdominal cavity?",
+   "o": [
+    "Appendix",
+    "Duodenum",
+    "Gallbladder",
+    "Pancreas",
+    "Spleen"
+   ],
+   "file": "024.txt"
+  },
+  {
+   "n": 50,
+   "ord": 50,
+   "s": "In which of the following positions does a patient lie face down?",
+   "o": [
+    "Dorsal",
+    "Erect",
+    "Lateral",
+    "Prone",
+    "Supine"
+   ],
+   "file": "024.txt"
+  }
+ ],
+ "anat-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "Pick the right answer(s) about ribs:",
+   "o": [
+    "They articulate posteriorly with the thoracic vertebrae",
+    "They contain the subcostal groove, a shaft and an angle",
+    "They have a posterior surface and an anterior surface",
+    "They have a lateral border and a medial border"
+   ],
+   "file": "036.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The vertebral body of a typical thoracic vertebra:",
+   "o": [
+    "Articulates with a fibrocartilaginous intervertebral disc",
+    "Is posterior",
+    "Decreases in size from vertebra T1 to T12",
+    "Is the major weightbearing component"
+   ],
+   "file": "036.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Check the main components of the sternum?",
+   "o": [
+    "Manubrium",
+    "Acromion",
+    "Xiphoid process",
+    "Tubercle"
+   ],
+   "file": "038.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "What is the clinical significance of the angle of Louis?",
+   "o": [
+    "Used to locate the second intercostal space",
+    "It marks the site of the sternal foramen",
+    "Indicates the level of T4-T5",
+    "It is a landmark for the diaphragm"
+   ],
+   "file": "038.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Which term describes the line passing through the midpoint of the clavicle?",
+   "o": [
+    "Midaxillary line",
+    "Midclavicular line",
+    "Anterior axillary line",
+    "Median line"
+   ],
+   "file": "037.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "What constitutes the boundary of the thoracic inlet?",
+   "o": [
+    "Xiphoïd process",
+    "First rib",
+    "T1 vertebra",
+    "Clavicle"
+   ],
+   "file": "037.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The sternoclavicular joint is:",
+   "o": [
+    "Located between the sternum and first rib",
+    "A saddle joint",
+    "The only bony attachment of the upper limb to the thorax",
+    "A ball-and-socket joint"
+   ],
+   "file": "037.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Identify the structures that pass through the thoracic outlet.",
+   "o": [
+    "Subclavian artery",
+    "Esophagus",
+    "Trachea",
+    "Aorta"
+   ],
+   "file": "039.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Which bones articulate directly with the manubrium?",
+   "o": [
+    "Xiphoid process",
+    "First rib",
+    "Third rib",
+    "Clavicle"
+   ],
+   "file": "039.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Identify the muscles of the superficial scapular plane:",
+   "o": [
+    "Rhomboids",
+    "Latissimus dorsi",
+    "Teres major",
+    "Trapezius"
+   ],
+   "file": "040.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The deltoid muscle is innervated by the nerve:",
+   "o": [
+    "Musculocutaneous",
+    "Ulnar",
+    "Axillary",
+    "Upper thoracic"
+   ],
+   "file": "040.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "The teres minor muscle:",
+   "o": [
+    "Is a deep muscle of the scapular region",
+    "Inserts on the greater tubercle",
+    "Has a costal origin",
+    "Has a clavicular insertion"
+   ],
+   "file": "040.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The coracobrachialis muscle:",
+   "o": [
+    "Is a muscle of the posterior compartment of the arm",
+    "Has a clavicular origin",
+    "Inserts on the medial surface of the humerus",
+    "Is innervated by the musculocutaneous nerve"
+   ],
+   "file": "043.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "At the level of the arm, the musculocutaneous nerve innervates the muscles:",
+   "o": [
+    "Anconeus",
+    "Brachialis",
+    "Deltoid",
+    "Biceps brachii"
+   ],
+   "file": "043.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The brachioradialis muscle:",
+   "o": [
+    "Has an ulnar origin",
+    "Is innervated by the radial nerve",
+    "Inserts on the radial styloid process",
+    "Is a muscle of the anterior compartment"
+   ],
+   "file": "043.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The opponens pollicis muscle is innervated by the:",
+   "o": [
+    "Radial nerve",
+    "Interosseous nerve",
+    "Musculocutaneous nerve",
+    "Median nerve"
+   ],
+   "file": "041.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The interosseous muscles:",
+   "o": [
+    "Allow abduction of the fingers",
+    "Are located in a superficial plane",
+    "Are innervated by the ulnar nerve",
+    "Insert on the distal end of the radius"
+   ],
+   "file": "041.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "In the radial groove on the posterior surface of the humerus passes the artery:",
+   "o": [
+    "Interosseous",
+    "Anterior circumflex",
+    "Deep brachial artery",
+    "Thoracoacromial"
+   ],
+   "file": "041.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The palmaris longus muscle:",
+   "o": [
+    "Is innervated by the radial nerve",
+    "Inserts into the palmar aponeurosis",
+    "Is a muscle of the anterior compartment of the forearm",
+    "Has an attachment on the first metacarpal"
+   ],
+   "file": "042.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "Identify posterior muscles of the forearm compartment:",
+   "o": [
+    "Extensor carpi ulnaris",
+    "Extensor indicis",
+    "Brachioradialis",
+    "Pronator quadratus"
+   ],
+   "file": "042.txt"
+  }
+ ],
+ "anat-fmc": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "Pick the muscles of the anterior compartment of the forearm:",
+   "o": [
+    "Brachioradialis",
+    "Pronator quadratus",
+    "Flexor carpi ulnaris",
+    "Anconeus"
+   ],
+   "file": "044.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The sternocostal hiatus (Larrey's cleft) gives passage to:",
+   "o": [
+    "the internal thoracic artery",
+    "the right and left vagus nerves (X)",
+    "the phrenic nerves",
+    "the external thoracic artery"
+   ],
+   "file": "044.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Pick the muscles of the scapular region:",
+   "o": [
+    "Serratus anterior",
+    "Teres major",
+    "Trapezius",
+    "Deltoid"
+   ],
+   "file": "045.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "The right main bronchus is:",
+   "o": [
+    "More vertical than the left main bronchus",
+    "Narrower than the left main bronchus",
+    "More horizontal than the left main bronchus",
+    "Longer than the left main bronchus"
+   ],
+   "file": "045.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "On the lateral faces of the second phalanges (P2) of the last four fingers end the tendons:",
+   "o": [
+    "Of the interosseous muscles",
+    "Of the extensor digitorum",
+    "Of the lumbrical muscles",
+    "Of the flexor digitorum superficialis"
+   ],
+   "file": "045.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The median slip of the extensor tendons of the last 4 fingers ends:",
+   "o": [
+    "On the base of the second phalanges",
+    "On the neck of the metacarpals",
+    "On the dorsal aponeuroses",
+    "On the first phalanges"
+   ],
+   "file": "046.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Pick the terminal branches of the anteromedial secondary trunk (medial cord) of the brachial plexus:",
+   "o": [
+    "Ulnar",
+    "Medial antebrachial cutaneous",
+    "Axillary",
+    "Radial"
+   ],
+   "file": "046.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The left surface of the heart is called:",
+   "o": [
+    "Pulmonary",
+    "Sternocostal",
+    "Diaphragmatic",
+    "Base of the heart"
+   ],
+   "file": "046.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The muscles of the anterior compartment of the arm are:",
+   "o": [
+    "Anconeus",
+    "Brachioradialis",
+    "Brachialis",
+    "Biceps brachii"
+   ],
+   "file": "046.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Pick the muscles of the anterior compartment of the arm:",
+   "o": [
+    "Anconeus",
+    "Brachialis",
+    "Subscapularis",
+    "Biceps brachii"
+   ],
+   "file": "047.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The arteries that form the deep palmar arch are:",
+   "o": [
+    "The interosseous artery",
+    "The radial artery",
+    "The ulnopalmar artery (deep palmar branch of the ulnar artery)",
+    "The dorsal carpal artery"
+   ],
+   "file": "047.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The muscle that ends at the middle palmar aponeurosis is:",
+   "o": [
+    "Pronator quadratus",
+    "Flexor carpi ulnaris",
+    "Flexor carpi radialis",
+    "Palmaris longus"
+   ],
+   "file": "047.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "The Biceps brachii muscle is innervated by the nerve:",
+   "o": [
+    "Musculocutaneous",
+    "Radial",
+    "Median",
+    "Ulnar"
+   ],
+   "file": "047.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The serratus anterior muscle",
+   "o": [
+    "Is a superficial muscle",
+    "Inserts on the spinal (medial) border of the scapula",
+    "Ends on the humerus",
+    "Is innervated by the axillary nerve"
+   ],
+   "file": "049.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The elements passing at the posterior surface of the arm are:",
+   "o": [
+    "The musculocutaneous nerve",
+    "The median nerve",
+    "The deep brachial artery",
+    "The radial nerve"
+   ],
+   "file": "049.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "The right lung has:",
+   "o": [
+    "3 lobar bronchi",
+    "2 lobar bronchi",
+    "10 lobular bronchi.",
+    "10 segmental bronchi"
+   ],
+   "file": "049.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The right pulmonary artery passes:",
+   "o": [
+    "behind the oesophagus",
+    "behind the superior vena cava",
+    "under the arch of the aorta",
+    "in the posterior mediastinum"
+   ],
+   "file": "049.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "The nerve that provides sensation to the pulp of the thumb:",
+   "o": [
+    "Ulnar",
+    "Median",
+    "Radial",
+    "Musculocutaneous"
+   ],
+   "file": "048.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "In the hand, the ulnar nerve innervates the muscles",
+   "o": [
+    "Interossei",
+    "Pronator teres",
+    "Adductor pollicis",
+    "Flexor pollicis brevis"
+   ],
+   "file": "048.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "The musculocutaneous nerve innervates the muscles:",
+   "o": [
+    "Biceps brachii",
+    "Subclavius",
+    "Teres major",
+    "Coracobrachialis"
+   ],
+   "file": "048.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The great azygos vein drains into:",
+   "o": [
+    "the right atrium",
+    "The inferior vena cava",
+    "The superior vena cava",
+    "The right pulmonary vein"
+   ],
+   "file": "048.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The thoracic aorta:",
+   "o": [
+    "begins at the aortic isthmus",
+    "ends at T12 at the diaphragm",
+    "its descending portion gives off the intercostal arteries",
+    "corresponds to the aortic arch"
+   ],
+   "file": "050.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The trachea divides into main bronchi at the level of:",
+   "o": [
+    "T5",
+    "the carina",
+    "C6",
+    "the arch of the aorta"
+   ],
+   "file": "050.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The thoracic trachea is related anteriorly to the following organs:",
+   "o": [
+    "the thoracic oesophagus",
+    "The left brachiocephalic venous trunk",
+    "the thymus",
+    "the isthmus of the thyroid gland"
+   ],
+   "file": "050.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "This question concerns the mammary gland:",
+   "o": [
+    "located between the first and third ribs",
+    "lymphatic drainage of the outer half is to the internal thoracic chain",
+    "located in the thoracic cavity",
+    "the areola and nipple contain smooth muscle fibres"
+   ],
+   "file": "050.txt"
+  }
+ ],
+ "ph-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "In Morocco, which governance structure does not belong to the private sector in Morocco?",
+   "o": [
+    "Non profit healthcare networks",
+    "Health maintenance organisation",
+    "Multidisciplinary clinics between 30 and 99 beds",
+    "Monodisciplinary clinics under 30 beds"
+   ],
+   "file": "051.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "A health system is best described as:",
+   "o": [
+    "A dynamic and complex system",
+    "Static and linear",
+    "Centrally controlled only",
+    "Limited to public institutions"
+   ],
+   "file": "051.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "A health system is defined as:",
+   "o": [
+    "A collection of doctors, nurses, and medicines",
+    "All activities whose main purpose is to promote, restore, or maintain health",
+    "A network of hospitals and clinics providing medical care only",
+    "The Ministry of Health and public health institutions"
+   ],
+   "file": "052.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "What is the difference between public health and traditional clinical medicine?",
+   "o": [
+    "Clinical medicine treats diseases, while public health aims to prevent and control diseases at the population level.",
+    "Clinical medicine does not rely on scientific evidence, unlike public health.",
+    "Public health focuses on individuals, while clinical medicine focuses on populations.",
+    "Public health uses only biomedical approaches, while clinical medicine is multidisciplinary."
+   ],
+   "file": "052.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Among the following determinants, which are biological:",
+   "o": [
+    "Physical activity",
+    "Genetics"
+   ],
+   "file": "052.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "In a Hospital, interprofessional collaboration is hindered by:",
+   "o": [
+    "Limited decision spaces of nurses",
+    "Professional hiararchies and negotiated orders",
+    "Poor management of hospital logistics",
+    "Medical training and qualifications"
+   ],
+   "file": "053.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The structural determinants of social inequalities in health refer to:",
+   "o": [
+    "Biological factors",
+    "Behaviors",
+    "Macroeconomic policies",
+    "Governance"
+   ],
+   "file": "053.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Equity in health systems means:",
+   "o": [
+    "Same services for all",
+    "Priority to insured people",
+    "Fair access according to need",
+    "Urban preference"
+   ],
+   "file": "054.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Among the following determinants, which are modifiable to combat cardiovascular diseases?",
+   "o": [
+    "Genetics",
+    "Physical activity",
+    "Age",
+    "Smoking"
+   ],
+   "file": "054.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "A health center recently detected an unusual increase in diarrhea cases in an urban area. An investigation is launched to identify possible causes, and necessary measures are taken to contain the epidemic. Which essential public health function is this?",
+   "o": [
+    "Epidemiological surveillance",
+    "Training and capacity building for professionals",
+    "Quality assurance of health services",
+    "Health promotion"
+   ],
+   "file": "055.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "What is the main goal of primary prevention?",
+   "o": [
+    "Prevent the development of diseases.",
+    "Detect and treat diseases.",
+    "Facilitate post-disease rehabilitation.",
+    "Reduce complications related to an existing disease."
+   ],
+   "file": "055.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "What is the first step in a public health approach?",
+   "o": [
+    "Identifying the causes of the health problem",
+    "Evaluating the results of the implemented solutions",
+    "Identifying the health problem",
+    "Implementing solutions to address the health problem"
+   ],
+   "file": "056.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Which is not a WHO health system building block?",
+   "o": [
+    "Health workforce",
+    "Leadership and governance",
+    "Health information systems",
+    "Healthcare accreditdation"
+   ],
+   "file": "056.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "[figure: GBD 2023 deaths treemaps, Burkina Faso and Morocco] Which is true about the comparison of health systems between Morocco and Burkina Faso in terms of conditions leading to deaths ?",
+   "o": [
+    "Malaria, HIV and meningitis are real public health problems in BurkinaFaso",
+    "High burden of communicable diseases in Morocco",
+    "Cancer is to be neglected as it does not lead to high death rate in Morocco",
+    "High burden of non communicable diseases in Burkina Faso"
+   ],
+   "file": "059.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "A major health system performance challenge in Morocco is:",
+   "o": [
+    "Excess funding above 10% of GDP",
+    "Urban-rural inequities",
+    "Over-regulation",
+    "Low service demand"
+   ],
+   "file": "058.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Among the following determinants, which are behavioral determinants of health?",
+   "o": [
+    "Diet",
+    "Genetic factors",
+    "Physical activity",
+    "The level of education"
+   ],
+   "file": "058.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "[figure] The lower histogram graph (Density versus exam Grades) allows you to:",
+   "o": [
+    "Directly measure the median value",
+    "Identify different qualitative classes",
+    "Visualize distribution shape and assess normality",
+    "Compare the observed density with a theoretical curve"
+   ],
+   "file": "063.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "A histogram is used to represent:",
+   "o": [
+    "A crosstab",
+    "A continuous quantitative variable",
+    "A qualitative variable",
+    "An ordinal qualitative variable"
+   ],
+   "file": "061.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The Pearson correlation coefficient measures:",
+   "o": [
+    "Linear relation between two continuous variables",
+    "Intensity and meaning of linear relationship",
+    "Difference between two average values",
+    "Association between two nominal variables"
+   ],
+   "file": "061.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The independent sample t-test is valid when:",
+   "o": [
+    "There are less than 10 observations per group",
+    "The two groups are independent",
+    "The variable under study follows a normal distribution",
+    "The data is qualitative"
+   ],
+   "file": "062.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "If the p-value is less than 0.05, we:",
+   "o": [
+    "Accepts H0",
+    "Concludes a significant difference or association",
+    "Rejects H0",
+    "Refuses to conclude because it is not known if the test performed is significant or not"
+   ],
+   "file": "062.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "[figure] From this graph, we can conclude that:",
+   "o": [
+    "Interquartile range is zero, showing no dispersion",
+    "No strong visible asymmetry between quartiles exists",
+    "Extreme values are not shown on this graph",
+    "BMI distribution is concentrated around median"
+   ],
+   "file": "064.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "The Student's test applies when:",
+   "o": [
+    "There are more than two groups",
+    "The grouping variable is qualitative",
+    "We compare two averages",
+    "The data is non-normal"
+   ],
+   "file": "064.txt"
+  }
+ ],
+ "biophys-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "What can be stated about the attenuation of the X-ray beam as it passes through the patient:",
+   "o": [
+    "The half-value layer (HVL) is expressed in m⁻¹",
+    "The attenuation of the beam follows an exponentially decreasing law",
+    "The HVL corresponds to the depth at which the number of photons in the beam is reduced by ln2",
+    "The contrast of the radiological image depends on the attenuation coefficients (μ) of the traversed tissues"
+   ],
+   "file": "068.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Technetium-99m (Tc-99m):",
+   "o": [
+    "Has a physical half-life of several days",
+    "Comes from the decay of Molybdenum-99 (⁹⁹Mo)",
+    "Is used in scintigraphy imaging",
+    "Is a gamma emitter with an energy of 511 keV"
+   ],
+   "file": "068.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Main roles of the middle ear:",
+   "o": [
+    "Producing perilymph and endolymph",
+    "Impedance matching between air and cochlear fluids",
+    "Generating action potentials in the auditory nerve",
+    "Acting as a lever system via the ossicles"
+   ],
+   "file": "068.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Among the different isotopes of Iodine, some have particular importance in medicine:",
+   "o": [
+    "Iodine-127 (¹²⁷I) is used for scintigraphy imaging",
+    "Iodine-131 (¹³¹I), a (beta minus)β⁻emitter, is used for metabolic radiotherapy in the treatment of thyroid cancers",
+    "Iodine-123 (¹²³I) can be used in positron emission tomography",
+    "Iodine-123 (¹²³I), a gamma emitter, is used for thyroid scintigraphy imaging"
+   ],
+   "file": "068.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Beta-plus emission (β⁺):",
+   "o": [
+    "Has no energy condition",
+    "Competes with electron capture",
+    "Results from the decay of Fluorine-18 (¹⁸F)",
+    "Is a transformation by partition"
+   ],
+   "file": "066.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The photoelectric effect:",
+   "o": [
+    "Occurs between a photon and an electron",
+    "Produces a scattered photon",
+    "Has no application in the medical field",
+    "Can occur when there is an interaction between an electron and matter"
+   ],
+   "file": "066.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Regarding cellular radiosensitivity:",
+   "o": [
+    "Hematopoietic stem cells are more radiosensitive than muscle cells",
+    "Glial cells are more radiosensitive than lymphocytes",
+    "The intestinal epithelium is more radioresistant than glial cells",
+    "Lymphocytes are more radiosensitive than hepatocytes"
+   ],
+   "file": "066.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "In Radiobiology:",
+   "o": [
+    "Cellular effects may result in cell death or mutation",
+    "The equivalent dose is the absorbed dose weighted by a radiation weighting factor",
+    "The effective dose represents the total absorbed dose weighted by tissue weighting factors",
+    "Stochastic effects are dose-dependent and occur above a threshold level"
+   ],
+   "file": "066.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Regarding radiation dose limits:",
+   "o": [
+    "Radiation doses in medical exposure are not subject to regulatory dose limits for patients",
+    "The whole-body dose limit for the general public or non-exposed workers is 1 mSv per year",
+    "For category A workers, the whole-body dose limit is below 6 mSv per year",
+    "For category B workers, the whole-body dose limit ranges from 6 to 20 mSv per year"
+   ],
+   "file": "067.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "In conductive hearing loss:",
+   "o": [
+    "The main lesion is in hair cells or auditory nerve",
+    "The problem is before the cochlea (outer/middle ear)",
+    "Both air and bone conduction are equally reduced",
+    "Air conduction is reduced, bone conduction is normal"
+   ],
+   "file": "067.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "What is ocular accommodation?",
+   "o": [
+    "The ability of the eye to reduce its optical power",
+    "The ability of the eye to adjust the curvature of the cornea",
+    "The ability of the eye to increase its optical power in order to see nearby objects",
+    "The ability of the eye to change the size of the iris"
+   ],
+   "file": "067.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The power of a spherical diopter is proportional to:",
+   "o": [
+    "The thickness of the diopter",
+    "The inverse of the radius of curvature of the diopter",
+    "The wavelength of light",
+    "The difference in refractive indices of the two media"
+   ],
+   "file": "067.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Alpha particles:",
+   "o": [
+    "Have straight-line trajectories",
+    "Are light charged particles",
+    "Have a high Linear Energy Transfer (LET)",
+    "Are used in imaging"
+   ],
+   "file": "069.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The osmosis phenomenon:",
+   "o": [
+    "Is independent of the chemical potential gradient of the solvent",
+    "Tends to equalize the concentrations on both sides of the membrane",
+    "Refers to the flow of solvent from a concentrated solution to a less concentrated solution",
+    "Most often occurs across a semipermeable membrane"
+   ],
+   "file": "069.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "During anemia:",
+   "o": [
+    "Turbulent blood flow may occur, causing an anemic murmur",
+    "The blood flow velocity increases",
+    "The blood viscosity is high",
+    "The hematocrit increases"
+   ],
+   "file": "069.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Regarding physical quantities and their units according to the International System (SI):",
+   "o": [
+    "Force is expressed in Joule (J)",
+    "Pressure is expressed in Pascal (Pa)",
+    "Electric charge is expressed in Coulomb (C)",
+    "Absorbed dose is expressed in Becquerel (Bq)"
+   ],
+   "file": "069.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "According to the equation of state for perfect gases:",
+   "o": [
+    "P.n = V.R.T",
+    "P.V = n.R.T",
+    "P.T = n.R.V",
+    "P.V = n.R/T"
+   ],
+   "file": "070.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Regarding blood pressure:",
+   "o": [
+    "The diastolic pressure should be greater than 90 mmHg",
+    "The systolic pressure should be greater than 140 mmHg",
+    "It should be measured at the heart level or lying down, in a resting patient",
+    "It should be measured at maximum effort"
+   ],
+   "file": "070.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Protein electrophoresis:",
+   "o": [
+    "Describes the migration of charged particles under the effect of an electric field",
+    "Describes a form of migration under the effect of centrifugal acceleration",
+    "Separates proteins based on their migration velocity",
+    "Describes a form of migration under the effect of gravity"
+   ],
+   "file": "070.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "For a real fluid, the flow regime:",
+   "o": [
+    "Depends on the viscosity",
+    "Depends on the pH value",
+    "Is laminar when the Reynolds number \"R\" is greater than 4000",
+    "Depends on the flow velocity"
+   ],
+   "file": "070.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Regarding biological membranes:",
+   "o": [
+    "A dialysis membrane is permeable to only one type of ion or molecule",
+    "The exchange of water and small particles between the blood and the interstitial fluid occurs through a dialysis membrane.",
+    "A semipermeable membrane is permeable only to the solvent",
+    "A selective membrane is permeable to the solvent, small molecules, and small ions"
+   ],
+   "file": "070.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Regarding the transport of oxygen (O2) in the blood:",
+   "o": [
+    "Each hemoglobin molecule binds four O2 molecules",
+    "The maximum transport capacity of combined O2 is independent of the blood hemoglobin level",
+    "Combined oxygen represents 40% of the transported oxygen",
+    "The oxygen saturation (SaO2) in arterial blood of a normal adult at rest is 95 to 100%"
+   ],
+   "file": "071.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "A patient has an arterial blood pH of 7.62, a plasma [HCO3⁻] of 24 mmol/L, and a PCO2 of 23 mmHg. This is therefore:",
+   "o": [
+    "A pure metabolic alkalosis",
+    "A pure respiratory alkalosis",
+    "A mixed metabolic acidosis",
+    "A pure respiratory acidosis"
+   ],
+   "file": "071.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "In localized vascular dilation:",
+   "o": [
+    "Pressure decreases",
+    "Pressure increases",
+    "Blood flow velocity increases",
+    "Blood flow velocity decreases"
+   ],
+   "file": "071.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "The absolute uncertainty:",
+   "o": [
+    "Is only evaluated by direct measurements",
+    "Is usually expressed as a percentage",
+    "Is the absolute value of the maximum possible deviation between the measured value and the exact value",
+    "Is the absolute value of the minimum possible deviation between the measured value and the exact value."
+   ],
+   "file": "071.txt"
+  }
+ ],
+ "chem-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "We consider an unknown element ᴬ_ZX . It has 6 electrons and 6 neutrons. Its number of protons is:",
+   "o": [
+    "2",
+    "5",
+    "6",
+    "3"
+   ],
+   "file": "076.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Its mass number is:",
+   "o": [
+    "14",
+    "12",
+    "16",
+    "6"
+   ],
+   "file": "076.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Its Atomic mass (a.m.u) is:",
+   "o": [
+    "14",
+    "12",
+    "10",
+    "8"
+   ],
+   "file": "076.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "The unkown element is:",
+   "o": [
+    "The Carbon",
+    "The Nitrogen",
+    "The Oxygen",
+    "The Bore"
+   ],
+   "file": "076.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Among the following propositions, check the exact proposition (s) for the Zinc ⁶⁵₃₀Zn atom",
+   "o": [
+    "This atom is made up of 30 nucleons, 30 protons and 65 electrons",
+    "This atom is made up of 95 nucleons, 30 protons and 30 electrons",
+    "This atom is made up of 30nucleons, 30 protons and 30 electrons",
+    "This atom is made up of 65 nucleons, 30 protons and 35 neutrons"
+   ],
+   "file": "072.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The following atoms ³⁵Cl and ³⁷Cl",
+   "o": [
+    "Have the same atomic number",
+    "Have the same number of protons",
+    "Have the same number of nucleons",
+    "Are isotopes"
+   ],
+   "file": "072.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The CIP rule is based on:",
+   "o": [
+    "Number of electrons",
+    "Electronic effects",
+    "Z number",
+    "Electronegativity"
+   ],
+   "file": "072.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "Isomers have:",
+   "o": [
+    "The same electronic configuration",
+    "The same hybridization",
+    "The same skeletal formula",
+    "The same molecular formula"
+   ],
+   "file": "072.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The Geometric isomerism:",
+   "o": [
+    "Is Z and E configuration",
+    "Is R and S configuration",
+    "Based on Hofmann rule",
+    "Based on the electronic configuration"
+   ],
+   "file": "073.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The optical isomerism is about:",
+   "o": [
+    "Cis and trans configuration",
+    "Erythro and threo configuration",
+    "R and S configuration",
+    "Z and E configuration"
+   ],
+   "file": "073.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The Fischer Projection is:",
+   "o": [
+    "For Carbanion stereoisomers",
+    "For Carbocation stereoisomers",
+    "For sugar and amino acids stereoisomers",
+    "For carboxylic acid stereoisomers"
+   ],
+   "file": "073.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Diastereoisomers are:",
+   "o": [
+    "Chiral molecules",
+    "Meso form",
+    "Epimers",
+    "Enantiomers"
+   ],
+   "file": "073.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Pick the correct statement, Favism i a diesease of:",
+   "o": [
+    "Bile acids metabolism",
+    "Cholesterol metabolism",
+    "Pentose phosphate pathway",
+    "Ketone bodies metabolism"
+   ],
+   "file": "074.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Regarding Glycogenolysis, pick the correct statements:",
+   "o": [
+    "It's activated by insulin",
+    "It occurs at a fasting state",
+    "It's activated by glucagon",
+    "It stores glycogen in the liver"
+   ],
+   "file": "074.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Regarding carbohydrates pick the correct statements:",
+   "o": [
+    "Peptidoglycan is a monosaccharide",
+    "Glucose and galactose are epimers in C3",
+    "Lactose is formed from the glycosylation of glucose and galactose",
+    "Glycogen is stored in the liver and the muscles"
+   ],
+   "file": "074.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Regarding amino acids pick the correct statements:",
+   "o": [
+    "Histidine is an essential amino acid",
+    "Non-essential amino acids can't be produced by the body",
+    "Tryptophane is the largest amino acid and it is non-polar",
+    "Cysteine side chain shows a basic group"
+   ],
+   "file": "074.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Regarding gluconeogenesis pick the correct statements:",
+   "o": [
+    "It produces a high amount of ATP",
+    "It's the reverse of glycolysis",
+    "Pyruvate is a substrate of gluconeogenesis",
+    "Glucose is formed from non-carbohydrate substrate"
+   ],
+   "file": "075.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Regarding glycolysis pick the correct statements:",
+   "o": [
+    "It occurs in the cytoplasm and the nucleus",
+    "It contains 3 irreversible reactions",
+    "There is no ATP production during the payoff phase",
+    "Glucokinase phosphorylates glucose"
+   ],
+   "file": "075.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Regarding lipids pick the correct statements:",
+   "o": [
+    "Omega are saturated fatty acids",
+    "Glycerol is a lipid",
+    "Sphingolipids are amphiphilic",
+    "Phosphatidylcholine is good for health"
+   ],
+   "file": "075.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Regarding lipids metabolism pick the correct statements:",
+   "o": [
+    "Cholesterol is not biosynthetized by the body",
+    "Fatty acids should be activated before catabolism",
+    "Carnitin transports activated fatty acids to the mitochondrion",
+    "Phospholipids are not degraded in the body"
+   ],
+   "file": "075.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Regarding lipoproteins pick the correct statements:",
+   "o": [
+    "Lipoproteins are amphiphilic",
+    "All liporpoteins show the same density",
+    "Lipoproteins are divided into 10 groups",
+    "LDL-c transport cholesterol from the liver to the peripheral tissues"
+   ],
+   "file": "075.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Among these compounds pick the ketone bodies:",
+   "o": [
+    "Acetyl-CoA",
+    "Propionyl-CoA",
+    "Acetone",
+    "Acetoacetate"
+   ],
+   "file": "077.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Regarding pyruvate faite pick the correct statements:",
+   "o": [
+    "Pyruvate is the product of glycolysis",
+    "Pyruvate is eliminated by the kidney",
+    "It always enters Krebs cycle",
+    "Pyrvate is converted to acetyl-CoA in the presence of oxygen"
+   ],
+   "file": "077.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "Regarding proteins structure, pick the correct statements:",
+   "o": [
+    "Peptide bond is rigid",
+    "Tertiary structure is stabilized by hydrogen bonds only",
+    "Amino acids are linked by peptidic bonds in the primary structure",
+    "Hemoglobin is a fibrous protein"
+   ],
+   "file": "077.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "Regarding cofactors pick the correct statements:",
+   "o": [
+    "NADH is a mineral cofactor",
+    "All cofactors and coenzymes are reducing",
+    "Most of coenzymes come from vitamins",
+    "Some enzymes need coenzymes to do their activity"
+   ],
+   "file": "077.txt"
+  }
+ ],
+ "chem-fr": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "[figure: molecule 1] Molecule 1:",
+   "o": [
+    "is a meso form",
+    "has an axis of chirality",
+    "shows geometric isomerism (Z)",
+    "shows geometric isomerism (E)"
+   ],
+   "file": "094.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "What is the valence shell of 79Au?",
+   "o": [
+    "6s1 4f14",
+    "6s1 5d10",
+    "6s1 4f14 5d10",
+    "6s1"
+   ],
+   "file": "231.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "What is the period of Au?",
+   "o": [
+    "Period 3",
+    "Period 4",
+    "Period 5",
+    "Period 6"
+   ],
+   "file": "092.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "Which column (group) is Au (gold) in?",
+   "o": [
+    "column 11",
+    "column 9",
+    "column 8",
+    "column 10"
+   ],
+   "file": "079.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "[figure: molecule 3] The number of stereoisomers of molecule 3 is:",
+   "o": [
+    "4",
+    "3",
+    "1",
+    "2"
+   ],
+   "file": "097.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "[figure: molecules 3 and 4] Molecules 3 and 4",
+   "o": [
+    "Have a plane of symmetry",
+    "Are enantiomers",
+    "Are diastereoisomers",
+    "None of the previous answers"
+   ],
+   "file": "093.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "[figure: molecule 2] The name of molecule 2 according to the IUPAC rule is:",
+   "o": [
+    "(Trans)-1-hydroxy-4-methylcyclohexanol",
+    "(Cis)-4-methylcyclohexanol",
+    "(Cis)-4-hydroxy-1-methyl-cyclohexanol",
+    "(Trans)-4-hydroxy-1-methyl-cyclohexanol"
+   ],
+   "file": "085.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "[figure: molecule 2] Molecule 2:",
+   "o": [
+    "shows geometric isomerism (Cis)",
+    "is an aromatic molecule",
+    "shows geometric isomerism (Trans)",
+    "has a plane of symmetry"
+   ],
+   "file": "098.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "What is the block of Au?",
+   "o": [
+    "Block f",
+    "Block p",
+    "Block s",
+    "Block d"
+   ],
+   "file": "095.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "The valence electrons of 79Au are:",
+   "o": [
+    "1",
+    "25",
+    "15",
+    "11"
+   ],
+   "file": "087.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Complete oxidation of a 16-carbon fatty acid (palmitate) yields:",
+   "o": [
+    "7 cycles of beta-oxidation",
+    "8 acetyl-CoA",
+    "About 120 molecules of ATP",
+    "8 NADH"
+   ],
+   "file": "086.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Among the following propositions, which are true?",
+   "o": [
+    "Essential amino acids must be obtained from the diet",
+    "Threonine is an amino acid that can form hydrophobic bonds",
+    "Some amino acids play a structural role",
+    "The 2 criteria for classifying amino acids are the structure and the polarity of the side chain"
+   ],
+   "file": "099.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Among the following enzymes, which catalyse irreversible steps of glycolysis?",
+   "o": [
+    "Pyruvate kinase",
+    "Enolase",
+    "Phosphofructokinase-1 (PFK-1)",
+    "Aldolase"
+   ],
+   "file": "084.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Ketone bodies are used as an energy source by:",
+   "o": [
+    "The brain (during prolonged fasting)",
+    "Skeletal muscle",
+    "The liver",
+    "Red blood cells"
+   ],
+   "file": "078.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Among the following propositions, which are true?",
+   "o": [
+    "The peptide bond is an amide bond",
+    "Fibrous proteins are soluble in water",
+    "The secondary structure of proteins is stabilised by hydrogen bonds between the peptide CO and NH",
+    "An oligopeptide is made of 10 to 100 amino acids"
+   ],
+   "file": "080.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Concerning lipids, indicate the correct proposition(s):",
+   "o": [
+    "Prostaglandins are formed by the action of COX1 and COX2",
+    "Phospholipids are amphiphilic and are part of membranes",
+    "All unsaturated fatty acids are bad for health",
+    "VLDL carry cholesterol from the liver to the intestines"
+   ],
+   "file": "088.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The main role of NADH,H+ and FADH2 is to:",
+   "o": [
+    "Activate the Krebs cycle enzymes in the mitochondrial matrix",
+    "Transfer electrons to the respiratory chain",
+    "Transport oxygen to the mitochondria",
+    "Supply ATP directly to the cell"
+   ],
+   "file": "081.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Among the following propositions, which are true?",
+   "o": [
+    "Ligases are the 5th class of enzymes",
+    "FMN and FAD are coenzymes that transfer a hydride ion",
+    "Enzymes speed up reactions",
+    "The active site is the functional part of the enzyme"
+   ],
+   "file": "089.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Concerning carbohydrates, indicate the correct proposition(s):",
+   "o": [
+    "Reduction of ribose forms sorbitol, which is used as a laxative",
+    "Total oxidation of 1 g of carbohydrates releases 4 kcal, so they are less energy-rich than lipids",
+    "Cellulose, the plant reserve, is a mixture of amylose and amylopectin",
+    "Sucrose, table sugar, comes from the glycosylation of fructose and glucose"
+   ],
+   "file": "082.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "From one molecule of glucose, glycolysis directly produces:",
+   "o": [
+    "6 NADH + H+",
+    "2 pyruvates",
+    "2 net ATP",
+    "6 CO2"
+   ],
+   "file": "083.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "Before beta-oxidation, fatty acids must be activated. This activation:",
+   "o": [
+    "Requires the consumption of 2 ATP molecules",
+    "Requires an acyl-CoA synthetase",
+    "Takes place in the mitochondrial matrix",
+    "Directly releases ATP"
+   ],
+   "file": "090.txt"
+  }
+ ],
+ "bg-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The cell culture steps are:",
+   "o": [
+    "Fixation.",
+    "Sectioning.",
+    "Incubation.",
+    "Trypsinization."
+   ],
+   "file": "101.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The MRD pump:",
+   "o": [
+    "Concerns ions.",
+    "Rejects xenobiotics.",
+    "Is specific.",
+    "Explains drug resistance."
+   ],
+   "file": "101.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Mitochondrial genome:",
+   "o": [
+    "Encodes for Krebs cycle enzymes.",
+    "Is inherited from the mother.",
+    "Encodes for three respiratory chain complexes.",
+    "Is constituted by RNA."
+   ],
+   "file": "101.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "In medicine, the biopsy inclusion for the light microscope:",
+   "o": [
+    "Involves Bouin liquid.",
+    "Hardens tissues.",
+    "Uses paraffin.",
+    "Uses fluorescent labelling."
+   ],
+   "file": "101.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "The protein synthesis and translocation to RER involves:",
+   "o": [
+    "SRP receptor.",
+    "Channels.",
+    "Clathrins.",
+    "Lamins."
+   ],
+   "file": "100.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "Actin microfilaments ensure:",
+   "o": [
+    "Axon supporting.",
+    "3D cell shape.",
+    "Cytoplasmic currents.",
+    "Cell resistance."
+   ],
+   "file": "100.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Cyclins/CDK controlling S phase are:",
+   "o": [
+    "Cyclin A/CDK4.",
+    "Cyclin A/CDK1.",
+    "Cyclin A/CDK2.",
+    "Cyclin D/CDK6."
+   ],
+   "file": "100.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The endoplasmic system components are:",
+   "o": [
+    "Golgi apparatus.",
+    "Mitochondria.",
+    "Endoplasmic reticulum.",
+    "Peroxisome."
+   ],
+   "file": "100.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The early endosome:",
+   "o": [
+    "Produces molecules.",
+    "Has small size.",
+    "Contains lytic enzymes.",
+    "Involves catalase."
+   ],
+   "file": "102.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The permeability:",
+   "o": [
+    "Concerns macromolecules.",
+    "Involves vesicles.",
+    "Uses the gradient energy.",
+    "Uses carrier proteins."
+   ],
+   "file": "102.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Molecules that inhibit cell cycle are:",
+   "o": [
+    "pRB.",
+    "P53.",
+    "p21.",
+    "p27."
+   ],
+   "file": "102.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The TEM components are a:",
+   "o": [
+    "Special objective.",
+    "Laser.",
+    "Magnetic bands.",
+    "Vacuum pump."
+   ],
+   "file": "102.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Microtubules associated proteins are:",
+   "o": [
+    "Arp.",
+    "Cap Z.",
+    "MAP2.",
+    "Dynein."
+   ],
+   "file": "103.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "IN Gene Expression & Regulation; Which enzyme is primarily responsible for synthesizing RNA from a DNA template?",
+   "o": [
+    "Ligase.",
+    "DNA polymerase I",
+    "DNA polymerase III",
+    "RNA polymerase"
+   ],
+   "file": "103.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "RNA polymerase III transcribes:",
+   "o": [
+    "mRNA.",
+    "5S rRNA.",
+    "tRNA.",
+    "18S rRNA."
+   ],
+   "file": "103.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Which concept explains why individuals with the same mutation may show different symptoms?",
+   "o": [
+    "Pleiotropy.",
+    "Consanguinity.",
+    "Variable expressivity.",
+    "Incomplete penetrance."
+   ],
+   "file": "103.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "What is a gene mutation?",
+   "o": [
+    "A temporary change in the DNA sequence.",
+    "A change in a single nucleotide (point mutation).",
+    "A permanent alteration in the DNA sequence.",
+    "A rearrangement of entire chromosomes."
+   ],
+   "file": "105.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Which type of mutation is commonly associated to leukemia caused by mutagenic physical or chemical agents?",
+   "o": [
+    "Germline mutation",
+    "Somatic mutation",
+    "Spontaneous mutation",
+    "Induced mutation."
+   ],
+   "file": "105.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "DNA polymerase δ:",
+   "o": [
+    "Has no proofreading activity",
+    "Adds RNA primers",
+    "Synthesizes the lagging strand",
+    "Requires PCNA as a sliding clamp for processivity."
+   ],
+   "file": "105.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Klinefelter syndrome (47,XXY) is an example of:",
+   "o": [
+    "Autosomal aneuploidy.",
+    "Polyploidy.",
+    "Sex chromosome aneuploidy.",
+    "Mosaic inversion."
+   ],
+   "file": "105.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Down syndrome can result from a Robertsonian translocation. These translocations typically involve which type of chromosomes?",
+   "o": [
+    "Metacentric chromosomes.",
+    "Acrocentric chromosomes.",
+    "Sex chromosomes only",
+    "Any autosomal chromosome."
+   ],
+   "file": "104.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "In the case of the TP53 gene, alternative splicing allows:",
+   "o": [
+    "Production of a single protein only.",
+    "Loss of chromosome segments.",
+    "Production of multiple protein isoforms.",
+    "Duplication of the entire gene."
+   ],
+   "file": "104.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The central dogma of molecular biology states that genetic information flows from:",
+   "o": [
+    "RNA → DNA → Protein.",
+    "DNA → Protein → RNA.",
+    "DNA → RNA → Protein.",
+    "Protein → DNA → RNA."
+   ],
+   "file": "104.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The coding strand of DNA is:",
+   "o": [
+    "Identical in sequence to mRNA (except T replaced by U).",
+    "Complementary to the mRNA.",
+    "Same 5' → 3' orientation as the mRNA.",
+    "The template for RNA synthesis."
+   ],
+   "file": "104.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "In Duchenne Muscular Dystrophy, which type of mutation typically causes a frameshift in the dystrophin gene?",
+   "o": [
+    "Duplication of an entire gene.",
+    "Silent mutation.",
+    "Insertion of one nucleotide.",
+    "Substitution of one nucleotide."
+   ],
+   "file": "106.txt"
+  }
+ ],
+ "lm-mock": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "A cyanosis is:",
+   "o": [
+    "A bluish discoloration of the skin",
+    "A complete absence of respiration",
+    "A redness of the skin",
+    "An abnormal condition of heart beats"
+   ],
+   "file": "107.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Cardiomegaly is:",
+   "o": [
+    "A death of myocardial cells due to severe ischemia",
+    "Also known as cardiac arrest",
+    "An enlargement of the heart, usually due to congestive heart failure",
+    "A condition in which the heart beats too slowly"
+   ],
+   "file": "107.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Check the correct answer(s):",
+   "o": [
+    "Troponin is a test to measure the level of two proteins that are released into the blood when myocardial cells die",
+    "Cardiac catheterization is a procedure performed to study the anatomy and pressures in the heart",
+    "Troponin is a test to measure the lipid profile in blood",
+    "Angina pectoris means a high blood pressure"
+   ],
+   "file": "107.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "In the word « pancreatitis »:",
+   "o": [
+    "\"itis\" is a prefix",
+    "\"itis\" refers to vomiting",
+    "\"itis\" is a word root",
+    "\"itis\" is a suffix"
+   ],
+   "file": "108.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Tachypnea means:",
+   "o": [
+    "A process of recording during sleep",
+    "Rapid rate of respiration",
+    "Pertaining to the lungs",
+    "Rapid heart rate"
+   ],
+   "file": "108.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "Rectoplasty means:",
+   "o": [
+    "A process of recording the rectum",
+    "Pertaining to the rectum",
+    "Surgical repair of the rectum",
+    "Pertaining to sugery"
+   ],
+   "file": "108.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "In the term polysomnography, the word root means:",
+   "o": [
+    "Disease",
+    "Swelling",
+    "Sleeping",
+    "Symptom"
+   ],
+   "file": "109.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "Check the correct answer(s) concerning the word \"electrocardiogram\":",
+   "o": [
+    "It means the record of electrical activity of the heart",
+    "\"cardio\" is a combining form",
+    "\"gram\" means a procedure or a disease",
+    "\"cardio\" is a suffix"
+   ],
+   "file": "109.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Check the correct answer(s) about the abbreviations:",
+   "o": [
+    "SBE is for a severe bacterial infection of the heart",
+    "VSD stands for vital signs",
+    "HTN describes a condition in which there is a hole between the ventricles",
+    "ASD stands for Atrial Septal Defect"
+   ],
+   "file": "109.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Check the correct answer(s) regarding the word \"endocardium\":",
+   "o": [
+    "It means the inner layer of the heart",
+    "\"endo\" is a prefix meaning around",
+    "\"cardi\" is a word root",
+    "\"um\" is a prefix"
+   ],
+   "file": "110.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Check the correct answer(s) concerning the combining form, it:",
+   "o": [
+    "Usually indicates the involved body part",
+    "Usually indicates a procedure or a disease",
+    "Contains the basic meaning of the term",
+    "Always comes at the beginning of the word"
+   ],
+   "file": "110.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Check the correct answer(s) concerning the word \"pericardium\":",
+   "o": [
+    "\"um\" is a suffix meaning structure",
+    "\"Peri\" is a word root",
+    "\"Cardi\" is a combining form",
+    "It means the outer layer of the heart"
+   ],
+   "file": "110.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "All of the following enhance memory efficiency BUT one:",
+   "o": [
+    "Negative emotions",
+    "Continuous revisions through the night",
+    "Positive emotions",
+    "Motivation"
+   ],
+   "file": "112.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The memory related to general information about the world is referred to as",
+   "o": [
+    "Working memory",
+    "Implicit memory",
+    "Episodic memory",
+    "Semantic memory"
+   ],
+   "file": "112.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Which memory technique uses familiar places to \"store\" information mentally?",
+   "o": [
+    "Method of loci (memory palace)",
+    "Mnemonics (first-letter sentences)",
+    "Eisenhower matrix",
+    "Pomodoro technique"
+   ],
+   "file": "112.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Which study strategy is more effective than re-reading for long-term learning?",
+   "o": [
+    "Highlighting repeatedly",
+    "Copying notes word-for-word",
+    "Retrieval practice (self-testing)",
+    "Only re-watching lectures"
+   ],
+   "file": "111.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Which note-taking method is best for comparing information side-by-side (e.g., drug classes or differential diagnoses)?",
+   "o": [
+    "Method of loci",
+    "Table format",
+    "Mind mapping",
+    "Cornell method"
+   ],
+   "file": "111.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "In the Pomodoro technique, what is the standard focus interval before a short break?",
+   "o": [
+    "45 minutes",
+    "10 minutes",
+    "25 minutes",
+    "90 minutes"
+   ],
+   "file": "111.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Choose the one correct fact about the perception gap:",
+   "o": [
+    "It gets narrower when one's perception is closer to reality",
+    "It explains how sensory memory is too short",
+    "It only happens in the visual modality of perception",
+    "It is part of the Attkinson and Shiffrin memory model"
+   ],
+   "file": "114.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "\"Hyperpyrexia\" is defined as body temperature above :",
+   "o": [
+    "40.1°C",
+    "39.1°C",
+    "41°C",
+    "41.1°C"
+   ],
+   "file": "114.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "\"Vital signs\" should be checked in the first part of physical examination, and include:",
+   "o": [
+    "Weight",
+    "Pulse rate",
+    "Hight",
+    "Body mass index"
+   ],
+   "file": "114.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "What is the hormone of Satiety:",
+   "o": [
+    "Ghrelin",
+    "Leptin",
+    "Insulin",
+    "Incretin"
+   ],
+   "file": "115.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "We need to pursue further exploration of Fever if:",
+   "o": [
+    "Signs for critical illness",
+    "No localizing symptoms",
+    "No significant history",
+    "No red flags"
+   ],
+   "file": "115.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The index of Muscle mass",
+   "o": [
+    "Is calculated using the height and body weight",
+    "Is assessed through the upper arm circumference",
+    "Is a standard measure to explore obesity",
+    "Is reflected by the triceps skinfold thickness"
+   ],
+   "file": "113.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "When taking history, the doctor has to elicit three main elements from the patient's narration. Those are known as \"ICE\", and the \"I\" refers t[o]:",
+   "o": [
+    "Instincts",
+    "Image",
+    "Ideas",
+    "Identity"
+   ],
+   "file": "113.txt"
+  }
+ ],
+ "anat-review": [
+  {
+   "n": 29,
+   "ord": 29,
+   "s": "The Ulna is:",
+   "o": [
+    "The medial bone of the forearm",
+    "Composed of a head which is proximal",
+    "An olecranon which is proximal",
+    "An odd bone",
+    "An asymmetric bone"
+   ],
+   "file": "116.txt"
+  },
+  {
+   "n": 30,
+   "ord": 30,
+   "s": "We find in the proximal end of the humerus:",
+   "o": [
+    "A spherical head",
+    "An anatomical neck",
+    "A surgical neck",
+    "A greater tuberosity",
+    "A lesser tuberosity"
+   ],
+   "file": "116.txt"
+  },
+  {
+   "n": 31,
+   "ord": 31,
+   "s": "The Shoulder girdle is composed of:",
+   "o": [
+    "The clavicle",
+    "The radius",
+    "The ulna",
+    "The scapula",
+    "The femur"
+   ],
+   "file": "116.txt"
+  },
+  {
+   "n": 32,
+   "ord": 32,
+   "s": "The radius articulates:",
+   "o": [
+    "Proximally with the humerus",
+    "Proximally and medially with the Ulna",
+    "Proximally and laterally with the Ulna",
+    "Distally with the carpal bones",
+    "Distally and laterally with the Ulna"
+   ],
+   "file": "116.txt"
+  }
+ ],
+ "ph-fr": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "[number inferred] [figure: exam grades by sex (F, M), not captured] To compare these two groups of grades, the appropriate test would be:",
+   "o": [
+    "Mann-Whitney test if normality is rejected",
+    "Chi-square test",
+    "Pearson correlation test",
+    "Student's t-test if the distributions are normal"
+   ],
+   "file": "151.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "[figure: box plot of weight (kg), not captured] The points located outside the whiskers represent:",
+   "o": [
+    "Missing values in the data.",
+    "The limits of the box plot.",
+    "Atypical individuals according to the distribution.",
+    "Extreme values called outliers."
+   ],
+   "file": "150.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "A patient's blood glucose level, measured in g/L, is an example of what type of random variable?",
+   "o": [
+    "Discrete quantitative",
+    "Continuous quantitative",
+    "Qualitative",
+    "Bernoulli"
+   ],
+   "file": "155.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "The standard deviation is a measure of dispersion that is the square root of the variance. What is its main advantage over the variance?",
+   "o": [
+    "It is always a whole number.",
+    "It is easier to calculate than the variance.",
+    "It is expressed in the same unit as the mean.",
+    "It is not affected by extreme values."
+   ],
+   "file": "153.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "[figure: histogram of exam grades, same as fig/ph_q19.jpg] The histogram allows you to:",
+   "o": [
+    "Identify qualitative classes",
+    "Compare the observed density with a theoretical curve (black)",
+    "Measure the median directly",
+    "Visualise the shape of the distribution and assess normality"
+   ],
+   "file": "149.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "[figure: histogram of BMI with quartiles and IQR, as fig/ph_q24a.jpg] From this graph, we can conclude that:",
+   "o": [
+    "There is no strong visible asymmetry between the quartiles",
+    "The BMI distribution is moderately concentrated around the median",
+    "The interquartile range is zero, so no dispersion",
+    "Extreme values are not shown"
+   ],
+   "file": "152.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "In a box plot, the 'box' itself represents an important measure of dispersion. Which one?",
+   "o": [
+    "The total range of the data",
+    "The standard deviation",
+    "The variance",
+    "The interquartile range"
+   ],
+   "file": "154.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "[figure above, not captured: scatter plot vs height (cm)] Pearson's correlation test assumes that:",
+   "o": [
+    "The distributions are strongly asymmetric",
+    "Both variables are quantitative and normally distributed",
+    "The relationship between the two variables is linear",
+    "The variables are qualitative"
+   ],
+   "file": "147.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Among the following determinants, which are modifiable to fight cardiovascular diseases?",
+   "o": [
+    "Smoking",
+    "Physical activity",
+    "Genetics",
+    "Age"
+   ],
+   "file": "146.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "What is the main objective of medical reasoning?",
+   "o": [
+    "Prevent diseases in the general population.",
+    "Analyse current epidemiological trends.",
+    "Implement public health policies.",
+    "Establish a precise, individual medical diagnosis."
+   ],
+   "file": "148.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "As part of the generalisation of AMO (compulsory health insurance) in Morocco, what are the expected benefits for equity in health?",
+   "o": [
+    "Reduction of inequalities in access to medical care.",
+    "Simplification of care pathways for all.",
+    "Increased complexity of administrative procedures.",
+    "Limited access to services for rural areas."
+   ],
+   "file": "145.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "What is the main objective of primary prevention?",
+   "o": [
+    "Facilitate rehabilitation after a disease has occurred.",
+    "Screen for and treat diseases.",
+    "Prevent the onset of diseases.",
+    "Reduce complications related to an already existing disease."
+   ],
+   "file": "143.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Among the following laws, which one institutionalises the practice of medicine in Morocco",
+   "o": [
+    "07.22",
+    "09.22",
+    "131.13",
+    "10.22"
+   ],
+   "file": "142.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "What does the difference in neonatal mortality between rural and urban settings in Morocco mean",
+   "o": [
+    "Lack of governance at the rural level",
+    "Inequitable access to care",
+    "Relative effectiveness of health districts",
+    "Lack of access to tertiary hospital care"
+   ],
+   "file": "144.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Law 08-22 institutionalises in Morocco:",
+   "o": [
+    "The High Authority for Health",
+    "The Blood Products Agency",
+    "The territorial health groupings",
+    "The National Agency for Medicines and Health Products"
+   ],
+   "file": "139.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "What is the first step of a public health approach?",
+   "o": [
+    "Identifying the health problem",
+    "Implementing solutions to address it",
+    "Evaluating the results of the actions put in place",
+    "Identifying the causes of the health problem"
+   ],
+   "file": "141.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Morocco suffers from an acute shortage of doctors since the doctor/inhabitant ratio is:",
+   "o": [
+    "1.8 per 1000",
+    "2.6 per 1000",
+    "0.9 per 1000",
+    "4.5 per 1000"
+   ],
+   "file": "140.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "In a multidisciplinary clinic in Maarif, the monthly revenue is 240,000 MAD and the total expenses are 86,000 MAD. What is the net result of this clinic?",
+   "o": [
+    "154,000 MAD",
+    "240,000 MAD",
+    "128,000 MAD",
+    "86,000 MAD"
+   ],
+   "file": "138.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The territorial health grouping (groupement sanitaire de territoire) means",
+   "o": [
+    "A network of military and non-profit hospitals in the territory",
+    "A network of private health facilities with local facilities",
+    "A grouping of university hospitals excluding health centres",
+    "A grouping of hospitals with the health centres in a territory"
+   ],
+   "file": "136.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "What is the fundamental difference between public health and traditional clinical medicine?",
+   "o": [
+    "Clinical medicine does not rely on scientific evidence, unlike public health.",
+    "Public health uses only biomedical approaches, while clinical medicine is multidisciplinary.",
+    "Clinical medicine treats diseases, while public health aims to prevent and control diseases at the population level.",
+    "Public health focuses on individuals, while clinical medicine focuses on populations."
+   ],
+   "file": "137.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "A health centre recently detected an unusual increase in diarrhoea cases in an urban area. An investigation is launched to identify the possible causes, and appropriate measures are taken to contain the epidemic. Which essential public health function does this situation illustrate?",
+   "o": [
+    "Quality assurance of health services",
+    "Training and capacity building of professionals",
+    "Health promotion",
+    "Epidemiological surveillance"
+   ],
+   "file": "135.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Among the following determinants, which are biological in nature?",
+   "o": [
+    "Age",
+    "Genetic factors",
+    "Physical activity",
+    "Smoking"
+   ],
+   "file": "132.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Among the following interventions, which fall under tertiary prevention?",
+   "o": [
+    "Vaccination",
+    "Screening",
+    "Physical rehabilitation after a road traffic accident",
+    "Palliative care"
+   ],
+   "file": "134.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The structural determinants of social inequalities in health mainly refer to:",
+   "o": [
+    "Biological factors",
+    "Macroeconomic policies",
+    "Governance",
+    "Individual behaviours"
+   ],
+   "file": "131.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "Among the following determinants, which are behavioural determinants of health?",
+   "o": [
+    "Diet",
+    "Physical activity",
+    "Genetic factors",
+    "Level of education"
+   ],
+   "file": "133.txt"
+  }
+ ],
+ "bio-review": [
+  {
+   "n": null,
+   "ord": 1,
+   "s": "Regarding measurement uncertainties :",
+   "o": [
+    "An error is, by definition, the deviation between the measurement taken and the exact value.",
+    "Systematic error is often related to poor calibration of the measuring instrument.",
+    "Random error often varies predictably.",
+    "Relative uncertainty is usually expressed as a percentage."
+   ],
+   "file": "156.txt"
+  },
+  {
+   "n": null,
+   "ord": 2,
+   "s": "An error is considered systematic :",
+   "o": [
+    "When it contributes to always overestimating (or always underestimating) the measured value.",
+    "When it varies predictably.",
+    "When it depends on the experimenter.",
+    "When it depends on the measuring device."
+   ],
+   "file": "156.txt"
+  },
+  {
+   "n": null,
+   "ord": 3,
+   "s": "An error is considered random :",
+   "o": [
+    "When it is reproducible.",
+    "When it varies unpredictably.",
+    "When it depends on the experimenter.",
+    "When it depends on the measuring instrument."
+   ],
+   "file": "156.txt"
+  },
+  {
+   "n": null,
+   "ord": 4,
+   "s": "Boiling is a phenomenon:",
+   "o": [
+    "Progressive, where the liquid changes to a vapor state without the formation of gas bubbles.",
+    "Sudden and fast, during which the liquid and vapor bubbles coexist.",
+    "The temperature of which depends on the nature of the liquid and the pressure of the surrounding environment.",
+    "Which can be calculated from the boiling point elevation."
+   ],
+   "file": "157.txt"
+  },
+  {
+   "n": null,
+   "ord": 5,
+   "s": "The mass concentration of a chemical component :",
+   "o": [
+    "Is the ratio of its quantity (n) to the volume (V) of the solution.",
+    "Is the ratio of its mass (m) to the volume (V) of the solution.",
+    "Is the ratio of its quantity (n) to the mass (m) of the solution.",
+    "Is expressed in Kg/m³"
+   ],
+   "file": "157.txt"
+  },
+  {
+   "n": null,
+   "ord": 6,
+   "s": "The molal concentration of a chemical component :",
+   "o": [
+    "Is the ratio of its mass (m) to the volume (V) of the solution.",
+    "Is the ratio of its quantity (n) to the volume (V) of the solution.",
+    "Is the ratio of its quantity (n) to the mass (m) of the solvent.",
+    "Is expressed in mol/kg according to the International System."
+   ],
+   "file": "157.txt"
+  },
+  {
+   "n": null,
+   "ord": 7,
+   "s": "Absolute uncertainty :",
+   "o": [
+    "Is the absolute value of the minimum possible deviation between the measurement and the exact value.",
+    "Is usually expressed as a percentage.",
+    "Is the absolute value of the maximum possible deviation between the measurement and the exact value.",
+    "Is always evaluated by direct measurements."
+   ],
+   "file": "158.txt"
+  },
+  {
+   "n": null,
+   "ord": 8,
+   "s": "About the physical states of matter:",
+   "o": [
+    "In the solid state, matter is dense with a high density.",
+    "The liquid state is characterized by molecules that are close together.",
+    "The liquid state is characterized by an indeterminate volume, compressible and expandable.",
+    "In the gaseous state, matter has a high density (β)."
+   ],
+   "file": "158.txt"
+  },
+  {
+   "n": null,
+   "ord": 9,
+   "s": "Water evaporation from the body:",
+   "o": [
+    "Allows heat to escape by cooling the body.",
+    "Is achieved only through perspiration.",
+    "Also involves the lungs.",
+    "Can increase during intense physical activity."
+   ],
+   "file": "158.txt"
+  },
+  {
+   "n": null,
+   "ord": 10,
+   "s": "In the BTPS conditions :",
+   "o": [
+    "The temperature is 273 K.",
+    "The temperature is 310 K.",
+    "The pressure is 2 atm.",
+    "The gas is saturated with water vapor."
+   ],
+   "file": "159.txt"
+  },
+  {
+   "n": null,
+   "ord": 11,
+   "s": "In the STPD conditions:",
+   "o": [
+    "The temperature is 273 K.",
+    "The temperature is 310 K.",
+    "The pressure is 1 atm.",
+    "The gas is not mixed with water vapor."
+   ],
+   "file": "159.txt"
+  },
+  {
+   "n": null,
+   "ord": 12,
+   "s": "According to Boyle-Mariotte's law, for a constant amount of gas n and a constant temperature T :",
+   "o": [
+    "The volume V of the gas increases as the pressure P increases.",
+    "The volume V of the gas decreases when the pressure P increases.",
+    "The volume V of the gas varies linearly with temperature.",
+    "The product of the pressure P by the volume V of this gas is constant."
+   ],
+   "file": "159.txt"
+  },
+  {
+   "n": null,
+   "ord": 13,
+   "s": "The osmolality of a solution:",
+   "o": [
+    "Corresponds to the sum of the molar concentrations of the different solutes in this solution.",
+    "Corresponds to the sum of the molal concentrations of the different solutes in this solution.",
+    "Can be calculated from the cryoscopic depression Δθ.",
+    "Is expressed in mol/kg."
+   ],
+   "file": "160.txt"
+  },
+  {
+   "n": null,
+   "ord": 14,
+   "s": "Regarding the measurement of the volume of a liquid compartment based on the dilution principle, a good tracer:",
+   "o": [
+    "Spreads evenly throughout the compartment.",
+    "Does not diffuse outside the compartment.",
+    "Is completely metabolized during the measurement time.",
+    "Significantly changes the volume of the compartment when introduced."
+   ],
+   "file": "160.txt"
+  },
+  {
+   "n": null,
+   "ord": 15,
+   "s": "According to the equation of state for perfect gases :",
+   "o": [
+    "P.T = n.R.V",
+    "P.V = n.R/T",
+    "P.V = n.R.T",
+    "P.n = V.R.T"
+   ],
+   "file": "161.txt"
+  },
+  {
+   "n": null,
+   "ord": 16,
+   "s": "During scuba diving:",
+   "o": [
+    "The pressure increases by 1 atm every 10 meters.",
+    "The amount of dissolved gas in the plasma decreases with depth.",
+    "The ascent must be very rapid to avoid gas embolism.",
+    "In the event of gas embolism, the diver must be placed in a hyperbaric chamber as soon as possible."
+   ],
+   "file": "161.txt"
+  },
+  {
+   "n": null,
+   "ord": 17,
+   "s": "Regarding physical quantities and their units according to the International System (SI) :",
+   "o": [
+    "The intensity of an electric current is expressed in Ampere (A).",
+    "Energy is expressed in Joule (J).",
+    "Activity is expressed in Gray (Gy).",
+    "Pressure is expressed in Pascal (Pa)."
+   ],
+   "file": "162.txt"
+  },
+  {
+   "n": null,
+   "ord": 18,
+   "s": "The dimension of the acceleration of a force corresponds to :",
+   "o": [
+    "M.L².T⁻²",
+    "M.L.T⁻²",
+    "L.T⁻²",
+    "M.L⁻¹.T⁻²"
+   ],
+   "file": "162.txt"
+  },
+  {
+   "n": null,
+   "ord": 19,
+   "s": "The dimension of force corresponds to :",
+   "o": [
+    "M.L².T⁻²",
+    "M.L.T⁻²",
+    "L.T⁻²",
+    "M.L⁻¹.T⁻²"
+   ],
+   "file": "162.txt"
+  },
+  {
+   "n": null,
+   "ord": 20,
+   "s": "A fluid is said to be non-Newtonian:",
+   "o": [
+    "When its viscosity η is modified by its flow velocity.",
+    "When its structure varies with flow velocity.",
+    "When its flow regime is laminar.",
+    "When it does not contain protein macromolecules."
+   ],
+   "file": "169.txt"
+  },
+  {
+   "n": null,
+   "ord": 21,
+   "s": "Blood viscosity increases when:",
+   "o": [
+    "Plasma viscosity increases.",
+    "Hematocrit decreases.",
+    "Temperature increases.",
+    "There is an inflammatory syndrome."
+   ],
+   "file": "169.txt"
+  },
+  {
+   "n": null,
+   "ord": 22,
+   "s": "During anemia:",
+   "o": [
+    "Hematocrit increases.",
+    "Blood viscosity is high.",
+    "Blood flow velocity increases.",
+    "Turbulence may appear, causing an anemic murmur."
+   ],
+   "file": "169.txt"
+  },
+  {
+   "n": null,
+   "ord": 23,
+   "s": "According to Bernouilli's theorem, for a fluid of negligible viscosity in an dilation of a horizontal pipe :",
+   "o": [
+    "The pressure P increases.",
+    "The velocity v increases.",
+    "The pressure decreases.",
+    "The velocity decreases."
+   ],
+   "file": "170.txt"
+  },
+  {
+   "n": null,
+   "ord": 24,
+   "s": "According to Poiseuille's experimental law; for a viscous liquid flowing in a horizontal pipe with a radius r , the pressure difference ΔP between two points A and B of the pipe :",
+   "o": [
+    "Is proportional to the length \"l\" of the pipe separating A and B.",
+    "Is inversely proportional to the flow rate \"Q\" of the liquid.",
+    "Is proportional to the viscosity coefficient \"η\" of the liquid.",
+    "Is inversely [proportional] to the radius : r⁴."
+   ],
+   "file": "170.txt"
+  },
+  {
+   "n": null,
+   "ord": 25,
+   "s": "For real fluids:",
+   "o": [
+    "The flow mode is laminar when the Reynolds number is less than 2000.",
+    "The flow is turbulent when the Reynolds number is between 2000 and 4000.",
+    "The flow regime is unpredictable when the Reynolds number is between 2000 and 4000.",
+    "The flow is often turbulent at very high flow velocities."
+   ],
+   "file": "171.txt"
+  },
+  {
+   "n": null,
+   "ord": 26,
+   "s": "In vascular dilation:",
+   "o": [
+    "Pressure decreases.",
+    "Pressure increases.",
+    "Blood flow velocity increases.",
+    "Blood flow velocity decreases."
+   ],
+   "file": "171.txt"
+  },
+  {
+   "n": null,
+   "ord": 27,
+   "s": "Regarding real fluids:",
+   "o": [
+    "The flow regime depends on the velocity \"v\".",
+    "The flow regime depends on the fluid density \"ρ\".",
+    "The flow is turbulent when the Reynolds number is greater than 4000.",
+    "The flow regime is unpredictable for a Reynolds number less than 2000."
+   ],
+   "file": "171.txt"
+  },
+  {
+   "n": null,
+   "ord": 28,
+   "s": "At the level of vascular narrowing:",
+   "o": [
+    "Blood flow velocity increases.",
+    "The Reynolds number increases.",
+    "Blood flow is often laminar.",
+    "A murmur is often heard on auscultation."
+   ],
+   "file": "172.txt"
+  },
+  {
+   "n": null,
+   "ord": 29,
+   "s": "The viscosity coefficient of a macromolecular solution depends on:",
+   "o": [
+    "The viscosity of the solvent.",
+    "The shape of the macromolecule.",
+    "The relative volume.",
+    "The pH of the solution."
+   ],
+   "file": "172.txt"
+  },
+  {
+   "n": null,
+   "ord": 30,
+   "s": "For a real fluid, the flow mode:",
+   "o": [
+    "Depends on the fluid's flow velocity.",
+    "Depends on the fluid's viscosity.",
+    "Depends on the fluid's density.",
+    "Is laminar when the Reynolds number \"R\" is greater than 4000."
+   ],
+   "file": "172.txt"
+  }
+ ],
+ "chem-2024": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its mass number is:",
+   "o": [
+    "16",
+    "12",
+    "14",
+    "6"
+   ],
+   "file": "181.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "We consider the real of the oxygen nucleus is 15.995 a.m.u. The mass defect value is approximatively:",
+   "o": [
+    "0,079 a.m.u",
+    "0,097 a.m.u",
+    "0,123 a.m.u",
+    "0,137 a.m.u"
+   ],
+   "file": "181.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its Atomic mass (a.m.u) is:",
+   "o": [
+    "16",
+    "14",
+    "12",
+    "10"
+   ],
+   "file": "182.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "We consider an unknown element ᴬ_ZX. It has 8 electrons and 8 neutrons. Its number of protons is:",
+   "o": [
+    "5",
+    "8",
+    "6",
+    "7"
+   ],
+   "file": "182.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "We consider an unknown element AZX. It has 8 electrons and 8 neutrons. The unknown element is:",
+   "o": [
+    "The Bore",
+    "The Oxygen",
+    "The Carbon",
+    "The Nitrogen"
+   ],
+   "file": "183.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The Oxygen mass of proton and neutron are respectively: mp=1.0078 a.m.u and mn = 1.0087 a.m.u. The theorical mass of the Oxygen is approximatively:",
+   "o": [
+    "15,779",
+    "15,997",
+    "16",
+    "16,132"
+   ],
+   "file": "183.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The optical isomerism is about:",
+   "o": [
+    "Z and E configuration",
+    "Erythro and threo configuration",
+    "Cis and trans configuration",
+    "R and S configuration"
+   ],
+   "file": "184.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The Geometric isomerism:",
+   "o": [
+    "Is R and S configuration",
+    "Is Z and E configuration",
+    "Based on the electronic configuration",
+    "Based on Hofmann rule"
+   ],
+   "file": "184.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Diastereoisomers are:",
+   "o": [
+    "Epimers",
+    "Chiral molecules",
+    "Meso form",
+    "Enantiomers"
+   ],
+   "file": "185.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Isomers have:",
+   "o": [
+    "The same hybridization",
+    "The same molecular formula",
+    "The same skeletal formula",
+    "The same electronic configuration"
+   ],
+   "file": "185.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The CIP rule is based on:",
+   "o": [
+    "Number of electrons",
+    "Z number",
+    "Electronegativity",
+    "Electronic effects"
+   ],
+   "file": "186.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The Fischer Projection is:",
+   "o": [
+    "For Carbanion stereoisomers",
+    "For Carbocation stereoisomers",
+    "For carboxylic acid stereoisomers",
+    "For sugar and aminoacids stereoisomers"
+   ],
+   "file": "186.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Which among the following amino acids is standard?",
+   "o": [
+    "Histidine",
+    "Pyrrolysine",
+    "Lysine",
+    "Selenocysteine"
+   ],
+   "file": "188.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "An enzyme:",
+   "o": [
+    "Is a catalyst",
+    "Affects the reaction yield",
+    "Is recycled at the end of the reaction",
+    "Increases the activation energy"
+   ],
+   "file": "188.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Glycogenolysis is:",
+   "o": [
+    "The breakdown of glycogen to glucose",
+    "The reverse of glycogenesis",
+    "Catalyzed by glycogen phosphorylase and other enzymes",
+    "Activated by the insulin"
+   ],
+   "file": "187.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Steroids hormones are:",
+   "o": [
+    "Cortisol",
+    "Insulin",
+    "FSH",
+    "Progesterone"
+   ],
+   "file": "187.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Which among the following amino acids is composed by a sulfur atom:",
+   "o": [
+    "Methionine",
+    "Aspartate",
+    "Valine",
+    "Cysteine"
+   ],
+   "file": "190.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Regarding cholesterol, pick the correct statements:",
+   "o": [
+    "HMG-CoA kinase is the key enzyme of cholesterol biosynthesis",
+    "Acetyl-CoA is the precursor of cholesterol",
+    "Cholesterol biosynthesis is simple",
+    "Cholesterol synthesis is inhibited by statins"
+   ],
+   "file": "190.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Glucose-6-Phosphate dehydrogenase:",
+   "o": [
+    "Is the key enzyme of glycolysis",
+    "Is the key enzyme of pentose phosphate pathway",
+    "Catalyzed the production of NADPH and ribose-5-P",
+    "Deficiency leads to an accumulation of ATP"
+   ],
+   "file": "189.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Regarding lactose pick the correct statements:",
+   "o": [
+    "Hydrolysis of lactose gives glucose and galactose",
+    "Lactose intolerance is caused by the absence of an enzyme",
+    "Lactose in a non-reducing carbohydrate",
+    "It is a polysaccharide"
+   ],
+   "file": "189.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Regarding the gluconeogenesis pick the correct statements:",
+   "o": [
+    "It's the reverse of glycolysis",
+    "It's the production of glucose from glycogen",
+    "Pyruvate is a substrate",
+    "It is the production of glucose from non-carbohydrate substrates"
+   ],
+   "file": "191.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Among the following carbohydrates pick the monosaccharides:",
+   "o": [
+    "Glucose",
+    "Starch",
+    "Maltose",
+    "Fructose"
+   ],
+   "file": "192.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The synthesis of Acetyl-CoA from pyruvate is catalyzed by:",
+   "o": [
+    "Catalase",
+    "Pyruvate kinase",
+    "Hexokinase",
+    "Pyruvate dehydrogenase"
+   ],
+   "file": "192.txt"
+  }
+ ],
+ "cell-2023": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The fluorescent microscope components are :",
+   "o": [
+    "laser beam",
+    "UV lamp",
+    "photomultiplier",
+    "objectif lens",
+    "condenser lens."
+   ],
+   "file": "193.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The steps of histological technique for the transmission electron microscope involves :",
+   "o": [
+    "ultramicrotome",
+    "automaton",
+    "flow hood",
+    "cryostat",
+    "CO2 incubator."
+   ],
+   "file": "193.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Biopsy fixation for histological technique needs :",
+   "o": [
+    "osmic acid",
+    "glutaraldehyde",
+    "heavy metal salts",
+    "Bouin liquid",
+    "synthetic resins."
+   ],
+   "file": "193.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Cell culture involes :",
+   "o": [
+    "no nutrient medium",
+    "Hematein-eosin staining",
+    "CO2incubator",
+    "neutral pH",
+    "laminar flow hood."
+   ],
+   "file": "193.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Simple diffusion through plasma membrane :",
+   "o": [
+    "concerns gas like O2 and CO2",
+    "concerns water and ions",
+    "concerns large molecules",
+    "needs cellular ATP energy",
+    "depends on gas partial pressure."
+   ],
+   "file": "193.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "Multi-drug resistant pumps (MDR) :",
+   "o": [
+    "are very specific",
+    "are GTP-dependent",
+    "ensure the transport of drugs inside the cell",
+    "are present in both cancerous and normal cells",
+    "explain the resistance of tumor cells to chemotherapy."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "During endocytosis mechanism, you could observe :",
+   "o": [
+    "substance adsorption above clathrins",
+    "invagination membrane via G proteins",
+    "endocytosis vesicle formation",
+    "endocytosis vesicle detachment",
+    "endocytosis vesicle migration in cytoplasm."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "Adenylyl cyclase is an integral membrane protein that contains:",
+   "o": [
+    "12 transmembrane segments",
+    "2 cytoplasmic domains",
+    "catalytic site for synthesis of cAMP",
+    "site of the protein kinase A (PKA)",
+    "site of the protein kinase C (PKC)."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Inositol Triphosphate (IP3) Pathway involves :",
+   "o": [
+    "G protein coupled receptor",
+    "thyrosine kinase receptor",
+    "diacyl glycerol (DAG)",
+    "protein kinase A (PKA)",
+    "protein kinase C (PKC)."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "MAPKinase signaling pathway involves :",
+   "o": [
+    "thyrosine Kinase receptor (TKR)",
+    "Ras or Rac protein",
+    "adenylyl cyclase",
+    "MKK4 kinase",
+    "growth factors."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "During the microtubule formation:",
+   "o": [
+    "alpha tubulin combines with beta tubulin",
+    "GTP binds to beta tubulin site",
+    "Keratin binds to tubulins",
+    "protofilaments are formed before",
+    "3 protofilaments form a hollow microtubule."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Concerning associated proteins to microtubules :",
+   "o": [
+    "gamma TURC ensures microtubules nucleation",
+    "kinesin transforms chemical energy (ATP or GTP)",
+    "dynein bind two globular parts on the microtubules",
+    "myosin is associated to microtubules end",
+    "troponin is associated to microtubules end."
+   ],
+   "file": "195.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Microtubules are present in :",
+   "o": [
+    "centrosomes and centrioles",
+    "lamellipodia and podosomes",
+    "nucleus and nucleolus",
+    "plasma membrane",
+    "cilia and flagella."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The microtubules ensure :",
+   "o": [
+    "intracellular transport of organelles",
+    "direction of intracellular transport",
+    "migration of chromosomes during mitosis",
+    "muscle contraction",
+    "lamina formation."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Actin associated proteins are :",
+   "o": [
+    "troponin and myosin",
+    "tubulin and desmine",
+    "cofilin and tropomyosin",
+    "dyneine and kinesine",
+    "keratin and vimentin."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "About intermediate filaments:",
+   "o": [
+    "keratins are found in epithelial cells",
+    "nuclear lamins form stabilizes the inner nuclear membrane",
+    "neurofilaments strengthen the long axons of neurons",
+    "Glial fibrilary acid proteins are present in glial cells",
+    "vimentins are found in hair and nails."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The addressing proteins to the peroxisome membrane involves :",
+   "o": [
+    "PTS1 signal",
+    "PEX19 protein",
+    "membrane receptor",
+    "TOM translocon",
+    "PEX16 protein."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "The cell epuration in the peroxisome :",
+   "o": [
+    "eliminates H2O2",
+    "involves the catalase",
+    "eliminates pesticides",
+    "involves the glutathione",
+    "needs anti-oxydants."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The protein glycozylation in the cell :",
+   "o": [
+    "involves endoplasmic reticulum",
+    "occurs at Golgi apparatus",
+    "concens proteins",
+    "concerns lipids",
+    "concens ions."
+   ],
+   "file": "197.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "In the nucleus:",
+   "o": [
+    "nuclear envelope is supported by lamina",
+    "nucleolus produces ribosoms",
+    "euchromatin is transcripted",
+    "nuclear pores are always present",
+    "two nucleosomes form the chromosome."
+   ],
+   "file": "198.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The RNAm splicing occurs at the:",
+   "o": [
+    "lamines ABC",
+    "nucleus granules",
+    "Cajal body",
+    "Barr corpuscule",
+    "nucleolus."
+   ],
+   "file": "198.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The body Cajal ensure the :",
+   "o": [
+    "DNA splicing",
+    "telomers polymerisation",
+    "telomers repair",
+    "rDNA replication",
+    "ribosoms production."
+   ],
+   "file": "198.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The pore complex shows :",
+   "o": [
+    "basket shape",
+    "3 protein rings",
+    "nuclear & cytosolic filaments",
+    "FXFG proteins",
+    "cholesterol and lipids."
+   ],
+   "file": "198.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The death ligands inducing apoptosis are :",
+   "o": [
+    "free radicals",
+    "H2O2",
+    "xenobiotics",
+    "red cells",
+    "growth factors."
+   ],
+   "file": "198.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "The apoptosis external pathway involves :",
+   "o": [
+    "mitochondria",
+    "cytochrom C",
+    "death receptor",
+    "effector caspases",
+    "Apaf1 factor."
+   ],
+   "file": "198.txt"
+  }
+ ],
+ "anat-2023": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The manubrium:",
+   "o": [
+    "is the inferior part of the sternum",
+    "contains an anterior surface close to the mediastinum",
+    "Receives the sternochondral joint with rib 3",
+    "permits bilateral identification of rib 2 at the level of the sternal angle",
+    "articulates with the 5th thoracic vertebra"
+   ],
+   "file": "204.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The Sternum:",
+   "o": [
+    "is anterior to the T4 (thoracic vertebra 4)",
+    "contains the jugular notch",
+    "Receives the anterior sternochondral joints with ribs 1 to 7",
+    "Articulates with the thoracic vertebrae",
+    "articulates with the right and left clavicles"
+   ],
+   "file": "204.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Pick up the right answer(s) about ribs:",
+   "o": [
+    "They have a medial surface and a lateral surface",
+    "They contain the subcostal groove, a shaft and an angle",
+    "They articulate with the clavicle",
+    "They have a lateral border and a medial border",
+    "They articulate with the thoracic vertebrae"
+   ],
+   "file": "204.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "The vertebral arch of a typical thoracic vertebra:",
+   "o": [
+    "is lateral",
+    "is anterior",
+    "is the major weightbearing component of a thoracic vertebra",
+    "is formed by right and left laminae, which fuse at the midline",
+    "contains a transverse process projecting anteriorly and superiorly"
+   ],
+   "file": "204.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "The vertebral body of a typical thoracic vertebra:",
+   "o": [
+    "is the major weightbearing component",
+    "is posterior",
+    "is anterior",
+    "decreasing in size from vertebra T1 to T12",
+    "articulates with a fibrocartilaginous intervertebral discs"
+   ],
+   "file": "204.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The serratus anterior muscle :",
+   "o": [
+    "Attaches to ribs 1 to 9",
+    "is a muscle of the back",
+    "is a primary protractor of the scapula",
+    "attaches to the lateral margin of the scapula",
+    "is a muscle of the anterior wall of the thorax"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The Trapezius muscle :",
+   "o": [
+    "Attaches to the sternum",
+    "is a superficial muscle of the back",
+    "attaches to the clavicle",
+    "attaches to the spine of scapula",
+    "is a muscle of the anterior wall of the thorax"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The Pectoralis major muscle :",
+   "o": [
+    "Attaches to the 4th thoracic vertebra (T4)",
+    "is a muscle of the back",
+    "attaches to the scapula",
+    "attaches to the sternum",
+    "is a muscle of the lateral wall of the thorax"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The Rhomboid major muscle :",
+   "o": [
+    "Attaches to the humerus",
+    "is a muscle of the back",
+    "attaches to the medial margin of scapula",
+    "attaches to the spinous processes of thoracic vertebrae (T2 to T5)",
+    "is a muscle of the anterior wall of the thorax"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The diaphragm:",
+   "o": [
+    "Attaches to the lower ribs",
+    "is composed of a peripheral muscular portion and a central tendon",
+    "attaches to the lumbar vertebrae",
+    "attaches to the sternum",
+    "is dome shaped"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The left ventricle (of the heart):",
+   "o": [
+    "forms the greater part of the lateral surface of the heart",
+    "forms the greater part of the anterior surface of the heart",
+    "receives blood from the left atrium via the mitral valve",
+    "receives blood from the right atrium via the mitral valve",
+    "pumps blood to the aorta via the aortic semilunar valve during systole"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The right ventricle (of the heart):",
+   "o": [
+    "receives blood from the left atrium via the tricuspid valve",
+    "forms the greater part of the anterior surface of the heart.",
+    "receives blood from the right atrium via the tricuspid valve",
+    "receives blood from the right atrium via the mitral valve.",
+    "Pumps blood to the pulmonary trunk via the aortic semilunar valve during diastole"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "The right atrium (of the heart):",
+   "o": [
+    "receives deoxygenated venous blood from the systemic circulation",
+    "forms the greater part of the anterior surface of the heart",
+    "pumps blood into the right ventricle through the tricuspid valve",
+    "receives blood from the four pulmonary veins",
+    "receives blood from the superior vena cava"
+   ],
+   "file": "203.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The coronary arteries :",
+   "o": [
+    "Arise from the pulmonary trunk",
+    "Arise from the right brachiocephalic artery",
+    "course along the epicardium in the cardiac sulci and interventricular grooves",
+    "consist of superior and inferior coronary arteries",
+    "The left coronary artery supplies most of the left ventricle, left atrium, bundle of His, and the anterior aspect of the interventricular septum"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The right coronary artery :",
+   "o": [
+    "Arise from the right pulmonary artery",
+    "Arise from the left pulmonary artery",
+    "course along the epicardium following the right atrioventricular sulcus",
+    "gives off branches to the left atrium",
+    "supplies most of the right ventricle"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "The arch of the aorta gives off:",
+   "o": [
+    "the right pulmonary artery",
+    "the left pulmonary artery",
+    "the brachiocephalic trunk",
+    "the left common carotid artery",
+    "the left subclavian artery"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The aorta gives off:",
+   "o": [
+    "The superior vena cava",
+    "The brachiocephalic trunk",
+    "The coronary arteries",
+    "the intercostal arteries",
+    "the left common carotid artery"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "The trachea:",
+   "o": [
+    "courses from the larynx to the stomach",
+    "bifurcates into the right and left primary bronchi at the T4–T5 vertebral level",
+    "is held open by C - shaped transverse cartilage rings embedded in its wall",
+    "posterior wall is composed mainly of cartilage",
+    "is anterior to the esophagus"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The trachea:",
+   "o": [
+    "courses posterior to the ascending aorta",
+    "bifurcates in the mediastinum",
+    "courses lateral to the right lung",
+    "courses medial to the left lung",
+    "is posterior to the vertebral body of the 4th thoracic vertebra (T4)"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "The left lung :",
+   "o": [
+    "is surrounded by the pleura",
+    "has three lobes and two fissures",
+    "contains the oblique fissure",
+    "has a half-cone shape with a base, apex, two surfaces, and three borders",
+    "medial surface lies adjacent to the heart"
+   ],
+   "file": "207.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The right lung:",
+   "o": [
+    "is larger than the left lung",
+    "has three lobes and two fissures",
+    "horizontal fissure separates the inferior lobe from the superior lobe",
+    "is surrounded by the pleura",
+    "mediastinal surface lies adjacent to the heart, the inferior vena cava, superior vena cava, azygos vein, and esophagus"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The right lung:",
+   "o": [
+    "inferior lobe is in contact with the upper part of the anterolateral wall",
+    "middle lobe lies mainly adjacent to the lower anterior and lateral wall",
+    "is surrounded by the pericardium",
+    "medial surface lies adjacent to the mediastinum",
+    "base sits on the diaphragm"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The superior vena cava drains blood from:",
+   "o": [
+    "the pulmonary trunk",
+    "the inferior vena cava",
+    "the left brachiocephalic vein",
+    "the azygos vein",
+    "the left superior pulmonary veins"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "The elements (or structures) located in the left hilum are:",
+   "o": [
+    "The superior vena cava",
+    "The two left pulmonary veins",
+    "the main right bronchus",
+    "the right pulmonary artery",
+    "the inferior vena cava"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "The mediastinum contains:",
+   "o": [
+    "the inferior vena cava",
+    "the lungs",
+    "the heart",
+    "the aortic arch",
+    "the trachea"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 26,
+   "ord": 26,
+   "s": "The scapula is:",
+   "o": [
+    "A bone of the pelvic girdle",
+    "The posterior bone of the shoulder girdle",
+    "A flat bone",
+    "An even bone",
+    "None of the above"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 27,
+   "ord": 27,
+   "s": "The clavicle:",
+   "o": [
+    "Is a long bone",
+    "Is the posterior bone of the shoulder girdle",
+    "Articulates medially with the Acromion",
+    "Articulates laterally with the Acromion",
+    "Articulates medially with the sternum"
+   ],
+   "file": "206.txt"
+  },
+  {
+   "n": 28,
+   "ord": 28,
+   "s": "To orient the humerus:",
+   "o": [
+    "The head faces proximally",
+    "The head faces medially",
+    "The distal end faces anteriorly",
+    "The distal end faces posteriorly",
+    "All of the above"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 29,
+   "ord": 29,
+   "s": "The Ulna presents:",
+   "o": [
+    "Proximally, the head of the Ulna",
+    "Distally, the head of the Ulna",
+    "Distally, the styloid",
+    "Proximally, the olecranon",
+    "Proximally the head of the radius"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 30,
+   "ord": 30,
+   "s": "The distal row of the carpal bones is composed of:",
+   "o": [
+    "The scaphoid",
+    "The lunate",
+    "The capitate",
+    "The Trapezium",
+    "The hamate"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 31,
+   "ord": 31,
+   "s": "The sacrum :",
+   "o": [
+    "Is the posterior bone of the pelvic girdle",
+    "Is an odd bone",
+    "Articulates laterally with the coxal bones",
+    "Articulates inferiorly with the vertebral bone",
+    "None of the above"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 32,
+   "ord": 32,
+   "s": "The ulna articulates:",
+   "o": [
+    "Proximally with the humerus",
+    "Proximally and medially with the radius",
+    "Proximally and laterally with the radius",
+    "Distally with the carpal bones",
+    "Distally and laterally with the radius"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 33,
+   "ord": 33,
+   "s": "The patella :",
+   "o": [
+    "Is an odd bone",
+    "Is a sesamoid bone",
+    "Articulates with the femur",
+    "Articulates with the tibia",
+    "Articulates with the fibula"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 34,
+   "ord": 34,
+   "s": "The fibula presents:",
+   "o": [
+    "A head proximally",
+    "A head distally",
+    "A lateral malleolus distally",
+    "A lateral malleolus proximally",
+    "A medial malleolus"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 35,
+   "ord": 35,
+   "s": "The anterior tarsal bones are:",
+   "o": [
+    "The talus",
+    "The calcaneus",
+    "The navicular",
+    "The cuboid",
+    "The cuneiforms"
+   ],
+   "file": "201.txt"
+  },
+  {
+   "n": 36,
+   "ord": 36,
+   "s": "Concerning the phalanges:",
+   "o": [
+    "Each toe has 2 phalanges",
+    "Each toe has 3 phalanges except the first",
+    "The first toe has 2 phalanges",
+    "The first toe has 3 phalanges",
+    "None of the above"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 37,
+   "ord": 37,
+   "s": "The foot presents:",
+   "o": [
+    "Tarsal bones",
+    "Carpal bones",
+    "Metatarsal bones",
+    "Metacarpal bones",
+    "14 Phalanges"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 38,
+   "ord": 38,
+   "s": "Concerning the medial malleolus:",
+   "o": [
+    "The lateral face of the medial malleolus articulates with the medial face of the talus",
+    "The medial face of the medial malleolus articulates with the lateral face of the talus",
+    "The medial face of the medial malleolus is under the skin",
+    "The medial face of the medial malleolus is articular",
+    "None of the above"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 39,
+   "ord": 39,
+   "s": "What is the action of Flexor carpi radialis in the hand",
+   "o": [
+    "Flexion at distal interphalangeal joint",
+    "Extension of the index finger",
+    "Flexion and radial deviation of the wrist",
+    "Flexion at interphalangeal joint of the thumb",
+    "Extension of the wrist"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 40,
+   "ord": 40,
+   "s": "What is the action of biceps brachii",
+   "o": [
+    "Elbow flexion",
+    "Forearm flexion",
+    "Extension of elbow",
+    "Forearm pronation",
+    "Shoulder flexion"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 41,
+   "ord": 41,
+   "s": "Which muscles are NOT a rotator cuff muscle:",
+   "o": [
+    "Supraspinatus",
+    "Infraspinatus",
+    "Deltoid",
+    "Teres minor",
+    "Pectoralis Major"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 42,
+   "ord": 42,
+   "s": "Which muscle is supplied by radial nerve in the forearm?",
+   "o": [
+    "Extensor Pollicis Longus",
+    "Pronator Teres",
+    "Flexor Digitorum Superficialis",
+    "Palmaris Longus",
+    "Pronator Quadratus"
+   ],
+   "file": "205.txt"
+  },
+  {
+   "n": 43,
+   "ord": 43,
+   "s": "What is the terminal branch of anterior tibial artery:",
+   "o": [
+    "Posterior tibial artery",
+    "Dorsalis pedis artery",
+    "Peroneal artery",
+    "Medial plantar artery",
+    "Popliteal artery"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 44,
+   "ord": 44,
+   "s": "Contents of the popliteal fossa include:",
+   "o": [
+    "Popliteal artery",
+    "Tibial nerve",
+    "Femoral artery",
+    "Popliteal vein",
+    "Lateral plantar artery"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 45,
+   "ord": 45,
+   "s": "What is the action of tibialis posterior?",
+   "o": [
+    "Ankle dorsiflexion",
+    "Ankle Plantar flexion",
+    "Big Toe extension",
+    "Knee flexion",
+    "Knee inversion"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 46,
+   "ord": 46,
+   "s": "This nerve supplies sensation to the first dorsal webspace of foot:",
+   "o": [
+    "Femoral nerve",
+    "Sural nerve",
+    "Medial Plantar nerve",
+    "Deep peroneal nerve",
+    "Sciatic nerve"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 47,
+   "ord": 47,
+   "s": "What are the branches of the brachial artery in the upper limb?",
+   "o": [
+    "Ulnar artery",
+    "Axillary artery",
+    "Radial artery",
+    "Dorsal scapular artery",
+    "Thoracodorsal artery"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 48,
+   "ord": 48,
+   "s": "What is the main structure passing through the cubital tunnel",
+   "o": [
+    "Median nerve",
+    "Brachial artery",
+    "Ulnar nerve",
+    "Radial nerve",
+    "Axillary artery"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 49,
+   "ord": 49,
+   "s": "Injury to the common peroneal nerve leads to:",
+   "o": [
+    "Loss of ankle dorsiflexion",
+    "Loss of ankle plantar flexion",
+    "Loss of big toe flexion",
+    "Loss of big toe extension",
+    "Loss of sensation in sole of foot"
+   ],
+   "file": "202.txt"
+  },
+  {
+   "n": 50,
+   "ord": 50,
+   "s": "Injury of median nerve at carpal tunnel leads to:",
+   "o": [
+    "Loss of power to thenar muscles",
+    "Loss of thumb flexion",
+    "Loss of sensation over thenar eminence",
+    "Loss of index finger flexion",
+    "Loss of sensation to little finger"
+   ],
+   "file": "202.txt"
+  }
+ ]
+}

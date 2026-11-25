@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+21. Regarding the gluconeogenesis pick the correct statements:
+A. It's the reverse of glycolysis
+B. It's the production of glucose from glycogen
+C. Pyruvate is a substrate
+D. It is the production of glucose from non-carbohydrate substrates

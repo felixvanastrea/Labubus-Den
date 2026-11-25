@@ -1,0 +1,11 @@
+# SET: Chemistry & biochemistry, Evalbox Fri Dec 27 version
+19. Glucose-6-Phosphate dehydrogenase:
+A. Is the key enzyme of glycolysis
+B. Is the key enzyme of pentose phosphate pathway
+C. Catalyzed the production of NADPH and ribose-5-P
+D. Deficiency leads to an accumulation of ATP
+20. Regarding lactose pick the correct statements:
+A. Hydrolysis of lactose gives glucose and galactose
+B. Lactose intolerance is caused by the absence of an enzyme
+C. Lactose in a non-reducing carbohydrate
+D. It is a polysaccharide

@@ -1,0 +1,16 @@
+# SET: Biophysics review (class slides, Jan 9 2026)
+Q. At the level of vascular narrowing:
+A. Blood flow velocity increases.
+B. The Reynolds number increases.
+C. Blood flow is often laminar.
+D. A murmur is often heard on auscultation.
+Q. The viscosity coefficient of a macromolecular solution depends on:
+A. The viscosity of the solvent.
+B. The shape of the macromolecule.
+C. The relative volume.
+D. The pH of the solution.
+Q. For a real fluid, the flow mode:
+A. Depends on the fluid's flow velocity.
+B. Depends on the fluid's viscosity.
+C. Depends on the fluid's density.
+D. Is laminar when the Reynolds number "R" is greater than 4000.

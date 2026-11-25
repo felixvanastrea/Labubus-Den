@@ -1,0 +1,7 @@
+# SET: Public health FR (translated)
+6. [figure: histogram of BMI with quartiles and IQR, as fig/ph_q24a.jpg] From this graph, we can conclude that:
+A. There is no strong visible asymmetry between the quartiles
+B. The BMI distribution is moderately concentrated around the median
+C. The interquartile range is zero, so no dispersion
+D. Extreme values are not shown
+

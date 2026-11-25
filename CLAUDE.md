@@ -385,6 +385,22 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   only (no search, legend, type tabs, Most repeated or Updates); a module page lists its lectures by part, "No questions
   yet". Module windows: `ART` has a constellation per EFM1 module (a bone, benzene, a helix, a bell curve, a lens, a book,
   a globe). Test: efm1.js.
+- EFM1 S1 questions (25 November 2026, live since): 436 from Abi's Year 1 Drive folder (about 470 uncategorised photos).
+  Only the S1 photos (30 October 2025 to 16 January 2026) were used; the April to June ones and the 7 PDFs are S2, left out.
+  Every photo was read and typed up by hand into `src/pipeline/s1/raw/NNN.txt` (photo index in capture order; duplicates and
+  re-sent copies marked DUP); French ones translated into English (Abi: "translate french to english"), with "(translated)"
+  in the set's label. The circles, ticks, highlights and red keys in the photos are never used (Abi: "don't trust them").
+  `parse_raw.py` groups them into 19 sets (`sets.json`), `place.py` gives each question its lecture (read one by one),
+  `import_s1.py` writes bank, shortids, repeats, answers.json and `concepts.json` (S1's tags are simply one per lecture, so
+  `take` = the lecture's own id). Short ids: A anatomy, C chemistry and biochemistry, G biology and genetics, P public health
+  and biostatistics, Y biophysics, L learning methods. Every key is Claude's from knowledge (`knowledge/<set>.txt`), not yet
+  checked against the S1 lectures, and says so; the About line then reads "Claude's for now". Doubtful: A36 of the 2022
+  second session (every option passes the greater sciatic foramen), the Dec 2025 mock's "thoracic outlet" (inlet or outlet?),
+  Jan 2023 cell biology Q24 ("death ligands"). Topics added that aren't on Abi's list: LM-09 Medical terminology, LM-10
+  Clinical basics (vital signs, fever, nutrition, history taking), BY-20 Hearing (ask her). Statistical tests sit in BP-03.
+  Dropped: a public health question with two options cut off, and the (2S)-alanine question whose figure carries someone's
+  circles. Figures: `img/efm1-s1-*.webp`. Y17/Y40 (PV = nRT) print as a key conflict only because "P.V = n.R.T" and
+  "P.V = n.R/T" have the same words; both keys are right. Test: efm1.js.
 - EFM2 S3 (25 November 2026, `efm2-s3/`, data in `src/sem/efm2-s3/`, store `den-efm2-s3-v1`, sync `s_efm2s3`): 7 modules and
   79 lectures from Abi's "EFM Quick-Link sheet" (every year's lectures per semester; Abi: S3 first, then S1). Modules:
   Anatomy III (`AT-`), Physiology II (`PH-`, parts neuromuscular / bioenergetics / renal as her sheet has them, renal

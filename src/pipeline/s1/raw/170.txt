@@ -1,0 +1,11 @@
+# SET: Biophysics review (class slides, Jan 9 2026)
+Q. According to Bernouilli's theorem, for a fluid of negligible viscosity in an dilation of a horizontal pipe :
+A. The pressure P increases.
+B. The velocity v increases.
+C. The pressure decreases.
+D. The velocity decreases.
+Q. According to Poiseuille's experimental law; for a viscous liquid flowing in a horizontal pipe with a radius r , the pressure difference ΔP between two points A and B of the pipe :
+A. Is proportional to the length "l" of the pipe separating A and B.
+B. Is inversely proportional to the flow rate "Q" of the liquid.
+C. Is proportional to the viscosity coefficient "η" of the liquid.
+D. Is inversely [proportional] to the radius : r⁴.

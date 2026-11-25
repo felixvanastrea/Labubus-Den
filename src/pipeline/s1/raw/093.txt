@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED) FIGURE fig/frchem_q9.jpg (crop molecules 3 and 4)
+9. [figure: molecules 3 and 4] Molecules 3 and 4
+A. Have a plane of symmetry
+B. Are enantiomers
+C. Are diastereoisomers
+D. None of the previous answers

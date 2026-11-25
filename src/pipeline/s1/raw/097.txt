@@ -1,0 +1,6 @@
+# SET: Chemistry & biochemistry FR mock (TRANSLATED) FIGURE fig/frchem_q8.jpg (crop molecule 3)
+8. [figure: molecule 3] The number of stereoisomers of molecule 3 is:
+A. 4
+B. 3
+C. 1
+D. 2

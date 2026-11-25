@@ -1,0 +1,21 @@
+# SET: Biophysics Dec 31 2025
+5. Beta-plus emission (β⁺):
+A. Has no energy condition
+B. Competes with electron capture
+C. Results from the decay of Fluorine-18 (¹⁸F)
+D. Is a transformation by partition
+6. The photoelectric effect:
+A. Occurs between a photon and an electron
+B. Produces a scattered photon
+C. Has no application in the medical field
+D. Can occur when there is an interaction between an electron and matter
+7. Regarding cellular radiosensitivity:
+A. Hematopoietic stem cells are more radiosensitive than muscle cells
+B. Glial cells are more radiosensitive than lymphocytes
+C. The intestinal epithelium is more radioresistant than glial cells
+D. Lymphocytes are more radiosensitive than hepatocytes
+8. In Radiobiology:
+A. Cellular effects may result in cell death or mutation
+B. The equivalent dose is the absorbed dose weighted by a radiation weighting factor
+C. The effective dose represents the total absorbed dose weighted by tissue weighting factors
+D. Stochastic effects are dose-dependent and occur above a threshold level

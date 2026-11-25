@@ -1,0 +1,6 @@
+# SET: Public health FR (translated)
+7. In a box plot, the 'box' itself represents an important measure of dispersion. Which one?
+A. The total range of the data
+B. The standard deviation
+C. The variance
+D. The interquartile range

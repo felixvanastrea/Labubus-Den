@@ -1,0 +1,19 @@
+# SET: Structural biochemistry FR doc ("biochime structurale", carbohydrates; TRANSLATED; highlights ignored)
+6. The Haworth representation
+A. The L forms of the same monosaccharide obtained in the vertical and horizontal planes are identical
+B. In the D series of monosaccharides, everything on the right in the Tollens form is at the bottom in the Haworth form
+C. The CH2OH of a D aldose is always at the top in the Haworth ring
+D. In D-galactose the alpha anomeric -OH is trans to the CH2OH
+E. In fructofuranose it is the CH2OH of C1 that forms the oxygen bridge with C5
+7. Oxidation of monosaccharides
+A. The aldehyde group is easily oxidised
+B. Oxidation of monosaccharides starts with transformation of the aldehyde
+C. Oxidation of a monosaccharide by a strong acid always leads to the formation of aldaric acid
+D. Mild oxidation of glucose gives gluconic acid
+E. Uronic acid is obtained by oxidation while blocking the aldehyde function.
+8. Esterification of monosaccharides
+A. Sorbitol is obtained by reduction of fructose
+B. Reduction by phosphoric acid of a monosaccharide is an esterification reaction
+C. It is in the form of phosphoric esters that sugars take part in metabolism
+D. G-6-P is obtained by esterification of glucose by nitric acid
+E. G-1-P is obtained by esterification of the reducing function of glucose
