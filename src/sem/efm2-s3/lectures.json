@@ -1053,7 +1053,59 @@
    }
   ],
   "foreign-languages": [],
-  "art-history-medicine": []
+  "art-history-medicine": [
+   {
+    "id": "HM-01",
+    "name": "History of medicine",
+    "p": "History of medicine",
+    "lectures": [
+     {
+      "t": "History of medicine (Pr Fourtassi): anatomy, physiology, pathology, pharmacology, epidemics, technology"
+     }
+    ],
+    "take": [
+     "H.history"
+    ]
+   },
+   {
+    "id": "HM-02",
+    "name": "Psychology",
+    "p": "Psychology",
+    "lectures": [
+     {
+      "t": "Introduction to psychology"
+     },
+     {
+      "t": "Health psychology (Pr Kadiri)"
+     },
+     {
+      "t": "Patient–caregiver relationship (Pr Kadiri)"
+     }
+    ],
+    "take": [
+     "H.psych"
+    ]
+   },
+   {
+    "id": "HM-03",
+    "name": "Sociology of medicine",
+    "p": "Sociology",
+    "lectures": [
+     {
+      "t": "Sociology of medicine (Pr Guennoun)"
+     },
+     {
+      "t": "Prophetic medicine in Morocco"
+     },
+     {
+      "t": "Gender and health in contemporary Morocco"
+     }
+    ],
+    "take": [
+     "H.socio"
+    ]
+   }
+  ]
  },
  "q": {
   "A287": "AT-01",
@@ -1073,7 +1125,8 @@
   "S156": "SM-05",
   "S157": "SM-05",
   "S158": "SM-05",
-  "S177": "SM-14"
+  "S177": "SM-14",
+  "H11": "HM-01"
  },
  "unasked": {}
 }

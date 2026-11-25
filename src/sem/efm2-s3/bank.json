@@ -364,6 +364,14 @@
    "year": "2022–2023",
    "label": "Retake 2022–2023 · Experimental medicine",
    "added": "2026-11-25"
+  },
+  {
+   "id": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "topic": "art-history-medicine",
+   "type": "Finals",
+   "year": "2022–2023",
+   "label": "Exam June 2023 · History of medicine, psychology and sociology",
+   "added": "2026-11-25"
   }
  ],
  "cases": [
@@ -24199,6 +24207,1148 @@
    "c": [
     "V.icp",
     "V.emerg7"
+   ]
+  },
+  {
+   "id": "e36a323b52",
+   "n": 1,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Galen was a great figure of anatomical knowledge in History. Which of the following is NOT true about his work and legacy?",
+   "options": [
+    "He made great discoveries in Neuroanatomy",
+    "He studied anatomy by dissection on animals",
+    "He studied anatomy by observation on humans",
+    "He was a physician of Gladiators",
+    "His work was largely criticized by the church in Medieval Europe"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "65515b02bb",
+   "n": 2,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "In which historical Era, was \"Anatomy\" recognized as an important means to understanding pathology and was introduced in the medical education curriculum?",
+   "options": [
+    "Antiquity",
+    "Early modern History",
+    "Medieval Europe",
+    "Modern History",
+    "Renaissance"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8230da1f04",
+   "n": 3,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The study of Anatomy required firm legislations in Europe and North America in the 20th century. What was the main reason for that?",
+   "options": [
+    "Dissection was practiced by non-doctors",
+    "People were killed and their bodies sold to medical students",
+    "The church was still opposed to the practice of dissection on humans",
+    "The study of Anatomy was dominated by art and artists",
+    "Dissection was used as a way to torture dead souls by cutting on their bodies"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9ace5bd5d9",
+   "n": 4,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The concept which explains “Life” by physical and chemical forces, usually explaining existence by tangible matter, is called",
+   "options": [
+    "Empiricism",
+    "Holism",
+    "Mechanism",
+    "Positivism",
+    "Vitalism"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "93c37b84ea",
+   "n": 5,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The method of inquiry that recognizes knowledge through pure observation, without a higher purpose is referred to as",
+   "options": [
+    "Empiricism",
+    "Mechanism",
+    "Positivism",
+    "Teleology",
+    "Theology"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "57bc328066",
+   "n": 6,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The 4 humours theory dominated medicine for almost 20 centuries. Which of the following is part of the humours?",
+   "options": [
+    "Gastric fluid",
+    "Phlegm",
+    "Saliva",
+    "Sweet",
+    "Urine"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "20f8b797df",
+   "n": 7,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of these concepts, does NOT apply to Galen’s physiological heritage?",
+   "options": [
+    "Blood is formed in the liver",
+    "Blood is taken to the lungs through the pulmonary circulation",
+    "Each organ had a specific faculty according to the teleological framework",
+    "Life is defined by the co-existence of three forces",
+    "There are pores in the heart allowing blood transfer from the right to the left part"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "739ceac0da",
+   "n": 8,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "In the 19th century, physiology was very influenced by the concept of \"Positivism\". Which of the following represents the Major characteristic of \"Positive Knowledge\"?",
+   "options": [
+    "Explaining biological facts based on supernatural powers",
+    "Explaining life based on the mind-body dualism",
+    "Giving full credit to the doctrine of cause.",
+    "Respect of the church fundamental recommendations",
+    "Using numbers and correlations to establish physiological facts."
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "f0a53b4bb6",
+   "n": 9,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The “Nuremberg code” is a set of ethical research principles, which was established during the trial of physicians who conducted experimentation on humans in the 20th century. These accused physicians were part of",
+   "options": [
+    "Fascist Italy",
+    "Japanese empire",
+    "Nazi’s Germany",
+    "North Korea dictatorship",
+    "Union of Soviet Socialist Republics (USSR)"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "36a2abc56e",
+   "n": 10,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of these is NOT part of the universal functions of \"Pathology\"?",
+   "options": [
+    "Explaining the suffering",
+    "Identifying the ailment",
+    "Justifying the treatment",
+    "Predicting the outcome",
+    "Understanding the purpose of life"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "d2efd2a300",
+   "n": 11,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of these can be considered as a physiological cause of disease?",
+   "options": [
+    "Age",
+    "Bacteria",
+    "Genes",
+    "Viruses",
+    "Poison"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": []
+  },
+  {
+   "id": "ac899a75b8",
+   "n": 12,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Thanks to the development of Pathology, one of the following fields became finally relevant to clinical medicine. Which one is it?",
+   "options": [
+    "Anatomy",
+    "Epidemiology",
+    "Pharmacology",
+    "Physiology",
+    "Psychology"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "H.history",
+    "H.psych"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "c5d84eef0e",
+   "n": 13,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "All these facts are relevant to the “Germ Theory” BUT one. What is it?",
+   "options": [
+    "It brought the Lab coat to the dress code of doctors in hospitals",
+    "It greatly developed thanks to the discovery of the microscope",
+    "It re-established the physiological origin of diseases",
+    "It was discovered by the concordance of the work of three scientists",
+    "It was the origin of \"Bacteriology\" as a separate discipline"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "67e3f71524",
+   "n": 14,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "“Contraria, contrariis, curantur” is an old rational in Pharmacology suggesting that",
+   "options": [
+    "Like cures like",
+    "Like cures opposite",
+    "Opposite cures like",
+    "Opposite cures opposite",
+    "None of the above"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "187bb0df8d",
+   "n": 15,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of the following therapeutic means was NOT usually applied in Antiquity?",
+   "options": [
+    "Antidotes",
+    "Blood letting",
+    "Diet",
+    "Exercise",
+    "Metals"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "083d830350",
+   "n": 16,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of the following suggestions is NOT true about \"Apothecary\"?",
+   "options": [
+    "It consists of making therapeutic preparations to patients",
+    "It consists of using metals to treat diseases",
+    "It is an ancient job that is currently regaining interest",
+    "It is based on a good knowledge of herbs and plants",
+    "It was mostly practiced by women"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.history"
+   ]
+  },
+  {
+   "id": "5a2bbc0156",
+   "n": 17,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "One of these treatments was considered as a “Magic bullet” of the therapeutic arsenal in the 20th century. What is it?",
+   "options": [
+    "Anaesthetics",
+    "Antiepileptics",
+    "Aspirin",
+    "Insulin",
+    "Steroids"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ffb46fd005",
+   "n": 18,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "In the “Thalidomide” worldwide catastrophe consisting of children born without their limbs, which country was preserved because of its complex new drugs licencing procedure?",
+   "options": [
+    "Canada",
+    "France",
+    "Germany",
+    "Itaty",
+    "USA"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "511674952f",
+   "n": 19,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of these represents the second stage of the society’s reaction to an epidemic?",
+   "options": [
+    "Control measures",
+    "Denial, delayed acceptance",
+    "Explanatory frameworks",
+    "Panic, terror, chaos",
+    "Resumption of a normal life"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.history",
+    "H.psych"
+   ]
+  },
+  {
+   "id": "c18cec4891",
+   "n": 20,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which epidemic invaded Europe in the middle age, killing 30% of its population?",
+   "options": [
+    "Bubonic plague",
+    "Cholera",
+    "Leprosy",
+    "Smallpox",
+    "Syphilis"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "752ce240b9",
+   "n": 21,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "For prevention of contagion, the plague doctors used to constantly chew",
+   "options": [
+    "Garlic",
+    "Medicinal gums",
+    "Medicinal herbs",
+    "Mercury-soaked fabric",
+    "Theriac"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.history"
+   ]
+  },
+  {
+   "id": "e3577c8620",
+   "n": 22,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The “guilty victim concept” delayed epidemiological investigation regarding one dangerous disease. Which one was it?",
+   "options": [
+    "AIDS",
+    "Cholera",
+    "Ebola",
+    "Influenza (H1N1)",
+    "Syphilis"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "H.history",
+    "H.psych"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "25bfff9060",
+   "n": 23,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The acute epidemic of paralysis in the 4 limbs affecting over 20.000 victims in Morocco in 1959 was caused by",
+   "options": [
+    "Bacterial infection",
+    "Viral infection",
+    "Toxic bread",
+    "Toxic fumes",
+    "Toxic oil"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "b2b0ca789b",
+   "n": 24,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Radiology is one of the greatest medical inventions of all times. It was discovered by",
+   "options": [
+    "Alexander Fleming",
+    "Ernest Ruska",
+    "James Collip",
+    "René Laennec",
+    "Wilhelm Röntgen"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9ec9aff86e",
+   "n": 25,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The Babylonian code, included severe punishments of surgeons. According to this code, if a \"free man\" gets hurt during a surgical procedure, the surgeon would be sentenced to",
+   "options": [
+    "Be killed",
+    "Give a substantive amount of gold to the patient or his family as a compensation",
+    "Have his hands cut",
+    "Stop practicing surgery",
+    "Walk naked through the city main streets"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "H.history"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered from the lecture slides; the exam docs’ own marks were not used.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ae663a1c29",
+   "n": 26,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "A 24-year-old patient consulted for bone pain that had been evolving for several months. After examination and assessment, the diagnosis of advanced bone cancer was made. He requires urgent interventions. As he has an important professional commitment, he postponed his appointment for the first time. A few weeks later, he postponed his appointments again despite the requests of his family and his doctors. In your opinion, what is the psychological reaction?",
+   "options": [
+    "Resilence reaction",
+    "Dependance reaction",
+    "Denial response",
+    "Anxiety response",
+    "Avoidance reaction"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "21429142c9",
+   "n": 27,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Anxiety response",
+   "options": [
+    "Is an adaptive response to the sensation of irritability",
+    "Can lead to a protective reaction",
+    "Is manifested by flight, fight or joy behaviors",
+    "Is accompanied by physical symptoms",
+    "Can interfere negatively with medical care"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "8274b4b3d8",
+   "n": 28,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The angry reaction against the medical staff may be due to :",
+   "options": [
+    "the restrictions they impose",
+    "Their skills and being",
+    "the limitations of the profession",
+    "their role as bearers of grim news about patients’ welfare and mortality",
+    "Their dominance over the patient"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "a653c90905",
+   "n": 29,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "The risks of making a bad announcement of a serious illness are",
+   "options": [
+    "Loss of trustworthy",
+    "Feeling of punishment",
+    "sudden cerebral vascular accident",
+    "burn out",
+    "state of shock"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "64dcea1cc9",
+   "n": 30,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "When announcing a serious illness, you should",
+   "options": [
+    "Make the family of patient available",
+    "make the announcement as soon as the patient enters your consulting room",
+    "be sur of the consistency of the message",
+    "Leave a space of control",
+    "Make a sequencing of the future"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "b97f7734e1",
+   "n": 31,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Specificities of chronic diseases are",
+   "options": [
+    "Immediate reactions",
+    "Risk of suicide",
+    "Compliance issue",
+    "Problem of progressive worsening",
+    "Risk of occurrence of a disability"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "ba0e00ee58",
+   "n": 32,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Mrs. S 34 years old consulted for abdominal pain, transit disorders that evolve in a chronic way and worsen at times of great stress. Following an episode of diarrhea with blood emission. She was diagnosed with hemorrhagic recto-colic disease. What is (are) the type (s) of this disease ?",
+   "options": [
+    "Chronic",
+    "Psychosomatic",
+    "Displaying",
+    "Serious",
+    "Deadly"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "f41d3d8e87",
+   "n": 33,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Stress",
+   "options": [
+    "Is the body’s automatic response to any physical or mental demand placed on it.",
+    "Is dangerous to health",
+    "Implies the presence of internal stressors",
+    "Induces the production of noradrenaline in large quantities in the body",
+    "Stimulates the hypothalamo-cortico-surrenal axis"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "0ab13957ba",
+   "n": 34,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "It is beneficial for the caregivers to feel towards the patients and to act with:",
+   "options": [
+    "guilt",
+    "empathy",
+    "anger",
+    "attachment",
+    "warmth"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "ad3d80694b",
+   "n": 35,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "A 45 year old patient has been hospitalized for a few days for exploration of a newly discovered bronchial cancer. When you try to examine him, he becomes extremely aggressive and uses very hurtful words towards you. How do you react to this aggressiveness which makes you very angry ?",
+   "options": [
+    "adopt a weak position to calm him down",
+    "explain witht justification",
+    "Rely on mirror neurons",
+    "Express emotion and rejection of the situation calmly",
+    "Get replaced if necessary"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "8d848441dc",
+   "n": 36,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Aaron Beck :",
+   "options": [
+    "Is one of Freud’s students",
+    "Is the father of behaviourism",
+    "Is a leading figure of cognitivism",
+    "Designed the lilltle albert experiment",
+    "None of the above is true"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "2f0ee8e929",
+   "n": 37,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "A negative reinforcement of a behaviour :",
+   "options": [
+    "Is an important concept of psychoanalysis",
+    "Leads to the extinction of the behaviour",
+    "Leads to the continuation of the behaviour",
+    "Can explain some aspects of addiction",
+    "None of the above is true"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "e574951beb",
+   "n": 38,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "According to Bandura :",
+   "options": [
+    "The human mind is divided in three entities",
+    "A fear can be learned",
+    "Memory works as a videotape",
+    "Human needs are organized in a pyramid",
+    "None of the above is true"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.psych"
+   ]
+  },
+  {
+   "id": "2f7caa23bc",
+   "n": 39,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What are the three levels of sociology?",
+   "options": [
+    "Micro, Macro, and Meso levels",
+    "Individual, Group, and Society levels",
+    "Structural, Interactional, and Interpretive levels",
+    "Functional, Conflict, and Symbolic levels",
+    "Primary, Secondary, and Tertiary levels"
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "a9869cdb21",
+   "n": 40,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Medical pluralism refers to:",
+   "options": [
+    "The coexistence of different medical systems within a society.",
+    "The competition between healthcare providers for patients.",
+    "The dominance of alternative medicine over Western medicine.",
+    "The integration of pharmaceutical and surgical treatments.",
+    "The standardization of healthcare practices across cultures."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "e922cb9168",
+   "n": 41,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "Which of the following best defines gender?",
+   "options": [
+    "The biological differences between males and females.",
+    "The social and cultural roles, expectations, and behaviors associated with being male or female.",
+    "The inherent and fixed characteristics that determine one's identity as male or female.",
+    "The psychological and emotional traits that differentiate males from females.",
+    "The physical attributes and appearances that distinguish males and females."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio",
+    "H.psych"
+   ]
+  },
+  {
+   "id": "fed8093713",
+   "n": 42,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "How does sex interact with different factors to affect healthcare outcomes?",
+   "options": [
+    "Sex determines access to healthcare services.",
+    "Sex influences the effectiveness of medical treatments.",
+    "Sex impacts the prevalence of certain health conditions.",
+    "Sex affects health behaviors and risk factors.",
+    "All of the above."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "4380f9db43",
+   "n": 43,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "How does the concept of “rigid masculinities” have health effects on men?",
+   "options": [
+    "Rigid masculinities contribute to higher rates of cardiovascular diseases in men.",
+    "Rigid masculinities result in lower life expectancy among men who tend to built their masculinity through jeopardizing activities and practices.",
+    "Rigid masculinities increase the risk of occupational hazards and injuries.",
+    "Rigid masculinities hinder help-seeking behaviors and access to mental healthcare.",
+    "Rigid masculinities lead to higher rates of chronic stress and its associated health problems."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio",
+    "H.psych"
+   ]
+  },
+  {
+   "id": "ead96f6c30",
+   "n": 44,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What is the more comprehensive definition of Prophetic Medicine among Muslim modern societies?",
+   "options": [
+    "The utilization of medicinal plants and remedies mentioned in the Quran and Hadith, along with an integration of holistic health practices.",
+    "The rejection of modern medical interventions in favor of exclusive reliance on Prophetic teachings for all health conditions.",
+    "The adaptation and modernization of traditional healing practices derived from the time of Prophet Muhammad.",
+    "The incorporation of spiritual rituals and prayers into conventional medical treatments for enhanced healing outcomes.",
+    "The development of a separate branch of medicine that focuses solely on the treatment methods practiced during the time of Prophet Muhammad."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "7d96aaee51",
+   "n": 45,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What is the definition of \"Traditional Arabic and Islamic Medicine\" (TAIM)?",
+   "options": [
+    "The exclusive use of herbal remedies and spiritual healing methods rooted in Islamic teachings.",
+    "The integration of traditional healing practices from pre-Islamic Arabian civilizations into modern medical treatments.",
+    "A comprehensive medical system that combines herbal remedies, physical therapies, and spiritual practices rooted in Islamic teachings.",
+    "The modernized adaptation of traditional Arabic and Islamic healing methods using evidence-based practices.",
+    "A medical system that relies solely on the prophetic medicine methods described in the Quran and Hadith."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "5d222236e3",
+   "n": 46,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What is the impact of healing shrines on the healthcare system in Morocco?",
+   "options": [
+    "Healing shrines have no impact on the healthcare system.",
+    "Healing shrines provide alternative healthcare options and substitute for some the formal healthcare system.",
+    "Healing shrines have always replaced the formal healthcare system in Morocco.",
+    "Healing shrines hinder access to proper medical care in Morocco.",
+    "Healing shrines have led to a decline in overall health outcomes in Morocco."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "bac3aefd1c",
+   "n": 47,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What role do healing shrines play in the healthcare landscape of Morocco?",
+   "options": [
+    "Healing shrines primarily serve as tourist attractions.",
+    "Healing shrines are solely used for religious and spiritual purposes.",
+    "Healing shrines function as primary healthcare centers in remote areas of Morocco.",
+    "Healing shrines are only accessible to a select few individuals in Moroccan society.",
+    "Healing shrines act as centers for traditional medicine practices alongside the formal healthcare system."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "0981f3d4ef",
+   "n": 48,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "How do healing shrines impact healthcare-seeking behaviors in Morocco?",
+   "options": [
+    "Healing shrines discourage individuals from seeking proper medical care.",
+    "Healing shrines have no influence on healthcare-seeking behaviors in Morocco.",
+    "Healing shrines encourage individuals to prioritize spiritual healing over medical treatments.",
+    "Healing shrines motivate individuals to actively engage with both traditional and modern healthcare options.",
+    "Healing shrines lead to an increase in self-medication practices and reliance on unproven remedies."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "5da9be307e",
+   "n": 49,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "How does the concept of \"Al Baraka\" impact the healing system in Morocco?",
+   "options": [
+    "\"Al Baraka\" is a healing technique that is widely practiced in Morocco, providing alternative treatments for various ailments.",
+    "The concept of \"Al Baraka\" has no direct impact on the healing system in Morocco.",
+    "\"Al Baraka\" is popularly defined as the belief in divine blessings that are believed to enhance the effectiveness of medical treatments in Morocco.",
+    "The concept of \"Al Baraka\" leads to a preference for traditional healing practices over modern medical interventions in Morocco.",
+    "\"Al Baraka\" is a religious ritual that is performed alongside medical treatments to ensure their success in Morocco."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
+   ]
+  },
+  {
+   "id": "19ca330078",
+   "n": 50,
+   "topic": "art-history-medicine",
+   "source": "s3-art-history-medicine-exam-june-2023-history-of-medicine-psychology-and-sociology",
+   "stem": "What is the mutual impact of the traditional health system and clinical system on the overall healing system in Morocco?",
+   "options": [
+    "The traditional health system and clinical system in Morocco operate independently, with minimal interaction and impact on each other.",
+    "The traditional health system and clinical system in Morocco are in direct competition, leading to a fragmented healing system.",
+    "The traditional health system and clinical system in Morocco complement each other for some and collide against each other for some other people. Practitioners from both systems reject each other which makes of the holistic healthcare system in Morocco, complex and more ambiguous.",
+    "The traditional health system in Morocco has completely replaced the clinical system, rendering it obsolete.",
+    "The clinical system in Morocco dominates the healing system, significantly marginalizing the traditional health system."
+   ],
+   "answer": [],
+   "key": "none",
+   "c": [
+    "H.socio"
    ]
   }
  ]

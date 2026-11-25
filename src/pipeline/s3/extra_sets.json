@@ -1,0 +1,612 @@
+[
+ {
+  "mod": "art-history-medicine",
+  "label": "Exam June 2023 · History of medicine, psychology and sociology",
+  "year": "2022-2023",
+  "type": "finals",
+  "file": "history of medicine (Google Doc)",
+  "note": "",
+  "qs": [
+   {
+    "n": 1,
+    "s": "Galen was a great figure of anatomical knowledge in History. Which of the following is NOT true about his work and legacy?",
+    "o": [
+     "He made great discoveries in Neuroanatomy",
+     "He studied anatomy by dissection on animals",
+     "He studied anatomy by observation on humans",
+     "He was a physician of Gladiators",
+     "His work was largely criticized by the church in Medieval Europe"
+    ],
+    "case": null
+   },
+   {
+    "n": 2,
+    "s": "In which historical Era, was \"Anatomy\" recognized as an important means to understanding pathology and was introduced in the medical education curriculum?",
+    "o": [
+     "Antiquity",
+     "Early modern History",
+     "Medieval Europe",
+     "Modern History",
+     "Renaissance"
+    ],
+    "case": null
+   },
+   {
+    "n": 3,
+    "s": "The study of Anatomy required firm legislations in Europe and North America in the 20th century. What was the main reason for that?",
+    "o": [
+     "Dissection was practiced by non-doctors",
+     "People were killed and their bodies sold to medical students",
+     "The church was still opposed to the practice of dissection on humans",
+     "The study of Anatomy was dominated by art and artists",
+     "Dissection was used as a way to torture dead souls by cutting on their bodies"
+    ],
+    "case": null
+   },
+   {
+    "n": 4,
+    "s": "The concept which explains “Life” by physical and chemical forces, usually explaining existence by tangible matter, is called",
+    "o": [
+     "Empiricism",
+     "Holism",
+     "Mechanism",
+     "Positivism",
+     "Vitalism"
+    ],
+    "case": null
+   },
+   {
+    "n": 5,
+    "s": "The method of inquiry that recognizes knowledge through pure observation, without a higher purpose is referred to as",
+    "o": [
+     "Empiricism",
+     "Mechanism",
+     "Positivism",
+     "Teleology",
+     "Theology"
+    ],
+    "case": null
+   },
+   {
+    "n": 6,
+    "s": "The 4 humours theory dominated medicine for almost 20 centuries. Which of the following is part of the humours?",
+    "o": [
+     "Gastric fluid",
+     "Phlegm",
+     "Saliva",
+     "Sweet",
+     "Urine"
+    ],
+    "case": null
+   },
+   {
+    "n": 7,
+    "s": "Which of these concepts, does NOT apply to Galen’s physiological heritage?",
+    "o": [
+     "Blood is formed in the liver",
+     "Blood is taken to the lungs through the pulmonary circulation",
+     "Each organ had a specific faculty according to the teleological framework",
+     "Life is defined by the co-existence of three forces",
+     "There are pores in the heart allowing blood transfer from the right to the left part"
+    ],
+    "case": null
+   },
+   {
+    "n": 8,
+    "s": "In the 19th century, physiology was very influenced by the concept of \"Positivism\". Which of the following represents the Major characteristic of \"Positive Knowledge\"?",
+    "o": [
+     "Explaining biological facts based on supernatural powers",
+     "Explaining life based on the mind-body dualism",
+     "Giving full credit to the doctrine of cause.",
+     "Respect of the church fundamental recommendations",
+     "Using numbers and correlations to establish physiological facts."
+    ],
+    "case": null
+   },
+   {
+    "n": 9,
+    "s": "The “Nuremberg code” is a set of ethical research principles, which was established during the trial of physicians who conducted experimentation on humans in the 20th century. These accused physicians were part of",
+    "o": [
+     "Fascist Italy",
+     "Japanese empire",
+     "Nazi’s Germany",
+     "North Korea dictatorship",
+     "Union of Soviet Socialist Republics (USSR)"
+    ],
+    "case": null
+   },
+   {
+    "n": 10,
+    "s": "Which of these is NOT part of the universal functions of \"Pathology\"?",
+    "o": [
+     "Explaining the suffering",
+     "Identifying the ailment",
+     "Justifying the treatment",
+     "Predicting the outcome",
+     "Understanding the purpose of life"
+    ],
+    "case": null
+   },
+   {
+    "n": 11,
+    "s": "Which of these can be considered as a physiological cause of disease?",
+    "o": [
+     "Age",
+     "Bacteria",
+     "Genes",
+     "Viruses",
+     "Poison"
+    ],
+    "case": null
+   },
+   {
+    "n": 12,
+    "s": "Thanks to the development of Pathology, one of the following fields became finally relevant to clinical medicine. Which one is it?",
+    "o": [
+     "Anatomy",
+     "Epidemiology",
+     "Pharmacology",
+     "Physiology",
+     "Psychology"
+    ],
+    "case": null
+   },
+   {
+    "n": 13,
+    "s": "All these facts are relevant to the “Germ Theory” BUT one. What is it?",
+    "o": [
+     "It brought the Lab coat to the dress code of doctors in hospitals",
+     "It greatly developed thanks to the discovery of the microscope",
+     "It re-established the physiological origin of diseases",
+     "It was discovered by the concordance of the work of three scientists",
+     "It was the origin of \"Bacteriology\" as a separate discipline"
+    ],
+    "case": null
+   },
+   {
+    "n": 14,
+    "s": "“Contraria, contrariis, curantur” is an old rational in Pharmacology suggesting that",
+    "o": [
+     "Like cures like",
+     "Like cures opposite",
+     "Opposite cures like",
+     "Opposite cures opposite",
+     "None of the above"
+    ],
+    "case": null
+   },
+   {
+    "n": 15,
+    "s": "Which of the following therapeutic means was NOT usually applied in Antiquity?",
+    "o": [
+     "Antidotes",
+     "Blood letting",
+     "Diet",
+     "Exercise",
+     "Metals"
+    ],
+    "case": null
+   },
+   {
+    "n": 16,
+    "s": "Which of the following suggestions is NOT true about \"Apothecary\"?",
+    "o": [
+     "It consists of making therapeutic preparations to patients",
+     "It consists of using metals to treat diseases",
+     "It is an ancient job that is currently regaining interest",
+     "It is based on a good knowledge of herbs and plants",
+     "It was mostly practiced by women"
+    ],
+    "case": null
+   },
+   {
+    "n": 17,
+    "s": "One of these treatments was considered as a “Magic bullet” of the therapeutic arsenal in the 20th century. What is it?",
+    "o": [
+     "Anaesthetics",
+     "Antiepileptics",
+     "Aspirin",
+     "Insulin",
+     "Steroids"
+    ],
+    "case": null
+   },
+   {
+    "n": 18,
+    "s": "In the “Thalidomide” worldwide catastrophe consisting of children born without their limbs, which country was preserved because of its complex new drugs licencing procedure?",
+    "o": [
+     "Canada",
+     "France",
+     "Germany",
+     "Itaty",
+     "USA"
+    ],
+    "case": null
+   },
+   {
+    "n": 19,
+    "s": "Which of these represents the second stage of the society’s reaction to an epidemic?",
+    "o": [
+     "Control measures",
+     "Denial, delayed acceptance",
+     "Explanatory frameworks",
+     "Panic, terror, chaos",
+     "Resumption of a normal life"
+    ],
+    "case": null
+   },
+   {
+    "n": 20,
+    "s": "Which epidemic invaded Europe in the middle age, killing 30% of its population?",
+    "o": [
+     "Bubonic plague",
+     "Cholera",
+     "Leprosy",
+     "Smallpox",
+     "Syphilis"
+    ],
+    "case": null
+   },
+   {
+    "n": 21,
+    "s": "For prevention of contagion, the plague doctors used to constantly chew",
+    "o": [
+     "Garlic",
+     "Medicinal gums",
+     "Medicinal herbs",
+     "Mercury-soaked fabric",
+     "Theriac"
+    ],
+    "case": null
+   },
+   {
+    "n": 22,
+    "s": "The “guilty victim concept” delayed epidemiological investigation regarding one dangerous disease. Which one was it?",
+    "o": [
+     "AIDS",
+     "Cholera",
+     "Ebola",
+     "Influenza (H1N1)",
+     "Syphilis"
+    ],
+    "case": null
+   },
+   {
+    "n": 23,
+    "s": "The acute epidemic of paralysis in the 4 limbs affecting over 20.000 victims in Morocco in 1959 was caused by",
+    "o": [
+     "Bacterial infection",
+     "Viral infection",
+     "Toxic bread",
+     "Toxic fumes",
+     "Toxic oil"
+    ],
+    "case": null
+   },
+   {
+    "n": 24,
+    "s": "Radiology is one of the greatest medical inventions of all times. It was discovered by",
+    "o": [
+     "Alexander Fleming",
+     "Ernest Ruska",
+     "James Collip",
+     "René Laennec",
+     "Wilhelm Röntgen"
+    ],
+    "case": null
+   },
+   {
+    "n": 25,
+    "s": "The Babylonian code, included severe punishments of surgeons. According to this code, if a \"free man\" gets hurt during a surgical procedure, the surgeon would be sentenced to",
+    "o": [
+     "Be killed",
+     "Give a substantive amount of gold to the patient or his family as a compensation",
+     "Have his hands cut",
+     "Stop practicing surgery",
+     "Walk naked through the city main streets"
+    ],
+    "case": null
+   },
+   {
+    "n": 26,
+    "s": "A 24-year-old patient consulted for bone pain that had been evolving for several months. After examination and assessment, the diagnosis of advanced bone cancer was made. He requires urgent interventions. As he has an important professional commitment, he postponed his appointment for the first time. A few weeks later, he postponed his appointments again despite the requests of his family and his doctors. In your opinion, what is the psychological reaction?",
+    "o": [
+     "Resilence reaction",
+     "Dependance reaction",
+     "Denial response",
+     "Anxiety response",
+     "Avoidance reaction"
+    ],
+    "case": null
+   },
+   {
+    "n": 27,
+    "s": "Anxiety response",
+    "o": [
+     "Is an adaptive response to the sensation of irritability",
+     "Can lead to a protective reaction",
+     "Is manifested by flight, fight or joy behaviors",
+     "Is accompanied by physical symptoms",
+     "Can interfere negatively with medical care"
+    ],
+    "case": null
+   },
+   {
+    "n": 28,
+    "s": "The angry reaction against the medical staff may be due to :",
+    "o": [
+     "the restrictions they impose",
+     "Their skills and being",
+     "the limitations of the profession",
+     "their role as bearers of grim news about patients’ welfare and mortality",
+     "Their dominance over the patient"
+    ],
+    "case": null
+   },
+   {
+    "n": 29,
+    "s": "The risks of making a bad announcement of a serious illness are",
+    "o": [
+     "Loss of trustworthy",
+     "Feeling of punishment",
+     "sudden cerebral vascular accident",
+     "burn out",
+     "state of shock"
+    ],
+    "case": null
+   },
+   {
+    "n": 30,
+    "s": "When announcing a serious illness, you should",
+    "o": [
+     "Make the family of patient available",
+     "make the announcement as soon as the patient enters your consulting room",
+     "be sur of the consistency of the message",
+     "Leave a space of control",
+     "Make a sequencing of the future"
+    ],
+    "case": null
+   },
+   {
+    "n": 31,
+    "s": "Specificities of chronic diseases are",
+    "o": [
+     "Immediate reactions",
+     "Risk of suicide",
+     "Compliance issue",
+     "Problem of progressive worsening",
+     "Risk of occurrence of a disability"
+    ],
+    "case": null
+   },
+   {
+    "n": 32,
+    "s": "Mrs. S 34 years old consulted for abdominal pain, transit disorders that evolve in a chronic way and worsen at times of great stress. Following an episode of diarrhea with blood emission. She was diagnosed with hemorrhagic recto-colic disease. What is (are) the type (s) of this disease ?",
+    "o": [
+     "Chronic",
+     "Psychosomatic",
+     "Displaying",
+     "Serious",
+     "Deadly"
+    ],
+    "case": null
+   },
+   {
+    "n": 33,
+    "s": "Stress",
+    "o": [
+     "Is the body’s automatic response to any physical or mental demand placed on it.",
+     "Is dangerous to health",
+     "Implies the presence of internal stressors",
+     "Induces the production of noradrenaline in large quantities in the body",
+     "Stimulates the hypothalamo-cortico-surrenal axis"
+    ],
+    "case": null
+   },
+   {
+    "n": 34,
+    "s": "It is beneficial for the caregivers to feel towards the patients and to act with:",
+    "o": [
+     "guilt",
+     "empathy",
+     "anger",
+     "attachment",
+     "warmth"
+    ],
+    "case": null
+   },
+   {
+    "n": 35,
+    "s": "A 45 year old patient has been hospitalized for a few days for exploration of a newly discovered bronchial cancer. When you try to examine him, he becomes extremely aggressive and uses very hurtful words towards you. How do you react to this aggressiveness which makes you very angry ?",
+    "o": [
+     "adopt a weak position to calm him down",
+     "explain witht justification",
+     "Rely on mirror neurons",
+     "Express emotion and rejection of the situation calmly",
+     "Get replaced if necessary"
+    ],
+    "case": null
+   },
+   {
+    "n": 36,
+    "s": "Aaron Beck :",
+    "o": [
+     "Is one of Freud’s students",
+     "Is the father of behaviourism",
+     "Is a leading figure of cognitivism",
+     "Designed the lilltle albert experiment",
+     "None of the above is true"
+    ],
+    "case": null
+   },
+   {
+    "n": 37,
+    "s": "A negative reinforcement of a behaviour :",
+    "o": [
+     "Is an important concept of psychoanalysis",
+     "Leads to the extinction of the behaviour",
+     "Leads to the continuation of the behaviour",
+     "Can explain some aspects of addiction",
+     "None of the above is true"
+    ],
+    "case": null
+   },
+   {
+    "n": 38,
+    "s": "According to Bandura :",
+    "o": [
+     "The human mind is divided in three entities",
+     "A fear can be learned",
+     "Memory works as a videotape",
+     "Human needs are organized in a pyramid",
+     "None of the above is true"
+    ],
+    "case": null
+   },
+   {
+    "n": 39,
+    "s": "What are the three levels of sociology?",
+    "o": [
+     "Micro, Macro, and Meso levels",
+     "Individual, Group, and Society levels",
+     "Structural, Interactional, and Interpretive levels",
+     "Functional, Conflict, and Symbolic levels",
+     "Primary, Secondary, and Tertiary levels"
+    ],
+    "case": null
+   },
+   {
+    "n": 40,
+    "s": "Medical pluralism refers to:",
+    "o": [
+     "The coexistence of different medical systems within a society.",
+     "The competition between healthcare providers for patients.",
+     "The dominance of alternative medicine over Western medicine.",
+     "The integration of pharmaceutical and surgical treatments.",
+     "The standardization of healthcare practices across cultures."
+    ],
+    "case": null
+   },
+   {
+    "n": 41,
+    "s": "Which of the following best defines gender?",
+    "o": [
+     "The biological differences between males and females.",
+     "The social and cultural roles, expectations, and behaviors associated with being male or female.",
+     "The inherent and fixed characteristics that determine one's identity as male or female.",
+     "The psychological and emotional traits that differentiate males from females.",
+     "The physical attributes and appearances that distinguish males and females."
+    ],
+    "case": null
+   },
+   {
+    "n": 42,
+    "s": "How does sex interact with different factors to affect healthcare outcomes?",
+    "o": [
+     "Sex determines access to healthcare services.",
+     "Sex influences the effectiveness of medical treatments.",
+     "Sex impacts the prevalence of certain health conditions.",
+     "Sex affects health behaviors and risk factors.",
+     "All of the above."
+    ],
+    "case": null
+   },
+   {
+    "n": 43,
+    "s": "How does the concept of “rigid masculinities” have health effects on men?",
+    "o": [
+     "Rigid masculinities contribute to higher rates of cardiovascular diseases in men.",
+     "Rigid masculinities result in lower life expectancy among men who tend to built their masculinity through jeopardizing activities and practices.",
+     "Rigid masculinities increase the risk of occupational hazards and injuries.",
+     "Rigid masculinities hinder help-seeking behaviors and access to mental healthcare.",
+     "Rigid masculinities lead to higher rates of chronic stress and its associated health problems."
+    ],
+    "case": null
+   },
+   {
+    "n": 44,
+    "s": "What is the more comprehensive definition of Prophetic Medicine among Muslim modern societies?",
+    "o": [
+     "The utilization of medicinal plants and remedies mentioned in the Quran and Hadith, along with an integration of holistic health practices.",
+     "The rejection of modern medical interventions in favor of exclusive reliance on Prophetic teachings for all health conditions.",
+     "The adaptation and modernization of traditional healing practices derived from the time of Prophet Muhammad.",
+     "The incorporation of spiritual rituals and prayers into conventional medical treatments for enhanced healing outcomes.",
+     "The development of a separate branch of medicine that focuses solely on the treatment methods practiced during the time of Prophet Muhammad."
+    ],
+    "case": null
+   },
+   {
+    "n": 45,
+    "s": "What is the definition of \"Traditional Arabic and Islamic Medicine\" (TAIM)?",
+    "o": [
+     "The exclusive use of herbal remedies and spiritual healing methods rooted in Islamic teachings.",
+     "The integration of traditional healing practices from pre-Islamic Arabian civilizations into modern medical treatments.",
+     "A comprehensive medical system that combines herbal remedies, physical therapies, and spiritual practices rooted in Islamic teachings.",
+     "The modernized adaptation of traditional Arabic and Islamic healing methods using evidence-based practices.",
+     "A medical system that relies solely on the prophetic medicine methods described in the Quran and Hadith."
+    ],
+    "case": null
+   },
+   {
+    "n": 46,
+    "s": "What is the impact of healing shrines on the healthcare system in Morocco?",
+    "o": [
+     "Healing shrines have no impact on the healthcare system.",
+     "Healing shrines provide alternative healthcare options and substitute for some the formal healthcare system.",
+     "Healing shrines have always replaced the formal healthcare system in Morocco.",
+     "Healing shrines hinder access to proper medical care in Morocco.",
+     "Healing shrines have led to a decline in overall health outcomes in Morocco."
+    ],
+    "case": null
+   },
+   {
+    "n": 47,
+    "s": "What role do healing shrines play in the healthcare landscape of Morocco?",
+    "o": [
+     "Healing shrines primarily serve as tourist attractions.",
+     "Healing shrines are solely used for religious and spiritual purposes.",
+     "Healing shrines function as primary healthcare centers in remote areas of Morocco.",
+     "Healing shrines are only accessible to a select few individuals in Moroccan society.",
+     "Healing shrines act as centers for traditional medicine practices alongside the formal healthcare system."
+    ],
+    "case": null
+   },
+   {
+    "n": 48,
+    "s": "How do healing shrines impact healthcare-seeking behaviors in Morocco?",
+    "o": [
+     "Healing shrines discourage individuals from seeking proper medical care.",
+     "Healing shrines have no influence on healthcare-seeking behaviors in Morocco.",
+     "Healing shrines encourage individuals to prioritize spiritual healing over medical treatments.",
+     "Healing shrines motivate individuals to actively engage with both traditional and modern healthcare options.",
+     "Healing shrines lead to an increase in self-medication practices and reliance on unproven remedies."
+    ],
+    "case": null
+   },
+   {
+    "n": 49,
+    "s": "How does the concept of \"Al Baraka\" impact the healing system in Morocco?",
+    "o": [
+     "\"Al Baraka\" is a healing technique that is widely practiced in Morocco, providing alternative treatments for various ailments.",
+     "The concept of \"Al Baraka\" has no direct impact on the healing system in Morocco.",
+     "\"Al Baraka\" is popularly defined as the belief in divine blessings that are believed to enhance the effectiveness of medical treatments in Morocco.",
+     "The concept of \"Al Baraka\" leads to a preference for traditional healing practices over modern medical interventions in Morocco.",
+     "\"Al Baraka\" is a religious ritual that is performed alongside medical treatments to ensure their success in Morocco."
+    ],
+    "case": null
+   },
+   {
+    "n": 50,
+    "s": "What is the mutual impact of the traditional health system and clinical system on the overall healing system in Morocco?",
+    "o": [
+     "The traditional health system and clinical system in Morocco operate independently, with minimal interaction and impact on each other.",
+     "The traditional health system and clinical system in Morocco are in direct competition, leading to a fragmented healing system.",
+     "The traditional health system and clinical system in Morocco complement each other for some and collide against each other for some other people. Practitioners from both systems reject each other which makes of the holistic healthcare system in Morocco, complex and more ambiguous.",
+     "The traditional health system in Morocco has completely replaced the clinical system, rendering it obsolete.",
+     "The clinical system in Morocco dominates the healing system, significantly marginalizing the traditional health system."
+    ],
+    "case": null
+   }
+  ]
+ }
+]

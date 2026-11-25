@@ -1505,5 +1505,56 @@
   ],
   "ab": [],
   "rx": "first a[il]d|first aider|casualt|scene|bystander|3c|evacuation|hazard|danger|safety|primary survey|secondary survey|drabc"
+ },
+ {
+  "id": "H.history",
+  "m": "art-history-medicine",
+  "n": "History of medicine",
+  "s": [
+   "history of medicine",
+   "Galen",
+   "four humours",
+   "vitalism",
+   "mechanism",
+   "germ theory",
+   "plague",
+   "Nuremberg code"
+  ],
+  "ab": [],
+  "rx": "histor|galen|anatom|dissect|humou?r|vitalism|mechanism|empiric|positiv|nuremberg|patholog|germ theory|pharmacolog|contraria|antiquity|apothec|magic bullet|thalidomide|epidemic|plague|contagion|guilty victim|radiolog|babylon"
+ },
+ {
+  "id": "H.psych",
+  "m": "art-history-medicine",
+  "n": "Psychology",
+  "s": [
+   "psychology",
+   "anxiety",
+   "denial",
+   "announcing bad news",
+   "stress",
+   "empathy",
+   "behaviourism",
+   "cognitivism"
+  ],
+  "ab": [],
+  "rx": "psycholog|anxiety|angry|anger|denial|announc|chronic disease|psychosomatic|stress|empathy|caregiver|aggressiv|beck|bandura|reinforcement|freud"
+ },
+ {
+  "id": "H.socio",
+  "m": "art-history-medicine",
+  "n": "Sociology of medicine",
+  "s": [
+   "sociology",
+   "medical pluralism",
+   "gender and health",
+   "masculinities",
+   "prophetic medicine",
+   "healing shrines",
+   "Al Baraka",
+   "sociology of medicine"
+  ],
+  "ab": [],
+  "rx": "sociolog|pluralism|gender|\\bsex\\b|masculin|prophetic|islamic|shrine|baraka|traditional health"
  }
 ]

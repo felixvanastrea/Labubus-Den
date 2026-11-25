@@ -18,3 +18,6 @@ O.update({
 O.update({('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 14): 'PH-06'})   # cross-bridge cycling: muscle, not ATP
 O.update({('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 6): 'PH-11',   # cellular respiration is in lecture 2
           ('Midterm · Physiology II (Pr Covasa and Pr Tuan, students’ recollection)', 8): 'PH-11'})
+
+L_H='Exam June 2023 · History of medicine, psychology and sociology'
+O.update({(L_H,n):('HM-01' if n<=25 else 'HM-02' if n<=38 else 'HM-03') for n in range(1,51)})

@@ -9,11 +9,12 @@ from overrides import O
 
 D = '/home/claude/efm3-mcq-bank/src/sem/efm2-s3/'
 S = json.load(open('/home/claude/work/s3/final_sets.json'))
+S += json.load(open('/home/claude/efm3-mcq-bank/src/pipeline/s3/extra_sets.json'))   # sets added later, straight from a doc
 bank = json.load(open(D + 'bank.json'))
 LEC = json.load(open(D + 'lectures.json'))
 
 TYPE = {'finals': 'Finals', 'mock': 'Mock', 'midterm': 'Midterms', 'retake': 'Second session', 'quiz': 'Collected'}
-PFX = {'anatomy-3': 'A', 'physiology-2': 'P', 'semiology-1': 'S', 'clinical-biochemistry': 'B', 'vital-first-aid': 'V'}
+PFX = {'anatomy-3': 'A', 'physiology-2': 'P', 'semiology-1': 'S', 'clinical-biochemistry': 'B', 'vital-first-aid': 'V', 'art-history-medicine': 'H'}
 FIG = {('Finals · Anatomy 4 (head and neck)', 10): ('efm2-s3-orbit-sphenoid', 477, 186),
        ('Finals · Anatomy 4 (head and neck)', 12): ('efm2-s3-cornea-layers', 478, 146),
        ('Finals · Anatomy 4 (head and neck)', 15): ('efm2-s3-visual-path-1', 595, 315),

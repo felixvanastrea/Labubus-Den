@@ -419,6 +419,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   a lecture covers them: P11 (acid-base), P12 (prostate: in no renal lecture, flagged to Abi, dropped from the quest), P14–P19
   and P22–P24 (cortex, vision, hearing, vestibular, CSF: those decks aren't in the folder), P36 (creatine phosphate vs
   glycogen as muscle's energy store: no slide settles it). The About line says answers are being added while some are missing.
+- Art, culture and history of medicine (25 November 2026): one exam, "Exam June 2023 · History of medicine, psychology and
+  sociology" (H1–H50, from Abi's Google Doc "history of medicine" in the S3 "History of Med" folder; first set as a 1st-year
+  S2 social sciences exam, the course now sits in S3), added through `src/pipeline/s3/extra_sets.json`, which `import_bank.py`
+  reads after `final_sets.json`. Topics in `lectures.json`: HM-01 history (H1–H25), HM-02 psychology (H26–H38), HM-03 sociology
+  (H39–H50), placed by `overrides.py`. History answered from Pr Fourtassi's deck (`answers_history.py`; the 31 MB PDF only
+  reads through part 3 here, the rest leans on Duffin, the deck's source); H11, H16, H19, H21 wait. Psychology and sociology
+  not answered yet (Pr Kadiri's and Pr Guennoun's decks are in the S3 lectures folder). The "History and Embryology Midterm"
+  PDF in the S3 folder is histology and embryology only (S2), left out.
 - Quest `physio-midterm-2026` (S3, Tuesday 1 December 2026, Abi's list): renal intro (PH-16), nephron + glomerular filtration
   (PH-18; PH-17 has no past question), bioenergetics intro (PH-10), regulation of energy metabolism (PH-11, renamed from
   "Carbohydrate metabolism": Pr Dinh-Xuan's lecture 2 is that deck; P65 and P67, cellular respiration, moved there), lipid

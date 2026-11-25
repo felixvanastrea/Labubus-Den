@@ -323,5 +323,110 @@
   "key": "ABC",
   "by": "lecture",
   "lecture": "bio-2"
+ },
+ "H1": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H2": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H3": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H4": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H5": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H6": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H7": {
+  "key": "B",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H8": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H9": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H10": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H12": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H13": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H14": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H15": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H17": {
+  "key": "D",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H18": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H20": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H22": {
+  "key": "A",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H23": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H24": {
+  "key": "E",
+  "by": "lecture",
+  "lecture": "hist-med"
+ },
+ "H25": {
+  "key": "C",
+  "by": "lecture",
+  "lecture": "hist-med"
  }
 }

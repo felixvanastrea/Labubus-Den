@@ -63,6 +63,10 @@
     "bio-3": {
       "title": "Bioenergetics 3: Lipids metabolism (Pr Dinh-Xuan)",
       "added": "2026-11-25"
+    },
+    "hist-med": {
+      "title": "History of medicine (Pr Fourtassi)",
+      "added": "2026-11-25"
     }
   },
   "questions": {
@@ -541,6 +545,174 @@
       "A": "Yes: ribose and deoxyribose form the backbone of nucleic acids.",
       "B": "Yes: carbohydrates are major sources of energy.",
       "C": "Yes: they are cellular structural components."
+    },
+    "H1": {
+      "lecture": "hist-med",
+      "A": "True: the slides credit him with great discoveries in neuroanatomy.",
+      "B": "True: he experimented on animals.",
+      "C": "True: he observed humans (gladiators) even though human dissection was forbidden.",
+      "D": "True: Galen was physician of gladiators.",
+      "E": "Not true, so this is the answer: medieval Europe took Galen as the reference; his ideas suited the Church."
+    },
+    "H2": {
+      "lecture": "hist-med",
+      "A": "In Antiquity human dissection was forbidden and anatomy little used by practitioners.",
+      "B": "In the early modern period anatomy was an art, seen as useless to medicine.",
+      "C": "Medieval Europe allowed dissection only on executed criminals, and Galen was the reference.",
+      "D": "Yes: in modern history diseases became anatomical (percussion, auscultation) and anatomy chairs entered every medical school.",
+      "E": "The Renaissance brought great drawings (Vesalius, Da Vinci), not anatomy as the key to disease."
+    },
+    "H3": {
+      "lecture": "hist-med",
+      "A": "Not the reason given.",
+      "B": "Yes: the trade in fresh bodies led to murders (Burke and Hare), hence the anatomy laws.",
+      "C": "By then the Church was not the obstacle.",
+      "D": "Art and anatomy belong to the Renaissance.",
+      "E": "Not a reason on the slides."
+    },
+    "H4": {
+      "lecture": "hist-med",
+      "A": "Empiricism is a method of inquiry: knowledge by pure observation.",
+      "B": "Holism is not on the slides.",
+      "C": "Yes: mechanism explains life by physical and chemical forces, existence as tangible matter.",
+      "D": "Positivism uses numbers and correlations.",
+      "E": "Vitalism is the opposite: peculiar life forces not reduced to physics."
+    },
+    "H5": {
+      "lecture": "hist-med",
+      "A": "Yes: empiricism is knowledge through pure observation, with no higher purpose.",
+      "B": "Mechanism is a concept of life, not a method.",
+      "C": "Positivism relies on measurement, numbers and correlations.",
+      "D": "Teleology is the doctrine of causes and purpose.",
+      "E": "Theology is not a method of physiology."
+    },
+    "H6": {
+      "lecture": "hist-med",
+      "A": "Not a humour.",
+      "B": "Yes: phlegm is one of the four humours with blood, yellow bile and black bile.",
+      "C": "Not a humour.",
+      "D": "Not a humour.",
+      "E": "Not a humour."
+    },
+    "H7": {
+      "lecture": "hist-med",
+      "A": "Galen: blood is formed in the liver.",
+      "B": "Not Galen, so this is the answer: Ibn Nafis described the pulmonary circulation in the 13th century.",
+      "C": "Galen: each organ had faculties in a teleological framework.",
+      "D": "Galen: life is the strength of three forces (natural, vital, animal spirits).",
+      "E": "Galen postulated pores in the heart."
+    },
+    "H8": {
+      "lecture": "hist-med",
+      "A": "Supernatural explanations are the opposite of positivism.",
+      "B": "Mind-body dualism is Descartes.",
+      "C": "The doctrine of causes is teleology.",
+      "D": "Church rules are not science.",
+      "E": "Yes: positive knowledge measures, using numbers and correlations."
+    },
+    "H9": {
+      "lecture": "hist-med",
+      "A": "No.",
+      "B": "No.",
+      "C": "Yes: the Nuremberg code (1947) came from the trial of Nazi doctors.",
+      "D": "No.",
+      "E": "No."
+    },
+    "H10": {
+      "lecture": "hist-med",
+      "A": "A function: explain suffering.",
+      "B": "A function: identify the ailment (diagnosis).",
+      "C": "A function: justify treatment.",
+      "D": "A function: predict outcomes (prognosis).",
+      "E": "Not one of them, so this is the answer."
+    },
+    "H12": {
+      "lecture": "hist-med",
+      "A": "Yes: with pathology moving to the morgue, anatomical lesions explained disease and anatomy became clinically useful.",
+      "B": "Epidemiology grew with statistics, not with pathology.",
+      "C": "Pharmacology is not the field meant.",
+      "D": "Physiology was already linked to disease.",
+      "E": "Not on the slides."
+    },
+    "H13": {
+      "lecture": "hist-med",
+      "A": "True of germ theory: the lab coat came with it.",
+      "B": "True: the microscope made germs visible.",
+      "C": "Not true, so this is the answer: germ theory is ontological (an outside cause the patient has), not physiological.",
+      "D": "True: Pasteur, Koch and Lister converged on it.",
+      "E": "True: bacteriology became its own discipline."
+    },
+    "H14": {
+      "lecture": "hist-med",
+      "A": "That is similia similibus curantur (homeopathy).",
+      "B": "No.",
+      "C": "No.",
+      "D": "Yes: contraria contrariis curantur means opposites are cured by opposites (cool a fever, dry the wet).",
+      "E": "One option is right."
+    },
+    "H15": {
+      "lecture": "hist-med",
+      "A": "Antidotes (theriac) go back to Antiquity.",
+      "B": "Bloodletting was used since Antiquity.",
+      "C": "Diet was a main remedy in Antiquity.",
+      "D": "Exercise was prescribed in Antiquity.",
+      "E": "Not used then, so this is the answer: metals came with Paracelsus in the Renaissance."
+    },
+    "H17": {
+      "lecture": "hist-med",
+      "A": "Anaesthetics are 19th century.",
+      "B": "Not a magic bullet of the time.",
+      "C": "Aspirin dates from 1899.",
+      "D": "Yes: insulin (Banting, Best, Collip, 1922) was hailed as a magic bullet.",
+      "E": "Steroids came later and were not the one meant."
+    },
+    "H18": {
+      "lecture": "hist-med",
+      "A": "No.",
+      "B": "No.",
+      "C": "Germany was where thalidomide was made.",
+      "D": "No.",
+      "E": "Yes: the USA was spared because the FDA (Frances Kelsey) refused the licence."
+    },
+    "H20": {
+      "lecture": "hist-med",
+      "A": "Yes: the Black Death (bubonic plague) killed about a third of Europe in the 14th century.",
+      "B": "Cholera came in the 19th century.",
+      "C": "Leprosy was endemic, not a sudden killer.",
+      "D": "Not the medieval one.",
+      "E": "Syphilis came at the end of the 15th century."
+    },
+    "H22": {
+      "lecture": "hist-med",
+      "A": "Yes: blaming the victims (lifestyle) delayed the investigation of AIDS.",
+      "B": "No.",
+      "C": "No.",
+      "D": "No.",
+      "E": "No."
+    },
+    "H23": {
+      "lecture": "hist-med",
+      "A": "No.",
+      "B": "No.",
+      "C": "No.",
+      "D": "No.",
+      "E": "Yes: the 1959 Meknes poisoning came from cooking oil mixed with aircraft engine oil."
+    },
+    "H24": {
+      "lecture": "hist-med",
+      "A": "Fleming discovered penicillin.",
+      "B": "Ruska built the electron microscope.",
+      "C": "Collip helped purify insulin.",
+      "D": "Laennec invented the stethoscope.",
+      "E": "Yes: Wilhelm Röntgen discovered X-rays in 1895."
+    },
+    "H25": {
+      "lecture": "hist-med",
+      "A": "No.",
+      "B": "Compensation applied to slaves, not to free men.",
+      "C": "Yes: the Code of Hammurabi cut off the surgeon’s hands.",
+      "D": "No.",
+      "E": "No."
     }
   }
 }
