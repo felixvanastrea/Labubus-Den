@@ -1,0 +1,116 @@
+# Public health: Pr Mouwafaq's introduction and determinants decks, Pr Belrhiti's Health Systems Analysis textbook.
+# No biostatistics deck is in the folder, so the statistics questions stay Claude's from knowledge, as do the prevention
+# levels, law 131-13, the private sector question and the figure question.
+@ ph-intro | Public health: introduction (Pr Mouwafaq)
+@ ph-det | Public health: determinants of health and social determinants (Pr Mouwafaq)
+@ ph-hsa | Health systems analysis (Pr Belrhiti)
+P4 A ph-intro
+ Yes: clinical medicine treats the individual; public health prevents and controls disease across the population.
+ No: both rest on scientific evidence.
+ No: it is the other way round.
+ No: public health is multidisciplinary (epidemiology, demography, law, economics, sociology...).
+P42 C ph-intro
+ No: both rest on scientific evidence.
+ No: public health is the multidisciplinary one.
+ Yes: medicine treats the individual's disease; public health prevents and controls it in the population.
+ No: it is the other way round.
+P11 C ph-intro
+ No: finding the causes (risk factors) is the second step.
+ No: evaluation comes after the intervention.
+ Yes: the approach starts with surveillance: what is the problem?
+ No: implementation is the last step.
+P38 A ph-intro
+ Yes: surveillance first: what is the problem?
+ No: implementation comes last.
+ No: evaluation comes after the intervention.
+ No: the causes are the second step.
+P9 A ph-intro
+ Yes: monitoring and investigating an unusual rise in cases is surveillance.
+ No: training is about the workforce.
+ No: quality assurance is about services.
+ No: health promotion works on the determinants before disease.
+P43 D ph-intro
+ No: quality assurance is about services.
+ No: training is about the workforce.
+ No: health promotion works on the determinants.
+ Yes: detecting and investigating an outbreak is epidemiological surveillance.
+P8 BD ph-det
+ No: family history is a non-modifiable factor.
+ Yes: physical inactivity is a modifiable risk factor.
+ No: age is non-modifiable.
+ Yes: smoking is the first modifiable factor on the slides.
+P31 AB ph-det
+ Yes: smoking is modifiable.
+ Yes: physical activity is modifiable.
+ No: family history is non-modifiable.
+ No: age is non-modifiable.
+P15 AC ph-det
+ Yes: diet is a lifestyle choice the person controls.
+ No: genetics is human biology.
+ Yes: physical activity is lifestyle.
+ No: education is a social determinant.
+P47 AB ph-det
+ Yes: diet is lifestyle.
+ Yes: physical activity is lifestyle.
+ No: genetics is human biology.
+ No: education is a social determinant.
+P44 AB ph-det
+ Yes: age is human biology, non-modifiable.
+ Yes: genetics is human biology.
+ No: physical activity is lifestyle.
+ No: smoking is lifestyle.
+P6 CD ph-det
+ No: biology is not a social determinant.
+ No: behaviours are intermediary determinants.
+ Yes: in the WHO framework (Solar and Irwin), the structural determinants are the socioeconomic and political context: macroeconomic policies...
+ Yes: ...and governance.
+P46 BC ph-det
+ No: biology is not a social determinant.
+ Yes: macroeconomic policies are part of the structural context.
+ Yes: governance too.
+ No: behaviours are intermediary determinants.
+P2 A ph-hsa
+ Yes: the textbook calls health systems dynamic, complex social systems.
+ No: the interactions are dynamic, not static.
+ No: many actors interact: providers, beneficiaries, funders, the state.
+ No: it includes private actors, traditional healers and home care.
+P3 B ph-hsa
+ No: it is more than staff and medicines.
+ Yes: the WHO (2000) definition: all activities whose primary purpose is to promote, restore or maintain health.
+ No: it includes prevention and promotion, not only medical care.
+ No: it goes beyond the ministry and public institutions.
+P7 C ph-hsa
+ No: equity is about need, not identical services.
+ No: access without discrimination, not priority to the insured.
+ Yes: every person gets the services that meet their needs, without discrimination.
+ No: the gaps between urban and rural areas are the inequity to fight.
+P12 D ph-hsa
+ No: health workforce is one of the six pillars.
+ No: leadership and governance is a pillar.
+ No: information systems is a pillar.
+ Yes: accreditation is not a pillar (the six: service delivery, workforce, information, medical products, financing, leadership and governance).
+P14 B ph-hsa
+ No: health spending is about 5.5% of GDP.
+ Yes: inequity between urban and rural areas is a key performance challenge.
+ No: the textbook points to deregulation of the private sector.
+ No: demand is growing faster than supply.
+P36 B ph-hsa
+ No: the textbook reads urban-rural gaps as inequity, not a governance gap.
+ Yes: the gaps in infant and neonatal mortality show inequitable access to care.
+ No: it says nothing on the districts' effectiveness.
+ No: tertiary hospitals don't explain neonatal deaths.
+P37 C ph-hsa
+ No: the High Authority for Health is law 07-22.
+ No: not on the list of the 2022 reform laws.
+ Yes: the 2022 reform's third part restructures care delivery into territorial health groupings.
+ No: the medicines agency is law 10-22.
+P39 C ph-hsa
+ No: the textbook gives 0.9 per 1,000.
+ No: 0.9 per 1,000.
+ Yes: about 0.9 doctors per 1,000 inhabitants, far below the WHO's 4.5 health workers per 1,000.
+ No: 4.5 per 1,000 is the WHO standard Morocco is far from.
+P41 D ph-hsa
+ No: it groups public hospitals with health centres.
+ No: it is public, not private.
+ No: it includes the health centres.
+ Yes: provincial, regional and university hospitals with the health centres of a territory.

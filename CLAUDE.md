@@ -404,6 +404,16 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   Dropped: a public health question with two options cut off, and the (2S)-alanine question whose figure carries someone's
   circles. Figures: `img/efm1-s1-*.webp`. Y17/Y40 (PV = nRT) print as a key conflict only because "P.V = n.R.T" and
   "P.V = n.R/T" have the same words; both keys are right. Test: efm1.js.
+- S1 answers from the slides (25 November 2026, Abi uploaded "S1 lectures" to Drive): 198 of the 436 checked option by
+  option against the decks, in `src/pipeline/s1/slides/<module>.txt` (`@ id | title` lectures, then `SID KEY lecture` and one
+  ` Yes:/No: why` line per option); `import_s1.py` asserts the Yes lines match the key, replaces the knowledge key, writes
+  the note "Answered by Claude from the lecture slides (…)" and `src/sem/efm1-s1/explanations.json`. Keys that changed with
+  the slides: A14 AE (most of the LV is posterior, the heart deck), G3 BC (mtDNA codes complexes III, IV, V), G30 ABE (simple
+  diffusion lists water and ions), G46 B and G47 C (the slides give Cajal bodies telomere repair, granules splicing), G48 ACD
+  (2 pore rings). Still from knowledge: limb anatomy and the introduction (no deck in the folder), genetics, biostatistics
+  (no deck), figure and nomenclature questions, the French-track structural biochemistry exam, clinical basics, and a few the
+  slides don't settle (G33, G42, G43, Y8, Y29, Y54, C60, P1, P35). The aorta and veins decks (parts 6–7, the same file twice)
+  are scans: OCR'd here. The About line counts the slide-checked answers (their note says "from the lecture slides").
 - EFM2 S3 (25 November 2026, `efm2-s3/`, data in `src/sem/efm2-s3/`, store `den-efm2-s3-v1`, sync `s_efm2s3`): 7 modules and
   79 lectures from Abi's "EFM Quick-Link sheet" (every year's lectures per semester; Abi: S3 first, then S1). Modules:
   Anatomy III (`AT-`), Physiology II (`PH-`, parts neuromuscular / bioenergetics / renal as her sheet has them, renal

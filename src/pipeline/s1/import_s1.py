@@ -80,8 +80,28 @@ for k in ORDER:
         if p:
             ANS[(k, int(p[0]))] = p[1]
 
+# answers checked against Abi's S1 lecture slides (25 November 2026): slides/<module>.txt, "@ id | title" lectures,
+# then "SID KEY lecture" and one " Yes:/No: why" line per option. They replace the knowledge key.
+SL, SLEC = {}, {}
+for f in sorted(os.listdir(os.path.join(HERE, 'slides'))):
+    cur = None
+    for line in open(os.path.join(HERE, 'slides', f)):
+        if line.startswith('#') or not line.strip():
+            continue
+        if line.startswith('@ '):
+            k, t = line[2:].split('|', 1)
+            SLEC[k.strip()] = t.strip()
+        elif line.startswith(' '):
+            cur[2].append(line.strip())
+        else:
+            sid_, key_, lec_ = line.split()
+            assert lec_ in SLEC, line
+            cur = SL[sid_] = (key_, lec_, [])
+
 sources, questions, short, answers = [], [], {}, {}
 nxt = Counter()
+CHANGED = []
+EXP = {'lectures': {k: {'title': t, 'added': '2026-11-25'} for k, t in SLEC.items()}, 'questions': {}}
 lec_of = {}
 for k in ORDER:
     mod, typ, year, label = SETS[k]
@@ -106,10 +126,22 @@ for k in ORDER:
         sid = f'{p}{nxt[p]}'
         short[sid] = qid
         key = ANS[(k, q['ord'])]
+        note = 'Claude’s answer, not yet checked against the lecture slides; the marks in the photos were not used.'
+        by = {'key': key, 'by': 'knowledge', 'set': k, 'n': q['ord']}
+        if sid in SL:
+            key, lec_, why = SL[sid]
+            assert len(why) == len(q['o']), (sid, len(why), len(q['o']))
+            assert all(w.startswith(('Yes', 'No')) for w in why), sid
+            assert [i for i, w in enumerate(why) if w.startswith('Yes')] == ['ABCDE'.index(c) for c in key], sid
+            if key != by['key']:
+                CHANGED.append((sid, by['key'], key))
+            note = 'Answered by Claude from the lecture slides (' + SLEC[lec_] + '); the marks in the photos were not used.'
+            by = {'key': key, 'by': 'lecture', 'lecture': lec_, 'set': k, 'n': q['ord']}
+            EXP['questions'][sid] = dict({'lecture': lec_}, **{'ABCDE'[i]: w for i, w in enumerate(why)})
         e['answer'] = ['ABCDE'.index(c) for c in key]
         e['key'] = 'claude'
-        e['qNotes'] = [{'by': 'claude', 'anchor': None, 'html': '<p>Claude’s answer, not yet checked against the lecture slides; the marks in the photos were not used.</p>'}]
-        answers[sid] = {'key': key, 'by': 'knowledge', 'set': k, 'n': q['ord']}
+        e['qNotes'] = [{'by': 'claude', 'anchor': None, 'html': '<p>' + note + '</p>'}]
+        answers[sid] = by
         questions.append(e)
 assert len({q['id'] for q in questions}) == len(questions), 'id clash'
 
@@ -203,5 +235,9 @@ json.dump({'repeats': reps, 'dup': dup}, open(D + 'repeats.json', 'w'), ensure_a
 json.dump(concepts, open(D + 'concepts.json', 'w'), ensure_ascii=False, indent=1)
 json.dump(LEC, open(D + 'lectures.json', 'w'), ensure_ascii=False, indent=1)
 json.dump(answers, open(D + 'answers.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(EXP, open(D + 'explanations.json', 'w'), ensure_ascii=False, indent=1)
+missing = set(SL) - set(EXP['questions'])
+assert not missing, missing
+print('from the slides:', len(EXP['questions']), '| keys changed from the knowledge answer:', CHANGED)
 print('questions', len(questions), Counter(q['topic'] for q in questions), '| sources', len(sources))
 print('per lecture', sorted(Counter(q['c'][0] for q in questions).items()))

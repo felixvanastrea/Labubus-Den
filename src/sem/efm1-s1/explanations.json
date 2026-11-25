@@ -1,4 +1,1560 @@
 {
- "lectures": {},
- "questions": {}
+ "lectures": {
+  "an-heart": {
+   "title": "Anatomy of the thorax 5: the heart",
+   "added": "2026-11-25"
+  },
+  "an-vessels": {
+   "title": "Anatomy of the thorax 6–7: aorta, great vessels",
+   "added": "2026-11-25"
+  },
+  "an-resp": {
+   "title": "Anatomy of the thorax 8: the respiratory system",
+   "added": "2026-11-25"
+  },
+  "cb-1": {
+   "title": "Cell biology, chapter 1: cell studying methods",
+   "added": "2026-11-25"
+  },
+  "cb-2": {
+   "title": "Cell biology, chapter 2: the cell membrane",
+   "added": "2026-11-25"
+  },
+  "cb-3": {
+   "title": "Cell biology, chapter 3: cytoskeleton",
+   "added": "2026-11-25"
+  },
+  "cb-4": {
+   "title": "Cell biology, chapter 4: cell organelles",
+   "added": "2026-11-25"
+  },
+  "cb-5": {
+   "title": "Cell biology, chapter 5: cell cycle, nucleus, apoptosis",
+   "added": "2026-11-25"
+  },
+  "by-states": {
+   "title": "Biophysics: different states of matter (Pr Aschawa)",
+   "added": "2026-11-25"
+  },
+  "by-gas": {
+   "title": "Biophysics: gaseous state (Pr Aschawa)",
+   "added": "2026-11-25"
+  },
+  "by-osm": {
+   "title": "Biophysics: bioelectrical potential and osmosis (Pr Aschawa)",
+   "added": "2026-11-25"
+  },
+  "by-circ": {
+   "title": "Biophysics of the blood circulation (Pr Aschawa)",
+   "added": "2026-11-25"
+  },
+  "by-ab": {
+   "title": "Biophysics: acid-base balance (Pr Aschawa)",
+   "added": "2026-11-25"
+  },
+  "by-radio": {
+   "title": "Radiation biophysics: radioactivity, interactions, radiobiology, radioprotection (Pr Çaoui)",
+   "added": "2026-11-25"
+  },
+  "gen-1": {
+   "title": "General chemistry, lecture 1: structure of matter",
+   "added": "2026-11-25"
+  },
+  "gen-3": {
+   "title": "General chemistry, lecture 3: quantum numbers",
+   "added": "2026-11-25"
+  },
+  "org-34": {
+   "title": "Organic chemistry, lectures 3–4: isomerism",
+   "added": "2026-11-25"
+  },
+  "bc-1": {
+   "title": "Biochemistry, chapter 1: amino acids, peptides and proteins",
+   "added": "2026-11-25"
+  },
+  "bc-2": {
+   "title": "Biochemistry, chapter 2: enzymes and coenzymes",
+   "added": "2026-11-25"
+  },
+  "bc-3": {
+   "title": "Biochemistry, chapter 3: carbohydrates",
+   "added": "2026-11-25"
+  },
+  "bc-4": {
+   "title": "Biochemistry, chapter 4: lipids",
+   "added": "2026-11-25"
+  },
+  "bc-5": {
+   "title": "Biochemistry, chapter 5: carbohydrate metabolism",
+   "added": "2026-11-25"
+  },
+  "bc-6": {
+   "title": "Biochemistry, chapter 6: lipid metabolism",
+   "added": "2026-11-25"
+  },
+  "mt-intro": {
+   "title": "Medical terminology: introduction (Pr Benyoussef)",
+   "added": "2026-11-25"
+  },
+  "mt-cardio": {
+   "title": "Medical terminology: cardiovascular system (Pr Benyoussef)",
+   "added": "2026-11-25"
+  },
+  "lm-book": {
+   "title": "Learning methodologies booklet",
+   "added": "2026-11-25"
+  },
+  "ph-intro": {
+   "title": "Public health: introduction (Pr Mouwafaq)",
+   "added": "2026-11-25"
+  },
+  "ph-det": {
+   "title": "Public health: determinants of health and social determinants (Pr Mouwafaq)",
+   "added": "2026-11-25"
+  },
+  "ph-hsa": {
+   "title": "Health systems analysis (Pr Belrhiti)",
+   "added": "2026-11-25"
+  }
+ },
+ "questions": {
+  "A14": {
+   "lecture": "an-heart",
+   "A": "Yes: the slides say most of the left ventricle is on the posterior side of the heart.",
+   "B": "No: the right ventricle forms most of the anterior surface.",
+   "C": "No: the tricuspid valve lets blood from the right atrium into the right ventricle.",
+   "D": "No: the left ventricle gets blood from the left atrium; the mitral valve is on the left.",
+   "E": "Yes: in systole it pumps into the aorta through the aortic valve."
+  },
+  "A15": {
+   "lecture": "an-heart",
+   "A": "No: that is the left ventricle, fed by the left atrium.",
+   "B": "Yes: the right ventricle forms most of the anterior surface.",
+   "C": "Yes: right atrium to right ventricle through the tricuspid valve.",
+   "D": "No: the mitral valve is between the left atrium and left ventricle.",
+   "E": "Yes: outflow in systole is to the pulmonary trunk through the pulmonary valve."
+  },
+  "A16": {
+   "lecture": "an-heart",
+   "A": "No: the right coronary artery arises from the aorta, above the right aortic cusp.",
+   "B": "No: it arises from the aorta, not a pulmonary artery.",
+   "C": "Yes: it runs in the right AV groove, between the pulmonary trunk root and the right auricle.",
+   "D": "No: it supplies the right atrium, right ventricle, SA and AV nodes; the left atrium is the left coronary's.",
+   "E": "No: most of the left ventricle is supplied by the left coronary artery."
+  },
+  "A17": {
+   "lecture": "an-vessels",
+   "A": "No: the pulmonary arteries come from the pulmonary trunk.",
+   "B": "No: same, from the pulmonary trunk.",
+   "C": "Yes: the brachiocephalic trunk is the first branch, on the right.",
+   "D": "No: the second branch is the left common carotid; the right one comes from the brachiocephalic trunk.",
+   "E": "Yes: the left subclavian artery is the third branch."
+  },
+  "A18": {
+   "lecture": "an-resp",
+   "A": "Yes: word for word the slides.",
+   "B": "Yes: it bifurcates at T4–T5.",
+   "C": "Yes: C-shaped rings, open part facing posteriorly.",
+   "D": "Yes: the posterior wall is mainly smooth muscle.",
+   "E": "No: the trachea is anterior to the oesophagus."
+  },
+  "A19": {
+   "lecture": "an-resp",
+   "A": "Yes: each lung lies in its pleural cavity.",
+   "B": "No: the left lung has two lobes and one (oblique) fissure.",
+   "C": "Yes: its two lobes are separated by the oblique fissure.",
+   "D": "Yes: each lung has a base, an apex, two surfaces and three borders.",
+   "E": "No: the costal surface is against the ribs; the medial (mediastinal) surface is next to the heart."
+  },
+  "A20": {
+   "lecture": "an-resp",
+   "A": "Yes: the right lung is a little larger, as the heart bulges to the left.",
+   "B": "Yes: three lobes, horizontal and oblique fissures.",
+   "C": "No: the horizontal fissure separates the superior lobe from the middle lobe.",
+   "D": "Yes: each lung is in its pleural cavity.",
+   "E": "Yes: the slides list the heart, inferior and superior venae cavae, azygos vein and oesophagus."
+  },
+  "A61": {
+   "lecture": "an-heart",
+   "A": "Yes: the left ventricle forms the left border and most of the left (pulmonary) surface.",
+   "B": "No: the right ventricle forms most of the anterior surface.",
+   "C": "Yes: left atrium to left ventricle through the mitral valve.",
+   "D": "No: the right atrium empties into the right ventricle.",
+   "E": "Yes: in systole it pumps into the aorta through the aortic valve."
+  },
+  "A62": {
+   "lecture": "an-heart",
+   "A": "No: the left atrium empties through the mitral valve into the left ventricle.",
+   "B": "Yes: the right ventricle forms most of the anterior surface.",
+   "C": "Yes: right atrium to right ventricle through the tricuspid valve.",
+   "D": "No: the mitral valve is on the left.",
+   "E": "No: it pumps through the pulmonary valve, in systole."
+  },
+  "A63": {
+   "lecture": "an-heart",
+   "A": "Yes: it receives systemic venous blood through both venae cavae (and the coronary sinus).",
+   "B": "No: the right ventricle forms most of the anterior surface.",
+   "C": "Yes: it pumps into the right ventricle through the tricuspid valve.",
+   "D": "No: the four pulmonary veins drain into the left atrium.",
+   "E": "Yes: the superior vena cava enters the right atrium."
+  },
+  "A64": {
+   "lecture": "an-heart",
+   "A": "No: the coronary arteries arise from the aorta.",
+   "B": "No: they arise from the aorta, above the aortic cusps.",
+   "C": "Yes: word for word the slides: they run on the epicardium in the sulci and interventricular grooves.",
+   "D": "No: there are a left and a right coronary artery.",
+   "E": "Yes: word for word the slides on the left coronary artery."
+  },
+  "A65": {
+   "lecture": "an-heart",
+   "A": "No: it arises from the aorta.",
+   "B": "No: it arises from the aorta.",
+   "C": "Yes: it runs in the right AV groove.",
+   "D": "No: the left atrium is supplied by the left coronary artery.",
+   "E": "Yes: it supplies the right atrium, right ventricle, SA and AV nodes."
+  },
+  "A66": {
+   "lecture": "an-vessels",
+   "A": "No: the pulmonary arteries come from the pulmonary trunk.",
+   "B": "No: same, from the pulmonary trunk.",
+   "C": "Yes: first branch.",
+   "D": "Yes: second branch.",
+   "E": "Yes: third branch."
+  },
+  "A67": {
+   "lecture": "an-vessels",
+   "A": "No: the superior vena cava is a vein that drains into the right atrium.",
+   "B": "Yes: first branch of the arch.",
+   "C": "Yes: the coronary arteries arise from the ascending aorta, above the aortic cusps.",
+   "D": "Yes: the descending thoracic aorta gives the posterior intercostal arteries.",
+   "E": "Yes: second branch of the arch."
+  },
+  "A68": {
+   "lecture": "an-resp",
+   "A": "No: it runs from the larynx into the thorax, to the bronchi.",
+   "B": "Yes: it bifurcates at T4–T5.",
+   "C": "Yes: C-shaped cartilage rings hold it open.",
+   "D": "No: the posterior wall is mainly smooth muscle.",
+   "E": "Yes: the oesophagus lies behind it."
+  },
+  "A69": {
+   "lecture": "an-resp",
+   "A": "Yes: the arch begins in front of it and ends on its left side.",
+   "B": "Yes: it bifurcates in the mediastinum, at T4–T5.",
+   "C": "No: it is in the mediastinum, medial to both lungs.",
+   "D": "Yes: it lies between the lungs, so medial to the left lung.",
+   "E": "No: the trachea is anterior to the vertebral bodies."
+  },
+  "A70": {
+   "lecture": "an-resp",
+   "A": "Yes: each lung is in its pleural cavity.",
+   "B": "No: two lobes and one fissure.",
+   "C": "Yes: the oblique fissure separates its two lobes.",
+   "D": "Yes: half-cone, base, apex, two surfaces, three borders.",
+   "E": "Yes: the slides list the heart first next to its medial surface."
+  },
+  "A71": {
+   "lecture": "an-resp",
+   "A": "Yes: a little larger than the left.",
+   "B": "Yes: three lobes, two fissures.",
+   "C": "No: the horizontal fissure separates the superior from the middle lobe.",
+   "D": "Yes: each lung is in its pleural cavity.",
+   "E": "Yes: the slides list exactly these."
+  },
+  "A72": {
+   "lecture": "an-resp",
+   "A": "No: that is the superior lobe; the inferior lobe touches the posterior and inferior walls.",
+   "B": "Yes: word for word the slides on the middle lobe.",
+   "C": "No: the lung is surrounded by the pleura; the pericardium is around the heart.",
+   "D": "Yes: the medial surface lies against the mediastinum.",
+   "E": "Yes: the base sits on the diaphragm."
+  },
+  "A73": {
+   "lecture": "an-vessels",
+   "A": "No: the pulmonary trunk is an artery leaving the right ventricle.",
+   "B": "No: the inferior vena cava drains into the right atrium on its own.",
+   "C": "Yes: the two brachiocephalic veins join to form the superior vena cava.",
+   "D": "Yes: the superior vena cava receives the azygos vein just before entering the pericardium.",
+   "E": "No: the pulmonary veins drain into the left atrium."
+  },
+  "A74": {
+   "lecture": "an-resp",
+   "A": "No: the superior vena cava is in the mediastinum, next to the right lung.",
+   "B": "Yes: each hilum holds a superior and an inferior pulmonary vein.",
+   "C": "No: the right main bronchus is in the right hilum.",
+   "D": "No: the right pulmonary artery is in the right hilum.",
+   "E": "No: the inferior vena cava is not in a hilum."
+  },
+  "A75": {
+   "lecture": "an-resp",
+   "A": "Yes: its short thoracic part is in the middle mediastinum.",
+   "B": "No: the lungs are in the pleural cavities, on either side of the mediastinum.",
+   "C": "Yes: the mediastinum contains the heart.",
+   "D": "Yes: the major systemic vessels, the aortic arch among them.",
+   "E": "Yes: the mediastinum contains the trachea."
+  },
+  "A124": {
+   "lecture": "an-resp",
+   "A": "Yes: the right main bronchus is wider and more vertical, so foreign bodies lodge there more often.",
+   "B": "No: it is wider.",
+   "C": "No: it is more vertical.",
+   "D": "No: it is shorter than the left."
+  },
+  "A128": {
+   "lecture": "an-heart",
+   "A": "Yes: the left surface, formed mostly by the left ventricle, faces the left lung: the pulmonary surface.",
+   "B": "No: the sternocostal surface is anterior, behind the sternum and costal cartilages.",
+   "C": "No: the diaphragmatic surface is inferior, on the central tendon.",
+   "D": "No: the base faces posteriorly and is formed mainly by the left atrium."
+  },
+  "A136": {
+   "lecture": "an-resp",
+   "A": "Yes: superior, middle and inferior lobar bronchi.",
+   "B": "No: two lobar bronchi is the left lung.",
+   "C": "No: the lobar bronchi divide into segmental bronchi, not lobular ones.",
+   "D": "Yes: ten segmental bronchi, one per bronchopulmonary segment."
+  },
+  "A137": {
+   "lecture": "an-resp",
+   "A": "No: the right pulmonary artery passes anterior to the tracheal bifurcation and right main bronchus, far in front of the oesophagus.",
+   "B": "Yes: it passes behind the ascending aorta and the superior vena cava.",
+   "C": "Yes: it runs horizontally under the arch of the aorta.",
+   "D": "No: it crosses the middle mediastinum, not the posterior one."
+  },
+  "A141": {
+   "lecture": "an-vessels",
+   "A": "No: the azygos vein ends in the superior vena cava, not the atrium.",
+   "B": "No: it drains upward, into the superior vena cava.",
+   "C": "Yes: the superior vena cava receives the azygos vein just before entering the pericardium.",
+   "D": "No: pulmonary veins carry blood from the lungs to the left atrium."
+  },
+  "A142": {
+   "lecture": "an-vessels",
+   "A": "No: the thoracic aorta is ascending aorta, arch and descending aorta; the descending part begins at the lower edge of T4, continuing the arch.",
+   "B": "Yes: it ends at T12, where it passes behind the diaphragm (aortic hiatus).",
+   "C": "Yes: the descending part gives the posterior intercostal arteries.",
+   "D": "No: the arch is only one part of the thoracic aorta."
+  },
+  "A143": {
+   "lecture": "an-resp",
+   "A": "Yes: it bifurcates at T4–T5 (TIV/V).",
+   "B": "Yes: the carina, the hook-shaped last ring, sits between the origins of the two main bronchi.",
+   "C": "No: C6 is where the trachea begins.",
+   "D": "No: the arch is in front and to the left; it is not where the trachea divides."
+  },
+  "A144": {
+   "lecture": "an-resp",
+   "A": "No: the oesophagus is behind the trachea.",
+   "B": "Yes: the left brachiocephalic vein crosses in front of the trachea in the superior mediastinum.",
+   "C": "Yes: the thymus lies in front, in the superior mediastinum.",
+   "D": "No: the thyroid isthmus is in front of the cervical trachea, not the thoracic part."
+  },
+  "C1": {
+   "lecture": "gen-1",
+   "A": "No: a neutral atom has as many protons as electrons, so 6.",
+   "B": "No: 6 electrons means 6 protons.",
+   "C": "Yes: Z = number of protons = number of electrons in the neutral atom = 6.",
+   "D": "No: 6 electrons means 6 protons."
+  },
+  "C2": {
+   "lecture": "gen-1",
+   "A": "No: A = protons + neutrons = 6 + 6 = 12.",
+   "B": "Yes: A = 6 protons + 6 neutrons = 12.",
+   "C": "No: A = 6 + 6 = 12.",
+   "D": "No: 6 is Z, not A."
+  },
+  "C3": {
+   "lecture": "gen-1",
+   "A": "No: carbon 12 has 12 a.m.u.",
+   "B": "Yes: the a.m.u is 1/12 of the carbon 12 atom, so carbon 12 weighs 12 a.m.u.",
+   "C": "No: 6 protons + 6 neutrons give about 12 a.m.u.",
+   "D": "No: about 12 a.m.u."
+  },
+  "C4": {
+   "lecture": "gen-1",
+   "A": "Yes: Z = 6 is carbon (6 protons, 6 neutrons: carbon 12).",
+   "B": "No: nitrogen has Z = 7.",
+   "C": "No: oxygen has Z = 8.",
+   "D": "No: boron has Z = 5."
+  },
+  "C5": {
+   "lecture": "gen-1",
+   "A": "No: 65 is the nucleon number and 30 the electrons.",
+   "B": "No: A = 65 nucleons, not 95.",
+   "C": "No: A = 65 nucleons.",
+   "D": "Yes: A = 65 nucleons, Z = 30 protons, so 65 − 30 = 35 neutrons."
+  },
+  "C6": {
+   "lecture": "gen-1",
+   "A": "Yes: both are chlorine, Z = 17.",
+   "B": "Yes: same Z, so 17 protons each.",
+   "C": "No: 35 and 37 nucleons; they differ by two neutrons.",
+   "D": "Yes: same Z, different A: isotopes."
+  },
+  "C7": {
+   "lecture": "org-34",
+   "A": "No: CIP ranks atoms by atomic number.",
+   "B": "No: electronic effects are not used.",
+   "C": "Yes: priority goes to the higher atomic number Z (I > Br > Cl > S > F > O > N > C > H).",
+   "D": "No: atomic number, not electronegativity."
+  },
+  "C8": {
+   "lecture": "org-34",
+   "A": "No: isomers differ in structure, not electronic configuration.",
+   "B": "No: hybridization can differ between isomers.",
+   "C": "No: they differ in structure, so their skeletal formulas differ.",
+   "D": "Yes: isomers have the same molecular formula and different structures."
+  },
+  "C9": {
+   "lecture": "org-34",
+   "A": "Yes: geometric isomerism of alkenes is Z and E (cis and trans in rings).",
+   "B": "No: R and S is optical isomerism.",
+   "C": "No: Z and E use the CIP rules, not Hofmann's.",
+   "D": "No: it rests on CIP priorities, not electronic configuration."
+  },
+  "C10": {
+   "lecture": "org-34",
+   "A": "No: cis and trans is geometric isomerism.",
+   "B": "No: erythro and threo describe compounds with two chiral centres, not optical activity itself.",
+   "C": "Yes: optical isomers are named R and S at each chiral centre.",
+   "D": "No: Z and E is geometric isomerism."
+  },
+  "C11": {
+   "lecture": "org-34",
+   "A": "No: Fischer projections are used for sugars and amino acids.",
+   "B": "No: same.",
+   "C": "Yes: the slides: best used for monosaccharides and some amino acids.",
+   "D": "No: sugars and amino acids."
+  },
+  "C13": {
+   "lecture": "bc-5",
+   "A": "No: favism is G6PD deficiency.",
+   "B": "No: same.",
+   "C": "Yes: G6PD, the key enzyme of the pentose phosphate pathway, is lacking: no NADPH, red cells break down.",
+   "D": "No: same."
+  },
+  "C14": {
+   "lecture": "bc-5",
+   "A": "No: glycogenolysis is activated by glucagon; insulin activates glycogenesis.",
+   "B": "Yes: fasted state, nocturnal fast, intense activity.",
+   "C": "Yes: activated by glucagon.",
+   "D": "No: it breaks glycogen down."
+  },
+  "C15": {
+   "lecture": "bc-3",
+   "A": "No: peptidoglycan is a heteropolysaccharide (bacterial cell wall).",
+   "B": "No: glucose and galactose differ at C4.",
+   "C": "Yes: glucose + galactose joined by a β1-4 glycosidic bond (glycosylation).",
+   "D": "Yes: glycogen is stored in the liver and the muscles."
+  },
+  "C16": {
+   "lecture": "bc-1",
+   "A": "Yes: histidine is one of the 9 essential amino acids.",
+   "B": "No: non-essential ones are made by the body; essential ones can't be.",
+   "C": "Yes: tryptophan is the largest amino acid, aromatic and non-polar.",
+   "D": "No: cysteine's side chain carries sulfur (a thiol), not a basic group."
+  },
+  "C17": {
+   "lecture": "bc-5",
+   "A": "No: gluconeogenesis consumes ATP.",
+   "B": "No: it is not the reverse of glycolysis: it bypasses the 3 irreversible reactions with its own enzymes.",
+   "C": "Yes: pyruvate is a substrate, with lactate, glycerol and glucogenic amino acids.",
+   "D": "Yes: glucose from non-carbohydrate substrates."
+  },
+  "C18": {
+   "lecture": "bc-5",
+   "A": "No: glycolysis is in the cytoplasm only.",
+   "B": "Yes: reactions 1, 3 and 10 are irreversible.",
+   "C": "No: the payoff phase makes ATP (reactions 7 and 10).",
+   "D": "Yes: reaction 1, by hexokinase or glucokinase."
+  },
+  "C19": {
+   "lecture": "bc-4",
+   "A": "No: omega 3, 6 and 7 are unsaturated fatty acids.",
+   "B": "No: glycerol is an alcohol, the backbone of glycerides, not a lipid.",
+   "C": "Yes: the slides mark sphingolipids as amphiphilic.",
+   "D": "No: nothing on the slides says so."
+  },
+  "C20": {
+   "lecture": "bc-6",
+   "A": "No: 80% of cholesterol is made by the body.",
+   "B": "Yes: they must be activated first (2 ATP used).",
+   "C": "Yes: carnitine carries activated fatty acids into the mitochondria.",
+   "D": "No: phospholipases A1, A2, C and D break them down."
+  },
+  "C21": {
+   "lecture": "bc-4",
+   "A": "Yes: hydrophobic core and amphiphilic surface.",
+   "B": "No: they are classed by density.",
+   "C": "No: five classes.",
+   "D": "Yes: LDL carry cholesterol from the liver to the tissues."
+  },
+  "C22": {
+   "lecture": "bc-6",
+   "A": "No: acetyl-CoA is what ketone bodies are made from.",
+   "B": "No: propionyl-CoA comes from odd-chain fatty acids.",
+   "C": "Yes: acetone is a ketone body, breathed out.",
+   "D": "Yes: acetoacetate is a ketone body."
+  },
+  "C23": {
+   "lecture": "bc-5",
+   "A": "Yes: glycolysis gives 2 pyruvates.",
+   "B": "No: it is fermented or oxidised, not excreted by the kidney.",
+   "C": "No: without oxygen it is fermented (lactate).",
+   "D": "Yes: with oxygen, PDH turns it into acetyl-CoA."
+  },
+  "C24": {
+   "lecture": "bc-1",
+   "A": "Yes: the peptide bond has a partial double bond character: planar, no rotation.",
+   "B": "No: tertiary structure comes from many interactions between residues, not hydrogen bonds only.",
+   "C": "Yes: the primary structure is the sequence held by peptide bonds.",
+   "D": "No: hemoglobin is globular."
+  },
+  "C25": {
+   "lecture": "bc-2",
+   "A": "No: NADH is an organic cofactor (a coenzyme); mineral ones are Mg2+, Zn2+, Fe2+.",
+   "B": "No: they transfer many things (electrons, groups); not all are reducing.",
+   "C": "Yes: coenzymes are vitamins or their derivatives (or lipids).",
+   "D": "Yes: many enzymes need a coenzyme (apoenzyme + coenzyme = holoenzyme)."
+  },
+  "C26": {
+   "lecture": "gen-1",
+   "A": "Yes: 8 electrons means Z = 8; A = 8 + 8 = 16.",
+   "B": "No: A = 8 + 8 = 16.",
+   "C": "No: A = 16.",
+   "D": "No: A = 16."
+  },
+  "C27": {
+   "lecture": "gen-1",
+   "A": "No: theoretical mass 8 × 1.0078 + 8 × 1.0087 = 16.132; 16.132 − 15.995 = 0.137.",
+   "B": "No: the defect is 0.137 a.m.u.",
+   "C": "No: the defect is 0.137 a.m.u.",
+   "D": "Yes: Δm = theoretical mass of the nucleons − real mass = 16.132 − 15.995 ≈ 0.137 a.m.u."
+  },
+  "C28": {
+   "lecture": "gen-1",
+   "A": "Yes: oxygen 16 (8 protons, 8 neutrons) weighs about 16 a.m.u.",
+   "B": "No: about 16 a.m.u.",
+   "C": "No: 12 is carbon.",
+   "D": "No: about 16 a.m.u."
+  },
+  "C29": {
+   "lecture": "gen-1",
+   "A": "No: protons = electrons = 8.",
+   "B": "Yes: in the neutral atom Z = number of electrons = 8.",
+   "C": "No: 8 protons.",
+   "D": "No: 8 protons."
+  },
+  "C30": {
+   "lecture": "gen-1",
+   "A": "No: boron is Z = 5.",
+   "B": "Yes: Z = 8 is oxygen.",
+   "C": "No: carbon is Z = 6.",
+   "D": "No: nitrogen is Z = 7."
+  },
+  "C31": {
+   "lecture": "gen-1",
+   "A": "No: 8 × 1.0078 + 8 × 1.0087 = 16.132.",
+   "B": "No: that is close to the real mass; the theoretical mass is larger.",
+   "C": "No: 16.132.",
+   "D": "Yes: 8 protons × 1.0078 + 8 neutrons × 1.0087 = 16.132 a.m.u; the real nucleus is always lighter."
+  },
+  "C32": {
+   "lecture": "org-34",
+   "A": "No: Z and E is geometric.",
+   "B": "No: erythro and threo are names on Fischer projections, not what optical isomerism is.",
+   "C": "No: cis and trans is geometric.",
+   "D": "Yes: R and S at chiral centres."
+  },
+  "C33": {
+   "lecture": "org-34",
+   "A": "No: R and S is optical isomerism.",
+   "B": "Yes: Z (together) and E (opposite).",
+   "C": "No: CIP priorities, not electronic configuration.",
+   "D": "No: CIP rules, not Hofmann's."
+  },
+  "C35": {
+   "lecture": "org-34",
+   "A": "No: hybridization can differ.",
+   "B": "Yes: same molecular formula, different structures.",
+   "C": "No: the skeletal formulas differ.",
+   "D": "No: not the electronic configuration."
+  },
+  "C36": {
+   "lecture": "org-34",
+   "A": "No: CIP ranks by atomic number.",
+   "B": "Yes: priority by decreasing atomic number Z.",
+   "C": "No: atomic number, not electronegativity.",
+   "D": "No: electronic effects are not used."
+  },
+  "C37": {
+   "lecture": "org-34",
+   "A": "No: sugars and amino acids.",
+   "B": "No: sugars and amino acids.",
+   "C": "No: sugars and amino acids.",
+   "D": "Yes: monosaccharides and amino acids."
+  },
+  "C38": {
+   "lecture": "bc-1",
+   "A": "Yes: histidine is one of the 20 standard amino acids.",
+   "B": "No: pyrrolysine is one of the 2 non-standard proteinogenic amino acids.",
+   "C": "Yes: lysine is standard.",
+   "D": "No: selenocysteine is the other non-standard one."
+  },
+  "C39": {
+   "lecture": "bc-2",
+   "A": "Yes: enzymes are catalysts.",
+   "B": "No: they don't change the yield or the equilibrium.",
+   "C": "Yes: recycled at the end of the reaction and reused.",
+   "D": "No: they lower the activation energy."
+  },
+  "C40": {
+   "lecture": "bc-5",
+   "A": "Yes: breakdown of glycogen to glucose.",
+   "B": "No: it uses its own enzymes, not the steps of glycogenesis reversed.",
+   "C": "Yes: glycogen phosphorylase, phosphoglucomutase, debranching enzyme, glucose-6-phosphatase.",
+   "D": "No: it is activated by glucagon."
+  },
+  "C41": {
+   "lecture": "bc-4",
+   "A": "Yes: cortisol is a steroid hormone made from cholesterol.",
+   "B": "No: insulin is a peptide (51 amino acids).",
+   "C": "No: FSH is a glycoprotein hormone.",
+   "D": "Yes: progesterone is a steroid hormone."
+  },
+  "C42": {
+   "lecture": "bc-1",
+   "A": "Yes: methionine is a sulfur amino acid.",
+   "B": "No: aspartate has an acid side chain.",
+   "C": "No: valine has a hydrocarbon side chain.",
+   "D": "Yes: cysteine is a sulfur amino acid."
+  },
+  "C43": {
+   "lecture": "bc-6",
+   "A": "No: the key enzyme is HMG-CoA reductase.",
+   "B": "Yes: acetyl-CoA is the starting substrate.",
+   "C": "No: 43 steps.",
+   "D": "Yes: statins inhibit HMG-CoA reductase."
+  },
+  "C44": {
+   "lecture": "bc-5",
+   "A": "No: the key enzymes of glycolysis are hexokinase, PFK-1 and pyruvate kinase.",
+   "B": "Yes: G6PD is the key enzyme of the pentose phosphate pathway.",
+   "C": "Yes: the pathway makes NADPH and ribose-5-P.",
+   "D": "No: its lack means no NADPH and hemolysis."
+  },
+  "C45": {
+   "lecture": "bc-3",
+   "A": "Yes: lactose is glucose + galactose.",
+   "B": "Yes: intolerance comes from lacking the enzyme lactase.",
+   "C": "No: lactose has a free anomeric OH, so it is reducing.",
+   "D": "No: it is a disaccharide."
+  },
+  "C46": {
+   "lecture": "bc-5",
+   "A": "No: not the reverse of glycolysis.",
+   "B": "No: glucose from glycogen is glycogenolysis.",
+   "C": "Yes: pyruvate is a substrate.",
+   "D": "Yes: from non-carbohydrate substrates."
+  },
+  "C47": {
+   "lecture": "bc-3",
+   "A": "Yes: a monosaccharide (hexose).",
+   "B": "No: starch is a polysaccharide.",
+   "C": "No: maltose is a disaccharide (glucose + glucose).",
+   "D": "Yes: a monosaccharide (ketohexose)."
+  },
+  "C48": {
+   "lecture": "bc-5",
+   "A": "No: catalase breaks down H2O2.",
+   "B": "No: pyruvate kinase makes pyruvate (reaction 10).",
+   "C": "No: hexokinase phosphorylates glucose.",
+   "D": "Yes: PDH decarboxylates pyruvate into acetyl-CoA."
+  },
+  "C59": {
+   "lecture": "bc-6",
+   "A": "Yes: C16 so n = 8: n − 1 = 7 turns.",
+   "B": "Yes: n = 8 acetyl-CoA.",
+   "C": "No: 8 × 10 + 7 × 2.5 + 7 × 1.5 − 2 = 106 ATP, not 120.",
+   "D": "No: n − 1 = 7 NADH."
+  },
+  "C61": {
+   "lecture": "bc-5",
+   "A": "Yes: reaction 10 is irreversible.",
+   "B": "No: enolase is reversible.",
+   "C": "Yes: reaction 3 is irreversible.",
+   "D": "No: aldolase is reversible."
+  },
+  "C62": {
+   "lecture": "bc-6",
+   "A": "Yes: the brain uses them during fasting.",
+   "B": "Yes: muscle and heart use them.",
+   "C": "No: the liver makes them but does not use them.",
+   "D": "No: red cells depend strictly on glucose."
+  },
+  "C63": {
+   "lecture": "bc-1",
+   "A": "Yes: the peptide bond is an amide bond between COOH and NH2.",
+   "B": "No: fibrous proteins (keratin, collagen) are insoluble.",
+   "C": "Yes: secondary structure is held by hydrogen bonds.",
+   "D": "No: an oligopeptide has 2 to 10 amino acids; 10 to 100 is a polypeptide."
+  },
+  "C64": {
+   "lecture": "bc-4",
+   "A": "Yes: prostaglandins are made by COX1 and COX2.",
+   "B": "Yes: amphiphilic membrane lipids.",
+   "C": "No: cis unsaturated fatty acids are beneficial; trans ones are harmful.",
+   "D": "No: VLDL carry lipids from the liver to the tissues, not to the intestines."
+  },
+  "C65": {
+   "lecture": "bc-5",
+   "A": "No: they carry electrons, they don't activate enzymes.",
+   "B": "Yes: they give their electrons to the respiratory chain (NADH = 2.5 ATP, FADH2 = 1.5 ATP).",
+   "C": "No: oxygen is carried by hemoglobin.",
+   "D": "No: ATP is made by ATP synthase, from their electrons."
+  },
+  "C66": {
+   "lecture": "bc-2",
+   "A": "No: ligases are the 6th class (after oxidoreductases, transferases, hydrolases, lyases, isomerases).",
+   "B": "No: FMN and FAD carry 2 H; NAD+ and NADP carry the hydride ion.",
+   "C": "Yes: they speed up reactions.",
+   "D": "Yes: the substrate binds there; it is where the enzyme works."
+  },
+  "C67": {
+   "lecture": "bc-3",
+   "A": "No: sorbitol comes from reducing glucose; ribose gives ribitol.",
+   "B": "Yes: 4 kcal per gram, against 9 for lipids.",
+   "C": "No: cellulose is a separate glucose polymer (β1-4); amylose and amylopectin make up starch.",
+   "D": "Yes: sucrose is glucose + fructose, α1-2β."
+  },
+  "C68": {
+   "lecture": "bc-5",
+   "A": "No: 2 NADH.",
+   "B": "Yes: glucose gives 2 pyruvates.",
+   "C": "Yes: a net 2 ATP.",
+   "D": "No: no CO2 in glycolysis."
+  },
+  "C69": {
+   "lecture": "bc-6",
+   "A": "Yes: the slides: activation uses 2 ATP.",
+   "B": "Yes: acyl-CoA synthetase does it.",
+   "C": "No: it happens before the carnitine transport, outside the matrix.",
+   "D": "No: it uses ATP."
+  },
+  "C72": {
+   "lecture": "org-34",
+   "A": "Yes: conformations come from rotation about a single C–C bond.",
+   "B": "No: the anti (staggered) conformer has the lowest energy: the most stable.",
+   "C": "Yes: the fully eclipsed one has the highest energy (most steric hindrance).",
+   "D": "No: conformers interconvert by rotation, without breaking bonds.",
+   "E": "Yes: the slides go from one conformer to the next by a 60° rotation."
+  },
+  "C74": {
+   "lecture": "gen-3",
+   "A": "Yes: ms (+½ or −½) gives the direction of the electron's spin.",
+   "B": "No: the orbital's orientation is ml.",
+   "C": "No: the subshell (s, p, d, f) is l.",
+   "D": "No: the energy level (shell) is n.",
+   "E": "No: A is right."
+  },
+  "C104": {
+   "lecture": "bc-1",
+   "A": "Yes: methionine is a sulfur amino acid.",
+   "B": "No: alanine has a hydrocarbon (aliphatic) side chain.",
+   "C": "No: tryptophan is aromatic, not hydroxylated.",
+   "D": "No: phenylalanine is aromatic and neutral.",
+   "E": "Yes: glutamate has an acid side chain, so two acid groups."
+  },
+  "C105": {
+   "lecture": "bc-1",
+   "A": "Yes: natural amino acids are L.",
+   "B": "No: D forms are not used in proteins.",
+   "C": "No: only L.",
+   "D": "No: A is right."
+  },
+  "C106": {
+   "lecture": "bc-1",
+   "A": "Yes: hydrocarbon (aliphatic) side chains.",
+   "B": "No: serine and threonine have alcohol groups, tyrosine is aromatic.",
+   "C": "No: these have basic side chains.",
+   "D": "No: these are the aromatic ones.",
+   "E": "No: A is right."
+  },
+  "C107": {
+   "lecture": "bc-1",
+   "A": "Yes: polar amino acids are hydrophilic, so they face the water at the surface.",
+   "B": "No: the core holds the non-polar (hydrophobic) ones.",
+   "C": "No: they are mostly at the surface.",
+   "D": "No: mostly at the surface.",
+   "E": "No: A is right."
+  },
+  "C108": {
+   "lecture": "bc-1",
+   "A": "Yes: it releases a water molecule: a condensation.",
+   "B": "Yes: between the α-COOH of one amino acid and the NH2 of the next.",
+   "C": "No: breaking it is a hydrolysis, which uses water.",
+   "D": "No: it joins two amino acids.",
+   "E": "No: A and B are right."
+  },
+  "C109": {
+   "lecture": "bc-3",
+   "A": "Yes: aldohexose.",
+   "B": "No: fructose is a ketose.",
+   "C": "Yes: aldohexose.",
+   "D": "Yes: aldohexose.",
+   "E": "Yes: aldopentose."
+  },
+  "C110": {
+   "lecture": "bc-3",
+   "A": "Yes: cellulose is held by β1-4 bonds, which cellulase cuts.",
+   "B": "No: peptidoglycan is not a glucose polymer (N-acetylglucosamine + N-acetylmuramic acid).",
+   "C": "No: glycogen is stored in the liver and the muscles.",
+   "D": "No: cellulose is from plants, a structural polymer.",
+   "E": "No: maltose is a disaccharide."
+  },
+  "G1": {
+   "lecture": "cb-1",
+   "A": "No: fixation is a step of histological processing.",
+   "B": "No: sectioning is a step of histological processing.",
+   "C": "Yes: the cells grow in the incubator (37 °C, 5% CO2).",
+   "D": "Yes: trypsinization dissociates the tissue into cells after mechanical dissociation."
+  },
+  "G2": {
+   "lecture": "cb-2",
+   "A": "No: ions are carried by ATPase pumps; MDR pumps carry drugs.",
+   "B": "Yes: they push xenobiotics (drugs) out of the cell.",
+   "C": "No: the slides: not very specific; several drugs use the same pump.",
+   "D": "Yes: they explain resistance of tumour cells to chemotherapy."
+  },
+  "G3": {
+   "lecture": "cb-4",
+   "A": "No: the Krebs enzymes are encoded by the nucleus.",
+   "B": "Yes: inherited from the mother.",
+   "C": "Yes: the slides: it codes for respiratory chain proteins of complexes III, IV and V.",
+   "D": "No: it is circular DNA."
+  },
+  "G4": {
+   "lecture": "cb-1",
+   "A": "No: Bouin's mixture is a fixer, used at fixation.",
+   "B": "Yes: inclusion hardens the tissue so thin sections can be cut.",
+   "C": "Yes: paraffin replaces the water in the cells.",
+   "D": "No: fluorescent labelling is for the fluorescent microscope, not inclusion."
+  },
+  "G5": {
+   "lecture": "cb-4",
+   "A": "Yes: SRP brings the complex to the SRP receptor in the ER membrane.",
+   "B": "Yes: a channel (translocon) forms for the chain to cross.",
+   "C": "No: clathrins are for endocytosis.",
+   "D": "No: lamins are in the nuclear lamina."
+  },
+  "G6": {
+   "lecture": "cb-3",
+   "A": "No: neurofilaments (intermediate filaments) strengthen axons.",
+   "B": "Yes: the cortex of actin under the membrane keeps the 3D shape.",
+   "C": "Yes: they guide cytoplasmic currents.",
+   "D": "No: cell resistance comes from intermediate filaments."
+  },
+  "G7": {
+   "lecture": "cb-5",
+   "A": "No: cyclin A works with CDK2 in S phase.",
+   "B": "No: cyclin A/CDK1 is for G2 and mitosis.",
+   "C": "Yes: cyclin A/CDK2 drives S phase.",
+   "D": "No: cyclin D/CDK4-6 is G1."
+  },
+  "G8": {
+   "lecture": "cb-4",
+   "A": "Yes: the endomembrane system is ER, Golgi apparatus and vesicles.",
+   "B": "No: mitochondria are their own group (ATP).",
+   "C": "Yes: the endoplasmic reticulum is part of it.",
+   "D": "No: the peroxisome is its own group (epuration)."
+  },
+  "G9": {
+   "lecture": "cb-4",
+   "A": "No: it receives endocytic vesicles; it doesn't make molecules.",
+   "B": "Yes: early endosomes are small; they grow into late endosomes.",
+   "C": "No: the lytic enzymes are the lysosome's, after fusion with the late endosome.",
+   "D": "No: catalase is in the peroxisome."
+  },
+  "G10": {
+   "lecture": "cb-2",
+   "A": "No: macromolecules use vesicular exchange.",
+   "B": "No: vesicles are for endocytosis and exocytosis.",
+   "C": "Yes: passive transport uses the gradient energy.",
+   "D": "Yes: facilitated diffusion uses carrier proteins."
+  },
+  "G11": {
+   "lecture": "cb-5",
+   "A": "Yes: pRb is a tumour suppressor at the checkpoints.",
+   "B": "Yes: p53 is a tumour suppressor at the checkpoints.",
+   "C": "Yes: a cyclin/CDK inhibitor.",
+   "D": "Yes: a cyclin/CDK inhibitor."
+  },
+  "G12": {
+   "lecture": "cb-1",
+   "A": "No: special objective lenses belong to the inverted microscope.",
+   "B": "No: a laser belongs to the confocal microscope.",
+   "C": "Yes: 3 magnetic bands: condenser, objective, ocular.",
+   "D": "Yes: a vacuum pump keeps the electrons from being deviated."
+  },
+  "G13": {
+   "lecture": "cb-3",
+   "A": "No: Arp2/3 assembles actin.",
+   "B": "No: CapZ stops actin polymerization.",
+   "C": "Yes: MAP2 stabilises microtubules.",
+   "D": "Yes: dynein is a motor protein on microtubules."
+  },
+  "G26": {
+   "lecture": "cb-1",
+   "A": "No: the laser is the confocal microscope's.",
+   "B": "Yes: the fluorescent microscope is a light microscope with a UV lamp.",
+   "C": "No: the photomultiplier is the confocal microscope's.",
+   "D": "Yes: it keeps the light microscope's objective lenses.",
+   "E": "No: in the epifluorescent microscope the objective also lights the specimen; no condenser."
+  },
+  "G27": {
+   "lecture": "cb-1",
+   "A": "Yes: ultrathin sections (50–80 nm) are cut with an ultramicrotome.",
+   "B": "No: the automaton dehydrates biopsies for the light microscope.",
+   "C": "No: the flow hood is for cell culture.",
+   "D": "No: the cryostat cuts frozen sections for the light microscope.",
+   "E": "No: the CO2 incubator is for cell culture."
+  },
+  "G28": {
+   "lecture": "cb-1",
+   "A": "Yes: osmium tetroxide (osmic acid) fixes lipids for the TEM.",
+   "B": "Yes: glutaraldehyde fixes proteins for the TEM.",
+   "C": "No: heavy metal salts are for contrasting.",
+   "D": "Yes: Bouin's mixture is the fixer used in medicine.",
+   "E": "No: synthetic resins are for TEM inclusion."
+  },
+  "G29": {
+   "lecture": "cb-1",
+   "A": "No: it needs a nutrient medium (MEM, RPMI1640).",
+   "B": "No: hematein-eosin stains tissue sections.",
+   "C": "Yes: the CO2 incubator keeps 37 °C and 5% CO2.",
+   "D": "Yes: pH 7 to 7.4.",
+   "E": "Yes: the laminar flow hood keeps it sterile."
+  },
+  "G30": {
+   "lecture": "cb-2",
+   "A": "Yes: gases cross the phospholipid bilayer by simple diffusion.",
+   "B": "Yes: the slides list water and ions under simple diffusion.",
+   "C": "No: large molecules use vesicles.",
+   "D": "No: passive transport needs no ATP.",
+   "E": "Yes: gases diffuse according to their partial pressure."
+  },
+  "G31": {
+   "lecture": "cb-2",
+   "A": "No: they are not very specific.",
+   "B": "No: they are ATP-dependent.",
+   "C": "No: they push drugs out of the cell.",
+   "D": "Yes: found in normal and cancerous cells.",
+   "E": "Yes: tumour cells resist chemotherapy this way."
+  },
+  "G32": {
+   "lecture": "cb-2",
+   "A": "Yes: the molecule is adsorbed on the membrane over clathrins.",
+   "B": "No: the membrane is invaginated by clathrins, not G proteins.",
+   "C": "Yes: an endocytosis vesicle forms.",
+   "D": "Yes: the membrane retracts and the vesicle detaches.",
+   "E": "Yes: the vesicle migrates in the cytoplasm."
+  },
+  "G34": {
+   "lecture": "cb-2",
+   "A": "Yes: the hormone binds a G protein coupled receptor.",
+   "B": "No: tyrosine kinase receptors lead to the MAP kinase pathway.",
+   "C": "Yes: phospholipase C gives DAG (lipid second messenger) and IP3.",
+   "D": "No: PKA is the cAMP (adenylyl cyclase) pathway.",
+   "E": "Yes: Ca2+ activates kinase C."
+  },
+  "G35": {
+   "lecture": "cb-2",
+   "A": "Yes: it starts at a tyrosine kinase receptor.",
+   "B": "Yes: Ras (to Raf, MKK1, Erk) or Rac (to MEKK1, MKK4, Jnk).",
+   "C": "No: adenylyl cyclase is the PKA pathway.",
+   "D": "Yes: MKK4 is in the Rac cascade.",
+   "E": "Yes: growth factors bind the receptor."
+  },
+  "G36": {
+   "lecture": "cb-3",
+   "A": "Yes: α and β tubulins combine into dimers.",
+   "B": "Yes: the dimers form using GTP, bound on β tubulin.",
+   "C": "No: keratin is an intermediate filament.",
+   "D": "Yes: protofilaments form first, then join into the microtubule.",
+   "E": "No: 13 protofilaments."
+  },
+  "G37": {
+   "lecture": "cb-3",
+   "A": "Yes: γTURC assembles microtubules.",
+   "B": "Yes: motor proteins turn chemical energy (ATP or GTP) into movement.",
+   "C": "Yes: kinesin and dynein have globular heads on the microtubule.",
+   "D": "No: myosin is an actin motor.",
+   "E": "No: troponin is on actin filaments in muscle."
+  },
+  "G38": {
+   "lecture": "cb-3",
+   "A": "Yes: a centriole is 9 triplets of microtubules.",
+   "B": "No: lamellipodia are actin (formed through Rac).",
+   "C": "No: the nucleus holds lamins (intermediate filaments), not microtubules.",
+   "D": "No: the cortex under the membrane is actin.",
+   "E": "Yes: microtubules drive cilia and flagella."
+  },
+  "G39": {
+   "lecture": "cb-3",
+   "A": "Yes: motor proteins carry organelles along them.",
+   "B": "Yes: kinesin and dynein carry their cargo in opposite directions.",
+   "C": "Yes: the spindle moves the chromosomes in mitosis.",
+   "D": "No: muscle contraction is actin and myosin II.",
+   "E": "No: the lamina is made of lamins (intermediate filaments)."
+  },
+  "G40": {
+   "lecture": "cb-3",
+   "A": "Yes: both work on actin in muscle (myosin II is an actin motor).",
+   "B": "No: tubulin makes microtubules, desmin is an intermediate filament.",
+   "C": "Yes: cofilin cuts actin, tropomyosin protects it from depolymerization.",
+   "D": "No: dynein and kinesin are microtubule motors.",
+   "E": "No: keratin and vimentin are intermediate filaments."
+  },
+  "G41": {
+   "lecture": "cb-3",
+   "A": "Yes: cytokeratins are in epithelial cells.",
+   "B": "Yes: lamins A, B, C reinforce the inner nuclear membrane.",
+   "C": "Yes: neurofilaments are the neurons' intermediate filaments.",
+   "D": "Yes: GFAP is in glial cells.",
+   "E": "No: vimentin is in connective tissue; hair and nails are keratin."
+  },
+  "G44": {
+   "lecture": "cb-4",
+   "A": "Yes: N-glycosylation is an ER function.",
+   "B": "Yes: the Golgi complexes proteins and lipids with other molecules.",
+   "C": "Yes: proteins.",
+   "D": "Yes: and lipids.",
+   "E": "No: ions are not glycosylated."
+  },
+  "G45": {
+   "lecture": "cb-5",
+   "A": "Yes: the lamina covers the inner membrane.",
+   "B": "Yes: the nucleolus makes the ribosomes.",
+   "C": "Yes: euchromatin is the transcribed part.",
+   "D": "Yes: 2000 to 4000 pores per nucleus.",
+   "E": "No: chromatin is one DNA molecule with many nucleosomes."
+  },
+  "G46": {
+   "lecture": "cb-5",
+   "A": "No: lamins form the lamina.",
+   "B": "Yes: the slides: granules are for maturation and splicing of mRNA.",
+   "C": "No: the slides give the Cajal body the repair of damaged telomeres.",
+   "D": "No: the Barr body is the inactive X.",
+   "E": "No: the nucleolus makes ribosomes."
+  },
+  "G47": {
+   "lecture": "cb-5",
+   "A": "No: splicing is of RNA, in the granules.",
+   "B": "No: the slides give it repair of damaged telomeres.",
+   "C": "Yes: the slides: the Cajal body fixes damaged telomeres.",
+   "D": "No: rDNA loops are in the nucleolus.",
+   "E": "No: ribosomes are made in the nucleolus."
+  },
+  "G48": {
+   "lecture": "cb-5",
+   "A": "Yes: its filaments form a basket.",
+   "B": "No: the slides describe 2 rings, one nuclear and one cytoplasmic.",
+   "C": "Yes: 8 cytoplasmic filaments and 8 between the rings.",
+   "D": "Yes: FxFG proteins stretch to let molecules through.",
+   "E": "No: it is made of nucleoproteins (Nups)."
+  },
+  "G49": {
+   "lecture": "cb-5",
+   "A": "Yes: oxidative stress triggers it.",
+   "B": "Yes: H2O2 is listed among the extracellular factors.",
+   "C": "Yes: xenobiotics are listed.",
+   "D": "No: red cells don't trigger apoptosis.",
+   "E": "No: the lack of growth factors does, not growth factors."
+  },
+  "G50": {
+   "lecture": "cb-5",
+   "A": "No: mitochondria are the intrinsic pathway.",
+   "B": "No: cytochrome c is the intrinsic pathway.",
+   "C": "Yes: the extrinsic pathway starts at a death receptor.",
+   "D": "Yes: caspase 8 then the effector caspases 3, 6, 7.",
+   "E": "No: Apaf1 is the intrinsic pathway (apoptosome)."
+  },
+  "P2": {
+   "lecture": "ph-hsa",
+   "A": "Yes: the textbook calls health systems dynamic, complex social systems.",
+   "B": "No: the interactions are dynamic, not static.",
+   "C": "No: many actors interact: providers, beneficiaries, funders, the state.",
+   "D": "No: it includes private actors, traditional healers and home care."
+  },
+  "P3": {
+   "lecture": "ph-hsa",
+   "A": "No: it is more than staff and medicines.",
+   "B": "Yes: the WHO (2000) definition: all activities whose primary purpose is to promote, restore or maintain health.",
+   "C": "No: it includes prevention and promotion, not only medical care.",
+   "D": "No: it goes beyond the ministry and public institutions."
+  },
+  "P4": {
+   "lecture": "ph-intro",
+   "A": "Yes: clinical medicine treats the individual; public health prevents and controls disease across the population.",
+   "B": "No: both rest on scientific evidence.",
+   "C": "No: it is the other way round.",
+   "D": "No: public health is multidisciplinary (epidemiology, demography, law, economics, sociology...)."
+  },
+  "P6": {
+   "lecture": "ph-det",
+   "A": "No: biology is not a social determinant.",
+   "B": "No: behaviours are intermediary determinants.",
+   "C": "Yes: in the WHO framework (Solar and Irwin), the structural determinants are the socioeconomic and political context: macroeconomic policies...",
+   "D": "Yes: ...and governance."
+  },
+  "P7": {
+   "lecture": "ph-hsa",
+   "A": "No: equity is about need, not identical services.",
+   "B": "No: access without discrimination, not priority to the insured.",
+   "C": "Yes: every person gets the services that meet their needs, without discrimination.",
+   "D": "No: the gaps between urban and rural areas are the inequity to fight."
+  },
+  "P8": {
+   "lecture": "ph-det",
+   "A": "No: family history is a non-modifiable factor.",
+   "B": "Yes: physical inactivity is a modifiable risk factor.",
+   "C": "No: age is non-modifiable.",
+   "D": "Yes: smoking is the first modifiable factor on the slides."
+  },
+  "P9": {
+   "lecture": "ph-intro",
+   "A": "Yes: monitoring and investigating an unusual rise in cases is surveillance.",
+   "B": "No: training is about the workforce.",
+   "C": "No: quality assurance is about services.",
+   "D": "No: health promotion works on the determinants before disease."
+  },
+  "P11": {
+   "lecture": "ph-intro",
+   "A": "No: finding the causes (risk factors) is the second step.",
+   "B": "No: evaluation comes after the intervention.",
+   "C": "Yes: the approach starts with surveillance: what is the problem?",
+   "D": "No: implementation is the last step."
+  },
+  "P12": {
+   "lecture": "ph-hsa",
+   "A": "No: health workforce is one of the six pillars.",
+   "B": "No: leadership and governance is a pillar.",
+   "C": "No: information systems is a pillar.",
+   "D": "Yes: accreditation is not a pillar (the six: service delivery, workforce, information, medical products, financing, leadership and governance)."
+  },
+  "P14": {
+   "lecture": "ph-hsa",
+   "A": "No: health spending is about 5.5% of GDP.",
+   "B": "Yes: inequity between urban and rural areas is a key performance challenge.",
+   "C": "No: the textbook points to deregulation of the private sector.",
+   "D": "No: demand is growing faster than supply."
+  },
+  "P15": {
+   "lecture": "ph-det",
+   "A": "Yes: diet is a lifestyle choice the person controls.",
+   "B": "No: genetics is human biology.",
+   "C": "Yes: physical activity is lifestyle.",
+   "D": "No: education is a social determinant."
+  },
+  "P31": {
+   "lecture": "ph-det",
+   "A": "Yes: smoking is modifiable.",
+   "B": "Yes: physical activity is modifiable.",
+   "C": "No: family history is non-modifiable.",
+   "D": "No: age is non-modifiable."
+  },
+  "P36": {
+   "lecture": "ph-hsa",
+   "A": "No: the textbook reads urban-rural gaps as inequity, not a governance gap.",
+   "B": "Yes: the gaps in infant and neonatal mortality show inequitable access to care.",
+   "C": "No: it says nothing on the districts' effectiveness.",
+   "D": "No: tertiary hospitals don't explain neonatal deaths."
+  },
+  "P37": {
+   "lecture": "ph-hsa",
+   "A": "No: the High Authority for Health is law 07-22.",
+   "B": "No: not on the list of the 2022 reform laws.",
+   "C": "Yes: the 2022 reform's third part restructures care delivery into territorial health groupings.",
+   "D": "No: the medicines agency is law 10-22."
+  },
+  "P38": {
+   "lecture": "ph-intro",
+   "A": "Yes: surveillance first: what is the problem?",
+   "B": "No: implementation comes last.",
+   "C": "No: evaluation comes after the intervention.",
+   "D": "No: the causes are the second step."
+  },
+  "P39": {
+   "lecture": "ph-hsa",
+   "A": "No: the textbook gives 0.9 per 1,000.",
+   "B": "No: 0.9 per 1,000.",
+   "C": "Yes: about 0.9 doctors per 1,000 inhabitants, far below the WHO's 4.5 health workers per 1,000.",
+   "D": "No: 4.5 per 1,000 is the WHO standard Morocco is far from."
+  },
+  "P41": {
+   "lecture": "ph-hsa",
+   "A": "No: it groups public hospitals with health centres.",
+   "B": "No: it is public, not private.",
+   "C": "No: it includes the health centres.",
+   "D": "Yes: provincial, regional and university hospitals with the health centres of a territory."
+  },
+  "P42": {
+   "lecture": "ph-intro",
+   "A": "No: both rest on scientific evidence.",
+   "B": "No: public health is the multidisciplinary one.",
+   "C": "Yes: medicine treats the individual's disease; public health prevents and controls it in the population.",
+   "D": "No: it is the other way round."
+  },
+  "P43": {
+   "lecture": "ph-intro",
+   "A": "No: quality assurance is about services.",
+   "B": "No: training is about the workforce.",
+   "C": "No: health promotion works on the determinants.",
+   "D": "Yes: detecting and investigating an outbreak is epidemiological surveillance."
+  },
+  "P44": {
+   "lecture": "ph-det",
+   "A": "Yes: age is human biology, non-modifiable.",
+   "B": "Yes: genetics is human biology.",
+   "C": "No: physical activity is lifestyle.",
+   "D": "No: smoking is lifestyle."
+  },
+  "P46": {
+   "lecture": "ph-det",
+   "A": "No: biology is not a social determinant.",
+   "B": "Yes: macroeconomic policies are part of the structural context.",
+   "C": "Yes: governance too.",
+   "D": "No: behaviours are intermediary determinants."
+  },
+  "P47": {
+   "lecture": "ph-det",
+   "A": "Yes: diet is lifestyle.",
+   "B": "Yes: physical activity is lifestyle.",
+   "C": "No: genetics is human biology.",
+   "D": "No: education is a social determinant."
+  },
+  "Y1": {
+   "lecture": "by-radio",
+   "A": "No: the HVL is a thickness; μ is in m⁻¹.",
+   "B": "Yes: N = N0 e^(−μx).",
+   "C": "No: the HVL halves the beam; HVL = ln2/μ.",
+   "D": "Yes: tissues with different μ attenuate differently: that is the contrast."
+  },
+  "Y2": {
+   "lecture": "by-radio",
+   "A": "No: about 6 hours.",
+   "B": "Yes: the molybdenum-99 generator gives Tc-99m.",
+   "C": "Yes: the workhorse of nuclear medicine scintigraphy.",
+   "D": "No: 511 keV is the annihilation photon of β+; Tc-99m emits 140 keV."
+  },
+  "Y4": {
+   "lecture": "by-radio",
+   "A": "No: iodine-127 is the stable isotope.",
+   "B": "Yes: β− 606 keV, used for therapy.",
+   "C": "No: iodine-123 is a pure γ emitter; PET needs β+.",
+   "D": "Yes: pure γ (159 keV), used for diagnosis."
+  },
+  "Y5": {
+   "lecture": "by-radio",
+   "A": "No: it needs a threshold of 1.022 MeV.",
+   "B": "Yes: below the threshold the nucleus decays by electron capture instead.",
+   "C": "Yes: fluorine-18 (FDG for PET) is a β+ emitter.",
+   "D": "No: not a partition."
+  },
+  "Y6": {
+   "lecture": "by-radio",
+   "A": "Yes: the photon gives all its energy to a bound electron and disappears.",
+   "B": "No: a scattered photon is the Compton effect.",
+   "C": "No: it gives the contrast of radiology.",
+   "D": "No: it is a photon's interaction, not an electron's."
+  },
+  "Y7": {
+   "lecture": "by-radio",
+   "A": "Yes: renewing tissues (hematopoietic marrow) are more radiosensitive than muscle.",
+   "B": "No: lymphocytes are among the most radiosensitive cells; glial cells are resistant.",
+   "C": "No: the intestinal epithelium is highly radiosensitive.",
+   "D": "Yes: lymphocytes die within hours; the liver is less sensitive."
+  },
+  "Y9": {
+   "lecture": "by-radio",
+   "A": "Yes: there are no dose limits for patients, only justification and optimisation.",
+   "B": "Yes: 1 mSv a year for the public.",
+   "C": "No: category A is above 6 mSv a year (but under 20).",
+   "D": "No: category B stays under 6 mSv a year."
+  },
+  "Y13": {
+   "lecture": "by-radio",
+   "A": "Yes: heavy, so they go in a straight line.",
+   "B": "No: they are heavy charged particles.",
+   "C": "Yes: high LET, about 130 keV/µm.",
+   "D": "No: they are stopped within micrometres in tissue; imaging uses photons."
+  },
+  "Y14": {
+   "lecture": "by-osm",
+   "A": "No: osmosis comes from the solvent's chemical potential difference.",
+   "B": "Yes: the solvent moves to even out the concentrations.",
+   "C": "No: the solvent goes from the less concentrated to the more concentrated side.",
+   "D": "Yes: it is the solvent crossing a semipermeable membrane."
+  },
+  "Y15": {
+   "lecture": "by-circ",
+   "A": "Yes: low viscosity raises the Reynolds number: turbulence and a murmur.",
+   "B": "Yes: with lower viscosity the velocity rises.",
+   "C": "No: viscosity falls with the hematocrit.",
+   "D": "No: the hematocrit falls."
+  },
+  "Y17": {
+   "lecture": "by-gas",
+   "A": "No: PV = nRT.",
+   "B": "Yes: the perfect gas equation.",
+   "C": "No: PV = nRT.",
+   "D": "No: T multiplies, it doesn't divide."
+  },
+  "Y18": {
+   "lecture": "by-circ",
+   "A": "No: 90 mmHg diastolic is already hypertension.",
+   "B": "No: 140 systolic is already hypertension.",
+   "C": "Yes: measured lying down (at heart height), at rest, so Δh = 0.",
+   "D": "No: at rest."
+  },
+  "Y20": {
+   "lecture": "by-circ",
+   "A": "Yes: R = ρvr/η depends on viscosity.",
+   "B": "No: pH is not in the Reynolds number.",
+   "C": "No: laminar under 2000; over 4000 is turbulent.",
+   "D": "Yes: and on velocity."
+  },
+  "Y21": {
+   "lecture": "by-osm",
+   "A": "No: permeable to one kind only is a selective membrane.",
+   "B": "Yes: water and diffusible particles cross between plasma and interstitium through a dialysis membrane.",
+   "C": "Yes: a semipermeable membrane lets only the solvent through.",
+   "D": "No: that describes a dialysis membrane."
+  },
+  "Y23": {
+   "lecture": "by-ab",
+   "A": "No: HCO3- is normal (24), so it isn't metabolic.",
+   "B": "Yes: pH high, PCO2 low (23 mmHg), HCO3- normal: respiratory alkalosis, not yet compensated.",
+   "C": "No: the pH is high, not low.",
+   "D": "No: the PCO2 is low and the pH high."
+  },
+  "Y24": {
+   "lecture": "by-circ",
+   "A": "No: by Bernoulli, a wider section slows the flow and raises the pressure.",
+   "B": "Yes: S up, v down, P up.",
+   "C": "No: the velocity falls.",
+   "D": "Yes: Q = S·v is constant, so v falls."
+  },
+  "Y33": {
+   "lecture": "by-states",
+   "A": "Yes: solids are dense: many particles per unit volume.",
+   "B": "Yes: liquids are a condensed state; the molecules touch.",
+   "C": "No: a liquid's volume barely changes; it is incompressible.",
+   "D": "No: gases have a very low density."
+  },
+  "Y34": {
+   "lecture": "by-states",
+   "A": "Yes: each gram of water evaporated takes 580 calories with it.",
+   "B": "No: the lungs evaporate water too, and the skin loses some by insensible perspiration.",
+   "C": "Yes: alveolar air leaves saturated with water vapour.",
+   "D": "Yes: sweating rises with heat production."
+  },
+  "Y35": {
+   "lecture": "by-gas",
+   "A": "No: 273 K is STPD.",
+   "B": "Yes: body temperature, 37 °C = 310 K.",
+   "C": "No: ambient atmospheric pressure.",
+   "D": "Yes: saturated with water vapour (PH2O = 47 mmHg)."
+  },
+  "Y36": {
+   "lecture": "by-gas",
+   "A": "Yes: standard temperature, 0 °C = 273 K.",
+   "B": "No: 310 K is BTPS.",
+   "C": "Yes: 1 atm.",
+   "D": "Yes: dry gas, not mixed with water vapour."
+  },
+  "Y37": {
+   "lecture": "by-gas",
+   "A": "No: at constant T, V falls when P rises.",
+   "B": "Yes: V is inversely proportional to P.",
+   "C": "No: V and T are Charles's law, at constant P.",
+   "D": "Yes: PV = constant."
+  },
+  "Y38": {
+   "lecture": "by-states",
+   "A": "No: osmolality uses molal concentrations (per kg of solvent).",
+   "B": "Yes: the sum of the solutes' molal concentrations.",
+   "C": "Yes: Raoult's law: Δθ = K × osmolality.",
+   "D": "Yes: mol/kg (plasma about 284 mmol/kg)."
+  },
+  "Y40": {
+   "lecture": "by-gas",
+   "A": "No: PV = nRT.",
+   "B": "No: T multiplies.",
+   "C": "Yes: PV = nRT (P in Pa, V in m³, R = 8.31, T in kelvin).",
+   "D": "No: PV = nRT."
+  },
+  "Y41": {
+   "lecture": "by-gas",
+   "A": "Yes: by Pascal's law, ΔP = ρgΔh: about 1 atm per 10 m of water.",
+   "B": "No: more pressure means more dissolved gas.",
+   "C": "No: a fast ascent is what causes gas embolism.",
+   "D": "Yes: a hyperbaric chamber redissolves the gas."
+  },
+  "Y45": {
+   "lecture": "by-circ",
+   "A": "Yes: blood's viscosity changes with the velocity gradient.",
+   "B": "Yes: its structure (red cell rouleaux) changes with speed.",
+   "C": "No: the flow regime doesn't define it.",
+   "D": "No: it is the suspended cells and macromolecules that make blood non-Newtonian."
+  },
+  "Y46": {
+   "lecture": "by-circ",
+   "A": "Yes: blood is cells in plasma, so plasma viscosity counts.",
+   "B": "No: a lower hematocrit lowers viscosity.",
+   "C": "No: viscosity falls as temperature rises.",
+   "D": "Yes: inflammation raises plasma proteins (fibrinogen) and red cell aggregation."
+  },
+  "Y47": {
+   "lecture": "by-circ",
+   "A": "No: the hematocrit falls.",
+   "B": "No: viscosity falls.",
+   "C": "Yes: lower viscosity, higher velocity.",
+   "D": "Yes: turbulent flow, an anemic murmur."
+  },
+  "Y48": {
+   "lecture": "by-circ",
+   "A": "Yes: at a dilation S up, v down, P up.",
+   "B": "No: the velocity falls.",
+   "C": "No: the pressure rises.",
+   "D": "Yes: the velocity falls."
+  },
+  "Y49": {
+   "lecture": "by-circ",
+   "A": "Yes: ΔP = 8ηlQ / πr⁴: proportional to l.",
+   "B": "No: proportional to Q.",
+   "C": "Yes: proportional to η.",
+   "D": "Yes: inversely proportional to r⁴."
+  },
+  "Y50": {
+   "lecture": "by-circ",
+   "A": "Yes: laminar under 2000.",
+   "B": "No: between 2000 and 4000 it can't be predicted.",
+   "C": "Yes: unpredictable between 2000 and 4000.",
+   "D": "Yes: high velocity raises R above 4000."
+  },
+  "Y51": {
+   "lecture": "by-circ",
+   "A": "No: the pressure rises.",
+   "B": "Yes: S up, v down, P up (aneurysm).",
+   "C": "No: the velocity falls.",
+   "D": "Yes: the velocity falls."
+  },
+  "Y52": {
+   "lecture": "by-circ",
+   "A": "Yes: R = ρvr/η.",
+   "B": "Yes: ρ is in R.",
+   "C": "Yes: turbulent over 4000.",
+   "D": "No: under 2000 it is laminar."
+  },
+  "Y53": {
+   "lecture": "by-circ",
+   "A": "Yes: S down, v up.",
+   "B": "Yes: v up, so R up.",
+   "C": "No: the flow becomes turbulent.",
+   "D": "Yes: the artery opens and closes: a murmur on auscultation, a thrill on palpation."
+  },
+  "Y55": {
+   "lecture": "by-circ",
+   "A": "Yes: v is in R.",
+   "B": "Yes: η is in R.",
+   "C": "Yes: ρ is in R.",
+   "D": "No: over 4000 it is turbulent."
+  },
+  "L2": {
+   "lecture": "mt-cardio",
+   "A": "No: that is myocardial infarction.",
+   "B": "No: cardiac arrest is asystole.",
+   "C": "Yes: word for word the vocabulary review.",
+   "D": "No: that is bradycardia."
+  },
+  "L3": {
+   "lecture": "mt-cardio",
+   "A": "Yes: word for word the vocabulary review.",
+   "B": "Yes: word for word the vocabulary review.",
+   "C": "No: the lipid profile is its own test.",
+   "D": "No: angina pectoris is chest pain from myocardial ischemia."
+  },
+  "L4": {
+   "lecture": "mt-intro",
+   "A": "No: a prefix comes at the beginning; -itis is at the end.",
+   "B": "No: -itis means inflammation.",
+   "C": "No: the word root is pancreat.",
+   "D": "Yes: a suffix, at the end of the word; -itis means inflammation."
+  },
+  "L8": {
+   "lecture": "mt-cardio",
+   "A": "Yes: electr/o/cardi/o/gram: record of the electrical activity of the heart.",
+   "B": "Yes: cardi/o is a combining form (root + o).",
+   "C": "No: -gram means a record.",
+   "D": "No: it is a combining form; the suffix is -gram."
+  },
+  "L9": {
+   "lecture": "mt-cardio",
+   "A": "No: SBE is subacute bacterial endocarditis.",
+   "B": "No: VSD is ventricular septal defect.",
+   "C": "No: HTN is hypertension.",
+   "D": "Yes: atrial septal defect."
+  },
+  "L10": {
+   "lecture": "mt-cardio",
+   "A": "Yes: the innermost layer, lining atria, ventricles and valves.",
+   "B": "No: endo means in, within.",
+   "C": "Yes: cardi is the word root (heart).",
+   "D": "No: -um is a suffix (structure)."
+  },
+  "L11": {
+   "lecture": "mt-intro",
+   "A": "Yes: the root (and its combining form, root + vowel) usually names the body part.",
+   "B": "No: that is the suffix's job.",
+   "C": "Yes: it carries the basic meaning of the term.",
+   "D": "No: it is the prefix that always comes first."
+  },
+  "L12": {
+   "lecture": "mt-cardio",
+   "A": "Yes: -um means structure.",
+   "B": "No: peri is a prefix (around).",
+   "C": "No: cardi is the word root; the combining form would be cardi/o.",
+   "D": "Yes: the membrane around the heart, the outer layer."
+  },
+  "L13": {
+   "lecture": "lm-book",
+   "A": "No: emotional load, negative or positive, usually enhances learning.",
+   "B": "Yes: all-nighters hurt; memory consolidation relies on sleep.",
+   "C": "No: emotions enhance memory.",
+   "D": "No: motivation enhances memory and learning."
+  },
+  "L14": {
+   "lecture": "lm-book",
+   "A": "No: working memory holds information for a short time.",
+   "B": "No: implicit memory needs no conscious retrieval.",
+   "C": "No: episodic memory is personal events.",
+   "D": "Yes: semantic memory is general knowledge (Rabat is the capital of Morocco)."
+  },
+  "L16": {
+   "lecture": "lm-book",
+   "A": "No: highlighting is a passive strategy.",
+   "B": "No: copying word for word is passive.",
+   "C": "Yes: retrieval practice beats restudying, best followed by restudy.",
+   "D": "No: re-watching is restudying."
+  },
+  "L19": {
+   "lecture": "lm-book",
+   "A": "Yes: the gap between how you see your abilities and reality narrows as metacognition develops.",
+   "B": "No: it is about perception versus reality, not sensory memory.",
+   "C": "No: it isn't limited to vision.",
+   "D": "No: it belongs to metacognition, not the Atkinson and Shiffrin model."
+  }
+ }
 }

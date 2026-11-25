@@ -1,0 +1,345 @@
+# Chemistry and biochemistry: Pr Ouchbani's general and organic chemistry, Pr Lahlou's biochemistry chapters 1-6.
+# Not here (still Claude's from knowledge): the figure questions, nomenclature, gold's electron configuration, redox, complexes,
+# and the French-track structural biochemistry exam (an older French course with its own terms).
+@ gen-1 | General chemistry, lecture 1: structure of matter
+@ gen-3 | General chemistry, lecture 3: quantum numbers
+@ org-34 | Organic chemistry, lectures 3–4: isomerism
+@ bc-1 | Biochemistry, chapter 1: amino acids, peptides and proteins
+@ bc-2 | Biochemistry, chapter 2: enzymes and coenzymes
+@ bc-3 | Biochemistry, chapter 3: carbohydrates
+@ bc-4 | Biochemistry, chapter 4: lipids
+@ bc-5 | Biochemistry, chapter 5: carbohydrate metabolism
+@ bc-6 | Biochemistry, chapter 6: lipid metabolism
+C1 C gen-1
+ No: a neutral atom has as many protons as electrons, so 6.
+ No: 6 electrons means 6 protons.
+ Yes: Z = number of protons = number of electrons in the neutral atom = 6.
+ No: 6 electrons means 6 protons.
+C2 B gen-1
+ No: A = protons + neutrons = 6 + 6 = 12.
+ Yes: A = 6 protons + 6 neutrons = 12.
+ No: A = 6 + 6 = 12.
+ No: 6 is Z, not A.
+C3 B gen-1
+ No: carbon 12 has 12 a.m.u.
+ Yes: the a.m.u is 1/12 of the carbon 12 atom, so carbon 12 weighs 12 a.m.u.
+ No: 6 protons + 6 neutrons give about 12 a.m.u.
+ No: about 12 a.m.u.
+C4 A gen-1
+ Yes: Z = 6 is carbon (6 protons, 6 neutrons: carbon 12).
+ No: nitrogen has Z = 7.
+ No: oxygen has Z = 8.
+ No: boron has Z = 5.
+C5 D gen-1
+ No: 65 is the nucleon number and 30 the electrons.
+ No: A = 65 nucleons, not 95.
+ No: A = 65 nucleons.
+ Yes: A = 65 nucleons, Z = 30 protons, so 65 − 30 = 35 neutrons.
+C6 ABD gen-1
+ Yes: both are chlorine, Z = 17.
+ Yes: same Z, so 17 protons each.
+ No: 35 and 37 nucleons; they differ by two neutrons.
+ Yes: same Z, different A: isotopes.
+C26 A gen-1
+ Yes: 8 electrons means Z = 8; A = 8 + 8 = 16.
+ No: A = 8 + 8 = 16.
+ No: A = 16.
+ No: A = 16.
+C27 D gen-1
+ No: theoretical mass 8 × 1.0078 + 8 × 1.0087 = 16.132; 16.132 − 15.995 = 0.137.
+ No: the defect is 0.137 a.m.u.
+ No: the defect is 0.137 a.m.u.
+ Yes: Δm = theoretical mass of the nucleons − real mass = 16.132 − 15.995 ≈ 0.137 a.m.u.
+C28 A gen-1
+ Yes: oxygen 16 (8 protons, 8 neutrons) weighs about 16 a.m.u.
+ No: about 16 a.m.u.
+ No: 12 is carbon.
+ No: about 16 a.m.u.
+C29 B gen-1
+ No: protons = electrons = 8.
+ Yes: in the neutral atom Z = number of electrons = 8.
+ No: 8 protons.
+ No: 8 protons.
+C30 B gen-1
+ No: boron is Z = 5.
+ Yes: Z = 8 is oxygen.
+ No: carbon is Z = 6.
+ No: nitrogen is Z = 7.
+C31 D gen-1
+ No: 8 × 1.0078 + 8 × 1.0087 = 16.132.
+ No: that is close to the real mass; the theoretical mass is larger.
+ No: 16.132.
+ Yes: 8 protons × 1.0078 + 8 neutrons × 1.0087 = 16.132 a.m.u; the real nucleus is always lighter.
+C74 A gen-3
+ Yes: ms (+½ or −½) gives the direction of the electron's spin.
+ No: the orbital's orientation is ml.
+ No: the subshell (s, p, d, f) is l.
+ No: the energy level (shell) is n.
+ No: A is right.
+C7 C org-34
+ No: CIP ranks atoms by atomic number.
+ No: electronic effects are not used.
+ Yes: priority goes to the higher atomic number Z (I > Br > Cl > S > F > O > N > C > H).
+ No: atomic number, not electronegativity.
+C36 B org-34
+ No: CIP ranks by atomic number.
+ Yes: priority by decreasing atomic number Z.
+ No: atomic number, not electronegativity.
+ No: electronic effects are not used.
+C8 D org-34
+ No: isomers differ in structure, not electronic configuration.
+ No: hybridization can differ between isomers.
+ No: they differ in structure, so their skeletal formulas differ.
+ Yes: isomers have the same molecular formula and different structures.
+C35 B org-34
+ No: hybridization can differ.
+ Yes: same molecular formula, different structures.
+ No: the skeletal formulas differ.
+ No: not the electronic configuration.
+C9 A org-34
+ Yes: geometric isomerism of alkenes is Z and E (cis and trans in rings).
+ No: R and S is optical isomerism.
+ No: Z and E use the CIP rules, not Hofmann's.
+ No: it rests on CIP priorities, not electronic configuration.
+C33 B org-34
+ No: R and S is optical isomerism.
+ Yes: Z (together) and E (opposite).
+ No: CIP priorities, not electronic configuration.
+ No: CIP rules, not Hofmann's.
+C10 C org-34
+ No: cis and trans is geometric isomerism.
+ No: erythro and threo describe compounds with two chiral centres, not optical activity itself.
+ Yes: optical isomers are named R and S at each chiral centre.
+ No: Z and E is geometric isomerism.
+C32 D org-34
+ No: Z and E is geometric.
+ No: erythro and threo are names on Fischer projections, not what optical isomerism is.
+ No: cis and trans is geometric.
+ Yes: R and S at chiral centres.
+C11 C org-34
+ No: Fischer projections are used for sugars and amino acids.
+ No: same.
+ Yes: the slides: best used for monosaccharides and some amino acids.
+ No: sugars and amino acids.
+C37 D org-34
+ No: sugars and amino acids.
+ No: sugars and amino acids.
+ No: sugars and amino acids.
+ Yes: monosaccharides and amino acids.
+C72 ACE org-34
+ Yes: conformations come from rotation about a single C–C bond.
+ No: the anti (staggered) conformer has the lowest energy: the most stable.
+ Yes: the fully eclipsed one has the highest energy (most steric hindrance).
+ No: conformers interconvert by rotation, without breaking bonds.
+ Yes: the slides go from one conformer to the next by a 60° rotation.
+C16 AC bc-1
+ Yes: histidine is one of the 9 essential amino acids.
+ No: non-essential ones are made by the body; essential ones can't be.
+ Yes: tryptophan is the largest amino acid, aromatic and non-polar.
+ No: cysteine's side chain carries sulfur (a thiol), not a basic group.
+C24 AC bc-1
+ Yes: the peptide bond has a partial double bond character: planar, no rotation.
+ No: tertiary structure comes from many interactions between residues, not hydrogen bonds only.
+ Yes: the primary structure is the sequence held by peptide bonds.
+ No: hemoglobin is globular.
+C38 AC bc-1
+ Yes: histidine is one of the 20 standard amino acids.
+ No: pyrrolysine is one of the 2 non-standard proteinogenic amino acids.
+ Yes: lysine is standard.
+ No: selenocysteine is the other non-standard one.
+C42 AD bc-1
+ Yes: methionine is a sulfur amino acid.
+ No: aspartate has an acid side chain.
+ No: valine has a hydrocarbon side chain.
+ Yes: cysteine is a sulfur amino acid.
+C63 AC bc-1
+ Yes: the peptide bond is an amide bond between COOH and NH2.
+ No: fibrous proteins (keratin, collagen) are insoluble.
+ Yes: secondary structure is held by hydrogen bonds.
+ No: an oligopeptide has 2 to 10 amino acids; 10 to 100 is a polypeptide.
+C104 AE bc-1
+ Yes: methionine is a sulfur amino acid.
+ No: alanine has a hydrocarbon (aliphatic) side chain.
+ No: tryptophan is aromatic, not hydroxylated.
+ No: phenylalanine is aromatic and neutral.
+ Yes: glutamate has an acid side chain, so two acid groups.
+C105 A bc-1
+ Yes: natural amino acids are L.
+ No: D forms are not used in proteins.
+ No: only L.
+ No: A is right.
+C106 A bc-1
+ Yes: hydrocarbon (aliphatic) side chains.
+ No: serine and threonine have alcohol groups, tyrosine is aromatic.
+ No: these have basic side chains.
+ No: these are the aromatic ones.
+ No: A is right.
+C107 A bc-1
+ Yes: polar amino acids are hydrophilic, so they face the water at the surface.
+ No: the core holds the non-polar (hydrophobic) ones.
+ No: they are mostly at the surface.
+ No: mostly at the surface.
+ No: A is right.
+C108 AB bc-1
+ Yes: it releases a water molecule: a condensation.
+ Yes: between the α-COOH of one amino acid and the NH2 of the next.
+ No: breaking it is a hydrolysis, which uses water.
+ No: it joins two amino acids.
+ No: A and B are right.
+C25 CD bc-2
+ No: NADH is an organic cofactor (a coenzyme); mineral ones are Mg2+, Zn2+, Fe2+.
+ No: they transfer many things (electrons, groups); not all are reducing.
+ Yes: coenzymes are vitamins or their derivatives (or lipids).
+ Yes: many enzymes need a coenzyme (apoenzyme + coenzyme = holoenzyme).
+C39 AC bc-2
+ Yes: enzymes are catalysts.
+ No: they don't change the yield or the equilibrium.
+ Yes: recycled at the end of the reaction and reused.
+ No: they lower the activation energy.
+C66 CD bc-2
+ No: ligases are the 6th class (after oxidoreductases, transferases, hydrolases, lyases, isomerases).
+ No: FMN and FAD carry 2 H; NAD+ and NADP carry the hydride ion.
+ Yes: they speed up reactions.
+ Yes: the substrate binds there; it is where the enzyme works.
+C15 CD bc-3
+ No: peptidoglycan is a heteropolysaccharide (bacterial cell wall).
+ No: glucose and galactose differ at C4.
+ Yes: glucose + galactose joined by a β1-4 glycosidic bond (glycosylation).
+ Yes: glycogen is stored in the liver and the muscles.
+C45 AB bc-3
+ Yes: lactose is glucose + galactose.
+ Yes: intolerance comes from lacking the enzyme lactase.
+ No: lactose has a free anomeric OH, so it is reducing.
+ No: it is a disaccharide.
+C47 AD bc-3
+ Yes: a monosaccharide (hexose).
+ No: starch is a polysaccharide.
+ No: maltose is a disaccharide (glucose + glucose).
+ Yes: a monosaccharide (ketohexose).
+C67 BD bc-3
+ No: sorbitol comes from reducing glucose; ribose gives ribitol.
+ Yes: 4 kcal per gram, against 9 for lipids.
+ No: cellulose is a separate glucose polymer (β1-4); amylose and amylopectin make up starch.
+ Yes: sucrose is glucose + fructose, α1-2β.
+C109 ACDE bc-3
+ Yes: aldohexose.
+ No: fructose is a ketose.
+ Yes: aldohexose.
+ Yes: aldohexose.
+ Yes: aldopentose.
+C110 A bc-3
+ Yes: cellulose is held by β1-4 bonds, which cellulase cuts.
+ No: peptidoglycan is not a glucose polymer (N-acetylglucosamine + N-acetylmuramic acid).
+ No: glycogen is stored in the liver and the muscles.
+ No: cellulose is from plants, a structural polymer.
+ No: maltose is a disaccharide.
+C19 C bc-4
+ No: omega 3, 6 and 7 are unsaturated fatty acids.
+ No: glycerol is an alcohol, the backbone of glycerides, not a lipid.
+ Yes: the slides mark sphingolipids as amphiphilic.
+ No: nothing on the slides says so.
+C21 AD bc-4
+ Yes: hydrophobic core and amphiphilic surface.
+ No: they are classed by density.
+ No: five classes.
+ Yes: LDL carry cholesterol from the liver to the tissues.
+C41 AD bc-4
+ Yes: cortisol is a steroid hormone made from cholesterol.
+ No: insulin is a peptide (51 amino acids).
+ No: FSH is a glycoprotein hormone.
+ Yes: progesterone is a steroid hormone.
+C64 AB bc-4
+ Yes: prostaglandins are made by COX1 and COX2.
+ Yes: amphiphilic membrane lipids.
+ No: cis unsaturated fatty acids are beneficial; trans ones are harmful.
+ No: VLDL carry lipids from the liver to the tissues, not to the intestines.
+C13 C bc-5
+ No: favism is G6PD deficiency.
+ No: same.
+ Yes: G6PD, the key enzyme of the pentose phosphate pathway, is lacking: no NADPH, red cells break down.
+ No: same.
+C14 BC bc-5
+ No: glycogenolysis is activated by glucagon; insulin activates glycogenesis.
+ Yes: fasted state, nocturnal fast, intense activity.
+ Yes: activated by glucagon.
+ No: it breaks glycogen down.
+C17 CD bc-5
+ No: gluconeogenesis consumes ATP.
+ No: it is not the reverse of glycolysis: it bypasses the 3 irreversible reactions with its own enzymes.
+ Yes: pyruvate is a substrate, with lactate, glycerol and glucogenic amino acids.
+ Yes: glucose from non-carbohydrate substrates.
+C18 BD bc-5
+ No: glycolysis is in the cytoplasm only.
+ Yes: reactions 1, 3 and 10 are irreversible.
+ No: the payoff phase makes ATP (reactions 7 and 10).
+ Yes: reaction 1, by hexokinase or glucokinase.
+C23 AD bc-5
+ Yes: glycolysis gives 2 pyruvates.
+ No: it is fermented or oxidised, not excreted by the kidney.
+ No: without oxygen it is fermented (lactate).
+ Yes: with oxygen, PDH turns it into acetyl-CoA.
+C40 AC bc-5
+ Yes: breakdown of glycogen to glucose.
+ No: it uses its own enzymes, not the steps of glycogenesis reversed.
+ Yes: glycogen phosphorylase, phosphoglucomutase, debranching enzyme, glucose-6-phosphatase.
+ No: it is activated by glucagon.
+C44 BC bc-5
+ No: the key enzymes of glycolysis are hexokinase, PFK-1 and pyruvate kinase.
+ Yes: G6PD is the key enzyme of the pentose phosphate pathway.
+ Yes: the pathway makes NADPH and ribose-5-P.
+ No: its lack means no NADPH and hemolysis.
+C46 CD bc-5
+ No: not the reverse of glycolysis.
+ No: glucose from glycogen is glycogenolysis.
+ Yes: pyruvate is a substrate.
+ Yes: from non-carbohydrate substrates.
+C48 D bc-5
+ No: catalase breaks down H2O2.
+ No: pyruvate kinase makes pyruvate (reaction 10).
+ No: hexokinase phosphorylates glucose.
+ Yes: PDH decarboxylates pyruvate into acetyl-CoA.
+C61 AC bc-5
+ Yes: reaction 10 is irreversible.
+ No: enolase is reversible.
+ Yes: reaction 3 is irreversible.
+ No: aldolase is reversible.
+C65 B bc-5
+ No: they carry electrons, they don't activate enzymes.
+ Yes: they give their electrons to the respiratory chain (NADH = 2.5 ATP, FADH2 = 1.5 ATP).
+ No: oxygen is carried by hemoglobin.
+ No: ATP is made by ATP synthase, from their electrons.
+C68 BC bc-5
+ No: 2 NADH.
+ Yes: glucose gives 2 pyruvates.
+ Yes: a net 2 ATP.
+ No: no CO2 in glycolysis.
+C20 BC bc-6
+ No: 80% of cholesterol is made by the body.
+ Yes: they must be activated first (2 ATP used).
+ Yes: carnitine carries activated fatty acids into the mitochondria.
+ No: phospholipases A1, A2, C and D break them down.
+C22 CD bc-6
+ No: acetyl-CoA is what ketone bodies are made from.
+ No: propionyl-CoA comes from odd-chain fatty acids.
+ Yes: acetone is a ketone body, breathed out.
+ Yes: acetoacetate is a ketone body.
+C43 BD bc-6
+ No: the key enzyme is HMG-CoA reductase.
+ Yes: acetyl-CoA is the starting substrate.
+ No: 43 steps.
+ Yes: statins inhibit HMG-CoA reductase.
+C59 AB bc-6
+ Yes: C16 so n = 8: n − 1 = 7 turns.
+ Yes: n = 8 acetyl-CoA.
+ No: 8 × 10 + 7 × 2.5 + 7 × 1.5 − 2 = 106 ATP, not 120.
+ No: n − 1 = 7 NADH.
+C62 AB bc-6
+ Yes: the brain uses them during fasting.
+ Yes: muscle and heart use them.
+ No: the liver makes them but does not use them.
+ No: red cells depend strictly on glucose.
+C69 AB bc-6
+ Yes: the slides: activation uses 2 ATP.
+ Yes: acyl-CoA synthetase does it.
+ No: it happens before the carnitine transport, outside the matrix.
+ No: it uses ATP.

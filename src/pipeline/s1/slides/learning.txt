@@ -1,0 +1,65 @@
+# Learning methods and terminology: Pr Benyoussef's medical terminology decks (introduction, cardiovascular) and the
+# learning methodologies booklet. The clinical basics, loci, tables, Pomodoro and the respiratory/GI terms stay Claude's.
+@ mt-intro | Medical terminology: introduction (Pr Benyoussef)
+@ mt-cardio | Medical terminology: cardiovascular system (Pr Benyoussef)
+@ lm-book | Learning methodologies booklet
+L4 D mt-intro
+ No: a prefix comes at the beginning; -itis is at the end.
+ No: -itis means inflammation.
+ No: the word root is pancreat.
+ Yes: a suffix, at the end of the word; -itis means inflammation.
+L11 AC mt-intro
+ Yes: the root (and its combining form, root + vowel) usually names the body part.
+ No: that is the suffix's job.
+ Yes: it carries the basic meaning of the term.
+ No: it is the prefix that always comes first.
+L8 AB mt-cardio
+ Yes: electr/o/cardi/o/gram: record of the electrical activity of the heart.
+ Yes: cardi/o is a combining form (root + o).
+ No: -gram means a record.
+ No: it is a combining form; the suffix is -gram.
+L10 AC mt-cardio
+ Yes: the innermost layer, lining atria, ventricles and valves.
+ No: endo means in, within.
+ Yes: cardi is the word root (heart).
+ No: -um is a suffix (structure).
+L12 AD mt-cardio
+ Yes: -um means structure.
+ No: peri is a prefix (around).
+ No: cardi is the word root; the combining form would be cardi/o.
+ Yes: the membrane around the heart, the outer layer.
+L2 C mt-cardio
+ No: that is myocardial infarction.
+ No: cardiac arrest is asystole.
+ Yes: word for word the vocabulary review.
+ No: that is bradycardia.
+L3 AB mt-cardio
+ Yes: word for word the vocabulary review.
+ Yes: word for word the vocabulary review.
+ No: the lipid profile is its own test.
+ No: angina pectoris is chest pain from myocardial ischemia.
+L9 D mt-cardio
+ No: SBE is subacute bacterial endocarditis.
+ No: VSD is ventricular septal defect.
+ No: HTN is hypertension.
+ Yes: atrial septal defect.
+L13 B lm-book
+ No: emotional load, negative or positive, usually enhances learning.
+ Yes: all-nighters hurt; memory consolidation relies on sleep.
+ No: emotions enhance memory.
+ No: motivation enhances memory and learning.
+L14 D lm-book
+ No: working memory holds information for a short time.
+ No: implicit memory needs no conscious retrieval.
+ No: episodic memory is personal events.
+ Yes: semantic memory is general knowledge (Rabat is the capital of Morocco).
+L16 C lm-book
+ No: highlighting is a passive strategy.
+ No: copying word for word is passive.
+ Yes: retrieval practice beats restudying, best followed by restudy.
+ No: re-watching is restudying.
+L19 A lm-book
+ Yes: the gap between how you see your abilities and reality narrows as metacognition develops.
+ No: it is about perception versus reality, not sensory memory.
+ No: it isn't limited to vision.
+ No: it belongs to metacognition, not the Atkinson and Shiffrin model.

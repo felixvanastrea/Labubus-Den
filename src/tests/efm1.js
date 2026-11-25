@@ -19,7 +19,7 @@ const BASE = (process.env.BASE || 'http://127.0.0.1:8765') + '/efm1-s1/index.htm
   check(st.wins === 6, 'a window for each of the 6 modules (no foreign languages): ' + st.wins);
   check(st.sw.includes('../'), 'the switch leads back to S5');
   check(+((await p.textContent('button.navstat')).match(/([\d,]+) questions/)[1].replace(/,/g, '')) >= 436, 'the count shows the S1 questions');
-  check(/Claude’s for now/.test(await p.textContent('body')), 'About says the answers are Claude’s, not yet checked');
+  check(/checked against the lecture slides, the rest come from general knowledge/.test(await p.textContent('body')), 'About says how many answers come from the slides');
   await p.fill('#q', ''); await p.type('#q', 'isomers', { delay: 5 }); await p.waitForTimeout(900);
   const hits = await p.evaluate(() => document.querySelectorAll('#search-results [data-qid], #search-results .q-row, #search-results li').length);
   check(+hits >= 10, 'search "isomers" finds questions (' + hits + ')');

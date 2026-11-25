@@ -3767,7 +3767,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = 'f41ca60ebe4f', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'c95149325e61', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -8619,7 +8619,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       <section class="intro wrap" aria-label="About this bank">
         <p class="i-label mono rise-in" style="--d:4">✦ About this bank</p>
         <div class="i-body rise-in" style="--d:4">
-          <p class="lede">Every question here comes straight from past ${esc(SEM.year)} exams (midterms, mocks, finals and second sessions) and from the professors' question sets. ${BANK.questions.every(q => (q.answer || []).length || q.key !== 'none') && BANK.questions.some(q => q.key !== 'claude' && q.key !== 'none') ? 'The answers were checked against several sources, and each question shows where its answer comes from.' : BANK.questions.every(q => (q.answer || []).length && q.key === 'claude') ? 'The answers are Claude’s for now, not yet checked against the lecture slides: each question says so.' : BANK.questions.some(q => (q.answer || []).length) ? 'Answers are being added lecture by lecture, each one from the lecture slides.' : 'No answers yet: they are added lecture by lecture, each one checked against the lecture.'}</p>
+          <p class="lede">Every question here comes straight from past ${esc(SEM.year)} exams (midterms, mocks, finals and second sessions) and from the professors' question sets. ${BANK.questions.every(q => (q.answer || []).length || q.key !== 'none') && BANK.questions.some(q => q.key !== 'claude' && q.key !== 'none') ? 'The answers were checked against several sources, and each question shows where its answer comes from.' : BANK.questions.every(q => (q.answer || []).length && q.key === 'claude') ? (n => n ? `The answers are Claude’s: ${n} of the ${BANK.questions.length} were checked against the lecture slides, the rest come from general knowledge for now. Each question says which.` : 'The answers are Claude’s for now, not yet checked against the lecture slides: each question says so.')(BANK.questions.filter(q => /from the lecture slides/.test(((q.qNotes || [])[0] || {}).html || '')).length) : BANK.questions.some(q => (q.answer || []).length) ? 'Answers are being added lecture by lecture, each one from the lecture slides.' : 'No answers yet: they are added lecture by lecture, each one checked against the lecture.'}</p>
           <p>Answers can still contain mistakes: report anything that looks wrong. This is a study tool, not medical advice. <button class="foot-btn" type="button" data-act="privacy">Privacy</button></p>
           <p class="credit">Made by <b>the Labubu</b></p>
           ${FB ? `<p class="ask">Want the Den to do something new? ${askHTML('btn ask-btn', 'Ask the Labubu')}</p>` : ''}

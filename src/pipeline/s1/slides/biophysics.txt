@@ -1,0 +1,179 @@
+# Biophysics: Pr Aschawa's decks (states of matter, gaseous state, osmosis, blood circulation, acid-base) and Pr Çaoui's
+# radiation decks (CM1-CM3, CM5). Units and uncertainties, hearing, optics, solutions, electrophoresis, oxygen transport,
+# Y8, Y29 and Y54 stay Claude's from knowledge (no deck covers them, or the slides don't settle them).
+@ by-states | Biophysics: different states of matter (Pr Aschawa)
+@ by-gas | Biophysics: gaseous state (Pr Aschawa)
+@ by-osm | Biophysics: bioelectrical potential and osmosis (Pr Aschawa)
+@ by-circ | Biophysics of the blood circulation (Pr Aschawa)
+@ by-ab | Biophysics: acid-base balance (Pr Aschawa)
+@ by-radio | Radiation biophysics: radioactivity, interactions, radiobiology, radioprotection (Pr Çaoui)
+Y33 AB by-states
+ Yes: solids are dense: many particles per unit volume.
+ Yes: liquids are a condensed state; the molecules touch.
+ No: a liquid's volume barely changes; it is incompressible.
+ No: gases have a very low density.
+Y34 ACD by-states
+ Yes: each gram of water evaporated takes 580 calories with it.
+ No: the lungs evaporate water too, and the skin loses some by insensible perspiration.
+ Yes: alveolar air leaves saturated with water vapour.
+ Yes: sweating rises with heat production.
+Y38 BCD by-states
+ No: osmolality uses molal concentrations (per kg of solvent).
+ Yes: the sum of the solutes' molal concentrations.
+ Yes: Raoult's law: Δθ = K × osmolality.
+ Yes: mol/kg (plasma about 284 mmol/kg).
+Y17 B by-gas
+ No: PV = nRT.
+ Yes: the perfect gas equation.
+ No: PV = nRT.
+ No: T multiplies, it doesn't divide.
+Y40 C by-gas
+ No: PV = nRT.
+ No: T multiplies.
+ Yes: PV = nRT (P in Pa, V in m³, R = 8.31, T in kelvin).
+ No: PV = nRT.
+Y35 BD by-gas
+ No: 273 K is STPD.
+ Yes: body temperature, 37 °C = 310 K.
+ No: ambient atmospheric pressure.
+ Yes: saturated with water vapour (PH2O = 47 mmHg).
+Y36 ACD by-gas
+ Yes: standard temperature, 0 °C = 273 K.
+ No: 310 K is BTPS.
+ Yes: 1 atm.
+ Yes: dry gas, not mixed with water vapour.
+Y37 BD by-gas
+ No: at constant T, V falls when P rises.
+ Yes: V is inversely proportional to P.
+ No: V and T are Charles's law, at constant P.
+ Yes: PV = constant.
+Y41 AD by-gas
+ Yes: by Pascal's law, ΔP = ρgΔh: about 1 atm per 10 m of water.
+ No: more pressure means more dissolved gas.
+ No: a fast ascent is what causes gas embolism.
+ Yes: a hyperbaric chamber redissolves the gas.
+Y14 BD by-osm
+ No: osmosis comes from the solvent's chemical potential difference.
+ Yes: the solvent moves to even out the concentrations.
+ No: the solvent goes from the less concentrated to the more concentrated side.
+ Yes: it is the solvent crossing a semipermeable membrane.
+Y21 BC by-osm
+ No: permeable to one kind only is a selective membrane.
+ Yes: water and diffusible particles cross between plasma and interstitium through a dialysis membrane.
+ Yes: a semipermeable membrane lets only the solvent through.
+ No: that describes a dialysis membrane.
+Y15 AB by-circ
+ Yes: low viscosity raises the Reynolds number: turbulence and a murmur.
+ Yes: with lower viscosity the velocity rises.
+ No: viscosity falls with the hematocrit.
+ No: the hematocrit falls.
+Y47 CD by-circ
+ No: the hematocrit falls.
+ No: viscosity falls.
+ Yes: lower viscosity, higher velocity.
+ Yes: turbulent flow, an anemic murmur.
+Y18 C by-circ
+ No: 90 mmHg diastolic is already hypertension.
+ No: 140 systolic is already hypertension.
+ Yes: measured lying down (at heart height), at rest, so Δh = 0.
+ No: at rest.
+Y20 AD by-circ
+ Yes: R = ρvr/η depends on viscosity.
+ No: pH is not in the Reynolds number.
+ No: laminar under 2000; over 4000 is turbulent.
+ Yes: and on velocity.
+Y24 BD by-circ
+ No: by Bernoulli, a wider section slows the flow and raises the pressure.
+ Yes: S up, v down, P up.
+ No: the velocity falls.
+ Yes: Q = S·v is constant, so v falls.
+Y51 BD by-circ
+ No: the pressure rises.
+ Yes: S up, v down, P up (aneurysm).
+ No: the velocity falls.
+ Yes: the velocity falls.
+Y45 AB by-circ
+ Yes: blood's viscosity changes with the velocity gradient.
+ Yes: its structure (red cell rouleaux) changes with speed.
+ No: the flow regime doesn't define it.
+ No: it is the suspended cells and macromolecules that make blood non-Newtonian.
+Y46 AD by-circ
+ Yes: blood is cells in plasma, so plasma viscosity counts.
+ No: a lower hematocrit lowers viscosity.
+ No: viscosity falls as temperature rises.
+ Yes: inflammation raises plasma proteins (fibrinogen) and red cell aggregation.
+Y48 AD by-circ
+ Yes: at a dilation S up, v down, P up.
+ No: the velocity falls.
+ No: the pressure rises.
+ Yes: the velocity falls.
+Y49 ACD by-circ
+ Yes: ΔP = 8ηlQ / πr⁴: proportional to l.
+ No: proportional to Q.
+ Yes: proportional to η.
+ Yes: inversely proportional to r⁴.
+Y50 ACD by-circ
+ Yes: laminar under 2000.
+ No: between 2000 and 4000 it can't be predicted.
+ Yes: unpredictable between 2000 and 4000.
+ Yes: high velocity raises R above 4000.
+Y52 ABC by-circ
+ Yes: R = ρvr/η.
+ Yes: ρ is in R.
+ Yes: turbulent over 4000.
+ No: under 2000 it is laminar.
+Y55 ABC by-circ
+ Yes: v is in R.
+ Yes: η is in R.
+ Yes: ρ is in R.
+ No: over 4000 it is turbulent.
+Y53 ABD by-circ
+ Yes: S down, v up.
+ Yes: v up, so R up.
+ No: the flow becomes turbulent.
+ Yes: the artery opens and closes: a murmur on auscultation, a thrill on palpation.
+Y23 B by-ab
+ No: HCO3- is normal (24), so it isn't metabolic.
+ Yes: pH high, PCO2 low (23 mmHg), HCO3- normal: respiratory alkalosis, not yet compensated.
+ No: the pH is high, not low.
+ No: the PCO2 is low and the pH high.
+Y1 BD by-radio
+ No: the HVL is a thickness; μ is in m⁻¹.
+ Yes: N = N0 e^(−μx).
+ No: the HVL halves the beam; HVL = ln2/μ.
+ Yes: tissues with different μ attenuate differently: that is the contrast.
+Y2 BC by-radio
+ No: about 6 hours.
+ Yes: the molybdenum-99 generator gives Tc-99m.
+ Yes: the workhorse of nuclear medicine scintigraphy.
+ No: 511 keV is the annihilation photon of β+; Tc-99m emits 140 keV.
+Y4 BD by-radio
+ No: iodine-127 is the stable isotope.
+ Yes: β− 606 keV, used for therapy.
+ No: iodine-123 is a pure γ emitter; PET needs β+.
+ Yes: pure γ (159 keV), used for diagnosis.
+Y5 BC by-radio
+ No: it needs a threshold of 1.022 MeV.
+ Yes: below the threshold the nucleus decays by electron capture instead.
+ Yes: fluorine-18 (FDG for PET) is a β+ emitter.
+ No: not a partition.
+Y6 A by-radio
+ Yes: the photon gives all its energy to a bound electron and disappears.
+ No: a scattered photon is the Compton effect.
+ No: it gives the contrast of radiology.
+ No: it is a photon's interaction, not an electron's.
+Y13 AC by-radio
+ Yes: heavy, so they go in a straight line.
+ No: they are heavy charged particles.
+ Yes: high LET, about 130 keV/µm.
+ No: they are stopped within micrometres in tissue; imaging uses photons.
+Y7 AD by-radio
+ Yes: renewing tissues (hematopoietic marrow) are more radiosensitive than muscle.
+ No: lymphocytes are among the most radiosensitive cells; glial cells are resistant.
+ No: the intestinal epithelium is highly radiosensitive.
+ Yes: lymphocytes die within hours; the liver is less sensitive.
+Y9 AB by-radio
+ Yes: there are no dose limits for patients, only justification and optimisation.
+ Yes: 1 mSv a year for the public.
+ No: category A is above 6 mSv a year (but under 20).
+ No: category B stays under 6 mSv a year.

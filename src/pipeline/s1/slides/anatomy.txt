@@ -1,0 +1,176 @@
+# Anatomy I, thorax (Pr Benyoussef's decks, S1 lectures in Abi's Drive). Limb and introduction questions have no deck yet.
+@ an-heart | Anatomy of the thorax 5: the heart
+@ an-vessels | Anatomy of the thorax 6–7: aorta, great vessels
+@ an-resp | Anatomy of the thorax 8: the respiratory system
+A14 AE an-heart
+ Yes: the slides say most of the left ventricle is on the posterior side of the heart.
+ No: the right ventricle forms most of the anterior surface.
+ No: the tricuspid valve lets blood from the right atrium into the right ventricle.
+ No: the left ventricle gets blood from the left atrium; the mitral valve is on the left.
+ Yes: in systole it pumps into the aorta through the aortic valve.
+A15 BCE an-heart
+ No: that is the left ventricle, fed by the left atrium.
+ Yes: the right ventricle forms most of the anterior surface.
+ Yes: right atrium to right ventricle through the tricuspid valve.
+ No: the mitral valve is between the left atrium and left ventricle.
+ Yes: outflow in systole is to the pulmonary trunk through the pulmonary valve.
+A16 C an-heart
+ No: the right coronary artery arises from the aorta, above the right aortic cusp.
+ No: it arises from the aorta, not a pulmonary artery.
+ Yes: it runs in the right AV groove, between the pulmonary trunk root and the right auricle.
+ No: it supplies the right atrium, right ventricle, SA and AV nodes; the left atrium is the left coronary's.
+ No: most of the left ventricle is supplied by the left coronary artery.
+A17 CE an-vessels
+ No: the pulmonary arteries come from the pulmonary trunk.
+ No: same, from the pulmonary trunk.
+ Yes: the brachiocephalic trunk is the first branch, on the right.
+ No: the second branch is the left common carotid; the right one comes from the brachiocephalic trunk.
+ Yes: the left subclavian artery is the third branch.
+A61 ACE an-heart
+ Yes: the left ventricle forms the left border and most of the left (pulmonary) surface.
+ No: the right ventricle forms most of the anterior surface.
+ Yes: left atrium to left ventricle through the mitral valve.
+ No: the right atrium empties into the right ventricle.
+ Yes: in systole it pumps into the aorta through the aortic valve.
+A62 BC an-heart
+ No: the left atrium empties through the mitral valve into the left ventricle.
+ Yes: the right ventricle forms most of the anterior surface.
+ Yes: right atrium to right ventricle through the tricuspid valve.
+ No: the mitral valve is on the left.
+ No: it pumps through the pulmonary valve, in systole.
+A63 ACE an-heart
+ Yes: it receives systemic venous blood through both venae cavae (and the coronary sinus).
+ No: the right ventricle forms most of the anterior surface.
+ Yes: it pumps into the right ventricle through the tricuspid valve.
+ No: the four pulmonary veins drain into the left atrium.
+ Yes: the superior vena cava enters the right atrium.
+A64 CE an-heart
+ No: the coronary arteries arise from the aorta.
+ No: they arise from the aorta, above the aortic cusps.
+ Yes: word for word the slides: they run on the epicardium in the sulci and interventricular grooves.
+ No: there are a left and a right coronary artery.
+ Yes: word for word the slides on the left coronary artery.
+A65 CE an-heart
+ No: it arises from the aorta.
+ No: it arises from the aorta.
+ Yes: it runs in the right AV groove.
+ No: the left atrium is supplied by the left coronary artery.
+ Yes: it supplies the right atrium, right ventricle, SA and AV nodes.
+A66 CDE an-vessels
+ No: the pulmonary arteries come from the pulmonary trunk.
+ No: same, from the pulmonary trunk.
+ Yes: first branch.
+ Yes: second branch.
+ Yes: third branch.
+A67 BCDE an-vessels
+ No: the superior vena cava is a vein that drains into the right atrium.
+ Yes: first branch of the arch.
+ Yes: the coronary arteries arise from the ascending aorta, above the aortic cusps.
+ Yes: the descending thoracic aorta gives the posterior intercostal arteries.
+ Yes: second branch of the arch.
+A73 CD an-vessels
+ No: the pulmonary trunk is an artery leaving the right ventricle.
+ No: the inferior vena cava drains into the right atrium on its own.
+ Yes: the two brachiocephalic veins join to form the superior vena cava.
+ Yes: the superior vena cava receives the azygos vein just before entering the pericardium.
+ No: the pulmonary veins drain into the left atrium.
+A128 A an-heart
+ Yes: the left surface, formed mostly by the left ventricle, faces the left lung: the pulmonary surface.
+ No: the sternocostal surface is anterior, behind the sternum and costal cartilages.
+ No: the diaphragmatic surface is inferior, on the central tendon.
+ No: the base faces posteriorly and is formed mainly by the left atrium.
+A137 BC an-resp
+ No: the right pulmonary artery passes anterior to the tracheal bifurcation and right main bronchus, far in front of the oesophagus.
+ Yes: it passes behind the ascending aorta and the superior vena cava.
+ Yes: it runs horizontally under the arch of the aorta.
+ No: it crosses the middle mediastinum, not the posterior one.
+A141 C an-vessels
+ No: the azygos vein ends in the superior vena cava, not the atrium.
+ No: it drains upward, into the superior vena cava.
+ Yes: the superior vena cava receives the azygos vein just before entering the pericardium.
+ No: pulmonary veins carry blood from the lungs to the left atrium.
+A142 BC an-vessels
+ No: the thoracic aorta is ascending aorta, arch and descending aorta; the descending part begins at the lower edge of T4, continuing the arch.
+ Yes: it ends at T12, where it passes behind the diaphragm (aortic hiatus).
+ Yes: the descending part gives the posterior intercostal arteries.
+ No: the arch is only one part of the thoracic aorta.
+A18 ABCD an-resp
+ Yes: word for word the slides.
+ Yes: it bifurcates at T4–T5.
+ Yes: C-shaped rings, open part facing posteriorly.
+ Yes: the posterior wall is mainly smooth muscle.
+ No: the trachea is anterior to the oesophagus.
+A19 ACD an-resp
+ Yes: each lung lies in its pleural cavity.
+ No: the left lung has two lobes and one (oblique) fissure.
+ Yes: its two lobes are separated by the oblique fissure.
+ Yes: each lung has a base, an apex, two surfaces and three borders.
+ No: the costal surface is against the ribs; the medial (mediastinal) surface is next to the heart.
+A20 ABDE an-resp
+ Yes: the right lung is a little larger, as the heart bulges to the left.
+ Yes: three lobes, horizontal and oblique fissures.
+ No: the horizontal fissure separates the superior lobe from the middle lobe.
+ Yes: each lung is in its pleural cavity.
+ Yes: the slides list the heart, inferior and superior venae cavae, azygos vein and oesophagus.
+A68 BCE an-resp
+ No: it runs from the larynx into the thorax, to the bronchi.
+ Yes: it bifurcates at T4–T5.
+ Yes: C-shaped cartilage rings hold it open.
+ No: the posterior wall is mainly smooth muscle.
+ Yes: the oesophagus lies behind it.
+A69 ABD an-resp
+ Yes: the arch begins in front of it and ends on its left side.
+ Yes: it bifurcates in the mediastinum, at T4–T5.
+ No: it is in the mediastinum, medial to both lungs.
+ Yes: it lies between the lungs, so medial to the left lung.
+ No: the trachea is anterior to the vertebral bodies.
+A70 ACDE an-resp
+ Yes: each lung is in its pleural cavity.
+ No: two lobes and one fissure.
+ Yes: the oblique fissure separates its two lobes.
+ Yes: half-cone, base, apex, two surfaces, three borders.
+ Yes: the slides list the heart first next to its medial surface.
+A71 ABDE an-resp
+ Yes: a little larger than the left.
+ Yes: three lobes, two fissures.
+ No: the horizontal fissure separates the superior from the middle lobe.
+ Yes: each lung is in its pleural cavity.
+ Yes: the slides list exactly these.
+A72 BDE an-resp
+ No: that is the superior lobe; the inferior lobe touches the posterior and inferior walls.
+ Yes: word for word the slides on the middle lobe.
+ No: the lung is surrounded by the pleura; the pericardium is around the heart.
+ Yes: the medial surface lies against the mediastinum.
+ Yes: the base sits on the diaphragm.
+A74 B an-resp
+ No: the superior vena cava is in the mediastinum, next to the right lung.
+ Yes: each hilum holds a superior and an inferior pulmonary vein.
+ No: the right main bronchus is in the right hilum.
+ No: the right pulmonary artery is in the right hilum.
+ No: the inferior vena cava is not in a hilum.
+A75 ACDE an-resp
+ Yes: its short thoracic part is in the middle mediastinum.
+ No: the lungs are in the pleural cavities, on either side of the mediastinum.
+ Yes: the mediastinum contains the heart.
+ Yes: the major systemic vessels, the aortic arch among them.
+ Yes: the mediastinum contains the trachea.
+A124 A an-resp
+ Yes: the right main bronchus is wider and more vertical, so foreign bodies lodge there more often.
+ No: it is wider.
+ No: it is more vertical.
+ No: it is shorter than the left.
+A136 AD an-resp
+ Yes: superior, middle and inferior lobar bronchi.
+ No: two lobar bronchi is the left lung.
+ No: the lobar bronchi divide into segmental bronchi, not lobular ones.
+ Yes: ten segmental bronchi, one per bronchopulmonary segment.
+A143 AB an-resp
+ Yes: it bifurcates at T4–T5 (TIV/V).
+ Yes: the carina, the hook-shaped last ring, sits between the origins of the two main bronchi.
+ No: C6 is where the trachea begins.
+ No: the arch is in front and to the left; it is not where the trachea divides.
+A144 BC an-resp
+ No: the oesophagus is behind the trachea.
+ Yes: the left brachiocephalic vein crosses in front of the trachea in the superior mediastinum.
+ Yes: the thymus lies in front, in the superior mediastinum.
+ No: the thyroid isthmus is in front of the cervical trachea, not the thoracic part.

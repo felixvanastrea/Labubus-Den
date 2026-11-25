@@ -78,44 +78,51 @@
   "n": 13
  },
  "A14": {
-  "key": "E",
-  "by": "knowledge",
+  "key": "AE",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2022",
   "n": 14
  },
  "A15": {
   "key": "BCE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2022",
   "n": 15
  },
  "A16": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2022",
   "n": 16
  },
  "A17": {
   "key": "CE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-2022",
   "n": 17
  },
  "A18": {
   "key": "ABCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2022",
   "n": 18
  },
  "A19": {
   "key": "ACD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2022",
   "n": 19
  },
  "A20": {
   "key": "ABDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2022",
   "n": 20
  },
@@ -361,91 +368,106 @@
  },
  "A61": {
   "key": "ACE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2023",
   "n": 11
  },
  "A62": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2023",
   "n": 12
  },
  "A63": {
   "key": "ACE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2023",
   "n": 13
  },
  "A64": {
   "key": "CE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2023",
   "n": 14
  },
  "A65": {
   "key": "CE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-2023",
   "n": 15
  },
  "A66": {
   "key": "CDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-2023",
   "n": 16
  },
  "A67": {
   "key": "BCDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-2023",
   "n": 17
  },
  "A68": {
   "key": "BCE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 18
  },
  "A69": {
   "key": "ABD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 19
  },
  "A70": {
   "key": "ACDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 20
  },
  "A71": {
   "key": "ABDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 21
  },
  "A72": {
   "key": "BDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 22
  },
  "A73": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-2023",
   "n": 23
  },
  "A74": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 24
  },
  "A75": {
   "key": "ACDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-2023",
   "n": 25
  },
@@ -739,7 +761,8 @@
  },
  "A124": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-fmc",
   "n": 4
  },
@@ -763,7 +786,8 @@
  },
  "A128": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-heart",
   "set": "anat-fmc",
   "n": 8
  },
@@ -811,13 +835,15 @@
  },
  "A136": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-fmc",
   "n": 16
  },
  "A137": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-fmc",
   "n": 17
  },
@@ -841,25 +867,29 @@
  },
  "A141": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-fmc",
   "n": 21
  },
  "A142": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-vessels",
   "set": "anat-fmc",
   "n": 22
  },
  "A143": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-fmc",
   "n": 23
  },
  "A144": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "an-resp",
   "set": "anat-fmc",
   "n": 24
  },
@@ -895,67 +925,78 @@
  },
  "C1": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 1
  },
  "C2": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 2
  },
  "C3": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 3
  },
  "C4": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 4
  },
  "C5": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 5
  },
  "C6": {
   "key": "ABD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-mock",
   "n": 6
  },
  "C7": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 7
  },
  "C8": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 8
  },
  "C9": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 9
  },
  "C10": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 10
  },
  "C11": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-mock",
   "n": 11
  },
@@ -967,127 +1008,148 @@
  },
  "C13": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-mock",
   "n": 13
  },
  "C14": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-mock",
   "n": 14
  },
  "C15": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "chem-mock",
   "n": 15
  },
  "C16": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "chem-mock",
   "n": 16
  },
  "C17": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-mock",
   "n": 17
  },
  "C18": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-mock",
   "n": 18
  },
  "C19": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-4",
   "set": "chem-mock",
   "n": 19
  },
  "C20": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-mock",
   "n": 20
  },
  "C21": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-4",
   "set": "chem-mock",
   "n": 21
  },
  "C22": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-mock",
   "n": 22
  },
  "C23": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-mock",
   "n": 23
  },
  "C24": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "chem-mock",
   "n": 24
  },
  "C25": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-2",
   "set": "chem-mock",
   "n": 25
  },
  "C26": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 1
  },
  "C27": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 2
  },
  "C28": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 3
  },
  "C29": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 4
  },
  "C30": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 5
  },
  "C31": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-1",
   "set": "chem-2024",
   "n": 6
  },
  "C32": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 7
  },
  "C33": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 8
  },
@@ -1099,85 +1161,99 @@
  },
  "C35": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 10
  },
  "C36": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 11
  },
  "C37": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-2024",
   "n": 12
  },
  "C38": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "chem-2024",
   "n": 13
  },
  "C39": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-2",
   "set": "chem-2024",
   "n": 14
  },
  "C40": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-2024",
   "n": 15
  },
  "C41": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-4",
   "set": "chem-2024",
   "n": 16
  },
  "C42": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "chem-2024",
   "n": 17
  },
  "C43": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-2024",
   "n": 18
  },
  "C44": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-2024",
   "n": 19
  },
  "C45": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "chem-2024",
   "n": 20
  },
  "C46": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-2024",
   "n": 21
  },
  "C47": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "chem-2024",
   "n": 22
  },
  "C48": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-2024",
   "n": 23
  },
@@ -1243,7 +1319,8 @@
  },
  "C59": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-fr",
   "n": 15
  },
@@ -1255,55 +1332,64 @@
  },
  "C61": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-fr",
   "n": 17
  },
  "C62": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-fr",
   "n": 18
  },
  "C63": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "chem-fr",
   "n": 19
  },
  "C64": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-4",
   "set": "chem-fr",
   "n": 20
  },
  "C65": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-fr",
   "n": 21
  },
  "C66": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-2",
   "set": "chem-fr",
   "n": 22
  },
  "C67": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "chem-fr",
   "n": 23
  },
  "C68": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-5",
   "set": "chem-fr",
   "n": 24
  },
  "C69": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-6",
   "set": "chem-fr",
   "n": 25
  },
@@ -1321,7 +1407,8 @@
  },
  "C72": {
   "key": "ACE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "org-34",
   "set": "chem-fr-exam",
   "n": 15
  },
@@ -1333,7 +1420,8 @@
  },
  "C74": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "gen-3",
   "set": "chem-en",
   "n": 10
  },
@@ -1513,121 +1601,141 @@
  },
  "C104": {
   "key": "AE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "sbio-fr",
   "n": 34
  },
  "C105": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "sbio-en",
   "n": 7
  },
  "C106": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "sbio-en",
   "n": 8
  },
  "C107": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "sbio-en",
   "n": 9
  },
  "C108": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-1",
   "set": "sbio-en",
   "n": 10
  },
  "C109": {
   "key": "ACDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "sbio-en",
   "n": 14
  },
  "C110": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "bc-3",
   "set": "sbio-en",
   "n": 16
  },
  "G1": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "bg-mock",
   "n": 1
  },
  "G2": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "bg-mock",
   "n": 2
  },
  "G3": {
-  "key": "B",
-  "by": "knowledge",
+  "key": "BC",
+  "by": "lecture",
+  "lecture": "cb-4",
   "set": "bg-mock",
   "n": 3
  },
  "G4": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "bg-mock",
   "n": 4
  },
  "G5": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-4",
   "set": "bg-mock",
   "n": 5
  },
  "G6": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "bg-mock",
   "n": 6
  },
  "G7": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "bg-mock",
   "n": 7
  },
  "G8": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-4",
   "set": "bg-mock",
   "n": 8
  },
  "G9": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-4",
   "set": "bg-mock",
   "n": 9
  },
  "G10": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "bg-mock",
   "n": 10
  },
  "G11": {
   "key": "ABCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "bg-mock",
   "n": 11
  },
  "G12": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "bg-mock",
   "n": 12
  },
  "G13": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "bg-mock",
   "n": 13
  },
@@ -1705,43 +1813,50 @@
  },
  "G26": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "cell-2023",
   "n": 1
  },
  "G27": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "cell-2023",
   "n": 2
  },
  "G28": {
   "key": "ABD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "cell-2023",
   "n": 3
  },
  "G29": {
   "key": "CDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-1",
   "set": "cell-2023",
   "n": 4
  },
  "G30": {
-  "key": "AE",
-  "by": "knowledge",
+  "key": "ABE",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "cell-2023",
   "n": 5
  },
  "G31": {
   "key": "DE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "cell-2023",
   "n": 6
  },
  "G32": {
   "key": "ACDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "cell-2023",
   "n": 7
  },
@@ -1753,49 +1868,57 @@
  },
  "G34": {
   "key": "ACE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "cell-2023",
   "n": 9
  },
  "G35": {
   "key": "ABDE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-2",
   "set": "cell-2023",
   "n": 10
  },
  "G36": {
   "key": "ABD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 11
  },
  "G37": {
   "key": "ABC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 12
  },
  "G38": {
   "key": "AE",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 13
  },
  "G39": {
   "key": "ABC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 14
  },
  "G40": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 15
  },
  "G41": {
   "key": "ABCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-3",
   "set": "cell-2023",
   "n": 16
  },
@@ -1813,43 +1936,50 @@
  },
  "G44": {
   "key": "ABCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-4",
   "set": "cell-2023",
   "n": 19
  },
  "G45": {
   "key": "ABCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 20
  },
  "G46": {
-  "key": "BC",
-  "by": "knowledge",
+  "key": "B",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 21
  },
  "G47": {
-  "key": "B",
-  "by": "knowledge",
+  "key": "C",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 22
  },
  "G48": {
-  "key": "ABCD",
-  "by": "knowledge",
+  "key": "ACD",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 23
  },
  "G49": {
   "key": "ABC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 24
  },
  "G50": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "cb-5",
   "set": "cell-2023",
   "n": 25
  },
@@ -1861,19 +1991,22 @@
  },
  "P2": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-mock",
   "n": 2
  },
  "P3": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-mock",
   "n": 3
  },
  "P4": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-mock",
   "n": 4
  },
@@ -1885,25 +2018,29 @@
  },
  "P6": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-mock",
   "n": 8
  },
  "P7": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-mock",
   "n": 9
  },
  "P8": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-mock",
   "n": 10
  },
  "P9": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-mock",
   "n": 11
  },
@@ -1915,13 +2052,15 @@
  },
  "P11": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-mock",
   "n": 13
  },
  "P12": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-mock",
   "n": 14
  },
@@ -1933,13 +2072,15 @@
  },
  "P14": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-mock",
   "n": 16
  },
  "P15": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-mock",
   "n": 17
  },
@@ -2035,7 +2176,8 @@
  },
  "P31": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-fr",
   "n": 9
  },
@@ -2065,25 +2207,29 @@
  },
  "P36": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-fr",
   "n": 14
  },
  "P37": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-fr",
   "n": 15
  },
  "P38": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-fr",
   "n": 16
  },
  "P39": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-fr",
   "n": 17
  },
@@ -2095,25 +2241,29 @@
  },
  "P41": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-hsa",
   "set": "ph-fr",
   "n": 19
  },
  "P42": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-fr",
   "n": 20
  },
  "P43": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-intro",
   "set": "ph-fr",
   "n": 21
  },
  "P44": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-fr",
   "n": 22
  },
@@ -2125,25 +2275,29 @@
  },
  "P46": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-fr",
   "n": 24
  },
  "P47": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "ph-det",
   "set": "ph-fr",
   "n": 25
  },
  "Y1": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 1
  },
  "Y2": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 2
  },
@@ -2155,25 +2309,29 @@
  },
  "Y4": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 4
  },
  "Y5": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 5
  },
  "Y6": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 6
  },
  "Y7": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 7
  },
@@ -2185,7 +2343,8 @@
  },
  "Y9": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 9
  },
@@ -2209,19 +2368,22 @@
  },
  "Y13": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-radio",
   "set": "biophys-mock",
   "n": 13
  },
  "Y14": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-osm",
   "set": "biophys-mock",
   "n": 14
  },
  "Y15": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "biophys-mock",
   "n": 15
  },
@@ -2233,13 +2395,15 @@
  },
  "Y17": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "biophys-mock",
   "n": 17
  },
  "Y18": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "biophys-mock",
   "n": 18
  },
@@ -2251,13 +2415,15 @@
  },
  "Y20": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "biophys-mock",
   "n": 20
  },
  "Y21": {
   "key": "BC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-osm",
   "set": "biophys-mock",
   "n": 21
  },
@@ -2269,13 +2435,15 @@
  },
  "Y23": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-ab",
   "set": "biophys-mock",
   "n": 23
  },
  "Y24": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "biophys-mock",
   "n": 24
  },
@@ -2329,37 +2497,43 @@
  },
  "Y33": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-states",
   "set": "bio-review",
   "n": 8
  },
  "Y34": {
   "key": "ACD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-states",
   "set": "bio-review",
   "n": 9
  },
  "Y35": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "bio-review",
   "n": 10
  },
  "Y36": {
   "key": "ACD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "bio-review",
   "n": 11
  },
  "Y37": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "bio-review",
   "n": 12
  },
  "Y38": {
   "key": "BCD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-states",
   "set": "bio-review",
   "n": 13
  },
@@ -2371,13 +2545,15 @@
  },
  "Y40": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "bio-review",
   "n": 15
  },
  "Y41": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-gas",
   "set": "bio-review",
   "n": 16
  },
@@ -2401,55 +2577,64 @@
  },
  "Y45": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 20
  },
  "Y46": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 21
  },
  "Y47": {
   "key": "CD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 22
  },
  "Y48": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 23
  },
  "Y49": {
   "key": "ACD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 24
  },
  "Y50": {
   "key": "ACD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 25
  },
  "Y51": {
   "key": "BD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 26
  },
  "Y52": {
   "key": "ABC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 27
  },
  "Y53": {
   "key": "ABD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 28
  },
@@ -2461,7 +2646,8 @@
  },
  "Y55": {
   "key": "ABC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "by-circ",
   "set": "bio-review",
   "n": 30
  },
@@ -2473,19 +2659,22 @@
  },
  "L2": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 2
  },
  "L3": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 3
  },
  "L4": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-intro",
   "set": "lm-mock",
   "n": 4
  },
@@ -2509,43 +2698,50 @@
  },
  "L8": {
   "key": "AB",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 8
  },
  "L9": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 9
  },
  "L10": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 10
  },
  "L11": {
   "key": "AC",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-intro",
   "set": "lm-mock",
   "n": 11
  },
  "L12": {
   "key": "AD",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "mt-cardio",
   "set": "lm-mock",
   "n": 12
  },
  "L13": {
   "key": "B",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "lm-book",
   "set": "lm-mock",
   "n": 13
  },
  "L14": {
   "key": "D",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "lm-book",
   "set": "lm-mock",
   "n": 14
  },
@@ -2557,7 +2753,8 @@
  },
  "L16": {
   "key": "C",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "lm-book",
   "set": "lm-mock",
   "n": 16
  },
@@ -2575,7 +2772,8 @@
  },
  "L19": {
   "key": "A",
-  "by": "knowledge",
+  "by": "lecture",
+  "lecture": "lm-book",
   "set": "lm-mock",
   "n": 19
  },

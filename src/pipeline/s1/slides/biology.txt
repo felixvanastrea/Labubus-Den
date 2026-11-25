@@ -1,0 +1,204 @@
+# Biology and genetics: Pr Aboussaouira's cell biology chapters 1-5. The genetics questions, adenylyl cyclase (G33),
+# the peroxisome questions G42-G43 (its .ppt could not be read) stay Claude's from knowledge.
+@ cb-1 | Cell biology, chapter 1: cell studying methods
+@ cb-2 | Cell biology, chapter 2: the cell membrane
+@ cb-3 | Cell biology, chapter 3: cytoskeleton
+@ cb-4 | Cell biology, chapter 4: cell organelles
+@ cb-5 | Cell biology, chapter 5: cell cycle, nucleus, apoptosis
+G1 CD cb-1
+ No: fixation is a step of histological processing.
+ No: sectioning is a step of histological processing.
+ Yes: the cells grow in the incubator (37 °C, 5% CO2).
+ Yes: trypsinization dissociates the tissue into cells after mechanical dissociation.
+G4 BC cb-1
+ No: Bouin's mixture is a fixer, used at fixation.
+ Yes: inclusion hardens the tissue so thin sections can be cut.
+ Yes: paraffin replaces the water in the cells.
+ No: fluorescent labelling is for the fluorescent microscope, not inclusion.
+G12 CD cb-1
+ No: special objective lenses belong to the inverted microscope.
+ No: a laser belongs to the confocal microscope.
+ Yes: 3 magnetic bands: condenser, objective, ocular.
+ Yes: a vacuum pump keeps the electrons from being deviated.
+G26 BD cb-1
+ No: the laser is the confocal microscope's.
+ Yes: the fluorescent microscope is a light microscope with a UV lamp.
+ No: the photomultiplier is the confocal microscope's.
+ Yes: it keeps the light microscope's objective lenses.
+ No: in the epifluorescent microscope the objective also lights the specimen; no condenser.
+G27 A cb-1
+ Yes: ultrathin sections (50–80 nm) are cut with an ultramicrotome.
+ No: the automaton dehydrates biopsies for the light microscope.
+ No: the flow hood is for cell culture.
+ No: the cryostat cuts frozen sections for the light microscope.
+ No: the CO2 incubator is for cell culture.
+G28 ABD cb-1
+ Yes: osmium tetroxide (osmic acid) fixes lipids for the TEM.
+ Yes: glutaraldehyde fixes proteins for the TEM.
+ No: heavy metal salts are for contrasting.
+ Yes: Bouin's mixture is the fixer used in medicine.
+ No: synthetic resins are for TEM inclusion.
+G29 CDE cb-1
+ No: it needs a nutrient medium (MEM, RPMI1640).
+ No: hematein-eosin stains tissue sections.
+ Yes: the CO2 incubator keeps 37 °C and 5% CO2.
+ Yes: pH 7 to 7.4.
+ Yes: the laminar flow hood keeps it sterile.
+G2 BD cb-2
+ No: ions are carried by ATPase pumps; MDR pumps carry drugs.
+ Yes: they push xenobiotics (drugs) out of the cell.
+ No: the slides: not very specific; several drugs use the same pump.
+ Yes: they explain resistance of tumour cells to chemotherapy.
+G10 CD cb-2
+ No: macromolecules use vesicular exchange.
+ No: vesicles are for endocytosis and exocytosis.
+ Yes: passive transport uses the gradient energy.
+ Yes: facilitated diffusion uses carrier proteins.
+G30 ABE cb-2
+ Yes: gases cross the phospholipid bilayer by simple diffusion.
+ Yes: the slides list water and ions under simple diffusion.
+ No: large molecules use vesicles.
+ No: passive transport needs no ATP.
+ Yes: gases diffuse according to their partial pressure.
+G31 DE cb-2
+ No: they are not very specific.
+ No: they are ATP-dependent.
+ No: they push drugs out of the cell.
+ Yes: found in normal and cancerous cells.
+ Yes: tumour cells resist chemotherapy this way.
+G32 ACDE cb-2
+ Yes: the molecule is adsorbed on the membrane over clathrins.
+ No: the membrane is invaginated by clathrins, not G proteins.
+ Yes: an endocytosis vesicle forms.
+ Yes: the membrane retracts and the vesicle detaches.
+ Yes: the vesicle migrates in the cytoplasm.
+G34 ACE cb-2
+ Yes: the hormone binds a G protein coupled receptor.
+ No: tyrosine kinase receptors lead to the MAP kinase pathway.
+ Yes: phospholipase C gives DAG (lipid second messenger) and IP3.
+ No: PKA is the cAMP (adenylyl cyclase) pathway.
+ Yes: Ca2+ activates kinase C.
+G35 ABDE cb-2
+ Yes: it starts at a tyrosine kinase receptor.
+ Yes: Ras (to Raf, MKK1, Erk) or Rac (to MEKK1, MKK4, Jnk).
+ No: adenylyl cyclase is the PKA pathway.
+ Yes: MKK4 is in the Rac cascade.
+ Yes: growth factors bind the receptor.
+G6 BC cb-3
+ No: neurofilaments (intermediate filaments) strengthen axons.
+ Yes: the cortex of actin under the membrane keeps the 3D shape.
+ Yes: they guide cytoplasmic currents.
+ No: cell resistance comes from intermediate filaments.
+G13 CD cb-3
+ No: Arp2/3 assembles actin.
+ No: CapZ stops actin polymerization.
+ Yes: MAP2 stabilises microtubules.
+ Yes: dynein is a motor protein on microtubules.
+G36 ABD cb-3
+ Yes: α and β tubulins combine into dimers.
+ Yes: the dimers form using GTP, bound on β tubulin.
+ No: keratin is an intermediate filament.
+ Yes: protofilaments form first, then join into the microtubule.
+ No: 13 protofilaments.
+G37 ABC cb-3
+ Yes: γTURC assembles microtubules.
+ Yes: motor proteins turn chemical energy (ATP or GTP) into movement.
+ Yes: kinesin and dynein have globular heads on the microtubule.
+ No: myosin is an actin motor.
+ No: troponin is on actin filaments in muscle.
+G38 AE cb-3
+ Yes: a centriole is 9 triplets of microtubules.
+ No: lamellipodia are actin (formed through Rac).
+ No: the nucleus holds lamins (intermediate filaments), not microtubules.
+ No: the cortex under the membrane is actin.
+ Yes: microtubules drive cilia and flagella.
+G39 ABC cb-3
+ Yes: motor proteins carry organelles along them.
+ Yes: kinesin and dynein carry their cargo in opposite directions.
+ Yes: the spindle moves the chromosomes in mitosis.
+ No: muscle contraction is actin and myosin II.
+ No: the lamina is made of lamins (intermediate filaments).
+G40 AC cb-3
+ Yes: both work on actin in muscle (myosin II is an actin motor).
+ No: tubulin makes microtubules, desmin is an intermediate filament.
+ Yes: cofilin cuts actin, tropomyosin protects it from depolymerization.
+ No: dynein and kinesin are microtubule motors.
+ No: keratin and vimentin are intermediate filaments.
+G41 ABCD cb-3
+ Yes: cytokeratins are in epithelial cells.
+ Yes: lamins A, B, C reinforce the inner nuclear membrane.
+ Yes: neurofilaments are the neurons' intermediate filaments.
+ Yes: GFAP is in glial cells.
+ No: vimentin is in connective tissue; hair and nails are keratin.
+G3 BC cb-4
+ No: the Krebs enzymes are encoded by the nucleus.
+ Yes: inherited from the mother.
+ Yes: the slides: it codes for respiratory chain proteins of complexes III, IV and V.
+ No: it is circular DNA.
+G5 AB cb-4
+ Yes: SRP brings the complex to the SRP receptor in the ER membrane.
+ Yes: a channel (translocon) forms for the chain to cross.
+ No: clathrins are for endocytosis.
+ No: lamins are in the nuclear lamina.
+G8 AC cb-4
+ Yes: the endomembrane system is ER, Golgi apparatus and vesicles.
+ No: mitochondria are their own group (ATP).
+ Yes: the endoplasmic reticulum is part of it.
+ No: the peroxisome is its own group (epuration).
+G9 B cb-4
+ No: it receives endocytic vesicles; it doesn't make molecules.
+ Yes: early endosomes are small; they grow into late endosomes.
+ No: the lytic enzymes are the lysosome's, after fusion with the late endosome.
+ No: catalase is in the peroxisome.
+G44 ABCD cb-4
+ Yes: N-glycosylation is an ER function.
+ Yes: the Golgi complexes proteins and lipids with other molecules.
+ Yes: proteins.
+ Yes: and lipids.
+ No: ions are not glycosylated.
+G7 C cb-5
+ No: cyclin A works with CDK2 in S phase.
+ No: cyclin A/CDK1 is for G2 and mitosis.
+ Yes: cyclin A/CDK2 drives S phase.
+ No: cyclin D/CDK4-6 is G1.
+G11 ABCD cb-5
+ Yes: pRb is a tumour suppressor at the checkpoints.
+ Yes: p53 is a tumour suppressor at the checkpoints.
+ Yes: a cyclin/CDK inhibitor.
+ Yes: a cyclin/CDK inhibitor.
+G45 ABCD cb-5
+ Yes: the lamina covers the inner membrane.
+ Yes: the nucleolus makes the ribosomes.
+ Yes: euchromatin is the transcribed part.
+ Yes: 2000 to 4000 pores per nucleus.
+ No: chromatin is one DNA molecule with many nucleosomes.
+G46 B cb-5
+ No: lamins form the lamina.
+ Yes: the slides: granules are for maturation and splicing of mRNA.
+ No: the slides give the Cajal body the repair of damaged telomeres.
+ No: the Barr body is the inactive X.
+ No: the nucleolus makes ribosomes.
+G47 C cb-5
+ No: splicing is of RNA, in the granules.
+ No: the slides give it repair of damaged telomeres.
+ Yes: the slides: the Cajal body fixes damaged telomeres.
+ No: rDNA loops are in the nucleolus.
+ No: ribosomes are made in the nucleolus.
+G48 ACD cb-5
+ Yes: its filaments form a basket.
+ No: the slides describe 2 rings, one nuclear and one cytoplasmic.
+ Yes: 8 cytoplasmic filaments and 8 between the rings.
+ Yes: FxFG proteins stretch to let molecules through.
+ No: it is made of nucleoproteins (Nups).
+G49 ABC cb-5
+ Yes: oxidative stress triggers it.
+ Yes: H2O2 is listed among the extracellular factors.
+ Yes: xenobiotics are listed.
+ No: red cells don't trigger apoptosis.
+ No: the lack of growth factors does, not growth factors.
+G50 CD cb-5
+ No: mitochondria are the intrinsic pathway.
+ No: cytochrome c is the intrinsic pathway.
+ Yes: the extrinsic pathway starts at a death receptor.
+ Yes: caspase 8 then the effector caspases 3, 6, 7.
+ No: Apaf1 is the intrinsic pathway (apoptosome).
