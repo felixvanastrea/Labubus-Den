@@ -400,11 +400,5 @@
    "note": "Pr El Aziz’s three thyroid function lectures: hypothyroidism, hyperthyroidism and thyroiditis."
   }
  ],
- "spotlight": {
-  "set": "s5-2627-technical-communication-midterm-ai-in-medicine-2026-2027",
-  "title": "AI in medicine midterm 2026–2027",
-  "from": "2026-11-19",
-  "until": "2026-11-20",
-  "note": "Today’s AI in medicine midterm, as it was given, answered from Pr Bencheqroun’s slides and his midterm reading guide."
- }
+ "spotlight": {"set": "s5-2627-endocrinology-midterm-endocrinology-2026-2027", "title": "Endocrinology midterm 2026–2027", "from": "2026-11-26", "until": "2026-12-02", "note": "Today’s endocrinology midterm, as it was given, answered from Pr El Aziz’s thyroid lectures."}
 }

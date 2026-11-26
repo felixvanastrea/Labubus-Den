@@ -296,6 +296,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   hyperthyroidism, thyroiditis (lecture topics `E-hypothyroid`, `E-hyperthyroid`, `E-thyroiditis`), 38 questions (25 official,
   13 proposed). Explanations for all 38 the same day, from Pr El Aziz's three decks in Abi's Drive (lectures `endo-hypo`,
   `endo-hyper`, `endo-thyroiditis`); no key contradicted the slides. priv.js now checks the AI practice card stays hidden.
+- 26 November 2026 (Abi: "add it now in homepage and remove the quest"): the endocrinology midterm 2026–2027 (E176–E190, set
+  `s5-2627-endocrinology-midterm-endocrinology-2026-2027`, `added` that day), all 15 from the Evalbox page (her name left out).
+  No answers marked: `key: "claude"`, from Pr El Aziz's thyroid decks, with explanations, placed by `lectures.json` `q`
+  entries. The quest got `end: 2026-11-26`; the spotlight shows the midterm until 2 December unless she says otherwise.
+  Pushed after the exam's time was over.
 
 ## Crossing out and marks (from UWorld and AMBOSS, October 2026)
 
