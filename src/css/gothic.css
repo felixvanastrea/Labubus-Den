@@ -852,7 +852,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .pk-head { display: grid; justify-items: center; gap: 10px; text-align: center; }
 .pk-k { margin: 0; font-family: var(--f-mono); font-size: .76rem; color: var(--ink-3); }
 .pk-t { margin: 0; font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(2.3rem, 6.4vw, 3.8rem); line-height: 1; color: var(--ink); text-shadow: 0 0 34px var(--title-glow); text-wrap: balance; }
-.pk-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; gap: clamp(8px, 4vw, 60px); width: 100%; }
+.pk-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: clamp(8px, 3vw, 44px); width: 100%; }
 .pk-year {
   display: grid; justify-items: center; gap: 7px; padding: 12px 4px 14px; border: 0; border-radius: var(--r);
   background: none; color: var(--ink); font: inherit; cursor: pointer; transition: transform .6s var(--spring);
@@ -917,7 +917,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
 }
 .pk-skip:hover { color: var(--ink); }
 @media (max-width: 640px) {
-  .pk-row { grid-template-columns: minmax(0, .82fr) minmax(0, 1.56fr) minmax(0, .82fr); }
+  .pk-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
 }
 
 /* ---------- first visit: the masthead settles in once ---------- */

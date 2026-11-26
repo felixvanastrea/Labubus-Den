@@ -63,6 +63,14 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   star falls from the corner of the sky at once (`fall`, with the theme's sounds and the skip hint) and the themes' moons
   and paintings play as before. Its code stays; `window.__introPick` or a URL ending in `#pick#intro` brings it back
   (intro_pick.js, intro_controls.js, intro_frames.js and looks.js use that; intro_star.js tests the plain opening).
+  26 November 2026 (Abi: "bring back that animation that gives the choice for the semester and year, but when you pick it
+  once it remembers and always brings you there"): the picker is back until a semester has been picked once (`den-picked`,
+  also set by the top bar's semester menu); after that the page opens on the plain falling star, and the main address
+  already sends you on to `den-sem`. Years: EFM1, EFM2, EFM3 and EFM4, built from `SEM.all` (a semester's star is open
+  once its page is live, a year once one of its semesters is; EFM4 and the even semesters are "in progress"). Its `data-sem`
+  is the semester id (`efm3-s5`). Picking another semester than the page's goes to its page (`location.assign`), where its
+  own star falls. "replay" in the footer shows the picker again (`intro.choose()`), to change semester. Automated browsers
+  never get it unless asked (`navigator.webdriver`). Four years in a row; two by two on phones.
 - A theme switcher (gothic + the original "classic" answer-sheet look) was started and parked at Abi's request.
   The work is in `src/wip_themes/` if she asks for it again.
 

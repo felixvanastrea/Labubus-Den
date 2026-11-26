@@ -35,15 +35,15 @@ const st = pg => pg.evaluate(() => ({
   let s = await st(pg);
   check(s.pick && s.stage === 'Choose your year' && s.canvases === 2 && s.introOn && !s.hint, 'the sky opens on "Choose your year"');
   const years = await pg.$$eval('.pk-year', bs => bs.map(x => `${x.querySelector('.pk-name').textContent}:${x.getAttribute('aria-disabled') ? 'locked' : 'open'}:${x.querySelector('.pk-sub').textContent}`));
-  check(years.join(' ') === 'EFM2:locked:in progress EFM3:open:third year EFM4:locked:in progress', 'years: ' + years.join(' '));
+  check(years.join(' ') === 'EFM1:open:first year EFM2:open:second year EFM3:open:third year EFM4:locked:in progress', 'years: ' + years.join(' '));
   await pg.waitForTimeout(1900);
   await pg.screenshot({ path: OUT + 'pk_years.png' });
   // nothing skips by accident while picking
   await pg.clock.runFor(4000);
   s = await st(pg);
   check(s.pick && s.hold, 'it waits for a choice: no star falls on its own');
-  await pg.click('.pk-year[data-year="efm2"]', { force: true }); await pg.clock.runFor(100);
-  check((await st(pg)).stage === 'Choose your year' && await pg.$eval('[data-year="efm2"]', e => e.classList.contains('nope')), 'EFM2 is locked: it only shakes');
+  await pg.click('.pk-year[data-year="efm4"]', { force: true }); await pg.clock.runFor(100);
+  check((await st(pg)).stage === 'Choose your year' && await pg.$eval('[data-year="efm4"]', e => e.classList.contains('nope')), 'EFM4 is locked: it only shakes');
   await pg.mouse.click(30, 30); await pg.keyboard.press('/'); await pg.mouse.move(700, 450); await pg.mouse.wheel(0, 8);
   await pg.clock.runFor(200);
   check((await st(pg)).pick && await pg.evaluate(() => !document.activeElement || document.activeElement.id !== 'q'), 'a click on the sky, a key and a nudge of the wheel don\'t skip');
@@ -54,15 +54,15 @@ const st = pg => pg.evaluate(() => ({
   check(sems.join(' ') === 'S5:open S6:locked', 'semesters: ' + sems.join(' '));
   await pg.waitForTimeout(1300);
   await pg.screenshot({ path: OUT + 'pk_sems.png' });
-  await pg.click('.pk-sem[data-sem="s6"]', { force: true }); await pg.clock.runFor(100);
+  await pg.click('.pk-sem[data-sem="efm3-s6"]', { force: true }); await pg.clock.runFor(100);
   check((await st(pg)).stage === 'Choose your semester', 'S6 is locked');
   await pg.click('.pk-back'); await pg.clock.runFor(800);
   check((await st(pg)).stage === 'Choose your year', 'Other years goes back');
   await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800);
   await pg.waitForTimeout(1000);
   // S5: the star leaves from where S5 is
-  const dot = await pg.$eval('.pk-sem[data-sem="s5"] .pk-dot', e => { const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });
-  await pg.click('.pk-sem[data-sem="s5"]'); await pg.clock.runFor(120);
+  const dot = await pg.$eval('.pk-sem[data-sem="efm3-s5"] .pk-dot', e => { const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });
+  await pg.click('.pk-sem[data-sem="efm3-s5"]'); await pg.clock.runFor(120);
   s = await st(pg);
   check(!s.pick && s.hint && s.hold, 'S5: the picker fades, "click anywhere to skip", the star falls');
   await pg.waitForTimeout(200);
@@ -98,7 +98,7 @@ const st = pg => pg.evaluate(() => ({
   await m.screenshot({ path: OUT + 'pk_m_sems.png' });
   const semFit = await m.evaluate(() => [...document.querySelectorAll('.pk-lab')].every(e => { const r = e.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; }));
   check(semFit, 'phone: the semester labels fit');
-  await m.tap('.pk-sem[data-sem="s5"]'); await m.clock.runFor(3400);
+  await m.tap('.pk-sem[data-sem="efm3-s5"]'); await m.clock.runFor(3400);
   check(!(await st(m)).hold && !(await m.$('.pick')), 'phone: S5 lands on the page');
 
   console.log('ERRORS:', errors.length ? errors.join('\n') : 'none');

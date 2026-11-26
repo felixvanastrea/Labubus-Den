@@ -21,7 +21,7 @@ const TIMES = (process.env.TIMES || '0,250,500,850,1250,1650,2050,2450,2800,3000
     await pg.screenshot({ path: `${OUT}in_${tag}_pick_years.png` });
     await pg.click('.pk-year[data-year="efm3"]'); await pg.clock.runFor(800); await pg.waitForTimeout(1300);
     await pg.screenshot({ path: `${OUT}in_${tag}_pick_sems.png` });
-    await pg.click('.pk-sem[data-sem="s5"]');
+    await pg.click('.pk-sem[data-sem="efm3-s5"]');
     let now = 0;
     for (const t of TIMES) {
       await pg.clock.runFor(t - now); now = t;

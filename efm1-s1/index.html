@@ -991,7 +991,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
 .pk-head { display: grid; justify-items: center; gap: 10px; text-align: center; }
 .pk-k { margin: 0; font-family: var(--f-mono); font-size: .76rem; color: var(--ink-3); }
 .pk-t { margin: 0; font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(2.3rem, 6.4vw, 3.8rem); line-height: 1; color: var(--ink); text-shadow: 0 0 34px var(--title-glow); text-wrap: balance; }
-.pk-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; gap: clamp(8px, 4vw, 60px); width: 100%; }
+.pk-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: clamp(8px, 3vw, 44px); width: 100%; }
 .pk-year {
   display: grid; justify-items: center; gap: 7px; padding: 12px 4px 14px; border: 0; border-radius: var(--r);
   background: none; color: var(--ink); font: inherit; cursor: pointer; transition: transform .6s var(--spring);
@@ -1056,7 +1056,7 @@ html.intro-on #sky { opacity: 0; transition: none; }
 }
 .pk-skip:hover { color: var(--ink); }
 @media (max-width: 640px) {
-  .pk-row { grid-template-columns: minmax(0, .82fr) minmax(0, 1.56fr) minmax(0, .82fr); }
+  .pk-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
 }
 
 /* ---------- first visit: the masthead settles in once ---------- */
@@ -3767,7 +3767,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '194d208fb562', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'd51dc601c089', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -9107,7 +9107,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   }
   document.addEventListener('click', e => {
     const a = e.target.closest && e.target.closest('a[data-sem-go]');
-    if (a) { try { localStorage.setItem('den-sem', a.dataset.semGo); } catch (x) {} usage.track('semester_switched', { to: a.dataset.semGo }); return; }
+    if (a) { try { localStorage.setItem('den-sem', a.dataset.semGo); localStorage.setItem('den-picked', a.dataset.semGo); } catch (x) {} usage.track('semester_switched', { to: a.dataset.semGo }); return; }
     const open = document.querySelector('details.semsw[open]');
     if (open && !open.contains(e.target)) open.open = false;
   }, true);
@@ -10718,12 +10718,22 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   const intro = (() => {
     const T_STAR = 650, T_CAM = 1000, T_LAND = 3600, T_TRAIL = 900;
     // the years and their semesters (one star each); p: stars in a 100 x 70 sky, e: lines between them
+    // the years and their semesters (one star each); p: stars in a 100 x 70 sky, e: lines between them. A semester is open
+    // once its page is live (SEM.all); a year once one of its semesters is
+    const SEM_LIVE = (y, m) => (SEM.all || []).find(o => o.year === y && o.sem === m && (o.live || o.id === SEM.id));
     const YEARS = [
-      { id: 'efm2', name: 'EFM2', sub: 'second year', open: false, p: [[8, 52], [27, 30], [50, 20], [73, 30], [92, 52]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] },
-      { id: 'efm3', name: 'EFM3', sub: 'third year', open: true, p: [[10, 50], [30, 22], [52, 36], [72, 14], [90, 42], [58, 62]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [2, 5], [5, 4]],
-        sems: [{ id: 's5', name: 'S5', sub: 'semester 5', star: 1, open: true }, { id: 's6', name: 'S6', sub: 'semester 6', star: 3, open: false }] },
-      { id: 'efm4', name: 'EFM4', sub: 'fourth year', open: false, p: [[8, 22], [29, 52], [50, 26], [71, 56], [92, 30]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] }
+      { id: 'efm1', name: 'EFM1', sub: 'first year', p: [[10, 30], [30, 50], [50, 24], [70, 46], [90, 20], [44, 62]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [1, 5]],
+        sems: [{ name: 'S1', sub: 'semester 1', star: 1 }, { name: 'S2', sub: 'semester 2', star: 3 }] },
+      { id: 'efm2', name: 'EFM2', sub: 'second year', p: [[8, 52], [27, 30], [50, 20], [73, 30], [92, 52]], e: [[0, 1], [1, 2], [2, 3], [3, 4]],
+        sems: [{ name: 'S3', sub: 'semester 3', star: 1 }, { name: 'S4', sub: 'semester 4', star: 3 }] },
+      { id: 'efm3', name: 'EFM3', sub: 'third year', p: [[10, 50], [30, 22], [52, 36], [72, 14], [90, 42], [58, 62]], e: [[0, 1], [1, 2], [2, 3], [3, 4], [2, 5], [5, 4]],
+        sems: [{ name: 'S5', sub: 'semester 5', star: 1 }, { name: 'S6', sub: 'semester 6', star: 3 }] },
+      { id: 'efm4', name: 'EFM4', sub: 'fourth year', p: [[8, 22], [29, 52], [50, 26], [71, 56], [92, 30]], e: [[0, 1], [1, 2], [2, 3], [3, 4]] }
     ];
+    for (const y of YEARS) {
+      for (const m of (y.sems || [])) { const o = SEM_LIVE(y.name, m.name); m.open = !!o; m.id = o ? o.id : y.id + '-' + m.name.toLowerCase(); m.href = o && o.href; }
+      y.open = (y.sems || []).some(m => m.open);
+    }
     const F_STAR = .55;                                  // the falling star's depth: how much it moves with the camera
     const ZEN_TOP = [8, 7, 6], ZEN_BOT = [17, 16, 14];   // straight up, the sky is darker than the page's night
     const outCubic = u => 1 - Math.pow(1 - u, 3);
@@ -11230,7 +11240,12 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       if (b.classList.contains('pk-back')) { sfx.play('untick'); stage(yearsHTML(), 'out'); return; }
       if (b.dataset.sem) fire(b);
     }
-    const PICKER = () => !!window.__introPick || /#pick#intro$/.test(location.href);
+    // the picker is back (Abi, 26 November 2026): it shows until a semester is picked once (den-picked, also set by the
+    // semester menu), then the Den opens straight on that semester with the plain falling star. "replay" shows it again.
+    // Automated browsers only get it with window.__introPick or a URL ending in #pick#intro (the intro tests)
+    let forcePick = false;
+    const picked = () => { try { return !!localStorage.getItem('den-picked'); } catch (e) { return true; } };
+    const PICKER = () => !!window.__introPick || /#pick#intro$/.test(location.href) || forcePick || (!navigator.webdriver && !picked());
     // the classic intro: the star leaves its corner of the sky and falls to the page
     function fall() {
       picking = false; fireAt = performance.now();
@@ -11260,13 +11275,20 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
       makeMinors();
       b.classList.add('fire'); fireAt = performance.now();
       fallSounds(0);
-      usage.track('intro_pick', { year: 'efm3', semester: b.dataset.sem });
+      const sem = b.dataset.sem;
+      usage.track('intro_pick', { semester: sem });
+      try { localStorage.setItem('den-picked', sem); localStorage.setItem('den-sem', sem); } catch (e) {}
+      forcePick = false;
+      if (sem !== SEM.id) {   // another semester is its own page: go there, where the star falls on its own title
+        const m = YEARS.flatMap(y => y.sems || []).find(x => x.id === sem);
+        if (m && m.href) { picking = false; closePick(); setTimeout(() => location.assign(m.href), reduceMotion() ? 0 : 380); return; }
+      }
       picking = false;
       closePick();
       skipHint();
       t0 = performance.now() - T_STAR;   // the story starts as the star leaves
     }
-    return { play, skip, active: () => on, picking: () => picking };
+    return { play, skip, active: () => on, picking: () => picking, choose: () => { forcePick = true; } };
   })();
   function replayIntro() {
     if (intro.active() || reduceMotion()) return;
@@ -11275,6 +11297,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     titleHold = true;
     window.scrollTo(0, 0);
     render(true);
+    intro.choose();   // replay brings the year and semester picker back, to change semester
     if (!intro.play()) releaseTitle();
   }
 
