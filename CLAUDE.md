@@ -527,6 +527,11 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   themselves only if it doesn't exist (key `[a-z]{2,24}`), update or delete only their own.
 - Sure / not sure and the moon are open to guests. The game parts sync like the rest (`sure`, `moon` in `SYNCED`;
   `comets` stays there, unused).
+- 26 November 2026, an S3 user got "this name is taken" for every name: outside S5 the sync writes only its own field
+  (`s_efm2s3`), so a new account's `users` doc never got an `s`, and Abi's rules (which want `s`) refused the naming batch;
+  any refusal was shown as "taken". Now `claim` adds `s: '{}'` when the doc doesn't exist yet (outside S5 only), and says
+  "taken" only if someone else really holds the name; else it says the database refused it and sends `page_error`. The
+  semesters' own fields (`s_efm1s1`, `s_efm2s3`) still need Abi's rules to allow them, or S1/S3 progress won't sync.
 - Signed in: Sign out, Delete my data (the doc and the name, then the account; if Firebase wants a fresh sign-in, the
   data goes and they're told to sign in and delete again). Top bar: the word on wide screens, a 34 px square on phones.
 

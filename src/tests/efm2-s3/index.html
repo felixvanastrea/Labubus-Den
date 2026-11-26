@@ -5045,9 +5045,18 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
         b.set(nr, { uid: user.uid, name });
         // the Labubu's name is never given up (the rules forbid it): it's what lets her list the class
         if (me.key && me.key !== key && me.key !== LOOKS_FOR) b.delete(fb.f.doc(db, 'names', me.key));
-        b.set(ref(), { name, key }, { merge: true });
+        // a brand-new account outside S5 has no users doc yet (its sync goes to its own field), and the rules want `s`
+        // on the doc: give it an empty one so the name can be saved (26 November 2026, an S3 user got "taken" every time)
+        let fresh = false; try { fresh = !MAIN_SEM && !(await fb.f.getDoc(ref())).exists(); } catch (e) {}
+        b.set(ref(), fresh ? { name, key, s: '{}' } : { name, key }, { merge: true });
         await b.commit();
-      } catch (e) { msg = /permission/.test((e && e.code) || '') ? taken(name) : why(e); paint(); return false; }
+      } catch (e) {
+        // a refusal is only "taken" if someone else really holds the name; otherwise say what happened
+        let other = false; try { const s2 = await fb.f.getDoc(nr); other = s2.exists() && s2.data().uid !== user.uid; } catch (x) {}
+        if (/permission/.test((e && e.code) || '') && !other) usage.track('page_error', { message: 'name refused: ' + SEM.id, at: 'claim', view: 'account' });
+        msg = other ? taken(name) : /permission/.test((e && e.code) || '') ? 'Your name couldn’t be saved: the database refused it. Tell the Labubu (Ask the Labubu, at the bottom).' : why(e);
+        paint(); return false;
+      }
       try { if (user.displayName !== name) await fb.a.updateProfile(user, { displayName: name }); } catch (e) {}
       const was = state; me = { name, key }; store(NAME, name); editing = false;
       if (was === 'naming') { state = 'in'; usage.track('name_picked'); }
