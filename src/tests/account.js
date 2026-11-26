@@ -1,5 +1,5 @@
 // Accounts, against a fake Firebase served in place of the real SDK (it keeps the rules' one-name-per-person too).
-// Guests: Sign in in the top bar and footer, padlocks on exam mode / quests, and a locked button opens the
+// Guests: Sign in in the top bar and footer, padlocks on exam mode (quests are open), and a locked button opens the
 // sheet (Google, or email and password: wrong password, forgot password). Signing in from it: the account's copy and
 // this device's merge, a name is picked, then exam mode opens. Sync: a change goes up 15 s later, merged with what
 // the account got meanwhile; another device's change (or deletion) arrives live; the next visit signs in on its own.
@@ -134,7 +134,7 @@ const FAKE = {
   await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(200);
   const loaded0 = await p.evaluate(() => window.__fb.calls.length);
   check((await txt(p, '.nav-acct')) === 'Sign in' && /Account: Sign in/.test(await txt(p, '.foot')) && loaded0 === 0, 'guest: Sign in in the top bar and the footer, Firebase not loaded');
-  check(!!(await p.$('.hero-cta [data-act="quest-go"] .lk, .qp-actions [data-act="quest-go"] .lk')) && !(await p.$('.navlinks [data-act="weak"]')), 'guest: a padlock on the quest, and no weak spots anywhere');
+  check(!!(await p.$('[data-act="quest-go"]')) && !(await p.$('[data-act="quest-go"] .lk')) && !(await p.$('.navlinks [data-act="weak"]')), 'guest: the quest is open (no padlock), and no weak spots anywhere');
 
   // the sheet
   await p.click('.nav-acct'); await p.waitForTimeout(200);
@@ -212,7 +212,7 @@ const FAKE = {
 
   // sign out: padlocks are back, this device keeps its answers
   await p.click('[data-acct="out"]'); await p.waitForTimeout(200);
-  check((await txt(p, '.nav-acct')) === 'Sign in' && await p.evaluate(() => localStorage.getItem('efm3-acct')) === null && !!(await state(p)).answers[qd.id] && !!(await p.$('.hero-cta [data-act="quest-go"] .lk, .qp-actions [data-act="quest-go"] .lk')), 'signed out: Sign in, padlocks back, this device keeps its answers');
+  check((await txt(p, '.nav-acct')) === 'Sign in' && await p.evaluate(() => localStorage.getItem('efm3-acct')) === null && !!(await state(p)).answers[qd.id] && !(await p.$('[data-act="quest-go"] .lk')), 'signed out: Sign in, the quest still open, this device keeps its answers');
 
   // an email account: a lookalike of a taken name is refused, another works
   await p.click('.nav-acct'); await p.waitForTimeout(150);

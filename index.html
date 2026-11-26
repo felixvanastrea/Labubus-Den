@@ -3768,7 +3768,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   // and lands back where it was (everything is saved) without the opening animation. Not safe yet: a note offers it,
   // and the next safe moment (the next screen, say) takes it. One try per version, so a slow CDN can't loop it.
   const fresh = (() => {
-    const V = '3e79bf6430d4', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
+    const V = 'c7db8cbe06d2', TRY = 'efm3-fresh', EVERY = 15 * 60e3;
     const here = (/(^|\.)github\.io$/.test(location.hostname) || !!window.__freshTest) && !/^__DEN/.test(V);
     let newer = null, last = 0, note = null;
     const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -6498,7 +6498,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
             : `<button class="btn quiet" type="button" data-acct="erase"${dis}>Delete my data</button>`}</div>`;
       }
       return `${head}<h2 class="h2" id="acct-h">${esc(reason || 'Keep your progress everywhere')}</h2>
-        <p class="acct-p">${reason ? 'It’s free and takes a few seconds. ' : ''}An account unlocks exam mode and quests, and your answers follow you from your phone to your laptop. Practising questions stays open to everyone.</p>
+        <p class="acct-p">${reason ? 'It’s free and takes a few seconds. ' : ''}An account unlocks exam mode, and your answers follow you from your phone to your laptop. Practising questions and quests stay open to everyone.</p>
         <button class="btn primary acct-g" type="button" data-acct="google"${dis}>Continue with Google</button>
         <form class="acct-mail" data-acct-form="mail">
           <p class="acct-or">${mode === 'new' ? 'Or create an account with your email' : 'Or sign in with your email'}</p>
@@ -7168,7 +7168,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   const lockMark = () => acct.member() ? '' : LOCK;
   // screens a guest can't stay on (after signing out, or an old session): exam mode, a quest
   function lockedView() {
-    return ['exam', 'duel'].includes(S.view) || (['quiz', 'done'].includes(S.view) && !!S.session && S.session.from === 'quest');
+    return ['exam', 'duel'].includes(S.view);
   }
 
   // ---------- actions ----------
@@ -7653,7 +7653,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
   }
   // topic: index into QUEST.topics or null for the whole quest; mode: 'go' (first unanswered), 'retry' (the wrong ones, cleared), 'review'
   function startQuest(topic, repeatedOnly, mode) {
-    if (!QUEST || acct.gate('Quests need an account', () => startQuest(topic, repeatedOnly, mode))) return;
+    if (!QUEST) return;   // quests are open to guests (Abi, 26 November 2026); exam mode still needs an account
     const t = topic === null ? null : QUEST.topics[topic];
     let ids = t ? t.q : QUEST.q;
     if (repeatedOnly) ids = ids.filter(id => repOf(Q.get(id)));
@@ -7677,7 +7677,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
     startList(stars, 0, { topic: Q.get(id).topic, from: 'stars', title: `Constellation · ${stars.length} stars`, back });
   }
   function questGo() {
-    const qi = questInfo(); if (!qi || acct.gate('Quests need an account', questGo)) return;
+    const qi = questInfo(); if (!qi) return;
     const nx = questNext(qi), s = S.session;
     if (nx.act === 'go' && s && s.from === 'quest' && (s.qid || QUESTS[0].id) === QUEST.id && s.qall && s.qids.some(isLeft)) resume();   // keeps your place and shuffle
     else startQuest(null, false, nx.act);
@@ -7810,7 +7810,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
           <p class="qp-note">${esc(QUEST.note)} Answer all ${fmtN(qi.st.keyed)} and get ${QUEST.goal}% right to earn the seal.</p>
           <div class="qp-progress">${barLine(qi.st)}<p class="qp-stats">${line}</p></div>
           <div class="qp-actions">
-            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${lockMark()}${nx.label} ${ICON.next}</button>
+            <button class="btn${examRunning() ? '' : ' primary'}" type="button" data-act="quest-go">${nx.label} ${ICON.next}</button>
             ${exam.btn}
             ${repN ? `<button class="btn" type="button" data-act="quest-repeated" title="Only questions that came up in 2 or more exam sets">Repeated only <span class="n">${fmtN(repN)}</span></button>` : ''}
             <button class="btn" type="button" data-share="quest:${esc(QUEST.id)}">${LINK}Share</button>
@@ -8579,7 +8579,7 @@ body[data-view]:not([data-view="home"]) .km-bg { opacity: .45; }
          ${sess ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
       : questOn
       ? `<p class="cta-note">Current quest: <b>${esc(QUEST.title)}</b>, ${qi.days > 1 ? `due in ${qi.days} days` : qi.days === 1 ? 'due tomorrow' : 'due today'}. ${fmtN(qi.answered)} of ${fmtN(qi.st.keyed)} done.</p>
-         <button class="btn primary" type="button" data-act="quest-go">${lockMark()}${questNext(qi).label} ${ICON.next}</button>
+         <button class="btn primary" type="button" data-act="quest-go">${questNext(qi).label} ${ICON.next}</button>
          ${sess && sess.from !== 'quest' ? `<button class="btn quiet resume-link" type="button" data-act="resume">or pick up where you left off</button>` : ''}`
       : sess
       ? `<p class="cta-note">Pick up where you left off: <b>${esc(sessionTitle(sess))}</b>, question ${sess.idx + 1} of ${sess.qids.length}</p>

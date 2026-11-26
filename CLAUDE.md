@@ -500,8 +500,9 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
 
 ## Accounts (Firebase)
 
-- Exam mode and quests need an account (Abi's choice, October 2026); practising questions, search, lectures
-  and the update log stay open to guests. `acct.gate(reason, then)` at the top of `openExam`, `startQuest`, `questGo`: a guest gets the sheet with the reason, and once signed in and
+- Exam mode needs an account (Abi's choice, October 2026); practising questions, search, lectures
+  and the update log stay open to guests. Quests needed one too until 26 November 2026, when Abi opened them to guests:
+  no gate in `startQuest` / `questGo`, no padlock on their buttons, and a quest session isn't a `lockedView`. `acct.gate(reason, then)` at the top of `openExam`, `startQuest`, `questGo`: a guest gets the sheet with the reason, and once signed in and
   named, what they clicked. Padlocks (`ICON.lock`, `lockMark()`) replace the icons on those buttons for guests; `render`
   sends a guest away from those screens (`lockedView`). Only on GitHub Pages: elsewhere (claude.ai, the tests) nothing
   is locked (`acct.member()` is true). `window.__acctTest` turns accounts on in account.js.
