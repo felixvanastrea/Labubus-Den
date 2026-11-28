@@ -438,8 +438,8 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (A and E), as the doc has it; both keyed.
 - Notes on S1 and S3 answers (Abi, 25 November 2026: "don't mention that answers were not checked"): a knowledge answer's
   note is just "Claude’s answer.", a slide one "Answered … from the lecture slides (…)."; nothing about unchecked answers or
-  the photos' marks on the site, the About line ("The answers are Claude’s, N of them straight from the lecture slides.")
-  or the update log.
+  the photos' marks on the site, the About line or the update log. Since 28 November 2026 (Abi) the About line says nothing about who answered
+  when every answer is Claude's: only "Every question here comes straight from past … exams …".
 - EFM2 S3 (25 November 2026, `efm2-s3/`, data in `src/sem/efm2-s3/`, store `den-efm2-s3-v1`, sync `s_efm2s3`): 7 modules and
   79 lectures from Abi's "EFM Quick-Link sheet" (every year's lectures per semester; Abi: S3 first, then S1). Modules:
   Anatomy III (`AT-`), Physiology II (`PH-`, parts neuromuscular / bioenergetics / renal as her sheet has them, renal
