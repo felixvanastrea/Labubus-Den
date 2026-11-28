@@ -427,6 +427,15 @@ One static page: all questions, notes and code are inlined into `index.html`; fi
   (no deck), C70 (chain or position isomers), C71, the French-track structural biochemistry exam, clinical basics, and a few the
   slides don't settle (G33, G42, G43, Y8, Y29, Y54, C60, P1, P35). The aorta and veins decks (parts 6–7, the same file twice)
   are scans: OCR'd here. The About line counts the slide-checked answers (their note says "from the lecture slides").
+- 28 November 2026 (Abi: "that's a damn little", then "add them"): 125 more S1 questions from the MCQ files in her "S1
+  lectures" Drive folder, raw/300–305.txt, six sets after the photo sets (so short ids stay; `added` 2026-11-28, a 5th field
+  in `SETS`): the cellular biology and genetics exam (G51–G99, Q47's pedigree missing), cell biology test 1 (CC1 Oct 2021;
+  the 2022 cell methods test is its Q11–20 again; Q8, 13, 14's images missing), the molecular biology global revision (Dec
+  2023, G117–G126, keyed from its own answer slides: `slides/revision.txt`), Pr Çaoui's radioactivity self-test (its "CC 1"
+  and "Cours review" PDFs are the same), Pr Lahlou's structural (only the questions not already in `sbio-en`) and metabolic
+  biochemistry tutorials. Keys from knowledge (`knowledge/<set>.txt`). Not used: the English test (no foreign languages
+  module), the Year 1 PDFs (S2: bacteriology, virology, immunology). The January 2021 exam's Q20 lists "the nucleosomes" twice
+  (A and E), as the doc has it; both keyed.
 - Notes on S1 and S3 answers (Abi, 25 November 2026: "don't mention that answers were not checked"): a knowledge answer's
   note is just "Claude’s answer.", a slide one "Answered … from the lecture slides (…)."; nothing about unchecked answers or
   the photos' marks on the site, the About line ("The answers are Claude’s, N of them straight from the lecture slides.")

@@ -1,0 +1,62 @@
+# The molecular biology global revision (18 December 2023): the professor's own answer slides mark the right options with +.
+@ bg-rev | Molecular biology: global revision (18 December 2023)
+G117 D bg-rev
+ No: DNA isn't made into amino acids directly.
+ No: the flow starts from DNA, not amino acids.
+ No: that is the dogma backwards.
+ Yes: DNA is transcribed into RNA, which is translated into proteins.
+ No: RNA comes between DNA and proteins.
+G118 B bg-rev
+ No: DNA and RNA aren't in equal amounts.
+ Yes: in DNA, A pairs with T and G with C, so their amounts are equal.
+ No: not a rule about base amounts.
+ No: not a rule about base amounts.
+ No: the amount of AT is independent of the amount of CG.
+G119 D bg-rev
+ No: the base pairs are inside the helix, not the backbone.
+ No: sugar alone isn't the whole backbone.
+ No: phosphate alone isn't the whole backbone.
+ Yes: alternating sugar and phosphate.
+ No: the bases aren't part of the backbone.
+G120 A bg-rev
+ Yes: ribose has an OH on its 2′ carbon; deoxyribose lacks it.
+ No: the carbons are numbered the same way.
+ No: true of both sugars, so it's no difference.
+ No: no carbon is missing; only the 2′ OH is.
+ No: the revision's answer is the 2′ hydroxyl, not "one oxygen molecule".
+G121 BDE bg-rev
+ No: hydrogen bonds aren't covalent.
+ Yes: they are non-covalent bonds.
+ No: the backbone is held by phosphodiester bonds.
+ Yes: they link the paired bases.
+ Yes: helicase breaks them to open the strands.
+G122 B bg-rev
+ No: Tm is the midpoint, not complete melting.
+ Yes: Tm is the temperature at which half of the DNA is denatured.
+ No: it concerns the whole double strand, not AT pairs alone.
+ No: the backbone stays intact.
+ No: bases aren't melted by type.
+G123 D bg-rev
+ No: eukaryotes have many origins.
+ No: shared, so not a difference.
+ No: both use helicase and ligase.
+ Yes: they run at different speeds.
+ No: both use primase.
+G124 BE bg-rev
+ No: helicase opens the DNA.
+ Yes: it relieves supercoiling ahead of the fork.
+ No: it doesn't inhibit helicase.
+ No: it isn't bound to the SSB proteins.
+ Yes: it is part of the replisome.
+G125 AD bg-rev
+ Yes: prokaryotes have DNA polymerases I, II and III.
+ No: α, ε and δ are eukaryotic.
+ No: they have exonuclease (proofreading) activity.
+ Yes: prokaryotes have no nucleus, so they work in the cytoplasm.
+ No: they can make mismatches, then proofread.
+G126 CDE bg-rev
+ No: it extends telomeres, it doesn't replicate DNA.
+ No: the revision says it is the same in all vertebrates.
+ Yes: found only in eukaryotes, which have linear chromosomes.
+ Yes: the same in all vertebrates.
+ Yes: it carries its own RNA template.

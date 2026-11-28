@@ -1,0 +1,51 @@
+# SET: Drive biophysics self-test | "CC 1 - BIOPHYSICS ÇAOUI.pdf" (= "COURS REVIEW BIOPHYSICS ÇAOUI.pdf"), Pr Çaoui's auto-evaluation in Abi's S1 lectures folder. No answers marked.
+1. An unstable nucleus is radioactive when:
+A. It has an excess of protons
+B. It has a neutron deficiency
+C. It does not have excess energy
+D. It has a physical period
+2. A radioactive transformation is a reaction that:
+A. Cannot be caused by an excess of electrons
+B. Can take place in two steps: decay followed by de-excitation
+C. Can concern any unstable atom with positive energy
+D. Cannot be a de-excitation
+3. Radioactive de-excitation:
+A. Occurs only when the unstable atom has a high threshold energy
+B. Can concern weakly excited heavy atoms
+C. Is not a radioactive transformation
+D. Allows an unstable atom to release its excess energy
+4. Charged particles have the following characteristics:
+A. Light or heavy
+B. They are waves
+C. They are charged and have no mass
+D. A short or medium path through matter, expressed by the LET and the LID
+5. In the modes of interaction of X-rays with matter:
+A. The mode of exposure is external
+B. As they travel a long way, only heavy materials stop X-rays
+C. The X-ray weighting factor is 1
+D. A person exposed to an X-ray beam can contaminate those around him
+6. The interaction of photons with matter has the following characteristics:
+A. It is random
+B. Photons directly ionize matter
+C. Photons take a long path through matter
+D. They are weakly ionizing in matter
+7. During the Compton effect, the photon:
+A. Projects the electron at an angle between 0° and 90°
+B. Is scattered at an angle between 0° and 90°
+C. Turns back 180° when the impact is head-on
+D. Is deflected and scattered, giving up part of its energy
+8. An electronic dosimeter:
+A. Provides real-time information
+B. Displays the dose history
+C. Displays only the dose, without the dose rate
+D. Emits an audible signal if the dose is exceeded
+9. Equivalent dose:
+A. Is measured in gray
+B. Depends on the nature of the radiation
+C. Takes into account the harmfulness of the radiation
+D. Is independent of the nature of the tissue
+10. Absorbed dose is a parameter:
+A. Measured in gray
+B. That takes into account the harmfulness of the radiation
+C. That can be calculated
+D. Independent of the nature of the tissue

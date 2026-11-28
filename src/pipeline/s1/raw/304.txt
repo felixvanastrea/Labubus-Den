@@ -1,0 +1,97 @@
+# SET: Drive structural biochemistry tutorials | Pr Lahlou's "Structural Biochemistry MCQ tutorial 1" and "tutorial 2" (2023–2024), in Abi's S1 lectures folder. No answers marked. Left out: tutorial 1's Q7–10, 14 and 16 (already in the bank from the photos), Q15 (no options); tutorial 2's repeats of tutorial 1, Q7 (a table to fill), Q8, Q9 and Q12 (their diagrams aren't in the PDF). Tutorial 2's Q10, 11 and 13 are 21–23 here.
+1. Which of the following amino acids has an amide group in its side chain?
+A. Serine
+B. Threonine
+C. Glutamine
+D. Isoleucine
+E. Aspartate
+2. Which of the following amino acids are considered essential amino acids?
+A. Valine, methionine and histidine
+B. Arginine and glycine
+C. Cysteine and methionine
+D. Tyrosine and serine
+E. Leucine, isoleucine and phenylalanine
+3. About tryptophan:
+A. It is the largest amino acid
+B. It has two carboxylic acid functions and one amide function
+C. It is an aromatic amino acid
+D. It is a cyclic amino acid
+E. It absorbs UV light
+4. Which of the following statements about aromatic amino acids is correct?
+A. All are strongly hydrophilic
+B. All are non-polar
+C. Tyrosine and tryptophan are aromatic amino acids
+D. Their side chain contains an amine group
+E. They are never found in a protein
+5. Which of the following amino acids are involved in the beta turn?
+A. Alanine
+B. Glycine
+C. Proline
+D. Serine
+E. Tyrosine
+6. The number of asymmetric carbons in glycine is:
+A. 0
+B. 1
+C. 2
+D. 3
+E. 4
+11. Concerning proteins:
+A. Keratin is a fibrous protein
+B. A protein's catalytic activity comes from its secondary structure
+C. Hemoglobin is a holoprotein
+D. Insulin is a hypoglycemic protein
+E. Their first amino acid residue is called the C-terminal amino acid and their last one the N-terminal amino acid
+12. Concerning enzymes:
+A. All enzymes are proteins
+B. Enzymes decrease the activation energy
+C. Proteases can degrade lipids
+D. The Enzyme Commission nomenclature adds the suffix -ase to the end of the enzyme's name
+E. Allosteric enzymes are not regulated
+13. About coenzymes and cofactors:
+A. Coenzymes are enzymes
+B. All enzymes need coenzymes
+C. Cofactors are derivatives of vitamins
+D. NAD and coenzyme A are involved in oxidation-reduction reactions
+E. All cofactors are inorganic
+17. The alcohols that make up phospholipids are:
+A. Inositol
+B. Tyrosine
+C. Threonine
+D. Choline
+E. Glycerol
+18. Pick the amphiphilic lipids:
+A. Cholesterol
+B. Phospholipids
+C. Fatty acids
+D. Sphingolipids
+E. Triglycerides
+19. The good cholesterol is:
+A. HDL
+B. LDL
+C. VLDL
+D. IDL
+E. Chylomicrons
+20. The oxidation of 1 g of lipids releases:
+A. 1 kcal
+B. 4 kcal
+C. 9 kcal
+D. 100 kcal
+E. All the above statements are wrong
+21. Among the following propositions, indicate the exact one(s):
+A. Sucrose is made up of 2 glucoses
+B. Lactose intolerance is explained by a lactase deficiency
+C. Lactose is made of glucose and fructose linked by an α1-4 glycosidic bond
+D. Maltose is an oligosaccharide
+E. Maltose is a disaccharide
+22. Among the following carbohydrates, indicate the reducing ones:
+A. Sucrose
+B. Lactose
+C. Glucose
+D. Glucosamine
+E. Fructose
+23. Among the following propositions, indicate the exact one(s):
+A. All sphingolipids are phospholipids
+B. All glycerophospholipids are phospholipids
+C. Glycerol is a lipid
+D. Triglycerides are strictly hydrophobic
+E. Cholesterol is amphiphilic

@@ -33,6 +33,13 @@ SETS = {   # key: (module, type, year, label)
  'biophys-mock': ('biophysics', 'Mock', '', 'Mock · Biophysics'),
  'bio-review': ('biophysics', 'Collected', '', 'Class review · Biophysics'),
  'lm-mock': ('learning-methods-terminology', 'Mock', '', 'Mock · Learning methods and terminology'),
+ # 28 November 2026: the MCQ files in Abi's "S1 lectures" folder (Abi: "add them"); always after the photo sets, so short ids stay
+ 'cell-2021': ('biology-genetics', 'Exam', '', 'Exam · Cellular biology and genetics', '2026-11-28'),
+ 'cell-cc1': ('biology-genetics', 'Test', '', 'Test 1 · Cellular biology and cell methods', '2026-11-28'),
+ 'mb-rev': ('biology-genetics', 'Collected', '', 'Global revision · Molecular biology', '2026-11-28'),
+ 'by-auto': ('biophysics', 'Test', '', 'Self-test · Radioactivity and dosimetry (Pr Çaoui)', '2026-11-28'),
+ 'sbio-tut': ('chemistry-biochemistry', 'Tutorial', '', 'Tutorial MCQs · Structural biochemistry (Pr Lahlou)', '2026-11-28'),
+ 'mbio-tut': ('chemistry-biochemistry', 'Tutorial', '', 'Tutorial MCQs · Metabolic biochemistry (Pr Lahlou)', '2026-11-28'),
 }
 ORDER = list(SETS)
 PFX = {'anatomy-1': 'A', 'chemistry-biochemistry': 'C', 'biology-genetics': 'G', 'biostatistics-public-health': 'P',
@@ -104,9 +111,9 @@ CHANGED = []
 EXP = {'lectures': {k: {'title': t, 'added': '2026-11-25'} for k, t in SLEC.items()}, 'questions': {}}
 lec_of = {}
 for k in ORDER:
-    mod, typ, year, label = SETS[k]
+    mod, typ, year, label = SETS[k][:4]
     sid_src = 's1-' + slugify(mod + '-' + label)
-    sources.append({'id': sid_src, 'topic': mod, 'type': typ, 'year': year, 'label': label, 'added': '2026-11-25'})
+    sources.append({'id': sid_src, 'topic': mod, 'type': typ, 'year': year, 'label': label, 'added': SETS[k][4] if len(SETS[k]) > 4 else '2026-11-25'})
     n = 0
     for q in S[k]:
         if (k, q['ord']) in DROP:

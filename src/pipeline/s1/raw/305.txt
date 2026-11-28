@@ -1,0 +1,139 @@
+# SET: Drive metabolic biochemistry tutorials | Pr Lahlou's "Metabolic biochemistry MCQ tutorial 1" and "tutorial 2" (2023–2024), in Abi's S1 lectures folder. No answers marked. Tutorial 1's Q11 was in French (translated). Tutorial 2's Q1–11 are 13–23 here; its Q12 (palmitic acid's ATP, to justify) has no options and is left out.
+1. Pick the correct statements:
+A. Most of glycolysis occurs in the cytoplasm
+B. Glycolysis is strictly aerobic
+C. Glycolysis is a process common to most living beings
+D. The first reaction of glycolysis is irreversible
+E. Glucokinase phosphorylates glucose and the other hexoses to lock them in the cell
+2. The total amount of ATP after the complete oxidation of one molecule of glucose is:
+A. 6 ATP
+B. 12 ATP
+C. 38 ATP
+D. 36 ATP
+E. 30 or 32 ATP
+3. Glucose transport:
+A. Is only passive, by facilitated diffusion
+B. Is only active
+C. Can be passive and active
+D. Can be ensured by GLUT
+E. Is activated by insulin
+4. Insulin:
+A. Is a hypoglycemic protein
+B. Is hyperglycemic
+C. Stimulates glycogenesis
+D. Is produced by beta cells
+E. Is produced by the liver
+5. Regarding pyruvate, pick the correct statements:
+A. In anaerobic conditions pyruvate is transformed into acetyl-CoA
+B. Yeasts transform pyruvate into alcohol + CO2
+C. Lactic fermentation regenerates NAD+
+D. Lactic and alcoholic fermentation produce a large amount of ATP
+E. Lactate is formed through the Krebs cycle in hypoxemia
+6. The substrates of gluconeogenesis are:
+A. Pyruvate
+B. Lactate
+C. Glycerol
+D. Lipids
+E. Amino acids
+7. Regarding the Krebs cycle, pick the correct statements:
+A. The Krebs cycle occurs in the cytoplasm
+B. It produces 3 molecules of CO2
+C. Oxygen (O2) is directly involved in the cycle
+D. It is a source of energy-rich bonds
+E. It releases 1 FADH2
+8. The pentose phosphate pathway is:
+A. An alternative pathway of glucose metabolism
+B. A metabolic process that produces ATP
+C. Linked to favism when there is a deficiency of pyruvate kinase
+D. Responsible for the production of ribose-5-P
+E. Known as non-oxidative reactions
+9. Among the following propositions about the pentose pathway only one is false; which one?
+A. The pentose phosphate pathway is essential for detoxification of the body
+B. The pentose phosphate pathway allows the synthesis of ribose 5-phosphate
+C. The pentose phosphate pathway allows the synthesis of NADPH, H+
+D. NADPH, H+ is a coenzyme essential for lipid synthesis
+E. The pentose phosphate pathway allows the synthesis of glucose from amino acids
+10. Pick the enzyme that transforms glucose-1-P into glucose-6-P:
+A. Phosphoglucomutase
+B. Glucose-6-phosphatase
+C. Glucokinase
+D. Glycogen synthase
+E. Debranching enzyme
+11. A disease known as favism comes with a series of characteristics; of all those below, only one is inexact. Which one?
+A. It is a common metabolic disease
+B. It is a genetic disease
+C. It comes with an increase in the production of NADPH
+D. It comes with hemolytic anemia
+E. It is due to a deficiency in glucose-6-phosphate dehydrogenase
+12. The NADH, H+ formed by glycolysis in the cytoplasm can be transported by:
+A. The malate-aspartate shuttle, leading to 2.5 ATP
+B. The malate-citrate shuttle, leading to 1.5 ATP
+C. The glycerol-3-phosphate shuttle, leading to 1.5 ATP
+D. The glycerol-3-phosphate shuttle, leading to 2.5 ATP
+E. The Krebs cycle, leading to 2.5 ATP
+13. Pick the correct statements:
+A. Hydrolysis of endogenous triglycerides is incomplete
+B. Exogenous triglyceride hydrolysis uses hormone-sensitive lipase (HSL)
+C. Triglycerides are strictly hydrophobic and they are stored in the muscles
+D. Triglyceride hydrolysis releases 1 glycerol and 3 fatty acids
+E. Phosphatidic acid is a compound common to triglyceride and phospholipid synthesis
+14. Pick the helix involved in fatty acid synthesis:
+A. Cori helix
+B. Watson and Crick helix
+C. Wakil helix
+D. Lynen helix
+E. Urea helix
+15. Pick the correct statements:
+A. Fatty acid metabolism (catabolism + anabolism) occurs in the cytoplasm
+B. Fatty acids are transported from the cytoplasm to the mitochondria
+C. The coenzymes used for fatty acid oxidation are FAD and NADP+
+D. Beta oxidation directly releases a large amount of ATP
+E. Fatty acid catabolism doesn't consume ATP
+16. Monounsaturated fatty acids need one of these enzymes to complete their beta oxidation:
+A. Isomerase
+B. Reductase
+C. Oxidase
+D. Kinase
+E. Dehydrogenase
+17. Pick the correct order of the first three steps of beta oxidation:
+A. 1) dehydrogenation, 2) hydration, 3) dehydrogenation
+B. 1) dehydrogenation, 2) dehydrogenation, 3) hydration
+C. 1) dehydration, 2) hydrogenation, 3) dehydration
+D. 1) hydration, 2) hydrogenation, 3) dehydration
+E. 1) hydrogenation, 2) dehydration, 3) dehydration
+18. The final product of the beta oxidation of odd-numbered (2n+1) fatty acids is:
+A. Malate
+B. Malonyl-CoA
+C. Succinyl-CoA
+D. Fumarate
+E. Propionyl-CoA
+19. Pick the coenzymes used for fatty acid synthesis:
+A. NADPH
+B. NADH produced by the pentose phosphate pathway
+C. Biotin
+D. Coenzyme A
+E. FADH2
+20. Acetyl-CoA is a precursor of:
+A. All lipids
+B. Ketone bodies
+C. Cholesterol
+D. Fatty acids
+E. Bile salts
+21. Among the following compounds, pick the ketone bodies:
+A. Acetate
+B. Acetone
+C. Beta-hydroxybutyric acid
+D. Acetyl-CoA
+E. Propionyl-CoA
+22. Ketogenesis occurs in the:
+A. Brain
+B. Muscles
+C. Liver
+D. Cytoplasm
+E. Mitochondria
+23. Cholesterol is a precursor of:
+A. Vitamins C and D
+B. Steroid hormones such as adrenaline
+C. All lipids
+D. Bile acids
+E. Ketone bodies

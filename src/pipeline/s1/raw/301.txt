@@ -1,0 +1,103 @@
+# SET: Drive cell biology CC1 October 2021 | "modified CC1 BC oct21.docx" in Abi's S1 lectures folder (its Q11–20 are the 2022 cell methods test word for word). No answers marked. Q8, Q13 and Q14 left out: their image isn't in the doc.
+1. The plasma membrane presents:
+A. A double layer
+B. Polysaccharides
+C. Receptors
+D. Clathrins
+E. Lamins
+2. Simple passive transport involves:
+A. ATP
+B. Proteins
+C. Permease
+D. The concentration gradient
+E. Ion channels
+3. Facilitated transport:
+A. Concerns small molecules
+B. Involves permeases
+C. Uses ATPases
+D. Involves vesicles
+E. Follows the concentration gradient
+4. Na+/K+ ATPase is used for:
+A. Facilitated transport
+B. Simple diffusion
+C. Active transport
+D. Endocytosis
+E. Exocytosis
+5. Exocytosis:
+A. Allows amino acid transport
+B. Allows the transport of water
+C. Involves clathrins
+D. Involves permeases
+E. Consumes ATP
+6. Activation of the RTK receptor involves:
+A. Receptor dimerization
+B. Activation of the tyrosine kinase
+C. Receptor phosphorylation
+D. The G protein
+E. The Ras protein
+7. The PKC signaling pathway uses:
+A. Calcium
+B. G protein
+C. Adenylate cyclase
+D. cAMP
+E. GPCR receptor
+9. G protein stimulates:
+A. Adenylate cyclase
+B. Phospholipase C
+C. The RTK receptor
+D. The ion channel
+E. The tyrosine kinase enzyme
+10. Substrate adhesion molecules (SAM) are:
+A. Cadherins
+B. Selectins
+C. Clathrins
+D. ICAMs
+E. Integrins
+11. The fluorescence microscope consists of:
+A. A UV lamp
+B. A condenser
+C. An objective
+D. An eyepiece
+E. A pinhole
+12. The inverted microscope can observe:
+A. Cell structure
+B. Cellular organelles
+C. Cellular landforms
+D. Fixed cells
+E. Cells in culture
+15. The smear technique:
+A. Requires an ultramicrotome
+B. Concerns free cells
+C. Concerns solid tissues
+D. Concerns cerebrospinal fluid
+E. Stains with May-Grünwald Giemsa
+16. Fixation of tissue biopsies for the light microscope requires:
+A. Osmium tetroxide
+B. Glutaraldehyde
+C. Paraffin
+D. Bouin mixture
+E. Synthetic resins
+17. Inclusion of biopsies from your patients:
+A. Hardens the removed tissue
+B. Keeps cells in a state close to living
+C. Makes the next cutting step easier
+D. Requires paraffin
+E. Involves haematein
+18. Staining of histological sections with haematein-eosin:
+A. Colours the cytoplasm pink
+B. Colours the nucleus blue
+C. Is a standard stain
+D. Looks for fibrosis
+E. Looks for hemosiderosis
+19. Cell culture requires:
+A. A nutrient medium
+B. A neutral pH
+C. A laminar flow hood
+D. A temperature of -20°C
+E. Maximum sterility
+20. When carrying out a cell culture, you use:
+A. Fixation of the removed tissue fragment
+B. Tissue trypsinization with collagenase
+C. Cell counting under the microscope
+D. A laminar flow hood
+E. Cell staining

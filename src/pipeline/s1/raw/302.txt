@@ -1,0 +1,61 @@
+# SET: Drive molecular biology revision December 2023 | "global revision CC december 18th.odp" (molecular biology, global revision before the CC, 18 December 2023), in Abi's S1 lectures folder. Its answer slides mark the right options with +.
+1. What is the central dogma?
+A. DNA to amino acid to RNA
+B. Amino acid to DNA to proteins
+C. Proteins to RNA to DNA
+D. DNA to RNA to proteins
+E. DNA to proteins to RNA
+2. What is Chargaff's rule?
+A. DNA = RNA
+B. Adenine = thymine and guanine = cytosine
+C. DNA = RNA = protein
+D. RNA = protein
+E. AT = CG
+3. What is the DNA backbone?
+A. AT and CG
+B. Sugar
+C. Phosphate
+D. Sugar and phosphate
+E. All the above
+4. What is the difference between ribose and deoxyribose?
+A. Ribose has a hydroxyl (OH) group at position 2′
+B. The order of the carbons
+C. The phosphate is attached to the 5′ carbon
+D. The second carbon is missing
+E. One oxygen molecule is missing
+5. The hydrogen bonds linking the DNA strands are:
+A. Covalent bonds
+B. Non-covalent bonds
+C. Used to form the DNA backbone
+D. Linking the bases together in the DNA
+E. Cut by the helicase
+6. The DNA melting temperature is when:
+A. The whole DNA is melted
+B. Half of the DNA is denatured
+C. The AT bonds are denatured
+D. The backbone is denatured
+E. Only the pyrimidine bases are melted
+7. The differences between prokaryote and eukaryote replication are:
+A. Their replication always starts at one unique origin
+B. Both use Mg++
+C. One uses helicase while the other uses ligase
+D. They run at different speeds
+E. Only one uses primase
+8. The roles of topoisomerase are:
+A. It starts the DNA melting
+B. It alleviates DNA supercoiling
+C. It inhibits the helicase
+D. It is always attached to the SSBP
+E. It is part of the replisome
+9. The prokaryote DNA polymerases are:
+A. Either I, II or III
+B. Either α, ε or δ
+C. Without exonuclease activity
+D. Exclusively in the cytoplasm
+E. Never making a mismatch
+10. Telomerase:
+A. Replicates DNA
+B. Is different from one vertebrate to another
+C. Is found only in eukaryotes
+D. Is the same in all vertebrates
+E. Has an RNA template

@@ -1,0 +1,294 @@
+# SET: Drive cell biology genetics January 2021 | "Exam Cell biology-genetic January21.docx" in Abi's S1 lectures folder (Pr Alfaidy, Pr Aboussaouira, Pr Ouadghiri, Pr Raouf Alami). No answers marked. Q47 (pedigree) left out: its figure isn't in the doc.
+1. The plasma membrane components are:
+A. The integrated proteins
+B. The cholesterol
+C. The carbohydrates
+D. The phospholipids
+E. The water
+2. The functions of the cytoskeleton are:
+A. To keep organelles in place
+B. To change the shape of the cell
+C. Cellular motility
+D. To anchor cytoplasmic enzymes
+E. All of the above
+3. The fibers that undergo polymerization or depolymerization are:
+A. Polar fibers
+B. Kinetochore fibers
+C. Actin microfilaments
+D. Microtubules
+E. Intermediate filaments
+4. The two components associated with cell synthesis are:
+A. Cytoskeleton
+B. Peroxisome
+C. Endoplasmic reticulum
+D. Golgi apparatus
+E. Lysosome
+5. The PKA signaling pathway is an endocrine pathway that uses:
+A. A GPCR receptor
+B. A hormone
+C. Adenylyl cyclase
+D. An antigen
+E. Kinases
+6. The PKC signaling pathway is an endocrine pathway that uses:
+A. Ras protein
+B. A hormone
+C. Phospholipase
+D. Calcium
+E. Kinases
+7. The organelle that plays a key role in cell respiration is:
+A. The mitochondria
+B. The Golgi apparatus
+C. The peroxisome
+D. The nucleus
+E. The endoplasmic reticulum
+8. The fluidity of the membrane is controlled by:
+A. The phospholipids
+B. The cholesterol
+C. The fatty acid tails
+D. The fatty acid heads
+E. None
+9. The functions of the cell membrane proteins are:
+A. Facilitated transport
+B. Active transport
+C. Identification of the cell
+D. Channels through the membrane
+E. Protection of the cell
+10. The principal force driving movement in diffusion is the:
+A. pH
+B. Particle size
+C. Concentration gradient
+D. Membrane surface area
+E. Particle shape
+11. Active transport uses:
+A. Permease
+B. Aquaporin
+C. ATP
+D. ATPase
+E. Phosphorylation
+12. Exocytosis:
+A. Allows macromolecule transport
+B. Allows the transport of ions
+C. Involves clathrins
+D. Involves SNARE
+E. Consumes ATP
+13. The components of the photonic microscope are:
+A. The ocular
+B. The condenser
+C. The objective
+D. The photomultiplier
+E. The pinhole
+14. The confocal microscope is used to observe:
+A. Cell culture
+B. Cell fluorescence
+C. Cell organelles
+D. Fixed cells
+E. 3D cell shapes
+15. The smear technique uses:
+A. Fixation
+B. Microtome
+C. Free cells
+D. Cerebrospinal fluid
+E. MGG staining
+16. Special stains of histological sections for the microscope are:
+A. Masson trichrome
+B. Haematein eosin safranin
+C. Perls staining
+D. PAS staining
+E. Haematein-eosin
+17. Cell culture needs a:
+A. Temperature of 37°C
+B. CO2 incubator
+C. Basic pH
+D. Nutrient medium
+E. Automaton
+18. Embedding a biopsy for the microscope requires:
+A. Alcohol
+B. Glutaraldehyde
+C. Bouin liquid
+D. Paraffin
+E. Resins
+19. The cell cycle checkpoints are in:
+A. Phase G1
+B. Phase S
+C. Phase G2
+D. Metaphase
+E. Anaphase
+20. Chromatin is made up of:
+A. The nucleosomes
+B. A DNA molecule
+C. An RNA molecule
+D. The histones
+E. The nucleosomes
+21. The nuclear envelope:
+A. Is made of 2 phospholipid bilayer membranes
+B. The nucleolus is surrounded by an envelope
+C. Its inner membrane is upholstered by the lamina
+D. The lamina is formed by lamin filaments
+E. Progeria is caused by a mutation of lamin A
+22. The components of the interphase nucleus are:
+A. The Cajal body
+B. The granules
+C. The nucleolus
+D. The Barr body
+E. The chromosomes
+23. The death receptors are:
+A. FasR
+B. DR
+C. TNFR
+D. TRAIL-R
+E. TNFα
+24. Apoptosis needs:
+A. Caspase 8
+B. The death receptor
+C. Caspase 9
+D. The mitochondria
+E. The permease
+25. During the extrinsic pathway, apoptosis uses:
+A. Binding of the death ligand to the death receptor
+B. Recruitment of the Fas-associated death domain (FADD) to the receptor
+C. Recruitment of caspase-8 to FADD
+D. Formation of the death-inducing signaling complex (DISC)
+E. Inactivation of effector caspases
+26. Eukaryotic cells:
+A. Have a small size (1–10 μm)
+B. Keep their DNA in an internal compartment
+C. Have bigger genomes
+D. Have a nucleus
+E. Have membrane-bound organelles
+27. Nucleotides are:
+A. Basic units of nucleic acids
+B. Made up of a sugar, a phosphate group and a nitrogenous base
+C. Made up of a sugar, hydrogen bonds and a nitrogenous base
+D. Basic units of RNA only
+E. Made up of a sugar and a phosphate group
+28. A DNA molecule is:
+A. Composed of two antiparallel DNA strands
+B. Made of strands linked together by hydrogen bonds
+C. Made of strands linked together by covalent bonds
+D. Composed of two parallel DNA strands
+E. Made of two complementary DNA strands
+29. Genes are segments of DNA:
+A. That carry genetic information to produce proteins
+B. That carry genetic information to produce functional RNA molecules
+C. Located in the chromosomes
+D. Located in the cytoplasm
+E. That carry genetic information
+30. Eukaryotic DNA is:
+A. Located in the nucleus of cells
+B. Located only in the mitochondrion
+C. Packaged into sets of chromosomes
+D. Packaged into one single chromosome
+E. Made only of genes
+31. Ribonucleic acid is:
+A. A double-stranded molecule
+B. A linear polymer made of four types of nucleotides
+C. Made of adenine, guanine, cytosine and thymine
+D. Made of adenine, uracil, cytosine and guanine
+E. Made of nucleotide subunits linked by phosphodiester bonds
+32. DNA replication origins are found in:
+A. The promoter region
+B. The enhancer region
+C. The coding sequence
+D. A CG-rich region
+E. An AT-rich region
+33. To start polymerization, DNA polymerase requires reagents such as:
+A. Mg++
+B. dNTPs
+C. Primers
+D. A DNA sequence
+E. All the above
+34. Topoisomerase is a necessary enzyme for replication; it:
+A. Separates double-stranded DNA into single strands
+B. Copies the DNA sequences
+C. Alleviates DNA supercoiling
+D. Synthesizes RNA primers
+E. Links newly synthesized DNA fragments
+35. DNA polymerase adds a new DNA nucleotide to the:
+A. 5′ end of the primer
+B. 3′ end of the newly synthesized polynucleotide strand
+C. 5′ end of the newly synthesized polynucleotide strand
+D. 3′ ribose
+E. 5′ phosphate
+36. In eukaryotes, Okazaki fragments are:
+A. 10 to 30 base pairs long
+B. 40 to 60 base pairs long
+C. 70 to 100 base pairs long
+D. 150 to 200 base pairs long
+E. 300 to 400 base pairs long
+37. A promoter is a piece of DNA sequence that:
+A. Enhances gene transcription
+B. Can be upstream or downstream of where transcription is initiated
+C. Increases transcription
+D. Initiates gene transcription
+E. Does not need to be close to the gene
+38. In prokaryotes, RNA polymerase is made of 5 subunits; the sigma subunit has a function of:
+A. DNA binding
+B. Promoter recognition
+C. Chain initiation and elongation
+D. Binding with regulatory proteins
+E. Ending the transcription process
+39. Transcription factors are:
+A. Part of the TATA box
+B. Transcribed by enhancers
+C. Proteins that bind to histones
+D. Proteins necessary for transcription termination
+E. None of the above
+40. What splits the DNA open during transcription?
+A. Helicase
+B. Topoisomerase
+C. RNA polymerase and transcription factors
+D. RNA polymerase
+E. All of the above
+41. The noncoding DNA strand is:
+A. In the 5′→3′ direction
+B. The strand that contains uracil
+C. The sense DNA
+D. Complementary to tRNA
+E. The transcribed strand
+42. Alternative splicing is a process:
+A. That helps transport mRNA to the cytoplasm
+B. That enables genes to synthesize different protein variants
+C. That stabilizes mRNA
+D. That makes mRNA more mature
+E. None of the above
+43. A cistron is:
+A. A DNA segment equivalent to a gene, starting at AUG and stopping at a STOP codon
+B. A DNA segment equivalent to a prokaryote promoter
+C. Found only in prokaryotes
+D. An enhancer
+E. None of the above
+44. An operator is:
+A. A transcription factor
+B. A protein that binds to a DNA sequence (like histones)
+C. A DNA sequence found between the promoter and the genes
+D. Part of the prokaryote control region
+E. All the above
+45. In prokaryotes, repressible genes are:
+A. Normally on
+B. Normally off
+C. In need of a repressor to be expressed
+D. In need of an inducer to be expressed
+E. None of the above
+46. With Giemsa staining of metaphase chromosomes, the dark bands are:
+A. CG-rich DNA
+B. AT-rich DNA
+C. Centromere regions
+D. Telomere regions
+E. Regulatory sequences
+48. The description r.33A>T means:
+A. There is a deletion at position 33 in the ribosome
+B. T was substituted by A in the ribosome at position 33
+C. A was substituted by T at position 33 in the RNA sequence
+D. The ribosome's protein was substituted at position 33, A by T
+49. The best method to assess DNA purity is:
+A. Absorbance at 260 nm
+B. Absorbance at 280 nm
+C. The absorbance 260 / absorbance 280 ratio
+D. The absorbance 280 / absorbance 260 ratio
+E. None of the above
+50. The correct sequence of the steps of the polymerase chain reaction is:
+A. Denaturation, hybridization, elongation
+B. Denaturation, elongation
+C. Hybridization, denaturation, elongation
+D. Hybridization, elongation, denaturation
+E. Hybridization, elongation

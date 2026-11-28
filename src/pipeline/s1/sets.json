@@ -5460,5 +5460,1631 @@
    ],
    "file": "202.txt"
   }
+ ],
+ "cell-2021": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The plasma membrane components are:",
+   "o": [
+    "The integrated proteins",
+    "The cholesterol",
+    "The carbohydrates",
+    "The phospholipids",
+    "The water"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The functions of the cytoskeleton are:",
+   "o": [
+    "To keep organelles in place",
+    "To change the shape of the cell",
+    "Cellular motility",
+    "To anchor cytoplasmic enzymes",
+    "All of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "The fibers that undergo polymerization or depolymerization are:",
+   "o": [
+    "Polar fibers",
+    "Kinetochore fibers",
+    "Actin microfilaments",
+    "Microtubules",
+    "Intermediate filaments"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "The two components associated with cell synthesis are:",
+   "o": [
+    "Cytoskeleton",
+    "Peroxisome",
+    "Endoplasmic reticulum",
+    "Golgi apparatus",
+    "Lysosome"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "The PKA signaling pathway is an endocrine pathway that uses:",
+   "o": [
+    "A GPCR receptor",
+    "A hormone",
+    "Adenylyl cyclase",
+    "An antigen",
+    "Kinases"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The PKC signaling pathway is an endocrine pathway that uses:",
+   "o": [
+    "Ras protein",
+    "A hormone",
+    "Phospholipase",
+    "Calcium",
+    "Kinases"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The organelle that plays a key role in cell respiration is:",
+   "o": [
+    "The mitochondria",
+    "The Golgi apparatus",
+    "The peroxisome",
+    "The nucleus",
+    "The endoplasmic reticulum"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The fluidity of the membrane is controlled by:",
+   "o": [
+    "The phospholipids",
+    "The cholesterol",
+    "The fatty acid tails",
+    "The fatty acid heads",
+    "None"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The functions of the cell membrane proteins are:",
+   "o": [
+    "Facilitated transport",
+    "Active transport",
+    "Identification of the cell",
+    "Channels through the membrane",
+    "Protection of the cell"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "The principal force driving movement in diffusion is the:",
+   "o": [
+    "pH",
+    "Particle size",
+    "Concentration gradient",
+    "Membrane surface area",
+    "Particle shape"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Active transport uses:",
+   "o": [
+    "Permease",
+    "Aquaporin",
+    "ATP",
+    "ATPase",
+    "Phosphorylation"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Exocytosis:",
+   "o": [
+    "Allows macromolecule transport",
+    "Allows the transport of ions",
+    "Involves clathrins",
+    "Involves SNARE",
+    "Consumes ATP"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "The components of the photonic microscope are:",
+   "o": [
+    "The ocular",
+    "The condenser",
+    "The objective",
+    "The photomultiplier",
+    "The pinhole"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "The confocal microscope is used to observe:",
+   "o": [
+    "Cell culture",
+    "Cell fluorescence",
+    "Cell organelles",
+    "Fixed cells",
+    "3D cell shapes"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The smear technique uses:",
+   "o": [
+    "Fixation",
+    "Microtome",
+    "Free cells",
+    "Cerebrospinal fluid",
+    "MGG staining"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Special stains of histological sections for the microscope are:",
+   "o": [
+    "Masson trichrome",
+    "Haematein eosin safranin",
+    "Perls staining",
+    "PAS staining",
+    "Haematein-eosin"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Cell culture needs a:",
+   "o": [
+    "Temperature of 37°C",
+    "CO2 incubator",
+    "Basic pH",
+    "Nutrient medium",
+    "Automaton"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Embedding a biopsy for the microscope requires:",
+   "o": [
+    "Alcohol",
+    "Glutaraldehyde",
+    "Bouin liquid",
+    "Paraffin",
+    "Resins"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The cell cycle checkpoints are in:",
+   "o": [
+    "Phase G1",
+    "Phase S",
+    "Phase G2",
+    "Metaphase",
+    "Anaphase"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Chromatin is made up of:",
+   "o": [
+    "The nucleosomes",
+    "A DNA molecule",
+    "An RNA molecule",
+    "The histones",
+    "The nucleosomes"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "The nuclear envelope:",
+   "o": [
+    "Is made of 2 phospholipid bilayer membranes",
+    "The nucleolus is surrounded by an envelope",
+    "Its inner membrane is upholstered by the lamina",
+    "The lamina is formed by lamin filaments",
+    "Progeria is caused by a mutation of lamin A"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "The components of the interphase nucleus are:",
+   "o": [
+    "The Cajal body",
+    "The granules",
+    "The nucleolus",
+    "The Barr body",
+    "The chromosomes"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "The death receptors are:",
+   "o": [
+    "FasR",
+    "DR",
+    "TNFR",
+    "TRAIL-R",
+    "TNFα"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 24,
+   "ord": 24,
+   "s": "Apoptosis needs:",
+   "o": [
+    "Caspase 8",
+    "The death receptor",
+    "Caspase 9",
+    "The mitochondria",
+    "The permease"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 25,
+   "ord": 25,
+   "s": "During the extrinsic pathway, apoptosis uses:",
+   "o": [
+    "Binding of the death ligand to the death receptor",
+    "Recruitment of the Fas-associated death domain (FADD) to the receptor",
+    "Recruitment of caspase-8 to FADD",
+    "Formation of the death-inducing signaling complex (DISC)",
+    "Inactivation of effector caspases"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 26,
+   "ord": 26,
+   "s": "Eukaryotic cells:",
+   "o": [
+    "Have a small size (1–10 μm)",
+    "Keep their DNA in an internal compartment",
+    "Have bigger genomes",
+    "Have a nucleus",
+    "Have membrane-bound organelles"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 27,
+   "ord": 27,
+   "s": "Nucleotides are:",
+   "o": [
+    "Basic units of nucleic acids",
+    "Made up of a sugar, a phosphate group and a nitrogenous base",
+    "Made up of a sugar, hydrogen bonds and a nitrogenous base",
+    "Basic units of RNA only",
+    "Made up of a sugar and a phosphate group"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 28,
+   "ord": 28,
+   "s": "A DNA molecule is:",
+   "o": [
+    "Composed of two antiparallel DNA strands",
+    "Made of strands linked together by hydrogen bonds",
+    "Made of strands linked together by covalent bonds",
+    "Composed of two parallel DNA strands",
+    "Made of two complementary DNA strands"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 29,
+   "ord": 29,
+   "s": "Genes are segments of DNA:",
+   "o": [
+    "That carry genetic information to produce proteins",
+    "That carry genetic information to produce functional RNA molecules",
+    "Located in the chromosomes",
+    "Located in the cytoplasm",
+    "That carry genetic information"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 30,
+   "ord": 30,
+   "s": "Eukaryotic DNA is:",
+   "o": [
+    "Located in the nucleus of cells",
+    "Located only in the mitochondrion",
+    "Packaged into sets of chromosomes",
+    "Packaged into one single chromosome",
+    "Made only of genes"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 31,
+   "ord": 31,
+   "s": "Ribonucleic acid is:",
+   "o": [
+    "A double-stranded molecule",
+    "A linear polymer made of four types of nucleotides",
+    "Made of adenine, guanine, cytosine and thymine",
+    "Made of adenine, uracil, cytosine and guanine",
+    "Made of nucleotide subunits linked by phosphodiester bonds"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 32,
+   "ord": 32,
+   "s": "DNA replication origins are found in:",
+   "o": [
+    "The promoter region",
+    "The enhancer region",
+    "The coding sequence",
+    "A CG-rich region",
+    "An AT-rich region"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 33,
+   "ord": 33,
+   "s": "To start polymerization, DNA polymerase requires reagents such as:",
+   "o": [
+    "Mg++",
+    "dNTPs",
+    "Primers",
+    "A DNA sequence",
+    "All the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 34,
+   "ord": 34,
+   "s": "Topoisomerase is a necessary enzyme for replication; it:",
+   "o": [
+    "Separates double-stranded DNA into single strands",
+    "Copies the DNA sequences",
+    "Alleviates DNA supercoiling",
+    "Synthesizes RNA primers",
+    "Links newly synthesized DNA fragments"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 35,
+   "ord": 35,
+   "s": "DNA polymerase adds a new DNA nucleotide to the:",
+   "o": [
+    "5′ end of the primer",
+    "3′ end of the newly synthesized polynucleotide strand",
+    "5′ end of the newly synthesized polynucleotide strand",
+    "3′ ribose",
+    "5′ phosphate"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 36,
+   "ord": 36,
+   "s": "In eukaryotes, Okazaki fragments are:",
+   "o": [
+    "10 to 30 base pairs long",
+    "40 to 60 base pairs long",
+    "70 to 100 base pairs long",
+    "150 to 200 base pairs long",
+    "300 to 400 base pairs long"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 37,
+   "ord": 37,
+   "s": "A promoter is a piece of DNA sequence that:",
+   "o": [
+    "Enhances gene transcription",
+    "Can be upstream or downstream of where transcription is initiated",
+    "Increases transcription",
+    "Initiates gene transcription",
+    "Does not need to be close to the gene"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 38,
+   "ord": 38,
+   "s": "In prokaryotes, RNA polymerase is made of 5 subunits; the sigma subunit has a function of:",
+   "o": [
+    "DNA binding",
+    "Promoter recognition",
+    "Chain initiation and elongation",
+    "Binding with regulatory proteins",
+    "Ending the transcription process"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 39,
+   "ord": 39,
+   "s": "Transcription factors are:",
+   "o": [
+    "Part of the TATA box",
+    "Transcribed by enhancers",
+    "Proteins that bind to histones",
+    "Proteins necessary for transcription termination",
+    "None of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 40,
+   "ord": 40,
+   "s": "What splits the DNA open during transcription?",
+   "o": [
+    "Helicase",
+    "Topoisomerase",
+    "RNA polymerase and transcription factors",
+    "RNA polymerase",
+    "All of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 41,
+   "ord": 41,
+   "s": "The noncoding DNA strand is:",
+   "o": [
+    "In the 5′→3′ direction",
+    "The strand that contains uracil",
+    "The sense DNA",
+    "Complementary to tRNA",
+    "The transcribed strand"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 42,
+   "ord": 42,
+   "s": "Alternative splicing is a process:",
+   "o": [
+    "That helps transport mRNA to the cytoplasm",
+    "That enables genes to synthesize different protein variants",
+    "That stabilizes mRNA",
+    "That makes mRNA more mature",
+    "None of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 43,
+   "ord": 43,
+   "s": "A cistron is:",
+   "o": [
+    "A DNA segment equivalent to a gene, starting at AUG and stopping at a STOP codon",
+    "A DNA segment equivalent to a prokaryote promoter",
+    "Found only in prokaryotes",
+    "An enhancer",
+    "None of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 44,
+   "ord": 44,
+   "s": "An operator is:",
+   "o": [
+    "A transcription factor",
+    "A protein that binds to a DNA sequence (like histones)",
+    "A DNA sequence found between the promoter and the genes",
+    "Part of the prokaryote control region",
+    "All the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 45,
+   "ord": 45,
+   "s": "In prokaryotes, repressible genes are:",
+   "o": [
+    "Normally on",
+    "Normally off",
+    "In need of a repressor to be expressed",
+    "In need of an inducer to be expressed",
+    "None of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 46,
+   "ord": 46,
+   "s": "With Giemsa staining of metaphase chromosomes, the dark bands are:",
+   "o": [
+    "CG-rich DNA",
+    "AT-rich DNA",
+    "Centromere regions",
+    "Telomere regions",
+    "Regulatory sequences"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 48,
+   "ord": 48,
+   "s": "The description r.33A>T means:",
+   "o": [
+    "There is a deletion at position 33 in the ribosome",
+    "T was substituted by A in the ribosome at position 33",
+    "A was substituted by T at position 33 in the RNA sequence",
+    "The ribosome's protein was substituted at position 33, A by T"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 49,
+   "ord": 49,
+   "s": "The best method to assess DNA purity is:",
+   "o": [
+    "Absorbance at 260 nm",
+    "Absorbance at 280 nm",
+    "The absorbance 260 / absorbance 280 ratio",
+    "The absorbance 280 / absorbance 260 ratio",
+    "None of the above"
+   ],
+   "file": "300.txt"
+  },
+  {
+   "n": 50,
+   "ord": 50,
+   "s": "The correct sequence of the steps of the polymerase chain reaction is:",
+   "o": [
+    "Denaturation, hybridization, elongation",
+    "Denaturation, elongation",
+    "Hybridization, denaturation, elongation",
+    "Hybridization, elongation, denaturation",
+    "Hybridization, elongation"
+   ],
+   "file": "300.txt"
+  }
+ ],
+ "cell-cc1": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "The plasma membrane presents:",
+   "o": [
+    "A double layer",
+    "Polysaccharides",
+    "Receptors",
+    "Clathrins",
+    "Lamins"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Simple passive transport involves:",
+   "o": [
+    "ATP",
+    "Proteins",
+    "Permease",
+    "The concentration gradient",
+    "Ion channels"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Facilitated transport:",
+   "o": [
+    "Concerns small molecules",
+    "Involves permeases",
+    "Uses ATPases",
+    "Involves vesicles",
+    "Follows the concentration gradient"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Na+/K+ ATPase is used for:",
+   "o": [
+    "Facilitated transport",
+    "Simple diffusion",
+    "Active transport",
+    "Endocytosis",
+    "Exocytosis"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Exocytosis:",
+   "o": [
+    "Allows amino acid transport",
+    "Allows the transport of water",
+    "Involves clathrins",
+    "Involves permeases",
+    "Consumes ATP"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "Activation of the RTK receptor involves:",
+   "o": [
+    "Receptor dimerization",
+    "Activation of the tyrosine kinase",
+    "Receptor phosphorylation",
+    "The G protein",
+    "The Ras protein"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The PKC signaling pathway uses:",
+   "o": [
+    "Calcium",
+    "G protein",
+    "Adenylate cyclase",
+    "cAMP",
+    "GPCR receptor"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "G protein stimulates:",
+   "o": [
+    "Adenylate cyclase",
+    "Phospholipase C",
+    "The RTK receptor",
+    "The ion channel",
+    "The tyrosine kinase enzyme"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Substrate adhesion molecules (SAM) are:",
+   "o": [
+    "Cadherins",
+    "Selectins",
+    "Clathrins",
+    "ICAMs",
+    "Integrins"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "The fluorescence microscope consists of:",
+   "o": [
+    "A UV lamp",
+    "A condenser",
+    "An objective",
+    "An eyepiece",
+    "A pinhole"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The inverted microscope can observe:",
+   "o": [
+    "Cell structure",
+    "Cellular organelles",
+    "Cellular landforms",
+    "Fixed cells",
+    "Cells in culture"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "The smear technique:",
+   "o": [
+    "Requires an ultramicrotome",
+    "Concerns free cells",
+    "Concerns solid tissues",
+    "Concerns cerebrospinal fluid",
+    "Stains with May-Grünwald Giemsa"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Fixation of tissue biopsies for the light microscope requires:",
+   "o": [
+    "Osmium tetroxide",
+    "Glutaraldehyde",
+    "Paraffin",
+    "Bouin mixture",
+    "Synthetic resins"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Inclusion of biopsies from your patients:",
+   "o": [
+    "Hardens the removed tissue",
+    "Keeps cells in a state close to living",
+    "Makes the next cutting step easier",
+    "Requires paraffin",
+    "Involves haematein"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Staining of histological sections with haematein-eosin:",
+   "o": [
+    "Colours the cytoplasm pink",
+    "Colours the nucleus blue",
+    "Is a standard stain",
+    "Looks for fibrosis",
+    "Looks for hemosiderosis"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Cell culture requires:",
+   "o": [
+    "A nutrient medium",
+    "A neutral pH",
+    "A laminar flow hood",
+    "A temperature of -20°C",
+    "Maximum sterility"
+   ],
+   "file": "301.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "When carrying out a cell culture, you use:",
+   "o": [
+    "Fixation of the removed tissue fragment",
+    "Tissue trypsinization with collagenase",
+    "Cell counting under the microscope",
+    "A laminar flow hood",
+    "Cell staining"
+   ],
+   "file": "301.txt"
+  }
+ ],
+ "mb-rev": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "What is the central dogma?",
+   "o": [
+    "DNA to amino acid to RNA",
+    "Amino acid to DNA to proteins",
+    "Proteins to RNA to DNA",
+    "DNA to RNA to proteins",
+    "DNA to proteins to RNA"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "What is Chargaff's rule?",
+   "o": [
+    "DNA = RNA",
+    "Adenine = thymine and guanine = cytosine",
+    "DNA = RNA = protein",
+    "RNA = protein",
+    "AT = CG"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "What is the DNA backbone?",
+   "o": [
+    "AT and CG",
+    "Sugar",
+    "Phosphate",
+    "Sugar and phosphate",
+    "All the above"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "What is the difference between ribose and deoxyribose?",
+   "o": [
+    "Ribose has a hydroxyl (OH) group at position 2′",
+    "The order of the carbons",
+    "The phosphate is attached to the 5′ carbon",
+    "The second carbon is missing",
+    "One oxygen molecule is missing"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "The hydrogen bonds linking the DNA strands are:",
+   "o": [
+    "Covalent bonds",
+    "Non-covalent bonds",
+    "Used to form the DNA backbone",
+    "Linking the bases together in the DNA",
+    "Cut by the helicase"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The DNA melting temperature is when:",
+   "o": [
+    "The whole DNA is melted",
+    "Half of the DNA is denatured",
+    "The AT bonds are denatured",
+    "The backbone is denatured",
+    "Only the pyrimidine bases are melted"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "The differences between prokaryote and eukaryote replication are:",
+   "o": [
+    "Their replication always starts at one unique origin",
+    "Both use Mg++",
+    "One uses helicase while the other uses ligase",
+    "They run at different speeds",
+    "Only one uses primase"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The roles of topoisomerase are:",
+   "o": [
+    "It starts the DNA melting",
+    "It alleviates DNA supercoiling",
+    "It inhibits the helicase",
+    "It is always attached to the SSBP",
+    "It is part of the replisome"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "The prokaryote DNA polymerases are:",
+   "o": [
+    "Either I, II or III",
+    "Either α, ε or δ",
+    "Without exonuclease activity",
+    "Exclusively in the cytoplasm",
+    "Never making a mismatch"
+   ],
+   "file": "302.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Telomerase:",
+   "o": [
+    "Replicates DNA",
+    "Is different from one vertebrate to another",
+    "Is found only in eukaryotes",
+    "Is the same in all vertebrates",
+    "Has an RNA template"
+   ],
+   "file": "302.txt"
+  }
+ ],
+ "by-auto": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "An unstable nucleus is radioactive when:",
+   "o": [
+    "It has an excess of protons",
+    "It has a neutron deficiency",
+    "It does not have excess energy",
+    "It has a physical period"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "A radioactive transformation is a reaction that:",
+   "o": [
+    "Cannot be caused by an excess of electrons",
+    "Can take place in two steps: decay followed by de-excitation",
+    "Can concern any unstable atom with positive energy",
+    "Cannot be a de-excitation"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Radioactive de-excitation:",
+   "o": [
+    "Occurs only when the unstable atom has a high threshold energy",
+    "Can concern weakly excited heavy atoms",
+    "Is not a radioactive transformation",
+    "Allows an unstable atom to release its excess energy"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Charged particles have the following characteristics:",
+   "o": [
+    "Light or heavy",
+    "They are waves",
+    "They are charged and have no mass",
+    "A short or medium path through matter, expressed by the LET and the LID"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "In the modes of interaction of X-rays with matter:",
+   "o": [
+    "The mode of exposure is external",
+    "As they travel a long way, only heavy materials stop X-rays",
+    "The X-ray weighting factor is 1",
+    "A person exposed to an X-ray beam can contaminate those around him"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The interaction of photons with matter has the following characteristics:",
+   "o": [
+    "It is random",
+    "Photons directly ionize matter",
+    "Photons take a long path through matter",
+    "They are weakly ionizing in matter"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "During the Compton effect, the photon:",
+   "o": [
+    "Projects the electron at an angle between 0° and 90°",
+    "Is scattered at an angle between 0° and 90°",
+    "Turns back 180° when the impact is head-on",
+    "Is deflected and scattered, giving up part of its energy"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "An electronic dosimeter:",
+   "o": [
+    "Provides real-time information",
+    "Displays the dose history",
+    "Displays only the dose, without the dose rate",
+    "Emits an audible signal if the dose is exceeded"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Equivalent dose:",
+   "o": [
+    "Is measured in gray",
+    "Depends on the nature of the radiation",
+    "Takes into account the harmfulness of the radiation",
+    "Is independent of the nature of the tissue"
+   ],
+   "file": "303.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Absorbed dose is a parameter:",
+   "o": [
+    "Measured in gray",
+    "That takes into account the harmfulness of the radiation",
+    "That can be calculated",
+    "Independent of the nature of the tissue"
+   ],
+   "file": "303.txt"
+  }
+ ],
+ "sbio-tut": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "Which of the following amino acids has an amide group in its side chain?",
+   "o": [
+    "Serine",
+    "Threonine",
+    "Glutamine",
+    "Isoleucine",
+    "Aspartate"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "Which of the following amino acids are considered essential amino acids?",
+   "o": [
+    "Valine, methionine and histidine",
+    "Arginine and glycine",
+    "Cysteine and methionine",
+    "Tyrosine and serine",
+    "Leucine, isoleucine and phenylalanine"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "About tryptophan:",
+   "o": [
+    "It is the largest amino acid",
+    "It has two carboxylic acid functions and one amide function",
+    "It is an aromatic amino acid",
+    "It is a cyclic amino acid",
+    "It absorbs UV light"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Which of the following statements about aromatic amino acids is correct?",
+   "o": [
+    "All are strongly hydrophilic",
+    "All are non-polar",
+    "Tyrosine and tryptophan are aromatic amino acids",
+    "Their side chain contains an amine group",
+    "They are never found in a protein"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Which of the following amino acids are involved in the beta turn?",
+   "o": [
+    "Alanine",
+    "Glycine",
+    "Proline",
+    "Serine",
+    "Tyrosine"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The number of asymmetric carbons in glycine is:",
+   "o": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "Concerning proteins:",
+   "o": [
+    "Keratin is a fibrous protein",
+    "A protein's catalytic activity comes from its secondary structure",
+    "Hemoglobin is a holoprotein",
+    "Insulin is a hypoglycemic protein",
+    "Their first amino acid residue is called the C-terminal amino acid and their last one the N-terminal amino acid"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "Concerning enzymes:",
+   "o": [
+    "All enzymes are proteins",
+    "Enzymes decrease the activation energy",
+    "Proteases can degrade lipids",
+    "The Enzyme Commission nomenclature adds the suffix -ase to the end of the enzyme's name",
+    "Allosteric enzymes are not regulated"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "About coenzymes and cofactors:",
+   "o": [
+    "Coenzymes are enzymes",
+    "All enzymes need coenzymes",
+    "Cofactors are derivatives of vitamins",
+    "NAD and coenzyme A are involved in oxidation-reduction reactions",
+    "All cofactors are inorganic"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "The alcohols that make up phospholipids are:",
+   "o": [
+    "Inositol",
+    "Tyrosine",
+    "Threonine",
+    "Choline",
+    "Glycerol"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "Pick the amphiphilic lipids:",
+   "o": [
+    "Cholesterol",
+    "Phospholipids",
+    "Fatty acids",
+    "Sphingolipids",
+    "Triglycerides"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "The good cholesterol is:",
+   "o": [
+    "HDL",
+    "LDL",
+    "VLDL",
+    "IDL",
+    "Chylomicrons"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "The oxidation of 1 g of lipids releases:",
+   "o": [
+    "1 kcal",
+    "4 kcal",
+    "9 kcal",
+    "100 kcal",
+    "All the above statements are wrong"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Among the following propositions, indicate the exact one(s):",
+   "o": [
+    "Sucrose is made up of 2 glucoses",
+    "Lactose intolerance is explained by a lactase deficiency",
+    "Lactose is made of glucose and fructose linked by an α1-4 glycosidic bond",
+    "Maltose is an oligosaccharide",
+    "Maltose is a disaccharide"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Among the following carbohydrates, indicate the reducing ones:",
+   "o": [
+    "Sucrose",
+    "Lactose",
+    "Glucose",
+    "Glucosamine",
+    "Fructose"
+   ],
+   "file": "304.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Among the following propositions, indicate the exact one(s):",
+   "o": [
+    "All sphingolipids are phospholipids",
+    "All glycerophospholipids are phospholipids",
+    "Glycerol is a lipid",
+    "Triglycerides are strictly hydrophobic",
+    "Cholesterol is amphiphilic"
+   ],
+   "file": "304.txt"
+  }
+ ],
+ "mbio-tut": [
+  {
+   "n": 1,
+   "ord": 1,
+   "s": "Pick the correct statements:",
+   "o": [
+    "Most of glycolysis occurs in the cytoplasm",
+    "Glycolysis is strictly aerobic",
+    "Glycolysis is a process common to most living beings",
+    "The first reaction of glycolysis is irreversible",
+    "Glucokinase phosphorylates glucose and the other hexoses to lock them in the cell"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 2,
+   "ord": 2,
+   "s": "The total amount of ATP after the complete oxidation of one molecule of glucose is:",
+   "o": [
+    "6 ATP",
+    "12 ATP",
+    "38 ATP",
+    "36 ATP",
+    "30 or 32 ATP"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 3,
+   "ord": 3,
+   "s": "Glucose transport:",
+   "o": [
+    "Is only passive, by facilitated diffusion",
+    "Is only active",
+    "Can be passive and active",
+    "Can be ensured by GLUT",
+    "Is activated by insulin"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 4,
+   "ord": 4,
+   "s": "Insulin:",
+   "o": [
+    "Is a hypoglycemic protein",
+    "Is hyperglycemic",
+    "Stimulates glycogenesis",
+    "Is produced by beta cells",
+    "Is produced by the liver"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 5,
+   "ord": 5,
+   "s": "Regarding pyruvate, pick the correct statements:",
+   "o": [
+    "In anaerobic conditions pyruvate is transformed into acetyl-CoA",
+    "Yeasts transform pyruvate into alcohol + CO2",
+    "Lactic fermentation regenerates NAD+",
+    "Lactic and alcoholic fermentation produce a large amount of ATP",
+    "Lactate is formed through the Krebs cycle in hypoxemia"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 6,
+   "ord": 6,
+   "s": "The substrates of gluconeogenesis are:",
+   "o": [
+    "Pyruvate",
+    "Lactate",
+    "Glycerol",
+    "Lipids",
+    "Amino acids"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 7,
+   "ord": 7,
+   "s": "Regarding the Krebs cycle, pick the correct statements:",
+   "o": [
+    "The Krebs cycle occurs in the cytoplasm",
+    "It produces 3 molecules of CO2",
+    "Oxygen (O2) is directly involved in the cycle",
+    "It is a source of energy-rich bonds",
+    "It releases 1 FADH2"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 8,
+   "ord": 8,
+   "s": "The pentose phosphate pathway is:",
+   "o": [
+    "An alternative pathway of glucose metabolism",
+    "A metabolic process that produces ATP",
+    "Linked to favism when there is a deficiency of pyruvate kinase",
+    "Responsible for the production of ribose-5-P",
+    "Known as non-oxidative reactions"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 9,
+   "ord": 9,
+   "s": "Among the following propositions about the pentose pathway only one is false; which one?",
+   "o": [
+    "The pentose phosphate pathway is essential for detoxification of the body",
+    "The pentose phosphate pathway allows the synthesis of ribose 5-phosphate",
+    "The pentose phosphate pathway allows the synthesis of NADPH, H+",
+    "NADPH, H+ is a coenzyme essential for lipid synthesis",
+    "The pentose phosphate pathway allows the synthesis of glucose from amino acids"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 10,
+   "ord": 10,
+   "s": "Pick the enzyme that transforms glucose-1-P into glucose-6-P:",
+   "o": [
+    "Phosphoglucomutase",
+    "Glucose-6-phosphatase",
+    "Glucokinase",
+    "Glycogen synthase",
+    "Debranching enzyme"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 11,
+   "ord": 11,
+   "s": "A disease known as favism comes with a series of characteristics; of all those below, only one is inexact. Which one?",
+   "o": [
+    "It is a common metabolic disease",
+    "It is a genetic disease",
+    "It comes with an increase in the production of NADPH",
+    "It comes with hemolytic anemia",
+    "It is due to a deficiency in glucose-6-phosphate dehydrogenase"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 12,
+   "ord": 12,
+   "s": "The NADH, H+ formed by glycolysis in the cytoplasm can be transported by:",
+   "o": [
+    "The malate-aspartate shuttle, leading to 2.5 ATP",
+    "The malate-citrate shuttle, leading to 1.5 ATP",
+    "The glycerol-3-phosphate shuttle, leading to 1.5 ATP",
+    "The glycerol-3-phosphate shuttle, leading to 2.5 ATP",
+    "The Krebs cycle, leading to 2.5 ATP"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 13,
+   "ord": 13,
+   "s": "Pick the correct statements:",
+   "o": [
+    "Hydrolysis of endogenous triglycerides is incomplete",
+    "Exogenous triglyceride hydrolysis uses hormone-sensitive lipase (HSL)",
+    "Triglycerides are strictly hydrophobic and they are stored in the muscles",
+    "Triglyceride hydrolysis releases 1 glycerol and 3 fatty acids",
+    "Phosphatidic acid is a compound common to triglyceride and phospholipid synthesis"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 14,
+   "ord": 14,
+   "s": "Pick the helix involved in fatty acid synthesis:",
+   "o": [
+    "Cori helix",
+    "Watson and Crick helix",
+    "Wakil helix",
+    "Lynen helix",
+    "Urea helix"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 15,
+   "ord": 15,
+   "s": "Pick the correct statements:",
+   "o": [
+    "Fatty acid metabolism (catabolism + anabolism) occurs in the cytoplasm",
+    "Fatty acids are transported from the cytoplasm to the mitochondria",
+    "The coenzymes used for fatty acid oxidation are FAD and NADP+",
+    "Beta oxidation directly releases a large amount of ATP",
+    "Fatty acid catabolism doesn't consume ATP"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 16,
+   "ord": 16,
+   "s": "Monounsaturated fatty acids need one of these enzymes to complete their beta oxidation:",
+   "o": [
+    "Isomerase",
+    "Reductase",
+    "Oxidase",
+    "Kinase",
+    "Dehydrogenase"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 17,
+   "ord": 17,
+   "s": "Pick the correct order of the first three steps of beta oxidation:",
+   "o": [
+    "1) dehydrogenation, 2) hydration, 3) dehydrogenation",
+    "1) dehydrogenation, 2) dehydrogenation, 3) hydration",
+    "1) dehydration, 2) hydrogenation, 3) dehydration",
+    "1) hydration, 2) hydrogenation, 3) dehydration",
+    "1) hydrogenation, 2) dehydration, 3) dehydration"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 18,
+   "ord": 18,
+   "s": "The final product of the beta oxidation of odd-numbered (2n+1) fatty acids is:",
+   "o": [
+    "Malate",
+    "Malonyl-CoA",
+    "Succinyl-CoA",
+    "Fumarate",
+    "Propionyl-CoA"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 19,
+   "ord": 19,
+   "s": "Pick the coenzymes used for fatty acid synthesis:",
+   "o": [
+    "NADPH",
+    "NADH produced by the pentose phosphate pathway",
+    "Biotin",
+    "Coenzyme A",
+    "FADH2"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 20,
+   "ord": 20,
+   "s": "Acetyl-CoA is a precursor of:",
+   "o": [
+    "All lipids",
+    "Ketone bodies",
+    "Cholesterol",
+    "Fatty acids",
+    "Bile salts"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 21,
+   "ord": 21,
+   "s": "Among the following compounds, pick the ketone bodies:",
+   "o": [
+    "Acetate",
+    "Acetone",
+    "Beta-hydroxybutyric acid",
+    "Acetyl-CoA",
+    "Propionyl-CoA"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 22,
+   "ord": 22,
+   "s": "Ketogenesis occurs in the:",
+   "o": [
+    "Brain",
+    "Muscles",
+    "Liver",
+    "Cytoplasm",
+    "Mitochondria"
+   ],
+   "file": "305.txt"
+  },
+  {
+   "n": 23,
+   "ord": 23,
+   "s": "Cholesterol is a precursor of:",
+   "o": [
+    "Vitamins C and D",
+    "Steroid hormones such as adrenaline",
+    "All lipids",
+    "Bile acids",
+    "Ketone bodies"
+   ],
+   "file": "305.txt"
+  }
  ]
 }

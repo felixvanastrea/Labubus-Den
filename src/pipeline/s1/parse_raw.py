@@ -22,6 +22,9 @@ SETS = [
  ('SET: FMC1 blanc anat', 'anat-fmc'),
  ('structural+biochemistry+MC', 'sbio-en'), ('structural biochemistry MCQ doc', 'sbio-en'),
  ('Anatomy doc (screen), answers in RED', 'anat-review'),
+ ('SET: Drive cell biology genetics January 2021', 'cell-2021'), ('SET: Drive cell biology CC1 October 2021', 'cell-cc1'),
+ ('SET: Drive molecular biology revision', 'mb-rev'), ('SET: Drive biophysics self-test', 'by-auto'),
+ ('SET: Drive structural biochemistry tutorials', 'sbio-tut'), ('SET: Drive metabolic biochemistry tutorials', 'mbio-tut'),
 ]
 out = {}
 for f in sorted(glob.glob(RAW + '/*.txt')):

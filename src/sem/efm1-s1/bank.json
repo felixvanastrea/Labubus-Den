@@ -184,6 +184,54 @@
    "year": "",
    "label": "Mock · Learning methods and terminology",
    "added": "2026-11-25"
+  },
+  {
+   "id": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "topic": "biology-genetics",
+   "type": "Exam",
+   "year": "",
+   "label": "Exam · Cellular biology and genetics",
+   "added": "2026-11-28"
+  },
+  {
+   "id": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "topic": "biology-genetics",
+   "type": "Test",
+   "year": "",
+   "label": "Test 1 · Cellular biology and cell methods",
+   "added": "2026-11-28"
+  },
+  {
+   "id": "s1-biology-genetics-global-revision-molecular-biology",
+   "topic": "biology-genetics",
+   "type": "Collected",
+   "year": "",
+   "label": "Global revision · Molecular biology",
+   "added": "2026-11-28"
+  },
+  {
+   "id": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "topic": "biophysics",
+   "type": "Test",
+   "year": "",
+   "label": "Self-test · Radioactivity and dosimetry (Pr Çaoui)",
+   "added": "2026-11-28"
+  },
+  {
+   "id": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "topic": "chemistry-biochemistry",
+   "type": "Tutorial",
+   "year": "",
+   "label": "Tutorial MCQs · Structural biochemistry (Pr Lahlou)",
+   "added": "2026-11-28"
+  },
+  {
+   "id": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "topic": "chemistry-biochemistry",
+   "type": "Tutorial",
+   "year": "",
+   "label": "Tutorial MCQs · Metabolic biochemistry (Pr Lahlou)",
+   "added": "2026-11-28"
   }
  ],
  "cases": [],
@@ -12621,6 +12669,3655 @@
    "key": "claude",
    "c": [
     "LM-10"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "6f27f641ae",
+   "n": 1,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The plasma membrane components are:",
+   "options": [
+    "The integrated proteins",
+    "The cholesterol",
+    "The carbohydrates",
+    "The phospholipids",
+    "The water"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-04"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "b44623ee1f",
+   "n": 2,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The functions of the cytoskeleton are:",
+   "options": [
+    "To keep organelles in place",
+    "To change the shape of the cell",
+    "Cellular motility",
+    "To anchor cytoplasmic enzymes",
+    "All of the above"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-07"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "1414a392df",
+   "n": 3,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The fibers that undergo polymerization or depolymerization are:",
+   "options": [
+    "Polar fibers",
+    "Kinetochore fibers",
+    "Actin microfilaments",
+    "Microtubules",
+    "Intermediate filaments"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-07"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "2f7a5fcb9b",
+   "n": 4,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The two components associated with cell synthesis are:",
+   "options": [
+    "Cytoskeleton",
+    "Peroxisome",
+    "Endoplasmic reticulum",
+    "Golgi apparatus",
+    "Lysosome"
+   ],
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-08"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "daa9abc82a",
+   "n": 5,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The PKA signaling pathway is an endocrine pathway that uses:",
+   "options": [
+    "A GPCR receptor",
+    "A hormone",
+    "Adenylyl cyclase",
+    "An antigen",
+    "Kinases"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e7bbef0967",
+   "n": 6,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The PKC signaling pathway is an endocrine pathway that uses:",
+   "options": [
+    "Ras protein",
+    "A hormone",
+    "Phospholipase",
+    "Calcium",
+    "Kinases"
+   ],
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "51d26d1ca1",
+   "n": 7,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The organelle that plays a key role in cell respiration is:",
+   "options": [
+    "The mitochondria",
+    "The Golgi apparatus",
+    "The peroxisome",
+    "The nucleus",
+    "The endoplasmic reticulum"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "BG-08"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "494c1e0959",
+   "n": 8,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The fluidity of the membrane is controlled by:",
+   "options": [
+    "The phospholipids",
+    "The cholesterol",
+    "The fatty acid tails",
+    "The fatty acid heads",
+    "None"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-04"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ae5ac2b705",
+   "n": 9,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The functions of the cell membrane proteins are:",
+   "options": [
+    "Facilitated transport",
+    "Active transport",
+    "Identification of the cell",
+    "Channels through the membrane",
+    "Protection of the cell"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-04"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "45e6e03681",
+   "n": 10,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The principal force driving movement in diffusion is the:",
+   "options": [
+    "pH",
+    "Particle size",
+    "Concentration gradient",
+    "Membrane surface area",
+    "Particle shape"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7a0d86e977",
+   "n": 11,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Active transport uses:",
+   "options": [
+    "Permease",
+    "Aquaporin",
+    "ATP",
+    "ATPase",
+    "Phosphorylation"
+   ],
+   "answer": [
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8ed16eaa5f",
+   "n": 12,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Exocytosis:",
+   "options": [
+    "Allows macromolecule transport",
+    "Allows the transport of ions",
+    "Involves clathrins",
+    "Involves SNARE",
+    "Consumes ATP"
+   ],
+   "answer": [
+    0,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "c134692120",
+   "n": 13,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The components of the photonic microscope are:",
+   "options": [
+    "The ocular",
+    "The condenser",
+    "The objective",
+    "The photomultiplier",
+    "The pinhole"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-01"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "1a273162b4",
+   "n": 14,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The confocal microscope is used to observe:",
+   "options": [
+    "Cell culture",
+    "Cell fluorescence",
+    "Cell organelles",
+    "Fixed cells",
+    "3D cell shapes"
+   ],
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-01"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8b6a9ee183",
+   "n": 15,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The smear technique uses:",
+   "options": [
+    "Fixation",
+    "Microtome",
+    "Free cells",
+    "Cerebrospinal fluid",
+    "MGG staining"
+   ],
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "6ec56ef5b4",
+   "n": 16,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Special stains of histological sections for the microscope are:",
+   "options": [
+    "Masson trichrome",
+    "Haematein eosin safranin",
+    "Perls staining",
+    "PAS staining",
+    "Haematein-eosin"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "c1ac722c5b",
+   "n": 17,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Cell culture needs a:",
+   "options": [
+    "Temperature of 37°C",
+    "CO2 incubator",
+    "Basic pH",
+    "Nutrient medium",
+    "Automaton"
+   ],
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-03"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "fddd9b0e48",
+   "n": 18,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Embedding a biopsy for the microscope requires:",
+   "options": [
+    "Alcohol",
+    "Glutaraldehyde",
+    "Bouin liquid",
+    "Paraffin",
+    "Resins"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e4cc08e91a",
+   "n": 19,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The cell cycle checkpoints are in:",
+   "options": [
+    "Phase G1",
+    "Phase S",
+    "Phase G2",
+    "Metaphase",
+    "Anaphase"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-10"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "85ad8fe4ce",
+   "n": 20,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Chromatin is made up of:",
+   "options": [
+    "The nucleosomes",
+    "A DNA molecule",
+    "An RNA molecule",
+    "The histones",
+    "The nucleosomes"
+   ],
+   "answer": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-09"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "6f892e9b6c",
+   "n": 21,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The nuclear envelope:",
+   "options": [
+    "Is made of 2 phospholipid bilayer membranes",
+    "The nucleolus is surrounded by an envelope",
+    "Its inner membrane is upholstered by the lamina",
+    "The lamina is formed by lamin filaments",
+    "Progeria is caused by a mutation of lamin A"
+   ],
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-09"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5032612032",
+   "n": 22,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The components of the interphase nucleus are:",
+   "options": [
+    "The Cajal body",
+    "The granules",
+    "The nucleolus",
+    "The Barr body",
+    "The chromosomes"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-09"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "86d1606f7e",
+   "n": 23,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The death receptors are:",
+   "options": [
+    "FasR",
+    "DR",
+    "TNFR",
+    "TRAIL-R",
+    "TNFα"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "767acfd629",
+   "n": 24,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Apoptosis needs:",
+   "options": [
+    "Caspase 8",
+    "The death receptor",
+    "Caspase 9",
+    "The mitochondria",
+    "The permease"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "317d2934ae",
+   "n": 25,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "During the extrinsic pathway, apoptosis uses:",
+   "options": [
+    "Binding of the death ligand to the death receptor",
+    "Recruitment of the Fas-associated death domain (FADD) to the receptor",
+    "Recruitment of caspase-8 to FADD",
+    "Formation of the death-inducing signaling complex (DISC)",
+    "Inactivation of effector caspases"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "614f3bf87c",
+   "n": 26,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Eukaryotic cells:",
+   "options": [
+    "Have a small size (1–10 μm)",
+    "Keep their DNA in an internal compartment",
+    "Have bigger genomes",
+    "Have a nucleus",
+    "Have membrane-bound organelles"
+   ],
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "b18616bf49",
+   "n": 27,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Nucleotides are:",
+   "options": [
+    "Basic units of nucleic acids",
+    "Made up of a sugar, a phosphate group and a nitrogenous base",
+    "Made up of a sugar, hydrogen bonds and a nitrogenous base",
+    "Basic units of RNA only",
+    "Made up of a sugar and a phosphate group"
+   ],
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "61e852d8da",
+   "n": 28,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "A DNA molecule is:",
+   "options": [
+    "Composed of two antiparallel DNA strands",
+    "Made of strands linked together by hydrogen bonds",
+    "Made of strands linked together by covalent bonds",
+    "Composed of two parallel DNA strands",
+    "Made of two complementary DNA strands"
+   ],
+   "answer": [
+    0,
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "759707448f",
+   "n": 29,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Genes are segments of DNA:",
+   "options": [
+    "That carry genetic information to produce proteins",
+    "That carry genetic information to produce functional RNA molecules",
+    "Located in the chromosomes",
+    "Located in the cytoplasm",
+    "That carry genetic information"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8d7071b709",
+   "n": 30,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Eukaryotic DNA is:",
+   "options": [
+    "Located in the nucleus of cells",
+    "Located only in the mitochondrion",
+    "Packaged into sets of chromosomes",
+    "Packaged into one single chromosome",
+    "Made only of genes"
+   ],
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "163eef6001",
+   "n": 31,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Ribonucleic acid is:",
+   "options": [
+    "A double-stranded molecule",
+    "A linear polymer made of four types of nucleotides",
+    "Made of adenine, guanine, cytosine and thymine",
+    "Made of adenine, uracil, cytosine and guanine",
+    "Made of nucleotide subunits linked by phosphodiester bonds"
+   ],
+   "answer": [
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "d88b9074e6",
+   "n": 32,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "DNA replication origins are found in:",
+   "options": [
+    "The promoter region",
+    "The enhancer region",
+    "The coding sequence",
+    "A CG-rich region",
+    "An AT-rich region"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "3d92476954",
+   "n": 33,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "To start polymerization, DNA polymerase requires reagents such as:",
+   "options": [
+    "Mg++",
+    "dNTPs",
+    "Primers",
+    "A DNA sequence",
+    "All the above"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "88d3a664a6",
+   "n": 34,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Topoisomerase is a necessary enzyme for replication; it:",
+   "options": [
+    "Separates double-stranded DNA into single strands",
+    "Copies the DNA sequences",
+    "Alleviates DNA supercoiling",
+    "Synthesizes RNA primers",
+    "Links newly synthesized DNA fragments"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "528dc09b51",
+   "n": 35,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "DNA polymerase adds a new DNA nucleotide to the:",
+   "options": [
+    "5′ end of the primer",
+    "3′ end of the newly synthesized polynucleotide strand",
+    "5′ end of the newly synthesized polynucleotide strand",
+    "3′ ribose",
+    "5′ phosphate"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ef0b35cdfe",
+   "n": 36,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "In eukaryotes, Okazaki fragments are:",
+   "options": [
+    "10 to 30 base pairs long",
+    "40 to 60 base pairs long",
+    "70 to 100 base pairs long",
+    "150 to 200 base pairs long",
+    "300 to 400 base pairs long"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e2db396ab4",
+   "n": 37,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "A promoter is a piece of DNA sequence that:",
+   "options": [
+    "Enhances gene transcription",
+    "Can be upstream or downstream of where transcription is initiated",
+    "Increases transcription",
+    "Initiates gene transcription",
+    "Does not need to be close to the gene"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "93a9ead50f",
+   "n": 38,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "In prokaryotes, RNA polymerase is made of 5 subunits; the sigma subunit has a function of:",
+   "options": [
+    "DNA binding",
+    "Promoter recognition",
+    "Chain initiation and elongation",
+    "Binding with regulatory proteins",
+    "Ending the transcription process"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "3100d046cd",
+   "n": 39,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Transcription factors are:",
+   "options": [
+    "Part of the TATA box",
+    "Transcribed by enhancers",
+    "Proteins that bind to histones",
+    "Proteins necessary for transcription termination",
+    "None of the above"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8eb4eaffb4",
+   "n": 40,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "What splits the DNA open during transcription?",
+   "options": [
+    "Helicase",
+    "Topoisomerase",
+    "RNA polymerase and transcription factors",
+    "RNA polymerase",
+    "All of the above"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9f0c76a5b9",
+   "n": 41,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The noncoding DNA strand is:",
+   "options": [
+    "In the 5′→3′ direction",
+    "The strand that contains uracil",
+    "The sense DNA",
+    "Complementary to tRNA",
+    "The transcribed strand"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7f7883d676",
+   "n": 42,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "Alternative splicing is a process:",
+   "options": [
+    "That helps transport mRNA to the cytoplasm",
+    "That enables genes to synthesize different protein variants",
+    "That stabilizes mRNA",
+    "That makes mRNA more mature",
+    "None of the above"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ac5586248e",
+   "n": 43,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "A cistron is:",
+   "options": [
+    "A DNA segment equivalent to a gene, starting at AUG and stopping at a STOP codon",
+    "A DNA segment equivalent to a prokaryote promoter",
+    "Found only in prokaryotes",
+    "An enhancer",
+    "None of the above"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "BG-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9fc6f5492f",
+   "n": 44,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "An operator is:",
+   "options": [
+    "A transcription factor",
+    "A protein that binds to a DNA sequence (like histones)",
+    "A DNA sequence found between the promoter and the genes",
+    "Part of the prokaryote control region",
+    "All the above"
+   ],
+   "answer": [
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "c890f5db89",
+   "n": 45,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "In prokaryotes, repressible genes are:",
+   "options": [
+    "Normally on",
+    "Normally off",
+    "In need of a repressor to be expressed",
+    "In need of an inducer to be expressed",
+    "None of the above"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "BG-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7b2dff6a37",
+   "n": 46,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "With Giemsa staining of metaphase chromosomes, the dark bands are:",
+   "options": [
+    "CG-rich DNA",
+    "AT-rich DNA",
+    "Centromere regions",
+    "Telomere regions",
+    "Regulatory sequences"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-14"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "3faf993db9",
+   "n": 47,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The description r.33A&gt;T means:",
+   "options": [
+    "There is a deletion at position 33 in the ribosome",
+    "T was substituted by A in the ribosome at position 33",
+    "A was substituted by T at position 33 in the RNA sequence",
+    "The ribosome's protein was substituted at position 33, A by T"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-18"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "446bfce103",
+   "n": 48,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The best method to assess DNA purity is:",
+   "options": [
+    "Absorbance at 260 nm",
+    "Absorbance at 280 nm",
+    "The absorbance 260 / absorbance 280 ratio",
+    "The absorbance 280 / absorbance 260 ratio",
+    "None of the above"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5ff7da97ca",
+   "n": 49,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-exam-cellular-biology-and-genetics",
+   "stem": "The correct sequence of the steps of the polymerase chain reaction is:",
+   "options": [
+    "Denaturation, hybridization, elongation",
+    "Denaturation, elongation",
+    "Hybridization, denaturation, elongation",
+    "Hybridization, elongation, denaturation",
+    "Hybridization, elongation"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "BG-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e54e5bc0d9",
+   "n": 1,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "The plasma membrane presents:",
+   "options": [
+    "A double layer",
+    "Polysaccharides",
+    "Receptors",
+    "Clathrins",
+    "Lamins"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-04"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "4f5857c4c3",
+   "n": 2,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Simple passive transport involves:",
+   "options": [
+    "ATP",
+    "Proteins",
+    "Permease",
+    "The concentration gradient",
+    "Ion channels"
+   ],
+   "answer": [
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "93727d96dd",
+   "n": 3,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Facilitated transport:",
+   "options": [
+    "Concerns small molecules",
+    "Involves permeases",
+    "Uses ATPases",
+    "Involves vesicles",
+    "Follows the concentration gradient"
+   ],
+   "answer": [
+    0,
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "34bbbc1b8f",
+   "n": 4,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Na+/K+ ATPase is used for:",
+   "options": [
+    "Facilitated transport",
+    "Simple diffusion",
+    "Active transport",
+    "Endocytosis",
+    "Exocytosis"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5930ad2fa6",
+   "n": 5,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Exocytosis:",
+   "options": [
+    "Allows amino acid transport",
+    "Allows the transport of water",
+    "Involves clathrins",
+    "Involves permeases",
+    "Consumes ATP"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "a2d5ece224",
+   "n": 6,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Activation of the RTK receptor involves:",
+   "options": [
+    "Receptor dimerization",
+    "Activation of the tyrosine kinase",
+    "Receptor phosphorylation",
+    "The G protein",
+    "The Ras protein"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "6c9ba4516b",
+   "n": 7,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "The PKC signaling pathway uses:",
+   "options": [
+    "Calcium",
+    "G protein",
+    "Adenylate cyclase",
+    "cAMP",
+    "GPCR receptor"
+   ],
+   "answer": [
+    0,
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "2fb7ba6181",
+   "n": 8,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "G protein stimulates:",
+   "options": [
+    "Adenylate cyclase",
+    "Phospholipase C",
+    "The RTK receptor",
+    "The ion channel",
+    "The tyrosine kinase enzyme"
+   ],
+   "answer": [
+    0,
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e6dc3520a7",
+   "n": 9,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Substrate adhesion molecules (SAM) are:",
+   "options": [
+    "Cadherins",
+    "Selectins",
+    "Clathrins",
+    "ICAMs",
+    "Integrins"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-05"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "20658ba873",
+   "n": 10,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "The fluorescence microscope consists of:",
+   "options": [
+    "A UV lamp",
+    "A condenser",
+    "An objective",
+    "An eyepiece",
+    "A pinhole"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-01"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "617a75354b",
+   "n": 11,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "The inverted microscope can observe:",
+   "options": [
+    "Cell structure",
+    "Cellular organelles",
+    "Cellular landforms",
+    "Fixed cells",
+    "Cells in culture"
+   ],
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-01"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5f1951f426",
+   "n": 12,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "The smear technique:",
+   "options": [
+    "Requires an ultramicrotome",
+    "Concerns free cells",
+    "Concerns solid tissues",
+    "Concerns cerebrospinal fluid",
+    "Stains with May-Grünwald Giemsa"
+   ],
+   "answer": [
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "101fbb25d3",
+   "n": 13,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Fixation of tissue biopsies for the light microscope requires:",
+   "options": [
+    "Osmium tetroxide",
+    "Glutaraldehyde",
+    "Paraffin",
+    "Bouin mixture",
+    "Synthetic resins"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "f3f36047df",
+   "n": 14,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Inclusion of biopsies from your patients:",
+   "options": [
+    "Hardens the removed tissue",
+    "Keeps cells in a state close to living",
+    "Makes the next cutting step easier",
+    "Requires paraffin",
+    "Involves haematein"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "d404a80650",
+   "n": 15,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Staining of histological sections with haematein-eosin:",
+   "options": [
+    "Colours the cytoplasm pink",
+    "Colours the nucleus blue",
+    "Is a standard stain",
+    "Looks for fibrosis",
+    "Looks for hemosiderosis"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BG-02"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "4805551fe7",
+   "n": 16,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "Cell culture requires:",
+   "options": [
+    "A nutrient medium",
+    "A neutral pH",
+    "A laminar flow hood",
+    "A temperature of -20°C",
+    "Maximum sterility"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-03"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "4767009254",
+   "n": 17,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-test-1-cellular-biology-and-cell-methods",
+   "stem": "When carrying out a cell culture, you use:",
+   "options": [
+    "Fixation of the removed tissue fragment",
+    "Tissue trypsinization with collagenase",
+    "Cell counting under the microscope",
+    "A laminar flow hood",
+    "Cell staining"
+   ],
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-03"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "1dda376b2d",
+   "n": 1,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "What is the central dogma?",
+   "options": [
+    "DNA to amino acid to RNA",
+    "Amino acid to DNA to proteins",
+    "Proteins to RNA to DNA",
+    "DNA to RNA to proteins",
+    "DNA to proteins to RNA"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "5e7f4bf78d",
+   "n": 2,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "What is Chargaff's rule?",
+   "options": [
+    "DNA = RNA",
+    "Adenine = thymine and guanine = cytosine",
+    "DNA = RNA = protein",
+    "RNA = protein",
+    "AT = CG"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "a2529c63bd",
+   "n": 3,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "What is the DNA backbone?",
+   "options": [
+    "AT and CG",
+    "Sugar",
+    "Phosphate",
+    "Sugar and phosphate",
+    "All the above"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "60f4139352",
+   "n": 4,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "What is the difference between ribose and deoxyribose?",
+   "options": [
+    "Ribose has a hydroxyl (OH) group at position 2′",
+    "The order of the carbons",
+    "The phosphate is attached to the 5′ carbon",
+    "The second carbon is missing",
+    "One oxygen molecule is missing"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "381d604d00",
+   "n": 5,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "The hydrogen bonds linking the DNA strands are:",
+   "options": [
+    "Covalent bonds",
+    "Non-covalent bonds",
+    "Used to form the DNA backbone",
+    "Linking the bases together in the DNA",
+    "Cut by the helicase"
+   ],
+   "answer": [
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "e294efcfcd",
+   "n": 6,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "The DNA melting temperature is when:",
+   "options": [
+    "The whole DNA is melted",
+    "Half of the DNA is denatured",
+    "The AT bonds are denatured",
+    "The backbone is denatured",
+    "Only the pyrimidine bases are melted"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "BG-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "f264fe69d9",
+   "n": 7,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "The differences between prokaryote and eukaryote replication are:",
+   "options": [
+    "Their replication always starts at one unique origin",
+    "Both use Mg++",
+    "One uses helicase while the other uses ligase",
+    "They run at different speeds",
+    "Only one uses primase"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "7bbe721a4e",
+   "n": 8,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "The roles of topoisomerase are:",
+   "options": [
+    "It starts the DNA melting",
+    "It alleviates DNA supercoiling",
+    "It inhibits the helicase",
+    "It is always attached to the SSBP",
+    "It is part of the replisome"
+   ],
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "0c9feabb6e",
+   "n": 9,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "The prokaryote DNA polymerases are:",
+   "options": [
+    "Either I, II or III",
+    "Either α, ε or δ",
+    "Without exonuclease activity",
+    "Exclusively in the cytoplasm",
+    "Never making a mismatch"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "ad1e4d928c",
+   "n": 10,
+   "topic": "biology-genetics",
+   "source": "s1-biology-genetics-global-revision-molecular-biology",
+   "stem": "Telomerase:",
+   "options": [
+    "Replicates DNA",
+    "Is different from one vertebrate to another",
+    "Is found only in eukaryotes",
+    "Is the same in all vertebrates",
+    "Has an RNA template"
+   ],
+   "answer": [
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "BG-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Answered by Claude from the lecture slides (Molecular biology: global revision (18 December 2023)).</p>"
+    }
+   ]
+  },
+  {
+   "id": "131d890025",
+   "n": 1,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "An unstable nucleus is radioactive when:",
+   "options": [
+    "It has an excess of protons",
+    "It has a neutron deficiency",
+    "It does not have excess energy",
+    "It has a physical period"
+   ],
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "dc160e325c",
+   "n": 2,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "A radioactive transformation is a reaction that:",
+   "options": [
+    "Cannot be caused by an excess of electrons",
+    "Can take place in two steps: decay followed by de-excitation",
+    "Can concern any unstable atom with positive energy",
+    "Cannot be a de-excitation"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BY-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7b0531f2bb",
+   "n": 3,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "Radioactive de-excitation:",
+   "options": [
+    "Occurs only when the unstable atom has a high threshold energy",
+    "Can concern weakly excited heavy atoms",
+    "Is not a radioactive transformation",
+    "Allows an unstable atom to release its excess energy"
+   ],
+   "answer": [
+    1,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "2cf40ec8b1",
+   "n": 4,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "Charged particles have the following characteristics:",
+   "options": [
+    "Light or heavy",
+    "They are waves",
+    "They are charged and have no mass",
+    "A short or medium path through matter, expressed by the LET and the LID"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ee250d84d8",
+   "n": 5,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "In the modes of interaction of X-rays with matter:",
+   "options": [
+    "The mode of exposure is external",
+    "As they travel a long way, only heavy materials stop X-rays",
+    "The X-ray weighting factor is 1",
+    "A person exposed to an X-ray beam can contaminate those around him"
+   ],
+   "answer": [
+    0,
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "BY-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "47b3a767af",
+   "n": 6,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "The interaction of photons with matter has the following characteristics:",
+   "options": [
+    "It is random",
+    "Photons directly ionize matter",
+    "Photons take a long path through matter",
+    "They are weakly ionizing in matter"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "65856cbfe8",
+   "n": 7,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "During the Compton effect, the photon:",
+   "options": [
+    "Projects the electron at an angle between 0° and 90°",
+    "Is scattered at an angle between 0° and 90°",
+    "Turns back 180° when the impact is head-on",
+    "Is deflected and scattered, giving up part of its energy"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "b1ba39f721",
+   "n": 8,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "An electronic dosimeter:",
+   "options": [
+    "Provides real-time information",
+    "Displays the dose history",
+    "Displays only the dose, without the dose rate",
+    "Emits an audible signal if the dose is exceeded"
+   ],
+   "answer": [
+    0,
+    1,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "8a073c2357",
+   "n": 9,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "Equivalent dose:",
+   "options": [
+    "Is measured in gray",
+    "Depends on the nature of the radiation",
+    "Takes into account the harmfulness of the radiation",
+    "Is independent of the nature of the tissue"
+   ],
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "91528349f8",
+   "n": 10,
+   "topic": "biophysics",
+   "source": "s1-biophysics-self-test-radioactivity-and-dosimetry-pr-aoui",
+   "stem": "Absorbed dose is a parameter:",
+   "options": [
+    "Measured in gray",
+    "That takes into account the harmfulness of the radiation",
+    "That can be calculated",
+    "Independent of the nature of the tissue"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "BY-16"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "20889c26ff",
+   "n": 1,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Which of the following amino acids has an amide group in its side chain?",
+   "options": [
+    "Serine",
+    "Threonine",
+    "Glutamine",
+    "Isoleucine",
+    "Aspartate"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "b0ab6e15f0",
+   "n": 2,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Which of the following amino acids are considered essential amino acids?",
+   "options": [
+    "Valine, methionine and histidine",
+    "Arginine and glycine",
+    "Cysteine and methionine",
+    "Tyrosine and serine",
+    "Leucine, isoleucine and phenylalanine"
+   ],
+   "answer": [
+    0,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "553b392fb4",
+   "n": 3,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "About tryptophan:",
+   "options": [
+    "It is the largest amino acid",
+    "It has two carboxylic acid functions and one amide function",
+    "It is an aromatic amino acid",
+    "It is a cyclic amino acid",
+    "It absorbs UV light"
+   ],
+   "answer": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "f8bd2b3b39",
+   "n": 4,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Which of the following statements about aromatic amino acids is correct?",
+   "options": [
+    "All are strongly hydrophilic",
+    "All are non-polar",
+    "Tyrosine and tryptophan are aromatic amino acids",
+    "Their side chain contains an amine group",
+    "They are never found in a protein"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5418d96e40",
+   "n": 5,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Which of the following amino acids are involved in the beta turn?",
+   "options": [
+    "Alanine",
+    "Glycine",
+    "Proline",
+    "Serine",
+    "Tyrosine"
+   ],
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "26cde50518",
+   "n": 6,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "The number of asymmetric carbons in glycine is:",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "CB-11"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "72c87fb7e6",
+   "n": 7,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Concerning proteins:",
+   "options": [
+    "Keratin is a fibrous protein",
+    "A protein's catalytic activity comes from its secondary structure",
+    "Hemoglobin is a holoprotein",
+    "Insulin is a hypoglycemic protein",
+    "Their first amino acid residue is called the C-terminal amino acid and their last one the N-terminal amino acid"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-12"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "bf31c48e41",
+   "n": 8,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Concerning enzymes:",
+   "options": [
+    "All enzymes are proteins",
+    "Enzymes decrease the activation energy",
+    "Proteases can degrade lipids",
+    "The Enzyme Commission nomenclature adds the suffix -ase to the end of the enzyme's name",
+    "Allosteric enzymes are not regulated"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "CB-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "a3c5ab49a4",
+   "n": 9,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "About coenzymes and cofactors:",
+   "options": [
+    "Coenzymes are enzymes",
+    "All enzymes need coenzymes",
+    "Cofactors are derivatives of vitamins",
+    "NAD and coenzyme A are involved in oxidation-reduction reactions",
+    "All cofactors are inorganic"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-13"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7708b52190",
+   "n": 10,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "The alcohols that make up phospholipids are:",
+   "options": [
+    "Inositol",
+    "Tyrosine",
+    "Threonine",
+    "Choline",
+    "Glycerol"
+   ],
+   "answer": [
+    0,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7abb4ef74c",
+   "n": 11,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Pick the amphiphilic lipids:",
+   "options": [
+    "Cholesterol",
+    "Phospholipids",
+    "Fatty acids",
+    "Sphingolipids",
+    "Triglycerides"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9dda55c7e4",
+   "n": 12,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "The good cholesterol is:",
+   "options": [
+    "HDL",
+    "LDL",
+    "VLDL",
+    "IDL",
+    "Chylomicrons"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "CB-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ced639b149",
+   "n": 13,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "The oxidation of 1 g of lipids releases:",
+   "options": [
+    "1 kcal",
+    "4 kcal",
+    "9 kcal",
+    "100 kcal",
+    "All the above statements are wrong"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "ad117916ab",
+   "n": 14,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Among the following propositions, indicate the exact one(s):",
+   "options": [
+    "Sucrose is made up of 2 glucoses",
+    "Lactose intolerance is explained by a lactase deficiency",
+    "Lactose is made of glucose and fructose linked by an α1-4 glycosidic bond",
+    "Maltose is an oligosaccharide",
+    "Maltose is a disaccharide"
+   ],
+   "answer": [
+    1,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-14"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "a2596c7d8e",
+   "n": 15,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Among the following carbohydrates, indicate the reducing ones:",
+   "options": [
+    "Sucrose",
+    "Lactose",
+    "Glucose",
+    "Glucosamine",
+    "Fructose"
+   ],
+   "answer": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-14"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "779a0dbed3",
+   "n": 16,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-structural-biochemistry-pr-lahlou",
+   "stem": "Among the following propositions, indicate the exact one(s):",
+   "options": [
+    "All sphingolipids are phospholipids",
+    "All glycerophospholipids are phospholipids",
+    "Glycerol is a lipid",
+    "Triglycerides are strictly hydrophobic",
+    "Cholesterol is amphiphilic"
+   ],
+   "answer": [
+    1,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-15"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "24eee4d824",
+   "n": 1,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the correct statements:",
+   "options": [
+    "Most of glycolysis occurs in the cytoplasm",
+    "Glycolysis is strictly aerobic",
+    "Glycolysis is a process common to most living beings",
+    "The first reaction of glycolysis is irreversible",
+    "Glucokinase phosphorylates glucose and the other hexoses to lock them in the cell"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9d1160a796",
+   "n": 2,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "The total amount of ATP after the complete oxidation of one molecule of glucose is:",
+   "options": [
+    "6 ATP",
+    "12 ATP",
+    "38 ATP",
+    "36 ATP",
+    "30 or 32 ATP"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "132e422608",
+   "n": 3,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Glucose transport:",
+   "options": [
+    "Is only passive, by facilitated diffusion",
+    "Is only active",
+    "Can be passive and active",
+    "Can be ensured by GLUT",
+    "Is activated by insulin"
+   ],
+   "answer": [
+    2,
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e606666b76",
+   "n": 4,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Insulin:",
+   "options": [
+    "Is a hypoglycemic protein",
+    "Is hyperglycemic",
+    "Stimulates glycogenesis",
+    "Is produced by beta cells",
+    "Is produced by the liver"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "074cdf1a3d",
+   "n": 5,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Regarding pyruvate, pick the correct statements:",
+   "options": [
+    "In anaerobic conditions pyruvate is transformed into acetyl-CoA",
+    "Yeasts transform pyruvate into alcohol + CO2",
+    "Lactic fermentation regenerates NAD+",
+    "Lactic and alcoholic fermentation produce a large amount of ATP",
+    "Lactate is formed through the Krebs cycle in hypoxemia"
+   ],
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7d3e84cf72",
+   "n": 6,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "The substrates of gluconeogenesis are:",
+   "options": [
+    "Pyruvate",
+    "Lactate",
+    "Glycerol",
+    "Lipids",
+    "Amino acids"
+   ],
+   "answer": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "56ce88381f",
+   "n": 7,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Regarding the Krebs cycle, pick the correct statements:",
+   "options": [
+    "The Krebs cycle occurs in the cytoplasm",
+    "It produces 3 molecules of CO2",
+    "Oxygen (O2) is directly involved in the cycle",
+    "It is a source of energy-rich bonds",
+    "It releases 1 FADH2"
+   ],
+   "answer": [
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "cf7b2188be",
+   "n": 8,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "The pentose phosphate pathway is:",
+   "options": [
+    "An alternative pathway of glucose metabolism",
+    "A metabolic process that produces ATP",
+    "Linked to favism when there is a deficiency of pyruvate kinase",
+    "Responsible for the production of ribose-5-P",
+    "Known as non-oxidative reactions"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "50cef5ad0d",
+   "n": 9,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Among the following propositions about the pentose pathway only one is false; which one?",
+   "options": [
+    "The pentose phosphate pathway is essential for detoxification of the body",
+    "The pentose phosphate pathway allows the synthesis of ribose 5-phosphate",
+    "The pentose phosphate pathway allows the synthesis of NADPH, H+",
+    "NADPH, H+ is a coenzyme essential for lipid synthesis",
+    "The pentose phosphate pathway allows the synthesis of glucose from amino acids"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5e4ae30993",
+   "n": 10,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the enzyme that transforms glucose-1-P into glucose-6-P:",
+   "options": [
+    "Phosphoglucomutase",
+    "Glucose-6-phosphatase",
+    "Glucokinase",
+    "Glycogen synthase",
+    "Debranching enzyme"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "1909d51fb2",
+   "n": 11,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "A disease known as favism comes with a series of characteristics; of all those below, only one is inexact. Which one?",
+   "options": [
+    "It is a common metabolic disease",
+    "It is a genetic disease",
+    "It comes with an increase in the production of NADPH",
+    "It comes with hemolytic anemia",
+    "It is due to a deficiency in glucose-6-phosphate dehydrogenase"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "11b77bb355",
+   "n": 12,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "The NADH, H+ formed by glycolysis in the cytoplasm can be transported by:",
+   "options": [
+    "The malate-aspartate shuttle, leading to 2.5 ATP",
+    "The malate-citrate shuttle, leading to 1.5 ATP",
+    "The glycerol-3-phosphate shuttle, leading to 1.5 ATP",
+    "The glycerol-3-phosphate shuttle, leading to 2.5 ATP",
+    "The Krebs cycle, leading to 2.5 ATP"
+   ],
+   "answer": [
+    0,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-17"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "f9235a6c6e",
+   "n": 13,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the correct statements:",
+   "options": [
+    "Hydrolysis of endogenous triglycerides is incomplete",
+    "Exogenous triglyceride hydrolysis uses hormone-sensitive lipase (HSL)",
+    "Triglycerides are strictly hydrophobic and they are stored in the muscles",
+    "Triglyceride hydrolysis releases 1 glycerol and 3 fatty acids",
+    "Phosphatidic acid is a compound common to triglyceride and phospholipid synthesis"
+   ],
+   "answer": [
+    3,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "cf0c4a6ad1",
+   "n": 14,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the helix involved in fatty acid synthesis:",
+   "options": [
+    "Cori helix",
+    "Watson and Crick helix",
+    "Wakil helix",
+    "Lynen helix",
+    "Urea helix"
+   ],
+   "answer": [
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "9418c53680",
+   "n": 15,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the correct statements:",
+   "options": [
+    "Fatty acid metabolism (catabolism + anabolism) occurs in the cytoplasm",
+    "Fatty acids are transported from the cytoplasm to the mitochondria",
+    "The coenzymes used for fatty acid oxidation are FAD and NADP+",
+    "Beta oxidation directly releases a large amount of ATP",
+    "Fatty acid catabolism doesn't consume ATP"
+   ],
+   "answer": [
+    1
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "28b95ab87e",
+   "n": 16,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Monounsaturated fatty acids need one of these enzymes to complete their beta oxidation:",
+   "options": [
+    "Isomerase",
+    "Reductase",
+    "Oxidase",
+    "Kinase",
+    "Dehydrogenase"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "506bf01d22",
+   "n": 17,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the correct order of the first three steps of beta oxidation:",
+   "options": [
+    "1) dehydrogenation, 2) hydration, 3) dehydrogenation",
+    "1) dehydrogenation, 2) dehydrogenation, 3) hydration",
+    "1) dehydration, 2) hydrogenation, 3) dehydration",
+    "1) hydration, 2) hydrogenation, 3) dehydration",
+    "1) hydrogenation, 2) dehydration, 3) dehydration"
+   ],
+   "answer": [
+    0
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "5409310c71",
+   "n": 18,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "The final product of the beta oxidation of odd-numbered (2n+1) fatty acids is:",
+   "options": [
+    "Malate",
+    "Malonyl-CoA",
+    "Succinyl-CoA",
+    "Fumarate",
+    "Propionyl-CoA"
+   ],
+   "answer": [
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "99fa627a75",
+   "n": 19,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Pick the coenzymes used for fatty acid synthesis:",
+   "options": [
+    "NADPH",
+    "NADH produced by the pentose phosphate pathway",
+    "Biotin",
+    "Coenzyme A",
+    "FADH2"
+   ],
+   "answer": [
+    0,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "df3bdeaac9",
+   "n": 20,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Acetyl-CoA is a precursor of:",
+   "options": [
+    "All lipids",
+    "Ketone bodies",
+    "Cholesterol",
+    "Fatty acids",
+    "Bile salts"
+   ],
+   "answer": [
+    1,
+    2,
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "7f799d5ebc",
+   "n": 21,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Among the following compounds, pick the ketone bodies:",
+   "options": [
+    "Acetate",
+    "Acetone",
+    "Beta-hydroxybutyric acid",
+    "Acetyl-CoA",
+    "Propionyl-CoA"
+   ],
+   "answer": [
+    1,
+    2
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "bf9e67fa49",
+   "n": 22,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Ketogenesis occurs in the:",
+   "options": [
+    "Brain",
+    "Muscles",
+    "Liver",
+    "Cytoplasm",
+    "Mitochondria"
+   ],
+   "answer": [
+    2,
+    4
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
+   ],
+   "qNotes": [
+    {
+     "by": "claude",
+     "anchor": null,
+     "html": "<p>Claude’s answer.</p>"
+    }
+   ]
+  },
+  {
+   "id": "e0cfea1020",
+   "n": 23,
+   "topic": "chemistry-biochemistry",
+   "source": "s1-chemistry-biochemistry-tutorial-mcqs-metabolic-biochemistry-pr-lahlou",
+   "stem": "Cholesterol is a precursor of:",
+   "options": [
+    "Vitamins C and D",
+    "Steroid hormones such as adrenaline",
+    "All lipids",
+    "Bile acids",
+    "Ketone bodies"
+   ],
+   "answer": [
+    3
+   ],
+   "key": "claude",
+   "c": [
+    "CB-19"
    ],
    "qNotes": [
     {

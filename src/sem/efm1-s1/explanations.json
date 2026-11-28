@@ -159,6 +159,10 @@
   "ph-hsa": {
    "title": "Health systems analysis (Pr Belrhiti)",
    "added": "2026-11-25"
+  },
+  "bg-rev": {
+   "title": "Molecular biology: global revision (18 December 2023)",
+   "added": "2026-11-25"
   }
  },
  "questions": {
@@ -1837,6 +1841,86 @@
    "B": "No: it is about perception versus reality, not sensory memory.",
    "C": "No: it isn't limited to vision.",
    "D": "No: it belongs to metacognition, not the Atkinson and Shiffrin model."
+  },
+  "G117": {
+   "lecture": "bg-rev",
+   "A": "No: DNA isn't made into amino acids directly.",
+   "B": "No: the flow starts from DNA, not amino acids.",
+   "C": "No: that is the dogma backwards.",
+   "D": "Yes: DNA is transcribed into RNA, which is translated into proteins.",
+   "E": "No: RNA comes between DNA and proteins."
+  },
+  "G118": {
+   "lecture": "bg-rev",
+   "A": "No: DNA and RNA aren't in equal amounts.",
+   "B": "Yes: in DNA, A pairs with T and G with C, so their amounts are equal.",
+   "C": "No: not a rule about base amounts.",
+   "D": "No: not a rule about base amounts.",
+   "E": "No: the amount of AT is independent of the amount of CG."
+  },
+  "G119": {
+   "lecture": "bg-rev",
+   "A": "No: the base pairs are inside the helix, not the backbone.",
+   "B": "No: sugar alone isn't the whole backbone.",
+   "C": "No: phosphate alone isn't the whole backbone.",
+   "D": "Yes: alternating sugar and phosphate.",
+   "E": "No: the bases aren't part of the backbone."
+  },
+  "G120": {
+   "lecture": "bg-rev",
+   "A": "Yes: ribose has an OH on its 2′ carbon; deoxyribose lacks it.",
+   "B": "No: the carbons are numbered the same way.",
+   "C": "No: true of both sugars, so it's no difference.",
+   "D": "No: no carbon is missing; only the 2′ OH is.",
+   "E": "No: the revision's answer is the 2′ hydroxyl, not \"one oxygen molecule\"."
+  },
+  "G121": {
+   "lecture": "bg-rev",
+   "A": "No: hydrogen bonds aren't covalent.",
+   "B": "Yes: they are non-covalent bonds.",
+   "C": "No: the backbone is held by phosphodiester bonds.",
+   "D": "Yes: they link the paired bases.",
+   "E": "Yes: helicase breaks them to open the strands."
+  },
+  "G122": {
+   "lecture": "bg-rev",
+   "A": "No: Tm is the midpoint, not complete melting.",
+   "B": "Yes: Tm is the temperature at which half of the DNA is denatured.",
+   "C": "No: it concerns the whole double strand, not AT pairs alone.",
+   "D": "No: the backbone stays intact.",
+   "E": "No: bases aren't melted by type."
+  },
+  "G123": {
+   "lecture": "bg-rev",
+   "A": "No: eukaryotes have many origins.",
+   "B": "No: shared, so not a difference.",
+   "C": "No: both use helicase and ligase.",
+   "D": "Yes: they run at different speeds.",
+   "E": "No: both use primase."
+  },
+  "G124": {
+   "lecture": "bg-rev",
+   "A": "No: helicase opens the DNA.",
+   "B": "Yes: it relieves supercoiling ahead of the fork.",
+   "C": "No: it doesn't inhibit helicase.",
+   "D": "No: it isn't bound to the SSB proteins.",
+   "E": "Yes: it is part of the replisome."
+  },
+  "G125": {
+   "lecture": "bg-rev",
+   "A": "Yes: prokaryotes have DNA polymerases I, II and III.",
+   "B": "No: α, ε and δ are eukaryotic.",
+   "C": "No: they have exonuclease (proofreading) activity.",
+   "D": "Yes: prokaryotes have no nucleus, so they work in the cytoplasm.",
+   "E": "No: they can make mismatches, then proofread."
+  },
+  "G126": {
+   "lecture": "bg-rev",
+   "A": "No: it extends telomeres, it doesn't replicate DNA.",
+   "B": "No: the revision says it is the same in all vertebrates.",
+   "C": "Yes: found only in eukaryotes, which have linear chromosomes.",
+   "D": "Yes: the same in all vertebrates.",
+   "E": "Yes: it carries its own RNA template."
   }
  }
 }
